@@ -18,8 +18,10 @@ def main():
     destination = ROOT / "assets/pdf/homework"
     destination.mkdir(parents=True, exist_ok=True)
     for original, course, label, weeks, display, date in FILES:
-        source = ROOT / "临时" / original
         filename = f"2026-{course}-{weeks}-homework.pdf"
+        source = ROOT / "临时" / original
+        if not source.exists():
+            source = ROOT / "archive/2026-10-06-import/homework" / filename
         shutil.copyfile(source, destination / filename)
         slug = date.replace("-", "") + f"-{course}-{weeks}-homework"
         folder = ROOT / "posts" / slug

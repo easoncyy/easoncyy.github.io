@@ -1,1 +1,63 @@
-[]
+[
+  {
+    "slug": "critique-of-pure-reason",
+    "title": "纯粹理性批判",
+    "author": "康德；邓晓芒译",
+    "category": "哲学",
+    "subject": "",
+    "description": "",
+    "path": "/assets/library/critique-of-pure-reason.pdf",
+    "added": "2026-10-06"
+  },
+  {
+    "slug": "soulstealers-1768",
+    "title": "叫魂：1768年中国妖术大恐慌",
+    "author": "孔飞力；陈兼、刘昶译",
+    "category": "历史",
+    "subject": "",
+    "description": "",
+    "path": "/assets/library/soulstealers-1768.pdf",
+    "added": "2026-10-06"
+  },
+  {
+    "slug": "economic-law-theory-practice",
+    "title": "经济法理论与实务",
+    "author": "周黎明",
+    "category": "教材",
+    "subject": "法学",
+    "description": "",
+    "path": "/assets/library/economic-law-theory-practice.pdf",
+    "added": "2026-10-06"
+  },
+  {
+    "slug": "computer-systems",
+    "title": "深入理解计算机系统",
+    "author": "Randal E. Bryant；David R. O’Hallaron",
+    "category": "教材",
+    "subject": "计算机",
+    "description": "原版扫描 PDF，约 344 MB。通过 GitHub Release 下载。",
+    "path": "https://github.com/easoncyy/easoncyy.github.io/releases/download/library-2026-10-06/computer-systems.pdf",
+    "added": "2026-10-06",
+    "download-only": true
+  },
+  {
+    "slug": "linear-algebra-exercises",
+    "title": "线性代数习题集",
+    "author": "И·B·普罗斯库烈柯夫",
+    "category": "习题",
+    "subject": "数学",
+    "description": "",
+    "path": "/assets/library/linear-algebra-exercises.pdf",
+    "added": "2026-10-06"
+  },
+  {
+    "slug": "project-hail-mary",
+    "title": "Project Hail Mary",
+    "author": "Andy Weir",
+    "category": "文学",
+    "subject": "",
+    "description": "",
+    "path": "/assets/library/project-hail-mary.pdf",
+    "added": "2026-10-06"
+  }
+]

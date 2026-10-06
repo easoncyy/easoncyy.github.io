@@ -23,6 +23,9 @@ def main():
     for book in sorted(books, key=lambda book: book["added"], reverse=True):
         category, subject = taxonomy.classify(book)
         classification = category + (" / " + subject if subject else "")
+        actions = f'<a href="{esc(book["path"])}" download>download / 下载 ↓</a>'
+        if not book.get("download-only"):
+            actions = f'<a href="{esc(book["path"])}" target="_blank" rel="noopener">read / 在线阅读 ↗</a>' + actions
         blocks.append(f'''::: {{.library-entry data-category="{esc(category)}" data-subject="{esc(subject)}"}}
 
 ```{{=html}}
@@ -30,7 +33,7 @@ def main():
 <h2 class="library-book-title">{esc(book['title'])}</h2>
 <p class="library-author">{esc(book.get('author', ''))}</p>
 <p>{esc(book.get('description', ''))}</p>
-<div class="library-actions"><a href="{esc(book['path'])}" target="_blank" rel="noopener">read / 在线阅读 ↗</a><a href="{esc(book['path'])}" download>download / 下载 ↓</a></div>
+<div class="library-actions">{actions}</div>
 ```
 
 :::

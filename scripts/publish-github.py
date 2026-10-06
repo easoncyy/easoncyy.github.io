@@ -5,12 +5,14 @@ No credentials are embedded in the source or passed on the command line.
 """
 import base64
 import json
+import hashlib
 import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 REPOSITORY = "easoncyy/easoncyy.github.io"
 API_ROOT = f"repos/{REPOSITORY}"
+KNOWN_BLOBS = set()
 
 
 def api(method, endpoint, payload=None, allow_missing=False):
@@ -33,8 +35,12 @@ def publish_tree(branch, files, message, preserve_tree):
     ref = api("GET", f"{API_ROOT}/git/ref/heads/{branch}", allow_missing=True)
     parent = ref["object"]["sha"] if ref else None
     base_tree = None
-    if parent and preserve_tree:
-        base_tree = api("GET", f"{API_ROOT}/git/commits/{parent}")["tree"]["sha"]
+    if parent:
+        previous_tree = api("GET", f"{API_ROOT}/git/commits/{parent}")["tree"]["sha"]
+        existing = api("GET", f"{API_ROOT}/git/trees/{previous_tree}?recursive=1")
+        KNOWN_BLOBS.update(item["sha"] for item in existing["tree"] if item["type"] == "blob")
+        if preserve_tree:
+            base_tree = previous_tree
     entries = []
     for path, name in sorted(files, key=lambda item: item[1]):
         entry = {"path": name, "mode": "100644", "type": "blob"}
@@ -45,10 +51,15 @@ def publish_tree(branch, files, message, preserve_tree):
                 raise UnicodeDecodeError("utf-8", data, 0, 1, "binary data")
             entry["content"] = content
         except UnicodeDecodeError:
-            blob = api("POST", f"{API_ROOT}/git/blobs", {
-                "content": base64.b64encode(data).decode("ascii"), "encoding": "base64"
-            })
-            entry["sha"] = blob["sha"]
+            sha = hashlib.sha1(f"blob {len(data)}\0".encode("ascii") + data).hexdigest()
+            if sha not in KNOWN_BLOBS:
+                print(f"Uploading: {name} ({len(data) / 1024 / 1024:.1f} MB)", flush=True)
+                blob = api("POST", f"{API_ROOT}/git/blobs", {
+                    "content": base64.b64encode(data).decode("ascii"), "encoding": "base64"
+                })
+                sha = blob["sha"]
+                KNOWN_BLOBS.add(sha)
+            entry["sha"] = sha
         entries.append(entry)
     payload = {"tree": entries}
     if base_tree:
