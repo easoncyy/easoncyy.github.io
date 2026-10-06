@@ -101,10 +101,12 @@ def main():
     source = {"branch": "gh-pages", "path": "/"}
     if not pages:
         api("POST", f"{API_ROOT}/pages", {"build_type": "legacy", "source": source})
-    # A user site's first implicit build can use main despite the creation payload.
-    # Apply the source again after creation and explicitly request its build.
-    api("PUT", f"{API_ROOT}/pages", {"build_type": "legacy", "source": source})
-    api("POST", f"{API_ROOT}/pages/builds")
+        api("PUT", f"{API_ROOT}/pages", {"build_type": "legacy", "source": source})
+        api("POST", f"{API_ROOT}/pages/builds")
+    elif pages.get("source") != source or pages.get("build_type") != "legacy":
+        api("PUT", f"{API_ROOT}/pages", {"build_type": "legacy", "source": source})
+        api("POST", f"{API_ROOT}/pages/builds")
+    # An update to the configured gh-pages branch already triggers deployment.
     print("Pages configured: https://easoncyy.github.io/", flush=True)
 
 
