@@ -1,7 +1,7 @@
 """Assemble full Markdown entries into a single Quarto page before rendering."""
 import html
 import json
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -20,6 +20,12 @@ def main():
                 metadata[key] = json.loads(value)
             except json.JSONDecodeError:
                 metadata[key] = value.strip("'\"")
+        if not metadata.get("date"):
+            timestamp = metadata.get("timestamp") or datetime.now(timezone(timedelta(hours=8))).replace(microsecond=0).isoformat()
+            metadata["date"] = timestamp
+            # Persist the first publication time so later builds do not change it.
+            header = header.rstrip() + "\ndate: " + json.dumps(timestamp) + "\n"
+            source.write_text("---" + header + "---" + body, encoding="utf-8")
         entries.append((metadata, body.strip(), source.parent.name))
     entries.sort(key=lambda entry: entry[0]["date"], reverse=True)
     output = ["::: {.log-stream}"]
@@ -34,7 +40,6 @@ def main():
             '```',
             '::: {.log-payload}',
             '```{=html}',
-            f'<div class="log-request">host={escape(metadata.get("host", "easoncyy.github.io"))} &nbsp; append #{escape(slug)}</div>',
             f'<p class="log-entry-title">{escape(metadata.get("title", ""))}</p>',
             '```',
             body,

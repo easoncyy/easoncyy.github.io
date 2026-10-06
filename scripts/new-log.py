@@ -14,13 +14,12 @@ def main():
     parser = argparse.ArgumentParser(description="新建日志，完成后编辑生成的 index.qmd")
     parser.add_argument("title", help="日志标题")
     parser.add_argument("--text", default="", help="完整正文")
-    parser.add_argument("--host", default="easoncyy.github.io", help="公开署名，不读取真实主机名")
     parser.add_argument("--url", help="要分享的 http/https 链接")
     parser.add_argument("--photo", nargs="+", type=Path, help="一张或多张本地照片路径")
     parser.add_argument("--slug", help="可选目录名，只能含英文字母、数字与连字符")
     args = parser.parse_args()
-    if not args.title.strip() or not args.host.strip():
-        parser.error("标题和 host 不能为空")
+    if not args.title.strip():
+        parser.error("标题不能为空")
     if args.slug and not re.fullmatch(r"[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*", args.slug):
         parser.error("slug 只能含英文字母、数字与连字符")
     if args.url and (urlparse(args.url).scheme not in ("http", "https") or not urlparse(args.url).netloc):
@@ -34,7 +33,7 @@ def main():
     if folder.exists():
         parser.error(f"目录已存在，请稍后重试或更换 --slug: {folder}")
     folder.mkdir(parents=True)
-    metadata = {"title": args.title, "date": now.isoformat(), "timestamp": now.isoformat(), "host": args.host}
+    metadata = {"title": args.title, "date": now.isoformat()}
     body = [args.text or "在这里写下你的记录。"]
     if args.url:
         body.append(f"[打开分享的链接](<{args.url}>)")
