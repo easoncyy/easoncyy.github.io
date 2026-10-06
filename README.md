@@ -61,11 +61,11 @@ $$
 
 ## 启用评论
 
-当前评论未启用，文章末尾显示“评论暂未开放”。没有模拟评论或本地留言替代。
+已开启网站仓库的 Discussions，并配置 giscus、Announcements 分类、简体中文与浅色主题。若 giscus App 尚未授权仓库，需要访问 https://github.com/apps/giscus 完成安装，仅选择 `easoncyy.github.io` 仓库。
 
 1. 在 GitHub 选择一个公开仓库，在 Settings → General → Features 开启 Discussions。
 2. 在 https://giscus.app/zh-CN 安装 giscus App，授权该仓库。
-3. 在配置页选择仓库与 Announcements 类型的讨论分类，映射选 `pathname`，勾选严格匹配，主题选 light，语言选简体中文。
+3. 配置使用 Announcements 分类、严格匹配、light 主题和简体中文。代码按规范化后的文章路径映射，目录网址与 `index.html` 共用评论区。
 4. 从生成的脚本复制 `data-repo`、`data-repo-id`、`data-category`、`data-category-id`，运行：
 
 ```powershell
@@ -73,7 +73,7 @@ $$
 .\scripts\build.ps1
 ```
 
-这些 ID 是公开配置，不是密码。读者需 GitHub 账号并授权 giscus 才能评论；评论保存在 Discussions，可在 GitHub 管理。配置完成后，必须在线验证评论的提交与重新加载。
+这些 ID 是公开配置，不是密码。读者需 GitHub 账号并授权 giscus 才能评论；评论保存在 Discussions，可在 GitHub 管理。首次留言会自动建立文章的讨论。App 安装完成后，需要在文章末尾实际提交留言并刷新，以验证完整流程。
 
 ## 发布到 GitHub Pages
 
