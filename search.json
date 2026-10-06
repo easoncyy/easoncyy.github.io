@@ -130,7 +130,7 @@
     "href": "log.html",
     "title": "~/notes/log",
     "section": "",
-    "text": "$ tail -f ~/notes/log\n生活片段、照片与值得留下的链接。\nhost=easoncyy.github.io · timezone=UTC+08:00 · mode=append\n\n\n  \n    ALL / 全部\n    NOTE / 日记\n    PHOTO / 照片\n    LINK / 链接\n  \n  grep \n\n\n\n\n\n  \n    2026-10-06T20:51:35+08:00NOTE\n    \n      host=easoncyy.github.io   GET /logs\\20261006-log-online\\index.qmd\n      log/ 开始记录\n      给短日记、照片和链接留一个位置。像查看服务器日志一样，沿着时间读取生活中的片段。\n      \n      \n      open / 阅读与评论 →\n    \n  \n\n\n无匹配项\n\n没有匹配的记录。试试其他类型或关键词。\n\n主机是这本日志的公开署名。时间记录发布时刻，正文可补充事情发生的时间。点击标题打开完整记录与评论。"
+    "text": "$ tail -f ~/notes/log\n生活片段、照片与值得留下的链接。\nhost=easoncyy.github.io · timezone=UTC+08:00 · mode=append\n\n\n  \n    ALL / 全部\n    NOTE / 日记\n    PHOTO / 照片\n    LINK / 链接\n  \n  grep \n\n\n\n\n\n  \n    2026-10-06T20:51:35+08:00NOTE\n    \n      host=easoncyy.github.io   GET /logs/20261006-log-online/\n      log/ 开始记录\n      给短日记、照片和链接留一个位置。像查看服务器日志一样，沿着时间读取生活中的片段。\n      \n      \n      open / 阅读与评论 →\n    \n  \n\n\n无匹配项\n\n没有匹配的记录。试试其他类型或关键词。\n\n主机是这本日志的公开署名。时间记录发布时刻，正文可补充事情发生的时间。点击标题打开完整记录与评论。"
   },
   {
     "objectID": "posts/hello-world/index.html",
