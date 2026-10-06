@@ -87,10 +87,12 @@ def main():
                  "Publish rendered personal website", False)
     pages = api("GET", f"{API_ROOT}/pages", allow_missing=True)
     source = {"branch": "gh-pages", "path": "/"}
-    if pages:
-        api("PUT", f"{API_ROOT}/pages", {"build_type": "legacy", "source": source})
-    else:
+    if not pages:
         api("POST", f"{API_ROOT}/pages", {"build_type": "legacy", "source": source})
+    # A user site's first implicit build can use main despite the creation payload.
+    # Apply the source again after creation and explicitly request its build.
+    api("PUT", f"{API_ROOT}/pages", {"build_type": "legacy", "source": source})
+    api("POST", f"{API_ROOT}/pages/builds")
     print("Pages configured: https://easoncyy.github.io/", flush=True)
 
 
