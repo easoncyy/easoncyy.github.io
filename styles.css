@@ -161,3 +161,9 @@ blockquote { border-left: 2px solid #151515; color: var(--muted); padding-left: 
 .library-author { color: var(--muted); font-size: .85rem; }
 .library-actions { display: flex; flex-wrap: wrap; gap: 1.5rem; font: .76rem var(--mono); margin-top: 1rem; }
 .homework-pdf { width: 100%; height: 75vh; min-height: 400px; border: 1px solid var(--line); }
+.library-filters, .library-subjects { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin: 1rem 0; }
+.library-filters button, .library-subjects button { border: 1px solid var(--line); background: white; color: var(--muted); padding: .35rem .75rem; font: .8rem/1.6 var(--mono); }
+.library-filters button[aria-pressed="true"], .library-subjects button[aria-pressed="true"] { color: white; background: var(--ink); border-color: var(--ink); }
+.library-filter-count { font-size: .65rem; opacity: .7; margin-left: .3rem; }
+.library-subject-label, .library-count { font: .72rem var(--mono); color: var(--muted); }
+.library-entry[hidden], .library-subjects[hidden], #library-empty[hidden] { display: none !important; }

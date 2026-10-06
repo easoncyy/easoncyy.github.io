@@ -200,7 +200,7 @@
     "href": "library.html",
     "title": "~/notes/library",
     "section": "",
-    "text": "$ ls ~/notes/library\n收集值得阅读与反复翻阅的 PDF。\n\n\n0 books\n书架暂时为空，等待第一本书。"
+    "text": "$ ls ~/notes/library\n收集值得阅读与反复翻阅的 PDF。\n\n\n全部\n文学 0\n哲学 0\n历史 0\n教材 0\n习题 0\n参考书 0\n其他 0\n\n\n\n书架暂时为空，等待第一本书。"
   },
   {
     "objectID": "posts/20260920-fip-w02-enumeration-decrease-conquer/index.html",
