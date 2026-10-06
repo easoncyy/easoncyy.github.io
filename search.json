@@ -137,7 +137,7 @@
     "href": "index.html",
     "title": "首页",
     "section": "",
-    "text": "~/notes · A PERSONAL WORKSPACE\n\n\n\n这里存放学习笔记、代码片段与偶尔的思考。给复杂的问题留一点空间，也给未来的自己留一份记录。\n\n阅读博客 → log/ 日志 → 关于本站 ↗"
+    "text": "~/notes · A PERSONAL WORKSPACE\n\n\n\n这里存放学习笔记、资源归档与偶尔的思考。给复杂的问题留一点空间，也给未来的自己留一份记录。\n\n阅读博客 → log/ 日志 → 关于本站 ↗"
   },
   {
     "objectID": "index.html#recent",
@@ -151,28 +151,28 @@
     "href": "about.html",
     "title": "~/notes/about",
     "section": "",
-    "text": "欢迎来到我的个人网站。\n这里会逐渐积累学习笔记、项目记录与感兴趣的问题。比起把所有事情一次讲完，我更喜欢把一个问题想清楚，再写下来。"
+    "text": "欢迎来到easoncyy’s homepage."
   },
   {
     "objectID": "about.html#hello-world.",
     "href": "about.html#hello-world.",
     "title": "~/notes/about",
     "section": "",
-    "text": "欢迎来到我的个人网站。\n这里会逐渐积累学习笔记、项目记录与感兴趣的问题。比起把所有事情一次讲完，我更喜欢把一个问题想清楚，再写下来。"
-  },
-  {
-    "objectID": "about.html#workspace",
-    "href": "about.html#workspace",
-    "title": "~/notes/about",
-    "section": "workspace/",
-    "text": "workspace/\n\n笔记：概念、公式和推导。\n代码：小实验、实现过程与经验。\n思考：暂时没有标准答案的问题。\n\n在 projects/ 查看项目，在 links/ 认识其他写作者。"
+    "text": "欢迎来到easoncyy’s homepage."
   },
   {
     "objectID": "about.html#readme",
     "href": "about.html#readme",
     "title": "~/notes/about",
     "section": "readme/",
-    "text": "readme/\n目前的两篇文章是用于展示排版和功能的示例。后续会替换为实际内容。\n本站使用 Markdown 写作，支持数学公式；较长的排版文档可提供 PDF 下载。文章末尾保留评论区域。"
+    "text": "readme/\n\n\nwhoami/\n我是 Eason Chen(easoncyy)，一个正在探索的人。\n\n学习背景：ZJU-AI-2026\n关注方向：ML, DL, 计算机系统\n日常爱好：骑自行车, 唱歌，数学\n加入组织：\n\n浙江大学竺可桢学院灵韵合唱团\n\n\n\n\ncurrently/\n\n正在学习：CSAPP，Linux, 基础课内课程\n正在做：Kaggle-RSNA 2026 CompetitionRSNA\n想尝试：并行式计算，嵌入式/机器人相关项目\n\n\n\ncontact/\n\nGitHub：easoncyy\nE-mail：easonchyy@gmail.com\n\n这里会逐渐积累学习笔记、项目记录与感兴趣的问题。我也会在这里发布一些个人的生活感想以及学习资源，欢迎友链。"
+  },
+  {
+    "objectID": "about.html#workspace",
+    "href": "about.html#workspace",
+    "title": "~/notes/about",
+    "section": "workspace/",
+    "text": "workspace/\n\nblog/ 博客：作业存档、感兴趣的话题探讨、学科研究思考。\nprojects/ 项目：正在维护的项目、已经完成的项目、考虑进行的项目。\nlog/ 日志：每天的一些状态留存以及想法记录。\n\n在 links/ 友链认识其他写作者。"
   },
   {
     "objectID": "links.html",
@@ -193,7 +193,7 @@
     "href": "links.html#this-site",
     "title": "~/notes/links",
     "section": "this-site/",
-    "text": "this-site/\n本站信息\n\n名称：~/notes · 个人笔记\n地址：https://easoncyy.github.io\n简介：记录学习、代码与思考。"
+    "text": "this-site/\n本站信息\n\n名称：~/notes · easoncyy’s homepage\n地址：https://easoncyy.github.io\n简介：记录学习、项目与思考。"
   },
   {
     "objectID": "library.html",
