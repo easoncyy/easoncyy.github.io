@@ -1,0 +1,16 @@
+[
+  {
+    "listing": "/index.html",
+    "items": [
+      "/posts/hello-world/index.html",
+      "/posts/math-notes/index.html"
+    ]
+  },
+  {
+    "listing": "/blog.html",
+    "items": [
+      "/posts/hello-world/index.html",
+      "/posts/math-notes/index.html"
+    ]
+  }
+]

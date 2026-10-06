@@ -1,0 +1,114 @@
+[
+  {
+    "objectID": "posts/math-notes/index.html",
+    "href": "posts/math-notes/index.html",
+    "title": "从公式到文档：一页数学笔记",
+    "section": "",
+    "text": "这是一篇示例文章，演示网页中的数学公式和可下载的排版文档。"
+  },
+  {
+    "objectID": "posts/math-notes/index.html#行内与独立公式",
+    "href": "posts/math-notes/index.html#行内与独立公式",
+    "title": "从公式到文档：一页数学笔记",
+    "section": "行内与独立公式",
+    "text": "行内与独立公式\n行内公式直接放在句子中，例如 \\(f(x)=x^2\\)，它的导数是 \\(f'(x)=2x\\)。\n较长的公式可以单独占一行：\n\\[\n\\int_a^b x^2\\,\\mathrm{d}x = \\left[\\frac{x^3}{3}\\right]_a^b = \\frac{b^3-a^3}{3}.\n\\]"
+  },
+  {
+    "objectID": "posts/math-notes/index.html#一段推导",
+    "href": "posts/math-notes/index.html#一段推导",
+    "title": "从公式到文档：一页数学笔记",
+    "section": "一段推导",
+    "text": "一段推导\n对任意可微函数 \\(f\\)，导数的定义是\n\\[\nf'(x)=\\lim_{h\\to 0}\\frac{f(x+h)-f(x)}{h}.\n\\]\n代入 \\(f(x)=x^2\\)：\n\\[\n\\begin{aligned}\nf'(x)\n&=\\lim_{h\\to 0}\\frac{(x+h)^2-x^2}{h}\\\\\n&=\\lim_{h\\to 0}(2x+h)\\\\\n&=2x.\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "posts/math-notes/index.html#文档下载",
+    "href": "posts/math-notes/index.html#文档下载",
+    "title": "从公式到文档：一页数学笔记",
+    "section": "文档下载",
+    "text": "文档下载\n网页适合阅读与讨论，PDF 适合下载、打印和保存。下面的英文版数学笔记由同一类 Markdown 文稿通过 Typst 排版生成。\n\nMATH NOTES / 01\n导数与积分 · 英文示例文档\n下载 PDF ↓"
+  },
+  {
+    "objectID": "posts/math-notes/index.html#写作方式",
+    "href": "posts/math-notes/index.html#写作方式",
+    "title": "从公式到文档：一页数学笔记",
+    "section": "写作方式",
+    "text": "写作方式\n本页正文使用 Markdown，公式使用 LaTeX 数学语法。完整的 Typst 或 LaTeX 文档也可以在编译成 PDF 后，以这种方式附在文章中。"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "关于",
+    "section": "",
+    "text": "欢迎来到我的个人网站。\n这里会逐渐积累学习笔记、项目记录与感兴趣的问题。比起把所有事情一次讲完，我更喜欢把一个问题想清楚，再写下来。"
+  },
+  {
+    "objectID": "about.html#hello-world.",
+    "href": "about.html#hello-world.",
+    "title": "关于",
+    "section": "",
+    "text": "欢迎来到我的个人网站。\n这里会逐渐积累学习笔记、项目记录与感兴趣的问题。比起把所有事情一次讲完，我更喜欢把一个问题想清楚，再写下来。"
+  },
+  {
+    "objectID": "about.html#这里有什么",
+    "href": "about.html#这里有什么",
+    "title": "关于",
+    "section": "这里有什么",
+    "text": "这里有什么\n\n笔记：概念、公式和推导。\n代码：小实验、实现过程与经验。\n思考：暂时没有标准答案的问题。"
+  },
+  {
+    "objectID": "about.html#关于内容",
+    "href": "about.html#关于内容",
+    "title": "关于",
+    "section": "关于内容",
+    "text": "关于内容\n目前的两篇文章是用于展示排版和功能的示例。后续会替换为实际内容。\n本站使用 Markdown 写作，支持数学公式；较长的排版文档可提供 PDF 下载。文章末尾保留评论区域。"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "首页",
+    "section": "",
+    "text": "NOTES / CODE / IDEAS\n\n\n\n这里存放学习笔记、代码片段与偶尔的思考。给复杂的问题留一点空间，也给未来的自己留一份记录。\n\n阅读博客 → 关于本站 ↗"
+  },
+  {
+    "objectID": "index.html#最近的记录",
+    "href": "index.html#最近的记录",
+    "title": "首页",
+    "section": "最近的记录",
+    "text": "最近的记录\n全部文章 →"
+  },
+  {
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "博客",
+    "section": "",
+    "text": "Hello, world：从第一篇笔记开始\n\n\n\n示例\n\n写作\n\n\n\n一篇示例文章，展示标题、代码、引用与 Markdown 的基本排版。\n\n\n\n\n\n2026.10.06\n\n\n\n\n\n\n\n从公式到文档：一页数学笔记\n\n\n\n示例\n\n数学\n\n\n\n展示 LaTeX 公式、推导，以及由 Typst 生成的 PDF 下载。\n\n\n\n\n\n2026.10.05\n\n\n\n\n\n无匹配项"
+  },
+  {
+    "objectID": "posts/hello-world/index.html",
+    "href": "posts/hello-world/index.html",
+    "title": "Hello, world：从第一篇笔记开始",
+    "section": "",
+    "text": "这是一篇示例文章。一个个人网站可以从很小的地方开始：一个首页、一篇笔记，以及一个愿意持续记录的理由。"
+  },
+  {
+    "objectID": "posts/hello-world/index.html#用-markdown-写作",
+    "href": "posts/hello-world/index.html#用-markdown-写作",
+    "title": "Hello, world：从第一篇笔记开始",
+    "section": "用 Markdown 写作",
+    "text": "用 Markdown 写作\n正文用普通文字书写。使用 **粗体** 强调重点，使用 [文字](网址) 添加链接，使用标题组织内容。\n\n写下来，是整理思路的开始。\n\n\n一个简单的清单\n\n选择一个值得记录的问题。\n用自己的话说明它。\n留下能够复现的例子。"
+  },
+  {
+    "objectID": "posts/hello-world/index.html#留下可运行的代码",
+    "href": "posts/hello-world/index.html#留下可运行的代码",
+    "title": "Hello, world：从第一篇笔记开始",
+    "section": "留下可运行的代码",
+    "text": "留下可运行的代码\n代码块可以保留缩进、显示语法高亮，并一键复制：\ndef greet(name: str) -&gt; str:\n    return f\"Hello, {name}!\"\n\nprint(greet(\"world\"))"
+  },
+  {
+    "objectID": "posts/hello-world/index.html#把内容连接起来",
+    "href": "posts/hello-world/index.html#把内容连接起来",
+    "title": "Hello, world：从第一篇笔记开始",
+    "section": "把内容连接起来",
+    "text": "把内容连接起来\n公式、推导和 PDF 下载示例可以在另一篇笔记中看到。\n\n\n\n内容\n适合记录什么\n\n\n\n\n文字\n概念与思考\n\n\n代码\n实验与实现\n\n\n公式\n定义与推导\n\n\n\n\n这篇文章是起点。下一篇，可以是今天刚学会的一件事。"
+  }
+]
