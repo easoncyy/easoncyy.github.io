@@ -10,7 +10,7 @@ toc: false
 
 欢迎来到easoncyy's homepage.
 
-## readme/ {.directory-heading}
+## README/ {.directory-heading}
 
 <!-- 将下面方括号中的内容替换为自己的信息；不需要的行或小节可以直接删除。 -->
 
@@ -28,7 +28,7 @@ toc: false
 ### currently/ {.directory-heading}
 
 - **正在学习**：CSAPP，Linux, 基础课内课程
-- **正在做**：Kaggle-RSNA 2026 Competition[RSNA](https://github.com/Msmile-shiny/CVproject_RSNA-knee-detection)
+- **正在做**：Kaggle-[RSNA](https://github.com/Msmile-shiny/CVproject_RSNA-knee-detection) 2026 Competition
 - **想尝试**：并行式计算，嵌入式/机器人相关项目
 
 ### contact/ {.directory-heading}
@@ -43,6 +43,8 @@ toc: false
 - [blog/ 博客](blog.qmd)：作业存档、感兴趣的话题探讨、学科研究思考。
 - [projects/ 项目](projects.qmd)：正在维护的项目、已经完成的项目、考虑进行的项目。
 - [log/ 日志](log.qmd)：每天的一些状态留存以及想法记录。
+- [library/ 图书馆](library.qmd)：时常翻阅或感兴趣的书籍。
+
 
 在 [links/ 友链](links.qmd)认识其他写作者。
 
