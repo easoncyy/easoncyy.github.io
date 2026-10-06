@@ -11,7 +11,7 @@ format:
 
 ::: {.log-console}
 `$ ls ~/notes/library`  
-收集值得阅读与反复翻阅的 PDF。
+收集值得阅读与反复翻阅的图书。
 :::
 
 {{< include assets/library-entries.md >}}

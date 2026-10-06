@@ -9,7 +9,7 @@ toc: false
 ::: {.collection-heading}
 ## friends/ {.directory-heading}
 
-朋友的写作空间
+朋友的空间
 :::
 
 ::: {.link-entry}
