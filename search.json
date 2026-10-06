@@ -200,7 +200,7 @@
     "href": "library.html",
     "title": "~/notes/library",
     "section": "",
-    "text": "$ ls ~/notes/library\n收集值得阅读与反复翻阅的图书。\n\n\n全部\n文学 0\n哲学 0\n历史 0\n教材 0\n习题 0\n参考书 0\n其他 0\n\n\n\n书架暂时为空，等待第一本书。"
+    "text": "$ ls ~/notes/library\n收集值得阅读与反复翻阅的图书。\n\n\n全部\n文学 1\n哲学 1\n历史 1\n教材 2\n习题 1\n参考书 0\n其他 0\n\n\n\n\n哲学 · PDF · 2026-10-06\n纯粹理性批判\n康德；邓晓芒译\n\nread / 在线阅读 ↗download / 下载 ↓\n\n\n历史 · PDF · 2026-10-06\n叫魂：1768年中国妖术大恐慌\n孔飞力；陈兼、刘昶译\n\nread / 在线阅读 ↗download / 下载 ↓\n\n\n教材 / 法学 · PDF · 2026-10-06\n经济法理论与实务\n周黎明\n\nread / 在线阅读 ↗download / 下载 ↓\n\n\n教材 / 计算机 · PDF · 2026-10-06\n深入理解计算机系统\nRandal E. Bryant；David R. O’Hallaron\n原版扫描 PDF，约 344 MB。通过 GitHub Release 下载。\ndownload / 下载 ↓\n\n\n习题 / 数学 · PDF · 2026-10-06\n线性代数习题集\nИ·B·普罗斯库烈柯夫\n\nread / 在线阅读 ↗download / 下载 ↓\n\n\n文学 · PDF · 2026-10-06\nProject Hail Mary\nAndy Weir\n\nread / 在线阅读 ↗download / 下载 ↓\n\n书架暂时为空，等待第一本书。"
   },
   {
     "objectID": "posts/20260920-fip-w02-enumeration-decrease-conquer/index.html",
