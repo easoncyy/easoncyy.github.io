@@ -35,53 +35,88 @@
     "text": "写作方式\n本页正文使用 Markdown，公式使用 LaTeX 数学语法。完整的 Typst 或 LaTeX 文档也可以在编译成 PDF 后，以这种方式附在文章中。"
   },
   {
+    "objectID": "links.html",
+    "href": "links.html",
+    "title": "~/notes/links",
+    "section": "",
+    "text": "朋友的写作空间"
+  },
+  {
+    "objectID": "links.html#friends",
+    "href": "links.html#friends",
+    "title": "~/notes/links",
+    "section": "",
+    "text": "朋友的写作空间"
+  },
+  {
+    "objectID": "links.html#this-site",
+    "href": "links.html#this-site",
+    "title": "~/notes/links",
+    "section": "this-site/",
+    "text": "this-site/\n本站信息\n\n名称：~/notes · 个人笔记\n地址：https://easoncyy.github.io\n简介：记录学习、代码与思考。"
+  },
+  {
     "objectID": "about.html",
     "href": "about.html",
-    "title": "关于",
+    "title": "~/notes/about",
     "section": "",
     "text": "欢迎来到我的个人网站。\n这里会逐渐积累学习笔记、项目记录与感兴趣的问题。比起把所有事情一次讲完，我更喜欢把一个问题想清楚，再写下来。"
   },
   {
     "objectID": "about.html#hello-world.",
     "href": "about.html#hello-world.",
-    "title": "关于",
+    "title": "~/notes/about",
     "section": "",
     "text": "欢迎来到我的个人网站。\n这里会逐渐积累学习笔记、项目记录与感兴趣的问题。比起把所有事情一次讲完，我更喜欢把一个问题想清楚，再写下来。"
   },
   {
-    "objectID": "about.html#这里有什么",
-    "href": "about.html#这里有什么",
-    "title": "关于",
-    "section": "这里有什么",
-    "text": "这里有什么\n\n笔记：概念、公式和推导。\n代码：小实验、实现过程与经验。\n思考：暂时没有标准答案的问题。"
+    "objectID": "about.html#workspace",
+    "href": "about.html#workspace",
+    "title": "~/notes/about",
+    "section": "workspace/",
+    "text": "workspace/\n\n笔记：概念、公式和推导。\n代码：小实验、实现过程与经验。\n思考：暂时没有标准答案的问题。\n\n在 projects/ 查看项目，在 links/ 认识其他写作者。"
   },
   {
-    "objectID": "about.html#关于内容",
-    "href": "about.html#关于内容",
-    "title": "关于",
-    "section": "关于内容",
-    "text": "关于内容\n目前的两篇文章是用于展示排版和功能的示例。后续会替换为实际内容。\n本站使用 Markdown 写作，支持数学公式；较长的排版文档可提供 PDF 下载。文章末尾保留评论区域。"
+    "objectID": "about.html#readme",
+    "href": "about.html#readme",
+    "title": "~/notes/about",
+    "section": "readme/",
+    "text": "readme/\n目前的两篇文章是用于展示排版和功能的示例。后续会替换为实际内容。\n本站使用 Markdown 写作，支持数学公式；较长的排版文档可提供 PDF 下载。文章末尾保留评论区域。"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "首页",
     "section": "",
-    "text": "NOTES / CODE / IDEAS\n\n\n\n这里存放学习笔记、代码片段与偶尔的思考。给复杂的问题留一点空间，也给未来的自己留一份记录。\n\n阅读博客 → 关于本站 ↗"
+    "text": "~/notes · A PERSONAL WORKSPACE\n\n\n\n这里存放学习笔记、代码片段与偶尔的思考。给复杂的问题留一点空间，也给未来的自己留一份记录。\n\n阅读博客 → 关于本站 ↗"
   },
   {
-    "objectID": "index.html#最近的记录",
-    "href": "index.html#最近的记录",
+    "objectID": "index.html#recent",
+    "href": "index.html#recent",
     "title": "首页",
-    "section": "最近的记录",
-    "text": "最近的记录\n全部文章 →"
+    "section": "recent/",
+    "text": "recent/\n全部文章 →"
   },
   {
     "objectID": "blog.html",
     "href": "blog.html",
-    "title": "博客",
+    "title": "~/notes/blog",
     "section": "",
     "text": "Hello, world：从第一篇笔记开始\n\n\n\n示例\n\n写作\n\n\n\n一篇示例文章，展示标题、代码、引用与 Markdown 的基本排版。\n\n\n\n\n\n2026.10.06\n\n\n\n\n\n\n\n从公式到文档：一页数学笔记\n\n\n\n示例\n\n数学\n\n\n\n展示 LaTeX 公式、推导，以及由 Typst 生成的 PDF 下载。\n\n\n\n\n\n2026.10.05\n\n\n\n\n\n无匹配项"
+  },
+  {
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "~/notes/projects",
+    "section": "",
+    "text": "正在维护"
+  },
+  {
+    "objectID": "projects.html#working",
+    "href": "projects.html#working",
+    "title": "~/notes/projects",
+    "section": "",
+    "text": "正在维护"
   },
   {
     "objectID": "posts/hello-world/index.html",

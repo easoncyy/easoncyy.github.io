@@ -25,7 +25,9 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 .navbar { border-bottom: 1px solid var(--line); padding: 1.05rem 0; }
 .navbar-container { max-width: 1120px; margin: auto; padding-inline: 2rem; }
 .navbar-brand { font-family: var(--mono); font-size: 1.18rem; font-weight: 700; letter-spacing: -.05em; }
-.navbar-nav { gap: 1.3rem; }
+.navbar-nav { gap: 1.15rem; }
+.nav-path { font-family: var(--mono); font-size: .85rem; }
+.nav-caption { font-size: .72rem; margin-left: .45rem; color: var(--muted); }
 .navbar .nav-link { font-size: .88rem; color: var(--muted); }
 .navbar .nav-link.active { color: #000; text-decoration: underline; text-underline-offset: .5em; }
 #quarto-content { padding-top: 2.5rem; }
@@ -36,6 +38,36 @@ h2 { margin-top: 2.8rem; border-bottom: 0; font-size: 1.5rem; }
 h3 { font-size: 1.12rem; }
 .quarto-title h1.title { font-size: clamp(1.9rem, 4vw, 2.65rem); }
 .quarto-title .description { color: var(--muted); font-size: 1rem; margin-top: 1rem; }
+.directory-page .quarto-title h1.title { font-family: var(--mono); font-size: clamp(1.65rem, 4vw, 2.4rem); overflow-wrap: anywhere; letter-spacing: -.05em; }
+.directory-page .quarto-title .subtitle { font-size: .95rem; color: var(--muted); margin-top: .65rem; }
+h2.directory-heading, .directory-heading > h2 { font-family: var(--mono); font-weight: 600; letter-spacing: -.025em; font-size: 1.15rem; }
+.directory-page .quarto-title-meta { display: none; }
+.article-path { font: .75rem/1.8 var(--mono); color: var(--muted); margin-bottom: 1.6rem; overflow-wrap: anywhere; }
+.article-path a { color: var(--muted); text-decoration: none; }
+.article-path a:hover { color: var(--ink); text-decoration: underline; }
+.directory-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem; margin-top: 3.4rem; }
+.directory-tile { border-top: 1px solid var(--ink); padding-block: 1.3rem .3rem; }
+.directory-tile h3 { font: 600 1.05rem/1.6 var(--mono); margin-top: 0; }
+.directory-tile h3 a { text-decoration: none; }
+.directory-tile h3 a:hover { text-decoration: underline; }
+.directory-tile p { font-size: .88rem; color: var(--muted); }
+.collection-heading { display: flex; align-items: baseline; gap: 1rem; border-bottom: 1px solid var(--ink); margin-top: 2.8rem; }
+.collection-heading h2 { margin-top: 0; margin-bottom: .8rem; }
+.collection-heading > p { color: var(--muted); font-size: .78rem; }
+.project-entry, .link-entry { border-bottom: 1px solid var(--line); padding-block: 1.7rem; }
+.entry-topline { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: .5rem 1rem; }
+.entry-topline h3, .entry-topline h3 a, .link-entry h3 { font: 600 1.1rem/1.6 var(--mono); margin: 0; overflow-wrap: anywhere; }
+.entry-topline p { margin-bottom: .8rem; }
+.repository-link { font: .8rem var(--mono); white-space: nowrap; }
+.project-entry > p { font-size: .92rem; color: var(--muted); }
+.project-entry > p:first-of-type { color: var(--ink); }
+.entry-tags code { font-size: .7rem; background: transparent; color: var(--muted); border: 1px solid var(--line); padding: .15rem .4rem; }
+.entry-tags p { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 0; }
+.collection-note { font-size: .83rem; color: var(--muted); margin-top: 1.5rem; }
+.empty-directory { padding: 2rem 0; border-bottom: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
+.empty-directory code { background: transparent; color: var(--muted); padding: 0; font-size: .8rem; }
+.site-address { border-left: 2px solid var(--ink); padding-left: 1.2rem; font-size: .9rem; }
+.site-address a { overflow-wrap: anywhere; }
 .quarto-title-meta { padding-block: 1rem 1.7rem; border-bottom: 1px solid var(--line); margin-bottom: 2rem; }
 .quarto-title-meta-heading, .quarto-title-meta-contents { font-family: var(--mono); }
 .quarto-category { color: var(--muted) !important; border-color: var(--line) !important; border-radius: 0 !important; padding: .15em .5em !important; }
@@ -84,6 +116,8 @@ blockquote { border-left: 2px solid #151515; color: var(--muted); padding-left: 
 @media (max-width: 767px) {
   .navbar-container { padding-inline: 1rem; }
   .navbar-nav { gap: .25rem; padding-block: .7rem; }
+  .nav-caption { margin-left: .7rem; }
+  .directory-grid { grid-template-columns: 1fr; gap: 1.5rem; margin-top: 2.5rem; }
   #quarto-content { padding-top: 1.5rem; }
   .home-intro { padding: 2.4rem 0 3rem; }
   .home-page main { padding-inline: .4rem; }
