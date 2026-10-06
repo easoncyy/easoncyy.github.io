@@ -39,7 +39,7 @@
     "href": "log.html",
     "title": "~/notes/log",
     "section": "",
-    "text": "$ tail -f ~/notes/log\n生活片段、照片与值得留下的链接。\nhost=easoncyy.github.io · timezone=UTC+08:00 · mode=append\n\n\n  grep \n\n\n\n\n\n2026-10-06 20:51:35 +0800\n\n\n\nhost=easoncyy.github.io   append #20261006-log-online\n\nlog/ 开始记录\n\n这里是新建的 log/ 栏目。这条是栏目说明，并非个人日记示例。\n可以写下当天的想法，在同一条文字里附上几张照片，或者插入值得回看的链接。每条完整显示在这里，沿着时间往下读就好。\n每条记录带有发布时间和公开主机署名；host 默认使用网站域名，也可以改成自己喜欢的昵称，例如 writing-desk。\n\n\n\n没有匹配的记录。试试其他关键词。\n\n主机是这本日志的公开署名。时间记录发布时刻，正文可补充事情发生的时间。"
+    "text": "$ tail -f ~/notes/log\n生活片段、照片与值得留下的链接。\nhost=easoncyy.github.io · timezone=UTC+08:00 · mode=append\n\n\n  grep \n\n\n\n\n\n2026-10-06 20:51:35 +0800\n\n\n\nlog/ 开始记录\n\n这里是新建的 log/ 栏目。这条是栏目说明，并非个人日记示例。\n可以写下当天的想法，在同一条文字里附上几张照片，或者插入值得回看的链接。每条完整显示在这里，沿着时间往下读就好。\n\n\n\n没有匹配的记录。试试其他关键词。"
   },
   {
     "objectID": "projects.html",
