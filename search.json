@@ -35,32 +35,46 @@
     "text": "写作方式\n本页正文使用 Markdown，公式使用 LaTeX 数学语法。完整的 Typst 或 LaTeX 文档也可以在编译成 PDF 后，以这种方式附在文章中。"
   },
   {
-    "objectID": "logs/20261006-log-online/index.html",
-    "href": "logs/20261006-log-online/index.html",
-    "title": "log/ 开始记录",
+    "objectID": "log.html",
+    "href": "log.html",
+    "title": "~/notes/log",
     "section": "",
-    "text": "[NOTE] host=easoncyy.github.io\n这里是新建的 log/ 栏目。这条是栏目说明，并非个人日记示例。\n可以写下当天的想法，放几张照片，或者留下一个值得回看的链接。短内容在日志流里展示摘要，长内容可以打开单独页面继续阅读和评论。\n每条记录带有发布时间、类型和公开主机署名；host 默认使用网站域名，也可以改成自己喜欢的昵称，例如 writing-desk。它不读取电脑的真实设备名或 IP。"
+    "text": "$ tail -f ~/notes/log\n生活片段、照片与值得留下的链接。\nhost=easoncyy.github.io · timezone=UTC+08:00 · mode=append\n\n\n  grep \n\n\n\n\n\n2026-10-06 20:51:35 +0800\n\n\n\nhost=easoncyy.github.io   append #20261006-log-online\n\nlog/ 开始记录\n\n这里是新建的 log/ 栏目。这条是栏目说明，并非个人日记示例。\n可以写下当天的想法，在同一条文字里附上几张照片，或者插入值得回看的链接。每条完整显示在这里，沿着时间往下读就好。\n每条记录带有发布时间和公开主机署名；host 默认使用网站域名，也可以改成自己喜欢的昵称，例如 writing-desk。\n\n\n\n没有匹配的记录。试试其他关键词。\n\n主机是这本日志的公开署名。时间记录发布时刻，正文可补充事情发生的时间。"
   },
   {
-    "objectID": "links.html",
-    "href": "links.html",
-    "title": "~/notes/links",
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "~/notes/projects",
     "section": "",
-    "text": "朋友的写作空间"
+    "text": "正在维护"
   },
   {
-    "objectID": "links.html#friends",
-    "href": "links.html#friends",
-    "title": "~/notes/links",
+    "objectID": "projects.html#working",
+    "href": "projects.html#working",
+    "title": "~/notes/projects",
     "section": "",
-    "text": "朋友的写作空间"
+    "text": "正在维护"
   },
   {
-    "objectID": "links.html#this-site",
-    "href": "links.html#this-site",
-    "title": "~/notes/links",
-    "section": "this-site/",
-    "text": "this-site/\n本站信息\n\n名称：~/notes · 个人笔记\n地址：https://easoncyy.github.io\n简介：记录学习、代码与思考。"
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "~/notes/blog",
+    "section": "",
+    "text": "Hello, world：从第一篇笔记开始\n\n\n\n示例\n\n写作\n\n\n\n一篇示例文章，展示标题、代码、引用与 Markdown 的基本排版。\n\n\n\n\n\n2026.10.06\n\n\n\n\n\n\n\n从公式到文档：一页数学笔记\n\n\n\n示例\n\n数学\n\n\n\n展示 LaTeX 公式、推导，以及由 Typst 生成的 PDF 下载。\n\n\n\n\n\n2026.10.05\n\n\n\n\n\n无匹配项"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "首页",
+    "section": "",
+    "text": "~/notes · A PERSONAL WORKSPACE\n\n\n\n这里存放学习笔记、代码片段与偶尔的思考。给复杂的问题留一点空间，也给未来的自己留一份记录。\n\n阅读博客 → log/ 日志 → 关于本站 ↗"
+  },
+  {
+    "objectID": "index.html#recent",
+    "href": "index.html#recent",
+    "title": "首页",
+    "section": "recent/",
+    "text": "recent/\n全部文章 →"
   },
   {
     "objectID": "about.html",
@@ -91,46 +105,25 @@
     "text": "readme/\n目前的两篇文章是用于展示排版和功能的示例。后续会替换为实际内容。\n本站使用 Markdown 写作，支持数学公式；较长的排版文档可提供 PDF 下载。文章末尾保留评论区域。"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "首页",
+    "objectID": "links.html",
+    "href": "links.html",
+    "title": "~/notes/links",
     "section": "",
-    "text": "~/notes · A PERSONAL WORKSPACE\n\n\n\n这里存放学习笔记、代码片段与偶尔的思考。给复杂的问题留一点空间，也给未来的自己留一份记录。\n\n阅读博客 → log/ 日志 → 关于本站 ↗"
+    "text": "朋友的写作空间"
   },
   {
-    "objectID": "index.html#recent",
-    "href": "index.html#recent",
-    "title": "首页",
-    "section": "recent/",
-    "text": "recent/\n全部文章 →"
+    "objectID": "links.html#friends",
+    "href": "links.html#friends",
+    "title": "~/notes/links",
+    "section": "",
+    "text": "朋友的写作空间"
   },
   {
-    "objectID": "blog.html",
-    "href": "blog.html",
-    "title": "~/notes/blog",
-    "section": "",
-    "text": "Hello, world：从第一篇笔记开始\n\n\n\n示例\n\n写作\n\n\n\n一篇示例文章，展示标题、代码、引用与 Markdown 的基本排版。\n\n\n\n\n\n2026.10.06\n\n\n\n\n\n\n\n从公式到文档：一页数学笔记\n\n\n\n示例\n\n数学\n\n\n\n展示 LaTeX 公式、推导，以及由 Typst 生成的 PDF 下载。\n\n\n\n\n\n2026.10.05\n\n\n\n\n\n无匹配项"
-  },
-  {
-    "objectID": "projects.html",
-    "href": "projects.html",
-    "title": "~/notes/projects",
-    "section": "",
-    "text": "正在维护"
-  },
-  {
-    "objectID": "projects.html#working",
-    "href": "projects.html#working",
-    "title": "~/notes/projects",
-    "section": "",
-    "text": "正在维护"
-  },
-  {
-    "objectID": "log.html",
-    "href": "log.html",
-    "title": "~/notes/log",
-    "section": "",
-    "text": "$ tail -f ~/notes/log\n生活片段、照片与值得留下的链接。\nhost=easoncyy.github.io · timezone=UTC+08:00 · mode=append\n\n\n  \n    ALL / 全部\n    NOTE / 日记\n    PHOTO / 照片\n    LINK / 链接\n  \n  grep \n\n\n\n\n\n  \n    2026-10-06T20:51:35+08:00NOTE\n    \n      host=easoncyy.github.io   GET /logs/20261006-log-online/\n      log/ 开始记录\n      给短日记、照片和链接留一个位置。像查看服务器日志一样，沿着时间读取生活中的片段。\n      \n      \n      open / 阅读与评论 →\n    \n  \n\n\n无匹配项\n\n没有匹配的记录。试试其他类型或关键词。\n\n主机是这本日志的公开署名。时间记录发布时刻，正文可补充事情发生的时间。点击标题打开完整记录与评论。"
+    "objectID": "links.html#this-site",
+    "href": "links.html#this-site",
+    "title": "~/notes/links",
+    "section": "this-site/",
+    "text": "this-site/\n本站信息\n\n名称：~/notes · 个人笔记\n地址：https://easoncyy.github.io\n简介：记录学习、代码与思考。"
   },
   {
     "objectID": "posts/hello-world/index.html",

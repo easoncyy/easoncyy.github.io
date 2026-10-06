@@ -36,8 +36,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -74,67 +72,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "搜索"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-project','listing-website','listing-lang','listing-format','listing-engines','listing-language','listing-toc','listing-date-format','listing-lightbox','listing-title','listing-description','listing-date','listing-timestamp','listing-host','listing-kind','listing-path','listing-outputHref','listing-date-modified','listing-author','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
-      
-      searchColumns: ["listing-project","listing-website","listing-lang","listing-format","listing-engines","listing-language","listing-toc","listing-date-format","listing-lightbox","listing-title","listing-description","listing-date","listing-timestamp","listing-host","listing-kind","listing-path","listing-outputHref","listing-date-modified","listing-author","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <style>html{ scroll-behavior: smooth; }</style>
 <script defer="" src="./assets/directory.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -217,38 +157,30 @@ window.Quarto = {
 <p><code>host=easoncyy.github.io</code> · <code>timezone=UTC+08:00</code> · <code>mode=append</code></p>
 </div>
 <div class="log-controls" aria-label="筛选日志">
-  <div class="log-filters" role="group" aria-label="记录类型">
-    <button type="button" data-log-type="all" aria-pressed="true">ALL / 全部</button>
-    <button type="button" data-log-type="note" aria-pressed="false">NOTE / 日记</button>
-    <button type="button" data-log-type="photo" aria-pressed="false">PHOTO / 照片</button>
-    <button type="button" data-log-type="link" aria-pressed="false">LINK / 链接</button>
-  </div>
   <label class="log-search">grep <input id="log-search" type="search" placeholder="搜索日志…" aria-label="搜索日志"></label>
 </div>
 <p id="log-count" class="log-count" aria-live="polite"></p>
-<div id="listing-listing" class="quarto-listing quarto-listing-container-custom">
 <div class="log-stream">
+<div id="20261006-log-online" class="log-entry">
 
-  <article class="log-entry" data-log-kind="note">
-    <div class="log-stamp"><time datetime="2026-10-06T20:51:35+08:00">2026-10-06T20:51:35+08:00</time><span class="log-kind">NOTE</span></div>
-    <div class="log-payload">
-      <div class="log-request">host=easoncyy.github.io &nbsp; GET /logs/20261006-log-online/</div>
-      <h2 class="anchored"><a href="./logs/20261006-log-online/index.html">log/ 开始记录</a></h2>
-      <p>给短日记、照片和链接留一个位置。像查看服务器日志一样，沿着时间读取生活中的片段。</p>
-      
-      
-      <a class="log-detail" href="./logs/20261006-log-online/index.html">open / 阅读与评论 →</a>
-    </div>
-  </article>
+<div class="log-stamp"><time datetime="2026-10-06T20:51:35+08:00">2026-10-06 20:51:35 +0800</time></div>
 
+<div class="log-payload">
+
+<div class="log-request">host=easoncyy.github.io &nbsp; append #20261006-log-online</div>
+
+<p class="log-entry-title">log/ 开始记录</p>
+
+<p>这里是新建的 <code>log/</code> 栏目。这条是栏目说明，并非个人日记示例。</p>
+<p>可以写下当天的想法，在同一条文字里附上几张照片，或者插入值得回看的链接。每条完整显示在这里，沿着时间往下读就好。</p>
+<p>每条记录带有发布时间和公开主机署名；<code>host</code> 默认使用网站域名，也可以改成自己喜欢的昵称，例如 <code>writing-desk</code>。</p>
 </div>
-<div class="listing-no-matching d-none">无匹配项</div>
 </div>
-<p id="log-empty" hidden="">没有匹配的记录。试试其他类型或关键词。</p>
+</div>
+<p id="log-empty" hidden="">没有匹配的记录。试试其他关键词。</p>
 <div class="collection-note">
-<p>主机是这本日志的公开署名。时间记录发布时刻，正文可补充事情发生的时间。点击标题打开完整记录与评论。</p>
+<p>主机是这本日志的公开署名。时间记录发布时刻，正文可补充事情发生的时间。</p>
 </div>
-
 
 
 
