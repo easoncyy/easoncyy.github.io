@@ -1,0 +1,6 @@
+toc: false
+date-format: "YYYY-MM-DD HH:mm"
+lightbox: true
+format:
+  html:
+    include-after-body: ../../assets/comments.html

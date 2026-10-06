@@ -127,6 +127,38 @@ blockquote { border-left: 2px solid #151515; color: var(--muted); padding-left: 
   .quarto-title-meta { gap: 1rem; }
   .download-box { padding: 1.1rem; }
 }
+.log-console { border: 1px solid var(--line); padding: 1.2rem 1.4rem; margin: 1.5rem 0 2rem; }
+.log-console p { margin-bottom: .6rem; font-size: .88rem; }
+.log-console p:last-child { margin-bottom: 0; }
+.log-console code { background: transparent; font-size: .75rem; }
+.log-controls { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; align-items: center; }
+.log-filters { display: flex; flex-wrap: wrap; gap: .5rem; }
+.log-filters button { border: 1px solid var(--line); background: white; padding: .35rem .65rem; font: .72rem/1.6 var(--mono); color: var(--muted); }
+.log-filters button[aria-pressed="true"] { background: var(--ink); color: white; border-color: var(--ink); }
+.log-search { display: flex; align-items: center; gap: .6rem; font: .75rem var(--mono); }
+.log-search input { border: 0; border-bottom: 1px solid var(--line); padding: .4rem; max-width: 180px; background: white; }
+.log-count { font: .7rem var(--mono); color: var(--muted); margin: 1rem 0; }
+.log-entry { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 1.5rem; padding: 1.8rem 0; border-top: 1px solid var(--line); }
+.log-entry[hidden] { display: none !important; }
+.log-stamp { font: .72rem/1.8 var(--mono); color: var(--muted); overflow-wrap: anywhere; }
+.log-kind { display: block; color: var(--ink); margin-top: .7rem; font-weight: 600; }
+.log-kind::before { content: "["; }
+.log-kind::after { content: "]"; }
+.log-request { font: .67rem/1.8 var(--mono); color: var(--muted); overflow-wrap: anywhere; }
+.log-payload h2 { font-size: 1.15rem; margin: .5rem 0 .8rem; }
+.log-payload h2 a { text-decoration: none; }
+.log-payload h2 a:hover { text-decoration: underline; }
+.log-payload p { font-size: .9rem; color: var(--muted); }
+.log-image-link { display: block; margin: 1rem 0; }
+.log-image-link img { display: block; width: 100%; max-height: 420px; object-fit: contain; object-position: left; }
+.log-detail { display: block; width: fit-content; margin-top: 1rem; font: .72rem var(--mono); }
+.log-shared-link { font: .76rem/1.8 var(--mono); overflow-wrap: anywhere; }
+@media (max-width: 767px) {
+  .log-entry { grid-template-columns: 1fr; gap: .7rem; }
+  .log-stamp { display: flex; flex-wrap: wrap; gap: .8rem; }
+  .log-kind { margin-top: 0; }
+  .log-console { padding: 1rem; }
+}
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto !important; }
   * { transition: none !important; }

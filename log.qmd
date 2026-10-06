@@ -1,0 +1,46 @@
+---
+title: "~/notes/log"
+subtitle: "日志"
+body-classes: directory-page
+toc: false
+listing:
+  contents: "logs/*/index.qmd"
+  sort: "date desc"
+  template: assets/log-stream.ejs
+  page-size: 10000
+format:
+  html:
+    include-after-body:
+      text: '<script defer src="/assets/log-stream.js"></script>'
+---
+
+::: {.log-console}
+`$ tail -f ~/notes/log`  
+生活片段、照片与值得留下的链接。
+
+`host=easoncyy.github.io` · `timezone=UTC+08:00` · `mode=append`
+:::
+
+```{=html}
+<div class="log-controls" aria-label="筛选日志">
+  <div class="log-filters" role="group" aria-label="记录类型">
+    <button type="button" data-log-type="all" aria-pressed="true">ALL / 全部</button>
+    <button type="button" data-log-type="note" aria-pressed="false">NOTE / 日记</button>
+    <button type="button" data-log-type="photo" aria-pressed="false">PHOTO / 照片</button>
+    <button type="button" data-log-type="link" aria-pressed="false">LINK / 链接</button>
+  </div>
+  <label class="log-search">grep <input id="log-search" type="search" placeholder="搜索日志…" aria-label="搜索日志"></label>
+</div>
+<p id="log-count" class="log-count" aria-live="polite"></p>
+```
+
+::: {#listing}
+:::
+
+```{=html}
+<p id="log-empty" hidden>没有匹配的记录。试试其他类型或关键词。</p>
+```
+
+::: {.collection-note}
+主机是这本日志的公开署名。时间记录发布时刻，正文可补充事情发生的时间。点击标题打开完整记录与评论。
+:::

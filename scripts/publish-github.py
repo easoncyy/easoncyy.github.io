@@ -66,7 +66,7 @@ def publish_tree(branch, files, message, preserve_tree):
 
 def source_files():
     roots = ["_quarto.yml", ".gitignore", ".nojekyll", "README.md", "index.qmd",
-             "blog.qmd", "about.qmd", "projects.qmd", "links.qmd", "styles.css", "assets", "posts", "scripts"]
+             "blog.qmd", "about.qmd", "projects.qmd", "links.qmd", "log.qmd", "logs", "styles.css", "assets", "posts", "scripts"]
     for name in roots:
         path = ROOT / name
         paths = path.rglob("*") if path.is_dir() else [path]

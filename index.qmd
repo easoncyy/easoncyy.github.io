@@ -28,7 +28,7 @@ listing:
 这里存放学习笔记、代码片段与偶尔的思考。给复杂的问题留一点空间，也给未来的自己留一份记录。
 
 ::: {.home-links}
-[阅读博客 →](blog.qmd){.primary-link} [关于本站 ↗](about.qmd)
+[阅读博客 →](blog.qmd){.primary-link} [log/ 日志 →](log.qmd) [关于本站 ↗](about.qmd)
 :::
 :::
 

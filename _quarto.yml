@@ -7,6 +7,8 @@ project:
     - about.qmd
     - projects.qmd
     - links.qmd
+    - log.qmd
+    - "logs/**/*.qmd"
     - "posts/**/*.qmd"
   resources:
     - assets/
@@ -25,6 +27,8 @@ website:
         text: "<span class='nav-path'>blog/</span><span class='nav-caption'>博客</span>"
       - href: projects.qmd
         text: "<span class='nav-path'>projects/</span><span class='nav-caption'>项目</span>"
+      - href: log.qmd
+        text: "<span class='nav-path'>log/</span><span class='nav-caption'>日志</span>"
       - href: links.qmd
         text: "<span class='nav-path'>links/</span><span class='nav-caption'>友链</span>"
       - href: about.qmd
