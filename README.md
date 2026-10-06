@@ -163,6 +163,28 @@ python scripts/add-book.py "书名" "D:\Books\book.pdf" --slug my-book --author 
 
 书目会自动出现在 `library/ 图书馆`，支持浏览器在线阅读与下载。`--slug` 必填，只用小写英文、数字与连字符；`--author` 和 `--description` 可省略。后续改简介直接编辑 `library/catalog.json`，更新 PDF 则替换 `assets/library/` 中对应文件。当前没有提供图书文件，因此书架显示空状态。
 
+### 图书分类
+
+主分类固定为：**文学、哲学、历史、教材、习题、参考书、其他**。只有教材、习题、参考书使用二级学科；学科名按需填写，例如数学、物理、计算机，不另建复杂分类树。网页先按主分类筛选，再显示该分类已有的学科。
+
+| 图书 | 添加参数 |
+| --- | --- |
+| 文学作品 | `--category 文学` |
+| 哲学或历史 | `--category 哲学` 或 `--category 历史` |
+| 数学教材 | `--category 教材 --subject 数学` |
+| 数学习题集 | `--category 习题 --subject 数学` |
+| 计算机参考书 | `--category 参考书 --subject 计算机` |
+| 其他 | `--category 其他`（省略分类时的默认值） |
+
+完整示例：
+
+```powershell
+python scripts/add-book.py "微积分教材" "D:\Books\calculus.pdf" --slug calculus --category 教材 --subject 数学 --author "作者"
+.\scripts\deploy.ps1
+```
+
+教材、习题、参考书添加时必须指定 `--subject`。以后调整分类，在 `library/catalog.json` 修改 `category` 和 `subject`；普通分类的 `subject` 留空。已有未填写分类的书目归入其他；学术分类若手工遗漏学科，网页显示未分学科。相同学科使用一致名称，避免“计算机”和“计算机科学”分成两个筛选项。
+
 ## Markdown、LaTeX 与 Typst
 
 - `.qmd` 是带元数据与扩展功能的 Markdown；网页公式使用 LaTeX 数学语法，由 MathJax 渲染，需要访问 MathJax CDN。

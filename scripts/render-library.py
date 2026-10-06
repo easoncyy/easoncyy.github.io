@@ -1,20 +1,32 @@
 """Render the PDF catalog as Markdown for Quarto."""
 import html
 import json
+from importlib import import_module
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+taxonomy = import_module('library-taxonomy')
 
 
 def main():
     books = json.loads((ROOT / "library/catalog.json").read_text(encoding="utf-8"))
-    blocks = []
+    esc = lambda value: html.escape(str(value), quote=True)
+    categories = [(book, *taxonomy.classify(book)) for book in books]
+    controls = ['<div class="library-filters" role="group" aria-label="图书分类">',
+                '<button type="button" data-library-category="all" aria-pressed="true">全部</button>']
+    for category in taxonomy.CATEGORIES:
+        count = sum(current == category for _, current, _ in categories)
+        controls.append(f'<button type="button" data-library-category="{esc(category)}" aria-pressed="false">{esc(category)} <span class="library-filter-count">{count}</span></button>')
+    controls.extend(['</div>', '<div id="library-subjects" class="library-subjects" role="group" aria-label="学科" hidden></div>',
+                     '<p id="library-count" class="library-count" aria-live="polite"></p>'])
+    blocks = ['```{=html}\n' + '\n'.join(controls) + '\n```']
     for book in sorted(books, key=lambda book: book["added"], reverse=True):
-        esc = lambda value: html.escape(str(value), quote=True)
-        blocks.append(f'''::: {{.library-entry}}
+        category, subject = taxonomy.classify(book)
+        classification = category + (" / " + subject if subject else "")
+        blocks.append(f'''::: {{.library-entry data-category="{esc(category)}" data-subject="{esc(subject)}"}}
 
 ```{{=html}}
-<div class="library-book-meta">PDF · {esc(book['added'])}</div>
+<div class="library-book-meta">{esc(classification)} · PDF · {esc(book['added'])}</div>
 <h2 class="library-book-title">{esc(book['title'])}</h2>
 <p class="library-author">{esc(book.get('author', ''))}</p>
 <p>{esc(book.get('description', ''))}</p>
@@ -23,8 +35,7 @@ def main():
 
 :::
 ''')
-    if not blocks:
-        blocks = ['::: {.empty-directory}\n\n`0 books`\n\n书架暂时为空，等待第一本书。\n\n:::']
+    blocks.append('```{=html}\n<p id="library-empty" class="empty-directory"' + (' hidden' if books else '') + '>书架暂时为空，等待第一本书。</p>\n```')
     (ROOT / "assets/library-entries.md").write_text("\n".join(blocks), encoding="utf-8")
 
 

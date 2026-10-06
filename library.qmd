@@ -3,6 +3,10 @@ title: "~/notes/library"
 subtitle: "图书馆"
 body-classes: directory-page
 toc: false
+format:
+  html:
+    include-after-body:
+      text: '<script defer src="/assets/library-filter.js"></script>'
 ---
 
 ::: {.log-console}
