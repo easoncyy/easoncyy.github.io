@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="个人笔记">
-<meta name="description" content="展示 LaTeX 公式、推导，以及由 Typst 生成的 PDF 下载。">
+<meta name="description" content="W2 学习记录，按原 Markdown 文件创建时间归档。">
 
-<title>从公式到文档：一页数学笔记 – 个人笔记</title>
+<title>FIP W02 · 枚举与减治 – 个人笔记</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -27,6 +27,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -167,10 +202,16 @@ window.Quarto = {
     <h2 id="toc-title">本页目录</h2>
    
   <ul>
-  <li><a href="#行内与独立公式" id="toc-行内与独立公式" class="nav-link active" data-scroll-target="#行内与独立公式">行内与独立公式</a></li>
-  <li><a href="#一段推导" id="toc-一段推导" class="nav-link" data-scroll-target="#一段推导">一段推导</a></li>
-  <li><a href="#文档下载" id="toc-文档下载" class="nav-link" data-scroll-target="#文档下载">文档下载</a></li>
-  <li><a href="#写作方式" id="toc-写作方式" class="nav-link" data-scroll-target="#写作方式">写作方式</a></li>
+  <li><a href="#分支branch" id="toc-分支branch" class="nav-link active" data-scroll-target="#分支branch">分支(branch)</a></li>
+  <li><a href="#枚举enumeration" id="toc-枚举enumeration" class="nav-link" data-scroll-target="#枚举enumeration">枚举(Enumeration)</a>
+  <ul class="collapse">
+  <li><a href="#素数判断" id="toc-素数判断" class="nav-link" data-scroll-target="#素数判断">素数判断</a></li>
+  <li><a href="#求gcd" id="toc-求gcd" class="nav-link" data-scroll-target="#求gcd">求GCD</a></li>
+  </ul></li>
+  <li><a href="#减治decrease-and-conquer" id="toc-减治decrease-and-conquer" class="nav-link" data-scroll-target="#减治decrease-and-conquer">减治(Decrease and Conquer)</a>
+  <ul class="collapse">
+  <li><a href="#方程在固定区间上求近似根" id="toc-方程在固定区间上求近似根" class="nav-link" data-scroll-target="#方程在固定区间上求近似根">方程在固定区间上求近似根</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -179,16 +220,16 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">从公式到文档：一页数学笔记</h1>
+<h1 class="title">FIP W02 · 枚举与减治</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">示例</div>
-    <div class="quarto-category">数学</div>
+    <div class="quarto-category">FIP</div>
+    <div class="quarto-category">学习笔记</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    展示 LaTeX 公式、推导，以及由 Typst 生成的 PDF 下载。
+    W2 学习记录，按原 Markdown 文件创建时间归档。
   </div>
 </div>
 
@@ -205,7 +246,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">发布于</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2026年10月5日</p>
+      <p class="date">2026年9月20日</p>
     </div>
   </div>
   
@@ -217,45 +258,166 @@ window.Quarto = {
 </header>
 
 
-<p>这是一篇<strong>示例文章</strong>，演示网页中的数学公式和可下载的排版文档。</p>
-<section id="行内与独立公式" class="level2">
-<h2 class="anchored" data-anchor-id="行内与独立公式">行内与独立公式</h2>
-<p>行内公式直接放在句子中，例如 <span class="math inline">\(f(x)=x^2\)</span>，它的导数是 <span class="math inline">\(f'(x)=2x\)</span>。</p>
-<p>较长的公式可以单独占一行：</p>
-<p><span class="math display">\[
-\int_a^b x^2\,\mathrm{d}x = \left[\frac{x^3}{3}\right]_a^b = \frac{b^3-a^3}{3}.
-\]</span></p>
+<ul>
+<li>枚举：遍历解空间</li>
+<li>减治：缩减解空间，进而提高枚举效率</li>
+</ul>
+<section id="分支branch" class="level2">
+<h2 class="anchored" data-anchor-id="分支branch">分支(branch)</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> exp:</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    ...</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>如果想要使用单分支完成双分支的任务，可以使用<strong>默认值</strong>，或者说初始赋值</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># max</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>bigger <span class="op">=</span> x</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x <span class="op">&lt;</span> y:</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    bigger <span class="op">=</span> y</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(bigger)</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>单分支</strong>-&gt;<strong>双分支</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> condition:</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    StatementT</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    StatementF</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p>Vibe出的代码可以类比于C compiler得出的汇编代码：常常复杂，但有时有创新，更重要的是高效。</p>
+</blockquote>
+<p>从一次判断到逐个检验</p>
 </section>
-<section id="一段推导" class="level2">
-<h2 class="anchored" data-anchor-id="一段推导">一段推导</h2>
-<p>对任意可微函数 <span class="math inline">\(f\)</span>，导数的定义是</p>
-<p><span class="math display">\[
-f'(x)=\lim_{h\to 0}\frac{f(x+h)-f(x)}{h}.
-\]</span></p>
-<p>代入 <span class="math inline">\(f(x)=x^2\)</span>：</p>
-<p><span class="math display">\[
-\begin{aligned}
-f'(x)
-&amp;=\lim_{h\to 0}\frac{(x+h)^2-x^2}{h}\\
-&amp;=\lim_{h\to 0}(2x+h)\\
-&amp;=2x.
-\end{aligned}
-\]</span></p>
+<section id="枚举enumeration" class="level2">
+<h2 class="anchored" data-anchor-id="枚举enumeration">枚举(Enumeration)</h2>
+<section id="素数判断" class="level3">
+<h3 class="anchored" data-anchor-id="素数判断">素数判断</h3>
+<ul>
+<li>给定一个自然数x，如何判断它是否是素数？
+<ul>
+<li>遍历 2~(x-1)若存在能整除x的数则不是素数</li>
+<li>程序问题：
+<ol type="1">
+<li>如何遍历？</li>
+<li>如何判断整除？</li>
+<li>如何表示x是素数？ &gt; Spike探针法：先做会做的，再向不会做的领域拓宽</li>
+</ol></li>
+</ul></li>
+</ul>
+<p>使用while-else/for-else语句</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>(<span class="st">"Enter a number:"</span>))</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> k <span class="op">&lt;</span> x:</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> x <span class="op">%</span> k <span class="op">==</span> <span class="dv">0</span> <span class="kw">or</span> x <span class="op">&lt;</span> <span class="dv">2</span>:</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Not prime"</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    k <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Is prime"</span>) <span class="co"># 对于for-else，就算没有跑，也会执行else</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="考虑程序效率" class="level4">
+<h4 class="anchored" data-anchor-id="考虑程序效率">考虑程序效率？</h4>
+<ul>
+<li>使用<strong>worst case</strong>考虑，本案例下执行(x - 1)轮。</li>
+</ul>
 </section>
-<section id="文档下载" class="level2">
-<h2 class="anchored" data-anchor-id="文档下载">文档下载</h2>
-<p>网页适合阅读与讨论，PDF 适合下载、打印和保存。下面的英文版数学笔记由同一类 Markdown 文稿通过 Typst 排版生成。</p>
-<div class="download-box">
-<p><strong>MATH NOTES / 01</strong></p>
-<p>导数与积分 · 英文示例文档</p>
-<p><a href="../../assets/pdf/math-notes.pdf" class="primary-link" download="math-notes.pdf">下载 PDF ↓</a></p>
-</div>
+<section id="优化算法" class="level4">
+<h4 class="anchored" data-anchor-id="优化算法">优化算法</h4>
+<p>只需要考虑<span class="math inline">\([2, \sqrt x]\)</span>间的自然数即可</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> sqrt</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>(<span class="st">"Enter a number:"</span>))</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x <span class="op">&lt;</span> <span class="dv">2</span>:</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Not prime"</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> k <span class="op">&lt;</span> <span class="bu">int</span>(sqrt(x)) <span class="op">+</span> <span class="dv">1</span>:</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> x <span class="op">%</span> k <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Not prime"</span>)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    k <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Is prime"</span>)</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><strong>库函数</strong>: Python 通过提供许多预定义函数来促进复⽤，这些函数可⽤于执⾏数学及其他计算 Debug: 利用断点Step-by-s=Step调试程序</p>
+</blockquote>
+<ul>
+<li>枚举：逐一列举问题所有可能的候选解，并对每个候选解进⾏验证，从中找出满足条件的正确解的算法策略，又称穷举、暴力搜索。</li>
+<li>枚举的基本思想是遍历整个解空间，不遗漏、不重复地检查每⼀种可能，只要解空 间覆盖完整且验证条件正确，结果⼀定正确。所以对于大多数问题，当人们没有更好的算法的时候，枚举往往是最后的底线算法枚举算法只适⽤于问题的解空间必须是有限且可枚举的。</li>
+<li>当解空间不适合枚举时， 可以尝试构建可枚举的空间。⽐如，在⼀定区间内求解方程的解，由于区间内的数 是无限的，从而无法枚举。但是如果以⼀定的精度求解，那么区间内的数的数量就是有限的，从而可以被枚举。</li>
+</ul>
 </section>
-<section id="写作方式" class="level2">
-<h2 class="anchored" data-anchor-id="写作方式">写作方式</h2>
-<p>本页正文使用 Markdown，公式使用 LaTeX 数学语法。完整的 Typst 或 LaTeX 文档也可以在编译成 PDF 后，以这种方式附在文章中。</p>
+</section>
+<section id="求gcd" class="level3">
+<h3 class="anchored" data-anchor-id="求gcd">求GCD</h3>
+<section id="枚举法" class="level4">
+<h4 class="anchored" data-anchor-id="枚举法">枚举法</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">12</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">18</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>gcd <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">min</span>(a, b) <span class="op">+</span> <span class="dv">1</span>):</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> a <span class="op">%</span> k <span class="op">==</span> <span class="dv">0</span> <span class="kw">and</span> b <span class="op">%</span> k <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        gcd <span class="op">=</span> k</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(gcd)</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>但是上述做法效率很低，我们不妨降序操作：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">12</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">18</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>gcd <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">min</span>(a, b) <span class="op">+</span> <span class="dv">1</span>, <span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> a <span class="op">%</span> k <span class="op">==</span> <span class="dv">0</span> <span class="kw">and</span> b <span class="op">%</span> k <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        gcd <span class="op">=</span> k</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(gcd)</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>不过事实上最坏情况是一样的，所以时间复杂度相同。</p>
+</section>
+</section>
+</section>
+<section id="减治decrease-and-conquer" class="level2">
+<h2 class="anchored" data-anchor-id="减治decrease-and-conquer">减治(Decrease and Conquer)</h2>
+<section id="辗转相除法" class="level4">
+<h4 class="anchored" data-anchor-id="辗转相除法">辗转相除法</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">12</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">18</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> a <span class="op">%</span> b</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> r <span class="op">!=</span> <span class="dv">0</span>: <span class="co"># or while r:</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> b</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    b <span class="op">=</span> r</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> a <span class="op">%</span> b</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(b)</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>可以使用<strong>同步赋值</strong>压行</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> b: a, b <span class="op">=</span> b, a <span class="op">%</span> b</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a)</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="方程在固定区间上求近似根" class="level3">
+<h3 class="anchored" data-anchor-id="方程在固定区间上求近似根">方程在固定区间上求近似根</h3>
+<section id="二分法" class="level4">
+<h4 class="anchored" data-anchor-id="二分法">二分法</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math a, b <span class="op">=</span> <span class="fl">1.0</span>, <span class="fl">2.0</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># f(x) = x³ − 3 sin x 在 [1, 2] </span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>eps <span class="op">=</span> <span class="fl">1e-6</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="bu">round</span> <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="va">True</span>:</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    fa <span class="op">=</span> a<span class="op">**</span><span class="dv">3</span> <span class="op">-</span> <span class="dv">3</span> <span class="op">*</span> math.sin(a)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    fb <span class="op">=</span> b<span class="op">**</span><span class="dv">3</span> <span class="op">-</span> <span class="dv">3</span> <span class="op">*</span> math.sin(b)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> fa <span class="op">*</span> fb <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">'区间内没有根'</span>)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> (a <span class="op">+</span> b) <span class="op">/</span> <span class="dv">2</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    fm <span class="op">=</span> m<span class="op">**</span><span class="dv">3</span> <span class="op">-</span> <span class="dv">3</span> <span class="op">*</span> math.sin(m)</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'第</span><span class="sc">{</span><span class="bu">round</span><span class="sc">}</span><span class="ss">次迭代: a=</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">, b=</span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">, m=</span><span class="sc">{</span>m<span class="sc">}</span><span class="ss">, fm=</span><span class="sc">{</span>fm<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">abs</span>(fm) <span class="op">&lt;</span> eps:</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f'根为</span><span class="sc">{</span>m<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> fm <span class="op">*</span> fa <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>        a <span class="op">=</span> m</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>        b <span class="op">=</span> m</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">abs</span>(b <span class="op">-</span> a) <span class="op">&lt;</span> eps:</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f'根为</span><span class="sc">{</span>m<span class="sc">}</span><span class="ss">, 迭代次数为</span><span class="sc">{</span><span class="bu">round</span><span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>    <span class="bu">round</span> <span class="op">+=</span> <span class="dv">1</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p>浮点误差: 浮点数在计算机中用二进制表达，永远不可能和十进制小数对齐</p>
+</blockquote>
+<ul>
+<li><strong>减治</strong>：将问题规模不断减小，直到缩小到可以直接求解的平凡情况（trivial case），再逐层返回解决原问题</li>
+</ul>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -671,7 +833,7 @@ f'(x)
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p><a href="../../posts/math-notes/index.html">~/notes</a> · 记录与探索</p>
+<p><a href="../../posts/20260920-fip-w02-enumeration-decrease-conquer/index.html">~/notes</a> · 记录与探索</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;

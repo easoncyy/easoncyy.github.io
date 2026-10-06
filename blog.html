@@ -86,7 +86,8 @@ ul.task-list li input[type="checkbox"] {
 
     const options = {
       valueNames: ['listing-date','listing-title','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
+      page: 10,
+    pagination: { item: "<li class='page-item'><a class='page page-link' href='#'></a></li>" },
       searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
     };
 
@@ -174,6 +175,10 @@ window.Quarto = {
 <span class="menu-text"><span class="nav-path">links/</span><span class="nav-caption">友链</span></span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="./library.html"> 
+<span class="menu-text"><span class="nav-path">library/</span><span class="nav-caption">图书馆</span></span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="./about.html"> 
 <span class="menu-text"><span class="nav-path">about/</span><span class="nav-caption">关于</span></span></a>
   </li>  
@@ -189,7 +194,7 @@ window.Quarto = {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-    <h5 class="quarto-listing-category-title">分类</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">全部 <span class="quarto-category-count">(2)</span></div><div class="category" data-category="JUU3JUE0JUJBJUU0JUJFJThC">示例 <span class="quarto-category-count">(2)</span></div><div class="category" data-category="JUU2JTk1JUIwJUU1JUFEJUE2">数学 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="JUU1JTg2JTk5JUU0JUJEJTlD">写作 <span class="quarto-category-count">(1)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">分类</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">全部 <span class="quarto-category-count">(11)</span></div><div class="category" data-category="JUU3JUE0JUJBJUU0JUJFJThC">示例 <span class="quarto-category-count">(2)</span></div><div class="category" data-category="JUU2JTk1JUIwJUU1JUFEJUE2">数学 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="JUU1JUJFJUFFJUU3JUE3JUFGJUU1JTg4JTg2">微积分 <span class="quarto-category-count">(3)</span></div><div class="category" data-category="JUU3JUJBJUJGJUU2JTgwJUE3JUU0JUJCJUEzJUU2JTk1JUIw">线性代数 <span class="quarto-category-count">(2)</span></div><div class="category" data-category="JUU1JTg2JTk5JUU0JUJEJTlD">写作 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="JUU1JUFEJUE2JUU0JUI5JUEwJUU3JUFDJTk0JUU4JUFFJUIw">学习笔记 <span class="quarto-category-count">(4)</span></div><div class="category" data-category="JUU0JUJEJTlDJUU0JUI4JTlBJUU1JUJEJTkyJUU2JUExJUEz">作业归档 <span class="quarto-category-count">(5)</span></div><div class="category" data-category="RklQ">FIP <span class="quarto-category-count">(4)</span></div></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -278,8 +283,227 @@ window.Quarto = {
 </a>
 </div>
 </div>
+<div class="quarto-post image-right" data-index="2" data-categories="RklQJTJDJUU1JUFEJUE2JUU0JUI5JUEwJUU3JUFDJTk0JUU4JUFFJUIw" data-listing-date-sort="1790667477000" data-listing-file-modified-sort="1791295890780" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="831">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/20260929-fip-w04-sequence-search/index.html" class="no-external">FIP W04 · 序列与查找</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('RklQ'); return false;">FIP</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('JUU1JUFEJUE2JUU0JUI5JUEwJUU3JUFDJTk0JUU4JUFFJUIw'); return false;">学习笔记</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/20260929-fip-w04-sequence-search/index.html" class="no-external">
+<p>W4 学习记录，按原 Markdown 文件创建时间归档。</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/20260929-fip-w04-sequence-search/index.html" class="no-external">
+<div class="listing-date">
+2026.09.29
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="3" data-categories="JUU3JUJBJUJGJUU2JTgwJUE3JUU0JUJCJUEzJUU2JTk1JUIwJTJDJUU0JUJEJTlDJUU0JUI4JTlBJUU1JUJEJTkyJUU2JUExJUEz" data-listing-date-sort="1790611200000" data-listing-file-modified-sort="1791295890868" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="20">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/20260929-linear-algebra-w03-homework/index.html" class="no-external">线性代数 W03 · 作业归档</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('JUU3JUJBJUJGJUU2JTgwJUE3JUU0JUJCJUEzJUU2JTk1JUIw'); return false;">线性代数</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('JUU0JUJEJTlDJUU0JUI4JTlBJUU1JUJEJTkyJUU2JUExJUEz'); return false;">作业归档</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/20260929-linear-algebra-w03-homework/index.html" class="no-external">
+<p>2026 年线性代数 W03 作业，提供原版 PDF 在线阅读与下载。</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/20260929-linear-algebra-w03-homework/index.html" class="no-external">
+<div class="listing-date">
+2026.09.29
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="4" data-categories="JUU1JUJFJUFFJUU3JUE3JUFGJUU1JTg4JTg2JTJDJUU0JUJEJTlDJUU0JUI4JTlBJUU1JUJEJTkyJUU2JUExJUEz" data-listing-date-sort="1790524800000" data-listing-file-modified-sort="1791295890858" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="20">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/20260928-calculus-w03-homework/index.html" class="no-external">微积分 W03 · 作业归档</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('JUU1JUJFJUFFJUU3JUE3JUFGJUU1JTg4JTg2'); return false;">微积分</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('JUU0JUJEJTlDJUU0JUI4JTlBJUU1JUJEJTkyJUU2JUExJUEz'); return false;">作业归档</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/20260928-calculus-w03-homework/index.html" class="no-external">
+<p>2026 年微积分 W03 作业，提供原版 PDF 在线阅读与下载。</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/20260928-calculus-w03-homework/index.html" class="no-external">
+<div class="listing-date">
+2026.09.28
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="5" data-categories="RklQJTJDJUU1JUFEJUE2JUU0JUI5JUEwJUU3JUFDJTk0JUU4JUFFJUIw" data-listing-date-sort="1790179393000" data-listing-file-modified-sort="1791295890780" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2050">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/20260924-fip-w03-python-square/index.html" class="no-external">FIP W03 · x * x 与 x ** 2 的区别</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('RklQ'); return false;">FIP</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('JUU1JUFEJUE2JUU0JUI5JUEwJUU3JUFDJTk0JUU4JUFFJUIw'); return false;">学习笔记</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/20260924-fip-w03-python-square/index.html" class="no-external">
+<p>W3 学习记录，按原 Markdown 文件创建时间归档。</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/20260924-fip-w03-python-square/index.html" class="no-external">
+<div class="listing-date">
+2026.09.24
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="6" data-categories="RklQJTJDJUU1JUFEJUE2JUU0JUI5JUEwJUU3JUFDJTk0JUU4JUFFJUIw" data-listing-date-sort="1790054358000" data-listing-file-modified-sort="1791295890780" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="230">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/20260922-fip-w03-iteration-simulation/index.html" class="no-external">FIP W03 · 迭代与模拟</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('RklQ'); return false;">FIP</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('JUU1JUFEJUE2JUU0JUI5JUEwJUU3JUFDJTk0JUU4JUFFJUIw'); return false;">学习笔记</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/20260922-fip-w03-iteration-simulation/index.html" class="no-external">
+<p>W3 学习记录，按原 Markdown 文件创建时间归档。</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/20260922-fip-w03-iteration-simulation/index.html" class="no-external">
+<div class="listing-date">
+2026.09.22
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="7" data-categories="JUU1JUJFJUFFJUU3JUE3JUFGJUU1JTg4JTg2JTJDJUU0JUJEJTlDJUU0JUI4JTlBJUU1JUJEJTkyJUU2JUExJUEz" data-listing-date-sort="1789920000000" data-listing-file-modified-sort="1791295890858" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="20">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/20260921-calculus-w02-homework/index.html" class="no-external">微积分 W02 · 作业归档</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('JUU1JUJFJUFFJUU3JUE3JUFGJUU1JTg4JTg2'); return false;">微积分</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('JUU0JUJEJTlDJUU0JUI4JTlBJUU1JUJEJTkyJUU2JUExJUEz'); return false;">作业归档</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/20260921-calculus-w02-homework/index.html" class="no-external">
+<p>2026 年微积分 W02 作业，提供原版 PDF 在线阅读与下载。</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/20260921-calculus-w02-homework/index.html" class="no-external">
+<div class="listing-date">
+2026.09.21
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="8" data-categories="RklQJTJDJUU1JUFEJUE2JUU0JUI5JUEwJUU3JUFDJTk0JUU4JUFFJUIw" data-listing-date-sort="1789881937000" data-listing-file-modified-sort="1791295890780" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="268">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/20260920-fip-w02-enumeration-decrease-conquer/index.html" class="no-external">FIP W02 · 枚举与减治</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('RklQ'); return false;">FIP</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('JUU1JUFEJUE2JUU0JUI5JUEwJUU3JUFDJTk0JUU4JUFFJUIw'); return false;">学习笔记</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/20260920-fip-w02-enumeration-decrease-conquer/index.html" class="no-external">
+<p>W2 学习记录，按原 Markdown 文件创建时间归档。</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/20260920-fip-w02-enumeration-decrease-conquer/index.html" class="no-external">
+<div class="listing-date">
+2026.09.20
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="9" data-categories="JUU3JUJBJUJGJUU2JTgwJUE3JUU0JUJCJUEzJUU2JTk1JUIwJTJDJUU0JUJEJTlDJUU0JUI4JTlBJUU1JUJEJTkyJUU2JUExJUEz" data-listing-date-sort="1789833600000" data-listing-file-modified-sort="1791295890865" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="20">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/20260920-linear-algebra-w01-w02-homework/index.html" class="no-external">线性代数 W01–W02 · 作业归档</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('JUU3JUJBJUJGJUU2JTgwJUE3JUU0JUJCJUEzJUU2JTk1JUIw'); return false;">线性代数</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('JUU0JUJEJTlDJUU0JUI4JTlBJUU1JUJEJTkyJUU2JUExJUEz'); return false;">作业归档</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/20260920-linear-algebra-w01-w02-homework/index.html" class="no-external">
+<p>2026 年线性代数 W01–W02 作业，提供原版 PDF 在线阅读与下载。</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/20260920-linear-algebra-w01-w02-homework/index.html" class="no-external">
+<div class="listing-date">
+2026.09.20
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="10" data-categories="JUU1JUJFJUFFJUU3JUE3JUFGJUU1JTg4JTg2JTJDJUU0JUJEJTlDJUU0JUI4JTlBJUU1JUJEJTkyJUU2JUExJUEz" data-listing-date-sort="1789488000000" data-listing-file-modified-sort="1791295890855" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="20">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/20260916-calculus-w01-homework/index.html" class="no-external">微积分 W01 · 作业归档</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('JUU1JUJFJUFFJUU3JUE3JUFGJUU1JTg4JTg2'); return false;">微积分</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('JUU0JUJEJTlDJUU0JUI4JTlBJUU1JUJEJTkyJUU2JUExJUEz'); return false;">作业归档</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/20260916-calculus-w01-homework/index.html" class="no-external">
+<p>2026 年微积分 W01 作业，提供原版 PDF 在线阅读与下载。</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/20260916-calculus-w01-homework/index.html" class="no-external">
+<div class="listing-date">
+2026.09.16
+</div>
+</a>
+</div>
+</div>
 </div>
 <div class="listing-no-matching d-none">无匹配项</div>
+<nav id="listing-pagination" class="listing-pagination" aria-label="Page Navigation">
+  <ul class="pagination"></ul>
+</nav>
 </div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {

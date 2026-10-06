@@ -3,14 +3,32 @@
     "listing": "/blog.html",
     "items": [
       "/posts/hello-world/index.html",
-      "/posts/math-notes/index.html"
+      "/posts/math-notes/index.html",
+      "/posts/20260929-fip-w04-sequence-search/index.html",
+      "/posts/20260929-linear-algebra-w03-homework/index.html",
+      "/posts/20260928-calculus-w03-homework/index.html",
+      "/posts/20260924-fip-w03-python-square/index.html",
+      "/posts/20260922-fip-w03-iteration-simulation/index.html",
+      "/posts/20260921-calculus-w02-homework/index.html",
+      "/posts/20260920-fip-w02-enumeration-decrease-conquer/index.html",
+      "/posts/20260920-linear-algebra-w01-w02-homework/index.html",
+      "/posts/20260916-calculus-w01-homework/index.html"
     ]
   },
   {
     "listing": "/index.html",
     "items": [
       "/posts/hello-world/index.html",
-      "/posts/math-notes/index.html"
+      "/posts/math-notes/index.html",
+      "/posts/20260929-fip-w04-sequence-search/index.html",
+      "/posts/20260929-linear-algebra-w03-homework/index.html",
+      "/posts/20260928-calculus-w03-homework/index.html",
+      "/posts/20260924-fip-w03-python-square/index.html",
+      "/posts/20260922-fip-w03-iteration-simulation/index.html",
+      "/posts/20260921-calculus-w02-homework/index.html",
+      "/posts/20260920-fip-w02-enumeration-decrease-conquer/index.html",
+      "/posts/20260920-linear-algebra-w01-w02-homework/index.html",
+      "/posts/20260916-calculus-w01-homework/index.html"
     ]
   }
 ]

@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="个人笔记">
-<meta name="description" content="展示 LaTeX 公式、推导，以及由 Typst 生成的 PDF 下载。">
+<meta name="description" content="W3 学习记录，按原 Markdown 文件创建时间归档。">
 
-<title>从公式到文档：一页数学笔记 – 个人笔记</title>
+<title>FIP W03 · 迭代与模拟 – 个人笔记</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -27,6 +27,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -167,10 +202,21 @@ window.Quarto = {
     <h2 id="toc-title">本页目录</h2>
    
   <ul>
-  <li><a href="#行内与独立公式" id="toc-行内与独立公式" class="nav-link active" data-scroll-target="#行内与独立公式">行内与独立公式</a></li>
-  <li><a href="#一段推导" id="toc-一段推导" class="nav-link" data-scroll-target="#一段推导">一段推导</a></li>
-  <li><a href="#文档下载" id="toc-文档下载" class="nav-link" data-scroll-target="#文档下载">文档下载</a></li>
-  <li><a href="#写作方式" id="toc-写作方式" class="nav-link" data-scroll-target="#写作方式">写作方式</a></li>
+  <li><a href="#迭代" id="toc-迭代" class="nav-link active" data-scroll-target="#迭代">迭代</a>
+  <ul class="collapse">
+  <li><a href="#newton-raphson-method" id="toc-newton-raphson-method" class="nav-link" data-scroll-target="#newton-raphson-method">Newton-Raphson Method</a></li>
+  <li><a href="#函数" id="toc-函数" class="nav-link" data-scroll-target="#函数">函数</a></li>
+  <li><a href="#多分支" id="toc-多分支" class="nav-link" data-scroll-target="#多分支">多分支</a></li>
+  </ul></li>
+  <li><a href="#模拟" id="toc-模拟" class="nav-link" data-scroll-target="#模拟">模拟</a>
+  <ul class="collapse">
+  <li><a href="#蒙特卡洛方法" id="toc-蒙特卡洛方法" class="nav-link" data-scroll-target="#蒙特卡洛方法">蒙特卡洛方法</a>
+  <ul class="collapse">
+  <li><a href="#布丰投针" id="toc-布丰投针" class="nav-link" data-scroll-target="#布丰投针">布丰投针</a></li>
+  <li><a href="#蒙特卡洛算法步骤" id="toc-蒙特卡洛算法步骤" class="nav-link" data-scroll-target="#蒙特卡洛算法步骤">蒙特卡洛算法步骤</a></li>
+  </ul></li>
+  <li><a href="#大数运算" id="toc-大数运算" class="nav-link" data-scroll-target="#大数运算">大数运算</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -179,16 +225,16 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">从公式到文档：一页数学笔记</h1>
+<h1 class="title">FIP W03 · 迭代与模拟</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">示例</div>
-    <div class="quarto-category">数学</div>
+    <div class="quarto-category">FIP</div>
+    <div class="quarto-category">学习笔记</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    展示 LaTeX 公式、推导，以及由 Typst 生成的 PDF 下载。
+    W3 学习记录，按原 Markdown 文件创建时间归档。
   </div>
 </div>
 
@@ -205,7 +251,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">发布于</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2026年10月5日</p>
+      <p class="date">2026年9月22日</p>
     </div>
   </div>
   
@@ -217,45 +263,127 @@ window.Quarto = {
 </header>
 
 
-<p>这是一篇<strong>示例文章</strong>，演示网页中的数学公式和可下载的排版文档。</p>
-<section id="行内与独立公式" class="level2">
-<h2 class="anchored" data-anchor-id="行内与独立公式">行内与独立公式</h2>
-<p>行内公式直接放在句子中，例如 <span class="math inline">\(f(x)=x^2\)</span>，它的导数是 <span class="math inline">\(f'(x)=2x\)</span>。</p>
-<p>较长的公式可以单独占一行：</p>
+<section id="迭代" class="level1">
+<h1>迭代</h1>
+<blockquote class="blockquote">
+<p>无法或没必要得到精确解的时候，如何求出足够好的近似解？</p>
+</blockquote>
+<ul>
+<li>迭代修正（牛顿迭代法、弦截法）</li>
+<li>模拟：用随机采样或逐位过程， 间接得到可用答案</li>
+</ul>
+<section id="newton-raphson-method" class="level2">
+<h2 class="anchored" data-anchor-id="newton-raphson-method">Newton-Raphson Method</h2>
+<blockquote class="blockquote">
+<p>二分法的收敛是<span class="math inline">\(log_2 (N)\)</span>级别的，下面考虑更高效的方法 - 牛顿迭代法在方程的单根附近具备<strong>平方</strong>级别的收敛速度</p>
+</blockquote>
+<p>考虑函数<span class="math inline">\(f(x)\)</span>在区间上连续可导，求方程<span class="math inline">\(f(x) = 0\)</span>的精确根<span class="math inline">\(x^*\)</span>. 由于无法直接求解，我们构造迭代序列 <span class="math display">\[x_0, x_1, x_1, ..., x_n, ...\]</span> 使其逐步逼近真实根<span class="math inline">\(x^*\)</span>. <strong>终止条件考虑为</strong>: <span class="math display">\[
+|f(x_n) - f(x_{n - 1})| &lt; \epsilon
+\]</span> #### 核心思想：以曲代直 &gt; 用切线代替曲线，用线性问题逼近非线性问题。</p>
 <p><span class="math display">\[
-\int_a^b x^2\,\mathrm{d}x = \left[\frac{x^3}{3}\right]_a^b = \frac{b^3-a^3}{3}.
-\]</span></p>
+l:y - y_n = f'(x_n)(x-x_n)
+\]</span> <span class="math display">\[
+x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}
+\]</span> - <strong>为什么这么快？</strong>：因为切线不仅匹配了函数值，还匹配了变化率（斜率）。相当于⽤“一阶信息”做了最优局部近似，每步迭代都把误差⾥的线性主导项消除了，剩下的只是高阶小量。 #### 问题 - 牛顿法在一些大规模运算上成本高 - 牛顿法只能处理非黑箱函数 - 牛顿迭代法解析困难，手动求导困难</p>
+<p><strong>能否只使用函数值，不使用导函数处理这一问题？</strong> - 用割线斜率即可 ## 弦截法 <span class="math display">\[
+x_{n+1} = x_n - f(x_n) \frac{x_n - x_{n-1}}{f(x_n)-f(x_{n-1})}
+\]</span> - 需要两个初始值（不需要包围根） - 每次只需要一次函数求值 - 不需要导数，用差商近似了导数</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># f = x ^ 2 - 2</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>eps <span class="op">=</span> <span class="fl">1e-3</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>x_prev, x_curr <span class="op">=</span> <span class="fl">1.0</span>, <span class="fl">2.0</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="va">True</span>:</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    f_prev <span class="op">=</span> x_prev <span class="op">**</span> <span class="dv">2</span> <span class="op">-</span> <span class="dv">2</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    f_curr <span class="op">=</span> x_curr <span class="op">**</span> <span class="dv">2</span> <span class="op">-</span> <span class="dv">2</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">abs</span>(f_curr) <span class="op">&lt;</span> eps:</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    x_prev, x_curr <span class="op">=</span> x_curr, x_curr <span class="op">-</span> f_curr <span class="op">*</span> (x_curr <span class="op">-</span> x_prev) <span class="op">/</span> (f_curr <span class="op">-</span> f_prev)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x_curr)</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><code>eval(x_prev)</code> 把字符串当表达式求值，建议替换为<code>lambda</code>函数</li>
+</ul>
 </section>
-<section id="一段推导" class="level2">
-<h2 class="anchored" data-anchor-id="一段推导">一段推导</h2>
-<p>对任意可微函数 <span class="math inline">\(f\)</span>，导数的定义是</p>
-<p><span class="math display">\[
-f'(x)=\lim_{h\to 0}\frac{f(x+h)-f(x)}{h}.
-\]</span></p>
-<p>代入 <span class="math inline">\(f(x)=x^2\)</span>：</p>
-<p><span class="math display">\[
-\begin{aligned}
-f'(x)
-&amp;=\lim_{h\to 0}\frac{(x+h)^2-x^2}{h}\\
-&amp;=\lim_{h\to 0}(2x+h)\\
-&amp;=2x.
-\end{aligned}
-\]</span></p>
+<section id="函数" class="level2">
+<h2 class="anchored" data-anchor-id="函数">函数</h2>
+<ul>
+<li>函数可以被视为一种可以产生作用的操作</li>
+<li>函数也可以被视为一种获得值的工具 以上两种操作对应着两类不同的函数</li>
+</ul>
 </section>
-<section id="文档下载" class="level2">
-<h2 class="anchored" data-anchor-id="文档下载">文档下载</h2>
-<p>网页适合阅读与讨论，PDF 适合下载、打印和保存。下面的英文版数学笔记由同一类 Markdown 文稿通过 Typst 排版生成。</p>
-<div class="download-box">
-<p><strong>MATH NOTES / 01</strong></p>
-<p>导数与积分 · 英文示例文档</p>
-<p><a href="../../assets/pdf/math-notes.pdf" class="primary-link" download="math-notes.pdf">下载 PDF ↓</a></p>
+<section id="多分支" class="level2">
+<h2 class="anchored" data-anchor-id="多分支">多分支</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> Condition1:</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    Statement1</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> Condition2:</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    Statement2</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    Statement3</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="模拟" class="level1">
+<h1>模拟</h1>
+<section id="蒙特卡洛方法" class="level2">
+<h2 class="anchored" data-anchor-id="蒙特卡洛方法">蒙特卡洛方法</h2>
+<section id="布丰投针" class="level3">
+<h3 class="anchored" data-anchor-id="布丰投针">布丰投针</h3>
+<p>1777年，法国博物学家布丰提出⼀个奇怪的问题：向画满平行线的桌面上随机扔⼀根针，针与线相交的概率是多少？ <span class="math display">\[
+P = \frac{2L}{\pi d}
+\]</span> ### Python中的随机数实现</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> random.random() <span class="co"># 均匀分布[0, 1)</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(a)</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="蒙特卡洛算法步骤" class="level3">
+<h3 class="anchored" data-anchor-id="蒙特卡洛算法步骤">蒙特卡洛算法步骤</h3>
+<ol type="1">
+<li>生成N个均匀随机数点</li>
+<li>判断每个点是否在圆内</li>
+<li>统计圆内点数M</li>
+<li>估算pi = 4M/N</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> random <span class="im">import</span> random</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>())</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> random()</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> random()</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> x <span class="op">*</span> x <span class="op">+</span> y <span class="op">*</span> y <span class="op">&lt;=</span> <span class="dv">1</span>: <span class="co"># 注意，x ** 2用的是泰勒展开，计算速度比 x * x慢很多</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        m <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">4</span> <span class="op">*</span> m <span class="op">/</span> n)</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="image-01.png" class="img-fluid figure-img"></p>
+<figcaption>课堂笔记插图</figcaption>
+</figure>
 </div>
+<blockquote class="blockquote">
+<p>“不要陷入分类学的泥沼。”——wk</p>
+</blockquote>
 </section>
-<section id="写作方式" class="level2">
-<h2 class="anchored" data-anchor-id="写作方式">写作方式</h2>
-<p>本页正文使用 Markdown，公式使用 LaTeX 数学语法。完整的 Typst 或 LaTeX 文档也可以在编译成 PDF 后，以这种方式附在文章中。</p>
+</section>
+<section id="大数运算" class="level2">
+<h2 class="anchored" data-anchor-id="大数运算">大数运算</h2>
+<ul>
+<li>当数的范围超出int/double的表示范围，我们可以使用字符串模拟大数存储 ### 存储方案：字符串</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> big_add(a, b): </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> <span class="st">""</span> </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    carry <span class="op">=</span> <span class="dv">0</span> </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    i <span class="op">=</span> <span class="dv">1</span> <span class="co"># i=1 对应个位 a[-1]，i=2 对应十位 a[-2]，… </span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> i <span class="op">&lt;=</span> <span class="bu">max</span>(<span class="bu">len</span>(a), <span class="bu">len</span>(b)) <span class="kw">or</span> carry:</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        digit_a <span class="op">=</span> <span class="bu">int</span>(a[<span class="op">-</span>i]) </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> i <span class="op">&lt;=</span> <span class="bu">len</span>(a) <span class="cf">else</span> <span class="dv">0</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        digit_b <span class="op">=</span> <span class="bu">int</span>(b[<span class="op">-</span>i]) <span class="cf">if</span> i <span class="op">&lt;=</span> <span class="bu">len</span>(b) <span class="cf">else</span> <span class="dv">0</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        total <span class="op">=</span> digit_a <span class="op">+</span> digit_b <span class="op">+</span> carry</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        result <span class="op">=</span> <span class="bu">str</span>(total <span class="op">%</span> <span class="dv">10</span>) <span class="op">+</span> result <span class="co"># 从个位往高位算，新数位接在左边 </span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>        carry <span class="op">=</span> total <span class="op">//</span> <span class="dv">10</span> </span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>        i <span class="op">+=</span> <span class="dv">1</span> </span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -671,7 +799,7 @@ f'(x)
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p><a href="../../posts/math-notes/index.html">~/notes</a> · 记录与探索</p>
+<p><a href="../../posts/20260922-fip-w03-iteration-simulation/index.html">~/notes</a> · 记录与探索</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;

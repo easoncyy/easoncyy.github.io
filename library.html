@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="个人笔记">
-<meta name="description" content="展示 LaTeX 公式、推导，以及由 Typst 生成的 PDF 下载。">
 
-<title>从公式到文档：一页数学笔记 – 个人笔记</title>
+<title>~/notes/library – 个人笔记</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -31,23 +29,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-a7952132dd87ce33f437addd0578540c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-dc090d8f6625c822698d9a6ee9cd1ac5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-a7952132dd87ce33f437addd0578540c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-dc090d8f6625c822698d9a6ee9cd1ac5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -75,49 +73,20 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
-<script defer="" src="../../assets/directory.js"></script>
+<script defer="" src="./assets/directory.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed directory-page fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">~/notes</span>
     </a>
   </div>
@@ -128,27 +97,27 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../blog.html"> 
+    <a class="nav-link" href="./blog.html"> 
 <span class="menu-text"><span class="nav-path">blog/</span><span class="nav-caption">博客</span></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../projects.html"> 
+    <a class="nav-link" href="./projects.html"> 
 <span class="menu-text"><span class="nav-path">projects/</span><span class="nav-caption">项目</span></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../log.html"> 
+    <a class="nav-link" href="./log.html"> 
 <span class="menu-text"><span class="nav-path">log/</span><span class="nav-caption">日志</span></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../links.html"> 
+    <a class="nav-link" href="./links.html"> 
 <span class="menu-text"><span class="nav-path">links/</span><span class="nav-caption">友链</span></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../library.html"> 
+    <a class="nav-link active" href="./library.html" aria-current="page"> 
 <span class="menu-text"><span class="nav-path">library/</span><span class="nav-caption">图书馆</span></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html"> 
+    <a class="nav-link" href="./about.html"> 
 <span class="menu-text"><span class="nav-path">about/</span><span class="nav-caption">关于</span></span></a>
   </li>  
 </ul>
@@ -162,52 +131,21 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">本页目录</h2>
-   
-  <ul>
-  <li><a href="#行内与独立公式" id="toc-行内与独立公式" class="nav-link active" data-scroll-target="#行内与独立公式">行内与独立公式</a></li>
-  <li><a href="#一段推导" id="toc-一段推导" class="nav-link" data-scroll-target="#一段推导">一段推导</a></li>
-  <li><a href="#文档下载" id="toc-文档下载" class="nav-link" data-scroll-target="#文档下载">文档下载</a></li>
-  <li><a href="#写作方式" id="toc-写作方式" class="nav-link" data-scroll-target="#写作方式">写作方式</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">从公式到文档：一页数学笔记</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">示例</div>
-    <div class="quarto-category">数学</div>
-  </div>
-  </div>
-
-<div>
-  <div class="description">
-    展示 LaTeX 公式、推导，以及由 Typst 生成的 PDF 下载。
-  </div>
+<h1 class="title">~/notes/library</h1>
+<p class="subtitle lead">图书馆</p>
 </div>
+
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">作者</div>
-    <div class="quarto-title-meta-contents">
-             <p>个人笔记 </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">发布于</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">2026年10月5日</p>
-    </div>
-  </div>
   
     
   </div>
@@ -217,56 +155,18 @@ window.Quarto = {
 </header>
 
 
-<p>这是一篇<strong>示例文章</strong>，演示网页中的数学公式和可下载的排版文档。</p>
-<section id="行内与独立公式" class="level2">
-<h2 class="anchored" data-anchor-id="行内与独立公式">行内与独立公式</h2>
-<p>行内公式直接放在句子中，例如 <span class="math inline">\(f(x)=x^2\)</span>，它的导数是 <span class="math inline">\(f'(x)=2x\)</span>。</p>
-<p>较长的公式可以单独占一行：</p>
-<p><span class="math display">\[
-\int_a^b x^2\,\mathrm{d}x = \left[\frac{x^3}{3}\right]_a^b = \frac{b^3-a^3}{3}.
-\]</span></p>
-</section>
-<section id="一段推导" class="level2">
-<h2 class="anchored" data-anchor-id="一段推导">一段推导</h2>
-<p>对任意可微函数 <span class="math inline">\(f\)</span>，导数的定义是</p>
-<p><span class="math display">\[
-f'(x)=\lim_{h\to 0}\frac{f(x+h)-f(x)}{h}.
-\]</span></p>
-<p>代入 <span class="math inline">\(f(x)=x^2\)</span>：</p>
-<p><span class="math display">\[
-\begin{aligned}
-f'(x)
-&amp;=\lim_{h\to 0}\frac{(x+h)^2-x^2}{h}\\
-&amp;=\lim_{h\to 0}(2x+h)\\
-&amp;=2x.
-\end{aligned}
-\]</span></p>
-</section>
-<section id="文档下载" class="level2">
-<h2 class="anchored" data-anchor-id="文档下载">文档下载</h2>
-<p>网页适合阅读与讨论，PDF 适合下载、打印和保存。下面的英文版数学笔记由同一类 Markdown 文稿通过 Typst 排版生成。</p>
-<div class="download-box">
-<p><strong>MATH NOTES / 01</strong></p>
-<p>导数与积分 · 英文示例文档</p>
-<p><a href="../../assets/pdf/math-notes.pdf" class="primary-link" download="math-notes.pdf">下载 PDF ↓</a></p>
+<div class="log-console">
+<p><code>$ ls ~/notes/library</code><br>
+收集值得阅读与反复翻阅的 PDF。</p>
 </div>
-</section>
-<section id="写作方式" class="level2">
-<h2 class="anchored" data-anchor-id="写作方式">写作方式</h2>
-<p>本页正文使用 Markdown，公式使用 LaTeX 数学语法。完整的 Typst 或 LaTeX 文档也可以在编译成 PDF 后，以这种方式附在文章中。</p>
+<div class="empty-directory">
+<p><code>0 books</code></p>
+<p>书架暂时为空，等待第一本书。</p>
+</div>
 
 
-</section>
 
 </main> <!-- /main -->
-<section id="comments" class="comments-section" aria-labelledby="comments-heading">
-  <h2 id="comments-heading">评论</h2>
-  <p id="comments-status">评论暂未开放。</p>
-  <div class="giscus"></div>
-</section>
-<script src="../../assets/comments-config.js"></script>
-<script src="../../assets/comments.js"></script>
-
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -671,7 +571,7 @@ f'(x)
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p><a href="../../posts/math-notes/index.html">~/notes</a> · 记录与探索</p>
+<p><a href="./index.html">~/notes</a> · 记录与探索</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
@@ -685,5 +585,5 @@ f'(x)
 
 
 
-<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
