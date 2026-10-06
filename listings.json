@@ -12,5 +12,11 @@
       "/posts/hello-world/index.html",
       "/posts/math-notes/index.html"
     ]
+  },
+  {
+    "listing": "/log.html",
+    "items": [
+      "/logs/20261006-log-online/index.html"
+    ]
   }
 ]

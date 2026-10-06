@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="一个简单的个人写作空间。">
 
-<title>~/notes/about – 个人笔记</title>
+<title>~/notes/log – 个人笔记</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -37,6 +36,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -73,9 +74,67 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "搜索"
   }
 }</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-project','listing-website','listing-lang','listing-format','listing-engines','listing-language','listing-toc','listing-date-format','listing-lightbox','listing-title','listing-description','listing-date','listing-timestamp','listing-host','listing-kind','listing-path','listing-outputHref','listing-date-modified','listing-author','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      
+      searchColumns: ["listing-project","listing-website","listing-lang","listing-format","listing-engines","listing-language","listing-toc","listing-date-format","listing-lightbox","listing-title","listing-description","listing-date","listing-timestamp","listing-host","listing-kind","listing-path","listing-outputHref","listing-date-modified","listing-author","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
 <style>html{ scroll-behavior: smooth; }</style>
 <script defer="" src="./assets/directory.js"></script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -106,7 +165,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text"><span class="nav-path">projects/</span><span class="nav-caption">项目</span></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./log.html"> 
+    <a class="nav-link active" href="./log.html" aria-current="page"> 
 <span class="menu-text"><span class="nav-path">log/</span><span class="nav-caption">日志</span></span></a>
   </li>  
   <li class="nav-item">
@@ -114,7 +173,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text"><span class="nav-path">links/</span><span class="nav-caption">友链</span></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./about.html" aria-current="page"> 
+    <a class="nav-link" href="./about.html"> 
 <span class="menu-text"><span class="nav-path">about/</span><span class="nav-caption">关于</span></span></a>
   </li>  
 </ul>
@@ -134,15 +193,10 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">~/notes/about</h1>
-<p class="subtitle lead">关于</p>
+<h1 class="title">~/notes/log</h1>
+<p class="subtitle lead">日志</p>
 </div>
 
-<div>
-  <div class="description">
-    一个简单的个人写作空间。
-  </div>
-</div>
 
 
 <div class="quarto-title-meta">
@@ -157,28 +211,46 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="hello-world." class="level2">
-<h2 class="anchored" data-anchor-id="hello-world.">Hello, world.</h2>
-<p>欢迎来到我的个人网站。</p>
-<p>这里会逐渐积累学习笔记、项目记录与感兴趣的问题。比起把所有事情一次讲完，我更喜欢把一个问题想清楚，再写下来。</p>
-</section>
-<section id="workspace" class="level2 directory-heading">
-<h2 class="directory-heading anchored" data-anchor-id="workspace">workspace/</h2>
-<ul>
-<li><strong>笔记</strong>：概念、公式和推导。</li>
-<li><strong>代码</strong>：小实验、实现过程与经验。</li>
-<li><strong>思考</strong>：暂时没有标准答案的问题。</li>
-</ul>
-<p>在 <a href="./projects.html">projects/</a> 查看项目，在 <a href="./links.html">links/</a> 认识其他写作者。</p>
-</section>
-<section id="readme" class="level2 directory-heading">
-<h2 class="directory-heading anchored" data-anchor-id="readme">readme/</h2>
-<p>目前的两篇文章是用于展示排版和功能的示例。后续会替换为实际内容。</p>
-<p>本站使用 Markdown 写作，支持数学公式；较长的排版文档可提供 PDF 下载。文章末尾保留评论区域。</p>
-<!-- 在此添加真实姓名、自我介绍及联系方式。不要公开不希望展示的信息。 -->
+<div class="log-console">
+<p><code>$ tail -f ~/notes/log</code><br>
+生活片段、照片与值得留下的链接。</p>
+<p><code>host=easoncyy.github.io</code> · <code>timezone=UTC+08:00</code> · <code>mode=append</code></p>
+</div>
+<div class="log-controls" aria-label="筛选日志">
+  <div class="log-filters" role="group" aria-label="记录类型">
+    <button type="button" data-log-type="all" aria-pressed="true">ALL / 全部</button>
+    <button type="button" data-log-type="note" aria-pressed="false">NOTE / 日记</button>
+    <button type="button" data-log-type="photo" aria-pressed="false">PHOTO / 照片</button>
+    <button type="button" data-log-type="link" aria-pressed="false">LINK / 链接</button>
+  </div>
+  <label class="log-search">grep <input id="log-search" type="search" placeholder="搜索日志…" aria-label="搜索日志"></label>
+</div>
+<p id="log-count" class="log-count" aria-live="polite"></p>
+<div id="listing-listing" class="quarto-listing quarto-listing-container-custom">
+<div class="log-stream">
+
+  <article class="log-entry" data-log-kind="note">
+    <div class="log-stamp"><time datetime="2026-10-06T20:51:35+08:00">2026-10-06T20:51:35+08:00</time><span class="log-kind">NOTE</span></div>
+    <div class="log-payload">
+      <div class="log-request">host=easoncyy.github.io &nbsp; GET /logs\20261006-log-online\index.qmd</div>
+      <h2 class="anchored"><a href="./logs/20261006-log-online/index.html">log/ 开始记录</a></h2>
+      <p>给短日记、照片和链接留一个位置。像查看服务器日志一样，沿着时间读取生活中的片段。</p>
+      
+      
+      <a class="log-detail" href="./logs/20261006-log-online/index.html">open / 阅读与评论 →</a>
+    </div>
+  </article>
+
+</div>
+<div class="listing-no-matching d-none">无匹配项</div>
+</div>
+<p id="log-empty" hidden="">没有匹配的记录。试试其他类型或关键词。</p>
+<div class="collection-note">
+<p>主机是这本日志的公开署名。时间记录发布时刻，正文可补充事情发生的时间。点击标题打开完整记录与评论。</p>
+</div>
 
 
-</section>
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -595,6 +667,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
   </div>
 </footer>
+<script defer="" src="./assets/log-stream.js"></script>
 
 
 
