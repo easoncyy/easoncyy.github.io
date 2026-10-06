@@ -1,5 +1,7 @@
 /_site/
 /.quarto/
+**/.quarto/
+**/__pycache__/
 /.tools/
 /tmp/
 /documents/*.pdf

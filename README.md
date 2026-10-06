@@ -9,6 +9,8 @@ Quarto 构建的黑白极简个人网站：首页、博客归档、分类筛选�
 | 目的 | 指令 | 说明 |
 | --- | --- | --- |
 | 进入网站目录 | `cd D:\Personal\Homepage` | 先进入此目录 |
+| 只提交并推送源码 | `.\scripts\sync.ps1 -Message "修改自我介绍"` | 自动 commit、同步远端历史并 push 到 main；不构建、不部署网页 |
+| 一键发布并指定提交说明 | `.\scripts\deploy.ps1 -Message "更新博客"` | 构建 → commit → push → 部署网页 |
 | 一键构建并发布 | `.\scripts\deploy.ps1` | 日常更新用这条；自动合并日志、构建网页、上传源码和网页并触发 Pages 部署；复用已有 PDF |
 | 一键发布并重建 PDF | `.\scripts\deploy.ps1 -RebuildPdf` | 修改了 `documents/math-notes.qmd` 时使用 |
 | 本地预览 | `.\scripts\preview.ps1` | 打开 `http://localhost:4200`；按 Ctrl+C 停止 |
@@ -32,7 +34,7 @@ Quarto 构建的黑白极简个人网站：首页、博客归档、分类筛选�
 
 新建日志参数：标题是必填的位置参数；`--text` 指定正文，`--photo` 后可跟多个照片路径，`--url` 附带一个链接，`--slug` 指定目录后缀。后续更多链接和图片直接在 `.qmd` 正文中编辑。
 
-日常流程：**写/修改 `.qmd` → 可选本地预览 → `.\scripts\deploy.ps1`**。命令完成表示已经提交发布，Pages 部署还需要短暂等待，可通过上表指令查看进度。
+日常流程：**写/修改 `.qmd` → 可选本地预览 → `.\scripts\deploy.ps1`**。发布命令现在自动提交并推送源码；也可以用 `sync.ps1` 单独提交。命令完成表示已经提交发布，Pages 部署还需要短暂等待，可通过上表指令查看进度。Git 冲突或 push 失败会停止后续部署，已完成的本地提交会保留。
 
 ## 本地预览与构建
 
@@ -216,7 +218,7 @@ python scripts/add-book.py "微积分教材" "D:\Books\calculus.pdf" --slug calc
 
 1. 创建公开仓库 `easoncyy.github.io`，把本目录源码上传到 `main` 分支（不上传 `.tools/` 与 `_site/`）。
 2. 当前发布方式：将生成的网站上传到 `gh-pages` 分支，Pages 使用该分支的根目录。
-3. 本地更新文章后运行 `.\scripts\deploy.ps1` 即可完成构建和发布。修改示例 PDF 源文件后使用 `.\scripts\deploy.ps1 -RebuildPdf`。需要 Python、Quarto 与 GitHub CLI (`gh`) 登录且有仓库写入权限；发布脚本通过 GitHub API 保留 main 历史并更新 gh-pages。
+3. 本地更新文章后运行 `.\scripts\deploy.ps1` 即可完成构建、Git commit、push 和网页发布。修改示例 PDF 源文件后使用 `.\scripts\deploy.ps1 -RebuildPdf`。需要 Git、Python、Quarto 与 GitHub CLI (`gh`) 登录且有仓库写入权限；源码通过 Git 推送到 main，生成的网页通过 GitHub API 更新 gh-pages。
 4. 网站地址为 `https://easoncyy.github.io/`，已在 `_quarto.yml` 配置。
 5. 需要 RSS 时，在 `blog.qmd` 的 `listing` 下添加 `feed: true`。
 

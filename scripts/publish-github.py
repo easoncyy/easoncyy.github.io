@@ -1,6 +1,7 @@
 """Publish this website through GitHub's Git API using the signed-in gh CLI.
 
-Run scripts/build.ps1 first. Requires ADMIN/write access to the target repository.
+Run scripts/build.ps1 first. Deploys gh-pages only; sync.ps1 pushes source to main.
+Requires ADMIN/write access to the target repository.
 No credentials are embedded in the source or passed on the command line.
 """
 import base64
@@ -93,7 +94,7 @@ def main():
     site = ROOT / "_site"
     if not (site / "index.html").is_file() or not (site / "assets/pdf/math-notes.pdf").is_file():
         raise RuntimeError("Build the website and PDF with scripts/build.ps1 before publishing.")
-    publish_tree("main", list(source_files()), "Publish personal Quarto website source", True)
+    # Source is committed and pushed by sync.ps1; only deploy the rendered site here.
     publish_tree("gh-pages", [(p, p.relative_to(site).as_posix()) for p in site.rglob("*") if p.is_file()],
                  "Publish rendered personal website", False)
     pages = api("GET", f"{API_ROOT}/pages", allow_missing=True)

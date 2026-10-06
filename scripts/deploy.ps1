@@ -1,4 +1,4 @@
-param([switch]$RebuildPdf)
+param([switch]$RebuildPdf, [string]$Message = 'Update personal website')
 
 $ErrorActionPreference = 'Stop'
 $projectRoot = Split-Path -Parent $PSScriptRoot
@@ -12,6 +12,7 @@ try {
     gh auth status
     if ($LASTEXITCODE -ne 0) { throw 'GitHub login required. Run: gh auth login' }
     & (Join-Path $PSScriptRoot 'build.ps1') -SkipPdf:(-not $RebuildPdf)
+    & (Join-Path $PSScriptRoot 'sync.ps1') -Message $Message
     python scripts/publish-github.py
     if ($LASTEXITCODE -ne 0) { throw 'Publish failed. See the GitHub API error above.' }
     Write-Host 'Update submitted: https://easoncyy.github.io/'
