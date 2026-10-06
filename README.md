@@ -33,19 +33,20 @@ Quarto 构建的黑白极简个人网站：首页、博客归档、分类筛选�
 
 导航使用英文目录名与较小的中文说明，`~/notes` 是唯一首页导航入口。栏目标题与文章路径延续目录风格。项目和友链用普通 Markdown 编辑：复制 `projects.qmd` 内的项目区块，或按 `links.qmd` 内注释中的格式添加真实友链。当前展示 RSNA 膝关节 MRI 项目、个人网站，以及 Msmile 的友链。
 
-## 写日志、分享照片和链接
+## 写日志
 
-导航的 `log/ 日志` 是按时间倒序的服务器日志风格记录流，支持类型筛选、关键词搜索、照片预览与独立评论。`host` 是公开署名，默认网站域名；时间自动使用 UTC+08:00。编辑正文使用 Markdown，公式同样支持 LaTeX。
+`log/ 日志` 是单页时间流：每条完整显示文字，可以在同一条里附上多张照片、插入链接。没有类型分类，也没有日志二级页面。支持关键词搜索、照片点击放大，时间自动使用 UTC+08:00，`host` 是公开署名。
 
-在网站目录打开 PowerShell，用 Python 创建记录：
+在网站目录打开 PowerShell：
 
 ```powershell
 python scripts/new-log.py "今天的想法" --text "记下今天的一点收获。"
-python scripts/new-log.py "散步拍的照片" --type photo --photo "D:\Photos\walk.jpg" "D:\Photos\sky.png" --text "傍晚出门走了走。"
-python scripts/new-log.py "值得一读" --type link --url "https://quarto.org/" --text "一个写作与发布工具。"
+python scripts/new-log.py "今天出门走了走" --text "傍晚的天空很好看，也读到一个有趣的网站。" --photo "D:\Photos\sky.jpg" --url "https://quarto.org/"
 ```
 
-命令会创建 `logs/时间-类型/index.qmd`，照片会复制到同一目录。打开输出路径继续写正文、修改摘要 `description`、照片说明和 `host`。第一张照片用于日志流预览，完整页支持多张照片与点击放大。可以用 `--host writing-desk` 自定义署名、`--slug walk` 自定义目录后缀。
+照片与链接都可选，能同时附在一条文字里。命令创建 `logs/时间-entry/index.qmd`，照片复制到 `assets/log/`。打开输出的文件，用 Markdown 继续写完整正文、修改照片说明或添加行内链接。`title` 是可选的小标题；`--host writing-desk` 可修改公开署名，`--slug walk` 可指定目录后缀。
+
+手工插图请放在 `assets/`，使用 `![说明](/assets/照片文件名.jpg)` 引用。日志源文件只用于合成单页，不生成独立网页。构建前脚本自动把完整正文按时间倒序合并到 `assets/log-entries.md`；请编辑 `logs/` 源文件，不要编辑自动合并文件。
 
 保存后发布：
 
@@ -53,8 +54,6 @@ python scripts/new-log.py "值得一读" --type link --url "https://quarto.org/"
 .\scripts\build.ps1
 python scripts/publish-github.py
 ```
-
-上传的正文和原始照片都是公开文件。分享前请自行去除照片里的位置元数据；脚本不会自动处理 EXIF。当前首次记录是栏目说明，没有编造个人日记或照片。
 
 ## 写博客文章
 

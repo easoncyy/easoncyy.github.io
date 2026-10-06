@@ -1,6 +1,8 @@
 project:
   type: website
   output-dir: _site
+  pre-render:
+    - python scripts/render-log.py
   render:
     - index.qmd
     - blog.qmd
@@ -8,7 +10,6 @@ project:
     - projects.qmd
     - links.qmd
     - log.qmd
-    - "logs/**/*.qmd"
     - "posts/**/*.qmd"
   resources:
     - assets/
