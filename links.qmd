@@ -15,7 +15,13 @@ toc: false
 ::: {.link-entry}
 ### [Msmile ↗](https://margin-v1-liart.vercel.app/){target="_blank" rel="noopener noreferrer"}
 
-Msmile 的个人网站。
+Msmile 的个人网站（VPN Required）。
+:::
+
+::: {.link-entry}
+### [cyb1010 ↗](https://cyb1010.github.io/){target="_blank" rel="noopener noreferrer"}
+
+CYB的博客网站。
 :::
 
 <!--
@@ -28,14 +34,16 @@ Msmile 的个人网站。
 :::
 -->
 
+
+
 ## this-site/ {.directory-heading}
 
 本站信息
 
 ::: {.site-address}
-**名称**：~/notes · 个人笔记
+**名称**：~/notes · easoncyy's homepage
 
 **地址**：[https://easoncyy.github.io](https://easoncyy.github.io)
 
-**简介**：记录学习、代码与思考。
+**简介**：记录学习、项目与思考。
 :::
