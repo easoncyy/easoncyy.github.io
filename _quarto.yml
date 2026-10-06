@@ -1,0 +1,47 @@
+project:
+  type: website
+  output-dir: _site
+  render:
+    - index.qmd
+    - blog.qmd
+    - about.qmd
+    - "posts/**/*.qmd"
+  resources:
+    - assets/
+    - .nojekyll
+
+website:
+  title: "个人笔记"
+  site-url: "https://easoncyy.github.io"
+  description: "记录学习、代码与思考。"
+  navbar:
+    title: "~/notes"
+    background: white
+    foreground: black
+    left:
+      - href: index.qmd
+        text: 首页
+      - href: blog.qmd
+        text: 博客
+      - href: about.qmd
+        text: 关于
+  search:
+    location: navbar
+    type: overlay
+  page-footer:
+    left: "个人笔记 · 写作与记录"
+    right: "Built with Quarto"
+
+lang: zh-CN
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+    toc-title: 本页目录
+    anchor-sections: true
+    html-math-method: mathjax
+    code-copy: true
+    highlight-style: monochrome
+    smooth-scroll: true
+

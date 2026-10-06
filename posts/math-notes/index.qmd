@@ -1,0 +1,54 @@
+---
+title: "从公式到文档：一页数学笔记"
+description: "展示 LaTeX 公式、推导，以及由 Typst 生成的 PDF 下载。"
+date: "2026-10-05"
+categories: [示例, 数学]
+---
+
+这是一篇**示例文章**，演示网页中的数学公式和可下载的排版文档。
+
+## 行内与独立公式
+
+行内公式直接放在句子中，例如 $f(x)=x^2$，它的导数是 $f'(x)=2x$。
+
+较长的公式可以单独占一行：
+
+$$
+\int_a^b x^2\,\mathrm{d}x = \left[\frac{x^3}{3}\right]_a^b = \frac{b^3-a^3}{3}.
+$$
+
+## 一段推导
+
+对任意可微函数 $f$，导数的定义是
+
+$$
+f'(x)=\lim_{h\to 0}\frac{f(x+h)-f(x)}{h}.
+$$
+
+代入 $f(x)=x^2$：
+
+$$
+\begin{aligned}
+f'(x)
+&=\lim_{h\to 0}\frac{(x+h)^2-x^2}{h}\\
+&=\lim_{h\to 0}(2x+h)\\
+&=2x.
+\end{aligned}
+$$
+
+## 文档下载
+
+网页适合阅读与讨论，PDF 适合下载、打印和保存。下面的英文版数学笔记由同一类 Markdown 文稿通过 Typst 排版生成。
+
+::: {.download-box}
+**MATH NOTES / 01**
+
+导数与积分 · 英文示例文档
+
+[下载 PDF ↓](../../assets/pdf/math-notes.pdf){download="math-notes.pdf" .primary-link}
+:::
+
+## 写作方式
+
+本页正文使用 Markdown，公式使用 LaTeX 数学语法。完整的 Typst 或 LaTeX 文档也可以在编译成 PDF 后，以这种方式附在文章中。
+

@@ -1,0 +1,9 @@
+/_site/
+/.quarto/
+/.tools/
+/tmp/
+/documents/*.pdf
+/.preview.log
+
+
+**/*.quarto_ipynb

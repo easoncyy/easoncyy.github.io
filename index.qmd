@@ -1,0 +1,49 @@
+---
+title: "首页"
+pagetitle: "个人笔记 · 首页"
+title-block-banner: false
+toc: false
+page-layout: full
+body-classes: home-page
+listing:
+  id: recent-posts
+  contents: posts
+  sort: "date desc"
+  max-items: 3
+  type: default
+  categories: false
+  fields: [date, title, description]
+  date-format: "YYYY.MM.DD"
+  sort-ui: false
+  filter-ui: false
+---
+
+::: {.home-intro}
+::: {.eyebrow}
+NOTES / CODE / IDEAS
+:::
+
+# 把想法写下来。 {.hero-title}
+
+这里存放学习笔记、代码片段与偶尔的思考。给复杂的问题留一点空间，也给未来的自己留一份记录。
+
+::: {.home-links}
+[阅读博客 →](blog.qmd){.primary-link} [关于本站 ↗](about.qmd)
+:::
+:::
+
+::: {.section-heading}
+## 最近的记录
+
+[全部文章 →](blog.qmd)
+:::
+
+::: {#recent-posts}
+:::
+
+::: {.home-note}
+`$ write → preview → publish`
+
+从一段文字开始，让记录慢慢生长。
+:::
+
