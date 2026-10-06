@@ -23,6 +23,12 @@ Quarto 构建的黑白极简个人网站：首页、博客归档、分类筛选�
 | 查看登录状态 | `gh auth status` | 检查 GitHub CLI 登录 |
 | 查看部署状态 | `gh run list --repo easoncyy/easoncyy.github.io --limit 3` | 查看最近的 Pages 部署任务 |
 | 配置评论 | `.\scripts\set-comments.ps1 -Repo '用户名/仓库名' -RepoId 'repo-id' -Category '分类名' -CategoryId 'category-id'` | 当前已配置，换评论仓库时才需要 |
+| 导入 FIP 笔记 | `python scripts/import-fip.py` | 从指定的 Obsidian FIP 文件夹导入 4 篇已选择笔记；重复执行会用原笔记更新网站副本 |
+| 指定 FIP 来源 | `python scripts/import-fip.py --source "D:\你的笔记库\AI\FIP"` | 在其他电脑或路径变化时使用 |
+| 归档本次作业 | `python scripts/archive-homework.py` | 处理 `临时/` 中此次选定的 5 份作业 PDF；重复执行更新对应副本 |
+| 添加 PDF 图书 | `python scripts/add-book.py "书名" "D:\Books\book.pdf" --slug my-book --author "作者" --description "简介"` | 复制 PDF、添加书目，然后运行 `deploy.ps1` 发布 |
+| 查看添加图书参数 | `python scripts/add-book.py --help` | 查看所有参数 |
+| 只生成图书馆目录 | `python scripts/render-library.py` | 构建和预览自动执行，通常无需单独运行 |
 
 新建日志参数：标题是必填的位置参数；`--text` 指定正文，`--photo` 后可跟多个照片路径，`--url` 附带一个链接，`--slug` 指定目录后缀。后续更多链接和图片直接在 `.qmd` 正文中编辑。
 
@@ -53,6 +59,10 @@ Quarto 构建的黑白极简个人网站：首页、博客归档、分类筛选�
 | `links.qmd` | 友链列表及本站交换友链信息 |
 | `log.qmd` | 单页日志流的页面结构 |
 | `logs/` | 日志正文；支持目录中的 `index.qmd` 或直接放置 `.qmd` 文件 |
+| `library.qmd` | 图书馆页面 |
+| `library/catalog.json` | 图书书名、作者、简介、PDF 路径和添加日期 |
+| `assets/library/` | 可公开阅读、下载的图书 PDF |
+| `documents/homework-archive.json` | 作业原文件名、统一命名与文章的对应表 |
 | `styles.css` | 黑白视觉样式 |
 | `posts/` | 每个目录是一篇文章 |
 | `documents/math-notes.qmd` | 示例 PDF 的 Markdown 源文件 |
@@ -124,6 +134,34 @@ $$
 ```
 
 文章目录名会成为网址，发布后尽量保持稳定，以保留外部链接和评论对应关系。插图放在文章目录，用 `![说明](image.png)` 引用。
+
+## 课程归档与 Obsidian 工作流程
+
+作业 PDF 统一使用 `2026-课程英文名-w周次-homework.pdf`；跨周作业使用 `w01-w02`。文章目录使用 `YYYYMMDD-课程英文名-w周次-homework`，作业日期采用 PDF 首页的标注日期。原始文件留在 `临时/`，发布副本位于 `assets/pdf/homework/`，博客支持阅读、下载与内嵌 PDF。
+
+FIP 的博客标题采用 `FIP W02 · 枚举与减治` 格式，目录采用 `YYYYMMDD-fip-w02-主题英文名`。文章日期取源 `.md` 的 Windows 创建时间，不取复制进网站的时间。云同步可能重置文件创建时间，这里使用本次读取到的值。
+
+本次导入 W2、W3、W4 的周笔记及 W3 Python 平方运算专题；W1 的 `AI协作规范.md` 是课程规范，未作为个人学习笔记发布。导入只复制内容，保留原文；代码块不执行，Obsidian `![[图片]]` 转换为网页可用的 Markdown 图片，并复制相关图片。
+
+之后继续在 Obsidian 修改这些笔记，更新网站用：
+
+```powershell
+python scripts/import-fip.py
+.\scripts\deploy.ps1
+```
+
+导入不是后台同步。重复导入会覆盖对应的网站文章副本，因此这些文章的正文请在 Obsidian 原笔记中修改。新增周次时，在 `scripts/import-fip.py` 的 `NOTES` 表里添加来源文件、英文目录名和标题。
+
+## 发布 PDF 图书
+
+添加一本可公开分享的 PDF：
+
+```powershell
+python scripts/add-book.py "书名" "D:\Books\book.pdf" --slug my-book --author "作者" --description "一段简介"
+.\scripts\deploy.ps1
+```
+
+书目会自动出现在 `library/ 图书馆`，支持浏览器在线阅读与下载。`--slug` 必填，只用小写英文、数字与连字符；`--author` 和 `--description` 可省略。后续改简介直接编辑 `library/catalog.json`，更新 PDF 则替换 `assets/library/` 中对应文件。当前没有提供图书文件，因此书架显示空状态。
 
 ## Markdown、LaTeX 与 Typst
 

@@ -3,6 +3,7 @@ project:
   output-dir: _site
   pre-render:
     - python scripts/render-log.py
+    - python scripts/render-library.py
   render:
     - index.qmd
     - blog.qmd
@@ -10,6 +11,7 @@ project:
     - projects.qmd
     - links.qmd
     - log.qmd
+    - library.qmd
     - "posts/**/*.qmd"
   resources:
     - assets/
@@ -32,6 +34,8 @@ website:
         text: "<span class='nav-path'>log/</span><span class='nav-caption'>日志</span>"
       - href: links.qmd
         text: "<span class='nav-path'>links/</span><span class='nav-caption'>友链</span>"
+      - href: library.qmd
+        text: "<span class='nav-path'>library/</span><span class='nav-caption'>图书馆</span>"
       - href: about.qmd
         text: "<span class='nav-path'>about/</span><span class='nav-caption'>关于</span>"
   search:

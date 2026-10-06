@@ -1,0 +1,13 @@
+---
+title: "~/notes/library"
+subtitle: "图书馆"
+body-classes: directory-page
+toc: false
+---
+
+::: {.log-console}
+`$ ls ~/notes/library`  
+收集值得阅读与反复翻阅的 PDF。
+:::
+
+{{< include assets/library-entries.md >}}

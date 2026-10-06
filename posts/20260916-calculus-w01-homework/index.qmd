@@ -1,0 +1,20 @@
+---
+title: "微积分 W01 · 作业归档"
+date: "2026-09-16"
+categories: ["微积分", "作业归档"]
+description: "2026 年微积分 W01 作业，提供原版 PDF 在线阅读与下载。"
+---
+
+本篇归档保存微积分 W01 的作业 PDF。归档日期采用文档首页标注的作业日期。
+
+::: {.download-box}
+`2026-calculus-w01-homework.pdf`
+
+[在线阅读 PDF ↗](/assets/pdf/homework/2026-calculus-w01-homework.pdf){target="_blank"} · [下载 PDF ↓](/assets/pdf/homework/2026-calculus-w01-homework.pdf){download="2026-calculus-w01-homework.pdf"}
+:::
+
+```{=html}
+<iframe class="homework-pdf" src="/assets/pdf/homework/2026-calculus-w01-homework.pdf" title="微积分 W01 · 作业归档 PDF" loading="lazy"></iframe>
+```
+
+如果浏览器不支持内嵌 PDF，可使用上方阅读或下载链接。

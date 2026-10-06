@@ -66,14 +66,14 @@ def publish_tree(branch, files, message, preserve_tree):
 
 def source_files():
     roots = ["_quarto.yml", ".gitignore", ".nojekyll", "README.md", "index.qmd",
-             "blog.qmd", "about.qmd", "projects.qmd", "links.qmd", "log.qmd", "logs", "styles.css", "assets", "posts", "scripts"]
+             "blog.qmd", "about.qmd", "projects.qmd", "links.qmd", "log.qmd", "logs", "library.qmd", "library", "styles.css", "assets", "posts", "scripts"]
     for name in roots:
         path = ROOT / name
         paths = path.rglob("*") if path.is_dir() else [path]
         for file in paths:
             if file.is_file() and "__pycache__" not in file.parts:
                 yield file, file.relative_to(ROOT).as_posix()
-    for name in ["documents/_quarto.yml", "documents/math-notes.qmd"]:
+    for name in ["documents/_quarto.yml", "documents/math-notes.qmd", "documents/homework-archive.json"]:
         path = ROOT / name
         yield path, name
 

@@ -1,0 +1,167 @@
+---
+title: "FIP W02 · 枚举与减治"
+description: "W2 学习记录，按原 Markdown 文件创建时间归档。"
+date: "2026-09-20T13:25:37+08:00"
+categories: ["FIP", "学习笔记"]
+execute: {"enabled": false}
+source-created: "2026-09-20T13:25:37+08:00"
+---
+
+- 枚举：遍历解空间
+- 减治：缩减解空间，进而提高枚举效率
+
+## 分支(branch)
+```python
+if exp:
+	...
+```
+
+如果想要使用单分支完成双分支的任务，可以使用**默认值**，或者说初始赋值
+
+```python
+# max
+bigger = x
+if x < y:
+	bigger = y
+print(bigger)
+```
+
+**单分支**->**双分支**
+
+```python
+if condition:
+	StatementT
+else:
+	StatementF
+```
+
+> Vibe出的代码可以类比于C compiler得出的汇编代码：常常复杂，但有时有创新，更重要的是高效。
+
+从一次判断到逐个检验
+
+## 枚举(Enumeration)
+### 素数判断
+- 给定一个自然数x，如何判断它是否是素数？
+	- 遍历 2~(x-1)若存在能整除x的数则不是素数
+	- 程序问题：
+		1. 如何遍历？
+		2. 如何判断整除？
+		3. 如何表示x是素数？
+> Spike探针法：先做会做的，再向不会做的领域拓宽
+
+使用while-else/for-else语句
+```python
+x = int(input("Enter a number:"))
+k = 2
+while k < x:
+	if x % k == 0 or x < 2:
+		print("Not prime")
+		break
+	k += 1
+else:
+	print("Is prime") # 对于for-else，就算没有跑，也会执行else
+```
+
+#### 考虑程序效率？
+- 使用**worst case**考虑，本案例下执行(x - 1)轮。
+
+#### 优化算法
+只需要考虑$[2, \sqrt x]$间的自然数即可
+```python
+from math import sqrt
+
+
+x = int(input("Enter a number:"))
+k = 2
+if x < 2:
+	print("Not prime")
+while k < int(sqrt(x)) + 1:
+	if x % k == 0:
+		print("Not prime")
+		break
+	k += 1
+else:
+	print("Is prime")
+```
+ 
+> **库函数**: Python 通过提供许多预定义函数来促进复⽤，这些函数可⽤于执⾏数学及其他计算
+> Debug: 利用断点Step-by-s=Step调试程序
+
+- 枚举：逐一列举问题所有可能的候选解，并对每个候选解进⾏验证，从中找出满足条件的正确解的算法策略，又称穷举、暴力搜索。
+- 枚举的基本思想是遍历整个解空间，不遗漏、不重复地检查每⼀种可能，只要解空 间覆盖完整且验证条件正确，结果⼀定正确。所以对于大多数问题，当人们没有更好的算法的时候，枚举往往是最后的底线算法枚举算法只适⽤于问题的解空间必须是有限且可枚举的。
+- 当解空间不适合枚举时， 可以尝试构建可枚举的空间。⽐如，在⼀定区间内求解方程的解，由于区间内的数 是无限的，从而无法枚举。但是如果以⼀定的精度求解，那么区间内的数的数量就是有限的，从而可以被枚举。
+
+### 求GCD
+#### 枚举法
+```python
+a = 12
+b = 18
+gcd = 1
+for k in range(1, min(a, b) + 1):
+	if a % k == 0 and b % k == 0:
+		gcd = k
+print(gcd)
+```
+但是上述做法效率很低，我们不妨降序操作：
+```python
+a = 12
+b = 18
+gcd = 1
+for k in range(min(a, b) + 1, 1, -1):
+	if a % k == 0 and b % k == 0:
+		gcd = k
+print(gcd)
+```
+不过事实上最坏情况是一样的，所以时间复杂度相同。
+
+## 减治(Decrease and Conquer)
+#### 辗转相除法
+```python
+a = 12
+b = 18
+r = a % b
+while r != 0: # or while r:
+	a = b
+	b = r
+	r = a % b
+print(b)
+```
+
+可以使用**同步赋值**压行
+
+```python
+while b: a, b = b, a % b
+print(a)
+```
+
+### 方程在固定区间上求近似根
+#### 二分法
+```python
+import math a, b = 1.0, 2.0 
+# f(x) = x³ − 3 sin x 在 [1, 2] 
+eps = 1e-6
+round = 1
+while True:
+	fa = a**3 - 3 * math.sin(a)
+	fb = b**3 - 3 * math.sin(b)
+	if fa * fb > 0:
+		print('区间内没有根')
+		break
+	m = (a + b) / 2
+	fm = m**3 - 3 * math.sin(m)
+	print(f'第{round}次迭代: a={a}, b={b}, m={m}, fm={fm}')
+	if abs(fm) < eps:
+		print(f'根为{m}')
+		break
+	if fm * fa > 0:
+		a = m
+	else:
+		b = m
+	if abs(b - a) < eps:
+		print(f'根为{m}, 迭代次数为{round}')
+		break
+	round += 1
+```
+> 浮点误差: 浮点数在计算机中用二进制表达，永远不可能和十进制小数对齐
+
+- **减治**：将问题规模不断减小，直到缩小到可以直接求解的平凡情况（trivial case），再逐层返回解决原问题

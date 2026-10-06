@@ -7,5 +7,7 @@ elseif (Get-Command quarto -ErrorAction SilentlyContinue) { $quartoCommand = 'qu
 else { throw 'Please install Quarto: https://quarto.org/docs/download/' }
 python scripts/render-log.py
 if ($LASTEXITCODE -ne 0) { throw 'Log generation failed.' }
+python scripts/render-library.py
+if ($LASTEXITCODE -ne 0) { throw 'Library generation failed.' }
 & $quartoCommand preview --port 4200 --no-browser
 

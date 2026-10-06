@@ -4,6 +4,7 @@
 /tmp/
 /documents/*.pdf
 /.preview.log
+/临时/
 
 
 **/*.quarto_ipynb

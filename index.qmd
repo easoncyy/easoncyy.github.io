@@ -43,6 +43,14 @@ listing:
 
 ::: {.directory-grid}
 ::: {.directory-tile}
+### [library/ →](library.qmd)
+
+图书馆
+
+收藏值得阅读的 PDF，在线翻阅或下载。
+:::
+
+::: {.directory-tile}
 ### [projects/ →](projects.qmd)
 
 项目

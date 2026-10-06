@@ -16,6 +16,8 @@ if (-not $SkipPdf -or -not (Test-Path -LiteralPath assets/pdf/math-notes.pdf)) {
 # Bootstrap the include file before Quarto resolves project inputs.
 python scripts/render-log.py
 if ($LASTEXITCODE -ne 0) { throw 'Log generation failed.' }
+python scripts/render-library.py
+if ($LASTEXITCODE -ne 0) { throw 'Library generation failed.' }
 & $quartoCommand render
 if ($LASTEXITCODE -ne 0) { throw 'Website render failed.' }
 

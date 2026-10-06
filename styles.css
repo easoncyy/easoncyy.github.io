@@ -155,3 +155,9 @@ blockquote { border-left: 2px solid #151515; color: var(--muted); padding-left: 
 .log-payload figure { margin: 1rem 0; }
 .log-payload img { display: block; max-width: 100%; max-height: 560px; object-fit: contain; object-position: left; }
 .log-payload a { overflow-wrap: anywhere; }
+.library-entry { border-bottom: 1px solid var(--line); padding: 1.8rem 0; }
+.library-book-meta { font: .72rem var(--mono); color: var(--muted); }
+.library-book-title { font-size: 1.2rem; margin: .7rem 0; }
+.library-author { color: var(--muted); font-size: .85rem; }
+.library-actions { display: flex; flex-wrap: wrap; gap: 1.5rem; font: .76rem var(--mono); margin-top: 1rem; }
+.homework-pdf { width: 100%; height: 75vh; min-height: 400px; border: 1px solid var(--line); }
