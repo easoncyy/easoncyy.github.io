@@ -7,15 +7,18 @@
   script.src = "https://giscus.app/client.js";
   script.async = true;
   script.crossOrigin = "anonymous";
+  // Directory URLs and index.html must share the same discussion.
+  const articlePath = window.location.pathname.replace(/\/index\.html$/, "/").replace(/\/$/, "") + "/";
   const options = {
     repo: config.repo,
     "repo-id": config.repoId,
     category: config.category,
     "category-id": config.categoryId,
-    mapping: "pathname",
+    mapping: "specific",
+    term: articlePath,
     strict: "1",
     "reactions-enabled": "1",
-    "emit-metadata": "0",
+    "emit-metadata": "1",
     "input-position": "top",
     theme: "light",
     lang: "zh-CN",
@@ -25,6 +28,15 @@
     script.setAttribute(`data-${key}`, value);
   }
   status.textContent = "使用 GitHub 账号参与讨论。若评论未显示，可刷新页面后重试。";
+  window.addEventListener("message", (event) => {
+    if (event.origin !== "https://giscus.app" || !event.data || typeof event.data !== "object") return;
+    const message = event.data.giscus;
+    if (!message || typeof message.error !== "string") return;
+    if (message.error.includes("Discussion not found")) return;
+    status.textContent = message.error.includes("not installed")
+      ? "评论正在配置中，暂未开放。"
+      : "评论暂时无法加载。你也可以在 GitHub 中参与讨论。";
+  });
   script.addEventListener("error", () => {
     status.textContent = "评论暂时无法加载。你也可以在 GitHub 中参与讨论。";
   });

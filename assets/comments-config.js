@@ -1,3 +1,1 @@
-// Public repository identifiers, not credentials. Configure via scripts/set-comments.ps1.
-window.SITE_COMMENTS = null;
-
+window.SITE_COMMENTS = {"repo":"easoncyy/easoncyy.github.io","repoId":"R_kgDOU9b6xQ","category":"Announcements","categoryId":"DIC_kwDOU9b6xc4DHImd"};
