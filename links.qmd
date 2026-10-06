@@ -1,0 +1,41 @@
+---
+title: "~/notes/links"
+subtitle: "友链"
+description: "一些相遇，一些值得再去的地方。"
+body-classes: directory-page
+toc: false
+---
+
+::: {.collection-heading}
+## friends/ {.directory-heading}
+
+朋友的写作空间
+:::
+
+::: {.link-entry}
+### [Msmile ↗](https://margin-v1-liart.vercel.app/){target="_blank" rel="noopener noreferrer"}
+
+Msmile 的个人网站。
+:::
+
+<!--
+添加新友链时，每条复制一个 link-entry 区块。
+
+::: {.link-entry}
+### [网站名称 ↗](https://example.com){target="_blank" rel="noopener noreferrer"}
+
+一句话介绍网站。
+:::
+-->
+
+## this-site/ {.directory-heading}
+
+本站信息
+
+::: {.site-address}
+**名称**：~/notes · 个人笔记
+
+**地址**：[https://easoncyy.github.io](https://easoncyy.github.io)
+
+**简介**：记录学习、代码与思考。
+:::

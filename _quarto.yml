@@ -5,6 +5,8 @@ project:
     - index.qmd
     - blog.qmd
     - about.qmd
+    - projects.qmd
+    - links.qmd
     - "posts/**/*.qmd"
   resources:
     - assets/
@@ -19,17 +21,19 @@ website:
     background: white
     foreground: black
     left:
-      - href: index.qmd
-        text: 首页
       - href: blog.qmd
-        text: 博客
+        text: "<span class='nav-path'>blog/</span><span class='nav-caption'>博客</span>"
+      - href: projects.qmd
+        text: "<span class='nav-path'>projects/</span><span class='nav-caption'>项目</span>"
+      - href: links.qmd
+        text: "<span class='nav-path'>links/</span><span class='nav-caption'>友链</span>"
       - href: about.qmd
-        text: 关于
+        text: "<span class='nav-path'>about/</span><span class='nav-caption'>关于</span>"
   search:
     location: navbar
     type: overlay
   page-footer:
-    left: "个人笔记 · 写作与记录"
+    left: "[~/notes](index.qmd) · 记录与探索"
     right: "Built with Quarto"
 
 lang: zh-CN
@@ -44,4 +48,6 @@ format:
     code-copy: true
     highlight-style: monochrome
     smooth-scroll: true
+    include-in-header:
+      text: '<script defer src="/assets/directory.js"></script>'
 

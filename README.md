@@ -23,11 +23,15 @@ Quarto 构建的黑白极简个人网站：首页、博客归档、分类筛选�
 | `index.qmd` | 个人首页及最近文章 |
 | `about.qmd` | 自我介绍与真实联系方式 |
 | `blog.qmd` | 博客归档、分类与过滤 |
+| `projects.qmd` | 项目展示，包含简介、技术标签与 GitHub 链接 |
+| `links.qmd` | 友链列表及本站交换友链信息 |
 | `styles.css` | 黑白视觉样式 |
 | `posts/` | 每个目录是一篇文章 |
 | `documents/math-notes.qmd` | 示例 PDF 的 Markdown 源文件 |
 
 当前个人介绍为中性的初始文案，文章明确标注为示例；请在上线前换成真实内容。
+
+导航使用英文目录名与较小的中文说明，`~/notes` 是唯一首页导航入口。栏目标题与文章路径延续目录风格。项目和友链用普通 Markdown 编辑：复制 `projects.qmd` 内的项目区块，或按 `links.qmd` 内注释中的格式添加真实友链。当前展示 RSNA 膝关节 MRI 项目、个人网站，以及 Msmile 的友链。
 
 ## 写新文章
 

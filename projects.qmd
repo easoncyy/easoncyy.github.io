@@ -1,0 +1,48 @@
+---
+title: "~/notes/projects"
+subtitle: "项目"
+description: "从想法到实现，记录正在构建的东西。"
+body-classes: directory-page
+toc: false
+---
+
+::: {.collection-heading}
+## working/ {.directory-heading}
+
+正在维护
+:::
+
+::: {.project-entry}
+::: {.entry-topline}
+### rsna-knee/
+
+[GitHub ↗](https://github.com/Msmile-shiny/CVproject_RSNA-knee-detection){.repository-link target="_blank" rel="noopener noreferrer"}
+:::
+
+RSNA 膝关节 MRI 异常识别
+
+面向膝关节 MRI 的 12 类异常识别项目，围绕公开模型复现、预测融合与实验记录展开。
+
+::: {.entry-tags}
+`Computer Vision` `Python` `Kaggle`
+:::
+:::
+
+::: {.project-entry}
+::: {.entry-topline}
+### personal-site/
+
+[GitHub ↗](https://github.com/easoncyy/easoncyy.github.io){.repository-link target="_blank" rel="noopener noreferrer"}
+:::
+
+个人网站
+
+以 Quarto 构建个人主页与博客，支持数学公式、PDF 文档和评论。这个写作空间会随内容一起慢慢完善。
+
+::: {.entry-tags}
+`Quarto` `Markdown` `GitHub Pages`
+:::
+:::
+
+<!-- 添加项目：复制上方 project-entry 区块，修改目录名、中文名称、简介、技术标签和真实 GitHub 链接。 -->
+

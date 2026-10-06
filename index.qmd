@@ -20,7 +20,7 @@ listing:
 
 ::: {.home-intro}
 ::: {.eyebrow}
-NOTES / CODE / IDEAS
+~/notes · A PERSONAL WORKSPACE
 :::
 
 # 把想法写下来。 {.hero-title}
@@ -33,12 +33,30 @@ NOTES / CODE / IDEAS
 :::
 
 ::: {.section-heading}
-## 最近的记录
+## recent/ {.directory-heading}
 
 [全部文章 →](blog.qmd)
 :::
 
 ::: {#recent-posts}
+:::
+
+::: {.directory-grid}
+::: {.directory-tile}
+### [projects/ →](projects.qmd)
+
+项目
+
+把正在做的事情放在这里，记录进展与代码。
+:::
+
+::: {.directory-tile}
+### [links/ →](links.qmd)
+
+友链
+
+通往其他人的写作空间，发现不同的想法。
+:::
 :::
 
 ::: {.home-note}

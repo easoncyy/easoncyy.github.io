@@ -1,5 +1,7 @@
 ---
-title: "关于"
+title: "~/notes/about"
+subtitle: "关于"
+body-classes: directory-page
 description: "一个简单的个人写作空间。"
 toc: false
 ---
@@ -10,13 +12,15 @@ toc: false
 
 这里会逐渐积累学习笔记、项目记录与感兴趣的问题。比起把所有事情一次讲完，我更喜欢把一个问题想清楚，再写下来。
 
-## 这里有什么
+## workspace/ {.directory-heading}
 
 - **笔记**：概念、公式和推导。
 - **代码**：小实验、实现过程与经验。
 - **思考**：暂时没有标准答案的问题。
 
-## 关于内容
+在 [projects/](projects.qmd) 查看项目，在 [links/](links.qmd) 认识其他写作者。
+
+## readme/ {.directory-heading}
 
 目前的两篇文章是用于展示排版和功能的示例。后续会替换为实际内容。
 
