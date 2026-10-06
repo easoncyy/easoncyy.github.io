@@ -2,7 +2,33 @@
 
 Quarto 构建的黑白极简个人网站：首页、博客归档、分类筛选、全文搜索、文章目录、LaTeX 数学公式、PDF 下载，以及 giscus 评论接入。
 
-## 本地使用（Windows / PowerShell）
+## 指令速查表
+
+所有命令在网站目录 `D:\Personal\Homepage` 的 PowerShell 中运行。
+
+| 目的 | 指令 | 说明 |
+| --- | --- | --- |
+| 进入网站目录 | `cd D:\Personal\Homepage` | 先进入此目录 |
+| 一键构建并发布 | `.\scripts\deploy.ps1` | 日常更新用这条；自动合并日志、构建网页、上传源码和网页并触发 Pages 部署；复用已有 PDF |
+| 一键发布并重建 PDF | `.\scripts\deploy.ps1 -RebuildPdf` | 修改了 `documents/math-notes.qmd` 时使用 |
+| 本地预览 | `.\scripts\preview.ps1` | 打开 `http://localhost:4200`；按 Ctrl+C 停止 |
+| 完整构建，不发布 | `.\scripts\build.ps1` | 生成 PDF 与网页到 `_site/` |
+| 只构建网页 | `.\scripts\build.ps1 -SkipPdf` | 已有 PDF 时跳过 PDF 编译；缺少 PDF 时仍会补建 |
+| 新建文字日志 | `python scripts/new-log.py "今天的记录" --text "正文"` | 自动生成时间戳与日志源文件 |
+| 新建带照片、链接的日志 | `python scripts/new-log.py "散步" --text "正文" --photo "D:\Photos\sky.jpg" --url "https://quarto.org/"` | 照片与链接均可选，可同时使用 |
+| 查看新建日志参数 | `python scripts/new-log.py --help` | 查看所有选项 |
+| 只合并日志 | `python scripts/render-log.py` | 生成合并文件；构建和预览已自动执行，通常无需单独运行 |
+| 只上传已构建的网站 | `python scripts/publish-github.py` | 不构建；通常直接用 `deploy.ps1` |
+| 登录 GitHub | `gh auth login` | 首次使用或登录失效时执行，账号需有网站仓库写入权限 |
+| 查看登录状态 | `gh auth status` | 检查 GitHub CLI 登录 |
+| 查看部署状态 | `gh run list --repo easoncyy/easoncyy.github.io --limit 3` | 查看最近的 Pages 部署任务 |
+| 配置评论 | `.\scripts\set-comments.ps1 -Repo '用户名/仓库名' -RepoId 'repo-id' -Category '分类名' -CategoryId 'category-id'` | 当前已配置，换评论仓库时才需要 |
+
+新建日志参数：标题是必填的位置参数；`--text` 指定正文，`--photo` 后可跟多个照片路径，`--url` 附带一个链接，`--slug` 指定目录后缀。后续更多链接和图片直接在 `.qmd` 正文中编辑。
+
+日常流程：**写/修改 `.qmd` → 可选本地预览 → `.\scripts\deploy.ps1`**。命令完成表示已经提交发布，Pages 部署还需要短暂等待，可通过上表指令查看进度。
+
+## 本地预览与构建
 
 在此目录打开 PowerShell：
 
@@ -25,6 +51,8 @@ Quarto 构建的黑白极简个人网站：首页、博客归档、分类筛选�
 | `blog.qmd` | 博客归档、分类与过滤 |
 | `projects.qmd` | 项目展示，包含简介、技术标签与 GitHub 链接 |
 | `links.qmd` | 友链列表及本站交换友链信息 |
+| `log.qmd` | 单页日志流的页面结构 |
+| `logs/` | 日志正文；支持目录中的 `index.qmd` 或直接放置 `.qmd` 文件 |
 | `styles.css` | 黑白视觉样式 |
 | `posts/` | 每个目录是一篇文章 |
 | `documents/math-notes.qmd` | 示例 PDF 的 Markdown 源文件 |
@@ -48,13 +76,30 @@ python scripts/new-log.py "今天出门走了走" --text "傍晚的天空很好�
 
 无需手动填写日期：使用命令时自动生成；手工新建文件只写 `title` 和正文也可以，第一次构建会自动写入时间，后续编辑和发布保持原时间。
 
+### 手工新建日志
+
+可以直接创建 `logs/today.qmd`，也可以创建 `logs/today/index.qmd`。文件名用英文、数字和连字符比较方便；每条日志使用不同名称。最简内容如下：
+
+```markdown
+---
+title: "今天出门走了走"
+---
+
+傍晚的天空很好看。
+
+![傍晚的天空](/assets/photos/sky.jpg)
+
+也读到一个[有趣的网站](https://quarto.org/)。
+```
+
+手工写日志时，把照片自行放到 `assets/photos/sky.jpg`（需要时创建目录）。正文直接显示在日志页，日期会在首次构建时自动写回源文件；无需手动填 `date` 或 `timestamp`。不要让直接放置的文件和子目录使用同一个名称，以免页面锚点重复。
+
 手工插图请放在 `assets/`，使用 `![说明](/assets/照片文件名.jpg)` 引用。日志源文件只用于合成单页，不生成独立网页。构建前脚本自动把完整正文按时间倒序合并到 `assets/log-entries.md`；请编辑 `logs/` 源文件，不要编辑自动合并文件。
 
 保存后发布：
 
 ```powershell
-.\scripts\build.ps1
-python scripts/publish-github.py
+.\scripts\deploy.ps1
 ```
 
 ## 写博客文章
@@ -107,7 +152,7 @@ $$
 
 1. 创建公开仓库 `easoncyy.github.io`，把本目录源码上传到 `main` 分支（不上传 `.tools/` 与 `_site/`）。
 2. 当前发布方式：将生成的网站上传到 `gh-pages` 分支，Pages 使用该分支的根目录。
-3. 本地更新文章后运行 `scripts/build.ps1`，再运行 `python scripts/publish-github.py`。需要 GitHub CLI (`gh`) 登录且有仓库写入权限；发布脚本通过 GitHub API 保留 main 历史并更新 gh-pages。
+3. 本地更新文章后运行 `.\scripts\deploy.ps1` 即可完成构建和发布。修改示例 PDF 源文件后使用 `.\scripts\deploy.ps1 -RebuildPdf`。需要 Python、Quarto 与 GitHub CLI (`gh`) 登录且有仓库写入权限；发布脚本通过 GitHub API 保留 main 历史并更新 gh-pages。
 4. 网站地址为 `https://easoncyy.github.io/`，已在 `_quarto.yml` 配置。
 5. 需要 RSS 时，在 `blog.qmd` 的 `listing` 下添加 `feed: true`。
 

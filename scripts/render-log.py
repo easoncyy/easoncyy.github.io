@@ -9,7 +9,8 @@ ROOT = Path(__file__).resolve().parent.parent
 
 def main():
     entries = []
-    for source in (ROOT / "logs").glob("*/index.qmd"):
+    sources = list((ROOT / "logs").glob("*.qmd")) + list((ROOT / "logs").glob("*/index.qmd"))
+    for source in sorted(sources):
         text = source.read_text(encoding="utf-8-sig")
         _, header, body = text.split("---", 2)
         metadata = {}
@@ -26,7 +27,8 @@ def main():
             # Persist the first publication time so later builds do not change it.
             header = header.rstrip() + "\ndate: " + json.dumps(timestamp) + "\n"
             source.write_text("---" + header + "---" + body, encoding="utf-8")
-        entries.append((metadata, body.strip(), source.parent.name))
+        slug = source.stem if source.parent == ROOT / "logs" else source.parent.name
+        entries.append((metadata, body.strip(), slug))
     entries.sort(key=lambda entry: entry[0]["date"], reverse=True)
     output = ["::: {.log-stream}"]
     for metadata, body, slug in entries:
