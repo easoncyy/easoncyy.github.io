@@ -135,14 +135,14 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "首页",
+    "title": "easoncyy",
     "section": "",
     "text": "~/notes · A PERSONAL WORKSPACE\n\n\n\n这里存放学习笔记、资源归档与偶尔的思考。给复杂的问题留一点空间，也给未来的自己留一份记录。\n\n阅读博客 → log/ 日志 → 关于本站 ↗"
   },
   {
     "objectID": "index.html#recent",
     "href": "index.html#recent",
-    "title": "首页",
+    "title": "easoncyy",
     "section": "recent/",
     "text": "recent/\n全部文章 →"
   },
@@ -164,15 +164,15 @@
     "objectID": "about.html#readme",
     "href": "about.html#readme",
     "title": "~/notes/about",
-    "section": "readme/",
-    "text": "readme/\n\n\nwhoami/\n我是 Eason Chen(easoncyy)，一个正在探索的人。\n\n学习背景：ZJU-AI-2026\n关注方向：ML, DL, 计算机系统\n日常爱好：骑自行车, 唱歌，数学\n加入组织：\n\n浙江大学竺可桢学院灵韵合唱团\n\n\n\n\ncurrently/\n\n正在学习：CSAPP，Linux, 基础课内课程\n正在做：Kaggle-RSNA 2026 CompetitionRSNA\n想尝试：并行式计算，嵌入式/机器人相关项目\n\n\n\ncontact/\n\nGitHub：easoncyy\nE-mail：easonchyy@gmail.com\n\n这里会逐渐积累学习笔记、项目记录与感兴趣的问题。我也会在这里发布一些个人的生活感想以及学习资源，欢迎友链。"
+    "section": "README/",
+    "text": "README/\n\n\nwhoami/\n我是 Eason Chen(easoncyy)，一个正在探索的人。\n\n学习背景：ZJU-AI-2026\n关注方向：ML, DL, 计算机系统\n日常爱好：骑自行车, 唱歌，数学\n加入组织：\n\n浙江大学竺可桢学院灵韵合唱团\n\n\n\n\ncurrently/\n\n正在学习：CSAPP，Linux, 基础课内课程\n正在做：Kaggle-RSNA 2026 Competition\n想尝试：并行式计算，嵌入式/机器人相关项目\n\n\n\ncontact/\n\nGitHub：easoncyy\nE-mail：easonchyy@gmail.com\n\n这里会逐渐积累学习笔记、项目记录与感兴趣的问题。我也会在这里发布一些个人的生活感想以及学习资源，欢迎友链。"
   },
   {
     "objectID": "about.html#workspace",
     "href": "about.html#workspace",
     "title": "~/notes/about",
     "section": "workspace/",
-    "text": "workspace/\n\nblog/ 博客：作业存档、感兴趣的话题探讨、学科研究思考。\nprojects/ 项目：正在维护的项目、已经完成的项目、考虑进行的项目。\nlog/ 日志：每天的一些状态留存以及想法记录。\n\n在 links/ 友链认识其他写作者。"
+    "text": "workspace/\n\nblog/ 博客：作业存档、感兴趣的话题探讨、学科研究思考。\nprojects/ 项目：正在维护的项目、已经完成的项目、考虑进行的项目。\nlog/ 日志：每天的一些状态留存以及想法记录。\nlibrary/ 图书馆：时常翻阅或感兴趣的书籍。\n\n在 links/ 友链认识其他写作者。"
   },
   {
     "objectID": "links.html",
