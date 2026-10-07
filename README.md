@@ -23,6 +23,7 @@ Quarto 构建的黑白极简个人网站：首页、博客归档、分类筛选�
 | 只上传已构建的网站 | `python scripts/publish-github.py` | 不构建；通常直接用 `deploy.ps1` |
 | 登录 GitHub | `gh auth login` | 首次使用或登录失效时执行，账号需有网站仓库写入权限 |
 | 查看登录状态 | `gh auth status` | 检查 GitHub CLI 登录 |
+| 检查真实发布权限 | `python scripts/check-github.py` | 使用当前凭据连接仓库 API，区分网络超时、凭据失效与权限不足 |
 | 查看部署状态 | `gh run list --repo easoncyy/easoncyy.github.io --limit 3` | 查看最近的 Pages 部署任务 |
 | 配置评论 | `.\scripts\set-comments.ps1 -Repo '用户名/仓库名' -RepoId 'repo-id' -Category '分类名' -CategoryId 'category-id'` | 当前已配置，换评论仓库时才需要 |
 | 导入 FIP 笔记 | `python scripts/import-fip.py` | 从指定的 Obsidian FIP 文件夹导入 4 篇已选择笔记；重复执行会用原笔记更新网站副本 |

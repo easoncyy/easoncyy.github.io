@@ -9,8 +9,8 @@ try {
             throw "Missing command: $commandName. Install it and reopen PowerShell."
         }
     }
-    gh auth status
-    if ($LASTEXITCODE -ne 0) { throw 'GitHub login required. Run: gh auth login' }
+    python scripts/check-github.py
+    if ($LASTEXITCODE -ne 0) { throw 'GitHub access check failed. See the specific network, credential or permission error above.' }
     & (Join-Path $PSScriptRoot 'build.ps1') -SkipPdf:(-not $RebuildPdf)
     & (Join-Path $PSScriptRoot 'sync.ps1') -Message $Message
     python scripts/publish-github.py

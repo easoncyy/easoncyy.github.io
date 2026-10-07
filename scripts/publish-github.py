@@ -7,29 +7,13 @@ No credentials are embedded in the source or passed on the command line.
 import base64
 import json
 import hashlib
-import subprocess
+from github_api import api
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 REPOSITORY = "easoncyy/easoncyy.github.io"
 API_ROOT = f"repos/{REPOSITORY}"
 KNOWN_BLOBS = set()
-
-
-def api(method, endpoint, payload=None, allow_missing=False):
-    command = ["gh", "api", endpoint, "--method", method]
-    if payload is not None:
-        command += ["--input", "-"]
-    result = subprocess.run(
-        command,
-        input=json.dumps(payload, ensure_ascii=False) if payload is not None else None,
-        capture_output=True, encoding="utf-8", cwd=ROOT,
-    )
-    if result.returncode:
-        if allow_missing and "HTTP 404" in result.stderr:
-            return None
-        raise RuntimeError(f"GitHub API {method} {endpoint}: {result.stderr.strip()}")
-    return json.loads(result.stdout) if result.stdout.strip() else None
 
 
 def publish_tree(branch, files, message, preserve_tree):
