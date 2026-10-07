@@ -22,7 +22,11 @@ try {
     git pull --rebase origin main
     if ($LASTEXITCODE -ne 0) { throw 'Sync stopped. Resolve the reported Git conflict or network error before retrying.' }
     git push origin HEAD:main
-    if ($LASTEXITCODE -ne 0) { throw 'Git push failed. The local commit is preserved; retry after resolving the error.' }
+    if ($LASTEXITCODE -ne 0) {
+        Write-Host 'Git transport failed. Trying GitHub Git API with commit hash verification.'
+        python (Join-Path $PSScriptRoot 'push-github-api.py')
+        if ($LASTEXITCODE -ne 0) { throw 'Git and API push failed. The local commits are preserved; see the error above.' }
+    }
     Write-Host 'Source committed and pushed to origin/main.'
 }
 finally { Pop-Location }
