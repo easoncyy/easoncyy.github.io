@@ -25,6 +25,8 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 .navbar { border-bottom: 1px solid var(--line); padding: 1.05rem 0; }
 .navbar-container { max-width: 1120px; margin: auto; padding-inline: 2rem; }
 .navbar-brand { font-family: var(--mono); font-size: 1.18rem; font-weight: 700; letter-spacing: -.05em; }
+.navbar .navbar-brand-logo { margin-right: .6rem; }
+.navbar .navbar-logo { width: 34px; height: 34px; max-height: none; }
 .navbar-nav { gap: 1.15rem; }
 .nav-path { font-family: var(--mono); font-size: .85rem; }
 .nav-caption { font-size: .72rem; margin-left: .45rem; color: var(--muted); }
@@ -113,6 +115,10 @@ blockquote { border-left: 2px solid #151515; color: var(--muted); padding-left: 
 #TOC .nav-link.active { color: #000 !important; border-left-color: #000 !important; }
 .nav-footer { border-top: 1px solid var(--line); font: .75rem var(--mono); color: var(--muted); padding-block: 1.3rem; }
 .nav-footer a { color: var(--muted); }
+.footer-repository { display: inline-flex; gap: .5rem; align-items: center; text-decoration: none; }
+.footer-repository .bi-github { font-size: 1.05rem; }
+.footer-repository:hover { color: var(--ink); }
+.footer-builder { margin-left: 1.4rem; }
 @media (max-width: 767px) {
   .navbar-container { padding-inline: 1rem; }
   .navbar-nav { gap: .25rem; padding-block: .7rem; }
