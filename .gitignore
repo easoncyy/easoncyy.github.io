@@ -8,6 +8,7 @@
 /.preview.log
 /临时/
 /archive/
+/photo_log/
 
 
 **/*.quarto_ipynb
