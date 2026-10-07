@@ -20,7 +20,18 @@ try {
     elseif ($changeStatus -ne 0) { throw 'Unable to inspect staged changes.' }
     else { Write-Host 'No new changes to commit.' }
     git pull --rebase origin main
-    if ($LASTEXITCODE -ne 0) { throw 'Sync stopped. Resolve the reported Git conflict or network error before retrying.' }
+    if ($LASTEXITCODE -ne 0) {
+        $rebaseMerge = git rev-parse --git-path rebase-merge
+        $rebaseApply = git rev-parse --git-path rebase-apply
+        if ((Test-Path -LiteralPath $rebaseMerge) -or (Test-Path -LiteralPath $rebaseApply)) {
+            throw 'Resolve the active Git rebase conflict before retrying.'
+        }
+        Write-Host 'Git fetch transport failed. Trying API; it will stop if histories diverged.'
+        python (Join-Path $PSScriptRoot 'push-github-api.py')
+        if ($LASTEXITCODE -ne 0) { throw 'Sync failed. Local commits are preserved; see the error above.' }
+        Write-Host 'Source committed and pushed through GitHub API.'
+        return
+    }
     git push origin HEAD:main
     if ($LASTEXITCODE -ne 0) {
         Write-Host 'Git transport failed. Trying GitHub Git API with commit hash verification.'
