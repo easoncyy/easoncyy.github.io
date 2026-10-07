@@ -1,7 +1,8 @@
 [
   {
-    "listing": "/blog.html",
+    "listing": "/index.html",
     "items": [
+      "/posts/20261007-fip-quiz1-recap/index.html",
       "/posts/hello-world/index.html",
       "/posts/math-notes/index.html",
       "/posts/20260929-fip-w04-sequence-search/index.html",
@@ -16,8 +17,9 @@
     ]
   },
   {
-    "listing": "/index.html",
+    "listing": "/blog.html",
     "items": [
+      "/posts/20261007-fip-quiz1-recap/index.html",
       "/posts/hello-world/index.html",
       "/posts/math-notes/index.html",
       "/posts/20260929-fip-w04-sequence-search/index.html",

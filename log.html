@@ -47,6 +47,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-dc090d8f6625c822698d9a6ee9cd1ac5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -170,6 +173,46 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <p id="log-count" class="log-count" aria-live="polite"></p>
 <div class="log-stream">
+<div id="20261007-235105-national-day-last-day" class="log-entry">
+
+<div class="log-stamp"><time datetime="2026-10-07T23:51:05+08:00">2026-10-07 23:51:05 +0800</time></div>
+
+<div class="log-payload">
+
+<p class="log-entry-title">国庆的最后一天</p>
+
+<p>忙碌又不一定充实的一天，早上返校整理整理东西后完成了《越人歌》的合唱作业，很喜欢这种空灵的感觉。然后骑车去工大边上和同学聚餐后直至下午才归，虽然回来的路上有点迷路，但是在一条名字叫赵伍路的路上骑行了很久，被浓浓的生活气息感染了。回来之后溜去尧坤楼录完了剩下两首歌后又去到图书馆六楼自修线性代数，人意外的不是很多！最后用一个3km跑步（实则就跑了一公里）打卡和明天的fip月考复习结束了流水账的一天。还不太确定怎么能把这个栏目写的不流水账一点呢？</p>
+<div class="log-photo-grid">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="./assets/log/20261007-235105-national-day-last-day/photo-01.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="聚餐的餐馆"><img src="./assets/log/20261007-235105-national-day-last-day/photo-01.jpg" class="img-fluid figure-img" alt="聚餐的餐馆"></a></p>
+<figcaption>聚餐的餐馆</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="./assets/log/20261007-235105-national-day-last-day/photo-02.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="夜晚的校门"><img src="./assets/log/20261007-235105-national-day-last-day/photo-02.jpg" class="img-fluid figure-img" alt="夜晚的校门"></a></p>
+<figcaption>夜晚的校门</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="./assets/log/20261007-235105-national-day-last-day/photo-03.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="超算队招新面试通知"><img src="./assets/log/20261007-235105-national-day-last-day/photo-03.png" class="img-fluid figure-img" alt="超算队招新面试通知"></a></p>
+<figcaption>超算队招新面试通知</figcaption>
+</figure>
+</div>
+</div>
+
+<details id="comments-20261007-235105-national-day-last-day" class="log-comments" data-comment-term="/logs/20261007-235105-national-day-last-day/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+</div>
+</div>
 <div id="20261006-235802-entry" class="log-entry">
 
 <div class="log-stamp"><time datetime="2026-10-06T23:58:02+08:00">2026-10-06 23:58:02 +0800</time></div>
@@ -632,6 +675,38 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </footer>
 <script defer="" src="./assets/comments-config.js"></script><script defer="" src="./assets/log-comments.js"></script><script defer="" src="./assets/log-stream.js"></script>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

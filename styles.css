@@ -182,3 +182,8 @@ blockquote { border-left: 2px solid #151515; color: var(--muted); padding-left: 
 .log-comments-status, .log-comments-fallback { font-size: .75rem !important; color: var(--muted); }
 .log-comments-frame { width: 100%; min-height: 200px; border: 0; display: block; }
 .log-comments-fallback { display: inline-block; margin-top: .5rem; }
+.log-photo-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .8rem; margin: 1.2rem 0; }
+.log-photo-grid figure, .log-photo-grid p { margin: 0; }
+.log-photo-grid img { width: 100%; height: 230px; object-fit: cover; }
+.log-photo-grid figcaption { font-size: .72rem; }
+@media (max-width: 767px) { .log-photo-grid { grid-template-columns: 1fr; } .log-photo-grid img { height: auto; max-height: 440px; object-fit: contain; } }
