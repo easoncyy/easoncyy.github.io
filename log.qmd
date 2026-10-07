@@ -7,7 +7,7 @@ lightbox: true
 format:
   html:
     include-after-body:
-      text: '<script defer src="/assets/log-stream.js"></script>'
+      text: '<script defer src="/assets/comments-config.js"></script><script defer src="/assets/log-comments.js"></script><script defer src="/assets/log-stream.js"></script>'
 ---
 
 ::: {.log-console}

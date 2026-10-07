@@ -45,6 +45,12 @@ def main():
             f'<p class="log-entry-title">{escape(metadata.get("title", ""))}</p>',
             '```',
             body,
+            '```{=html}',
+            f'<details id="comments-{escape(slug)}" class="log-comments" data-comment-term="/logs/{escape(slug)}/">',
+            '<summary>comments/ <span>评论</span></summary>',
+            '<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>',
+            '</details>',
+            '```',
             ':::',
             ':::',
         ])

@@ -167,3 +167,12 @@ blockquote { border-left: 2px solid #151515; color: var(--muted); padding-left: 
 .library-filter-count { font-size: .65rem; opacity: .7; margin-left: .3rem; }
 .library-subject-label, .library-count { font: .72rem var(--mono); color: var(--muted); }
 .library-entry[hidden], .library-subjects[hidden], #library-empty[hidden] { display: none !important; }
+.log-comments { margin-top: 1.2rem; border-top: 1px solid var(--line); padding-top: .7rem; }
+.log-comments summary { width: fit-content; cursor: pointer; font: .76rem/1.8 var(--mono); color: var(--muted); }
+.log-comments summary span { margin-left: .3rem; }
+.log-comments summary:hover, .log-comments[open] summary { color: var(--ink); }
+.log-comments summary:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+.log-comments-body { padding-top: 1rem; }
+.log-comments-status, .log-comments-fallback { font-size: .75rem !important; color: var(--muted); }
+.log-comments-frame { width: 100%; min-height: 200px; border: 0; display: block; }
+.log-comments-fallback { display: inline-block; margin-top: .5rem; }
