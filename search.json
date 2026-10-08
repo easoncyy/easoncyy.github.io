@@ -35,137 +35,256 @@
     "text": "写作方式\n本页正文使用 Markdown，公式使用 LaTeX 数学语法。完整的 Typst 或 LaTeX 文档也可以在编译成 PDF 后，以这种方式附在文章中。"
   },
   {
-    "objectID": "posts/20261007-fip-quiz1-recap/index.html",
-    "href": "posts/20261007-fip-quiz1-recap/index.html",
-    "title": "FIP 第一次小测复习速查",
+    "objectID": "posts/20261008-fip-quiz1/index.html",
+    "href": "posts/20261008-fip-quiz1/index.html",
+    "title": "FIP 第一次月考题目归档",
     "section": "",
-    "text": "这篇笔记用于课程智能程序设计基础(FIP)的第一次小测的复习。\n第一次小测"
+    "text": "项目\n内容\n\n\n\n\n时间\n15分钟（W4研讨课开头）\n\n\n形式\n闭卷、纸笔、禁止AI / 禁止联网 / 禁止计算器\n\n\n范围\nW1-W4（计算、枚举与减治、迭代与模拟、序列与查找；含当周阅读材料）\n\n\n题量\n4题，每题25分，满分100\n\n\n题型\n第1、3题写输出；第2、4题程序填空\n\n\n\n教室________ 学号________ 姓名________\n\n\n\n\n写输出：按程序实际打印的格式作答（含空格与换行）。\n程序填空：每空只填代码片段，不要重写整段程序。\n\n\n\n\n\n从键盘输入 12 时，写出下列程序的全部输出。\nnum = int(input())\nwhile True:\n    if num == 0:\n        break\n    if num % 2 == 0:\n        print(num, end=' ')\n    num -= 1\nprint()\n答：________\n\n\n\n\n两班分别有 a 人和 b 人，要排成人数相同的若干队，每队人数必须是两班人数的公约数。用从小到大枚举求最大可分队人数（即最大公约数）。\na, b = map(int, input().split())\nr = 1\nfor k in range(1, __①__):\n    if __②__:\n        r = k\nprint(r)\n输入样例 18 12 时应输出 6。 ①________ ②________\n\n\n\n\n快递柜隔口编号记在列表里。函数 first_ge 返回第一个不小于 limit 的编号的下标，没有则返回 -1。写出程序的全部输出（三行）。\ndef first_ge(nums: list, limit: int) -&gt; int:\n    for i in range(len(nums)):\n        if nums[i] &gt;= limit:\n            return i\n    return -1\n\nxs = [3, 8, 5, 12]\nprint(first_ge(xs, 8))\nprint(first_ge(xs, limit=10))\nprint(first_ge(nums=xs, limit=20))\n答： 第一行：________ 第二行：________ 第三行：________\n\n\n\n\n考古队连续五天测得陶片厚度（毫米），记在列表 thick 中。按注释填空。\nthick = [4, 9, 1, 6, 8]\nprint(thick[__①__])   # 从下标 0 起每隔一个取一个，结果为 [4, 1, 8]\nprint(thick[__②__])   # 反转得到新列表 [8, 6, 1, 9, 4]\nlast = thick[__③__]   # 取最后一个元素\nlabel = \"厚\" if last &gt;= 8 else \"薄\"\nprint(label)\n①________ ②________ ③________\n\n\n\n\n12 10 8 6 4 2（理论上最后还有一个空行）\n① min(a, b) + 1 ②a % k == 0 and b % k == 0\n第一行：1 第二行：3 第三行：-1\n①::2 ②::-1 ③-1"
   },
   {
-    "objectID": "posts/20261007-fip-quiz1-recap/index.html#理论课内容",
-    "href": "posts/20261007-fip-quiz1-recap/index.html#理论课内容",
-    "title": "FIP 第一次小测复习速查",
-    "section": "理论课内容",
-    "text": "理论课内容\n参考材料 1 计算.pdf\n\n预备知识\n\n命令式编程语言 命令是一行一行的，按照书写顺序依次执行\n\nPython程序保存在后缀为.py的文件中，可以被Python解释器执行。\n\n\nIPO环节\nIPO=输入（input），处理（process），输出（output） 这是一般的程序具备的三个基本环节。\n\n\n输出\n\n函数print()\n\nprint函数将字符串参数打印在终端中作为输出\n多个字符串参数使用逗号连接，默认使用空格连接\n可选参数end缺省为'\\n'即换行符，也即print()函数每次打印完内容会自动换行，可以通过设置end=' '或者其他字符来改变末尾的输出\n\n\n\n\n输入\n\n函数input()\n\n读入用户在终端中输入的一行作为函数的返回结果\n用户的键盘输入在按下[Enter]之后才会被函数读取\ninput()函数的返回值是一个字符串，即使输入的是数字\n可以向input()函数传递一个字符串参数作为终端中输入的提示词\n\nnumber = int(input(\"Enter your favorite number:\"))\n# 终端中显示效果如下\n# Enter your favorite number:\n\n\n\n变量\n变量是值的名字，在Python中使用=进行赋值。先算右边，再让左边的名字指向这个值；赋值后不是一直维持数学上的相等关系。\n\n变量命名规则\n\n必须以字母、下划线开头，后面可以跟任意数量的字母，数字，下划线\n变量名区分大小写\n变量名不能含有空格\n变量名不能以数字开头\n变量名不能与Python中的关键字（keywords）重复\n变量名不要与内置函数名重复；语法上允许，但会覆盖原来的名字，如sum = 0后不能直接调用sum()\n\n\n\n\n数据类型\nPython中数据类型有很多，之后会进行介绍，这里先讨论基本的三类\n\n函数type()\n\n将一个变量作为参数传递给type()函数，会返回变量储存值的数据类型，基本的有：\n\nint：整型\nfloat：浮点型\nstr：字符串 数据类型间的差异之后再进行介绍\n\n\n\n\n数据类型转换函数\n\nint()函数：把可以转变的字符串，或浮点型转换为整型，对于浮点数来说，这进行的是向零取整，即砍掉小数部分\nfloat()函数：把可以转变的字符串，或整型转换为浮点型\nstr()函数：把浮点型，整型转换为一个字符串\n\n\n\n\n计算\n\n表达式(expression)\n表达式是由运算数(oprand)和运算符(operator)组成的用于计算的式字\n\n\n运算数\nPython是动态类型语言，同一个变量可以先后指向不同类型的值。不同类型能否运算要看具体规则，如1 + 2.0可以，'1' + 2会报错。\n\n\n数字运算符\nPython中数字的运算符主要有如下类型\n\n\n\n符号\n计算\n结合\n\n\n\n\n+\n加法\n自左向右\n\n\n-\n减法\n自左向右\n\n\n*\n乘法\n自左向右\n\n\n/\n除法\n自左向右\n\n\n//\n向下取整的除法\n自左向右\n\n\n%\n取余\n自左向右\n\n\n**\n乘方\n自右向左\n\n\n\n\n乘方自右向左扫描的含义是2 ** 3 ** 2 == 2 ** (3 ** 2)\n\n\n\n\n赋值\n\n赋值语句把一个值和一个变量绑定在一起，我们说“把一个值赋给一个变量”，这是一个动态的操作，而不是一种静态的关系\n\n\n自增/自减\nPython中如下的写法是很常见的，含义就是一种快速的赋值写法。\ntotal = total + item\ntotal += item\ntotal -= item\ntotal /= item\n...\n\n\n\n关系运算符\nPython中关系运算符主要有如下类型\n\n\n\n运算符\n描述\n\n\n\n\n==\n判断等于\n\n\n!=\n判断不等于\n\n\n&gt;\n判断大于\n\n\n&lt;\n判断小于\n\n\n&gt;=\n判断大于等于\n\n\n&lt;=\n判断小于等于\n\n\n\n关系表达式的结果属于一种数据类型，称为布尔型(bool)。 布尔型只包含两个值True和False一般来说也可以用1和0代之。\n\n\n运算符的优先级\n\n算术运算符优先级高于关系运算符\n关系运算符优先级高于赋值运算符\n括号可以改变运算优先级\n\n\n\n循环语句\n\nwhile循环\nPython中while循环是一种基于条件的循环，当while关键字后面的表达式值为True时，就重复运行循环体中的代码\n\n\nbreak关键字\nbreak关键字可以跳出当前循环体所在的循环，注意，在有嵌套的情况下，break跳出的也只有一层循环。\n\n\n\n典型计算\n\n时间差\n先统一成分钟，再用//和%拆回小时、分钟。若题目允许跨过午夜，负差值加一天。\ndiff = h2 * 60 + m2 - (h1 * 60 + m1)\nif diff &lt; 0:\n    diff += 24 * 60\nprint(diff // 60, diff % 60)\n\n\n哨兵与平均数\ntotal, count = 0, 0\nwhile True:\n    x = int(input())\n    if x == -1:\n        break\n    total += x\n    count += 1\nif count &gt; 0:\n    print(total / count)\n\n初始化放在循环外；哨兵不参与计算，先判断再累加\n没有有效数据时不能直接除以count"
-  },
-  {
-    "objectID": "posts/20261007-fip-quiz1-recap/index.html#阅读材料补充",
-    "href": "posts/20261007-fip-quiz1-recap/index.html#阅读材料补充",
-    "title": "FIP 第一次小测复习速查",
-    "section": "阅读材料补充",
-    "text": "阅读材料补充\n\n一行读入多个数\nh, m = map(int, input().split())\n\ninput()读一整行，split()按空白拆开，map(int, ...)逐项转为整数\n左边变量个数要与输入段数一致，浮点数则用map(float, ...)\n\n\n\n格式化输出\nprint(1, 2, sep='-', end='!')  # 1-2!，不换行\nprint(f'{3.5:.2f}')           # 3.50\n\nsep控制参数之间的分隔，默认空格；end控制末尾，默认换行\n:.2f保留两位小数，格式化字符串前要加f\nprint()负责输出，返回值是None\n\n\n\n运算注意\n\n/得到浮点商，//向下取整；int()是向零截断，两者对负数可能不同\nint('3.5')报错；int(float('3.5'))得到3\n2 ** 3 ** 2是2 ** (3 ** 2)；-2 ** 2是-(2 ** 2)\n'1' + '2'得到'12'；'2' * 3得到'222'\n\n\n\n文件与终端\n\n.py是Python源文件；改代码后先保存再运行\n相对路径从当前工作目录出发，绝对路径从磁盘或根目录出发\ncd切换目录，dir或ls查看文件，python 文件名.py运行程序"
-  },
-  {
-    "objectID": "posts/20261007-fip-quiz1-recap/index.html#理论课内容-1",
-    "href": "posts/20261007-fip-quiz1-recap/index.html#理论课内容-1",
-    "title": "FIP 第一次小测复习速查",
-    "section": "理论课内容",
-    "text": "理论课内容\n参考材料 26FIP2 枚举与减治.pdf\n\n分支\nif condition:\n    ...\nelse:\n    ...\n\n条件成立执行if，否则执行else，两者只走一个\nelse与对应的if对齐；多个独立if则可能都执行\n\n\n\n逻辑运算\n\n\n\n运算符\n含义\n短路规则\n\n\n\n\nand\n都成立\n左边为假，不算右边\n\n\nor\n至少一个成立\n左边为真，不算右边\n\n\nnot\n取反\n优先级高于and和or\n\n\n\n0、空字符串、空容器、None为假。and、or返回选中的操作数，不一定是布尔值，如0 or 7得到7。\n\n\nfor与range\nfor i in range(2, 6):\n    print(i)  # 依次输出2、3、4、5\n\n\n\n写法\n产生的整数\n\n\n\n\nrange(4)\n0、1、2、3\n\n\nrange(2, 5)\n2、3、4\n\n\nrange(5, 0, -2)\n5、3、1\n\n\n\n\n左闭右开，不包含终点；步长不能为0，参数须为整数\nrange(5, 2)为空，不执行循环体\n次数已知用for，直到条件满足或读到哨兵用while\n\n\nbreak、continue与循环else\n\nbreak退出当前循环；continue跳过本轮剩余语句，进入下一轮\n循环正常结束时执行else；通过break退出则不执行\n空循环也会执行else；continue不会取消else\n\n\n\n\n枚举(Enumeration)\n逐一检查有限的候选解，不遗漏、不重复。最坏情况要考虑全部候选。\n\n素数判断\n若\\(n\\)有非平凡因子，至少一个不大于\\(\\sqrt n\\)，所以只需检查到平方根。\ndef is_prime(n):\n    if n &lt; 2:\n        return False\n    for d in range(2, int(n ** 0.5) + 1):\n        if n % d == 0:\n            return False\n    return True\n\n0、1不是素数；2是素数\n平方根边界要包含，如49须检查到7\n朴素检查到\\(n-1\\)为\\(O(n)\\)，平方根界为\\(O(\\sqrt n)\\)\n\n\n\n\n减治(Decrease and Conquer)\n每一步缩小问题规模，直到能直接求解。\n\n辗转相除法\n\\[\\gcd(a,b)=\\gcd(b,a\\bmod b)\\]\nwhile b != 0:\n    a, b = b, a % b\nprint(a)\n\n同步赋值先计算右边所有旧值，再赋给左边\n不能改成a = b后再b = a % b，后一句的a已经变了\n例如(48, 18) → (18, 12) → (12, 6) → (6, 0)，最大公约数为6\n若求最小公倍数，先保存原来的乘积，再除以最大公约数（此处考虑正整数）\n\n\n\n二分法求根\n连续函数在端点异号的区间内至少有一个根。每次取中点，保留仍包围根的一半。\n# 已知f连续，f(left) &lt; 0 &lt; f(right)\nwhile right - left &gt; eps:\n    mid = (left + right) / 2\n    if f(mid) &lt; 0:\n        left = mid\n    else:\n        right = mid\nroot = (left + right) / 2\n\n实数中点用/；每次区间宽度减半\n端点同号只表示不能用异号条件保证有根，不能断言无根\n区间宽度、残差abs(f(x))、相邻估计值差是不同的终止标准，看题目要求\n中点误差不超过最终区间宽度的一半；浮点数一般不用==判断近似相等"
-  },
-  {
-    "objectID": "posts/20261007-fip-quiz1-recap/index.html#阅读材料补充-1",
-    "href": "posts/20261007-fip-quiz1-recap/index.html#阅读材料补充-1",
-    "title": "FIP 第一次小测复习速查",
-    "section": "阅读材料补充",
-    "text": "阅读材料补充\n\nmath模块\nimport math\nmath.sqrt(9)   # 3.0\nmath.sin(math.pi / 2)  # 三角函数参数用弧度\nsqrt()返回浮点数，作为range上界时要转为整数并检查右开边界。eval()把字符串当表达式执行，不适合直接处理不可信输入；函数公式优先用def或lambda。"
-  },
-  {
-    "objectID": "posts/20261007-fip-quiz1-recap/index.html#理论课内容-2",
-    "href": "posts/20261007-fip-quiz1-recap/index.html#理论课内容-2",
-    "title": "FIP 第一次小测复习速查",
-    "section": "理论课内容",
-    "text": "理论课内容\n参考材料 26FIP3 迭代与模拟.pdf\n\n迭代\n反复执行同一个规则，前一步的结果作为下一步的输入，逐渐得到足够好的近似解。\n\n牛顿迭代法(Newton-Raphson Method)\n用当前点的切线与横轴交点作为下一次估计。 \\[x_{k+1}=x_k-\\frac{f(x_k)}{f'(x_k)}\\] 求\\(a\\)的平方根，令\\(f(x)=x^2-a\\)，得到： \\[x_{k+1}=\\frac{x_k+a/x_k}{2}\\]\ndef root(a, eps):\n    if a == 0:\n        return 0.0\n    x = max(1.0, a)\n    while abs(x * x - a) &gt;= eps:\n        x = (x + a / x) / 2\n    return x\n\n此函数假设a &gt;= 0、eps &gt; 0；a=0单独处理\n牛顿法需要导数，单根附近二阶收敛，但初值不合适可能不收敛\n分母不能为0；a / x不能写成a // x\n\n\n\n弦截法(Secant Method)\n用最近两个点的割线代替切线，不需要导数。 \\[x_{k+1}=x_k-f(x_k)\\frac{x_k-x_{k-1}}{f(x_k)-f(x_{k-1})}\\]\ndef secant(f, prev, curr, eps):\n    for _ in range(100):\n        fp, fc = f(prev), f(curr)\n        if abs(fc) &lt; eps:\n            return curr\n        if abs(fc - fp) &lt; 1e-12:\n            return None\n        nxt = curr - fc * (curr - prev) / (fc - fp)\n        prev, curr = curr, nxt\n    return None\n\n需要两个初值，不要求端点异号；也可能不收敛\n先检查当前点是否已满足精度，再检查分母\nf是可调用的函数，取值写f(x)，不能写eval(x)\n对\\(f(x)=x^2-2\\)，初值1、2，下一点为\\(4/3\\)\n\n\n\n\n函数\ndef add(a, b=1):\n    return a + b\n\ndef定义函数，调用后才执行函数体；return立即结束函数并交回结果\nprint是输出，不能代替return；没写return则返回None\n位置参数按顺序对应；关键字参数按名字对应；默认值在省略参数时使用\nreturn a, b返回元组，可以用x, y = 函数()接收\nlst: list、-&gt; int是类型注解，运行时默认不强制检查\n接收或返回函数的函数称为高阶函数，如secant(f, ...)\n\n\nlambda与条件表达式\nf = lambda x: x * x - 2\ndigit = int(a[-i]) if i &lt;= len(a) else 0\n\nlambda只能写表达式，结果自动返回\n值1 if 条件 else 值2只计算选中的一边，缺位时不会访问a[-i]\n默认参数在执行def时求值；默认列表会被多次调用共享，需要独立列表时常用None作默认值\n\n\n\n\n多分支\nif score &gt;= 90:\n    grade = 'A'\nelif score &gt;= 60:\n    grade = 'B'\nelse:\n    grade = 'C'\n从上到下判断，命中第一条就停止后续分支判断。\n\n\n蒙特卡洛方法\n在单位正方形随机取\\(n\\)个点，其中\\(m\\)个在四分之一单位圆内，估算\\(\\pi\\approx4m/n\\)。\nimport random\nrandom.seed(42)\nhits = 0\nfor _ in range(n):\n    x, y = random.random(), random.random()\n    if x * x + y * y &lt;= 1:\n        hits += 1\nprint(4 * hits / n)\n\nrandom.random()范围是[0, 1)；seed用于复现，不保证结果更准确\nn须大于0；样本更多通常统计误差更小，不保证每一次结果都更准\n典型误差量级为\\(O(1/\\sqrt n)\\)，误差缩小10倍通常需约100倍样本\n布丰投针在针长\\(L\\le d\\)时，相交概率\\(P=2L/(\\pi d)\\)\n\n\n\n大数加法\n字符串逐位模拟竖式，从个位算起：本位为total % 10，进位为total // 10。\ndef big_add(a, b):\n    result, carry, i = '', 0, 1\n    while i &lt;= max(len(a), len(b)) or carry:\n        da = int(a[-i]) if i &lt;= len(a) else 0\n        db = int(b[-i]) if i &lt;= len(b) else 0\n        total = da + db + carry\n        result = str(total % 10) + result\n        carry = total // 10\n        i += 1\n    return result\n\n假设输入为非空的非负整数字符串，短数缺位补0\n有最高位进位时须多算一轮；新数位放在结果左边\nPython的int本身支持任意精度，逐位模拟是为了学习算法\n字符串不可变；x ** 2并非用泰勒展开实现，不能据此判断效率\n\n\n\n字符串\n\ns[i]取字符，s[-1]取末尾；s[a:b]左闭右开；s[::-1]反转\n索引越界会报错，切片端点超出范围通常会截到有效部分\nsplit()拆分，strip()去两端空白，'分隔符'.join(序列)拼接字符串\nreplace()、upper()、lower()返回新字符串，不原地修改"
-  },
-  {
-    "objectID": "posts/20261007-fip-quiz1-recap/index.html#阅读材料补充-2",
-    "href": "posts/20261007-fip-quiz1-recap/index.html#阅读材料补充-2",
-    "title": "FIP 第一次小测复习速查",
-    "section": "阅读材料补充",
-    "text": "阅读材料补充\n\n多分支if-elif-else\n语句示例\nif condition1:\n    statement1\nelif condition2:\n    statement2\nelse:\n    statement_default\n作为一整个语句块，执行的顺序是从上到下，在第一个为真的分支执行过后跳过后续所有分支。 需要注意多分支语句与多个if语句判断的区别，多个独立的if语句会执行多次判断，而非互斥的分档。 条件顺序也是优先级，分档时一般从严到宽，如先判断&gt;= 90，再判断&gt;= 60，否则高分会提前落入低档。\n\n\n条件表达式\n形式为\n&lt;条件为真时的值&gt; if &lt;条件&gt; else &lt;条件为假时的值&gt;\n经典示例就是刚才写过的大数字符串加法缺位补零。 先判断条件，只计算选中的一侧；先访问越界下标，再用条件选择结果，仍会报错。\n\n\nlambda函数\nlambda函数是一种用一个语句就能定义的简单函数，形式为\nlambda &lt;自变量&gt;: &lt;表达式&gt;\n表达式也可以是条件表达式，此外还可以经常和map()函数嵌套使用\ndouble = list(map(lambda x: x * 2, lst))\n\n表达式的值自动作为返回值，不能写普通赋值或多条语句\n可以没有参数，也可以有多个参数：lambda: 0、lambda x, y: x + y\n逻辑较长或需要多分支时用def\n\n\n\n函数的参数\n\n位置参数(positional argument)\n按照顺序对应的参数。\n\n\n关键字参数(keyword argument)\n调用时将实参赋值给对应的形参。位置参数要写在关键字参数前面\n\n\n默认参数\n省略实参时使用默认值；普通参数列表中，有默认值的形参放在无默认值的形参后面。\ndef add(a, b=1):\n    return a + b\n\nadd(3)       # 4\nadd(3, b=2)  # 5\n默认值在执行def时只求值一次，默认列表会被多次调用共享。需要每次新建时用None：\ndef put(x, bag=None):\n    if bag is None:\n        bag = []\n    bag.append(x)\n    return bag\n\n\n可变数量参数\n定义处将多余实参打包，调用处才用*、**解包：\ndef f(*args):        # args是元组，收集多余位置实参\n    ...\n\ndef g(**kwargs):     # kwargs是字典，收集多余关键字实参\n    ...\n\n\n\n返回值与函数对象\n\nreturn 值返回结果并立即结束函数，后面的语句不执行\n单独return或执行到函数末尾，返回None\nreturn a, b返回元组(a, b)；打印结果不能代替返回结果\n传函数写f，调用函数写f(x)；公式字符串不是可调用的函数\n\n\n\n类型注解与文档字符串\ndef square(x: float) -&gt; float:\n    \"\"\"返回x的平方，如square(2.0)得到4.0。\"\"\"\n    return x * x\n\nx: float说明参数类型，-&gt; float说明返回类型，默认不强制检查\n函数体第一条字符串是文档字符串（docstring），可用help(square)查看\n文档写清做什么、边界和样例；assert 条件可检查约定，条件为假时抛出AssertionError（了解）\n\n\n\n作用域简介\n\n函数体内部的变量名是局部的，函数体外无法调用\n函数可以读取函数外的全局变量，但是要在函数内给全局名赋值，需要使用global关键字\n形参也是局部名\n局部名字不影响外部同名变量，但若传入列表后原地修改，外面也能看到变化\n\n\n\neval函数\neval(表达式字符串)允许把字符串当Python表达式进行上下文求值，但是注意只能是表达式，不能是语句。 不建议使用的原因有 - 字符串输入不安全容易被注入 - 公式和变量储存在字符串里容易类型或计算出错 - 报错不如正常函数清晰不易于调试\n\n\nrandom模块\n伪随机数模块，使用蒙特卡洛方法时需要调用。要注意设置种子保证环境一致。\n\n常用函数\n\nrandom.seed(a=None, version=2)\n初始化伪随机数生成器，相同的种子和后续调用序列可以获得同一串伪随机数。 需要注意的是一般种子在程序开头设置一次即可，在循环里反复设置会导致随机性丢失。\n\n\nrandom.random() -&gt; float\n获得\\([0.0, 1.0)\\)上均匀分布的浮点数\n\n\nrandom.uniform(a, b) -&gt; float\n获得a与b之间均匀分布的浮点数，是否包含端点是实现定义的。 端点顺序可以颠倒，另一端是否取到与浮点舍入有关。\n\n\nrandom.randint(a, b) -&gt; int\n返回闭区间上的随机整数。\n\n\nrandom.randrange(stop)/ random.randrange(start, stop[, step]) -&gt; int\n等价于choice(range(...))开闭规则和range一致。\n\n\nrandom.choice(seq)\n从非空序列中随机获取一个元素。 空序列会引发IndexError。\n\n\nrandom.shuffle(seq)\n原地随机打乱可变序列。 返回None，不要写lst = random.shuffle(lst)。\n\n\nrandom.sample(population, k) -&gt; list\n无放回随机抽样\\(k\\)个，返回抽中元素组成的新列表。 0 &lt;= k &lt;= len(population)，不改变原序列；总体有重复值时，抽出的值仍可能重复。\n\n\n\n其他函数（了解）\n\nrandom.choices(seq, k=n)：有放回抽样，返回列表\nrandom.gauss(mu, sigma)、random.normalvariate(mu, sigma)：正态分布\nrandom.getrandbits(k)：返回由k个随机比特构成的非负整数\nimport random后调用random.random()；只有from random import random后才能直接调用random()\n\n\n\n\n字符串补充\n\n字面量与转义\n\n单引号、双引号都可表示字符串，三引号可以跨行\n\\n换行，\\t制表，\\\\反斜杠；原始字符串如r'C:\\new'不把\\n当换行\n字符串遍历得到的是长度为1的字符串，计算数字前要转换，如int(ch)\ns += t得到新字符串再重新绑定名字，原字符串不变\n\n\n\n内置函数\n\n\n\n写法\n返回结果\n\n\n\n\nmin(s) / max(s)\n按码位最小 / 最大的字符；空串报错\n\n\nsorted(s)\n排序后的字符列表，拼回字符串用''.join(sorted(s))\n\n\nreversed(s)\n反向迭代器，拼回用''.join(reversed(s))\n\n\nord('A') / chr(65)\n字符转码位 / 码位转字符\n\n\nrepr(s)\n显示引号、转义等表示，便于看清内容（了解）\n\n\n\n\n\n查找与计数\n\n\n\n\n\n\n\n方法\n含义\n\n\n\n\nfind(sub) / rfind(sub)\n首次 / 末次出现的下标，找不到返回-1\n\n\nindex(sub) / rindex(sub)\n同上，但找不到抛出ValueError\n\n\ncount(sub)\n不重叠的出现次数，如'aaa'.count('aa')为1\n\n\nstartswith(prefix) / endswith(suffix)\n判断前缀 / 后缀，返回布尔值\n\n\n\n\n\n分割、拼接与去除\n\nsplit()按空白分割，连续空白合并；split(',')按指定分隔符分割，可能留下空串\nrsplit(sep, maxsplit)从右分割，splitlines()按行分割\npartition(sep)返回(前, 分隔符, 后)三元组，找不到时返回(原串, '', '')\nreplace(old, new, count)至多替换count次，省略则全部替换\njoin()的元素必须是字符串，''.join([1, 2])会报错\nstrip(chars)删除两端属于指定字符集合的字符，不是删除固定子串；删固定前后缀用removeprefix()、removesuffix()\n\n\n\n其他方法（了解）\n\ncapitalize()首字符大写，其余小写；title()单词首字母大写；swapcase()交换大小写；casefold()用于忽略大小写比较\nljust()、rjust()、center()对齐填充；zfill(width)左侧补零；expandtabs()展开制表符\nisalpha()、isalnum()、isspace()等返回布尔值；isdigit()为真不一定能转成int，如'²'，大数题通常限定'0'到'9'\nencode()把字符串转成字节串，decode()把字节串转回字符串\nformat(3.14159, '.2f')得到'3.14'；字符串也有.format()、.format_map()，日常优先用f-string\n\n\n\n\n迭代终止与数值测例\n\nabs(f(x)) &lt; eps检查残差；abs(x_new - x_old) &lt; eps检查变化量，不能随意替换\neps太大可能停得早，太小可能因浮点误差停不下来；可加最大迭代次数\n更新前检查危险分母：牛顿法的f'(x)，弦截法的f(curr) - f(prev)\n比较结果时统一公式、初值、eps；随机模拟还要统一seed和调用顺序\n手算一步、检查已知根和边界；大数加法注意'999' + '1'及不等长输入\n1e-3表示\\(10^{-3}\\)，不要写成1^-3"
-  },
-  {
-    "objectID": "posts/20261007-fip-quiz1-recap/index.html#理论课内容-3",
-    "href": "posts/20261007-fip-quiz1-recap/index.html#理论课内容-3",
-    "title": "FIP 第一次小测复习速查",
-    "section": "理论课内容",
-    "text": "理论课内容\n参考材料 26FIP4 序列与查找.pdf\n\n列表与元组\n\n列表[1, 2]是可变序列，字符串、元组是不可变序列\n“序列有序”表示有先后位置，不表示已经按值排序\n单元素元组必须有逗号：(1,)；(1)只是整数\n\n\n别名与浅拷贝\na = [1, 2]\nb = a        # 同一对象\nc = a[:]     # 新列表\nb[0] = 9\nprint(a, c)  # [9, 2] [1, 2]\n\na[:]、a.copy()、list(a)都是浅拷贝，内层可变对象仍共享\n[[0]] * 3的三个内层列表是同一对象；独立列表用[[0] for _ in range(3)]\n元组槽位不能替换，但其中引用的列表仍可修改\n\n\n\n基本操作\n\n\n\n写法\n含义 / 返回值\n\n\n\n\nappend(x)\n末尾追加一个元素，返回None\n\n\nextend(xs)\n把多个元素逐项追加，返回None\n\n\npop()\n删除并返回末尾元素\n\n\nremove(x)\n删除第一个相等元素；不存在报错\n\n\nindex(x)\n首次出现的下标；不存在报错\n\n\ncount(x)\n出现次数\n\n\nsort() / reverse()\n原地排序 / 反转，返回None\n\n\nsorted(xs)\n返回排序后的新列表\n\n\n\n\n列表的+、*产生新列表；+=对列表通常原地扩展\nin查列表中的单个元素，[1, 2] in [1, 2, 3]为False\n序列按字典序比较，共同前缀相同时短序列更小，不补零\n字符串比较按Unicode码位，不是按汉字笔画\n\n\n\n\n最值查找\n先用第一个值作初值，再逐个比较更新；不要随意用0作最大值初值，否则全为负数时出错。\ndef max_index(lst):\n    if not lst:\n        return -1\n    idx = 0\n    for i in range(1, len(lst)):\n        if lst[i] &gt; lst[idx]:\n            idx = i\n    return idx\n&gt;保留第一次最大值位置，&gt;=保留最后一次。min、max只返回值；空序列没有默认值时会报错。\n\n\n线性查找\ndef linear_search(lst, target):\n    for i in range(len(lst)):\n        if lst[i] == target:\n            return i\n    return -1\n\n无序表也能查，返回第一次匹配的位置\n最坏比较\\(n\\)次，时间\\(O(n)\\)；额外空间\\(O(1)\\)\n-1表示没找到，不能直接拿它索引列表，否则会读到最后一项\n\n\n\n二分查找\ndef binary_search(lst, target):\n    left, right = 0, len(lst) - 1\n    while left &lt;= right:\n        mid = left + (right - left) // 2\n        if lst[mid] == target:\n            return mid\n        elif lst[mid] &lt; target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1\n\n前提是按查找所用的规则升序排列；按时间排列不代表按温度值升序\n闭区间[left, right]，相等时还有一个候选，所以用&lt;=\n每次排除中点，用mid + 1或mid - 1；空表直接返回-1\n定长整数中left + right可能溢出，改用区间差算中点；Python整数通常无此问题\n重复值返回某一次匹配，不保证首次；要首次则记录答案后继续向左查\n\n\n手推边界\n对[2, 5]查5：先left=0, right=1, mid=0，再left=1, right=1, mid=1，返回1。若用left &lt; right，会漏掉最后一步。\n\n\n\n复杂度\n\n\n\n操作\n时间复杂度\n\n\n\n\n列表按下标读写\n\\(O(1)\\)\n\n\n列表末尾append、pop()\n均摊\\(O(1)\\)\n\n\n列表头删、中间插入、按值查找\n\\(O(n)\\)\n\n\n找最值、线性查找（最坏）\n\\(O(n)\\)\n\n\n二分查找（最坏）\n\\(O(\\log n)\\)\n\n\n一般排序\n\\(O(n\\log n)\\)\n\n\n\n\n大\\(O\\)表示规模增大时的增长趋势，不是具体秒数\n忽略常数和低阶项，如\\(3n+2\\)为\\(O(n)\\)；循环每次折半为\\(O(\\log n)\\)\n无序数据只查一次，通常直接线性查找；多次查找才考虑先排序\n排序后返回的是新顺序的下标，不自动对应原下标"
-  },
-  {
-    "objectID": "posts/20261007-fip-quiz1-recap/index.html#阅读材料补充-3",
-    "href": "posts/20261007-fip-quiz1-recap/index.html#阅读材料补充-3",
-    "title": "FIP 第一次小测复习速查",
-    "section": "阅读材料补充",
-    "text": "阅读材料补充\n\n遍历与函数参数\nfor i, x in enumerate([10, 20]):\n    print(i, x)\n\nenumerate同时给下标与元素；zip按位置配对，默认按最短序列结束\nany([])为False，all([])为True\n定义处*args收集额外位置参数为元组，**kwargs收集关键字参数为字典\n调用处*xs拆开序列，**d拆开关键字参数；max(xs)和max(*xs)调用形式不同\nkey=接收单参数函数，如sorted(xs, key=abs)；不能写sorted(xs, abs)\n\n\n\nMarkdown与公式\n\n#、##、###表示标题层级；代码块标明python\n表格表头后必须有分隔行；行内代码用反引号\n$O(n)$写行内公式，$$...$$写独立公式；多字符上下标用花括号，如x_{k+1}\n\n\n\nAI协作\nSDD：规格 → 草稿 → 审查 → 验证 → 固化。先写清输入、输出、边界、样例，再对照代码检查；随机题要复现则指定seed，查找题要说明是否有序与返回值约定。"
-  },
-  {
-    "objectID": "posts/20261007-fip-quiz1-recap/index.html#第1题-输出题25分",
-    "href": "posts/20261007-fip-quiz1-recap/index.html#第1题-输出题25分",
-    "title": "FIP 第一次小测复习速查",
-    "section": "第1题 输出题（25分）",
-    "text": "第1题 输出题（25分）\n输入为一行23 40。写出程序的全部输出，共5行，每行5分。\nh, m = map(int, input().split())\ndiff = 35 - (h * 60 + m)\nif diff &lt; 0:\n    diff += 24 * 60\nprint(diff)\nprint(diff // 60, diff % 60)\na, b = 2, 5\na, b = b, a + b\nprint(a, b)\nprint('3' * 2 + '0')\nprint(f'{diff / 60:.2f}')\n输出："
-  },
-  {
-    "objectID": "posts/20261007-fip-quiz1-recap/index.html#第2题-填空题25分",
-    "href": "posts/20261007-fip-quiz1-recap/index.html#第2题-填空题25分",
-    "title": "FIP 第一次小测复习速查",
-    "section": "第2题 填空题（25分）",
-    "text": "第2题 填空题（25分）\n补全函数，返回整数闭区间[lo, hi]中所有素数的总和。保证0 &lt;= lo &lt;= hi &lt;= 1000，不得调用素数库。每空5分。\ndef prime_sum(lo, hi):\n    total = 0\n    for n in range(max(2, lo), __1__):\n        for d in range(2, __2__):\n            if __3__:\n                __4__\n        else:\n            total += __5__\n    return total\n答案："
-  },
-  {
-    "objectID": "posts/20261007-fip-quiz1-recap/index.html#第3题-输出题25分",
-    "href": "posts/20261007-fip-quiz1-recap/index.html#第3题-输出题25分",
-    "title": "FIP 第一次小测复习速查",
-    "section": "第3题 输出题（25分）",
-    "text": "第3题 输出题（25分）\n写出程序的全部输出，共5行，每行5分。\na = [4, 2, 3]\nb = a\nc = a[:]\nb[1] = 8\nc.append(1)\nprint(a)\nprint(c[-1:0:-2])\nprint(a.sort())\nprint(b)\nprint((c[0], len(c)))\n输出："
-  },
-  {
-    "objectID": "posts/20261007-fip-quiz1-recap/index.html#第4题-填空题25分",
-    "href": "posts/20261007-fip-quiz1-recap/index.html#第4题-填空题25分",
-    "title": "FIP 第一次小测复习速查",
-    "section": "第4题 填空题（25分）",
-    "text": "第4题 填空题（25分）\n补全牛顿迭代函数，计算非负数a的平方根。保证0 &lt;= a &lt;= 100、1e-8 &lt;= eps &lt;= 0.1；当残差abs(x*x-a) &lt; eps时返回当前x，a=0直接返回0.0。每空5分。\ndef root(a, eps):\n    if __1__:\n        return 0.0\n    x = max(1.0, a)\n    while True:\n        if __2__:\n            return __3__\n        x = (x + __4__) / __5__\n答案："
-  },
-  {
-    "objectID": "posts/20260929-fip-w04-sequence-search/index.html",
-    "href": "posts/20260929-fip-w04-sequence-search/index.html",
-    "title": "FIP W04 · 序列与查找",
+    "objectID": "posts/20261008-fip-quiz1/index.html#答题说明",
+    "href": "posts/20261008-fip-quiz1/index.html#答题说明",
+    "title": "FIP 第一次月考题目归档",
     "section": "",
-    "text": "根据《26FIP4 序列与查找》课件，结合原笔记整理。主线：用列表保存一组数据，在其中找最值、按值查找，并根据数据是否有序选择算法。\n\n\n\n容器保存多个数据；序列中的元素有确定的先后顺序，可以按下标访问。字符串、列表、元组都是序列。这里的“有序”指位置有顺序，不等于元素已经按大小排序。\n字符串是不可变序列：不能执行 s[0] = '9'。s = s + '456' 会创建新字符串，再让变量指向它；反复拼接长字符串有额外开销。\n列表（list）是可变序列，可用 [] 创建，可追加和原地修改元素：\ntemps = []\ntemps.append(23.5)\ntemps.append(24.1)\ntemps.append(22.8)\ntemps[0] = 25.0\nprint(temps)  # [25.0, 24.1, 22.8]\nappend 是对象的方法，调用形式为 对象.方法(参数)；它原地修改列表，返回 None。\n\n\n列表变量是指向列表对象的名字。b = a 使两个名字指向同一个对象，所以通过 b 修改列表也会影响 a。若要新列表，可用 a[:]、a.copy() 或 list(a)，这些都是浅拷贝：内层可变对象仍可能共享。\na = [1, 2, 3]\nb = a\nb[0] = 99\nprint(a)          # [99, 2, 3]\nc = a[:]\nc[0] = 0\nprint(a, c)       # [99, 2, 3] [0, 2, 3]\n字符串不能原地改：s2 = s2 + '!' 使 s2 指向新对象，不改变原本也指向旧字符串的 s1。\n\n\n\n\n下标从 0 开始；最后一项是 lst[-1]，等同于 lst[len(lst)-1]；越界引发 IndexError。\nlst[a:b] 取下标 a 至 b-1，左闭右开；lst[:] 拷贝整表；lst[::-1] 生成反序的新列表。\nlst[i] = x 原地修改列表；字符串不支持这一操作。\n\nids = ['A', 'B', 'C', 'D']\nprint(ids[1:3])   # ['B', 'C']，不含下标 3\nfor item in ids:               # 只需元素\n    print(item)\nfor i, item in enumerate(ids): # 同时需要下标和元素\n    print(i, item)\n按下标修改元素时，可用 for i in range(len(lst))。遍历同一个列表时增删元素可能跳过或重复处理。\n\n\n\n\n\n\n\n\n\n\n操作\n含义与注意点\n\n\n\n\na + b\n连接同类序列，得到新对象，不修改原对象\n\n\na * n\n重复序列，得到新对象；[1, 2] * 3 得到 [1, 2, 1, 2, 1, 2]\n\n\nx in a / x not in a\n判断成员；[1, 2] in [1, 2, 3] 是 False，因为列表检查的是单个元素；字符串可以检查子串\n\n\nlen(a)\n元素个数\n\n\nmin(a) / max(a)\n最小 / 最大元素；空序列未给默认值时会报错\n\n\nsum(a)\n数值元素求和；不能直接用于字符串列表\n\n\n\n序列按字典序比较：从左到右找第一处不同元素；若已有元素都相同，则较短的序列更小。不会给较短的序列补零，例如 [2] &lt; [2, -1] 为 True。字符串逐字符按 Unicode 码位比较，而非按汉字笔画比较。\n列表还有 extend、insert、remove、pop、index、count、sort 等方法。lst.sort() 原地排序并返回 None；sorted(lst) 返回新列表。[[0]] * 3 的内层列表共享同一个对象；要独立列表可用 [[0] for _ in range(3)]。\n\n\n\n\n核心是首值作种子 → 遍历剩余元素 → 遇到更优值就更新。空列表需要事先约定处理方式。\ndef find_max(lst):\n    if not lst:\n        return None\n    current_max = lst[0]\n    for item in lst[1:]:\n        if item &gt; current_max:\n            current_max = item\n    return current_max\n\ndef find_max_index(lst):\n    if not lst:\n        return -1\n    max_idx = 0\n    for i in range(1, len(lst)):\n        if lst[i] &gt; lst[max_idx]:\n            max_idx = i\n    return max_idx\nfind_max_index 遇到相同最大值时保留第一次的下标；若判断改成 &gt;= 则保留最后一次。日常只需值时直接用 max(lst)。最坏情况下必须扫描所有元素，时间为 \\(O(n)\\)。\n原笔记中同时寻找最大值和所有位置的写法也很实用：\ndef max_with_idx(sequence: list) -&gt; tuple:\n    if not sequence:\n        raise ValueError('Empty sequence')\n    maximum = sequence[0]\n    indices = [0]\n    for i in range(1, len(sequence)):\n        if sequence[i] &gt; maximum:\n            maximum = sequence[i]\n            indices = [i]\n        elif sequence[i] == maximum:\n            indices.append(i)\n    return maximum, indices\nmax_with_idx([2, 5, 5, 1]) 得到 (5, [1, 2])：返回值是二元组，其中第二项是下标列表。\n\n\n\n无序列表中逐项比较目标；找到即返回下标，遍历结束还未找到则返回 -1。\ndef linear_search(lst: list, target) -&gt; int:\n    for i in range(len(lst)):\n        if lst[i] == target:\n            return i\n    return -1\n\ndef linear_search_all(lst, target):\n    result = []\n    for i, item in enumerate(lst):\n        if item == target:\n            result.append(i)\n    return tuple(result)\nlinear_search([4, 7, 4], 4) 返回 0，即第一次出现的位置；linear_search_all 返回全部位置。元组（tuple）是不可变序列，适合表示固定的一组返回值。单元素元组写作 (1,)，(1) 只是整数。\n最好情况第一项命中，时间 \\(O(1)\\)；目标在末尾或不存在时比较 \\(n\\) 次，最坏时间 \\(O(n)\\)。返回 -1 只是一种约定，也可设计为返回 None 或抛出异常。\n\n\nlinear_search(temps, 31.4) 按位置传参；linear_search(lst=temps, target=31.4) 按名字传参。lst: list 与 -&gt; int 是类型注解，Python 默认不会据此在运行时强制检查。\n\n\n\n\n前提：列表已经按与目标相同的比较规则升序排列。 温度按采集时间排列，不代表温度值升序；不能直接按温度二分。若先 sorted(temps)，返回的下标对应新列表，不再自动对应原采集时间。\n候选区间为闭区间 [left, right]。检查中点后，排除中点和不可能的一半：\ndef binary_search(lst, target):\n    left, right = 0, len(lst) - 1\n    while left &lt;= right:\n        mid = (left + right) // 2\n        if lst[mid] == target:\n            return mid\n        elif lst[mid] &lt; target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1\n在 [22.0, 23.5, 24.2, 26.8, 27.0, 28.1, 29.5, 31.4] 中找 27.0：\n\n\n\n轮次\nleft\nright\nmid\nlst[mid]\n下一步\n\n\n\n\n1\n0\n7\n3\n26.8\nleft = 4\n\n\n2\n4\n7\n5\n28.1\nright = 4\n\n\n3\n4\n4\n4\n27.0\n返回 4\n\n\n\nleft &lt;= right 确保最后一个候选位置也被检查；写成 left &lt; right 会漏掉单元素区间。边界更新用 mid + 1 / mid - 1，否则可能无法缩小区间。空列表初始 right = -1，直接返回 -1。有重复元素时，此实现返回某一个匹配下标，不保证第一个。\n每轮候选范围约减半，最坏时间 \\(O(\\log n)\\)，额外空间 \\(O(1)\\)。约一百万条已排序数据，二分查找最多约二十次比较；线性查找最坏约一百万次。\n\n\n\n大 \\(O\\) 描述输入规模增长时算法耗时的趋势，不是具体运行秒数。列表按下标访问为 \\(O(1)\\)；末尾 append 通常为均摊 \\(O(1)\\)；按值查找和找最值是 \\(O(n)\\)；二分查找是 \\(O(\\log n)\\)。\n\n\n\n\n\n\n\n\n\n方法\n数据前提\n最坏查找时间\n适合情况\n\n\n\n\n线性查找\n无需排序\n\\(O(n)\\)\n无序、小规模、只查一次\n\n\n二分查找\n已按目标比较规则排序\n\\(O(\\log n)\\)\n已有序，或值得预先排序后多次查找\n\n\n\n若数据无序且只查一次，先排序通常需 \\(O(n\\log n)\\)，再二分也难以抵消准备成本；直接线性查找更合适。若必须保留原下标，排序时还需一并保存原下标。\n\n复习时先问：数据按什么规则排序？查几次？需要值、是否存在，还是原列表下标？ 然后手推空表、单元素、首尾元素与不存在目标等边界。"
+    "text": "写输出：按程序实际打印的格式作答（含空格与换行）。\n程序填空：每空只填代码片段，不要重写整段程序。"
   },
   {
-    "objectID": "posts/20260929-fip-w04-sequence-search/index.html#序列与列表",
-    "href": "posts/20260929-fip-w04-sequence-search/index.html#序列与列表",
-    "title": "FIP W04 · 序列与查找",
+    "objectID": "posts/20261008-fip-quiz1/index.html#写输出25分",
+    "href": "posts/20261008-fip-quiz1/index.html#写输出25分",
+    "title": "FIP 第一次月考题目归档",
     "section": "",
-    "text": "容器保存多个数据；序列中的元素有确定的先后顺序，可以按下标访问。字符串、列表、元组都是序列。这里的“有序”指位置有顺序，不等于元素已经按大小排序。\n字符串是不可变序列：不能执行 s[0] = '9'。s = s + '456' 会创建新字符串，再让变量指向它；反复拼接长字符串有额外开销。\n列表（list）是可变序列，可用 [] 创建，可追加和原地修改元素：\ntemps = []\ntemps.append(23.5)\ntemps.append(24.1)\ntemps.append(22.8)\ntemps[0] = 25.0\nprint(temps)  # [25.0, 24.1, 22.8]\nappend 是对象的方法，调用形式为 对象.方法(参数)；它原地修改列表，返回 None。\n\n\n列表变量是指向列表对象的名字。b = a 使两个名字指向同一个对象，所以通过 b 修改列表也会影响 a。若要新列表，可用 a[:]、a.copy() 或 list(a)，这些都是浅拷贝：内层可变对象仍可能共享。\na = [1, 2, 3]\nb = a\nb[0] = 99\nprint(a)          # [99, 2, 3]\nc = a[:]\nc[0] = 0\nprint(a, c)       # [99, 2, 3] [0, 2, 3]\n字符串不能原地改：s2 = s2 + '!' 使 s2 指向新对象，不改变原本也指向旧字符串的 s1。\n\n\n\n\n下标从 0 开始；最后一项是 lst[-1]，等同于 lst[len(lst)-1]；越界引发 IndexError。\nlst[a:b] 取下标 a 至 b-1，左闭右开；lst[:] 拷贝整表；lst[::-1] 生成反序的新列表。\nlst[i] = x 原地修改列表；字符串不支持这一操作。\n\nids = ['A', 'B', 'C', 'D']\nprint(ids[1:3])   # ['B', 'C']，不含下标 3\nfor item in ids:               # 只需元素\n    print(item)\nfor i, item in enumerate(ids): # 同时需要下标和元素\n    print(i, item)\n按下标修改元素时，可用 for i in range(len(lst))。遍历同一个列表时增删元素可能跳过或重复处理。\n\n\n\n\n\n\n\n\n\n\n操作\n含义与注意点\n\n\n\n\na + b\n连接同类序列，得到新对象，不修改原对象\n\n\na * n\n重复序列，得到新对象；[1, 2] * 3 得到 [1, 2, 1, 2, 1, 2]\n\n\nx in a / x not in a\n判断成员；[1, 2] in [1, 2, 3] 是 False，因为列表检查的是单个元素；字符串可以检查子串\n\n\nlen(a)\n元素个数\n\n\nmin(a) / max(a)\n最小 / 最大元素；空序列未给默认值时会报错\n\n\nsum(a)\n数值元素求和；不能直接用于字符串列表\n\n\n\n序列按字典序比较：从左到右找第一处不同元素；若已有元素都相同，则较短的序列更小。不会给较短的序列补零，例如 [2] &lt; [2, -1] 为 True。字符串逐字符按 Unicode 码位比较，而非按汉字笔画比较。\n列表还有 extend、insert、remove、pop、index、count、sort 等方法。lst.sort() 原地排序并返回 None；sorted(lst) 返回新列表。[[0]] * 3 的内层列表共享同一个对象；要独立列表可用 [[0] for _ in range(3)]。"
+    "text": "从键盘输入 12 时，写出下列程序的全部输出。\nnum = int(input())\nwhile True:\n    if num == 0:\n        break\n    if num % 2 == 0:\n        print(num, end=' ')\n    num -= 1\nprint()\n答：________"
   },
   {
-    "objectID": "posts/20260929-fip-w04-sequence-search/index.html#找最值",
-    "href": "posts/20260929-fip-w04-sequence-search/index.html#找最值",
-    "title": "FIP W04 · 序列与查找",
+    "objectID": "posts/20261008-fip-quiz1/index.html#程序填空25分",
+    "href": "posts/20261008-fip-quiz1/index.html#程序填空25分",
+    "title": "FIP 第一次月考题目归档",
     "section": "",
-    "text": "核心是首值作种子 → 遍历剩余元素 → 遇到更优值就更新。空列表需要事先约定处理方式。\ndef find_max(lst):\n    if not lst:\n        return None\n    current_max = lst[0]\n    for item in lst[1:]:\n        if item &gt; current_max:\n            current_max = item\n    return current_max\n\ndef find_max_index(lst):\n    if not lst:\n        return -1\n    max_idx = 0\n    for i in range(1, len(lst)):\n        if lst[i] &gt; lst[max_idx]:\n            max_idx = i\n    return max_idx\nfind_max_index 遇到相同最大值时保留第一次的下标；若判断改成 &gt;= 则保留最后一次。日常只需值时直接用 max(lst)。最坏情况下必须扫描所有元素，时间为 \\(O(n)\\)。\n原笔记中同时寻找最大值和所有位置的写法也很实用：\ndef max_with_idx(sequence: list) -&gt; tuple:\n    if not sequence:\n        raise ValueError('Empty sequence')\n    maximum = sequence[0]\n    indices = [0]\n    for i in range(1, len(sequence)):\n        if sequence[i] &gt; maximum:\n            maximum = sequence[i]\n            indices = [i]\n        elif sequence[i] == maximum:\n            indices.append(i)\n    return maximum, indices\nmax_with_idx([2, 5, 5, 1]) 得到 (5, [1, 2])：返回值是二元组，其中第二项是下标列表。"
+    "text": "两班分别有 a 人和 b 人，要排成人数相同的若干队，每队人数必须是两班人数的公约数。用从小到大枚举求最大可分队人数（即最大公约数）。\na, b = map(int, input().split())\nr = 1\nfor k in range(1, __①__):\n    if __②__:\n        r = k\nprint(r)\n输入样例 18 12 时应输出 6。 ①________ ②________"
   },
   {
-    "objectID": "posts/20260929-fip-w04-sequence-search/index.html#线性查找",
-    "href": "posts/20260929-fip-w04-sequence-search/index.html#线性查找",
-    "title": "FIP W04 · 序列与查找",
+    "objectID": "posts/20261008-fip-quiz1/index.html#写输出25分-1",
+    "href": "posts/20261008-fip-quiz1/index.html#写输出25分-1",
+    "title": "FIP 第一次月考题目归档",
     "section": "",
-    "text": "无序列表中逐项比较目标；找到即返回下标，遍历结束还未找到则返回 -1。\ndef linear_search(lst: list, target) -&gt; int:\n    for i in range(len(lst)):\n        if lst[i] == target:\n            return i\n    return -1\n\ndef linear_search_all(lst, target):\n    result = []\n    for i, item in enumerate(lst):\n        if item == target:\n            result.append(i)\n    return tuple(result)\nlinear_search([4, 7, 4], 4) 返回 0，即第一次出现的位置；linear_search_all 返回全部位置。元组（tuple）是不可变序列，适合表示固定的一组返回值。单元素元组写作 (1,)，(1) 只是整数。\n最好情况第一项命中，时间 \\(O(1)\\)；目标在末尾或不存在时比较 \\(n\\) 次，最坏时间 \\(O(n)\\)。返回 -1 只是一种约定，也可设计为返回 None 或抛出异常。\n\n\nlinear_search(temps, 31.4) 按位置传参；linear_search(lst=temps, target=31.4) 按名字传参。lst: list 与 -&gt; int 是类型注解，Python 默认不会据此在运行时强制检查。"
+    "text": "快递柜隔口编号记在列表里。函数 first_ge 返回第一个不小于 limit 的编号的下标，没有则返回 -1。写出程序的全部输出（三行）。\ndef first_ge(nums: list, limit: int) -&gt; int:\n    for i in range(len(nums)):\n        if nums[i] &gt;= limit:\n            return i\n    return -1\n\nxs = [3, 8, 5, 12]\nprint(first_ge(xs, 8))\nprint(first_ge(xs, limit=10))\nprint(first_ge(nums=xs, limit=20))\n答： 第一行：________ 第二行：________ 第三行：________"
   },
   {
-    "objectID": "posts/20260929-fip-w04-sequence-search/index.html#二分查找",
-    "href": "posts/20260929-fip-w04-sequence-search/index.html#二分查找",
-    "title": "FIP W04 · 序列与查找",
+    "objectID": "posts/20261008-fip-quiz1/index.html#程序填空25分-1",
+    "href": "posts/20261008-fip-quiz1/index.html#程序填空25分-1",
+    "title": "FIP 第一次月考题目归档",
     "section": "",
-    "text": "前提：列表已经按与目标相同的比较规则升序排列。 温度按采集时间排列，不代表温度值升序；不能直接按温度二分。若先 sorted(temps)，返回的下标对应新列表，不再自动对应原采集时间。\n候选区间为闭区间 [left, right]。检查中点后，排除中点和不可能的一半：\ndef binary_search(lst, target):\n    left, right = 0, len(lst) - 1\n    while left &lt;= right:\n        mid = (left + right) // 2\n        if lst[mid] == target:\n            return mid\n        elif lst[mid] &lt; target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1\n在 [22.0, 23.5, 24.2, 26.8, 27.0, 28.1, 29.5, 31.4] 中找 27.0：\n\n\n\n轮次\nleft\nright\nmid\nlst[mid]\n下一步\n\n\n\n\n1\n0\n7\n3\n26.8\nleft = 4\n\n\n2\n4\n7\n5\n28.1\nright = 4\n\n\n3\n4\n4\n4\n27.0\n返回 4\n\n\n\nleft &lt;= right 确保最后一个候选位置也被检查；写成 left &lt; right 会漏掉单元素区间。边界更新用 mid + 1 / mid - 1，否则可能无法缩小区间。空列表初始 right = -1，直接返回 -1。有重复元素时，此实现返回某一个匹配下标，不保证第一个。\n每轮候选范围约减半，最坏时间 \\(O(\\log n)\\)，额外空间 \\(O(1)\\)。约一百万条已排序数据，二分查找最多约二十次比较；线性查找最坏约一百万次。"
+    "text": "考古队连续五天测得陶片厚度（毫米），记在列表 thick 中。按注释填空。\nthick = [4, 9, 1, 6, 8]\nprint(thick[__①__])   # 从下标 0 起每隔一个取一个，结果为 [4, 1, 8]\nprint(thick[__②__])   # 反转得到新列表 [8, 6, 1, 9, 4]\nlast = thick[__③__]   # 取最后一个元素\nlabel = \"厚\" if last &gt;= 8 else \"薄\"\nprint(label)\n①________ ②________ ③________"
   },
   {
-    "objectID": "posts/20260929-fip-w04-sequence-search/index.html#复杂度与方法选择",
-    "href": "posts/20260929-fip-w04-sequence-search/index.html#复杂度与方法选择",
-    "title": "FIP W04 · 序列与查找",
+    "objectID": "posts/20261008-fip-quiz1/index.html#参考答案",
+    "href": "posts/20261008-fip-quiz1/index.html#参考答案",
+    "title": "FIP 第一次月考题目归档",
     "section": "",
-    "text": "大 \\(O\\) 描述输入规模增长时算法耗时的趋势，不是具体运行秒数。列表按下标访问为 \\(O(1)\\)；末尾 append 通常为均摊 \\(O(1)\\)；按值查找和找最值是 \\(O(n)\\)；二分查找是 \\(O(\\log n)\\)。\n\n\n\n\n\n\n\n\n\n方法\n数据前提\n最坏查找时间\n适合情况\n\n\n\n\n线性查找\n无需排序\n\\(O(n)\\)\n无序、小规模、只查一次\n\n\n二分查找\n已按目标比较规则排序\n\\(O(\\log n)\\)\n已有序，或值得预先排序后多次查找\n\n\n\n若数据无序且只查一次，先排序通常需 \\(O(n\\log n)\\)，再二分也难以抵消准备成本；直接线性查找更合适。若必须保留原下标，排序时还需一并保存原下标。\n\n复习时先问：数据按什么规则排序？查几次？需要值、是否存在，还是原列表下标？ 然后手推空表、单元素、首尾元素与不存在目标等边界。"
+    "text": "12 10 8 6 4 2（理论上最后还有一个空行）\n① min(a, b) + 1 ②a % k == 0 and b % k == 0\n第一行：1 第二行：3 第三行：-1\n①::2 ②::-1 ③-1"
+  },
+  {
+    "objectID": "posts/20260929-linear-algebra-w03-homework/index.html",
+    "href": "posts/20260929-linear-algebra-w03-homework/index.html",
+    "title": "线性代数 W03 · 作业归档",
+    "section": "",
+    "text": "本篇归档保存线性代数 W03 的作业 PDF。归档日期采用文档首页标注的作业日期。\n\n2026-linear-algebra-w03-homework.pdf\n在线阅读 PDF ↗ · 下载 PDF ↓\n\n\n如果浏览器不支持内嵌 PDF，可使用上方阅读或下载链接。"
+  },
+  {
+    "objectID": "posts/20260928-calculus-w03-homework/index.html",
+    "href": "posts/20260928-calculus-w03-homework/index.html",
+    "title": "微积分 W03 · 作业归档",
+    "section": "",
+    "text": "本篇归档保存微积分 W03 的作业 PDF。归档日期采用文档首页标注的作业日期。\n\n2026-calculus-w03-homework.pdf\n在线阅读 PDF ↗ · 下载 PDF ↓\n\n\n如果浏览器不支持内嵌 PDF，可使用上方阅读或下载链接。"
+  },
+  {
+    "objectID": "posts/20260922-fip-w03-iteration-simulation/index.html",
+    "href": "posts/20260922-fip-w03-iteration-simulation/index.html",
+    "title": "FIP W03 · 迭代与模拟",
+    "section": "",
+    "text": "无法或没必要得到精确解的时候，如何求出足够好的近似解？\n\n\n迭代修正（牛顿迭代法、弦截法）\n模拟：用随机采样或逐位过程， 间接得到可用答案\n\n\n\n\n二分法的收敛是\\(log_2 (N)\\)级别的，下面考虑更高效的方法 - 牛顿迭代法在方程的单根附近具备平方级别的收敛速度\n\n考虑函数\\(f(x)\\)在区间上连续可导，求方程\\(f(x) = 0\\)的精确根\\(x^*\\). 由于无法直接求解，我们构造迭代序列 \\[x_0, x_1, x_1, ..., x_n, ...\\] 使其逐步逼近真实根\\(x^*\\). 终止条件考虑为: \\[\n|f(x_n) - f(x_{n - 1})| &lt; \\epsilon\n\\] #### 核心思想：以曲代直 &gt; 用切线代替曲线，用线性问题逼近非线性问题。\n\\[\nl:y - y_n = f'(x_n)(x-x_n)\n\\] \\[\nx_{n+1} = x_n - \\frac{f(x_n)}{f'(x_n)}\n\\] - 为什么这么快？：因为切线不仅匹配了函数值，还匹配了变化率（斜率）。相当于⽤“一阶信息”做了最优局部近似，每步迭代都把误差⾥的线性主导项消除了，剩下的只是高阶小量。 #### 问题 - 牛顿法在一些大规模运算上成本高 - 牛顿法只能处理非黑箱函数 - 牛顿迭代法解析困难，手动求导困难\n能否只使用函数值，不使用导函数处理这一问题？ - 用割线斜率即可 ## 弦截法 \\[\nx_{n+1} = x_n - f(x_n) \\frac{x_n - x_{n-1}}{f(x_n)-f(x_{n-1})}\n\\] - 需要两个初始值（不需要包围根） - 每次只需要一次函数求值 - 不需要导数，用差商近似了导数\n# f = x ^ 2 - 2\neps = 1e-3\nx_prev, x_curr = 1.0, 2.0\nwhile True:\n    f_prev = x_prev ** 2 - 2\n    f_curr = x_curr ** 2 - 2\n    if abs(f_curr) &lt; eps:\n        break\n    x_prev, x_curr = x_curr, x_curr - f_curr * (x_curr - x_prev) / (f_curr - f_prev)\nprint(x_curr)\n\neval(x_prev) 把字符串当表达式求值，建议替换为lambda函数\n\n\n\n\n\n函数可以被视为一种可以产生作用的操作\n函数也可以被视为一种获得值的工具 以上两种操作对应着两类不同的函数\n\n\n\n\nif Condition1:\n    Statement1\nelif Condition2:\n    Statement2\nelse:\n    Statement3"
+  },
+  {
+    "objectID": "posts/20260922-fip-w03-iteration-simulation/index.html#newton-raphson-method",
+    "href": "posts/20260922-fip-w03-iteration-simulation/index.html#newton-raphson-method",
+    "title": "FIP W03 · 迭代与模拟",
+    "section": "",
+    "text": "二分法的收敛是\\(log_2 (N)\\)级别的，下面考虑更高效的方法 - 牛顿迭代法在方程的单根附近具备平方级别的收敛速度\n\n考虑函数\\(f(x)\\)在区间上连续可导，求方程\\(f(x) = 0\\)的精确根\\(x^*\\). 由于无法直接求解，我们构造迭代序列 \\[x_0, x_1, x_1, ..., x_n, ...\\] 使其逐步逼近真实根\\(x^*\\). 终止条件考虑为: \\[\n|f(x_n) - f(x_{n - 1})| &lt; \\epsilon\n\\] #### 核心思想：以曲代直 &gt; 用切线代替曲线，用线性问题逼近非线性问题。\n\\[\nl:y - y_n = f'(x_n)(x-x_n)\n\\] \\[\nx_{n+1} = x_n - \\frac{f(x_n)}{f'(x_n)}\n\\] - 为什么这么快？：因为切线不仅匹配了函数值，还匹配了变化率（斜率）。相当于⽤“一阶信息”做了最优局部近似，每步迭代都把误差⾥的线性主导项消除了，剩下的只是高阶小量。 #### 问题 - 牛顿法在一些大规模运算上成本高 - 牛顿法只能处理非黑箱函数 - 牛顿迭代法解析困难，手动求导困难\n能否只使用函数值，不使用导函数处理这一问题？ - 用割线斜率即可 ## 弦截法 \\[\nx_{n+1} = x_n - f(x_n) \\frac{x_n - x_{n-1}}{f(x_n)-f(x_{n-1})}\n\\] - 需要两个初始值（不需要包围根） - 每次只需要一次函数求值 - 不需要导数，用差商近似了导数\n# f = x ^ 2 - 2\neps = 1e-3\nx_prev, x_curr = 1.0, 2.0\nwhile True:\n    f_prev = x_prev ** 2 - 2\n    f_curr = x_curr ** 2 - 2\n    if abs(f_curr) &lt; eps:\n        break\n    x_prev, x_curr = x_curr, x_curr - f_curr * (x_curr - x_prev) / (f_curr - f_prev)\nprint(x_curr)\n\neval(x_prev) 把字符串当表达式求值，建议替换为lambda函数"
+  },
+  {
+    "objectID": "posts/20260922-fip-w03-iteration-simulation/index.html#函数",
+    "href": "posts/20260922-fip-w03-iteration-simulation/index.html#函数",
+    "title": "FIP W03 · 迭代与模拟",
+    "section": "",
+    "text": "函数可以被视为一种可以产生作用的操作\n函数也可以被视为一种获得值的工具 以上两种操作对应着两类不同的函数"
+  },
+  {
+    "objectID": "posts/20260922-fip-w03-iteration-simulation/index.html#多分支",
+    "href": "posts/20260922-fip-w03-iteration-simulation/index.html#多分支",
+    "title": "FIP W03 · 迭代与模拟",
+    "section": "",
+    "text": "if Condition1:\n    Statement1\nelif Condition2:\n    Statement2\nelse:\n    Statement3"
+  },
+  {
+    "objectID": "posts/20260922-fip-w03-iteration-simulation/index.html#蒙特卡洛方法",
+    "href": "posts/20260922-fip-w03-iteration-simulation/index.html#蒙特卡洛方法",
+    "title": "FIP W03 · 迭代与模拟",
+    "section": "蒙特卡洛方法",
+    "text": "蒙特卡洛方法\n\n布丰投针\n1777年，法国博物学家布丰提出⼀个奇怪的问题：向画满平行线的桌面上随机扔⼀根针，针与线相交的概率是多少？ \\[\nP = \\frac{2L}{\\pi d}\n\\] ### Python中的随机数实现\nimport random\n\nfor _ in range(10):\n    a = random.random() # 均匀分布[0, 1)\n    print(a)\n\n\n蒙特卡洛算法步骤\n\n生成N个均匀随机数点\n判断每个点是否在圆内\n统计圆内点数M\n估算pi = 4M/N\n\nfrom random import random\nm = 0\nn = int(input())\nfor _ in range(n):\n    x = random()\n    y = random()\n    if x * x + y * y &lt;= 1: # 注意，x ** 2用的是泰勒展开，计算速度比 x * x慢很多\n        m += 1\nprint(4 * m / n)\n\n\n\n课堂笔记插图\n\n\n\n“不要陷入分类学的泥沼。”——wk"
+  },
+  {
+    "objectID": "posts/20260922-fip-w03-iteration-simulation/index.html#大数运算",
+    "href": "posts/20260922-fip-w03-iteration-simulation/index.html#大数运算",
+    "title": "FIP W03 · 迭代与模拟",
+    "section": "大数运算",
+    "text": "大数运算\n\n当数的范围超出int/double的表示范围，我们可以使用字符串模拟大数存储 ### 存储方案：字符串\n\ndef big_add(a, b): \n    result = \"\" \n    carry = 0 \n    i = 1 # i=1 对应个位 a[-1]，i=2 对应十位 a[-2]，… \n    while i &lt;= max(len(a), len(b)) or carry:\n        digit_a = int(a[-i]) \n        if i &lt;= len(a) else 0\n        digit_b = int(b[-i]) if i &lt;= len(b) else 0\n        total = digit_a + digit_b + carry\n        result = str(total % 10) + result # 从个位往高位算，新数位接在左边 \n        carry = total // 10 \n        i += 1 \n        \n    return result"
+  },
+  {
+    "objectID": "posts/20260920-linear-algebra-w01-w02-homework/index.html",
+    "href": "posts/20260920-linear-algebra-w01-w02-homework/index.html",
+    "title": "线性代数 W01–W02 · 作业归档",
+    "section": "",
+    "text": "本篇归档保存线性代数 W01–W02 的作业 PDF。归档日期采用文档首页标注的作业日期。\n\n2026-linear-algebra-w01-w02-homework.pdf\n在线阅读 PDF ↗ · 下载 PDF ↓\n\n\n如果浏览器不支持内嵌 PDF，可使用上方阅读或下载链接。"
+  },
+  {
+    "objectID": "posts/20260916-calculus-w01-homework/index.html",
+    "href": "posts/20260916-calculus-w01-homework/index.html",
+    "title": "微积分 W01 · 作业归档",
+    "section": "",
+    "text": "本篇归档保存微积分 W01 的作业 PDF。归档日期采用文档首页标注的作业日期。\n\n2026-calculus-w01-homework.pdf\n在线阅读 PDF ↗ · 下载 PDF ↓\n\n\n如果浏览器不支持内嵌 PDF，可使用上方阅读或下载链接。"
+  },
+  {
+    "objectID": "log.html",
+    "href": "log.html",
+    "title": "~/notes/log",
+    "section": "",
+    "text": "$ tail -f ~/notes/log\n生活片段、照片与值得留下的链接。\nhost=easoncyy.github.io · timezone=UTC+08:00 · mode=append\n\n\n  grep \n\n\n\n\n\n2026-10-07 23:51:05 +0800\n\n\n\n国庆的最后一天\n\n忙碌又不一定充实的一天，早上返校整理整理东西后完成了《越人歌》的合唱作业，很喜欢这种空灵的感觉。然后骑车去工大边上和同学聚餐后直至下午才归，虽然回来的路上有点迷路，但是在一条名字叫赵伍路的路上骑行了很久，被浓浓的生活气息感染了。回来之后溜去尧坤楼录完了剩下两首歌后又去到图书馆六楼自修线性代数，人意外的不是很多！最后用一个3km跑步（实则就跑了一公里）打卡和明天的fip月考复习结束了流水账的一天。还不太确定怎么能把这个栏目写的不流水账一点呢？\n\n\n\n\n吃饭的餐馆\n\n\n\n\n\n夜晚的校门\n\n\n\n\n\n超算队招新录取通知\n\n\n\n\n\n\ncomments/ 评论\n\n展开后加载评论，使用 GitHub 账号参与讨论。\n\n\n\n\n\n\n\n2026-10-06 23:58:02 +0800\n\n\n\n作为开始的一天\n\n结束了在老家吃吃喝喝的三天多时光，也是在缝隙里用Codex做了一个个人网页，一切都还比较简陋，所以今天的日志也简陋一点吧（虽然这个东西叫log但是好像实际上是journal啊喂）\n\n\n\ncomments/ 评论\n\n展开后加载评论，使用 GitHub 账号参与讨论。\n\n\n\n\n\n\n\n2026-10-06 20:51:35 +0800\n\n\n\nlog/ 开始记录\n\n这里是新建的 log/ 栏目。这条是栏目说明，并非个人日记示例。\n可以写下当天的想法，在同一条文字里附上几张照片，或者插入值得回看的链接。每条完整显示在这里，沿着时间往下读就好。\n\n\n\ncomments/ 评论\n\n展开后加载评论，使用 GitHub 账号参与讨论。\n\n\n\n\n\n\n没有匹配的记录。试试其他关键词。"
+  },
+  {
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "~/notes/projects",
+    "section": "",
+    "text": "正在维护"
+  },
+  {
+    "objectID": "projects.html#working",
+    "href": "projects.html#working",
+    "title": "~/notes/projects",
+    "section": "",
+    "text": "正在维护"
+  },
+  {
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "~/notes/blog",
+    "section": "",
+    "text": "FIP 第一次小测复习速查\n\n\n\nFIP\n\n学习笔记\n\nFIP复习\n\n\n\n智能程序设计基础课程第一次小测的复习速查笔记\n\n\n\n\n\n2026.10.07\n\n\n\n\n\n\n\nFIP 第一次月考题目归档\n\n\n\nFIP\n\nFIP真题\n\n\n\n智能程序设计基础课程第一次小测的真题归档以及个人答案\n\n\n\n\n\n2026.10.07\n\n\n\n\n\n\n\nHello, world：从第一篇笔记开始\n\n\n\n示例\n\n写作\n\n\n\n一篇示例文章，展示标题、代码、引用与 Markdown 的基本排版。\n\n\n\n\n\n2026.10.06\n\n\n\n\n\n\n\n从公式到文档：一页数学笔记\n\n\n\n示例\n\n数学\n\n\n\n展示 LaTeX 公式、推导，以及由 Typst 生成的 PDF 下载。\n\n\n\n\n\n2026.10.05\n\n\n\n\n\n\n\nFIP W04 · 序列与查找\n\n\n\nFIP\n\n学习笔记\n\n\n\nW4 学习记录，按原 Markdown 文件创建时间归档。\n\n\n\n\n\n2026.09.29\n\n\n\n\n\n\n\n线性代数 W03 · 作业归档\n\n\n\n线性代数\n\n作业归档\n\n\n\n2026 年线性代数 W03 作业，提供原版 PDF 在线阅读与下载。\n\n\n\n\n\n2026.09.29\n\n\n\n\n\n\n\n微积分 W03 · 作业归档\n\n\n\n微积分\n\n作业归档\n\n\n\n2026 年微积分 W03 作业，提供原版 PDF 在线阅读与下载。\n\n\n\n\n\n2026.09.28\n\n\n\n\n\n\n\nFIP W03 · x * x 与 x ** 2 的区别\n\n\n\nFIP\n\n学习笔记\n\n\n\nW3 学习记录，按原 Markdown 文件创建时间归档。\n\n\n\n\n\n2026.09.24\n\n\n\n\n\n\n\nFIP W03 · 迭代与模拟\n\n\n\nFIP\n\n学习笔记\n\n\n\nW3 学习记录，按原 Markdown 文件创建时间归档。\n\n\n\n\n\n2026.09.22\n\n\n\n\n\n\n\n微积分 W02 · 作业归档\n\n\n\n微积分\n\n作业归档\n\n\n\n2026 年微积分 W02 作业，提供原版 PDF 在线阅读与下载。\n\n\n\n\n\n2026.09.21\n\n\n\n\n\n\n\nFIP W02 · 枚举与减治\n\n\n\nFIP\n\n学习笔记\n\n\n\nW2 学习记录，按原 Markdown 文件创建时间归档。\n\n\n\n\n\n2026.09.20\n\n\n\n\n\n\n\n线性代数 W01–W02 · 作业归档\n\n\n\n线性代数\n\n作业归档\n\n\n\n2026 年线性代数 W01–W02 作业，提供原版 PDF 在线阅读与下载。\n\n\n\n\n\n2026.09.20\n\n\n\n\n\n\n\n微积分 W01 · 作业归档\n\n\n\n微积分\n\n作业归档\n\n\n\n2026 年微积分 W01 作业，提供原版 PDF 在线阅读与下载。\n\n\n\n\n\n2026.09.16\n\n\n\n\n\n无匹配项"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "easoncyy",
+    "section": "",
+    "text": "~/notes · A PERSONAL WORKSPACE\n\n\n\n这里存放学习笔记、资源归档与偶尔的思考。给复杂的问题留一点空间，也给未来的自己留一份记录。\n\n阅读博客 → log/ 日志 → 关于本站 ↗"
+  },
+  {
+    "objectID": "index.html#recent",
+    "href": "index.html#recent",
+    "title": "easoncyy",
+    "section": "recent/",
+    "text": "recent/\n全部文章 →"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "~/notes/about",
+    "section": "",
+    "text": "欢迎来到easoncyy’s homepage."
+  },
+  {
+    "objectID": "about.html#hello-world.",
+    "href": "about.html#hello-world.",
+    "title": "~/notes/about",
+    "section": "",
+    "text": "欢迎来到easoncyy’s homepage."
+  },
+  {
+    "objectID": "about.html#readme",
+    "href": "about.html#readme",
+    "title": "~/notes/about",
+    "section": "README/",
+    "text": "README/\n\n\nwhoami/\n我是 Eason Chen(easoncyy)，一个正在探索的人。\n\n学习背景：ZJU-AI-26\n关注方向：ML, DL, 计算机系统\n日常爱好：骑自行车, 唱歌，数学\n加入组织：\n\nZJUSCT(浙江大学超算队)\n浙江大学竺可桢学院灵韵合唱团\n\n\n\n\ncurrently/\n\n正在学习：CSAPP，Linux, C程序设计语言，基础课内课程\n正在做：Kaggle-RSNA 2026 Competition\n想尝试：并行式计算，嵌入式/机器人相关项目\n\n\n\ncontact/\n\nGitHub：easoncyy\nE-mail：easonchyy@gmail.com\n\n这里会逐渐积累学习笔记、项目记录与感兴趣的问题。我也会在这里发布一些个人的生活感想以及学习资源，欢迎友链。"
+  },
+  {
+    "objectID": "about.html#workspace",
+    "href": "about.html#workspace",
+    "title": "~/notes/about",
+    "section": "workspace/",
+    "text": "workspace/\n\nblog/ 博客：作业存档、感兴趣的话题探讨、学科研究思考。\nprojects/ 项目：正在维护的项目、已经完成的项目、考虑进行的项目。\nlog/ 日志：每天的一些状态留存以及想法记录。\nlibrary/ 图书馆：时常翻阅或感兴趣的书籍。\nlinks/ 友链：认识其他写作者与空间。"
+  },
+  {
+    "objectID": "links.html",
+    "href": "links.html",
+    "title": "~/notes/links",
+    "section": "",
+    "text": "朋友的空间"
+  },
+  {
+    "objectID": "links.html#friends",
+    "href": "links.html#friends",
+    "title": "~/notes/links",
+    "section": "",
+    "text": "朋友的空间"
+  },
+  {
+    "objectID": "links.html#this-site",
+    "href": "links.html#this-site",
+    "title": "~/notes/links",
+    "section": "this-site/",
+    "text": "this-site/\n本站信息\n\n名称：~/notes · easoncyy’s homepage\n地址：https://easoncyy.github.io\n简介：记录学习、项目与思考。"
+  },
+  {
+    "objectID": "library.html",
+    "href": "library.html",
+    "title": "~/notes/library",
+    "section": "",
+    "text": "$ ls ~/notes/library\n收集值得阅读与反复翻阅的图书。\n\n\n全部\n文学 1\n哲学 1\n历史 1\n教材 2\n习题 1\n参考书 0\n其他 0\n\n\n\n\n哲学 · PDF · 2026-10-06\n纯粹理性批判\n康德；邓晓芒译\n\nread / 在线阅读 ↗download / 下载 ↓\n\n\n历史 · PDF · 2026-10-06\n叫魂：1768年中国妖术大恐慌\n孔飞力；陈兼、刘昶译\n\nread / 在线阅读 ↗download / 下载 ↓\n\n\n教材 / 法学 · PDF · 2026-10-06\n经济法理论与实务\n周黎明\n\nread / 在线阅读 ↗download / 下载 ↓\n\n\n教材 / 计算机 · PDF · 2026-10-06\n深入理解计算机系统\nRandal E. Bryant；David R. O’Hallaron\n原版扫描 PDF，约 344 MB。通过 GitHub Release 下载。\ndownload / 下载 ↓\n\n\n习题 / 数学 · PDF · 2026-10-06\n线性代数习题集\nИ·B·普罗斯库烈柯夫\n\nread / 在线阅读 ↗download / 下载 ↓\n\n\n文学 · PDF · 2026-10-06\nProject Hail Mary\nAndy Weir\n\nread / 在线阅读 ↗download / 下载 ↓\n\n书架暂时为空，等待第一本书。"
+  },
+  {
+    "objectID": "posts/20260920-fip-w02-enumeration-decrease-conquer/index.html",
+    "href": "posts/20260920-fip-w02-enumeration-decrease-conquer/index.html",
+    "title": "FIP W02 · 枚举与减治",
+    "section": "",
+    "text": "枚举：遍历解空间\n减治：缩减解空间，进而提高枚举效率"
+  },
+  {
+    "objectID": "posts/20260920-fip-w02-enumeration-decrease-conquer/index.html#分支branch",
+    "href": "posts/20260920-fip-w02-enumeration-decrease-conquer/index.html#分支branch",
+    "title": "FIP W02 · 枚举与减治",
+    "section": "分支(branch)",
+    "text": "分支(branch)\nif exp:\n    ...\n如果想要使用单分支完成双分支的任务，可以使用默认值，或者说初始赋值\n# max\nbigger = x\nif x &lt; y:\n    bigger = y\nprint(bigger)\n单分支-&gt;双分支\nif condition:\n    StatementT\nelse:\n    StatementF\n\nVibe出的代码可以类比于C compiler得出的汇编代码：常常复杂，但有时有创新，更重要的是高效。\n\n从一次判断到逐个检验"
+  },
+  {
+    "objectID": "posts/20260920-fip-w02-enumeration-decrease-conquer/index.html#枚举enumeration",
+    "href": "posts/20260920-fip-w02-enumeration-decrease-conquer/index.html#枚举enumeration",
+    "title": "FIP W02 · 枚举与减治",
+    "section": "枚举(Enumeration)",
+    "text": "枚举(Enumeration)\n\n素数判断\n\n给定一个自然数x，如何判断它是否是素数？\n\n遍历 2~(x-1)若存在能整除x的数则不是素数\n程序问题：\n\n如何遍历？\n如何判断整除？\n如何表示x是素数？ &gt; Spike探针法：先做会做的，再向不会做的领域拓宽\n\n\n\n使用while-else/for-else语句\nx = int(input(\"Enter a number:\"))\nk = 2\nwhile k &lt; x:\n    if x % k == 0 or x &lt; 2:\n        print(\"Not prime\")\n        break\n    k += 1\nelse:\n    print(\"Is prime\") # 对于for-else，就算没有跑，也会执行else\n\n考虑程序效率？\n\n使用worst case考虑，本案例下执行(x - 1)轮。\n\n\n\n优化算法\n只需要考虑\\([2, \\sqrt x]\\)间的自然数即可\nfrom math import sqrt\n\n\nx = int(input(\"Enter a number:\"))\nk = 2\nif x &lt; 2:\n    print(\"Not prime\")\nwhile k &lt; int(sqrt(x)) + 1:\n    if x % k == 0:\n        print(\"Not prime\")\n        break\n    k += 1\nelse:\n    print(\"Is prime\")\n\n库函数: Python 通过提供许多预定义函数来促进复⽤，这些函数可⽤于执⾏数学及其他计算 Debug: 利用断点Step-by-s=Step调试程序\n\n\n枚举：逐一列举问题所有可能的候选解，并对每个候选解进⾏验证，从中找出满足条件的正确解的算法策略，又称穷举、暴力搜索。\n枚举的基本思想是遍历整个解空间，不遗漏、不重复地检查每⼀种可能，只要解空 间覆盖完整且验证条件正确，结果⼀定正确。所以对于大多数问题，当人们没有更好的算法的时候，枚举往往是最后的底线算法枚举算法只适⽤于问题的解空间必须是有限且可枚举的。\n当解空间不适合枚举时， 可以尝试构建可枚举的空间。⽐如，在⼀定区间内求解方程的解，由于区间内的数 是无限的，从而无法枚举。但是如果以⼀定的精度求解，那么区间内的数的数量就是有限的，从而可以被枚举。\n\n\n\n\n求GCD\n\n枚举法\na = 12\nb = 18\ngcd = 1\nfor k in range(1, min(a, b) + 1):\n    if a % k == 0 and b % k == 0:\n        gcd = k\nprint(gcd)\n但是上述做法效率很低，我们不妨降序操作：\na = 12\nb = 18\ngcd = 1\nfor k in range(min(a, b) + 1, 1, -1):\n    if a % k == 0 and b % k == 0:\n        gcd = k\nprint(gcd)\n不过事实上最坏情况是一样的，所以时间复杂度相同。"
+  },
+  {
+    "objectID": "posts/20260920-fip-w02-enumeration-decrease-conquer/index.html#减治decrease-and-conquer",
+    "href": "posts/20260920-fip-w02-enumeration-decrease-conquer/index.html#减治decrease-and-conquer",
+    "title": "FIP W02 · 枚举与减治",
+    "section": "减治(Decrease and Conquer)",
+    "text": "减治(Decrease and Conquer)\n\n辗转相除法\na = 12\nb = 18\nr = a % b\nwhile r != 0: # or while r:\n    a = b\n    b = r\n    r = a % b\nprint(b)\n可以使用同步赋值压行\nwhile b: a, b = b, a % b\nprint(a)\n\n\n方程在固定区间上求近似根\n\n二分法\nimport math a, b = 1.0, 2.0 \n# f(x) = x³ − 3 sin x 在 [1, 2] \neps = 1e-6\nround = 1\nwhile True:\n    fa = a**3 - 3 * math.sin(a)\n    fb = b**3 - 3 * math.sin(b)\n    if fa * fb &gt; 0:\n        print('区间内没有根')\n        break\n    m = (a + b) / 2\n    fm = m**3 - 3 * math.sin(m)\n    print(f'第{round}次迭代: a={a}, b={b}, m={m}, fm={fm}')\n    if abs(fm) &lt; eps:\n        print(f'根为{m}')\n        break\n    if fm * fa &gt; 0:\n        a = m\n    else:\n        b = m\n    if abs(b - a) &lt; eps:\n        print(f'根为{m}, 迭代次数为{round}')\n        break\n    round += 1\n\n浮点误差: 浮点数在计算机中用二进制表达，永远不可能和十进制小数对齐\n\n\n减治：将问题规模不断减小，直到缩小到可以直接求解的平凡情况（trivial case），再逐层返回解决原问题"
+  },
+  {
+    "objectID": "posts/20260921-calculus-w02-homework/index.html",
+    "href": "posts/20260921-calculus-w02-homework/index.html",
+    "title": "微积分 W02 · 作业归档",
+    "section": "",
+    "text": "本篇归档保存微积分 W02 的作业 PDF。归档日期采用文档首页标注的作业日期。\n\n2026-calculus-w02-homework.pdf\n在线阅读 PDF ↗ · 下载 PDF ↓\n\n\n如果浏览器不支持内嵌 PDF，可使用上方阅读或下载链接。"
   },
   {
     "objectID": "posts/20260924-fip-w03-python-square/index.html",
@@ -259,207 +378,137 @@
     "text": "This document was developed from my existing research with the assistance of artificial intelligence. AI was used to help locate and organize relevant documentation, structure comparison tables, improve clarity and English expression, and expand the discussion with related technical context. The research direction, topic selection, and final review remained under my responsibility."
   },
   {
-    "objectID": "posts/20260921-calculus-w02-homework/index.html",
-    "href": "posts/20260921-calculus-w02-homework/index.html",
-    "title": "微积分 W02 · 作业归档",
+    "objectID": "posts/20260929-fip-w04-sequence-search/index.html",
+    "href": "posts/20260929-fip-w04-sequence-search/index.html",
+    "title": "FIP W04 · 序列与查找",
     "section": "",
-    "text": "本篇归档保存微积分 W02 的作业 PDF。归档日期采用文档首页标注的作业日期。\n\n2026-calculus-w02-homework.pdf\n在线阅读 PDF ↗ · 下载 PDF ↓\n\n\n如果浏览器不支持内嵌 PDF，可使用上方阅读或下载链接。"
+    "text": "根据《26FIP4 序列与查找》课件，结合原笔记整理。主线：用列表保存一组数据，在其中找最值、按值查找，并根据数据是否有序选择算法。\n\n\n\n容器保存多个数据；序列中的元素有确定的先后顺序，可以按下标访问。字符串、列表、元组都是序列。这里的“有序”指位置有顺序，不等于元素已经按大小排序。\n字符串是不可变序列：不能执行 s[0] = '9'。s = s + '456' 会创建新字符串，再让变量指向它；反复拼接长字符串有额外开销。\n列表（list）是可变序列，可用 [] 创建，可追加和原地修改元素：\ntemps = []\ntemps.append(23.5)\ntemps.append(24.1)\ntemps.append(22.8)\ntemps[0] = 25.0\nprint(temps)  # [25.0, 24.1, 22.8]\nappend 是对象的方法，调用形式为 对象.方法(参数)；它原地修改列表，返回 None。\n\n\n列表变量是指向列表对象的名字。b = a 使两个名字指向同一个对象，所以通过 b 修改列表也会影响 a。若要新列表，可用 a[:]、a.copy() 或 list(a)，这些都是浅拷贝：内层可变对象仍可能共享。\na = [1, 2, 3]\nb = a\nb[0] = 99\nprint(a)          # [99, 2, 3]\nc = a[:]\nc[0] = 0\nprint(a, c)       # [99, 2, 3] [0, 2, 3]\n字符串不能原地改：s2 = s2 + '!' 使 s2 指向新对象，不改变原本也指向旧字符串的 s1。\n\n\n\n\n下标从 0 开始；最后一项是 lst[-1]，等同于 lst[len(lst)-1]；越界引发 IndexError。\nlst[a:b] 取下标 a 至 b-1，左闭右开；lst[:] 拷贝整表；lst[::-1] 生成反序的新列表。\nlst[i] = x 原地修改列表；字符串不支持这一操作。\n\nids = ['A', 'B', 'C', 'D']\nprint(ids[1:3])   # ['B', 'C']，不含下标 3\nfor item in ids:               # 只需元素\n    print(item)\nfor i, item in enumerate(ids): # 同时需要下标和元素\n    print(i, item)\n按下标修改元素时，可用 for i in range(len(lst))。遍历同一个列表时增删元素可能跳过或重复处理。\n\n\n\n\n\n\n\n\n\n\n操作\n含义与注意点\n\n\n\n\na + b\n连接同类序列，得到新对象，不修改原对象\n\n\na * n\n重复序列，得到新对象；[1, 2] * 3 得到 [1, 2, 1, 2, 1, 2]\n\n\nx in a / x not in a\n判断成员；[1, 2] in [1, 2, 3] 是 False，因为列表检查的是单个元素；字符串可以检查子串\n\n\nlen(a)\n元素个数\n\n\nmin(a) / max(a)\n最小 / 最大元素；空序列未给默认值时会报错\n\n\nsum(a)\n数值元素求和；不能直接用于字符串列表\n\n\n\n序列按字典序比较：从左到右找第一处不同元素；若已有元素都相同，则较短的序列更小。不会给较短的序列补零，例如 [2] &lt; [2, -1] 为 True。字符串逐字符按 Unicode 码位比较，而非按汉字笔画比较。\n列表还有 extend、insert、remove、pop、index、count、sort 等方法。lst.sort() 原地排序并返回 None；sorted(lst) 返回新列表。[[0]] * 3 的内层列表共享同一个对象；要独立列表可用 [[0] for _ in range(3)]。\n\n\n\n\n核心是首值作种子 → 遍历剩余元素 → 遇到更优值就更新。空列表需要事先约定处理方式。\ndef find_max(lst):\n    if not lst:\n        return None\n    current_max = lst[0]\n    for item in lst[1:]:\n        if item &gt; current_max:\n            current_max = item\n    return current_max\n\ndef find_max_index(lst):\n    if not lst:\n        return -1\n    max_idx = 0\n    for i in range(1, len(lst)):\n        if lst[i] &gt; lst[max_idx]:\n            max_idx = i\n    return max_idx\nfind_max_index 遇到相同最大值时保留第一次的下标；若判断改成 &gt;= 则保留最后一次。日常只需值时直接用 max(lst)。最坏情况下必须扫描所有元素，时间为 \\(O(n)\\)。\n原笔记中同时寻找最大值和所有位置的写法也很实用：\ndef max_with_idx(sequence: list) -&gt; tuple:\n    if not sequence:\n        raise ValueError('Empty sequence')\n    maximum = sequence[0]\n    indices = [0]\n    for i in range(1, len(sequence)):\n        if sequence[i] &gt; maximum:\n            maximum = sequence[i]\n            indices = [i]\n        elif sequence[i] == maximum:\n            indices.append(i)\n    return maximum, indices\nmax_with_idx([2, 5, 5, 1]) 得到 (5, [1, 2])：返回值是二元组，其中第二项是下标列表。\n\n\n\n无序列表中逐项比较目标；找到即返回下标，遍历结束还未找到则返回 -1。\ndef linear_search(lst: list, target) -&gt; int:\n    for i in range(len(lst)):\n        if lst[i] == target:\n            return i\n    return -1\n\ndef linear_search_all(lst, target):\n    result = []\n    for i, item in enumerate(lst):\n        if item == target:\n            result.append(i)\n    return tuple(result)\nlinear_search([4, 7, 4], 4) 返回 0，即第一次出现的位置；linear_search_all 返回全部位置。元组（tuple）是不可变序列，适合表示固定的一组返回值。单元素元组写作 (1,)，(1) 只是整数。\n最好情况第一项命中，时间 \\(O(1)\\)；目标在末尾或不存在时比较 \\(n\\) 次，最坏时间 \\(O(n)\\)。返回 -1 只是一种约定，也可设计为返回 None 或抛出异常。\n\n\nlinear_search(temps, 31.4) 按位置传参；linear_search(lst=temps, target=31.4) 按名字传参。lst: list 与 -&gt; int 是类型注解，Python 默认不会据此在运行时强制检查。\n\n\n\n\n前提：列表已经按与目标相同的比较规则升序排列。 温度按采集时间排列，不代表温度值升序；不能直接按温度二分。若先 sorted(temps)，返回的下标对应新列表，不再自动对应原采集时间。\n候选区间为闭区间 [left, right]。检查中点后，排除中点和不可能的一半：\ndef binary_search(lst, target):\n    left, right = 0, len(lst) - 1\n    while left &lt;= right:\n        mid = (left + right) // 2\n        if lst[mid] == target:\n            return mid\n        elif lst[mid] &lt; target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1\n在 [22.0, 23.5, 24.2, 26.8, 27.0, 28.1, 29.5, 31.4] 中找 27.0：\n\n\n\n轮次\nleft\nright\nmid\nlst[mid]\n下一步\n\n\n\n\n1\n0\n7\n3\n26.8\nleft = 4\n\n\n2\n4\n7\n5\n28.1\nright = 4\n\n\n3\n4\n4\n4\n27.0\n返回 4\n\n\n\nleft &lt;= right 确保最后一个候选位置也被检查；写成 left &lt; right 会漏掉单元素区间。边界更新用 mid + 1 / mid - 1，否则可能无法缩小区间。空列表初始 right = -1，直接返回 -1。有重复元素时，此实现返回某一个匹配下标，不保证第一个。\n每轮候选范围约减半，最坏时间 \\(O(\\log n)\\)，额外空间 \\(O(1)\\)。约一百万条已排序数据，二分查找最多约二十次比较；线性查找最坏约一百万次。\n\n\n\n大 \\(O\\) 描述输入规模增长时算法耗时的趋势，不是具体运行秒数。列表按下标访问为 \\(O(1)\\)；末尾 append 通常为均摊 \\(O(1)\\)；按值查找和找最值是 \\(O(n)\\)；二分查找是 \\(O(\\log n)\\)。\n\n\n\n\n\n\n\n\n\n方法\n数据前提\n最坏查找时间\n适合情况\n\n\n\n\n线性查找\n无需排序\n\\(O(n)\\)\n无序、小规模、只查一次\n\n\n二分查找\n已按目标比较规则排序\n\\(O(\\log n)\\)\n已有序，或值得预先排序后多次查找\n\n\n\n若数据无序且只查一次，先排序通常需 \\(O(n\\log n)\\)，再二分也难以抵消准备成本；直接线性查找更合适。若必须保留原下标，排序时还需一并保存原下标。\n\n复习时先问：数据按什么规则排序？查几次？需要值、是否存在，还是原列表下标？ 然后手推空表、单元素、首尾元素与不存在目标等边界。"
   },
   {
-    "objectID": "posts/20260920-fip-w02-enumeration-decrease-conquer/index.html",
-    "href": "posts/20260920-fip-w02-enumeration-decrease-conquer/index.html",
-    "title": "FIP W02 · 枚举与减治",
+    "objectID": "posts/20260929-fip-w04-sequence-search/index.html#序列与列表",
+    "href": "posts/20260929-fip-w04-sequence-search/index.html#序列与列表",
+    "title": "FIP W04 · 序列与查找",
     "section": "",
-    "text": "枚举：遍历解空间\n减治：缩减解空间，进而提高枚举效率"
+    "text": "容器保存多个数据；序列中的元素有确定的先后顺序，可以按下标访问。字符串、列表、元组都是序列。这里的“有序”指位置有顺序，不等于元素已经按大小排序。\n字符串是不可变序列：不能执行 s[0] = '9'。s = s + '456' 会创建新字符串，再让变量指向它；反复拼接长字符串有额外开销。\n列表（list）是可变序列，可用 [] 创建，可追加和原地修改元素：\ntemps = []\ntemps.append(23.5)\ntemps.append(24.1)\ntemps.append(22.8)\ntemps[0] = 25.0\nprint(temps)  # [25.0, 24.1, 22.8]\nappend 是对象的方法，调用形式为 对象.方法(参数)；它原地修改列表，返回 None。\n\n\n列表变量是指向列表对象的名字。b = a 使两个名字指向同一个对象，所以通过 b 修改列表也会影响 a。若要新列表，可用 a[:]、a.copy() 或 list(a)，这些都是浅拷贝：内层可变对象仍可能共享。\na = [1, 2, 3]\nb = a\nb[0] = 99\nprint(a)          # [99, 2, 3]\nc = a[:]\nc[0] = 0\nprint(a, c)       # [99, 2, 3] [0, 2, 3]\n字符串不能原地改：s2 = s2 + '!' 使 s2 指向新对象，不改变原本也指向旧字符串的 s1。\n\n\n\n\n下标从 0 开始；最后一项是 lst[-1]，等同于 lst[len(lst)-1]；越界引发 IndexError。\nlst[a:b] 取下标 a 至 b-1，左闭右开；lst[:] 拷贝整表；lst[::-1] 生成反序的新列表。\nlst[i] = x 原地修改列表；字符串不支持这一操作。\n\nids = ['A', 'B', 'C', 'D']\nprint(ids[1:3])   # ['B', 'C']，不含下标 3\nfor item in ids:               # 只需元素\n    print(item)\nfor i, item in enumerate(ids): # 同时需要下标和元素\n    print(i, item)\n按下标修改元素时，可用 for i in range(len(lst))。遍历同一个列表时增删元素可能跳过或重复处理。\n\n\n\n\n\n\n\n\n\n\n操作\n含义与注意点\n\n\n\n\na + b\n连接同类序列，得到新对象，不修改原对象\n\n\na * n\n重复序列，得到新对象；[1, 2] * 3 得到 [1, 2, 1, 2, 1, 2]\n\n\nx in a / x not in a\n判断成员；[1, 2] in [1, 2, 3] 是 False，因为列表检查的是单个元素；字符串可以检查子串\n\n\nlen(a)\n元素个数\n\n\nmin(a) / max(a)\n最小 / 最大元素；空序列未给默认值时会报错\n\n\nsum(a)\n数值元素求和；不能直接用于字符串列表\n\n\n\n序列按字典序比较：从左到右找第一处不同元素；若已有元素都相同，则较短的序列更小。不会给较短的序列补零，例如 [2] &lt; [2, -1] 为 True。字符串逐字符按 Unicode 码位比较，而非按汉字笔画比较。\n列表还有 extend、insert、remove、pop、index、count、sort 等方法。lst.sort() 原地排序并返回 None；sorted(lst) 返回新列表。[[0]] * 3 的内层列表共享同一个对象；要独立列表可用 [[0] for _ in range(3)]。"
   },
   {
-    "objectID": "posts/20260920-fip-w02-enumeration-decrease-conquer/index.html#分支branch",
-    "href": "posts/20260920-fip-w02-enumeration-decrease-conquer/index.html#分支branch",
-    "title": "FIP W02 · 枚举与减治",
-    "section": "分支(branch)",
-    "text": "分支(branch)\nif exp:\n    ...\n如果想要使用单分支完成双分支的任务，可以使用默认值，或者说初始赋值\n# max\nbigger = x\nif x &lt; y:\n    bigger = y\nprint(bigger)\n单分支-&gt;双分支\nif condition:\n    StatementT\nelse:\n    StatementF\n\nVibe出的代码可以类比于C compiler得出的汇编代码：常常复杂，但有时有创新，更重要的是高效。\n\n从一次判断到逐个检验"
-  },
-  {
-    "objectID": "posts/20260920-fip-w02-enumeration-decrease-conquer/index.html#枚举enumeration",
-    "href": "posts/20260920-fip-w02-enumeration-decrease-conquer/index.html#枚举enumeration",
-    "title": "FIP W02 · 枚举与减治",
-    "section": "枚举(Enumeration)",
-    "text": "枚举(Enumeration)\n\n素数判断\n\n给定一个自然数x，如何判断它是否是素数？\n\n遍历 2~(x-1)若存在能整除x的数则不是素数\n程序问题：\n\n如何遍历？\n如何判断整除？\n如何表示x是素数？ &gt; Spike探针法：先做会做的，再向不会做的领域拓宽\n\n\n\n使用while-else/for-else语句\nx = int(input(\"Enter a number:\"))\nk = 2\nwhile k &lt; x:\n    if x % k == 0 or x &lt; 2:\n        print(\"Not prime\")\n        break\n    k += 1\nelse:\n    print(\"Is prime\") # 对于for-else，就算没有跑，也会执行else\n\n考虑程序效率？\n\n使用worst case考虑，本案例下执行(x - 1)轮。\n\n\n\n优化算法\n只需要考虑\\([2, \\sqrt x]\\)间的自然数即可\nfrom math import sqrt\n\n\nx = int(input(\"Enter a number:\"))\nk = 2\nif x &lt; 2:\n    print(\"Not prime\")\nwhile k &lt; int(sqrt(x)) + 1:\n    if x % k == 0:\n        print(\"Not prime\")\n        break\n    k += 1\nelse:\n    print(\"Is prime\")\n\n库函数: Python 通过提供许多预定义函数来促进复⽤，这些函数可⽤于执⾏数学及其他计算 Debug: 利用断点Step-by-s=Step调试程序\n\n\n枚举：逐一列举问题所有可能的候选解，并对每个候选解进⾏验证，从中找出满足条件的正确解的算法策略，又称穷举、暴力搜索。\n枚举的基本思想是遍历整个解空间，不遗漏、不重复地检查每⼀种可能，只要解空 间覆盖完整且验证条件正确，结果⼀定正确。所以对于大多数问题，当人们没有更好的算法的时候，枚举往往是最后的底线算法枚举算法只适⽤于问题的解空间必须是有限且可枚举的。\n当解空间不适合枚举时， 可以尝试构建可枚举的空间。⽐如，在⼀定区间内求解方程的解，由于区间内的数 是无限的，从而无法枚举。但是如果以⼀定的精度求解，那么区间内的数的数量就是有限的，从而可以被枚举。\n\n\n\n\n求GCD\n\n枚举法\na = 12\nb = 18\ngcd = 1\nfor k in range(1, min(a, b) + 1):\n    if a % k == 0 and b % k == 0:\n        gcd = k\nprint(gcd)\n但是上述做法效率很低，我们不妨降序操作：\na = 12\nb = 18\ngcd = 1\nfor k in range(min(a, b) + 1, 1, -1):\n    if a % k == 0 and b % k == 0:\n        gcd = k\nprint(gcd)\n不过事实上最坏情况是一样的，所以时间复杂度相同。"
-  },
-  {
-    "objectID": "posts/20260920-fip-w02-enumeration-decrease-conquer/index.html#减治decrease-and-conquer",
-    "href": "posts/20260920-fip-w02-enumeration-decrease-conquer/index.html#减治decrease-and-conquer",
-    "title": "FIP W02 · 枚举与减治",
-    "section": "减治(Decrease and Conquer)",
-    "text": "减治(Decrease and Conquer)\n\n辗转相除法\na = 12\nb = 18\nr = a % b\nwhile r != 0: # or while r:\n    a = b\n    b = r\n    r = a % b\nprint(b)\n可以使用同步赋值压行\nwhile b: a, b = b, a % b\nprint(a)\n\n\n方程在固定区间上求近似根\n\n二分法\nimport math a, b = 1.0, 2.0 \n# f(x) = x³ − 3 sin x 在 [1, 2] \neps = 1e-6\nround = 1\nwhile True:\n    fa = a**3 - 3 * math.sin(a)\n    fb = b**3 - 3 * math.sin(b)\n    if fa * fb &gt; 0:\n        print('区间内没有根')\n        break\n    m = (a + b) / 2\n    fm = m**3 - 3 * math.sin(m)\n    print(f'第{round}次迭代: a={a}, b={b}, m={m}, fm={fm}')\n    if abs(fm) &lt; eps:\n        print(f'根为{m}')\n        break\n    if fm * fa &gt; 0:\n        a = m\n    else:\n        b = m\n    if abs(b - a) &lt; eps:\n        print(f'根为{m}, 迭代次数为{round}')\n        break\n    round += 1\n\n浮点误差: 浮点数在计算机中用二进制表达，永远不可能和十进制小数对齐\n\n\n减治：将问题规模不断减小，直到缩小到可以直接求解的平凡情况（trivial case），再逐层返回解决原问题"
-  },
-  {
-    "objectID": "library.html",
-    "href": "library.html",
-    "title": "~/notes/library",
+    "objectID": "posts/20260929-fip-w04-sequence-search/index.html#找最值",
+    "href": "posts/20260929-fip-w04-sequence-search/index.html#找最值",
+    "title": "FIP W04 · 序列与查找",
     "section": "",
-    "text": "$ ls ~/notes/library\n收集值得阅读与反复翻阅的图书。\n\n\n全部\n文学 1\n哲学 1\n历史 1\n教材 2\n习题 1\n参考书 0\n其他 0\n\n\n\n\n哲学 · PDF · 2026-10-06\n纯粹理性批判\n康德；邓晓芒译\n\nread / 在线阅读 ↗download / 下载 ↓\n\n\n历史 · PDF · 2026-10-06\n叫魂：1768年中国妖术大恐慌\n孔飞力；陈兼、刘昶译\n\nread / 在线阅读 ↗download / 下载 ↓\n\n\n教材 / 法学 · PDF · 2026-10-06\n经济法理论与实务\n周黎明\n\nread / 在线阅读 ↗download / 下载 ↓\n\n\n教材 / 计算机 · PDF · 2026-10-06\n深入理解计算机系统\nRandal E. Bryant；David R. O’Hallaron\n原版扫描 PDF，约 344 MB。通过 GitHub Release 下载。\ndownload / 下载 ↓\n\n\n习题 / 数学 · PDF · 2026-10-06\n线性代数习题集\nИ·B·普罗斯库烈柯夫\n\nread / 在线阅读 ↗download / 下载 ↓\n\n\n文学 · PDF · 2026-10-06\nProject Hail Mary\nAndy Weir\n\nread / 在线阅读 ↗download / 下载 ↓\n\n书架暂时为空，等待第一本书。"
+    "text": "核心是首值作种子 → 遍历剩余元素 → 遇到更优值就更新。空列表需要事先约定处理方式。\ndef find_max(lst):\n    if not lst:\n        return None\n    current_max = lst[0]\n    for item in lst[1:]:\n        if item &gt; current_max:\n            current_max = item\n    return current_max\n\ndef find_max_index(lst):\n    if not lst:\n        return -1\n    max_idx = 0\n    for i in range(1, len(lst)):\n        if lst[i] &gt; lst[max_idx]:\n            max_idx = i\n    return max_idx\nfind_max_index 遇到相同最大值时保留第一次的下标；若判断改成 &gt;= 则保留最后一次。日常只需值时直接用 max(lst)。最坏情况下必须扫描所有元素，时间为 \\(O(n)\\)。\n原笔记中同时寻找最大值和所有位置的写法也很实用：\ndef max_with_idx(sequence: list) -&gt; tuple:\n    if not sequence:\n        raise ValueError('Empty sequence')\n    maximum = sequence[0]\n    indices = [0]\n    for i in range(1, len(sequence)):\n        if sequence[i] &gt; maximum:\n            maximum = sequence[i]\n            indices = [i]\n        elif sequence[i] == maximum:\n            indices.append(i)\n    return maximum, indices\nmax_with_idx([2, 5, 5, 1]) 得到 (5, [1, 2])：返回值是二元组，其中第二项是下标列表。"
   },
   {
-    "objectID": "links.html",
-    "href": "links.html",
-    "title": "~/notes/links",
+    "objectID": "posts/20260929-fip-w04-sequence-search/index.html#线性查找",
+    "href": "posts/20260929-fip-w04-sequence-search/index.html#线性查找",
+    "title": "FIP W04 · 序列与查找",
     "section": "",
-    "text": "朋友的空间"
+    "text": "无序列表中逐项比较目标；找到即返回下标，遍历结束还未找到则返回 -1。\ndef linear_search(lst: list, target) -&gt; int:\n    for i in range(len(lst)):\n        if lst[i] == target:\n            return i\n    return -1\n\ndef linear_search_all(lst, target):\n    result = []\n    for i, item in enumerate(lst):\n        if item == target:\n            result.append(i)\n    return tuple(result)\nlinear_search([4, 7, 4], 4) 返回 0，即第一次出现的位置；linear_search_all 返回全部位置。元组（tuple）是不可变序列，适合表示固定的一组返回值。单元素元组写作 (1,)，(1) 只是整数。\n最好情况第一项命中，时间 \\(O(1)\\)；目标在末尾或不存在时比较 \\(n\\) 次，最坏时间 \\(O(n)\\)。返回 -1 只是一种约定，也可设计为返回 None 或抛出异常。\n\n\nlinear_search(temps, 31.4) 按位置传参；linear_search(lst=temps, target=31.4) 按名字传参。lst: list 与 -&gt; int 是类型注解，Python 默认不会据此在运行时强制检查。"
   },
   {
-    "objectID": "links.html#friends",
-    "href": "links.html#friends",
-    "title": "~/notes/links",
+    "objectID": "posts/20260929-fip-w04-sequence-search/index.html#二分查找",
+    "href": "posts/20260929-fip-w04-sequence-search/index.html#二分查找",
+    "title": "FIP W04 · 序列与查找",
     "section": "",
-    "text": "朋友的空间"
+    "text": "前提：列表已经按与目标相同的比较规则升序排列。 温度按采集时间排列，不代表温度值升序；不能直接按温度二分。若先 sorted(temps)，返回的下标对应新列表，不再自动对应原采集时间。\n候选区间为闭区间 [left, right]。检查中点后，排除中点和不可能的一半：\ndef binary_search(lst, target):\n    left, right = 0, len(lst) - 1\n    while left &lt;= right:\n        mid = (left + right) // 2\n        if lst[mid] == target:\n            return mid\n        elif lst[mid] &lt; target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1\n在 [22.0, 23.5, 24.2, 26.8, 27.0, 28.1, 29.5, 31.4] 中找 27.0：\n\n\n\n轮次\nleft\nright\nmid\nlst[mid]\n下一步\n\n\n\n\n1\n0\n7\n3\n26.8\nleft = 4\n\n\n2\n4\n7\n5\n28.1\nright = 4\n\n\n3\n4\n4\n4\n27.0\n返回 4\n\n\n\nleft &lt;= right 确保最后一个候选位置也被检查；写成 left &lt; right 会漏掉单元素区间。边界更新用 mid + 1 / mid - 1，否则可能无法缩小区间。空列表初始 right = -1，直接返回 -1。有重复元素时，此实现返回某一个匹配下标，不保证第一个。\n每轮候选范围约减半，最坏时间 \\(O(\\log n)\\)，额外空间 \\(O(1)\\)。约一百万条已排序数据，二分查找最多约二十次比较；线性查找最坏约一百万次。"
   },
   {
-    "objectID": "links.html#this-site",
-    "href": "links.html#this-site",
-    "title": "~/notes/links",
-    "section": "this-site/",
-    "text": "this-site/\n本站信息\n\n名称：~/notes · easoncyy’s homepage\n地址：https://easoncyy.github.io\n简介：记录学习、项目与思考。"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "~/notes/about",
+    "objectID": "posts/20260929-fip-w04-sequence-search/index.html#复杂度与方法选择",
+    "href": "posts/20260929-fip-w04-sequence-search/index.html#复杂度与方法选择",
+    "title": "FIP W04 · 序列与查找",
     "section": "",
-    "text": "欢迎来到easoncyy’s homepage."
+    "text": "大 \\(O\\) 描述输入规模增长时算法耗时的趋势，不是具体运行秒数。列表按下标访问为 \\(O(1)\\)；末尾 append 通常为均摊 \\(O(1)\\)；按值查找和找最值是 \\(O(n)\\)；二分查找是 \\(O(\\log n)\\)。\n\n\n\n\n\n\n\n\n\n方法\n数据前提\n最坏查找时间\n适合情况\n\n\n\n\n线性查找\n无需排序\n\\(O(n)\\)\n无序、小规模、只查一次\n\n\n二分查找\n已按目标比较规则排序\n\\(O(\\log n)\\)\n已有序，或值得预先排序后多次查找\n\n\n\n若数据无序且只查一次，先排序通常需 \\(O(n\\log n)\\)，再二分也难以抵消准备成本；直接线性查找更合适。若必须保留原下标，排序时还需一并保存原下标。\n\n复习时先问：数据按什么规则排序？查几次？需要值、是否存在，还是原列表下标？ 然后手推空表、单元素、首尾元素与不存在目标等边界。"
   },
   {
-    "objectID": "about.html#hello-world.",
-    "href": "about.html#hello-world.",
-    "title": "~/notes/about",
+    "objectID": "posts/20261007-fip-quiz1-recap/index.html",
+    "href": "posts/20261007-fip-quiz1-recap/index.html",
+    "title": "FIP 第一次小测复习速查",
     "section": "",
-    "text": "欢迎来到easoncyy’s homepage."
+    "text": "这篇笔记用于课程智能程序设计基础(FIP)的第一次小测的复习。\n第一次小测"
   },
   {
-    "objectID": "about.html#readme",
-    "href": "about.html#readme",
-    "title": "~/notes/about",
-    "section": "README/",
-    "text": "README/\n\n\nwhoami/\n我是 Eason Chen(easoncyy)，一个正在探索的人。\n\n学习背景：ZJU-AI-2026\n关注方向：ML, DL, 计算机系统\n日常爱好：骑自行车, 唱歌，数学\n加入组织：\n\nZJUSCT(浙江大学超算队)\n浙江大学竺可桢学院灵韵合唱团\n\n\n\n\ncurrently/\n\n正在学习：CSAPP，Linux, 基础课内课程\n正在做：Kaggle-RSNA 2026 Competition\n想尝试：并行式计算，嵌入式/机器人相关项目\n\n\n\ncontact/\n\nGitHub：easoncyy\nE-mail：easonchyy@gmail.com\n\n这里会逐渐积累学习笔记、项目记录与感兴趣的问题。我也会在这里发布一些个人的生活感想以及学习资源，欢迎友链。"
+    "objectID": "posts/20261007-fip-quiz1-recap/index.html#理论课内容",
+    "href": "posts/20261007-fip-quiz1-recap/index.html#理论课内容",
+    "title": "FIP 第一次小测复习速查",
+    "section": "理论课内容",
+    "text": "理论课内容\n参考材料 1 计算.pdf\n\n预备知识\n\n命令式编程语言 命令是一行一行的，按照书写顺序依次执行\n\nPython程序保存在后缀为.py的文件中，可以被Python解释器执行。\n\n\nIPO环节\nIPO=输入（input），处理（process），输出（output） 这是一般的程序具备的三个基本环节。\n\n\n输出\n\n函数print()\n\nprint函数将字符串参数打印在终端中作为输出\n多个字符串参数使用逗号连接，默认使用空格连接\n可选参数end缺省为'\\n'即换行符，也即print()函数每次打印完内容会自动换行，可以通过设置end=' '或者其他字符来改变末尾的输出\n\n\n\n\n输入\n\n函数input()\n\n读入用户在终端中输入的一行作为函数的返回结果\n用户的键盘输入在按下[Enter]之后才会被函数读取\ninput()函数的返回值是一个字符串，即使输入的是数字\n可以向input()函数传递一个字符串参数作为终端中输入的提示词\n\nnumber = int(input(\"Enter your favorite number:\"))\n# 终端中显示效果如下\n# Enter your favorite number:\n\n\n\n变量\n变量是值的名字，在Python中使用=进行赋值。先算右边，再让左边的名字指向这个值；赋值后不是一直维持数学上的相等关系。\n\n变量命名规则\n\n必须以字母、下划线开头，后面可以跟任意数量的字母，数字，下划线\n变量名区分大小写\n变量名不能含有空格\n变量名不能以数字开头\n变量名不能与Python中的关键字（keywords）重复\n变量名不要与内置函数名重复；语法上允许，但会覆盖原来的名字，如sum = 0后不能直接调用sum()\n\n\n\n\n数据类型\nPython中数据类型有很多，之后会进行介绍，这里先讨论基本的三类\n\n函数type()\n\n将一个变量作为参数传递给type()函数，会返回变量储存值的数据类型，基本的有：\n\nint：整型\nfloat：浮点型\nstr：字符串 数据类型间的差异之后再进行介绍\n\n\n\n\n数据类型转换函数\n\nint()函数：把可以转变的字符串，或浮点型转换为整型，对于浮点数来说，这进行的是向零取整，即砍掉小数部分\nfloat()函数：把可以转变的字符串，或整型转换为浮点型\nstr()函数：把浮点型，整型转换为一个字符串\n\n\n\n\n计算\n\n表达式(expression)\n表达式是由运算数(oprand)和运算符(operator)组成的用于计算的式字\n\n\n运算数\nPython是动态类型语言，同一个变量可以先后指向不同类型的值。不同类型能否运算要看具体规则，如1 + 2.0可以，'1' + 2会报错。\n\n\n数字运算符\nPython中数字的运算符主要有如下类型\n\n\n\n符号\n计算\n结合\n\n\n\n\n+\n加法\n自左向右\n\n\n-\n减法\n自左向右\n\n\n*\n乘法\n自左向右\n\n\n/\n除法\n自左向右\n\n\n//\n向下取整的除法\n自左向右\n\n\n%\n取余\n自左向右\n\n\n**\n乘方\n自右向左\n\n\n\n\n乘方自右向左扫描的含义是2 ** 3 ** 2 == 2 ** (3 ** 2)\n\n\n\n\n赋值\n\n赋值语句把一个值和一个变量绑定在一起，我们说“把一个值赋给一个变量”，这是一个动态的操作，而不是一种静态的关系\n\n\n自增/自减\nPython中如下的写法是很常见的，含义就是一种快速的赋值写法。\ntotal = total + item\ntotal += item\ntotal -= item\ntotal /= item\n...\n\n\n\n关系运算符\nPython中关系运算符主要有如下类型\n\n\n\n运算符\n描述\n\n\n\n\n==\n判断等于\n\n\n!=\n判断不等于\n\n\n&gt;\n判断大于\n\n\n&lt;\n判断小于\n\n\n&gt;=\n判断大于等于\n\n\n&lt;=\n判断小于等于\n\n\n\n关系表达式的结果属于一种数据类型，称为布尔型(bool)。 布尔型只包含两个值True和False一般来说也可以用1和0代之。\n\n\n运算符的优先级\n\n算术运算符优先级高于关系运算符\n关系运算符优先级高于赋值运算符\n括号可以改变运算优先级\n\n\n\n循环语句\n\nwhile循环\nPython中while循环是一种基于条件的循环，当while关键字后面的表达式值为True时，就重复运行循环体中的代码\n\n\nbreak关键字\nbreak关键字可以跳出当前循环体所在的循环，注意，在有嵌套的情况下，break跳出的也只有一层循环。\n\n\n\n典型计算\n\n时间差\n先统一成分钟，再用//和%拆回小时、分钟。若题目允许跨过午夜，负差值加一天。\ndiff = h2 * 60 + m2 - (h1 * 60 + m1)\nif diff &lt; 0:\n    diff += 24 * 60\nprint(diff // 60, diff % 60)\n\n\n哨兵与平均数\ntotal, count = 0, 0\nwhile True:\n    x = int(input())\n    if x == -1:\n        break\n    total += x\n    count += 1\nif count &gt; 0:\n    print(total / count)\n\n初始化放在循环外；哨兵不参与计算，先判断再累加\n没有有效数据时不能直接除以count"
   },
   {
-    "objectID": "about.html#workspace",
-    "href": "about.html#workspace",
-    "title": "~/notes/about",
-    "section": "workspace/",
-    "text": "workspace/\n\nblog/ 博客：作业存档、感兴趣的话题探讨、学科研究思考。\nprojects/ 项目：正在维护的项目、已经完成的项目、考虑进行的项目。\nlog/ 日志：每天的一些状态留存以及想法记录。\nlibrary/ 图书馆：时常翻阅或感兴趣的书籍。\n\n在 links/ 友链认识其他写作者。"
+    "objectID": "posts/20261007-fip-quiz1-recap/index.html#阅读材料补充",
+    "href": "posts/20261007-fip-quiz1-recap/index.html#阅读材料补充",
+    "title": "FIP 第一次小测复习速查",
+    "section": "阅读材料补充",
+    "text": "阅读材料补充\n\n一行读入多个数\nh, m = map(int, input().split())\n\ninput()读一整行，split()按空白拆开，map(int, ...)逐项转为整数\n左边变量个数要与输入段数一致，浮点数则用map(float, ...)\n\n\n\n格式化输出\nprint(1, 2, sep='-', end='!')  # 1-2!，不换行\nprint(f'{3.5:.2f}')           # 3.50\n\nsep控制参数之间的分隔，默认空格；end控制末尾，默认换行\n:.2f保留两位小数，格式化字符串前要加f\nprint()负责输出，返回值是None\n\n\n\n运算注意\n\n/得到浮点商，//向下取整；int()是向零截断，两者对负数可能不同\nint('3.5')报错；int(float('3.5'))得到3\n2 ** 3 ** 2是2 ** (3 ** 2)；-2 ** 2是-(2 ** 2)\n'1' + '2'得到'12'；'2' * 3得到'222'\n\n\n\n文件与终端\n\n.py是Python源文件；改代码后先保存再运行\n相对路径从当前工作目录出发，绝对路径从磁盘或根目录出发\ncd切换目录，dir或ls查看文件，python 文件名.py运行程序"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "easoncyy",
-    "section": "",
-    "text": "~/notes · A PERSONAL WORKSPACE\n\n\n\n这里存放学习笔记、资源归档与偶尔的思考。给复杂的问题留一点空间，也给未来的自己留一份记录。\n\n阅读博客 → log/ 日志 → 关于本站 ↗"
+    "objectID": "posts/20261007-fip-quiz1-recap/index.html#理论课内容-1",
+    "href": "posts/20261007-fip-quiz1-recap/index.html#理论课内容-1",
+    "title": "FIP 第一次小测复习速查",
+    "section": "理论课内容",
+    "text": "理论课内容\n参考材料 26FIP2 枚举与减治.pdf\n\n分支\nif condition:\n    ...\nelse:\n    ...\n\n条件成立执行if，否则执行else，两者只走一个\nelse与对应的if对齐；多个独立if则可能都执行\n\n\n\n逻辑运算\n\n\n\n运算符\n含义\n短路规则\n\n\n\n\nand\n都成立\n左边为假，不算右边\n\n\nor\n至少一个成立\n左边为真，不算右边\n\n\nnot\n取反\n优先级高于and和or\n\n\n\n0、空字符串、空容器、None为假。and、or返回选中的操作数，不一定是布尔值，如0 or 7得到7。\n\n\nfor与range\nfor i in range(2, 6):\n    print(i)  # 依次输出2、3、4、5\n\n\n\n写法\n产生的整数\n\n\n\n\nrange(4)\n0、1、2、3\n\n\nrange(2, 5)\n2、3、4\n\n\nrange(5, 0, -2)\n5、3、1\n\n\n\n\n左闭右开，不包含终点；步长不能为0，参数须为整数\nrange(5, 2)为空，不执行循环体\n次数已知用for，直到条件满足或读到哨兵用while\n\n\nbreak、continue与循环else\n\nbreak退出当前循环；continue跳过本轮剩余语句，进入下一轮\n循环正常结束时执行else；通过break退出则不执行\n空循环也会执行else；continue不会取消else\n\n\n\n\n枚举(Enumeration)\n逐一检查有限的候选解，不遗漏、不重复。最坏情况要考虑全部候选。\n\n素数判断\n若\\(n\\)有非平凡因子，至少一个不大于\\(\\sqrt n\\)，所以只需检查到平方根。\ndef is_prime(n):\n    if n &lt; 2:\n        return False\n    for d in range(2, int(n ** 0.5) + 1):\n        if n % d == 0:\n            return False\n    return True\n\n0、1不是素数；2是素数\n平方根边界要包含，如49须检查到7\n朴素检查到\\(n-1\\)为\\(O(n)\\)，平方根界为\\(O(\\sqrt n)\\)\n\n\n\n\n减治(Decrease and Conquer)\n每一步缩小问题规模，直到能直接求解。\n\n辗转相除法\n\\[\\gcd(a,b)=\\gcd(b,a\\bmod b)\\]\nwhile b != 0:\n    a, b = b, a % b\nprint(a)\n\n同步赋值先计算右边所有旧值，再赋给左边\n不能改成a = b后再b = a % b，后一句的a已经变了\n例如(48, 18) → (18, 12) → (12, 6) → (6, 0)，最大公约数为6\n若求最小公倍数，先保存原来的乘积，再除以最大公约数（此处考虑正整数）\n\n\n\n二分法求根\n连续函数在端点异号的区间内至少有一个根。每次取中点，保留仍包围根的一半。\n# 已知f连续，f(left) &lt; 0 &lt; f(right)\nwhile right - left &gt; eps:\n    mid = (left + right) / 2\n    if f(mid) &lt; 0:\n        left = mid\n    else:\n        right = mid\nroot = (left + right) / 2\n\n实数中点用/；每次区间宽度减半\n端点同号只表示不能用异号条件保证有根，不能断言无根\n区间宽度、残差abs(f(x))、相邻估计值差是不同的终止标准，看题目要求\n中点误差不超过最终区间宽度的一半；浮点数一般不用==判断近似相等"
   },
   {
-    "objectID": "index.html#recent",
-    "href": "index.html#recent",
-    "title": "easoncyy",
-    "section": "recent/",
-    "text": "recent/\n全部文章 →"
+    "objectID": "posts/20261007-fip-quiz1-recap/index.html#阅读材料补充-1",
+    "href": "posts/20261007-fip-quiz1-recap/index.html#阅读材料补充-1",
+    "title": "FIP 第一次小测复习速查",
+    "section": "阅读材料补充",
+    "text": "阅读材料补充\n\nmath模块\nimport math\nmath.sqrt(9)   # 3.0\nmath.sin(math.pi / 2)  # 三角函数参数用弧度\nsqrt()返回浮点数，作为range上界时要转为整数并检查右开边界。eval()把字符串当表达式执行，不适合直接处理不可信输入；函数公式优先用def或lambda。"
   },
   {
-    "objectID": "blog.html",
-    "href": "blog.html",
-    "title": "~/notes/blog",
-    "section": "",
-    "text": "FIP 第一次小测复习速查\n\n\n\nFIP\n\n学习笔记\n\nFIP复习\n\n\n\n智能程序设计基础课程第一次小测的复习速查笔记\n\n\n\n\n\n2026.10.07\n\n\n\n\n\n\n\nHello, world：从第一篇笔记开始\n\n\n\n示例\n\n写作\n\n\n\n一篇示例文章，展示标题、代码、引用与 Markdown 的基本排版。\n\n\n\n\n\n2026.10.06\n\n\n\n\n\n\n\n从公式到文档：一页数学笔记\n\n\n\n示例\n\n数学\n\n\n\n展示 LaTeX 公式、推导，以及由 Typst 生成的 PDF 下载。\n\n\n\n\n\n2026.10.05\n\n\n\n\n\n\n\nFIP W04 · 序列与查找\n\n\n\nFIP\n\n学习笔记\n\n\n\nW4 学习记录，按原 Markdown 文件创建时间归档。\n\n\n\n\n\n2026.09.29\n\n\n\n\n\n\n\n线性代数 W03 · 作业归档\n\n\n\n线性代数\n\n作业归档\n\n\n\n2026 年线性代数 W03 作业，提供原版 PDF 在线阅读与下载。\n\n\n\n\n\n2026.09.29\n\n\n\n\n\n\n\n微积分 W03 · 作业归档\n\n\n\n微积分\n\n作业归档\n\n\n\n2026 年微积分 W03 作业，提供原版 PDF 在线阅读与下载。\n\n\n\n\n\n2026.09.28\n\n\n\n\n\n\n\nFIP W03 · x * x 与 x ** 2 的区别\n\n\n\nFIP\n\n学习笔记\n\n\n\nW3 学习记录，按原 Markdown 文件创建时间归档。\n\n\n\n\n\n2026.09.24\n\n\n\n\n\n\n\nFIP W03 · 迭代与模拟\n\n\n\nFIP\n\n学习笔记\n\n\n\nW3 学习记录，按原 Markdown 文件创建时间归档。\n\n\n\n\n\n2026.09.22\n\n\n\n\n\n\n\n微积分 W02 · 作业归档\n\n\n\n微积分\n\n作业归档\n\n\n\n2026 年微积分 W02 作业，提供原版 PDF 在线阅读与下载。\n\n\n\n\n\n2026.09.21\n\n\n\n\n\n\n\nFIP W02 · 枚举与减治\n\n\n\nFIP\n\n学习笔记\n\n\n\nW2 学习记录，按原 Markdown 文件创建时间归档。\n\n\n\n\n\n2026.09.20\n\n\n\n\n\n\n\n线性代数 W01–W02 · 作业归档\n\n\n\n线性代数\n\n作业归档\n\n\n\n2026 年线性代数 W01–W02 作业，提供原版 PDF 在线阅读与下载。\n\n\n\n\n\n2026.09.20\n\n\n\n\n\n\n\n微积分 W01 · 作业归档\n\n\n\n微积分\n\n作业归档\n\n\n\n2026 年微积分 W01 作业，提供原版 PDF 在线阅读与下载。\n\n\n\n\n\n2026.09.16\n\n\n\n\n\n无匹配项"
+    "objectID": "posts/20261007-fip-quiz1-recap/index.html#理论课内容-2",
+    "href": "posts/20261007-fip-quiz1-recap/index.html#理论课内容-2",
+    "title": "FIP 第一次小测复习速查",
+    "section": "理论课内容",
+    "text": "理论课内容\n参考材料 26FIP3 迭代与模拟.pdf\n\n迭代\n反复执行同一个规则，前一步的结果作为下一步的输入，逐渐得到足够好的近似解。\n\n牛顿迭代法(Newton-Raphson Method)\n用当前点的切线与横轴交点作为下一次估计。 \\[x_{k+1}=x_k-\\frac{f(x_k)}{f'(x_k)}\\] 求\\(a\\)的平方根，令\\(f(x)=x^2-a\\)，得到： \\[x_{k+1}=\\frac{x_k+a/x_k}{2}\\]\ndef root(a, eps):\n    if a == 0:\n        return 0.0\n    x = max(1.0, a)\n    while abs(x * x - a) &gt;= eps:\n        x = (x + a / x) / 2\n    return x\n\n此函数假设a &gt;= 0、eps &gt; 0；a=0单独处理\n牛顿法需要导数，单根附近二阶收敛，但初值不合适可能不收敛\n分母不能为0；a / x不能写成a // x\n\n\n\n弦截法(Secant Method)\n用最近两个点的割线代替切线，不需要导数。 \\[x_{k+1}=x_k-f(x_k)\\frac{x_k-x_{k-1}}{f(x_k)-f(x_{k-1})}\\]\ndef secant(f, prev, curr, eps):\n    for _ in range(100):\n        fp, fc = f(prev), f(curr)\n        if abs(fc) &lt; eps:\n            return curr\n        if abs(fc - fp) &lt; 1e-12:\n            return None\n        nxt = curr - fc * (curr - prev) / (fc - fp)\n        prev, curr = curr, nxt\n    return None\n\n需要两个初值，不要求端点异号；也可能不收敛\n先检查当前点是否已满足精度，再检查分母\nf是可调用的函数，取值写f(x)，不能写eval(x)\n对\\(f(x)=x^2-2\\)，初值1、2，下一点为\\(4/3\\)\n\n\n\n\n函数\ndef add(a, b=1):\n    return a + b\n\ndef定义函数，调用后才执行函数体；return立即结束函数并交回结果\nprint是输出，不能代替return；没写return则返回None\n位置参数按顺序对应；关键字参数按名字对应；默认值在省略参数时使用\nreturn a, b返回元组，可以用x, y = 函数()接收\nlst: list、-&gt; int是类型注解，运行时默认不强制检查\n接收或返回函数的函数称为高阶函数，如secant(f, ...)\n\n\nlambda与条件表达式\nf = lambda x: x * x - 2\ndigit = int(a[-i]) if i &lt;= len(a) else 0\n\nlambda只能写表达式，结果自动返回\n值1 if 条件 else 值2只计算选中的一边，缺位时不会访问a[-i]\n默认参数在执行def时求值；默认列表会被多次调用共享，需要独立列表时常用None作默认值\n\n\n\n\n多分支\nif score &gt;= 90:\n    grade = 'A'\nelif score &gt;= 60:\n    grade = 'B'\nelse:\n    grade = 'C'\n从上到下判断，命中第一条就停止后续分支判断。\n\n\n蒙特卡洛方法\n在单位正方形随机取\\(n\\)个点，其中\\(m\\)个在四分之一单位圆内，估算\\(\\pi\\approx4m/n\\)。\nimport random\nrandom.seed(42)\nhits = 0\nfor _ in range(n):\n    x, y = random.random(), random.random()\n    if x * x + y * y &lt;= 1:\n        hits += 1\nprint(4 * hits / n)\n\nrandom.random()范围是[0, 1)；seed用于复现，不保证结果更准确\nn须大于0；样本更多通常统计误差更小，不保证每一次结果都更准\n典型误差量级为\\(O(1/\\sqrt n)\\)，误差缩小10倍通常需约100倍样本\n布丰投针在针长\\(L\\le d\\)时，相交概率\\(P=2L/(\\pi d)\\)\n\n\n\n大数加法\n字符串逐位模拟竖式，从个位算起：本位为total % 10，进位为total // 10。\ndef big_add(a, b):\n    result, carry, i = '', 0, 1\n    while i &lt;= max(len(a), len(b)) or carry:\n        da = int(a[-i]) if i &lt;= len(a) else 0\n        db = int(b[-i]) if i &lt;= len(b) else 0\n        total = da + db + carry\n        result = str(total % 10) + result\n        carry = total // 10\n        i += 1\n    return result\n\n假设输入为非空的非负整数字符串，短数缺位补0\n有最高位进位时须多算一轮；新数位放在结果左边\nPython的int本身支持任意精度，逐位模拟是为了学习算法\n字符串不可变；x ** 2并非用泰勒展开实现，不能据此判断效率\n\n\n\n字符串\n\ns[i]取字符，s[-1]取末尾；s[a:b]左闭右开；s[::-1]反转\n索引越界会报错，切片端点超出范围通常会截到有效部分\nsplit()拆分，strip()去两端空白，'分隔符'.join(序列)拼接字符串\nreplace()、upper()、lower()返回新字符串，不原地修改"
   },
   {
-    "objectID": "projects.html",
-    "href": "projects.html",
-    "title": "~/notes/projects",
-    "section": "",
-    "text": "正在维护"
+    "objectID": "posts/20261007-fip-quiz1-recap/index.html#阅读材料补充-2",
+    "href": "posts/20261007-fip-quiz1-recap/index.html#阅读材料补充-2",
+    "title": "FIP 第一次小测复习速查",
+    "section": "阅读材料补充",
+    "text": "阅读材料补充\n\n多分支if-elif-else\n语句示例\nif condition1:\n    statement1\nelif condition2:\n    statement2\nelse:\n    statement_default\n作为一整个语句块，执行的顺序是从上到下，在第一个为真的分支执行过后跳过后续所有分支。 需要注意多分支语句与多个if语句判断的区别，多个独立的if语句会执行多次判断，而非互斥的分档。 条件顺序也是优先级，分档时一般从严到宽，如先判断&gt;= 90，再判断&gt;= 60，否则高分会提前落入低档。\n\n\n条件表达式\n形式为\n&lt;条件为真时的值&gt; if &lt;条件&gt; else &lt;条件为假时的值&gt;\n经典示例就是刚才写过的大数字符串加法缺位补零。 先判断条件，只计算选中的一侧；先访问越界下标，再用条件选择结果，仍会报错。\n\n\nlambda函数\nlambda函数是一种用一个语句就能定义的简单函数，形式为\nlambda &lt;自变量&gt;: &lt;表达式&gt;\n表达式也可以是条件表达式，此外还可以经常和map()函数嵌套使用\ndouble = list(map(lambda x: x * 2, lst))\n\n表达式的值自动作为返回值，不能写普通赋值或多条语句\n可以没有参数，也可以有多个参数：lambda: 0、lambda x, y: x + y\n逻辑较长或需要多分支时用def\n\n\n\n函数的参数\n\n位置参数(positional argument)\n按照顺序对应的参数。\n\n\n关键字参数(keyword argument)\n调用时将实参赋值给对应的形参。位置参数要写在关键字参数前面\n\n\n默认参数\n省略实参时使用默认值；普通参数列表中，有默认值的形参放在无默认值的形参后面。\ndef add(a, b=1):\n    return a + b\n\nadd(3)       # 4\nadd(3, b=2)  # 5\n默认值在执行def时只求值一次，默认列表会被多次调用共享。需要每次新建时用None：\ndef put(x, bag=None):\n    if bag is None:\n        bag = []\n    bag.append(x)\n    return bag\n\n\n可变数量参数\n定义处将多余实参打包，调用处才用*、**解包：\ndef f(*args):        # args是元组，收集多余位置实参\n    ...\n\ndef g(**kwargs):     # kwargs是字典，收集多余关键字实参\n    ...\n\n\n\n返回值与函数对象\n\nreturn 值返回结果并立即结束函数，后面的语句不执行\n单独return或执行到函数末尾，返回None\nreturn a, b返回元组(a, b)；打印结果不能代替返回结果\n传函数写f，调用函数写f(x)；公式字符串不是可调用的函数\n\n\n\n类型注解与文档字符串\ndef square(x: float) -&gt; float:\n    \"\"\"返回x的平方，如square(2.0)得到4.0。\"\"\"\n    return x * x\n\nx: float说明参数类型，-&gt; float说明返回类型，默认不强制检查\n函数体第一条字符串是文档字符串（docstring），可用help(square)查看\n文档写清做什么、边界和样例；assert 条件可检查约定，条件为假时抛出AssertionError（了解）\n\n\n\n作用域简介\n\n函数体内部的变量名是局部的，函数体外无法调用\n函数可以读取函数外的全局变量，但是要在函数内给全局名赋值，需要使用global关键字\n形参也是局部名\n局部名字不影响外部同名变量，但若传入列表后原地修改，外面也能看到变化\n\n\n\neval函数\neval(表达式字符串)允许把字符串当Python表达式进行上下文求值，但是注意只能是表达式，不能是语句。 不建议使用的原因有 - 字符串输入不安全容易被注入 - 公式和变量储存在字符串里容易类型或计算出错 - 报错不如正常函数清晰不易于调试\n\n\nrandom模块\n伪随机数模块，使用蒙特卡洛方法时需要调用。要注意设置种子保证环境一致。\n\n常用函数\n\nrandom.seed(a=None, version=2)\n初始化伪随机数生成器，相同的种子和后续调用序列可以获得同一串伪随机数。 需要注意的是一般种子在程序开头设置一次即可，在循环里反复设置会导致随机性丢失。\n\n\nrandom.random() -&gt; float\n获得\\([0.0, 1.0)\\)上均匀分布的浮点数\n\n\nrandom.uniform(a, b) -&gt; float\n获得a与b之间均匀分布的浮点数，是否包含端点是实现定义的。 端点顺序可以颠倒，另一端是否取到与浮点舍入有关。\n\n\nrandom.randint(a, b) -&gt; int\n返回闭区间上的随机整数。\n\n\nrandom.randrange(stop)/ random.randrange(start, stop[, step]) -&gt; int\n等价于choice(range(...))开闭规则和range一致。\n\n\nrandom.choice(seq)\n从非空序列中随机获取一个元素。 空序列会引发IndexError。\n\n\nrandom.shuffle(seq)\n原地随机打乱可变序列。 返回None，不要写lst = random.shuffle(lst)。\n\n\nrandom.sample(population, k) -&gt; list\n无放回随机抽样\\(k\\)个，返回抽中元素组成的新列表。 0 &lt;= k &lt;= len(population)，不改变原序列；总体有重复值时，抽出的值仍可能重复。\n\n\n\n其他函数（了解）\n\nrandom.choices(seq, k=n)：有放回抽样，返回列表\nrandom.gauss(mu, sigma)、random.normalvariate(mu, sigma)：正态分布\nrandom.getrandbits(k)：返回由k个随机比特构成的非负整数\nimport random后调用random.random()；只有from random import random后才能直接调用random()\n\n\n\n\n字符串补充\n\n字面量与转义\n\n单引号、双引号都可表示字符串，三引号可以跨行\n\\n换行，\\t制表，\\\\反斜杠；原始字符串如r'C:\\new'不把\\n当换行\n字符串遍历得到的是长度为1的字符串，计算数字前要转换，如int(ch)\ns += t得到新字符串再重新绑定名字，原字符串不变\n\n\n\n内置函数\n\n\n\n写法\n返回结果\n\n\n\n\nmin(s) / max(s)\n按码位最小 / 最大的字符；空串报错\n\n\nsorted(s)\n排序后的字符列表，拼回字符串用''.join(sorted(s))\n\n\nreversed(s)\n反向迭代器，拼回用''.join(reversed(s))\n\n\nord('A') / chr(65)\n字符转码位 / 码位转字符\n\n\nrepr(s)\n显示引号、转义等表示，便于看清内容（了解）\n\n\n\n\n\n查找与计数\n\n\n\n\n\n\n\n方法\n含义\n\n\n\n\nfind(sub) / rfind(sub)\n首次 / 末次出现的下标，找不到返回-1\n\n\nindex(sub) / rindex(sub)\n同上，但找不到抛出ValueError\n\n\ncount(sub)\n不重叠的出现次数，如'aaa'.count('aa')为1\n\n\nstartswith(prefix) / endswith(suffix)\n判断前缀 / 后缀，返回布尔值\n\n\n\n\n\n分割、拼接与去除\n\nsplit()按空白分割，连续空白合并；split(',')按指定分隔符分割，可能留下空串\nrsplit(sep, maxsplit)从右分割，splitlines()按行分割\npartition(sep)返回(前, 分隔符, 后)三元组，找不到时返回(原串, '', '')\nreplace(old, new, count)至多替换count次，省略则全部替换\njoin()的元素必须是字符串，''.join([1, 2])会报错\nstrip(chars)删除两端属于指定字符集合的字符，不是删除固定子串；删固定前后缀用removeprefix()、removesuffix()\n\n\n\n其他方法（了解）\n\ncapitalize()首字符大写，其余小写；title()单词首字母大写；swapcase()交换大小写；casefold()用于忽略大小写比较\nljust()、rjust()、center()对齐填充；zfill(width)左侧补零；expandtabs()展开制表符\nisalpha()、isalnum()、isspace()等返回布尔值；isdigit()为真不一定能转成int，如'²'，大数题通常限定'0'到'9'\nencode()把字符串转成字节串，decode()把字节串转回字符串\nformat(3.14159, '.2f')得到'3.14'；字符串也有.format()、.format_map()，日常优先用f-string\n\n\n\n\n迭代终止与数值测例\n\nabs(f(x)) &lt; eps检查残差；abs(x_new - x_old) &lt; eps检查变化量，不能随意替换\neps太大可能停得早，太小可能因浮点误差停不下来；可加最大迭代次数\n更新前检查危险分母：牛顿法的f'(x)，弦截法的f(curr) - f(prev)\n比较结果时统一公式、初值、eps；随机模拟还要统一seed和调用顺序\n手算一步、检查已知根和边界；大数加法注意'999' + '1'及不等长输入\n1e-3表示\\(10^{-3}\\)，不要写成1^-3"
   },
   {
-    "objectID": "projects.html#working",
-    "href": "projects.html#working",
-    "title": "~/notes/projects",
-    "section": "",
-    "text": "正在维护"
+    "objectID": "posts/20261007-fip-quiz1-recap/index.html#理论课内容-3",
+    "href": "posts/20261007-fip-quiz1-recap/index.html#理论课内容-3",
+    "title": "FIP 第一次小测复习速查",
+    "section": "理论课内容",
+    "text": "理论课内容\n参考材料 26FIP4 序列与查找.pdf\n\n列表与元组\n\n列表[1, 2]是可变序列，字符串、元组是不可变序列\n“序列有序”表示有先后位置，不表示已经按值排序\n单元素元组必须有逗号：(1,)；(1)只是整数\n\n\n别名与浅拷贝\na = [1, 2]\nb = a        # 同一对象\nc = a[:]     # 新列表\nb[0] = 9\nprint(a, c)  # [9, 2] [1, 2]\n\na[:]、a.copy()、list(a)都是浅拷贝，内层可变对象仍共享\n[[0]] * 3的三个内层列表是同一对象；独立列表用[[0] for _ in range(3)]\n元组槽位不能替换，但其中引用的列表仍可修改\n\n\n\n基本操作\n\n\n\n写法\n含义 / 返回值\n\n\n\n\nappend(x)\n末尾追加一个元素，返回None\n\n\nextend(xs)\n把多个元素逐项追加，返回None\n\n\npop()\n删除并返回末尾元素\n\n\nremove(x)\n删除第一个相等元素；不存在报错\n\n\nindex(x)\n首次出现的下标；不存在报错\n\n\ncount(x)\n出现次数\n\n\nsort() / reverse()\n原地排序 / 反转，返回None\n\n\nsorted(xs)\n返回排序后的新列表\n\n\n\n\n列表的+、*产生新列表；+=对列表通常原地扩展\nin查列表中的单个元素，[1, 2] in [1, 2, 3]为False\n序列按字典序比较，共同前缀相同时短序列更小，不补零\n字符串比较按Unicode码位，不是按汉字笔画\n\n\n\n\n最值查找\n先用第一个值作初值，再逐个比较更新；不要随意用0作最大值初值，否则全为负数时出错。\ndef max_index(lst):\n    if not lst:\n        return -1\n    idx = 0\n    for i in range(1, len(lst)):\n        if lst[i] &gt; lst[idx]:\n            idx = i\n    return idx\n&gt;保留第一次最大值位置，&gt;=保留最后一次。min、max只返回值；空序列没有默认值时会报错。\n\n\n线性查找\ndef linear_search(lst, target):\n    for i in range(len(lst)):\n        if lst[i] == target:\n            return i\n    return -1\n\n无序表也能查，返回第一次匹配的位置\n最坏比较\\(n\\)次，时间\\(O(n)\\)；额外空间\\(O(1)\\)\n-1表示没找到，不能直接拿它索引列表，否则会读到最后一项\n\n\n\n二分查找\ndef binary_search(lst, target):\n    left, right = 0, len(lst) - 1\n    while left &lt;= right:\n        mid = left + (right - left) // 2\n        if lst[mid] == target:\n            return mid\n        elif lst[mid] &lt; target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1\n\n前提是按查找所用的规则升序排列；按时间排列不代表按温度值升序\n闭区间[left, right]，相等时还有一个候选，所以用&lt;=\n每次排除中点，用mid + 1或mid - 1；空表直接返回-1\n定长整数中left + right可能溢出，改用区间差算中点；Python整数通常无此问题\n重复值返回某一次匹配，不保证首次；要首次则记录答案后继续向左查\n\n\n手推边界\n对[2, 5]查5：先left=0, right=1, mid=0，再left=1, right=1, mid=1，返回1。若用left &lt; right，会漏掉最后一步。\n\n\n\n复杂度\n\n\n\n操作\n时间复杂度\n\n\n\n\n列表按下标读写\n\\(O(1)\\)\n\n\n列表末尾append、pop()\n均摊\\(O(1)\\)\n\n\n列表头删、中间插入、按值查找\n\\(O(n)\\)\n\n\n找最值、线性查找（最坏）\n\\(O(n)\\)\n\n\n二分查找（最坏）\n\\(O(\\log n)\\)\n\n\n一般排序\n\\(O(n\\log n)\\)\n\n\n\n\n大\\(O\\)表示规模增大时的增长趋势，不是具体秒数\n忽略常数和低阶项，如\\(3n+2\\)为\\(O(n)\\)；循环每次折半为\\(O(\\log n)\\)\n无序数据只查一次，通常直接线性查找；多次查找才考虑先排序\n排序后返回的是新顺序的下标，不自动对应原下标"
   },
   {
-    "objectID": "log.html",
-    "href": "log.html",
-    "title": "~/notes/log",
-    "section": "",
-    "text": "$ tail -f ~/notes/log\n生活片段、照片与值得留下的链接。\nhost=easoncyy.github.io · timezone=UTC+08:00 · mode=append\n\n\n  grep \n\n\n\n\n\n2026-10-07 23:51:05 +0800\n\n\n\n国庆的最后一天\n\n忙碌又不一定充实的一天，早上返校整理整理东西后完成了《越人歌》的合唱作业，很喜欢这种空灵的感觉。然后骑车去工大边上和同学聚餐后直至下午才归，虽然回来的路上有点迷路，但是在一条名字叫赵伍路的路上骑行了很久，被浓浓的生活气息感染了。回来之后溜去尧坤楼录完了剩下两首歌后又去到图书馆六楼自修线性代数，人意外的不是很多！最后用一个3km跑步（实则就跑了一公里）打卡和明天的fip月考复习结束了流水账的一天。还不太确定怎么能把这个栏目写的不流水账一点呢？\n\n\n\n\n吃饭的餐馆\n\n\n\n\n\n夜晚的校门\n\n\n\n\n\n超算队招新录取通知\n\n\n\n\n\n\ncomments/ 评论\n\n展开后加载评论，使用 GitHub 账号参与讨论。\n\n\n\n\n\n\n\n2026-10-06 23:58:02 +0800\n\n\n\n作为开始的一天\n\n结束了在老家吃吃喝喝的三天多时光，也是在缝隙里用Codex做了一个个人网页，一切都还比较简陋，所以今天的日志也简陋一点吧（虽然这个东西叫log但是好像实际上是journal啊喂）\n\n\n\ncomments/ 评论\n\n展开后加载评论，使用 GitHub 账号参与讨论。\n\n\n\n\n\n\n\n2026-10-06 20:51:35 +0800\n\n\n\nlog/ 开始记录\n\n这里是新建的 log/ 栏目。这条是栏目说明，并非个人日记示例。\n可以写下当天的想法，在同一条文字里附上几张照片，或者插入值得回看的链接。每条完整显示在这里，沿着时间往下读就好。\n\n\n\ncomments/ 评论\n\n展开后加载评论，使用 GitHub 账号参与讨论。\n\n\n\n\n\n\n没有匹配的记录。试试其他关键词。"
+    "objectID": "posts/20261007-fip-quiz1-recap/index.html#阅读材料补充-3",
+    "href": "posts/20261007-fip-quiz1-recap/index.html#阅读材料补充-3",
+    "title": "FIP 第一次小测复习速查",
+    "section": "阅读材料补充",
+    "text": "阅读材料补充\n\n遍历与函数参数\nfor i, x in enumerate([10, 20]):\n    print(i, x)\n\nenumerate同时给下标与元素；zip按位置配对，默认按最短序列结束\nany([])为False，all([])为True\n定义处*args收集额外位置参数为元组，**kwargs收集关键字参数为字典\n调用处*xs拆开序列，**d拆开关键字参数；max(xs)和max(*xs)调用形式不同\nkey=接收单参数函数，如sorted(xs, key=abs)；不能写sorted(xs, abs)\n\n\n\nMarkdown与公式\n\n#、##、###表示标题层级；代码块标明python\n表格表头后必须有分隔行；行内代码用反引号\n$O(n)$写行内公式，$$...$$写独立公式；多字符上下标用花括号，如x_{k+1}\n\n\n\nAI协作\nSDD：规格 → 草稿 → 审查 → 验证 → 固化。先写清输入、输出、边界、样例，再对照代码检查；随机题要复现则指定seed，查找题要说明是否有序与返回值约定。"
   },
   {
-    "objectID": "posts/20260916-calculus-w01-homework/index.html",
-    "href": "posts/20260916-calculus-w01-homework/index.html",
-    "title": "微积分 W01 · 作业归档",
-    "section": "",
-    "text": "本篇归档保存微积分 W01 的作业 PDF。归档日期采用文档首页标注的作业日期。\n\n2026-calculus-w01-homework.pdf\n在线阅读 PDF ↗ · 下载 PDF ↓\n\n\n如果浏览器不支持内嵌 PDF，可使用上方阅读或下载链接。"
+    "objectID": "posts/20261007-fip-quiz1-recap/index.html#第1题-输出题25分",
+    "href": "posts/20261007-fip-quiz1-recap/index.html#第1题-输出题25分",
+    "title": "FIP 第一次小测复习速查",
+    "section": "第1题 输出题（25分）",
+    "text": "第1题 输出题（25分）\n输入为一行23 40。写出程序的全部输出，共5行，每行5分。\nh, m = map(int, input().split())\ndiff = 35 - (h * 60 + m)\nif diff &lt; 0:\n    diff += 24 * 60\nprint(diff)\nprint(diff // 60, diff % 60)\na, b = 2, 5\na, b = b, a + b\nprint(a, b)\nprint('3' * 2 + '0')\nprint(f'{diff / 60:.2f}')\n输出："
   },
   {
-    "objectID": "posts/20260920-linear-algebra-w01-w02-homework/index.html",
-    "href": "posts/20260920-linear-algebra-w01-w02-homework/index.html",
-    "title": "线性代数 W01–W02 · 作业归档",
-    "section": "",
-    "text": "本篇归档保存线性代数 W01–W02 的作业 PDF。归档日期采用文档首页标注的作业日期。\n\n2026-linear-algebra-w01-w02-homework.pdf\n在线阅读 PDF ↗ · 下载 PDF ↓\n\n\n如果浏览器不支持内嵌 PDF，可使用上方阅读或下载链接。"
+    "objectID": "posts/20261007-fip-quiz1-recap/index.html#第2题-填空题25分",
+    "href": "posts/20261007-fip-quiz1-recap/index.html#第2题-填空题25分",
+    "title": "FIP 第一次小测复习速查",
+    "section": "第2题 填空题（25分）",
+    "text": "第2题 填空题（25分）\n补全函数，返回整数闭区间[lo, hi]中所有素数的总和。保证0 &lt;= lo &lt;= hi &lt;= 1000，不得调用素数库。每空5分。\ndef prime_sum(lo, hi):\n    total = 0\n    for n in range(max(2, lo), __1__):\n        for d in range(2, __2__):\n            if __3__:\n                __4__\n        else:\n            total += __5__\n    return total\n答案："
   },
   {
-    "objectID": "posts/20260922-fip-w03-iteration-simulation/index.html",
-    "href": "posts/20260922-fip-w03-iteration-simulation/index.html",
-    "title": "FIP W03 · 迭代与模拟",
-    "section": "",
-    "text": "无法或没必要得到精确解的时候，如何求出足够好的近似解？\n\n\n迭代修正（牛顿迭代法、弦截法）\n模拟：用随机采样或逐位过程， 间接得到可用答案\n\n\n\n\n二分法的收敛是\\(log_2 (N)\\)级别的，下面考虑更高效的方法 - 牛顿迭代法在方程的单根附近具备平方级别的收敛速度\n\n考虑函数\\(f(x)\\)在区间上连续可导，求方程\\(f(x) = 0\\)的精确根\\(x^*\\). 由于无法直接求解，我们构造迭代序列 \\[x_0, x_1, x_1, ..., x_n, ...\\] 使其逐步逼近真实根\\(x^*\\). 终止条件考虑为: \\[\n|f(x_n) - f(x_{n - 1})| &lt; \\epsilon\n\\] #### 核心思想：以曲代直 &gt; 用切线代替曲线，用线性问题逼近非线性问题。\n\\[\nl:y - y_n = f'(x_n)(x-x_n)\n\\] \\[\nx_{n+1} = x_n - \\frac{f(x_n)}{f'(x_n)}\n\\] - 为什么这么快？：因为切线不仅匹配了函数值，还匹配了变化率（斜率）。相当于⽤“一阶信息”做了最优局部近似，每步迭代都把误差⾥的线性主导项消除了，剩下的只是高阶小量。 #### 问题 - 牛顿法在一些大规模运算上成本高 - 牛顿法只能处理非黑箱函数 - 牛顿迭代法解析困难，手动求导困难\n能否只使用函数值，不使用导函数处理这一问题？ - 用割线斜率即可 ## 弦截法 \\[\nx_{n+1} = x_n - f(x_n) \\frac{x_n - x_{n-1}}{f(x_n)-f(x_{n-1})}\n\\] - 需要两个初始值（不需要包围根） - 每次只需要一次函数求值 - 不需要导数，用差商近似了导数\n# f = x ^ 2 - 2\neps = 1e-3\nx_prev, x_curr = 1.0, 2.0\nwhile True:\n    f_prev = x_prev ** 2 - 2\n    f_curr = x_curr ** 2 - 2\n    if abs(f_curr) &lt; eps:\n        break\n    x_prev, x_curr = x_curr, x_curr - f_curr * (x_curr - x_prev) / (f_curr - f_prev)\nprint(x_curr)\n\neval(x_prev) 把字符串当表达式求值，建议替换为lambda函数\n\n\n\n\n\n函数可以被视为一种可以产生作用的操作\n函数也可以被视为一种获得值的工具 以上两种操作对应着两类不同的函数\n\n\n\n\nif Condition1:\n    Statement1\nelif Condition2:\n    Statement2\nelse:\n    Statement3"
+    "objectID": "posts/20261007-fip-quiz1-recap/index.html#第3题-输出题25分",
+    "href": "posts/20261007-fip-quiz1-recap/index.html#第3题-输出题25分",
+    "title": "FIP 第一次小测复习速查",
+    "section": "第3题 输出题（25分）",
+    "text": "第3题 输出题（25分）\n写出程序的全部输出，共5行，每行5分。\na = [4, 2, 3]\nb = a\nc = a[:]\nb[1] = 8\nc.append(1)\nprint(a)\nprint(c[-1:0:-2])\nprint(a.sort())\nprint(b)\nprint((c[0], len(c)))\n输出："
   },
   {
-    "objectID": "posts/20260922-fip-w03-iteration-simulation/index.html#newton-raphson-method",
-    "href": "posts/20260922-fip-w03-iteration-simulation/index.html#newton-raphson-method",
-    "title": "FIP W03 · 迭代与模拟",
-    "section": "",
-    "text": "二分法的收敛是\\(log_2 (N)\\)级别的，下面考虑更高效的方法 - 牛顿迭代法在方程的单根附近具备平方级别的收敛速度\n\n考虑函数\\(f(x)\\)在区间上连续可导，求方程\\(f(x) = 0\\)的精确根\\(x^*\\). 由于无法直接求解，我们构造迭代序列 \\[x_0, x_1, x_1, ..., x_n, ...\\] 使其逐步逼近真实根\\(x^*\\). 终止条件考虑为: \\[\n|f(x_n) - f(x_{n - 1})| &lt; \\epsilon\n\\] #### 核心思想：以曲代直 &gt; 用切线代替曲线，用线性问题逼近非线性问题。\n\\[\nl:y - y_n = f'(x_n)(x-x_n)\n\\] \\[\nx_{n+1} = x_n - \\frac{f(x_n)}{f'(x_n)}\n\\] - 为什么这么快？：因为切线不仅匹配了函数值，还匹配了变化率（斜率）。相当于⽤“一阶信息”做了最优局部近似，每步迭代都把误差⾥的线性主导项消除了，剩下的只是高阶小量。 #### 问题 - 牛顿法在一些大规模运算上成本高 - 牛顿法只能处理非黑箱函数 - 牛顿迭代法解析困难，手动求导困难\n能否只使用函数值，不使用导函数处理这一问题？ - 用割线斜率即可 ## 弦截法 \\[\nx_{n+1} = x_n - f(x_n) \\frac{x_n - x_{n-1}}{f(x_n)-f(x_{n-1})}\n\\] - 需要两个初始值（不需要包围根） - 每次只需要一次函数求值 - 不需要导数，用差商近似了导数\n# f = x ^ 2 - 2\neps = 1e-3\nx_prev, x_curr = 1.0, 2.0\nwhile True:\n    f_prev = x_prev ** 2 - 2\n    f_curr = x_curr ** 2 - 2\n    if abs(f_curr) &lt; eps:\n        break\n    x_prev, x_curr = x_curr, x_curr - f_curr * (x_curr - x_prev) / (f_curr - f_prev)\nprint(x_curr)\n\neval(x_prev) 把字符串当表达式求值，建议替换为lambda函数"
-  },
-  {
-    "objectID": "posts/20260922-fip-w03-iteration-simulation/index.html#函数",
-    "href": "posts/20260922-fip-w03-iteration-simulation/index.html#函数",
-    "title": "FIP W03 · 迭代与模拟",
-    "section": "",
-    "text": "函数可以被视为一种可以产生作用的操作\n函数也可以被视为一种获得值的工具 以上两种操作对应着两类不同的函数"
-  },
-  {
-    "objectID": "posts/20260922-fip-w03-iteration-simulation/index.html#多分支",
-    "href": "posts/20260922-fip-w03-iteration-simulation/index.html#多分支",
-    "title": "FIP W03 · 迭代与模拟",
-    "section": "",
-    "text": "if Condition1:\n    Statement1\nelif Condition2:\n    Statement2\nelse:\n    Statement3"
-  },
-  {
-    "objectID": "posts/20260922-fip-w03-iteration-simulation/index.html#蒙特卡洛方法",
-    "href": "posts/20260922-fip-w03-iteration-simulation/index.html#蒙特卡洛方法",
-    "title": "FIP W03 · 迭代与模拟",
-    "section": "蒙特卡洛方法",
-    "text": "蒙特卡洛方法\n\n布丰投针\n1777年，法国博物学家布丰提出⼀个奇怪的问题：向画满平行线的桌面上随机扔⼀根针，针与线相交的概率是多少？ \\[\nP = \\frac{2L}{\\pi d}\n\\] ### Python中的随机数实现\nimport random\n\nfor _ in range(10):\n    a = random.random() # 均匀分布[0, 1)\n    print(a)\n\n\n蒙特卡洛算法步骤\n\n生成N个均匀随机数点\n判断每个点是否在圆内\n统计圆内点数M\n估算pi = 4M/N\n\nfrom random import random\nm = 0\nn = int(input())\nfor _ in range(n):\n    x = random()\n    y = random()\n    if x * x + y * y &lt;= 1: # 注意，x ** 2用的是泰勒展开，计算速度比 x * x慢很多\n        m += 1\nprint(4 * m / n)\n\n\n\n课堂笔记插图\n\n\n\n“不要陷入分类学的泥沼。”——wk"
-  },
-  {
-    "objectID": "posts/20260922-fip-w03-iteration-simulation/index.html#大数运算",
-    "href": "posts/20260922-fip-w03-iteration-simulation/index.html#大数运算",
-    "title": "FIP W03 · 迭代与模拟",
-    "section": "大数运算",
-    "text": "大数运算\n\n当数的范围超出int/double的表示范围，我们可以使用字符串模拟大数存储 ### 存储方案：字符串\n\ndef big_add(a, b): \n    result = \"\" \n    carry = 0 \n    i = 1 # i=1 对应个位 a[-1]，i=2 对应十位 a[-2]，… \n    while i &lt;= max(len(a), len(b)) or carry:\n        digit_a = int(a[-i]) \n        if i &lt;= len(a) else 0\n        digit_b = int(b[-i]) if i &lt;= len(b) else 0\n        total = digit_a + digit_b + carry\n        result = str(total % 10) + result # 从个位往高位算，新数位接在左边 \n        carry = total // 10 \n        i += 1 \n        \n    return result"
-  },
-  {
-    "objectID": "posts/20260928-calculus-w03-homework/index.html",
-    "href": "posts/20260928-calculus-w03-homework/index.html",
-    "title": "微积分 W03 · 作业归档",
-    "section": "",
-    "text": "本篇归档保存微积分 W03 的作业 PDF。归档日期采用文档首页标注的作业日期。\n\n2026-calculus-w03-homework.pdf\n在线阅读 PDF ↗ · 下载 PDF ↓\n\n\n如果浏览器不支持内嵌 PDF，可使用上方阅读或下载链接。"
-  },
-  {
-    "objectID": "posts/20260929-linear-algebra-w03-homework/index.html",
-    "href": "posts/20260929-linear-algebra-w03-homework/index.html",
-    "title": "线性代数 W03 · 作业归档",
-    "section": "",
-    "text": "本篇归档保存线性代数 W03 的作业 PDF。归档日期采用文档首页标注的作业日期。\n\n2026-linear-algebra-w03-homework.pdf\n在线阅读 PDF ↗ · 下载 PDF ↓\n\n\n如果浏览器不支持内嵌 PDF，可使用上方阅读或下载链接。"
+    "objectID": "posts/20261007-fip-quiz1-recap/index.html#第4题-填空题25分",
+    "href": "posts/20261007-fip-quiz1-recap/index.html#第4题-填空题25分",
+    "title": "FIP 第一次小测复习速查",
+    "section": "第4题 填空题（25分）",
+    "text": "第4题 填空题（25分）\n补全牛顿迭代函数，计算非负数a的平方根。保证0 &lt;= a &lt;= 100、1e-8 &lt;= eps &lt;= 0.1；当残差abs(x*x-a) &lt; eps时返回当前x，a=0直接返回0.0。每空5分。\ndef root(a, eps):\n    if __1__:\n        return 0.0\n    x = max(1.0, a)\n    while True:\n        if __2__:\n            return __3__\n        x = (x + __4__) / __5__\n答案："
   },
   {
     "objectID": "posts/hello-world/index.html",
