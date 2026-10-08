@@ -50,13 +50,36 @@ def publish_tree(branch, files, message, preserve_tree):
     if base_tree:
         payload["base_tree"] = base_tree
     tree = api("POST", f"{API_ROOT}/git/trees", payload)
-    commit = api("POST", f"{API_ROOT}/git/commits", {
-        "message": message, "tree": tree["sha"], "parents": [parent] if parent else []
-    })
-    if ref:
-        api("PATCH", f"{API_ROOT}/git/refs/heads/{branch}", {"sha": commit["sha"], "force": False})
+    state_file = ROOT / "tmp" / f"publish-{branch}.json"
+    if parent and tree['sha'] == previous_tree:
+        state_file.unlink(missing_ok=True)
+        print(f"{branch} already contains the current rendered files: {parent}", flush=True)
+        return
+    pending = json.loads(state_file.read_text(encoding='utf-8')) if state_file.exists() else {}
+    if pending.get('parent') == parent and pending.get('tree') == tree['sha']:
+        commit = {'sha': pending['commit']}
+        print(f"Resuming pending deployment: {commit['sha']}", flush=True)
     else:
-        api("POST", f"{API_ROOT}/git/refs", {"ref": f"refs/heads/{branch}", "sha": commit["sha"]})
+        commit = api("POST", f"{API_ROOT}/git/commits", {
+            "message": message, "tree": tree["sha"], "parents": [parent] if parent else []
+        })
+        state_file.parent.mkdir(parents=True, exist_ok=True)
+        state_file.write_text(json.dumps({'parent': parent, 'tree': tree['sha'], 'commit': commit['sha']}), encoding='utf-8')
+    try:
+        if ref:
+            api("PATCH", f"{API_ROOT}/git/refs/heads/{branch}", {"sha": commit["sha"], "force": False})
+        else:
+            api("POST", f"{API_ROOT}/git/refs", {"ref": f"refs/heads/{branch}", "sha": commit["sha"]})
+    except RuntimeError as update_error:
+        # A dropped response does not establish that GitHub rejected the update.
+        actual = api('GET', f'{API_ROOT}/git/ref/heads/{branch}', allow_missing=True)
+        if not actual or actual['object']['sha'] != commit['sha']:
+            raise RuntimeError(f'{update_error}\nPending deployment saved. Retry: python scripts/publish-github.py') from update_error
+        print('GitHub applied the branch update despite a disconnected response.', flush=True)
+    actual = api('GET', f'{API_ROOT}/git/ref/heads/{branch}')
+    if actual['object']['sha'] != commit['sha']:
+        raise RuntimeError('Deployment branch changed concurrently. Inspect the remote branch before retrying.')
+    state_file.unlink(missing_ok=True)
     print(f"Published {len(entries)} files to {branch}: {commit['sha']}", flush=True)
 
 
