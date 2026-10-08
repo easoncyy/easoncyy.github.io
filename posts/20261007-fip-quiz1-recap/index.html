@@ -1024,7 +1024,13 @@ window.Quarto = {
 </section>
 <section id="random模块" class="level3">
 <h3 class="anchored" data-anchor-id="random模块"><code>random</code>模块</h3>
-<p>伪随机数模块，使用蒙特卡洛方法时需要调用。要注意设置种子保证环境一致。 #### 常用函数 ##### <code>random.seed(a=None, version=2)</code> 初始化伪随机数生成器，相同的种子和后续调用序列可以获得同一串伪随机数。 需要注意的是一般种子在程序开头设置一次即可，在循环里反复设置会导致随机性丢失。</p>
+<p>伪随机数模块，使用蒙特卡洛方法时需要调用。要注意设置种子保证环境一致。</p>
+<section id="常用函数" class="level4">
+<h4 class="anchored" data-anchor-id="常用函数">常用函数</h4>
+<section id="random.seedanone-version2" class="level5">
+<h5 class="anchored" data-anchor-id="random.seedanone-version2"><code>random.seed(a=None, version=2)</code></h5>
+<p>初始化伪随机数生成器，相同的种子和后续调用序列可以获得同一串伪随机数。 需要注意的是一般种子在程序开头设置一次即可，在循环里反复设置会导致随机性丢失。</p>
+</section>
 <section id="random.random---float" class="level5">
 <h5 class="anchored" data-anchor-id="random.random---float"><code>random.random() -&gt; float</code></h5>
 <p>获得<span class="math inline">\([0.0, 1.0)\)</span>上<strong>均匀</strong>分布的浮点数</p>
@@ -1052,6 +1058,7 @@ window.Quarto = {
 <section id="random.samplepopulation-k---list" class="level5">
 <h5 class="anchored" data-anchor-id="random.samplepopulation-k---list"><code>random.sample(population, k) -&gt; list</code></h5>
 <p>无放回随机抽样<span class="math inline">\(k\)</span>个，返回抽中元素组成的新列表。 <code>0 &lt;= k &lt;= len(population)</code>，不改变原序列；总体有重复值时，抽出的值仍可能重复。</p>
+</section>
 </section>
 <section id="其他函数了解" class="level4">
 <h4 class="anchored" data-anchor-id="其他函数了解">其他函数（了解）</h4>
