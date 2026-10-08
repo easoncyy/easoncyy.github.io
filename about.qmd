@@ -18,7 +18,7 @@ toc: false
 
 我是 **Eason Chen(easoncyy)**，一个正在探索的人。
 
-- **学习背景**：ZJU-AI-2026
+- **学习背景**：ZJU-AI-26
 - **关注方向**：ML, DL, 计算机系统
 - **日常爱好**：骑自行车, 唱歌，数学
 - **加入组织**：
@@ -28,8 +28,8 @@ toc: false
 
 ### currently/ {.directory-heading}
 
-- **正在学习**：CSAPP，Linux, 基础课内课程
-- **正在做**：Kaggle-[RSNA](https://github.com/Msmile-shiny/CVproject_RSNA-knee-detection) 2026 Competition
+- **正在学习**：CSAPP，Linux, C程序设计语言，基础课内课程
+- **正在做**：Kaggle-[RSNA 2026 Competition](https://github.com/Msmile-shiny/CVproject_RSNA-knee-detection)
 - **想尝试**：并行式计算，嵌入式/机器人相关项目
 
 ### contact/ {.directory-heading}
@@ -45,9 +45,7 @@ toc: false
 - [projects/ 项目](projects.qmd)：正在维护的项目、已经完成的项目、考虑进行的项目。
 - [log/ 日志](log.qmd)：每天的一些状态留存以及想法记录。
 - [library/ 图书馆](library.qmd)：时常翻阅或感兴趣的书籍。
-
-
-在 [links/ 友链](links.qmd)认识其他写作者。
+- [links/ 友链](links.qmd)：认识其他写作者与空间。
 
 
 
