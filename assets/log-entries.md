@@ -20,11 +20,11 @@
 
 ::: {.log-photo-grid}
 
-![聚餐的餐馆](/assets/log/20261007-235105-national-day-last-day/photo-01.jpg)
+![吃饭的餐馆](/assets/log/20261007-235105-national-day-last-day/photo-01.jpg)
 
 ![夜晚的校门](/assets/log/20261007-235105-national-day-last-day/photo-02.jpg)
 
-![超算队招新面试通知](/assets/log/20261007-235105-national-day-last-day/photo-03.png)
+![超算队招新录取通知](/assets/log/20261007-235105-national-day-last-day/photo-03.png)
 
 :::
 
