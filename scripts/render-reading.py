@@ -21,8 +21,7 @@ def main():
             url=book.get('path',book.get('url',''))
             if url and not (url.startswith('/') or url.startswith('https://') or url.startswith('http://')): raise ValueError('Invalid book URL')
             title=esc(book['title']);note=esc(item.get('note',''))
-            action=f'<a href="{esc(url)}" target="_blank" rel="noopener" aria-label="打开 {title}">↗</a>' if url else ''
-            groups[status].append(f'<li><span>{title}</span>{action}<small>{note}</small></li>')
+            groups[status].append(f'<li><span>{title}</span><small>{note}</small></li>')
             if status=='reading': featured.append(f'<article class="reading-feature"><h3>{title}</h3><p>{esc(book.get("author",""))}</p><p>{note}</p></article>')
         columns=''.join(f'<section><h4>{label} <small>{len(groups[status])}</small></h4><ul>{"".join(groups[status]) or "<li class=reading-empty>暂无</li>"}</ul></section>' for status,label in STATUSES.items())
         sections.append(f'<section class="reading-list"><h3>{esc(listing["title"])}</h3><div class="reading-columns">{columns}</div></section>')

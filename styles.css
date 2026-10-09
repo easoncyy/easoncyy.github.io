@@ -216,7 +216,6 @@ blockquote { border-left: 2px solid #151515; color: var(--muted); padding-left: 
 .reading-columns h4 { font-size: 1rem; }
 .reading-columns ul { list-style: none; padding: 0; }
 .reading-columns li { margin: .8rem 0; overflow-wrap: anywhere; }
-.reading-columns li > a { margin-left: .4rem; }
 .reading-columns li > small { display: block; margin-top: .2rem; }
 .reading-list { padding: .8rem 0; border-bottom: 1px solid #ddd; }
 @media (max-width: 700px) { .reading-features, .reading-columns { grid-template-columns: 1fr; } }
