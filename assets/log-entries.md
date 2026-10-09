@@ -1,5 +1,56 @@
 ::: {.log-stream}
 
+::: {#20261009-225816-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-10-09T22:58:16+08:00">2026-10-09 22:58:16 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title">Osmanthus Overture</p>
+
+```
+
+阳光给人一种很和谐的希望感。虽然全寝就我一个要上早八，但是应该也只有我一个看到这样的风景吧。在北教自修的时候无意闻到一阵桂香，但仔细去寻找又闻不见了，或许是因为我有鼻炎吧，不过我更愿意相信这就是古人所说的暗香。
+
+
+::: {.log-photo-grid}
+
+![骑车上早八的清晨](assets\log\20261009-225840-osmanthus-overture\photo-1.jpg)
+
+![其实这里才应该叫临湖](assets\log\20261009-225840-osmanthus-overture\photo-2.jpg)
+
+![只有自然光的世界](assets\log\20261009-225840-osmanthus-overture\photo-3.jpg)
+
+![暗香](assets\log\20261009-225840-osmanthus-overture\photo-4.jpg)
+
+![Blossom](assets\log\20261009-225840-osmanthus-overture\photo-5.jpg)
+
+![一个晚上的内训很充实呀](assets\log\20261009-225840-osmanthus-overture\photo-6.jpg)
+
+:::
+
+```{=html}
+
+<details id="comments-20261009-225816-entry" class="log-comments" data-comment-term="/logs/20261009-225816-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
 ::: {#20261008-231306-entry .log-entry}
 
 ```{=html}

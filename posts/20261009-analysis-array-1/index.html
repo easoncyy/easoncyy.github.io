@@ -478,7 +478,13 @@ e=1+1+\frac1{2!}+\cdots+\frac1{n!}+\frac{\theta_n}{n!n}.
 <h1>方法提炼总结</h1>
 <section id="比值法" class="level2">
 <h2 class="anchored" data-anchor-id="比值法">比值法</h2>
-<p>对于一些不是那么好直接处理求解<span class="math inline">\(N(\epsilon)\)</span>，但是前后项有比较显著的比值关系的题目，我们可以采用60题解法2，或62题这种方法： 1. 通过比值小于1确定单调性 2. 找一个中间值<span class="math inline">\(0&lt;q&lt;1\)</span>作为说明工具 3. 取特定的<span class="math inline">\(\epsilon\)</span>，通过放缩为关于<span class="math inline">\(q\)</span>的等比数列收敛于<span class="math inline">\(0\)</span>证明原极限 60题例子：令<span class="math inline">\(x_n=n^k/a^n\)</span>，其中<span class="math inline">\(a&gt;1\)</span>。则 <span class="math display">\[
+<p>对于一些不是那么好直接处理求解<span class="math inline">\(N(\epsilon)\)</span>，但是前后项有比较显著的比值关系的题目，我们可以采用60题解法2，或62题这种方法：</p>
+<ol type="1">
+<li><p>通过比值小于1确定单调性</p></li>
+<li><p>找一个中间值<span class="math inline">\(0&lt;q&lt;1\)</span>作为说明工具</p></li>
+<li><p>取特定的<span class="math inline">\(\epsilon\)</span>，通过放缩为关于<span class="math inline">\(q\)</span>的等比数列收敛于<span class="math inline">\(0\)</span>证明原极限</p></li>
+</ol>
+<p>60题例子：令<span class="math inline">\(x_n=n^k/a^n\)</span>，其中<span class="math inline">\(a&gt;1\)</span>。则 <span class="math display">\[
 \frac{x_{n+1}}{x_n}=\left(1+\frac1n\right)^k\frac1a\longrightarrow\frac1a&lt;1.
 \]</span> 取<span class="math inline">\(1/a&lt;q&lt;1\)</span>。当<span class="math inline">\(n\)</span>充分大时，<span class="math inline">\(x_{n+1}/x_n&lt;q\)</span>，故 <span class="math display">\[
 0&lt;x_n=x_N\frac{x_{N+1}}{x_N}\cdots\frac{x_n}{x_{n-1}}&lt;x_Nq^{n-N}.
@@ -487,7 +493,13 @@ e=1+1+\frac1{2!}+\cdots+\frac1{n!}+\frac{\theta_n}{n!n}.
 </section>
 <section id="单调有界收敛定理以及极限符号判断" class="level2">
 <h2 class="anchored" data-anchor-id="单调有界收敛定理以及极限符号判断">单调有界收敛定理以及极限符号判断</h2>
-<p>对于一些极限在<span class="math inline">\(0\)</span>处但是不容易直接说明的问题，我们可以 1. 用单调有界收敛定理证明极限存在 2. 用表达式说明极限<span class="math inline">\(A\ge0\)</span>或<span class="math inline">\(A\le0\)</span> 3. 将<span class="math inline">\(A&gt;0\)</span>或<span class="math inline">\(A&lt;0\)</span>的情况带入原始比值表达式，取极限，导出矛盾 60题、66题例子：</p>
+<p>对于一些极限在<span class="math inline">\(0\)</span>处但是不容易直接说明的问题，我们可以</p>
+<ol type="1">
+<li><p>用单调有界收敛定理证明极限存在</p></li>
+<li><p>用表达式说明极限<span class="math inline">\(A\ge0\)</span>或<span class="math inline">\(A\le0\)</span></p></li>
+<li><p>将<span class="math inline">\(A&gt;0\)</span>或<span class="math inline">\(A&lt;0\)</span>的情况带入原始比值表达式，取极限，导出矛盾</p></li>
+</ol>
+<p>60题、66题例子：</p>
 <p>第 60 题中，令<span class="math inline">\(x_n=n^k/a^n\)</span>。由<span class="math inline">\(x_{n+1}/x_n\to1/a&lt;1\)</span>可知<span class="math inline">\(x_n\)</span>从某项起递减，又<span class="math inline">\(x_n&gt;0\)</span>，故极限<span class="math inline">\(A\ge0\)</span>存在。若<span class="math inline">\(A&gt;0\)</span>，则 <span class="math display">\[
 \lim_{n\to\infty}\frac{x_{n+1}}{x_n}=\frac{A}{A}=1,
 \]</span> 这与<span class="math inline">\(1/a&lt;1\)</span>矛盾，所以<span class="math inline">\(A=0\)</span>。</p>
