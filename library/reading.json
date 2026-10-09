@@ -3,7 +3,53 @@
     {
       "id": "personal",
       "title": "我的书单",
-      "items": []
+      "items": [
+        {
+          "id": "introduction-to-linear-algebra",
+          "book": "introduction-to-linear-algebra",
+          "status": "reading"
+        },
+        {
+          "id": "hundred-year-law",
+          "book": "hundred-year-law",
+          "status": "reading"
+        },
+        {
+          "id": "computer-systems",
+          "book": "computer-systems",
+          "status": "reading"
+        },
+        {
+          "id": "data-structures-algorithm-analysis",
+          "book": "data-structures-algorithm-analysis",
+          "status": "reading"
+        },
+        {
+          "id": "project-hail-mary",
+          "book": "project-hail-mary",
+          "status": "planned"
+        },
+        {
+          "id": "soulstealers-1768",
+          "book": "soulstealers-1768",
+          "status": "planned"
+        },
+        {
+          "id": "dive-into-deep-learning",
+          "book": "dive-into-deep-learning",
+          "status": "planned"
+        },
+        {
+          "id": "what-is-this-thing-called-science",
+          "book": "what-is-this-thing-called-science",
+          "status": "planned"
+        },
+        {
+          "id": "artificial-intelligence-modern-approach",
+          "book": "artificial-intelligence-modern-approach",
+          "status": "planned"
+        }
+      ]
     }
   ]
 }

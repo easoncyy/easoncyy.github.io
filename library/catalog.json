@@ -59,5 +59,73 @@
     "description": "",
     "path": "/assets/library/project-hail-mary.pdf",
     "added": "2026-10-06"
+  },
+  {
+    "slug": "introduction-to-linear-algebra",
+    "title": "Introduction to Linear Algebra · 第5版",
+    "author": "Gilbert Strang",
+    "category": "教材",
+    "subject": "数学",
+    "description": "",
+    "format": "pdf",
+    "path": "/assets/library/introduction-to-linear-algebra.pdf",
+    "added": "2026-10-10"
+  },
+  {
+    "slug": "hundred-year-law",
+    "title": "百年法（全2册）",
+    "author": "山田宗树",
+    "category": "文学",
+    "subject": "",
+    "description": "",
+    "format": "epub",
+    "path": "/assets/library/hundred-year-law.epub",
+    "added": "2026-10-10"
+  },
+  {
+    "slug": "data-structures-algorithm-analysis",
+    "title": "数据结构与算法分析",
+    "author": "Mark Allen Weiss",
+    "category": "教材",
+    "subject": "计算机",
+    "description": "",
+    "format": "pdf",
+    "path": "/assets/library/data-structures-algorithm-analysis.pdf",
+    "added": "2026-10-10"
+  },
+  {
+    "slug": "dive-into-deep-learning",
+    "title": "动手学深度学习 · PyTorch 第2版",
+    "author": "Aston Zhang、Zachary C. Lipton、李沐等",
+    "category": "教材",
+    "subject": "人工智能",
+    "description": "",
+    "format": "pdf",
+    "path": "/assets/library/dive-into-deep-learning.pdf",
+    "added": "2026-10-10"
+  },
+  {
+    "slug": "what-is-this-thing-called-science",
+    "title": "科学究竟是什么",
+    "author": "A. F. 查尔默斯",
+    "category": "哲学",
+    "subject": "",
+    "description": "通过 GitHub Release 下载。",
+    "format": "pdf",
+    "path": "https://github.com/easoncyy/easoncyy.github.io/releases/download/library-2026-10-10/what-is-this-thing-called-science.pdf",
+    "added": "2026-10-10",
+    "download-only": true
+  },
+  {
+    "slug": "artificial-intelligence-modern-approach",
+    "title": "人工智能：一种现代的方法 · 第3版",
+    "author": "Stuart Russell、Peter Norvig",
+    "category": "教材",
+    "subject": "人工智能",
+    "description": "通过 GitHub Release 下载。",
+    "format": "pdf",
+    "path": "https://github.com/easoncyy/easoncyy.github.io/releases/download/library-2026-10-10/artificial-intelligence-modern-approach.pdf",
+    "added": "2026-10-10",
+    "download-only": true
   }
 ]

@@ -1,10 +1,10 @@
 ```{=html}
 <div class="library-filters" role="group" aria-label="图书分类">
 <button type="button" data-library-category="all" aria-pressed="true">全部</button>
-<button type="button" data-library-category="文学" aria-pressed="false">文学 <span class="library-filter-count">1</span></button>
-<button type="button" data-library-category="哲学" aria-pressed="false">哲学 <span class="library-filter-count">1</span></button>
+<button type="button" data-library-category="文学" aria-pressed="false">文学 <span class="library-filter-count">2</span></button>
+<button type="button" data-library-category="哲学" aria-pressed="false">哲学 <span class="library-filter-count">2</span></button>
 <button type="button" data-library-category="历史" aria-pressed="false">历史 <span class="library-filter-count">1</span></button>
-<button type="button" data-library-category="教材" aria-pressed="false">教材 <span class="library-filter-count">2</span></button>
+<button type="button" data-library-category="教材" aria-pressed="false">教材 <span class="library-filter-count">6</span></button>
 <button type="button" data-library-category="习题" aria-pressed="false">习题 <span class="library-filter-count">1</span></button>
 <button type="button" data-library-category="参考书" aria-pressed="false">参考书 <span class="library-filter-count">0</span></button>
 <button type="button" data-library-category="其他" aria-pressed="false">其他 <span class="library-filter-count">0</span></button>
@@ -12,6 +12,78 @@
 <div id="library-subjects" class="library-subjects" role="group" aria-label="学科" hidden></div>
 <p id="library-count" class="library-count" aria-live="polite"></p>
 ```
+::: {.library-entry data-category="教材" data-subject="数学"}
+
+```{=html}
+<div class="library-book-meta">教材 / 数学 · PDF · 2026-10-10</div>
+<h2 class="library-book-title">Introduction to Linear Algebra · 第5版</h2>
+<p class="library-author">Gilbert Strang</p>
+<p></p>
+<div class="library-actions"><a href="/assets/library/introduction-to-linear-algebra.pdf" target="_blank" rel="noopener">read / 在线阅读 ↗</a><a href="/assets/library/introduction-to-linear-algebra.pdf" download>download / 下载 ↓</a></div>
+```
+
+:::
+
+::: {.library-entry data-category="文学" data-subject=""}
+
+```{=html}
+<div class="library-book-meta">文学 · EPUB · 2026-10-10</div>
+<h2 class="library-book-title">百年法（全2册）</h2>
+<p class="library-author">山田宗树</p>
+<p></p>
+<div class="library-actions"><a href="/assets/library/hundred-year-law.epub" download>download / 下载 ↓</a><span class="library-author">EPUB · 下载后用电子书阅读器打开</span></div>
+```
+
+:::
+
+::: {.library-entry data-category="教材" data-subject="计算机"}
+
+```{=html}
+<div class="library-book-meta">教材 / 计算机 · PDF · 2026-10-10</div>
+<h2 class="library-book-title">数据结构与算法分析</h2>
+<p class="library-author">Mark Allen Weiss</p>
+<p></p>
+<div class="library-actions"><a href="/assets/library/data-structures-algorithm-analysis.pdf" target="_blank" rel="noopener">read / 在线阅读 ↗</a><a href="/assets/library/data-structures-algorithm-analysis.pdf" download>download / 下载 ↓</a></div>
+```
+
+:::
+
+::: {.library-entry data-category="教材" data-subject="人工智能"}
+
+```{=html}
+<div class="library-book-meta">教材 / 人工智能 · PDF · 2026-10-10</div>
+<h2 class="library-book-title">动手学深度学习 · PyTorch 第2版</h2>
+<p class="library-author">Aston Zhang、Zachary C. Lipton、李沐等</p>
+<p></p>
+<div class="library-actions"><a href="/assets/library/dive-into-deep-learning.pdf" target="_blank" rel="noopener">read / 在线阅读 ↗</a><a href="/assets/library/dive-into-deep-learning.pdf" download>download / 下载 ↓</a></div>
+```
+
+:::
+
+::: {.library-entry data-category="哲学" data-subject=""}
+
+```{=html}
+<div class="library-book-meta">哲学 · PDF · 2026-10-10</div>
+<h2 class="library-book-title">科学究竟是什么</h2>
+<p class="library-author">A. F. 查尔默斯</p>
+<p>通过 GitHub Release 下载。</p>
+<div class="library-actions"><a href="https://github.com/easoncyy/easoncyy.github.io/releases/download/library-2026-10-10/what-is-this-thing-called-science.pdf" download>download / 下载 ↓</a></div>
+```
+
+:::
+
+::: {.library-entry data-category="教材" data-subject="人工智能"}
+
+```{=html}
+<div class="library-book-meta">教材 / 人工智能 · PDF · 2026-10-10</div>
+<h2 class="library-book-title">人工智能：一种现代的方法 · 第3版</h2>
+<p class="library-author">Stuart Russell、Peter Norvig</p>
+<p>通过 GitHub Release 下载。</p>
+<div class="library-actions"><a href="https://github.com/easoncyy/easoncyy.github.io/releases/download/library-2026-10-10/artificial-intelligence-modern-approach.pdf" download>download / 下载 ↓</a></div>
+```
+
+:::
+
 ::: {.library-entry data-category="哲学" data-subject=""}
 
 ```{=html}
