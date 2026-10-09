@@ -190,11 +190,18 @@ blockquote { border-left: 2px solid #151515; color: var(--muted); padding-left: 
 /* Directory filters and reading lists share the monochrome controls. */
 .blog-tools input { border: 1px solid #ccc; padding: .45rem .7rem; background: white; color: black; width: min(100%, 24rem); }
 .directory-buttons, #blog-tags, #blog-pages { display: flex; flex-wrap: wrap; gap: .45rem; margin: .8rem 0; }
-.blog-tools button, #blog-pages button, .reading-hint button { border: 1px solid #bbb; background: white; color: black; padding: .25rem .55rem; font-family: var(--mono); font-size: .8rem; }
-.blog-tools button[aria-pressed="true"], #blog-pages button[aria-pressed="true"] { background: black; color: white; }
+.blog-tools button, #blog-pages button, .blog-directory button { border: 1px solid #bbb; background: white; color: black; padding: .25rem .55rem; font-family: var(--mono); font-size: .8rem; }
+.blog-tools button[aria-pressed="true"], #blog-pages button[aria-pressed="true"], .blog-directory button[aria-pressed="true"] { background: black; color: white; }
+.blog-layout { display: grid; grid-template-columns: minmax(0, 1fr) 220px; gap: 2.5rem; align-items: start; }
+.blog-main { min-width: 0; }
+.blog-directory { position: sticky; top: 6rem; border-left: 1px solid var(--line); padding-left: 1rem; }
+.directory-command { font: .8rem/1.6 var(--mono); white-space: nowrap; }
+.directory-root-list { display: flex; flex-direction: column; gap: .4rem; }
+.directory-root-list button { text-align: left; border-color: transparent; }
+@media (max-width: 800px) { .blog-layout { grid-template-columns: 1fr; gap: 1rem; } .blog-directory { position: static; grid-row: 1; border-left: 0; padding: 0; } .directory-root-list { flex-direction: row; flex-wrap: wrap; } }
 .blog-entry { border-bottom: 1px solid #ddd; padding: 1.3rem 0; }
 .blog-entry h2 { font-size: 1.25rem; margin: .6rem 0; border: 0; }
-.entry-path, .entry-tags, #blog-count, .reading-hint { font-family: var(--mono); font-size: .78rem; color: #666; overflow-wrap: anywhere; }
+.entry-path, .entry-tags, #blog-count { font-family: var(--mono); font-size: .78rem; color: #666; overflow-wrap: anywhere; }
 .blog-entry[hidden], #blog-empty[hidden] { display: none !important; }
 .reading-features, .reading-columns { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1.2rem; }
 .reading-feature { border-left: 2px solid black; padding-left: 1rem; }
@@ -204,7 +211,7 @@ blockquote { border-left: 2px solid #151515; color: var(--muted); padding-left: 
 .reading-columns ul { list-style: none; padding: 0; }
 .reading-columns li { margin: .8rem 0; overflow-wrap: anywhere; }
 .reading-columns label { display: inline-flex; align-items: baseline; gap: .5rem; }
-.reading-columns input { accent-color: black; }
+.reading-columns input { accent-color: black; opacity: 1; }
 .reading-columns input:checked + span { text-decoration: line-through; color: #777; }
 .reading-columns li > small { display: block; margin-left: 1.4rem; }
 .reading-list { padding: .8rem 0; border-bottom: 1px solid #ddd; }
