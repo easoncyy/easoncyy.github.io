@@ -6,7 +6,7 @@ toc: false
 format:
   html:
     include-after-body:
-      text: '<script defer src="/assets/library-filter.js"></script><script defer src="/assets/reading.js"></script>'
+      text: '<script defer src="/assets/library-filter.js"></script>'
 ---
 
 {{< include assets/reading-entries.md >}}

@@ -24,11 +24,11 @@ def main():
             link=f'<a href="{esc(url)}" target="_blank" rel="noopener">{title} ↗</a>' if url else title
             action=f'<a href="{esc(url)}" target="_blank" rel="noopener" aria-label="打开 {title}">↗</a>' if url else ''
             checked='checked' if status=='completed' else ''
-            groups[status].append(f'<li><label><input type="checkbox" data-reading-key="{esc(key)}" {checked}><span>{title}</span></label>{action}<small>{note}</small></li>')
+            groups[status].append(f'<li><label><input type="checkbox" disabled {checked}><span>{title}</span></label>{action}<small>{note}</small></li>')
             if status=='reading': featured.append(f'<article class="reading-feature"><h3>{link}</h3><p>{esc(book.get("author",""))}</p><p>{note}</p></article>')
         columns=''.join(f'<section><h4>{label} <small>{len(groups[status])}</small></h4><ul>{"".join(groups[status]) or "<li class=reading-empty>暂无</li>"}</ul></section>' for status,label in STATUSES.items())
         sections.append(f'<section class="reading-list"><h3>{esc(listing["title"])}</h3><div class="reading-columns">{columns}</div></section>')
     output='<section><h2>reading/ <small>正在阅读</small></h2><div class="reading-features">'+(''.join(featured) or '<p>还没有正在阅读的书。</p>')+'</div></section>'
-    output+='<section><h2>lists/ <small>书单</small></h2>'+(''.join(sections) or '<p>书单暂时为空。</p>')+'<p class="reading-hint">书单展示公开阅读状态；勾选仅记录在当前浏览器，不修改公开书单。 <button type="button" id="reading-reset">恢复公开状态</button></p></section>'
+    output+='<section><h2>lists/ <small>书单</small></h2>'+(''.join(sections) or '<p>书单暂时为空。</p>')+'</section>'
     (ROOT/'assets/reading-entries.md').write_text('```{=html}\n'+output+'\n```\n',encoding='utf-8')
 if __name__=='__main__': main()
