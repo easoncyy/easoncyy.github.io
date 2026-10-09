@@ -2,6 +2,8 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/20261009-analysis-array-1/index.html",
+      "/posts/20261009-what-is-philosophy/index.html",
       "/posts/20261008-fip-quiz1/index.html",
       "/posts/20261007-fip-quiz1-recap/index.html",
       "/posts/hello-world/index.html",
@@ -20,6 +22,8 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/20261009-analysis-array-1/index.html",
+      "/posts/20261009-what-is-philosophy/index.html",
       "/posts/20261008-fip-quiz1/index.html",
       "/posts/20261007-fip-quiz1-recap/index.html",
       "/posts/hello-world/index.html",

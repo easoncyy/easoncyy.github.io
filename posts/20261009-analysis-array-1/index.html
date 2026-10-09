@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="个人笔记">
+<meta name="description" content="刷吉米多维奇数列这一章前半部分遇到的有趣问题梳理">
+
+<title>吉米多维奇刷题-数列-1 – 个人笔记</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/favicon.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-a7952132dd87ce33f437addd0578540c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-dc090d8f6625c822698d9a6ee9cd1ac5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "没有结果",
+    "search-matching-documents-text": "匹配的文档",
+    "search-copy-link-title": "复制搜索链接",
+    "search-hide-matches-text": "隐藏其它匹配结果",
+    "search-more-match-text": "更多匹配结果",
+    "search-more-matches-text": "更多匹配结果",
+    "search-clear-button-title": "清除",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "取消",
+    "search-submit-button-title": "提交",
+    "search-label": "搜索"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script defer="" src="../../assets/directory.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/logo.svg" alt="Ce · easoncyy" class="navbar-logo light-content">
+    <img src="../../assets/logo.svg" alt="Ce · easoncyy" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">~/notes</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="搜索"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="展开或折叠导航栏" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html"> 
+<span class="menu-text"><span class="nav-path">blog/</span><span class="nav-caption">博客</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../projects.html"> 
+<span class="menu-text"><span class="nav-path">projects/</span><span class="nav-caption">项目</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../log.html"> 
+<span class="menu-text"><span class="nav-path">log/</span><span class="nav-caption">日志</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../links.html"> 
+<span class="menu-text"><span class="nav-path">links/</span><span class="nav-caption">友链</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../library.html"> 
+<span class="menu-text"><span class="nav-path">library/</span><span class="nav-caption">图书馆</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text"><span class="nav-path">about/</span><span class="nav-caption">关于</span></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">本页目录</h2>
+   
+  <ul>
+  <li><a href="#题目与解析" id="toc-题目与解析" class="nav-link active" data-scroll-target="#题目与解析">题目与解析</a></li>
+  <li><a href="#方法提炼总结" id="toc-方法提炼总结" class="nav-link" data-scroll-target="#方法提炼总结">方法提炼总结</a>
+  <ul class="collapse">
+  <li><a href="#比值法" id="toc-比值法" class="nav-link" data-scroll-target="#比值法">比值法</a></li>
+  <li><a href="#单调有界收敛定理以及极限符号判断" id="toc-单调有界收敛定理以及极限符号判断" class="nav-link" data-scroll-target="#单调有界收敛定理以及极限符号判断">单调有界收敛定理以及极限符号判断</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">吉米多维奇刷题-数列-1</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">微积分</div>
+    <div class="quarto-category">微积分刷题</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    刷吉米多维奇数列这一章前半部分遇到的有趣问题梳理
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">作者</div>
+    <div class="quarto-title-meta-contents">
+             <p>个人笔记 </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">发布于</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2026年10月9日</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>这篇博客记录了刷《数学分析习题集（吉米多维奇）》<span class="math inline">\(\S 2\)</span> 数列理论这一章时遇到的有意思的问题以及题解。</p>
+<section id="题目与解析" class="level1">
+<h1>题目与解析</h1>
+<ol start="55" type="1">
+<li>求极限 <span class="math display">\[
+\lim_{n\to\infty}\left(\frac{1}{2}+\frac{3}{2^2}+\frac{5}{2^3}+\cdots+\frac{2n-1}{2^n}\right).
+\]</span></li>
+</ol>
+<p><strong>证：</strong> 令 <span class="math display">\[
+S_n=\frac{1}{2}+\frac{3}{2^2}+\frac{5}{2^3}+\cdots+\frac{2n-1}{2^n}.
+\]</span> 则 <span class="math display">\[
+2^nS_n=1\cdot2^{n-1}+3\cdot2^{n-2}+\cdots+(2n-1),
+\]</span> <span class="math display">\[
+2^{n+1}S_n=1\cdot2^n+3\cdot2^{n-1}+\cdots+(2n-1)2.
+\]</span> 两式相减， <span class="math display">\[
+2^nS_n=2^n+2\cdot2^{n-1}+2\cdot2^{n-2}+\cdots+2\cdot2-(2n-1)
+=3\cdot2^n-2n-3.
+\]</span> 所以 <span class="math display">\[
+\lim_{n\to\infty}S_n=\lim_{n\to\infty}\frac{3\cdot2^n-2n-3}{2^n}=3.
+\]</span></p>
+<ol start="59" type="1">
+<li>证明 <span class="math display">\[
+\lim_{n\to\infty}\frac{2^n}{n!}=0.
+\]</span></li>
+</ol>
+<p><strong>证：</strong> <span class="math display">\[
+\frac{2^n}{n!}=\frac{2\cdot2\cdots2}{1\cdot2\cdots n}
+&lt;\frac{2\cdot2\cdot2\cdots2}{1\cdot2\cdot3\cdot3\cdots3}
+=2\left(\frac23\right)^{n-2}.
+\]</span> 对任意<span class="math inline">\(\varepsilon&gt;0\)</span>，当 <span class="math display">\[
+n&gt;2+\log_{3/2}\frac{2}{\varepsilon}
+\]</span> 时，<span class="math inline">\(2(2/3)^{n-2}&lt;\varepsilon\)</span>。故由夹逼定理， <span class="math display">\[
+\lim_{n\to\infty}\frac{2^n}{n!}=0.
+\]</span></p>
+<ol start="60" type="1">
+<li>证明 <span class="math display">\[
+\lim_{n\to\infty}\frac{n^k}{a^n}=0\qquad(a&gt;1,\ k\text{为固定正整数}).
+\]</span></li>
+</ol>
+<p><strong>方法一：二项式定理与夹逼</strong> 设<span class="math inline">\(a=h+1\)</span>，<span class="math inline">\(h&gt;0\)</span>。由二项式定理， <span class="math display">\[
+(h+1)^n=1+nh+\cdots+\frac{n(n-1)\cdots(n-k)}{(k+1)!}h^{k+1}+\cdots.
+\]</span> 因此 <span class="math display">\[
+0&lt;\frac{n^k}{a^n}
+&lt;\frac{n^k}{\dfrac{n(n-1)\cdots(n-k)}{(k+1)!}h^{k+1}}
+=\frac{(k+1)!n^k}{n(n-1)\cdots(n-k)h^{k+1}}.
+\]</span> 右端趋于<span class="math inline">\(0\)</span>，由夹逼定理，<span class="math inline">\(\lim_{n\to\infty}n^k/a^n=0\)</span>。</p>
+<p><strong>方法二：比值法</strong> 令<span class="math inline">\(x_n=n^k/a^n\)</span>，则 <span class="math display">\[
+\frac{x_{n+1}}{x_n}=\left(1+\frac1n\right)^k\frac1a\longrightarrow\frac1a&lt;1.
+\]</span> 取<span class="math inline">\(1/a&lt;q&lt;1\)</span>，并令<span class="math inline">\(\varepsilon=q-1/a&gt;0\)</span>。当<span class="math inline">\(n\)</span>充分大时， <span class="math display">\[
+\left|\frac{x_{n+1}}{x_n}-\frac1a\right|&lt;\varepsilon,
+\qquad \frac{x_{n+1}}{x_n}&lt;\frac1a+\varepsilon=q&lt;1.
+\]</span> 故对充分大的<span class="math inline">\(n&gt;N\)</span>， <span class="math display">\[
+x_n=x_N\frac{x_{N+1}}{x_N}\cdots\frac{x_n}{x_{n-1}}&lt;x_Nq^{n-N}\longrightarrow0.
+\]</span> 由夹逼定理，<span class="math inline">\(\lim_{n\to\infty}x_n=0\)</span>。</p>
+<p><strong>方法三：单调有界数列</strong> 由方法二的比值，数列<span class="math inline">\(\{x_n\}\)</span>从某项起单调递减，且<span class="math inline">\(x_n&gt;0\)</span>，故其极限<span class="math inline">\(A\ge0\)</span>存在。若<span class="math inline">\(A&gt;0\)</span>，则 <span class="math display">\[
+\lim_{n\to\infty}\frac{x_{n+1}}{x_n}=\frac{A}{A}=1,
+\]</span> 但前面已得该极限为<span class="math inline">\(1/a&lt;1\)</span>，矛盾。因此<span class="math inline">\(A=0\)</span>，即<span class="math inline">\(\lim_{n\to\infty}n^k/a^n=0\)</span>。</p>
+<ol start="61" type="1">
+<li>证明 <span class="math display">\[
+\lim_{n\to\infty}\frac{a^n}{n!}=0.
+\]</span></li>
+</ol>
+<p><strong>证：</strong> <span class="math display">\[
+\frac{a^n}{n!}=\frac{a\cdot a\cdots a}{1\cdot2\cdots(a-1)\cdot a\cdot(a+1)\cdots n}
+&lt;\frac{a^a}{1\cdot2\cdots(a-1)\cdot a}\left(\frac{a}{a+1}\right)^{n-a}.
+\]</span> 由于<span class="math inline">\(0&lt;a/(a+1)&lt;1\)</span>，右端趋于<span class="math inline">\(0\)</span>。因此结论对正整数<span class="math inline">\(a\)</span>成立。若<span class="math inline">\(a\)</span>为任意正实数，取正整数<span class="math inline">\(m&gt;a\)</span>，则<span class="math inline">\(0&lt;a^n/n!&lt;m^n/n!\to0\)</span>，结论仍成立。由夹逼定理， <span class="math display">\[
+\lim_{n\to\infty}\frac{a^n}{n!}=0.
+\]</span></p>
+<ol start="62" type="1">
+<li><p>证明（<span class="math inline">\(|q|&lt;1\)</span>） <span class="math display">\[
+\lim_{n\to\infty}nq^n=0.
+\]</span> 令<span class="math inline">\(x_n=nq^n\)</span>，则 <span class="math display">\[
+\frac{x_{n+1}}{x_n}=\frac{n+1}{n}q\longrightarrow q.
+\]</span> 取<span class="math inline">\(t=(q+1)/2\)</span>（当<span class="math inline">\(0\le q&lt;1\)</span>时），则<span class="math inline">\(q&lt;t&lt;1\)</span>。令<span class="math inline">\(\varepsilon=t-q&gt;0\)</span>，当<span class="math inline">\(n\)</span>充分大时， <span class="math display">\[
+\left|\frac{x_{n+1}}{x_n}-q\right|&lt;\varepsilon,
+\qquad \frac{x_{n+1}}{x_n}&lt;q+\varepsilon=t&lt;1.
+\]</span> 于是对充分大的<span class="math inline">\(n&gt;N\)</span>， <span class="math display">\[
+x_n=x_N\frac{x_{n+1}}{x_n}\cdots\frac{x_n}{x_{n-1}}&lt;x_Nt^{n-N}\longrightarrow0.
+\]</span> 由夹逼定理，<span class="math inline">\(\lim_{n\to\infty}nq^n=0\)</span>。当<span class="math inline">\(-1&lt;q&lt;0\)</span>时，对<span class="math inline">\(|nq^n|=n|q|^n\)</span>同理可证，故结论仍成立。</p></li>
+<li><p>证明 <span class="math display">\[
+\lim_{n\to\infty}\sqrt[n]{a}=1\qquad(a&gt;0).
+\]</span> <strong>证：</strong> 对任意<span class="math inline">\(\varepsilon&gt;0\)</span>， <span class="math display">\[
+\left|\sqrt[n]{a}-1\right|&lt;\varepsilon
+\quad\Longleftrightarrow\quad
+1-\varepsilon&lt;a^{1/n}&lt;1+\varepsilon.
+\]</span> 不妨设<span class="math inline">\(0&lt;\varepsilon&lt;1\)</span>。</p></li>
+</ol>
+<p>① 当<span class="math inline">\(0&lt;a&lt;1\)</span>时， <span class="math display">\[
+\log_a(1+\varepsilon)&lt;0&lt;\frac1n&lt;\log_a(1-\varepsilon).
+\]</span> 取<span class="math inline">\(N=1/\log_a(1-\varepsilon)\)</span>，则当<span class="math inline">\(n&gt;N\)</span>时，<span class="math inline">\(|\sqrt[n]{a}-1|&lt;\varepsilon\)</span>。故<span class="math inline">\(\lim_{n\to\infty}\sqrt[n]{a}=1\)</span>。</p>
+<p>② 当<span class="math inline">\(a=1\)</span>时，结论显然成立。</p>
+<p>③ 当<span class="math inline">\(a&gt;1\)</span>时， <span class="math display">\[
+\log_a(1-\varepsilon)&lt;0&lt;\frac1n&lt;\log_a(1+\varepsilon).
+\]</span> 取<span class="math inline">\(N=1/\log_a(1+\varepsilon)\)</span>，则当<span class="math inline">\(n&gt;N\)</span>时，<span class="math inline">\(|\sqrt[n]{a}-1|&lt;\varepsilon\)</span>。综上， <span class="math display">\[
+\lim_{n\to\infty}\sqrt[n]{a}=1.
+\]</span></p>
+<ol start="64" type="1">
+<li><p>证明（<span class="math inline">\(a&gt;1\)</span>） <span class="math display">\[
+\lim_{n\to\infty}\frac{\log_a n}{n}=0.
+\]</span> <strong>证：</strong> <span class="math display">\[
+\lim_{n\to\infty}\frac{\log_a n}{n}
+=\frac1{\ln a}\lim_{n\to\infty}\frac{\ln n}{n}.
+\]</span> 因为<span class="math inline">\(\ln n&lt;n-1\)</span>，所以 <span class="math display">\[
+\ln n=2\ln\sqrt n&lt;2\sqrt n-2.
+\]</span> 当<span class="math inline">\(n&gt;1\)</span>时， <span class="math display">\[
+0&lt;\frac{\ln n}{n}&lt;\frac{2\sqrt n-2}{n},
+\qquad \lim_{n\to\infty}\frac{2\sqrt n-2}{n}=0.
+\]</span> 由夹逼定理，<span class="math inline">\(\lim_{n\to\infty}\log_a n/n=0\)</span>。</p></li>
+<li><p>证明 <span class="math display">\[
+\lim_{n\to\infty}\sqrt[n]{n}=1.
+\]</span> <strong>证：</strong> 由基本不等式， <span class="math display">\[
+1=\sqrt[n]{1}&lt;\sqrt[n]{n}&lt;\frac{\sqrt n+\sqrt n+1+\cdots+1}{n}
+=\frac2{\sqrt n}+1-\frac2n.
+\]</span> 令<span class="math inline">\(n\to\infty\)</span>，由夹逼定理， <span class="math display">\[
+\lim_{n\to\infty}\sqrt[n]{n}=1.
+\]</span></p></li>
+<li><p>证明 <span class="math display">\[
+\lim_{n\to\infty}\frac1{\sqrt[n]{n!}}=0.
+\]</span></p></li>
+</ol>
+<p><strong>方法一：利用基本不等式</strong> 由基本不等式， <span class="math display">\[
+\sqrt[n]{n!}&lt;\frac{1+2+\cdots+n}{n}=\frac{n+1}{2}.
+\]</span> 下面考虑<span class="math inline">\(n!\)</span>。把因子<span class="math inline">\(k\)</span>与<span class="math inline">\(n-k+1\)</span>配对，其中<span class="math inline">\(1\le k\le\lfloor n/2\rfloor\)</span>。当<span class="math inline">\(n\)</span>为奇数时，剩下的中间因子<span class="math inline">\((n+1)/2\ge\sqrt n\)</span>。当<span class="math inline">\(k\le n-k+1\)</span>时， <span class="math display">\[
+k(n-k+1)-n=(k-1)(n-k)\ge0,
+\]</span> 所以<span class="math inline">\(k(n-k+1)\ge n\)</span>。把<span class="math inline">\(n!\)</span>中的因子配对，便有<span class="math inline">\(n!\ge n^{n/2}\)</span>，从而 <span class="math display">\[
+\sqrt n\le\sqrt[n]{n!}&lt;\frac{n+1}{2}.
+\]</span> 于是 <span class="math display">\[
+\frac{2}{n+1}&lt;\frac1{\sqrt[n]{n!}}\le\frac1{\sqrt n}.
+\]</span> 两端都趋于<span class="math inline">\(0\)</span>，由夹逼定理，<span class="math inline">\(\lim_{n\to\infty}1/\sqrt[n]{n!}=0\)</span>。</p>
+<p><strong>方法二：利用第 61 题</strong> 只要对任意给定的<span class="math inline">\(\varepsilon&gt;0\)</span>，求得<span class="math inline">\(N\)</span>，使得<span class="math inline">\(n&gt;N\)</span>时 <span class="math display">\[
+\left|\frac1{\sqrt[n]{n!}}-0\right|&lt;\varepsilon
+\]</span> 即可。上式等价于 <span class="math display">\[
+\frac1{n!}&lt;\varepsilon^n
+\quad\Longleftrightarrow\quad
+\frac{(1/\varepsilon)^n}{n!}&lt;1.
+\]</span> 由第 61 题，<span class="math inline">\(\lim_{n\to\infty}(1/\varepsilon)^n/n!=0\)</span>，故这样的<span class="math inline">\(N\)</span>存在，因而 <span class="math display">\[
+\lim_{n\to\infty}\frac1{\sqrt[n]{n!}}=0.
+\]</span></p>
+<p><strong>方法三：单调有界数列与反证法</strong> 令<span class="math inline">\(x_n=1/\sqrt[n]{n!}\)</span>。则 <span class="math display">\[
+\frac{x_{n+1}}{x_n}
+=\sqrt[n(n+1)]{\frac{(n!)^{n+1}}{((n+1)!)^n}}
+=\sqrt[n(n+1)]{\frac{n!}{(n+1)^n}}&lt;1.
+\]</span> 所以<span class="math inline">\(\{x_n\}\)</span>递减且有下界<span class="math inline">\(0\)</span>，设其极限为<span class="math inline">\(A\ge0\)</span>。若<span class="math inline">\(A&gt;0\)</span>，则对任意<span class="math inline">\(n\)</span>， <span class="math display">\[
+\frac1{\sqrt[n]{n!}}&gt;A&gt;0
+\quad\Longrightarrow\quad
+\frac{(1/A)^n}{n!}&gt;1,
+\]</span> 这与第 61 题（取<span class="math inline">\(a=1/A\)</span>）矛盾。故<span class="math inline">\(A=0\)</span>，即 <span class="math display">\[
+\lim_{n\to\infty}\frac1{\sqrt[n]{n!}}=0.
+\]</span></p>
+<ol start="69" type="1">
+<li>证明数列 <span class="math display">\[
+x_n=\left(1+\frac1n\right)^n
+\]</span> 单调递增且有上界，数列 <span class="math display">\[
+y_n=\left(1+\frac1n\right)^{n+1}
+\]</span> 单调递减且有下界，并求它们的极限。</li>
+</ol>
+<p><strong>证：</strong> <span class="math display">\[
+\frac{x_n}{x_{n-1}}
+=\left(\frac{n+1}{n}\right)^n\left(\frac{n-1}{n}\right)^{n-1}
+=\frac{n}{n-1}\left(\frac{n^2-1}{n^2}\right)^n
+=\frac{n}{n-1}\left(1-\frac1{n^2}\right)^n
+&gt;\frac{n}{n-1}\left(1-\frac1n\right)=1.
+\]</span> 故<span class="math inline">\(\{x_n\}\)</span>单调递增。又 <span class="math display">\[
+\frac{y_n}{y_{n-1}}
+=\left(\frac{n+1}{n}\right)^{n+1}\left(\frac{n-1}{n}\right)^n
+=\frac{n+1}{n}\left(1-\frac1{n^2}\right)^n
+=\frac{n+1}{n}\frac1{\left(1+\dfrac1{n^2-1}\right)^n}
+\newline
+&lt;\frac{n+1}{n}\frac1{1+\dfrac n{n^2-1}}
+&lt;\frac{n+1}{n}\frac1{1+\dfrac1n}=1.
+\]</span> 故<span class="math inline">\(\{y_n\}\)</span>单调递减。由于<span class="math inline">\(x_n&lt;y_n\)</span>，数列<span class="math inline">\(\{x_n\}\)</span>有上界，数列<span class="math inline">\(\{y_n\}\)</span>有下界，所以两数列极限存在。又 <span class="math display">\[
+y_n=\left(1+\frac1n\right)x_n,
+\]</span> 且<span class="math inline">\(\lim_{n\to\infty}(1+1/n)=1\)</span>，因此两数列极限相等。由基本极限， <span class="math display">\[
+\lim_{n\to\infty}x_n=\lim_{n\to\infty}y_n=e.
+\]</span></p>
+<ol start="70" type="1">
+<li>证明 <span class="math display">\[
+0&lt;e-\left(1+\frac1n\right)^n&lt;\frac3n\qquad(n\in\mathbb N^*),
+\]</span> 并问当<span class="math inline">\(n\)</span>取何值时，<span class="math inline">\(e-(1+1/n)^n\)</span>与<span class="math inline">\(e\)</span>相差不到<span class="math inline">\(0.001\)</span>。</li>
+</ol>
+<p><strong>证：</strong> 令<span class="math inline">\(x_n=(1+1/n)^n\)</span>，<span class="math inline">\(y_n=(1+1/n)^{n+1}\)</span>。由第 69 题，<span class="math inline">\(\{x_n\}\)</span>递增且趋于<span class="math inline">\(e\)</span>，故<span class="math inline">\(e-x_n&gt;0\)</span>；又<span class="math inline">\(\{y_n\}\)</span>递减且趋于<span class="math inline">\(e\)</span>，故<span class="math inline">\(x_n&lt;e&lt;y_n\)</span>。因此 <span class="math display">\[
+e-x_n&lt;y_n-x_n=\frac1n\left(1+\frac1n\right)^n.
+\]</span> 由第 69 题，<span class="math inline">\(x_n&lt;e&lt;y_n\)</span>，且<span class="math inline">\(y_n\)</span>递减。又<span class="math inline">\(y_5=(1+1/5)^6&lt;3\)</span>，故<span class="math inline">\(n\ge5\)</span>时<span class="math inline">\(x_n&lt;y_5&lt;3\)</span>；<span class="math inline">\(n=1,2,3,4\)</span>时直接计算也有<span class="math inline">\(x_n&lt;3\)</span>。于是 <span class="math display">\[
+0&lt;e-\left(1+\frac1n\right)^n&lt;\frac3n.
+\]</span> 当<span class="math inline">\(n&gt;3000\)</span>时，<span class="math inline">\(3/n&lt;0.001\)</span>，所以<span class="math inline">\(n\ge3001\)</span>时误差小于<span class="math inline">\(0.001\)</span>。</p>
+<ol start="71" type="1">
+<li><span class="math inline">\(p_n\)</span>是趋于<span class="math inline">\(+\infty\)</span>的任意数列，<span class="math inline">\(q_n\)</span>是趋于<span class="math inline">\(-\infty\)</span>的任意数列，且<span class="math inline">\(p_n,q_n\notin[-1,0)\)</span>。证明 <span class="math display">\[
+\lim_{n\to\infty}\left(1+\frac1{p_n}\right)^{p_n}
+=\lim_{n\to\infty}\left(1+\frac1{q_n}\right)^{q_n}=e.
+\]</span></li>
+</ol>
+<p><strong>证：</strong> <span class="math display">\[
+\lim_{n\to\infty}\left(1+\frac1{p_n}\right)^{p_n}
+=\lim_{n\to\infty}\left(1+\frac1{q_n}\right)^{q_n}=e.
+\]</span></p>
+<p>① 先证 <span class="math display">\[
+\lim_{n\to\infty}\left(1+\frac1{p_n}\right)^{p_n}=e.
+\]</span> 只要对任意<span class="math inline">\(\varepsilon&gt;0\)</span>，找到<span class="math inline">\(N\)</span>，使得<span class="math inline">\(n&gt;N\)</span>时 <span class="math display">\[
+\left|\left(1+\frac1{p_n}\right)^{p_n}-e\right|&lt;\varepsilon
+\]</span> 即可。由<span class="math inline">\(\lim_{m\to\infty}(1+1/m)^m=e\)</span>，对<span class="math inline">\(\varepsilon&gt;0\)</span>，存在<span class="math inline">\(N_1\)</span>，使得<span class="math inline">\(m&gt;N_1\)</span>时 <span class="math display">\[
+\left|\left(1+\frac1m\right)^m-e\right|&lt;\varepsilon.
+\]</span> 又由<span class="math inline">\(p_n\to+\infty\)</span>，存在<span class="math inline">\(N_0\)</span>，使得<span class="math inline">\(n&gt;N_0\)</span>时<span class="math inline">\(p_n&gt;N_1\)</span>。取<span class="math inline">\(N=N_0\)</span>即可。</p>
+<p>② 再证 <span class="math display">\[
+\lim_{n\to\infty}\left(1+\frac1{q_n}\right)^{q_n}=e.
+\]</span> <span class="math display">\[
+\left(1+\frac1{q_n}\right)^{q_n}
+=\left(\frac{q_n}{1+q_n}\right)^{-q_n}
+=\left(1-\frac1{-q_n-1}\right)^{-q_n}
+=\left(1+\frac1{-q_n-1}\right)^{-q_n-1}\frac{q_n}{1+q_n}.
+\]</span> 由基本极限及<span class="math inline">\(q_n\to-\infty\)</span>， <span class="math display">\[
+\lim_{n\to\infty}\left(1+\frac1{-q_n-1}\right)^{-q_n-1}
+\cdot\frac{q_n}{1+q_n}=e\cdot1=e.
+\]</span></p>
+<ol start="72" type="1">
+<li>证明 <span class="math display">\[
+\lim_{n\to\infty}\left(1+1+\frac1{2!}+\frac1{3!}+\cdots+\frac1{n!}\right)=e.
+\]</span> 已知 <span class="math display">\[
+\lim_{n\to\infty}\left(1+\frac1n\right)^n=e.
+\]</span> 由二项式定理， <span class="math display">\[
+\left(1+\frac1n\right)^n
+=\sum_{k=0}^n\binom nk\frac1{n^k}
+\newline
+=1+1+\frac1{2!}\left(1-\frac1n\right)
++\frac1{3!}\left(1-\frac1n\right)\left(1-\frac2n\right)
++\cdots+
+\frac1{n!}\left(1-\frac1n\right)\left(1-\frac2n\right)\cdots\left(1-\frac{n-1}{n}\right).
+\]</span> 记<span class="math inline">\(s_n=1+1+1/2!+1/3!+\cdots+1/n!\)</span>。由上式各项不超过对应的<span class="math inline">\(1/k!\)</span>，有<span class="math inline">\((1+1/n)^n\le s_n\)</span>，故<span class="math inline">\(\liminf s_n\ge e\)</span>。另一方面，固定<span class="math inline">\(m\)</span>，对<span class="math inline">\(N\ge m\)</span>由二项式展开的前<span class="math inline">\(m+1\)</span>项不超过整个和，令<span class="math inline">\(N\to\infty\)</span>得 <span class="math display">\[
+1+1+\frac1{2!}+\cdots+\frac1{m!}\le e.
+\]</span> 故<span class="math inline">\(s_m\le e\)</span>，从而<span class="math inline">\(\limsup s_n\le e\)</span>。因此 <span class="math display">\[
+\lim_{n\to\infty}\left(1+1+\frac1{2!}+\cdots+\frac1{n!}\right)=e.
+\]</span></li>
+</ol>
+<p>再证明余项的表示。令 <span class="math display">\[
+R_n=e-\left(1+1+\frac1{2!}+\cdots+\frac1{n!}\right)
+=\sum_{k=n+1}^{\infty}\frac1{k!}.
+\]</span> 当<span class="math inline">\(k\ge n+1\)</span>时，余下各项的比值不超过<span class="math inline">\(1/(n+2)\)</span>，因此 <span class="math display">\[
+0&lt;R_n&lt;\frac1{(n+1)!}\left(1+\frac1{n+2}+\frac1{(n+2)^2}+\cdots\right)
+=\frac{n+2}{(n+1)^2n!}&lt;\frac1{n\,n!}.
+\]</span> 令<span class="math inline">\(\theta_n=n\,n!R_n\)</span>，则<span class="math inline">\(0&lt;\theta_n&lt;1\)</span>，并且 <span class="math display">\[
+e=1+1+\frac1{2!}+\cdots+\frac1{n!}+\frac{\theta_n}{n!n}.
+\]</span></p>
+<ol start="73" type="1">
+<li>证明<span class="math inline">\(e\)</span>是无理数。</li>
+</ol>
+<p><strong>证：</strong> 设<span class="math inline">\(e=p/q\)</span>，其中<span class="math inline">\(p,q\in\mathbb N^*\)</span>。由第 72 题， <span class="math display">\[
+0&lt;e-\left(1+1+\frac1{2!}+\cdots+\frac1{q!}\right)&lt;\frac1{q!q}.
+\]</span> 两边同乘<span class="math inline">\(q!q\)</span>，得 <span class="math display">\[
+0&lt;q!q\,e-q!q\left(1+1+\frac1{2!}+\cdots+\frac1{q!}\right)&lt;1.
+\]</span> 但左端中间的数是整数，矛盾。因此<span class="math inline">\(e\)</span>是无理数。</p>
+</section>
+<section id="方法提炼总结" class="level1">
+<h1>方法提炼总结</h1>
+<section id="比值法" class="level2">
+<h2 class="anchored" data-anchor-id="比值法">比值法</h2>
+<p>对于一些不是那么好直接处理求解<span class="math inline">\(N(\epsilon)\)</span>，但是前后项有比较显著的比值关系的题目，我们可以采用60题解法2，或62题这种方法： 1. 通过比值小于1确定单调性 2. 找一个中间值<span class="math inline">\(0&lt;q&lt;1\)</span>作为说明工具 3. 取特定的<span class="math inline">\(\epsilon\)</span>，通过放缩为关于<span class="math inline">\(q\)</span>的等比数列收敛于<span class="math inline">\(0\)</span>证明原极限 60题例子：令<span class="math inline">\(x_n=n^k/a^n\)</span>，其中<span class="math inline">\(a&gt;1\)</span>。则 <span class="math display">\[
+\frac{x_{n+1}}{x_n}=\left(1+\frac1n\right)^k\frac1a\longrightarrow\frac1a&lt;1.
+\]</span> 取<span class="math inline">\(1/a&lt;q&lt;1\)</span>。当<span class="math inline">\(n\)</span>充分大时，<span class="math inline">\(x_{n+1}/x_n&lt;q\)</span>，故 <span class="math display">\[
+0&lt;x_n=x_N\frac{x_{N+1}}{x_N}\cdots\frac{x_n}{x_{n-1}}&lt;x_Nq^{n-N}.
+\]</span> 对任意<span class="math inline">\(\epsilon&gt;0\)</span>，再取<span class="math inline">\(n\)</span>充分大，使<span class="math inline">\(x_Nq^{n-N}&lt;\epsilon\)</span>，便有<span class="math inline">\(0&lt;x_n&lt;\epsilon\)</span>，从而<span class="math inline">\(x_n\to0\)</span>。</p>
+<p>达朗贝尔比值判别法也通过相邻项的比值判断正项级数的敛散性。当正项数列相邻项比值的极限小于<span class="math inline">\(1\)</span>时，后续各项可被一个公比小于<span class="math inline">\(1\)</span>的等比数列控制；第 60 题和第 62 题则用相同的放缩思路证明数列本身趋于<span class="math inline">\(0\)</span>。</p>
+</section>
+<section id="单调有界收敛定理以及极限符号判断" class="level2">
+<h2 class="anchored" data-anchor-id="单调有界收敛定理以及极限符号判断">单调有界收敛定理以及极限符号判断</h2>
+<p>对于一些极限在<span class="math inline">\(0\)</span>处但是不容易直接说明的问题，我们可以 1. 用单调有界收敛定理证明极限存在 2. 用表达式说明极限<span class="math inline">\(A\ge0\)</span>或<span class="math inline">\(A\le0\)</span> 3. 将<span class="math inline">\(A&gt;0\)</span>或<span class="math inline">\(A&lt;0\)</span>的情况带入原始比值表达式，取极限，导出矛盾 60题、66题例子：</p>
+<p>第 60 题中，令<span class="math inline">\(x_n=n^k/a^n\)</span>。由<span class="math inline">\(x_{n+1}/x_n\to1/a&lt;1\)</span>可知<span class="math inline">\(x_n\)</span>从某项起递减，又<span class="math inline">\(x_n&gt;0\)</span>，故极限<span class="math inline">\(A\ge0\)</span>存在。若<span class="math inline">\(A&gt;0\)</span>，则 <span class="math display">\[
+\lim_{n\to\infty}\frac{x_{n+1}}{x_n}=\frac{A}{A}=1,
+\]</span> 这与<span class="math inline">\(1/a&lt;1\)</span>矛盾，所以<span class="math inline">\(A=0\)</span>。</p>
+<p>第 66 题中，令<span class="math inline">\(x_n=1/\sqrt[n]{n!}\)</span>。由相邻项比值可知<span class="math inline">\(x_n\)</span>递减，又<span class="math inline">\(x_n&gt;0\)</span>，故极限<span class="math inline">\(A\ge0\)</span>存在。若<span class="math inline">\(A&gt;0\)</span>，则 <span class="math display">\[
+\frac1{\sqrt[n]{n!}}&gt;A
+\quad\Longrightarrow\quad
+\frac{(1/A)^n}{n!}&gt;1.
+\]</span> 但第 61 题说明对固定的正数<span class="math inline">\(a\)</span>有<span class="math inline">\(a^n/n!\to0\)</span>，取<span class="math inline">\(a=1/A\)</span>便得矛盾，所以<span class="math inline">\(A=0\)</span>。 ## 和<span class="math inline">\(e\)</span>有关的结论总结 第 69 题中的两个数列分别从下方和上方逼近<span class="math inline">\(e\)</span>： <span class="math display">\[
+x_n=\left(1+\frac1n\right)^n\nearrow e,
+\qquad y_n=\left(1+\frac1n\right)^{n+1}\searrow e,
+\qquad x_n&lt;e&lt;y_n.
+\]</span> 第 70 题给出了近似误差的估计： <span class="math display">\[
+0&lt;e-\left(1+\frac1n\right)^n&lt;\frac3n.
+\]</span> 第 72 题得到<span class="math inline">\(e\)</span>的阶乘级数表示，并进一步给出余项： <span class="math display">\[
+e=1+1+\frac1{2!}+\frac1{3!}+\cdots,
+\]</span> <span class="math display">\[
+e=1+1+\frac1{2!}+\cdots+\frac1{n!}+\frac{\theta_n}{n!n},
+\qquad 0&lt;\theta_n&lt;1.
+\]</span> 第 73 题利用这个余项估计证明<span class="math inline">\(e\)</span>是无理数：若设<span class="math inline">\(e=p/q\)</span>，取<span class="math inline">\(n=q\)</span>并同乘<span class="math inline">\(q!q\)</span>，便得到一个严格介于<span class="math inline">\(0\)</span>和<span class="math inline">\(1\)</span>之间的整数，矛盾。</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<section id="comments" class="comments-section" aria-labelledby="comments-heading">
+  <h2 id="comments-heading">评论</h2>
+  <p id="comments-status">评论暂未开放。</p>
+  <div class="giscus"></div>
+</section>
+<script src="../../assets/comments-config.js"></script>
+<script src="../../assets/comments.js"></script>
+
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "已复制");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "已复制");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/easoncyy\.github\.io");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p><a href="../../posts/20261009-analysis-array-1/index.html">~/notes</a> · 记录与探索</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p><a class="footer-repository" href="https://github.com/easoncyy/easoncyy.github.io" target="_blank" rel="noopener noreferrer" aria-label="查看本站 GitHub 仓库"><i class="bi bi-github" aria-hidden="true"></i><span>source/</span></a><span class="footer-builder">Built with Quarto</span></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
