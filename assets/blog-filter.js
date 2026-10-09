@@ -6,7 +6,14 @@ document.addEventListener('DOMContentLoaded',()=>{
   const desktopSlot=document.querySelector('.blog-layout');
   const mobileSlot=document.querySelector('#blog-mobile-directory');
   const mobile=window.matchMedia('(max-width: 800px)');
-  const positionDirectory=()=>{(mobile.matches?mobileSlot:desktopSlot).append(sidebar);};
+  const searchBlock=document.querySelector('.blog-search-block');
+  const titleBlock=document.querySelector('#title-block-header');
+  const tools=document.querySelector('.blog-tools');
+  const positionDirectory=()=>{
+    (mobile.matches?mobileSlot:desktopSlot).append(sidebar);
+    if(mobile.matches)tools.insertBefore(searchBlock,mobileSlot);
+    else titleBlock.append(searchBlock);
+  };
   mobile.addEventListener('change',positionDirectory);positionDirectory();
   const button=(label,active,action)=>{const b=document.createElement('button');b.type='button';b.textContent=label;b.setAttribute('aria-pressed',String(active));b.addEventListener('click',action);return b;};
   const inside=e=>path.every((p,i)=>e.path[i]===p);
