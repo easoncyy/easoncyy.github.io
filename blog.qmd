@@ -1,7 +1,7 @@
 ---
 title: "~/notes/blog"
 subtitle: "博客"
-body-classes: directory-page
+body-classes: directory-page blog-page
 description: "学习、代码与思考，按时间归档。"
 toc: false
 include-after-body:

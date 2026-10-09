@@ -21,11 +21,9 @@ def main():
             url=book.get('path',book.get('url',''))
             if url and not (url.startswith('/') or url.startswith('https://') or url.startswith('http://')): raise ValueError('Invalid book URL')
             title=esc(book['title']);note=esc(item.get('note',''))
-            link=f'<a href="{esc(url)}" target="_blank" rel="noopener">{title} ↗</a>' if url else title
             action=f'<a href="{esc(url)}" target="_blank" rel="noopener" aria-label="打开 {title}">↗</a>' if url else ''
-            checked='checked' if status=='completed' else ''
-            groups[status].append(f'<li><label><input type="checkbox" disabled {checked}><span>{title}</span></label>{action}<small>{note}</small></li>')
-            if status=='reading': featured.append(f'<article class="reading-feature"><h3>{link}</h3><p>{esc(book.get("author",""))}</p><p>{note}</p></article>')
+            groups[status].append(f'<li><span>{title}</span>{action}<small>{note}</small></li>')
+            if status=='reading': featured.append(f'<article class="reading-feature"><h3>{title}</h3><p>{esc(book.get("author",""))}</p><p>{note}</p></article>')
         columns=''.join(f'<section><h4>{label} <small>{len(groups[status])}</small></h4><ul>{"".join(groups[status]) or "<li class=reading-empty>暂无</li>"}</ul></section>' for status,label in STATUSES.items())
         sections.append(f'<section class="reading-list"><h3>{esc(listing["title"])}</h3><div class="reading-columns">{columns}</div></section>')
     output='<section><h2>reading/ <small>正在阅读</small></h2><div class="reading-features">'+(''.join(featured) or '<p>还没有正在阅读的书。</p>')+'</div></section>'
