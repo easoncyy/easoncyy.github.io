@@ -1,0 +1,460 @@
+---
+title: "吉米多维奇刷题-数列-1 "
+description: "刷吉米多维奇数列这一章前半部分遇到的有趣问题梳理"
+date: "2026-10-09T16:25:01+08:00"
+categories: ["微积分", "微积分刷题"]
+execute: {"enabled": false}
+---
+这篇博客记录了刷《数学分析习题集（吉米多维奇）》$\S 2$ 数列理论这一章时遇到的有意思的问题以及题解。
+
+# 题目与解析
+
+55. 求极限
+$$
+\lim_{n\to\infty}\left(\frac{1}{2}+\frac{3}{2^2}+\frac{5}{2^3}+\cdots+\frac{2n-1}{2^n}\right).
+$$
+
+**证：** 令
+$$
+S_n=\frac{1}{2}+\frac{3}{2^2}+\frac{5}{2^3}+\cdots+\frac{2n-1}{2^n}.
+$$
+则
+$$
+2^nS_n=1\cdot2^{n-1}+3\cdot2^{n-2}+\cdots+(2n-1),
+$$
+$$
+2^{n+1}S_n=1\cdot2^n+3\cdot2^{n-1}+\cdots+(2n-1)2.
+$$
+两式相减，
+$$
+2^nS_n=2^n+2\cdot2^{n-1}+2\cdot2^{n-2}+\cdots+2\cdot2-(2n-1)
+=3\cdot2^n-2n-3.
+$$
+所以
+$$
+\lim_{n\to\infty}S_n=\lim_{n\to\infty}\frac{3\cdot2^n-2n-3}{2^n}=3.
+$$
+
+59. 证明
+$$
+\lim_{n\to\infty}\frac{2^n}{n!}=0.
+$$
+
+**证：**
+$$
+\frac{2^n}{n!}=\frac{2\cdot2\cdots2}{1\cdot2\cdots n}
+<\frac{2\cdot2\cdot2\cdots2}{1\cdot2\cdot3\cdot3\cdots3}
+=2\left(\frac23\right)^{n-2}.
+$$
+对任意$\varepsilon>0$，当
+$$
+n>2+\log_{3/2}\frac{2}{\varepsilon}
+$$
+时，$2(2/3)^{n-2}<\varepsilon$。故由夹逼定理，
+$$
+\lim_{n\to\infty}\frac{2^n}{n!}=0.
+$$
+
+60. 证明
+$$
+\lim_{n\to\infty}\frac{n^k}{a^n}=0\qquad(a>1,\ k\text{为固定正整数}).
+$$
+
+**方法一：二项式定理与夹逼** 
+设$a=h+1$，$h>0$。由二项式定理，
+$$
+(h+1)^n=1+nh+\cdots+\frac{n(n-1)\cdots(n-k)}{(k+1)!}h^{k+1}+\cdots.
+$$
+因此
+$$
+0<\frac{n^k}{a^n}
+<\frac{n^k}{\dfrac{n(n-1)\cdots(n-k)}{(k+1)!}h^{k+1}}
+=\frac{(k+1)!n^k}{n(n-1)\cdots(n-k)h^{k+1}}.
+$$
+右端趋于$0$，由夹逼定理，$\lim_{n\to\infty}n^k/a^n=0$。
+
+**方法二：比值法** 
+令$x_n=n^k/a^n$，则
+$$
+\frac{x_{n+1}}{x_n}=\left(1+\frac1n\right)^k\frac1a\longrightarrow\frac1a<1.
+$$
+取$1/a<q<1$，并令$\varepsilon=q-1/a>0$。当$n$充分大时，
+$$
+\left|\frac{x_{n+1}}{x_n}-\frac1a\right|<\varepsilon,
+\qquad \frac{x_{n+1}}{x_n}<\frac1a+\varepsilon=q<1.
+$$
+故对充分大的$n>N$，
+$$
+x_n=x_N\frac{x_{N+1}}{x_N}\cdots\frac{x_n}{x_{n-1}}<x_Nq^{n-N}\longrightarrow0.
+$$
+由夹逼定理，$\lim_{n\to\infty}x_n=0$。
+
+**方法三：单调有界数列** 
+由方法二的比值，数列$\{x_n\}$从某项起单调递减，且$x_n>0$，故其极限$A\ge0$存在。若$A>0$，则
+$$
+\lim_{n\to\infty}\frac{x_{n+1}}{x_n}=\frac{A}{A}=1,
+$$
+但前面已得该极限为$1/a<1$，矛盾。因此$A=0$，即$\lim_{n\to\infty}n^k/a^n=0$。
+
+61. 证明
+$$
+\lim_{n\to\infty}\frac{a^n}{n!}=0.
+$$
+
+**证：** 
+$$
+\frac{a^n}{n!}=\frac{a\cdot a\cdots a}{1\cdot2\cdots(a-1)\cdot a\cdot(a+1)\cdots n}
+<\frac{a^a}{1\cdot2\cdots(a-1)\cdot a}\left(\frac{a}{a+1}\right)^{n-a}.
+$$
+由于$0<a/(a+1)<1$，右端趋于$0$。因此结论对正整数$a$成立。若$a$为任意正实数，取正整数$m>a$，则$0<a^n/n!<m^n/n!\to0$，结论仍成立。由夹逼定理，
+$$
+\lim_{n\to\infty}\frac{a^n}{n!}=0.
+$$
+
+62. 证明（$|q|<1$）
+$$
+\lim_{n\to\infty}nq^n=0.
+$$
+令$x_n=nq^n$，则
+$$
+\frac{x_{n+1}}{x_n}=\frac{n+1}{n}q\longrightarrow q.
+$$
+取$t=(q+1)/2$（当$0\le q<1$时），则$q<t<1$。令$\varepsilon=t-q>0$，当$n$充分大时，
+$$
+\left|\frac{x_{n+1}}{x_n}-q\right|<\varepsilon,
+\qquad \frac{x_{n+1}}{x_n}<q+\varepsilon=t<1.
+$$
+于是对充分大的$n>N$，
+$$
+x_n=x_N\frac{x_{n+1}}{x_n}\cdots\frac{x_n}{x_{n-1}}<x_Nt^{n-N}\longrightarrow0.
+$$
+由夹逼定理，$\lim_{n\to\infty}nq^n=0$。当$-1<q<0$时，对$|nq^n|=n|q|^n$同理可证，故结论仍成立。
+
+63. 证明
+$$
+\lim_{n\to\infty}\sqrt[n]{a}=1\qquad(a>0).
+$$
+**证：** 对任意$\varepsilon>0$，
+$$
+\left|\sqrt[n]{a}-1\right|<\varepsilon
+\quad\Longleftrightarrow\quad
+1-\varepsilon<a^{1/n}<1+\varepsilon.
+$$
+不妨设$0<\varepsilon<1$。
+
+① 当$0<a<1$时，
+$$
+\log_a(1+\varepsilon)<0<\frac1n<\log_a(1-\varepsilon).
+$$
+取$N=1/\log_a(1-\varepsilon)$，则当$n>N$时，$|\sqrt[n]{a}-1|<\varepsilon$。故$\lim_{n\to\infty}\sqrt[n]{a}=1$。
+
+② 当$a=1$时，结论显然成立。
+
+③ 当$a>1$时，
+$$
+\log_a(1-\varepsilon)<0<\frac1n<\log_a(1+\varepsilon).
+$$
+取$N=1/\log_a(1+\varepsilon)$，则当$n>N$时，$|\sqrt[n]{a}-1|<\varepsilon$。综上，
+$$
+\lim_{n\to\infty}\sqrt[n]{a}=1.
+$$
+
+64. 证明（$a>1$）
+$$
+\lim_{n\to\infty}\frac{\log_a n}{n}=0.
+$$
+**证：**
+$$
+\lim_{n\to\infty}\frac{\log_a n}{n}
+=\frac1{\ln a}\lim_{n\to\infty}\frac{\ln n}{n}.
+$$
+因为$\ln n<n-1$，所以
+$$
+\ln n=2\ln\sqrt n<2\sqrt n-2.
+$$
+当$n>1$时，
+$$
+0<\frac{\ln n}{n}<\frac{2\sqrt n-2}{n},
+\qquad \lim_{n\to\infty}\frac{2\sqrt n-2}{n}=0.
+$$
+由夹逼定理，$\lim_{n\to\infty}\log_a n/n=0$。
+
+65. 证明
+$$
+\lim_{n\to\infty}\sqrt[n]{n}=1.
+$$
+**证：** 由基本不等式，
+$$
+1=\sqrt[n]{1}<\sqrt[n]{n}<\frac{\sqrt n+\sqrt n+1+\cdots+1}{n}
+=\frac2{\sqrt n}+1-\frac2n.
+$$
+令$n\to\infty$，由夹逼定理，
+$$
+\lim_{n\to\infty}\sqrt[n]{n}=1.
+$$
+
+66. 证明
+$$
+\lim_{n\to\infty}\frac1{\sqrt[n]{n!}}=0.
+$$
+
+**方法一：利用基本不等式** 
+由基本不等式，
+$$
+\sqrt[n]{n!}<\frac{1+2+\cdots+n}{n}=\frac{n+1}{2}.
+$$
+下面考虑$n!$。把因子$k$与$n-k+1$配对，其中$1\le k\le\lfloor n/2\rfloor$。当$n$为奇数时，剩下的中间因子$(n+1)/2\ge\sqrt n$。当$k\le n-k+1$时，
+$$
+k(n-k+1)-n=(k-1)(n-k)\ge0,
+$$
+所以$k(n-k+1)\ge n$。把$n!$中的因子配对，便有$n!\ge n^{n/2}$，从而
+$$
+\sqrt n\le\sqrt[n]{n!}<\frac{n+1}{2}.
+$$
+于是
+$$
+\frac{2}{n+1}<\frac1{\sqrt[n]{n!}}\le\frac1{\sqrt n}.
+$$
+两端都趋于$0$，由夹逼定理，$\lim_{n\to\infty}1/\sqrt[n]{n!}=0$。
+
+**方法二：利用第 61 题** 
+只要对任意给定的$\varepsilon>0$，求得$N$，使得$n>N$时
+$$
+\left|\frac1{\sqrt[n]{n!}}-0\right|<\varepsilon
+$$
+即可。上式等价于
+$$
+\frac1{n!}<\varepsilon^n
+\quad\Longleftrightarrow\quad
+\frac{(1/\varepsilon)^n}{n!}<1.
+$$
+由第 61 题，$\lim_{n\to\infty}(1/\varepsilon)^n/n!=0$，故这样的$N$存在，因而
+$$
+\lim_{n\to\infty}\frac1{\sqrt[n]{n!}}=0.
+$$
+
+**方法三：单调有界数列与反证法** 
+令$x_n=1/\sqrt[n]{n!}$。则
+$$
+\frac{x_{n+1}}{x_n}
+=\sqrt[n(n+1)]{\frac{(n!)^{n+1}}{((n+1)!)^n}}
+=\sqrt[n(n+1)]{\frac{n!}{(n+1)^n}}<1.
+$$
+所以$\{x_n\}$递减且有下界$0$，设其极限为$A\ge0$。若$A>0$，则对任意$n$，
+$$
+\frac1{\sqrt[n]{n!}}>A>0
+\quad\Longrightarrow\quad
+\frac{(1/A)^n}{n!}>1,
+$$
+这与第 61 题（取$a=1/A$）矛盾。故$A=0$，即
+$$
+\lim_{n\to\infty}\frac1{\sqrt[n]{n!}}=0.
+$$
+
+69. 证明数列
+$$
+x_n=\left(1+\frac1n\right)^n
+$$
+单调递增且有上界，数列
+$$
+y_n=\left(1+\frac1n\right)^{n+1}
+$$
+单调递减且有下界，并求它们的极限。
+
+**证：**
+$$
+\frac{x_n}{x_{n-1}}
+=\left(\frac{n+1}{n}\right)^n\left(\frac{n-1}{n}\right)^{n-1}
+=\frac{n}{n-1}\left(\frac{n^2-1}{n^2}\right)^n
+=\frac{n}{n-1}\left(1-\frac1{n^2}\right)^n
+>\frac{n}{n-1}\left(1-\frac1n\right)=1.
+$$
+故$\{x_n\}$单调递增。又
+$$
+\frac{y_n}{y_{n-1}}
+=\left(\frac{n+1}{n}\right)^{n+1}\left(\frac{n-1}{n}\right)^n
+=\frac{n+1}{n}\left(1-\frac1{n^2}\right)^n
+=\frac{n+1}{n}\frac1{\left(1+\dfrac1{n^2-1}\right)^n}
+\newline
+<\frac{n+1}{n}\frac1{1+\dfrac n{n^2-1}}
+<\frac{n+1}{n}\frac1{1+\dfrac1n}=1.
+$$
+故$\{y_n\}$单调递减。由于$x_n<y_n$，数列$\{x_n\}$有上界，数列$\{y_n\}$有下界，所以两数列极限存在。又
+$$
+y_n=\left(1+\frac1n\right)x_n,
+$$
+且$\lim_{n\to\infty}(1+1/n)=1$，因此两数列极限相等。由基本极限，
+$$
+\lim_{n\to\infty}x_n=\lim_{n\to\infty}y_n=e.
+$$
+
+70. 证明
+$$
+0<e-\left(1+\frac1n\right)^n<\frac3n\qquad(n\in\mathbb N^*),
+$$
+并问当$n$取何值时，$e-(1+1/n)^n$与$e$相差不到$0.001$。
+
+**证：** 令$x_n=(1+1/n)^n$，$y_n=(1+1/n)^{n+1}$。由第 69 题，$\{x_n\}$递增且趋于$e$，故$e-x_n>0$；又$\{y_n\}$递减且趋于$e$，故$x_n<e<y_n$。因此
+$$
+e-x_n<y_n-x_n=\frac1n\left(1+\frac1n\right)^n.
+$$
+由第 69 题，$x_n<e<y_n$，且$y_n$递减。又$y_5=(1+1/5)^6<3$，故$n\ge5$时$x_n<y_5<3$；$n=1,2,3,4$时直接计算也有$x_n<3$。于是
+$$
+0<e-\left(1+\frac1n\right)^n<\frac3n.
+$$
+当$n>3000$时，$3/n<0.001$，所以$n\ge3001$时误差小于$0.001$。
+
+71. $p_n$是趋于$+\infty$的任意数列，$q_n$是趋于$-\infty$的任意数列，且$p_n,q_n\notin[-1,0)$。证明
+$$
+\lim_{n\to\infty}\left(1+\frac1{p_n}\right)^{p_n}
+=\lim_{n\to\infty}\left(1+\frac1{q_n}\right)^{q_n}=e.
+$$
+
+**证：**
+$$
+\lim_{n\to\infty}\left(1+\frac1{p_n}\right)^{p_n}
+=\lim_{n\to\infty}\left(1+\frac1{q_n}\right)^{q_n}=e.
+$$
+
+① 先证
+$$
+\lim_{n\to\infty}\left(1+\frac1{p_n}\right)^{p_n}=e.
+$$
+只要对任意$\varepsilon>0$，找到$N$，使得$n>N$时
+$$
+\left|\left(1+\frac1{p_n}\right)^{p_n}-e\right|<\varepsilon
+$$
+即可。由$\lim_{m\to\infty}(1+1/m)^m=e$，对$\varepsilon>0$，存在$N_1$，使得$m>N_1$时
+$$
+\left|\left(1+\frac1m\right)^m-e\right|<\varepsilon.
+$$
+又由$p_n\to+\infty$，存在$N_0$，使得$n>N_0$时$p_n>N_1$。取$N=N_0$即可。
+
+② 再证
+$$
+\lim_{n\to\infty}\left(1+\frac1{q_n}\right)^{q_n}=e.
+$$
+$$
+\left(1+\frac1{q_n}\right)^{q_n}
+=\left(\frac{q_n}{1+q_n}\right)^{-q_n}
+=\left(1-\frac1{-q_n-1}\right)^{-q_n}
+=\left(1+\frac1{-q_n-1}\right)^{-q_n-1}\frac{q_n}{1+q_n}.
+$$
+由基本极限及$q_n\to-\infty$，
+$$
+\lim_{n\to\infty}\left(1+\frac1{-q_n-1}\right)^{-q_n-1}
+\cdot\frac{q_n}{1+q_n}=e\cdot1=e.
+$$
+
+72. 证明
+$$
+\lim_{n\to\infty}\left(1+1+\frac1{2!}+\frac1{3!}+\cdots+\frac1{n!}\right)=e.
+$$
+已知
+$$
+\lim_{n\to\infty}\left(1+\frac1n\right)^n=e.
+$$
+由二项式定理，
+$$
+\left(1+\frac1n\right)^n
+=\sum_{k=0}^n\binom nk\frac1{n^k}
+\newline
+=1+1+\frac1{2!}\left(1-\frac1n\right)
++\frac1{3!}\left(1-\frac1n\right)\left(1-\frac2n\right)
++\cdots+
+\frac1{n!}\left(1-\frac1n\right)\left(1-\frac2n\right)\cdots\left(1-\frac{n-1}{n}\right).
+$$
+记$s_n=1+1+1/2!+1/3!+\cdots+1/n!$。由上式各项不超过对应的$1/k!$，有$(1+1/n)^n\le s_n$，故$\liminf s_n\ge e$。另一方面，固定$m$，对$N\ge m$由二项式展开的前$m+1$项不超过整个和，令$N\to\infty$得
+$$
+1+1+\frac1{2!}+\cdots+\frac1{m!}\le e.
+$$
+故$s_m\le e$，从而$\limsup s_n\le e$。因此
+$$
+\lim_{n\to\infty}\left(1+1+\frac1{2!}+\cdots+\frac1{n!}\right)=e.
+$$
+
+再证明余项的表示。令
+$$
+R_n=e-\left(1+1+\frac1{2!}+\cdots+\frac1{n!}\right)
+=\sum_{k=n+1}^{\infty}\frac1{k!}.
+$$
+当$k\ge n+1$时，余下各项的比值不超过$1/(n+2)$，因此
+$$
+0<R_n<\frac1{(n+1)!}\left(1+\frac1{n+2}+\frac1{(n+2)^2}+\cdots\right)
+=\frac{n+2}{(n+1)^2n!}<\frac1{n\,n!}.
+$$
+令$\theta_n=n\,n!R_n$，则$0<\theta_n<1$，并且
+$$
+e=1+1+\frac1{2!}+\cdots+\frac1{n!}+\frac{\theta_n}{n!n}.
+$$
+
+73. 证明$e$是无理数。
+
+**证：** 设$e=p/q$，其中$p,q\in\mathbb N^*$。由第 72 题，
+$$
+0<e-\left(1+1+\frac1{2!}+\cdots+\frac1{q!}\right)<\frac1{q!q}.
+$$
+两边同乘$q!q$，得
+$$
+0<q!q\,e-q!q\left(1+1+\frac1{2!}+\cdots+\frac1{q!}\right)<1.
+$$
+但左端中间的数是整数，矛盾。因此$e$是无理数。
+
+# 方法提炼总结
+## 比值法
+对于一些不是那么好直接处理求解$N(\epsilon)$，但是前后项有比较显著的比值关系的题目，我们可以采用60题解法2，或62题这种方法：
+1. 通过比值小于1确定单调性
+2. 找一个中间值$0<q<1$作为说明工具
+3. 取特定的$\epsilon$，通过放缩为关于$q$的等比数列收敛于$0$证明原极限
+60题例子：令$x_n=n^k/a^n$，其中$a>1$。则
+$$
+\frac{x_{n+1}}{x_n}=\left(1+\frac1n\right)^k\frac1a\longrightarrow\frac1a<1.
+$$
+取$1/a<q<1$。当$n$充分大时，$x_{n+1}/x_n<q$，故
+$$
+0<x_n=x_N\frac{x_{N+1}}{x_N}\cdots\frac{x_n}{x_{n-1}}<x_Nq^{n-N}.
+$$
+对任意$\epsilon>0$，再取$n$充分大，使$x_Nq^{n-N}<\epsilon$，便有$0<x_n<\epsilon$，从而$x_n\to0$。
+
+达朗贝尔比值判别法也通过相邻项的比值判断正项级数的敛散性。当正项数列相邻项比值的极限小于$1$时，后续各项可被一个公比小于$1$的等比数列控制；第 60 题和第 62 题则用相同的放缩思路证明数列本身趋于$0$。
+
+## 单调有界收敛定理以及极限符号判断
+对于一些极限在$0$处但是不容易直接说明的问题，我们可以
+1. 用单调有界收敛定理证明极限存在
+2. 用表达式说明极限$A\ge0$或$A\le0$
+3. 将$A>0$或$A<0$的情况带入原始比值表达式，取极限，导出矛盾
+60题、66题例子：
+
+第 60 题中，令$x_n=n^k/a^n$。由$x_{n+1}/x_n\to1/a<1$可知$x_n$从某项起递减，又$x_n>0$，故极限$A\ge0$存在。若$A>0$，则
+$$
+\lim_{n\to\infty}\frac{x_{n+1}}{x_n}=\frac{A}{A}=1,
+$$
+这与$1/a<1$矛盾，所以$A=0$。
+
+第 66 题中，令$x_n=1/\sqrt[n]{n!}$。由相邻项比值可知$x_n$递减，又$x_n>0$，故极限$A\ge0$存在。若$A>0$，则
+$$
+\frac1{\sqrt[n]{n!}}>A
+\quad\Longrightarrow\quad
+\frac{(1/A)^n}{n!}>1.
+$$
+但第 61 题说明对固定的正数$a$有$a^n/n!\to0$，取$a=1/A$便得矛盾，所以$A=0$。
+## 和$e$有关的结论总结
+第 69 题中的两个数列分别从下方和上方逼近$e$：
+$$
+x_n=\left(1+\frac1n\right)^n\nearrow e,
+\qquad y_n=\left(1+\frac1n\right)^{n+1}\searrow e,
+\qquad x_n<e<y_n.
+$$
+第 70 题给出了近似误差的估计：
+$$
+0<e-\left(1+\frac1n\right)^n<\frac3n.
+$$
+第 72 题得到$e$的阶乘级数表示，并进一步给出余项：
+$$
+e=1+1+\frac1{2!}+\frac1{3!}+\cdots,
+$$
+$$
+e=1+1+\frac1{2!}+\cdots+\frac1{n!}+\frac{\theta_n}{n!n},
+\qquad 0<\theta_n<1.
+$$
+第 73 题利用这个余项估计证明$e$是无理数：若设$e=p/q$，取$n=q$并同乘$q!q$，便得到一个严格介于$0$和$1$之间的整数，矛盾。
