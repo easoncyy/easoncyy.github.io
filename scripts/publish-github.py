@@ -17,6 +17,13 @@ KNOWN_BLOBS = set()
 
 
 def publish_tree(branch, files, message, preserve_tree):
+    # Source sync already uploaded library binaries. Git objects are shared
+    # across branches, so reuse them instead of sending large blobs twice.
+    source_ref = api("GET", f"{API_ROOT}/git/ref/heads/main", allow_missing=True)
+    if source_ref:
+        source_tree = api("GET", f"{API_ROOT}/git/commits/{source_ref['object']['sha']}")["tree"]["sha"]
+        source_entries = api("GET", f"{API_ROOT}/git/trees/{source_tree}?recursive=1")
+        KNOWN_BLOBS.update(item["sha"] for item in source_entries["tree"] if item["type"] == "blob")
     ref = api("GET", f"{API_ROOT}/git/ref/heads/{branch}", allow_missing=True)
     parent = ref["object"]["sha"] if ref else None
     base_tree = None
