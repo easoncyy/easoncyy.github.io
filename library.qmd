@@ -6,8 +6,12 @@ toc: false
 format:
   html:
     include-after-body:
-      text: '<script defer src="/assets/library-filter.js"></script>'
+      text: '<script defer src="/assets/library-filter.js"></script><script defer src="/assets/reading.js"></script>'
 ---
+
+{{< include assets/reading-entries.md >}}
+
+## shelves/ 图书分类
 
 ::: {.log-console}
 `$ ls ~/notes/library`  

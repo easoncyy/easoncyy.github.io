@@ -2,7 +2,8 @@
 title: "Hello, world：从第一篇笔记开始"
 description: "一篇示例文章，展示标题、代码、引用与 Markdown 的基本排版。"
 date: "2026-10-06"
-categories: [示例, 写作]
+category-path: ["OTHER", "示例"]
+categories: ["示例", "写作"]
 ---
 
 这是一篇**示例文章**。一个个人网站可以从很小的地方开始：一个首页、一篇笔记，以及一个愿意持续记录的理由。

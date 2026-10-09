@@ -2,7 +2,8 @@
 title: "FIP W04 · 序列与查找"
 description: "W4 学习记录，按原 Markdown 文件创建时间归档。"
 date: "2026-09-29T15:37:57+08:00"
-categories: ["FIP", "学习笔记"]
+category-path: ["AI", "FIP", "学习笔记"]
+categories: ["学习笔记"]
 execute: {"enabled": false}
 source-created: "2026-09-29T15:37:57+08:00"
 ---

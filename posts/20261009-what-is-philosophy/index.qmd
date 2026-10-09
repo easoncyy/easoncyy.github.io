@@ -2,7 +2,8 @@
 title: "什么是哲学？"
 description: "读懂哲学系列讲座听课记录以及拓展笔记"
 date: "2026-10-09T14:06:09+08:00"
-categories: ["哲学"]
+category-path: ["PHILOSOPHY"]
+categories: []
 execute: {"enabled": false}
 ---
 

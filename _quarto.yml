@@ -2,6 +2,8 @@ project:
   type: website
   output-dir: _site
   pre-render:
+    - python scripts/render-blog.py
+    - python scripts/render-reading.py
     - python scripts/render-log.py
     - python scripts/render-library.py
   render:

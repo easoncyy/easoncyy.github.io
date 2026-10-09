@@ -2,7 +2,8 @@
 title: "从公式到文档：一页数学笔记"
 description: "展示 LaTeX 公式、推导，以及由 Typst 生成的 PDF 下载。"
 date: "2026-10-05"
-categories: [示例, 数学]
+category-path: ["MATH", "示例"]
+categories: ["示例"]
 ---
 
 这是一篇**示例文章**，演示网页中的数学公式和可下载的排版文档。

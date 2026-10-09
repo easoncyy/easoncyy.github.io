@@ -1,7 +1,8 @@
 ---
 title: "微积分 W01 · 作业归档"
 date: "2026-09-16"
-categories: ["微积分", "作业归档"]
+category-path: ["MATH", "CALCULUS", "习题"]
+categories: ["习题", "作业归档"]
 description: "2026 年微积分 W01 作业，提供原版 PDF 在线阅读与下载。"
 ---
 

@@ -2,7 +2,8 @@
 title: "FIP 第一次月考题目归档"
 description: "智能程序设计基础课程第一次小测的真题归档以及个人答案"
 date: "2026-10-08T17:58:05+08:00"
-categories: ["FIP", "FIP真题"]
+category-path: ["AI", "FIP", "考试"]
+categories: ["真题"]
 execute: {"enabled": false}
 ---
 

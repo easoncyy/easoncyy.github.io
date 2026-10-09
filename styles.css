@@ -187,3 +187,25 @@ blockquote { border-left: 2px solid #151515; color: var(--muted); padding-left: 
 .log-photo-grid img { width: 100%; height: 230px; object-fit: cover; }
 .log-photo-grid figcaption { font-size: .72rem; }
 @media (max-width: 767px) { .log-photo-grid { grid-template-columns: 1fr; } .log-photo-grid img { height: auto; max-height: 440px; object-fit: contain; } }
+/* Directory filters and reading lists share the monochrome controls. */
+.blog-tools input { border: 1px solid #ccc; padding: .45rem .7rem; background: white; color: black; width: min(100%, 24rem); }
+.directory-buttons, #blog-tags, #blog-pages { display: flex; flex-wrap: wrap; gap: .45rem; margin: .8rem 0; }
+.blog-tools button, #blog-pages button, .reading-hint button { border: 1px solid #bbb; background: white; color: black; padding: .25rem .55rem; font-family: var(--mono); font-size: .8rem; }
+.blog-tools button[aria-pressed="true"], #blog-pages button[aria-pressed="true"] { background: black; color: white; }
+.blog-entry { border-bottom: 1px solid #ddd; padding: 1.3rem 0; }
+.blog-entry h2 { font-size: 1.25rem; margin: .6rem 0; border: 0; }
+.entry-path, .entry-tags, #blog-count, .reading-hint { font-family: var(--mono); font-size: .78rem; color: #666; overflow-wrap: anywhere; }
+.blog-entry[hidden], #blog-empty[hidden] { display: none !important; }
+.reading-features, .reading-columns { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1.2rem; }
+.reading-feature { border-left: 2px solid black; padding-left: 1rem; }
+.reading-feature h3, .reading-list h3 { font-size: 1.1rem; }
+.reading-feature p, .reading-columns small { color: #666; font-size: .85rem; }
+.reading-columns h4 { font-size: 1rem; }
+.reading-columns ul { list-style: none; padding: 0; }
+.reading-columns li { margin: .8rem 0; overflow-wrap: anywhere; }
+.reading-columns label { display: inline-flex; align-items: baseline; gap: .5rem; }
+.reading-columns input { accent-color: black; }
+.reading-columns input:checked + span { text-decoration: line-through; color: #777; }
+.reading-columns li > small { display: block; margin-left: 1.4rem; }
+.reading-list { padding: .8rem 0; border-bottom: 1px solid #ddd; }
+@media (max-width: 700px) { .reading-features, .reading-columns { grid-template-columns: 1fr; } }

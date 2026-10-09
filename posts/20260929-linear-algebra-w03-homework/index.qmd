@@ -1,7 +1,8 @@
 ---
 title: "线性代数 W03 · 作业归档"
 date: "2026-09-29"
-categories: ["线性代数", "作业归档"]
+category-path: ["MATH", "LINEAR-ALGEBRA", "习题"]
+categories: ["习题", "作业归档"]
 description: "2026 年线性代数 W03 作业，提供原版 PDF 在线阅读与下载。"
 ---
 

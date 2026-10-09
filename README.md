@@ -235,3 +235,50 @@ python scripts/add-book.py "微积分教材" "D:\Books\calculus.pdf" --slug calc
 `scripts/templates/publish.yml` 是自动构建工作流模板。当前 GitHub OAuth 凭据没有 `workflow` 权限，因此暂不将其放在 `.github/workflows/`。以后授权 workflow 权限并将模板放回该目录、切换 Pages 为 GitHub Actions 后，可以自动从 main 构建和发布。
 
 官方资料：https://quarto.org/docs/websites/website-blog.html 、 https://quarto.org/docs/publishing/github-pages.html 、 https://giscus.app/zh-CN
+
+## 博客目录与标签
+
+文章开头 YAML 的 `category-path` 是从一级到末级的目录；`categories` 沿用 Quarto 字段名，但现在只表示独立标签。目录不限层级，新增一级名称也会自动出现在筛选器中。没有填写目录时归入 OTHER。
+
+```yaml
+category-path: [MATH, CALCULUS, 习题]
+categories: [习题, 考前复习]
+```
+
+目录选择会包含所有下级文章。回到 `~/notes/blog` 后选择 `#习题`，即可跨学科找所有习题文章；目录、标签和文字搜索也可以组合使用。每页显示 10 篇，按发布时间倒序。现有文章及 FIP/作业导入脚本已经迁移到此格式。
+
+博客目录生成使用 PyYAML（当前电脑已安装）；换电脑后运行 `python -m pip install -r requirements.txt`。
+
+## 正在阅读与书单
+
+公开书单保存在 `library/reading.json`，可以有多份命名书单。未列入书单的图书仍留在普通书架。所有 `reading` 条目会自动显示在图书馆顶端；三种状态是 `reading`（正在阅读）、`planned`（计划阅读）、`completed`（完成阅读）。
+
+| 目的 | 命令 |
+| --- | --- |
+| 加入正在阅读 | `python scripts/set-reading.py critique-of-pure-reason --status reading --note "阅读第一部分"` |
+| 加入计划阅读 | `python scripts/set-reading.py project-hail-mary --status planned` |
+| 标记完成 | `python scripts/set-reading.py project-hail-mary --status completed` |
+| 创建另一份书单 | `python scripts/set-reading.py computer-systems --list computer-science --title "计算机学习" --status planned` |
+| 从书单移除 | `python scripts/set-reading.py computer-systems --list computer-science --remove` |
+| 发布更新 | `.\scripts\deploy.ps1 -Message "更新书单"` |
+
+第一个参数是 `library/catalog.json` 中的 `slug`，不是 PDF 文件名。省略 `--list` 时使用 personal 书单；省略 `--note` 会保留之前的备注。
+
+也可以直接编辑 JSON。下面只是格式示例，并不表示你已在阅读这些书：
+
+```json
+{
+  "lists": [
+    {
+      "id": "personal",
+      "title": "我的书单",
+      "items": [
+        {"id": "kant", "book": "critique-of-pure-reason", "status": "reading", "note": "阅读第一部分"},
+        {"id": "another-book", "title": "没有 PDF 的书也能加入", "url": "https://example.com/", "status": "planned"}
+      ]
+    }
+  ]
+}
+```
+
+同一书单内每条 `id` 必须唯一。`book` 引用现有图书；未收录的图书可填写 `title`、可选的 `author` 和 `url`，不必上传 PDF。页面复选框用于读者本地记录：点击会保存到当前浏览器，刷新仍保留；“恢复公开状态”清除本地勾选。复选框不会修改你的公开书单，也不会改变公开状态分组。你的阅读状态请用上面的命令或 JSON 修改后发布。

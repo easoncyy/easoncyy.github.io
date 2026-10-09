@@ -2,7 +2,8 @@
 title: "FIP W02 · 枚举与减治"
 description: "W2 学习记录，按原 Markdown 文件创建时间归档。"
 date: "2026-09-20T13:25:37+08:00"
-categories: ["FIP", "学习笔记"]
+category-path: ["AI", "FIP", "学习笔记"]
+categories: ["学习笔记"]
 execute: {"enabled": false}
 source-created: "2026-09-20T13:25:37+08:00"
 ---

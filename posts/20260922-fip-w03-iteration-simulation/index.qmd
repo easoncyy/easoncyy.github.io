@@ -2,7 +2,8 @@
 title: "FIP W03 · 迭代与模拟"
 description: "W3 学习记录，按原 Markdown 文件创建时间归档。"
 date: "2026-09-22T13:19:18+08:00"
-categories: ["FIP", "学习笔记"]
+category-path: ["AI", "FIP", "学习笔记"]
+categories: ["学习笔记"]
 execute: {"enabled": false}
 source-created: "2026-09-22T13:19:18+08:00"
 ---

@@ -5,16 +5,8 @@ body-classes: directory-page
 description: "学习、代码与思考，按时间归档。"
 toc: false
 include-after-body:
-  text: '<script src="assets/listing-input.js"></script>'
-listing:
-  contents: posts
-  sort: "date desc"
-  type: default
-  categories: true
-  fields: [date, title, description, categories]
-  date-format: "YYYY.MM.DD"
-  sort-ui: false
-  filter-ui: true
-  page-size: 10
+  text: '<script defer src="/assets/blog-filter.js"></script>'
 ---
+
+{{< include assets/blog-entries.md >}}
 

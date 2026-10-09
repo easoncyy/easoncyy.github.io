@@ -27,7 +27,7 @@ def main():
         folder = ROOT / "posts" / slug
         folder.mkdir(parents=True, exist_ok=True)
         title = f"{label} {display} · 作业归档"
-        metadata = {"title": title, "date": date, "categories": [label, "作业归档"],
+        metadata = {"title": title, "date": date, "category-path": ["MATH", "CALCULUS" if label == "微积分" else "LINEAR-ALGEBRA", "习题"], "categories": ["习题", "作业归档"],
                     "description": f"2026 年{label} {display} 作业，提供原版 PDF 在线阅读与下载。"}
         front = "\n".join(f"{key}: {json.dumps(value, ensure_ascii=False)}" for key, value in metadata.items())
         url = "/assets/pdf/homework/" + filename

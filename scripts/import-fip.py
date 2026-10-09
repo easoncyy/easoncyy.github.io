@@ -38,7 +38,7 @@ def main():
         image.count = 1
         body = re.sub(r"!\[\[([^\]]+)\]\]", image, body)
         metadata = {"title": title, "description": f"{source.parent.name} 学习记录，按原 Markdown 文件创建时间归档。",
-                    "date": created.isoformat(timespec="seconds"), "categories": ["FIP", "学习笔记"],
+                    "date": created.isoformat(timespec="seconds"), "category-path": ["AI", "FIP", "学习笔记"], "categories": ["学习笔记"],
                     "execute": {"enabled": False}, "source-created": created.isoformat(timespec="seconds")}
         front = "\n".join(f"{key}: {json.dumps(value, ensure_ascii=False)}" for key, value in metadata.items())
         (folder / "index.qmd").write_text("---\n" + front + "\n---\n\n" + body, encoding="utf-8")
