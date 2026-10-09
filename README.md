@@ -30,7 +30,7 @@ Quarto 构建的黑白极简个人网站：首页、博客归档、分类筛选�
 | 导入 FIP 笔记 | `python scripts/import-fip.py` | 从指定的 Obsidian FIP 文件夹导入 4 篇已选择笔记；重复执行会用原笔记更新网站副本 |
 | 指定 FIP 来源 | `python scripts/import-fip.py --source "D:\你的笔记库\AI\FIP"` | 在其他电脑或路径变化时使用 |
 | 归档本次作业 | `python scripts/archive-homework.py` | 处理 `临时/` 中此次选定的 5 份作业 PDF；重复执行更新对应副本 |
-| 添加 PDF 图书 | `python scripts/add-book.py "书名" "D:\Books\book.pdf" --slug my-book --author "作者" --description "简介"` | 复制 PDF、添加书目，然后运行 `deploy.ps1` 发布 |
+| 添加 PDF / EPUB 图书 | `python scripts/add-book.py "书名" "D:\Books\book.pdf" --slug my-book --author "作者" --description "简介"` | 复制图书、添加书目，然后运行 `deploy.ps1` 发布 |
 | 查看添加图书参数 | `python scripts/add-book.py --help` | 查看所有参数 |
 | 只生成图书馆目录 | `python scripts/render-library.py` | 构建和预览自动执行，通常无需单独运行 |
 
@@ -68,8 +68,8 @@ Quarto 构建的黑白极简个人网站：首页、博客归档、分类筛选�
 | `log.qmd` | 单页日志流的页面结构 |
 | `logs/` | 日志正文；支持目录中的 `index.qmd` 或直接放置 `.qmd` 文件 |
 | `library.qmd` | 图书馆页面 |
-| `library/catalog.json` | 图书书名、作者、简介、PDF 路径和添加日期 |
-| `assets/library/` | 可公开阅读、下载的图书 PDF |
+| `library/catalog.json` | 图书书名、作者、简介、文件格式、路径和添加日期 |
+| `assets/library/` | 可公开分享的 PDF / EPUB 图书 |
 | `documents/homework-archive.json` | 作业原文件名、统一命名与文章的对应表 |
 | `styles.css` | 黑白视觉样式 |
 | `posts/` | 每个目录是一篇文章 |
@@ -162,7 +162,7 @@ python scripts/import-fip.py
 
 导入不是后台同步。重复导入会覆盖对应的网站文章副本，因此这些文章的正文请在 Obsidian 原笔记中修改。新增周次时，在 `scripts/import-fip.py` 的 `NOTES` 表里添加来源文件、英文目录名和标题。
 
-## 发布 PDF 图书
+## 发布 PDF / EPUB 图书
 
 已上架 6 本：文学《Project Hail Mary》、哲学《纯粹理性批判》、历史《叫魂》、教材/法学《经济法理论与实务》、教材/计算机《深入理解计算机系统》、习题/数学《线性代数习题集》。其中《深入理解计算机系统》原版约 344 MB，使用仓库 Release 的下载入口，其余支持在线阅读和下载。
 
@@ -175,7 +175,7 @@ python scripts/add-book.py "书名" "D:\Books\book.pdf" --slug my-book --author 
 .\scripts\deploy.ps1
 ```
 
-书目会自动出现在 `library/ 图书馆`，支持浏览器在线阅读与下载。`--slug` 必填，只用小写英文、数字与连字符；`--author` 和 `--description` 可省略。后续改简介直接编辑 `library/catalog.json`，更新 PDF 则替换 `assets/library/` 中对应文件。当前没有提供图书文件，因此书架显示空状态。
+书目会自动出现在 `library/ 图书馆`：PDF 提供在线阅读和下载；EPUB 提供下载，请用电子书阅读器打开。`--slug` 必填，只用小写英文、数字与连字符；`--author` 和 `--description` 可省略。后续改简介直接编辑 `library/catalog.json`，更新文件则替换 `assets/library/` 中对应文件。
 
 ### 图书分类
 
@@ -282,3 +282,14 @@ categories: [习题, 考前复习]
 ```
 
 同一书单内每条 `id` 必须唯一。`book` 引用现有图书；未收录的图书可填写 `title`、可选的 `author` 和 `url`，不必上传 PDF。页面复选框仅展示阅读状态，访客无法修改。阅读状态只通过上面的后台命令或 JSON 修改后发布。
+
+### 添加 EPUB
+
+与 PDF 使用同一条命令，文件扩展名会自动识别，分类和书单功能均可复用：
+
+```powershell
+python scripts/add-book.py "书名" "D:\Books\book.epub" --slug my-epub-book --author "作者" --category 文学
+.\scripts\deploy.ps1 -Message "添加 EPUB 图书"
+```
+
+上传脚本会检查 EPUB 容器及格式标识，并保留 `.epub` 扩展名。单文件上限仍为 95 MB。EPUB 当前提供下载，不内置网页阅读器。旧 PDF 书目无需修改；新书目自动记录 `format` 字段。

@@ -1,8 +1,9 @@
-"""Render the PDF catalog as Markdown for Quarto."""
+"""Render the PDF and EPUB catalog as Markdown for Quarto."""
 import html
 import json
 from importlib import import_module
 from pathlib import Path
+from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parent.parent
 taxonomy = import_module('library-taxonomy')
@@ -23,13 +24,16 @@ def main():
     for book in sorted(books, key=lambda book: book["added"], reverse=True):
         category, subject = taxonomy.classify(book)
         classification = category + (" / " + subject if subject else "")
+        book_format = book.get("format", Path(urlsplit(book["path"]).path).suffix.lstrip(".") or "pdf").lower()
         actions = f'<a href="{esc(book["path"])}" download>download / 下载 ↓</a>'
-        if not book.get("download-only"):
+        if book_format == "pdf" and not book.get("download-only"):
             actions = f'<a href="{esc(book["path"])}" target="_blank" rel="noopener">read / 在线阅读 ↗</a>' + actions
+        if book_format == "epub":
+            actions += '<span class="library-author">EPUB · 下载后用电子书阅读器打开</span>'
         blocks.append(f'''::: {{.library-entry data-category="{esc(category)}" data-subject="{esc(subject)}"}}
 
 ```{{=html}}
-<div class="library-book-meta">{esc(classification)} · PDF · {esc(book['added'])}</div>
+<div class="library-book-meta">{esc(classification)} · {esc(book_format.upper())} · {esc(book['added'])}</div>
 <h2 class="library-book-title">{esc(book['title'])}</h2>
 <p class="library-author">{esc(book.get('author', ''))}</p>
 <p>{esc(book.get('description', ''))}</p>
