@@ -2,6 +2,12 @@ document.addEventListener('DOMContentLoaded',()=>{
   const entries=[...document.querySelectorAll('.blog-entry')].map(el=>({el,...JSON.parse(el.dataset.record)}));
   let path=[],tag='',page=1;
   const search=document.querySelector('#blog-search');
+  const sidebar=document.querySelector('.blog-directory');
+  const desktopSlot=document.querySelector('.blog-layout');
+  const mobileSlot=document.querySelector('#blog-mobile-directory');
+  const mobile=window.matchMedia('(max-width: 800px)');
+  const positionDirectory=()=>{(mobile.matches?mobileSlot:desktopSlot).append(sidebar);};
+  mobile.addEventListener('change',positionDirectory);positionDirectory();
   const button=(label,active,action)=>{const b=document.createElement('button');b.type='button';b.textContent=label;b.setAttribute('aria-pressed',String(active));b.addEventListener('click',action);return b;};
   const inside=e=>path.every((p,i)=>e.path[i]===p);
   function render(){

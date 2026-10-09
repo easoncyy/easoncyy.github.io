@@ -194,11 +194,12 @@ blockquote { border-left: 2px solid #151515; color: var(--muted); padding-left: 
 .blog-tools button[aria-pressed="true"], #blog-pages button[aria-pressed="true"], .blog-directory button[aria-pressed="true"] { background: black; color: white; }
 .blog-layout { display: grid; grid-template-columns: minmax(0, 1fr) 220px; gap: 2.5rem; align-items: start; }
 .blog-main { min-width: 0; }
-.blog-directory { position: sticky; top: 6rem; border-left: 1px solid var(--line); padding-left: 1rem; }
+.blog-directory { position: sticky; top: 6rem; border-left: 1px solid var(--line); padding-left: 1rem; min-width: 0; }
+.blog-directory button { white-space: nowrap; word-break: normal; overflow-wrap: normal; flex-shrink: 0; }
 .directory-command { font: .8rem/1.6 var(--mono); white-space: nowrap; }
 .directory-root-list { display: flex; flex-direction: column; gap: .4rem; }
 .directory-root-list button { text-align: left; border-color: transparent; }
-@media (max-width: 800px) { .blog-layout { grid-template-columns: 1fr; gap: 1rem; } .blog-directory { position: static; grid-row: 1; border-left: 0; padding: 0; } .directory-root-list { flex-direction: row; flex-wrap: wrap; } }
+@media (max-width: 800px) { .blog-layout { display: block; } .blog-directory { position: static; border-left: 0; padding: 1rem 0; } .directory-root-list { flex-direction: row; flex-wrap: wrap; } }
 .blog-entry { border-bottom: 1px solid #ddd; padding: 1.3rem 0; }
 .blog-entry h2 { font-size: 1.25rem; margin: .6rem 0; border: 0; }
 .entry-path, .entry-tags, #blog-count { font-family: var(--mono); font-size: .78rem; color: #666; overflow-wrap: anywhere; }

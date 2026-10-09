@@ -347,14 +347,14 @@
     "href": "library.html",
     "title": "~/notes/library",
     "section": "",
-    "text": "还没有正在阅读的书。"
+    "text": "Gilbert Strang山田宗树Randal E. Bryant；David R. O’HallaronMark Allen Weiss"
   },
   {
     "objectID": "library.html#shelves-图书分类",
     "href": "library.html#shelves-图书分类",
     "title": "~/notes/library",
     "section": "shelves/ 图书分类",
-    "text": "shelves/ 图书分类\n\n$ ls ~/notes/library\n收集值得阅读与反复翻阅的图书。\n\n\n全部\n文学 1\n哲学 1\n历史 1\n教材 2\n习题 1\n参考书 0\n其他 0\n\n\n\n\n哲学 · PDF · 2026-10-06\n纯粹理性批判\n康德；邓晓芒译\n\nread / 在线阅读 ↗download / 下载 ↓\n\n\n历史 · PDF · 2026-10-06\n叫魂：1768年中国妖术大恐慌\n孔飞力；陈兼、刘昶译\n\nread / 在线阅读 ↗download / 下载 ↓\n\n\n教材 / 法学 · PDF · 2026-10-06\n经济法理论与实务\n周黎明\n\nread / 在线阅读 ↗download / 下载 ↓\n\n\n教材 / 计算机 · PDF · 2026-10-06\n深入理解计算机系统\nRandal E. Bryant；David R. O’Hallaron\n原版扫描 PDF，约 344 MB。通过 GitHub Release 下载。\ndownload / 下载 ↓\n\n\n习题 / 数学 · PDF · 2026-10-06\n线性代数习题集\nИ·B·普罗斯库烈柯夫\n\nread / 在线阅读 ↗download / 下载 ↓\n\n\n文学 · PDF · 2026-10-06\nProject Hail Mary\nAndy Weir\n\nread / 在线阅读 ↗download / 下载 ↓\n\n书架暂时为空，等待第一本书。"
+    "text": "shelves/ 图书分类\n\n$ ls ~/notes/library\n收集值得阅读与反复翻阅的图书。\n\n\n全部\n文学 2\n哲学 2\n历史 1\n教材 6\n习题 1\n参考书 0\n其他 0\n\n\n\n\n教材 / 数学 · PDF · 2026-10-10\nIntroduction to Linear Algebra · 第5版\nGilbert Strang\n\nread / 在线阅读 ↗download / 下载 ↓\n\n\n文学 · EPUB · 2026-10-10\n百年法（全2册）\n山田宗树\n\ndownload / 下载 ↓EPUB · 下载后用电子书阅读器打开\n\n\n教材 / 计算机 · PDF · 2026-10-10\n数据结构与算法分析\nMark Allen Weiss\n\nread / 在线阅读 ↗download / 下载 ↓\n\n\n教材 / 人工智能 · PDF · 2026-10-10\n动手学深度学习 · PyTorch 第2版\nAston Zhang、Zachary C. Lipton、李沐等\n\nread / 在线阅读 ↗download / 下载 ↓\n\n\n哲学 · PDF · 2026-10-10\n科学究竟是什么\nA. F. 查尔默斯\n通过 GitHub Release 下载。\ndownload / 下载 ↓\n\n\n教材 / 人工智能 · PDF · 2026-10-10\n人工智能：一种现代的方法 · 第3版\nStuart Russell、Peter Norvig\n通过 GitHub Release 下载。\ndownload / 下载 ↓\n\n\n哲学 · PDF · 2026-10-06\n纯粹理性批判\n康德；邓晓芒译\n\nread / 在线阅读 ↗download / 下载 ↓\n\n\n历史 · PDF · 2026-10-06\n叫魂：1768年中国妖术大恐慌\n孔飞力；陈兼、刘昶译\n\nread / 在线阅读 ↗download / 下载 ↓\n\n\n教材 / 法学 · PDF · 2026-10-06\n经济法理论与实务\n周黎明\n\nread / 在线阅读 ↗download / 下载 ↓\n\n\n教材 / 计算机 · PDF · 2026-10-06\n深入理解计算机系统\nRandal E. Bryant；David R. O’Hallaron\n原版扫描 PDF，约 344 MB。通过 GitHub Release 下载。\ndownload / 下载 ↓\n\n\n习题 / 数学 · PDF · 2026-10-06\n线性代数习题集\nИ·B·普罗斯库烈柯夫\n\nread / 在线阅读 ↗download / 下载 ↓\n\n\n文学 · PDF · 2026-10-06\nProject Hail Mary\nAndy Weir\n\nread / 在线阅读 ↗download / 下载 ↓\n\n书架暂时为空，等待第一本书。"
   },
   {
     "objectID": "posts/20260920-fip-w02-enumeration-decrease-conquer/index.html",

@@ -160,7 +160,7 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section><h2 class="anchored">reading/ <small>正在阅读</small></h2><div class="reading-features"><p>还没有正在阅读的书。</p></div></section><section><h2 class="anchored">lists/ <small>书单</small></h2><section class="reading-list"><h3 class="anchored">我的书单</h3><div class="reading-columns"><section><h4 class="anchored">正在阅读 <small>0</small></h4><ul><li class="reading-empty">暂无</li></ul></section><section><h4 class="anchored">计划阅读 <small>0</small></h4><ul><li class="reading-empty">暂无</li></ul></section><section><h4 class="anchored">完成阅读 <small>0</small></h4><ul><li class="reading-empty">暂无</li></ul></section></div></section></section>
+<section><h2 class="anchored">reading/ <small>正在阅读</small></h2><div class="reading-features"><article class="reading-feature"><h3 class="anchored"><a href="./assets/library/introduction-to-linear-algebra.pdf" target="_blank" rel="noopener">Introduction to Linear Algebra · 第5版 ↗</a></h3><p>Gilbert Strang</p><p></p></article><article class="reading-feature"><h3 class="anchored"><a href="./assets/library/hundred-year-law.epub" target="_blank" rel="noopener">百年法（全2册） ↗</a></h3><p>山田宗树</p><p></p></article><article class="reading-feature"><h3 class="anchored"><a href="https://github.com/easoncyy/easoncyy.github.io/releases/download/library-2026-10-06/computer-systems.pdf" target="_blank" rel="noopener">深入理解计算机系统 ↗</a></h3><p>Randal E. Bryant；David R. O’Hallaron</p><p></p></article><article class="reading-feature"><h3 class="anchored"><a href="./assets/library/data-structures-algorithm-analysis.pdf" target="_blank" rel="noopener">数据结构与算法分析 ↗</a></h3><p>Mark Allen Weiss</p><p></p></article></div></section><section><h2 class="anchored">lists/ <small>书单</small></h2><section class="reading-list"><h3 class="anchored">我的书单</h3><div class="reading-columns"><section><h4 class="anchored">正在阅读 <small>4</small></h4><ul><li><label><input type="checkbox" disabled=""><span>Introduction to Linear Algebra · 第5版</span></label><a href="./assets/library/introduction-to-linear-algebra.pdf" target="_blank" rel="noopener" aria-label="打开 Introduction to Linear Algebra · 第5版">↗</a><small></small></li><li><label><input type="checkbox" disabled=""><span>百年法（全2册）</span></label><a href="./assets/library/hundred-year-law.epub" target="_blank" rel="noopener" aria-label="打开 百年法（全2册）">↗</a><small></small></li><li><label><input type="checkbox" disabled=""><span>深入理解计算机系统</span></label><a href="https://github.com/easoncyy/easoncyy.github.io/releases/download/library-2026-10-06/computer-systems.pdf" target="_blank" rel="noopener" aria-label="打开 深入理解计算机系统">↗</a><small></small></li><li><label><input type="checkbox" disabled=""><span>数据结构与算法分析</span></label><a href="./assets/library/data-structures-algorithm-analysis.pdf" target="_blank" rel="noopener" aria-label="打开 数据结构与算法分析">↗</a><small></small></li></ul></section><section><h4 class="anchored">计划阅读 <small>5</small></h4><ul><li><label><input type="checkbox" disabled=""><span>Project Hail Mary</span></label><a href="./assets/library/project-hail-mary.pdf" target="_blank" rel="noopener" aria-label="打开 Project Hail Mary">↗</a><small></small></li><li><label><input type="checkbox" disabled=""><span>叫魂：1768年中国妖术大恐慌</span></label><a href="./assets/library/soulstealers-1768.pdf" target="_blank" rel="noopener" aria-label="打开 叫魂：1768年中国妖术大恐慌">↗</a><small></small></li><li><label><input type="checkbox" disabled=""><span>动手学深度学习 · PyTorch 第2版</span></label><a href="./assets/library/dive-into-deep-learning.pdf" target="_blank" rel="noopener" aria-label="打开 动手学深度学习 · PyTorch 第2版">↗</a><small></small></li><li><label><input type="checkbox" disabled=""><span>科学究竟是什么</span></label><a href="https://github.com/easoncyy/easoncyy.github.io/releases/download/library-2026-10-10/what-is-this-thing-called-science.pdf" target="_blank" rel="noopener" aria-label="打开 科学究竟是什么">↗</a><small></small></li><li><label><input type="checkbox" disabled=""><span>人工智能：一种现代的方法 · 第3版</span></label><a href="https://github.com/easoncyy/easoncyy.github.io/releases/download/library-2026-10-10/artificial-intelligence-modern-approach.pdf" target="_blank" rel="noopener" aria-label="打开 人工智能：一种现代的方法 · 第3版">↗</a><small></small></li></ul></section><section><h4 class="anchored">完成阅读 <small>0</small></h4><ul><li class="reading-empty">暂无</li></ul></section></div></section></section>
 <section id="shelves-图书分类" class="level2">
 <h2 class="anchored" data-anchor-id="shelves-图书分类">shelves/ 图书分类</h2>
 <div class="log-console">
@@ -169,16 +169,58 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="library-filters" role="group" aria-label="图书分类">
 <button type="button" data-library-category="all" aria-pressed="true">全部</button>
-<button type="button" data-library-category="文学" aria-pressed="false">文学 <span class="library-filter-count">1</span></button>
-<button type="button" data-library-category="哲学" aria-pressed="false">哲学 <span class="library-filter-count">1</span></button>
+<button type="button" data-library-category="文学" aria-pressed="false">文学 <span class="library-filter-count">2</span></button>
+<button type="button" data-library-category="哲学" aria-pressed="false">哲学 <span class="library-filter-count">2</span></button>
 <button type="button" data-library-category="历史" aria-pressed="false">历史 <span class="library-filter-count">1</span></button>
-<button type="button" data-library-category="教材" aria-pressed="false">教材 <span class="library-filter-count">2</span></button>
+<button type="button" data-library-category="教材" aria-pressed="false">教材 <span class="library-filter-count">6</span></button>
 <button type="button" data-library-category="习题" aria-pressed="false">习题 <span class="library-filter-count">1</span></button>
 <button type="button" data-library-category="参考书" aria-pressed="false">参考书 <span class="library-filter-count">0</span></button>
 <button type="button" data-library-category="其他" aria-pressed="false">其他 <span class="library-filter-count">0</span></button>
 </div>
 <div id="library-subjects" class="library-subjects" role="group" aria-label="学科" hidden=""></div>
 <p id="library-count" class="library-count" aria-live="polite"></p>
+<div class="library-entry" data-category="教材" data-subject="数学">
+<div class="library-book-meta">教材 / 数学 · PDF · 2026-10-10</div>
+<h2 class="library-book-title anchored">Introduction to Linear Algebra · 第5版</h2>
+<p class="library-author">Gilbert Strang</p>
+<p></p>
+<div class="library-actions"><a href="./assets/library/introduction-to-linear-algebra.pdf" target="_blank" rel="noopener">read / 在线阅读 ↗</a><a href="./assets/library/introduction-to-linear-algebra.pdf" download="">download / 下载 ↓</a></div>
+</div>
+<div class="library-entry" data-category="文学" data-subject="">
+<div class="library-book-meta">文学 · EPUB · 2026-10-10</div>
+<h2 class="library-book-title anchored">百年法（全2册）</h2>
+<p class="library-author">山田宗树</p>
+<p></p>
+<div class="library-actions"><a href="./assets/library/hundred-year-law.epub" download="">download / 下载 ↓</a><span class="library-author">EPUB · 下载后用电子书阅读器打开</span></div>
+</div>
+<div class="library-entry" data-category="教材" data-subject="计算机">
+<div class="library-book-meta">教材 / 计算机 · PDF · 2026-10-10</div>
+<h2 class="library-book-title anchored">数据结构与算法分析</h2>
+<p class="library-author">Mark Allen Weiss</p>
+<p></p>
+<div class="library-actions"><a href="./assets/library/data-structures-algorithm-analysis.pdf" target="_blank" rel="noopener">read / 在线阅读 ↗</a><a href="./assets/library/data-structures-algorithm-analysis.pdf" download="">download / 下载 ↓</a></div>
+</div>
+<div class="library-entry" data-category="教材" data-subject="人工智能">
+<div class="library-book-meta">教材 / 人工智能 · PDF · 2026-10-10</div>
+<h2 class="library-book-title anchored">动手学深度学习 · PyTorch 第2版</h2>
+<p class="library-author">Aston Zhang、Zachary C. Lipton、李沐等</p>
+<p></p>
+<div class="library-actions"><a href="./assets/library/dive-into-deep-learning.pdf" target="_blank" rel="noopener">read / 在线阅读 ↗</a><a href="./assets/library/dive-into-deep-learning.pdf" download="">download / 下载 ↓</a></div>
+</div>
+<div class="library-entry" data-category="哲学" data-subject="">
+<div class="library-book-meta">哲学 · PDF · 2026-10-10</div>
+<h2 class="library-book-title anchored">科学究竟是什么</h2>
+<p class="library-author">A. F. 查尔默斯</p>
+<p>通过 GitHub Release 下载。</p>
+<div class="library-actions"><a href="https://github.com/easoncyy/easoncyy.github.io/releases/download/library-2026-10-10/what-is-this-thing-called-science.pdf" download="">download / 下载 ↓</a></div>
+</div>
+<div class="library-entry" data-category="教材" data-subject="人工智能">
+<div class="library-book-meta">教材 / 人工智能 · PDF · 2026-10-10</div>
+<h2 class="library-book-title anchored">人工智能：一种现代的方法 · 第3版</h2>
+<p class="library-author">Stuart Russell、Peter Norvig</p>
+<p>通过 GitHub Release 下载。</p>
+<div class="library-actions"><a href="https://github.com/easoncyy/easoncyy.github.io/releases/download/library-2026-10-10/artificial-intelligence-modern-approach.pdf" download="">download / 下载 ↓</a></div>
+</div>
 <div class="library-entry" data-category="哲学" data-subject="">
 <div class="library-book-meta">哲学 · PDF · 2026-10-06</div>
 <h2 class="library-book-title anchored">纯粹理性批判</h2>
