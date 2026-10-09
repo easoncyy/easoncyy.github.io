@@ -14,17 +14,32 @@ document.addEventListener('DOMContentLoaded',()=>{
     const controls=document.querySelector('#blog-paths');controls.replaceChildren();
     const crumbs=document.createElement('div');crumbs.className='directory-buttons';
     crumbs.append(button('全部文章',!path.length,()=>{path=[];page=1;render();}));
-    path.forEach((p,i)=>crumbs.append(button('/ '+p,i===path.length-1,()=>{path=path.slice(0,i+1);page=1;render();})));
     controls.append(crumbs);
     const roots=['MATH','CS','AI','PHILOSOPHY','OTHER'];
     entries.forEach(e=>{if(!roots.includes(e.path[0]))roots.push(e.path[0]);});
     const rootList=document.createElement('div');rootList.className='directory-root-list';
-    roots.forEach(p=>rootList.append(button(p+'/ · '+entries.filter(e=>e.path[0]===p).length,path[0]===p,()=>{path=[p];page=1;render();})));
+    function addBranch(parent, prefix, names){
+      names.forEach(name=>{
+        const current=[...prefix,name];
+        const members=entries.filter(e=>current.every((part,i)=>e.path[i]===part));
+        const children=[...new Set(members.map(e=>e.path[current.length]).filter(Boolean))].sort();
+        const selected=current.every((part,i)=>path[i]===part);
+        const node=document.createElement('div');node.className='directory-node';
+        const control=button(name+'/ · '+members.length,selected,()=>{
+          path=selected&&path.length===current.length?prefix:current;
+          page=1;render();
+        });
+        if(children.length)control.setAttribute('aria-expanded',String(selected));
+        node.append(control);
+        if(selected&&children.length){
+          const nested=document.createElement('div');nested.className='directory-children';
+          addBranch(nested,current,children);node.append(nested);
+        }
+        parent.append(node);
+      });
+    }
+    addBranch(rootList,[],roots);
     controls.append(rootList);
-    const children=new Set(path.length?entries.filter(inside).map(e=>e.path[path.length]).filter(Boolean):[]);
-    const level=document.createElement('div');level.className='directory-buttons';
-    [...children].sort().forEach(p=>level.append(button(p+'/ · '+entries.filter(e=>inside(e)&&e.path[path.length]===p).length,false,()=>{path=[...path,p];page=1;render();})));
-    controls.append(level);
     const tags=document.querySelector('#blog-tags');tags.replaceChildren();
     tags.append(button('全部标签',!tag,()=>{tag='';page=1;render();}));
     [...new Set(entries.flatMap(e=>e.tags))].sort().forEach(t=>tags.append(button('#'+t,tag===t,()=>{tag=tag===t?'':t;page=1;render();})));

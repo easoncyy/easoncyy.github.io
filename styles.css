@@ -197,6 +197,9 @@ blockquote { border-left: 2px solid #151515; color: var(--muted); padding-left: 
 .blog-directory { position: sticky; top: 6rem; border-left: 1px solid var(--line); padding-left: 1rem; min-width: 0; }
 .blog-directory button { white-space: nowrap; word-break: normal; overflow-wrap: normal; flex-shrink: 0; }
 .directory-command { font: .8rem/1.6 var(--mono); white-space: nowrap; }
+.directory-command code { display: inline-block; background: #f4f4f4; color: var(--ink); padding: .2rem .4rem; font: inherit; }
+.directory-node { min-width: 0; }
+.directory-children { display: flex; flex-direction: column; gap: .35rem; margin: .4rem 0 .4rem .65rem; padding-left: .5rem; border-left: 1px solid var(--line); }
 .directory-root-list { display: flex; flex-direction: column; gap: .4rem; }
 .directory-root-list button { text-align: left; border-color: transparent; }
 @media (max-width: 800px) { .blog-layout { display: block; } .blog-directory { position: static; border-left: 0; padding: 1rem 0; } .directory-root-list { flex-direction: row; flex-wrap: wrap; } }
