@@ -1,5 +1,52 @@
 ::: {.log-stream}
 
+::: {#20261010-233101-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-10-10T23:31:01+08:00">2026-10-10 23:31:01 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title">Extra Wednesday</p>
+
+```
+
+想不到呀，一夜之间，桂花便变得浓郁而深情了，像一阵潮水，像一段...
+
+::: {.log-photo-grid}
+
+![神秘舞台剧的神秘观众和寿星](D:\Personal\Homepage\assets\log\20261010-233101-extra-wednesday\photo-1.jpg)
+
+![I love you...](D:\Personal\Homepage\assets\log\20261010-233101-extra-wednesday\photo-2.jpg)
+
+![Night](D:\Personal\Homepage\assets\log\20261010-233101-extra-wednesday\photo-3.jpg)
+
+![Day](D:\Personal\Homepage\assets\log\20261010-233101-extra-wednesday\photo-4.jpg)
+
+
+:::
+
+```{=html}
+
+<details id="comments-20261010-233101-entry" class="log-comments" data-comment-term="/logs/20261010-233101-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
 ::: {#20261009-225816-entry .log-entry}
 
 ```{=html}
