@@ -1,0 +1,22 @@
+---
+title: "BUSY!!!"
+date: "2026-10-11T23:50:52+08:00"
+entry-signature: "6cde27f144e3bcaa5550adc9d583d984a34d12c6e2a532f6a9228172e449c6d4"
+---
+First day in ZJUSCT!!!
+
+::: {.log-photo-grid}
+
+![Peaceful](assets\log\20261011-235052-BUSY\photo-1.jpg)
+
+![Choir](assets\log\20261011-235052-BUSY\photo-2.jpg)
+
+![Night](assets\log\20261011-235052-BUSY\photo-3.jpg)
+
+![Server](assets\log\20261011-235052-BUSY\photo-4.jpg)
+
+![H800](assets\log\20261011-235052-BUSY\photo-5.jpg)
+
+![ZJUSCT](assets\log\20261011-235052-BUSY\photo-6.jpg)
+
+:::
