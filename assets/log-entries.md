@@ -1,5 +1,55 @@
 ::: {.log-stream}
 
+::: {#20261011-235052-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-10-11T23:50:52+08:00">2026-10-11 23:50:52 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title">BUSY!!!</p>
+
+```
+
+First day in ZJUSCT!!!
+
+::: {.log-photo-grid}
+
+![Peaceful](assets\log\20261011-235052-BUSY\photo-1.jpg)
+
+![Choir](assets\log\20261011-235052-BUSY\photo-2.jpg)
+
+![Night](assets\log\20261011-235052-BUSY\photo-3.jpg)
+
+![Server](assets\log\20261011-235052-BUSY\photo-4.jpg)
+
+![H800](assets\log\20261011-235052-BUSY\photo-5.jpg)
+
+![ZJUSCT](assets\log\20261011-235052-BUSY\photo-6.jpg)
+
+:::
+
+```{=html}
+
+<details id="comments-20261011-235052-entry" class="log-comments" data-comment-term="/logs/20261011-235052-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
 ::: {#20261010-233101-entry .log-entry}
 
 ```{=html}
