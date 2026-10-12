@@ -1,5 +1,39 @@
 ::: {.log-stream}
 
+::: {#20261012-235740-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-10-12T23:57:40+08:00">2026-10-12 23:57:40 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title">Monday</p>
+
+```
+
+好忙好累，还在修问题，不想多写了。
+
+```{=html}
+
+<details id="comments-20261012-235740-entry" class="log-comments" data-comment-term="/logs/20261012-235740-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
 ::: {#20261011-235052-entry .log-entry}
 
 ```{=html}
