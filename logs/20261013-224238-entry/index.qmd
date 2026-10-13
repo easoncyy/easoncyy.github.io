@@ -5,7 +5,8 @@ entry-signature: "77b6b9d18f38d3ac331f6a08a18abdb77ada4fe09af9c6d5d4aa922b094254
 ---
 
 为什么只能远远的闻见，走近了就闻不到了呢。
-:::
+
+::: {.log-photo-grid}
 
 ![早上也可以寻桂子](assets\log\20261013-224238-osmanthus\photo-1.jpg)
 
