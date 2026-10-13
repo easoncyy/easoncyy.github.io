@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="个人笔记">
+<meta name="description" content="FIPW05的课程笔记以及阅读材料笔记，包含哈希·字典·集合">
+
+<title>FIP W05 · 哈希 – 个人笔记</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/favicon.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-a7952132dd87ce33f437addd0578540c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-dc090d8f6625c822698d9a6ee9cd1ac5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "没有结果",
+    "search-matching-documents-text": "匹配的文档",
+    "search-copy-link-title": "复制搜索链接",
+    "search-hide-matches-text": "隐藏其它匹配结果",
+    "search-more-match-text": "更多匹配结果",
+    "search-more-matches-text": "更多匹配结果",
+    "search-clear-button-title": "清除",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "取消",
+    "search-submit-button-title": "提交",
+    "search-label": "搜索"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script defer="" src="../../assets/directory.js?v=05751f758f0b"></script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css?v=9140ee18bef6">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/logo.svg" alt="Ce · easoncyy" class="navbar-logo light-content">
+    <img src="../../assets/logo.svg" alt="Ce · easoncyy" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">~/notes</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="搜索"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="展开或折叠导航栏" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html"> 
+<span class="menu-text"><span class="nav-path">blog/</span><span class="nav-caption">博客</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../projects.html"> 
+<span class="menu-text"><span class="nav-path">projects/</span><span class="nav-caption">项目</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../log.html"> 
+<span class="menu-text"><span class="nav-path">log/</span><span class="nav-caption">日志</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../links.html"> 
+<span class="menu-text"><span class="nav-path">links/</span><span class="nav-caption">友链</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../library.html"> 
+<span class="menu-text"><span class="nav-path">library/</span><span class="nav-caption">图书馆</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text"><span class="nav-path">about/</span><span class="nav-caption">关于</span></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">本页目录</h2>
+   
+  <ul>
+  <li><a href="#哈希" id="toc-哈希" class="nav-link active" data-scroll-target="#哈希">哈希</a>
+  <ul class="collapse">
+  <li><a href="#理论课内容" id="toc-理论课内容" class="nav-link" data-scroll-target="#理论课内容">理论课内容</a>
+  <ul class="collapse">
+  <li><a href="#回顾查找算法" id="toc-回顾查找算法" class="nav-link" data-scroll-target="#回顾查找算法">回顾查找算法</a></li>
+  <li><a href="#哈希的核心思想" id="toc-哈希的核心思想" class="nav-link" data-scroll-target="#哈希的核心思想">哈希的核心思想</a></li>
+  <li><a href="#哈希的设计方法" id="toc-哈希的设计方法" class="nav-link" data-scroll-target="#哈希的设计方法">哈希的设计方法</a></li>
+  <li><a href="#冲突处理" id="toc-冲突处理" class="nav-link" data-scroll-target="#冲突处理">冲突处理</a></li>
+  <li><a href="#局部变量与全局变量" id="toc-局部变量与全局变量" class="nav-link" data-scroll-target="#局部变量与全局变量">局部变量与全局变量</a></li>
+  <li><a href="#字符串哈希" id="toc-字符串哈希" class="nav-link" data-scroll-target="#字符串哈希">字符串哈希</a></li>
+  <li><a href="#python字典" id="toc-python字典" class="nav-link" data-scroll-target="#python字典">Python字典</a></li>
+  <li><a href="#字典应用" id="toc-字典应用" class="nav-link" data-scroll-target="#字典应用">字典应用</a></li>
+  <li><a href="#python集合" id="toc-python集合" class="nav-link" data-scroll-target="#python集合">Python集合</a></li>
+  </ul></li>
+  <li><a href="#阅读材料补充" id="toc-阅读材料补充" class="nav-link" data-scroll-target="#阅读材料补充">阅读材料补充</a>
+  <ul class="collapse">
+  <li><a href="#字典与集合方法补充" id="toc-字典与集合方法补充" class="nav-link" data-scroll-target="#字典与集合方法补充">字典与集合方法补充</a></li>
+  <li><a href="#异常" id="toc-异常" class="nav-link" data-scroll-target="#异常">异常</a></li>
+  <li><a href="#推导式与查找策略" id="toc-推导式与查找策略" class="nav-link" data-scroll-target="#推导式与查找策略">推导式与查找策略</a></li>
+  </ul></li>
+  <li><a href="#研讨课内容" id="toc-研讨课内容" class="nav-link" data-scroll-target="#研讨课内容">研讨课内容</a>
+  <ul class="collapse">
+  <li><a href="#温度映射到原下标" id="toc-温度映射到原下标" class="nav-link" data-scroll-target="#温度映射到原下标">温度映射到原下标</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">FIP W05 · 哈希</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">学习笔记</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    FIPW05的课程笔记以及阅读材料笔记，包含哈希·字典·集合
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">作者</div>
+    <div class="quarto-title-meta-contents">
+             <p>个人笔记 </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">发布于</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2026年10月13日</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<blockquote class="blockquote">
+<p>从<span class="math inline">\(O(\log n)\)</span>到平均<span class="math inline">\(O(1)\)</span>。</p>
+</blockquote>
+<section id="哈希" class="level1">
+<h1>哈希</h1>
+<section id="理论课内容" class="level2">
+<h2 class="anchored" data-anchor-id="理论课内容">理论课内容</h2>
+<p>课程材料：26FIP5 哈希.pdf</p>
+<section id="回顾查找算法" class="level3">
+<h3 class="anchored" data-anchor-id="回顾查找算法">回顾查找算法</h3>
+<section id="遍历查找" class="level4">
+<h4 class="anchored" data-anchor-id="遍历查找">遍历查找</h4>
+<p>如果每次遍历查找，时间复杂度是<span class="math inline">\(O(n)\)</span>。</p>
+</section>
+<section id="二分查找" class="level4">
+<h4 class="anchored" data-anchor-id="二分查找">二分查找</h4>
+<p>在排序基础上每次二分查找时间复杂度是<span class="math inline">\(O(\log n)\)</span>。</p>
+<p><strong>有没有更快的方法？</strong> 如果能通过键算出槽位，就可以先定位，再检查该槽位的键。</p>
+</section>
+</section>
+<section id="哈希的核心思想" class="level3">
+<h3 class="anchored" data-anchor-id="哈希的核心思想">哈希的核心思想</h3>
+<p><strong>哈希</strong>把“键”输入哈希函数，得到槽位索引，再检查该槽位是否对应目标键。</p>
+<pre class="text"><code>哈希的工作流程
+键 -&gt; 哈希函数 -&gt; 槽位 -&gt; 检查键 -&gt; 取值</code></pre>
+<p>哈希先算槽位，再检查冲突位置上的键。查找平均<span class="math inline">\(O(1)\)</span>；极端冲突时可能退化为<span class="math inline">\(O(n)\)</span>，计算哈希值本身也有成本。</p>
+</section>
+<section id="哈希的设计方法" class="level3">
+<h3 class="anchored" data-anchor-id="哈希的设计方法">哈希的设计方法</h3>
+<section id="大小选择" class="level4">
+<h4 class="anchored" data-anchor-id="大小选择">大小选择</h4>
+<p>教学中的取模哈希常选<strong>素数</strong>作为表长，减少某些规律性输入的聚集，但不保证没有冲突。Python的<code>dict</code>不要求表长为素数。</p>
+</section>
+<section id="实际案例" class="level4">
+<h4 class="anchored" data-anchor-id="实际案例">实际案例</h4>
+<p>假设我们有传感器ID：</p>
+<pre class="text"><code>S-042, S-117, S-205, S-333, S-055</code></pre>
+<p>设计一个大小为<strong>13</strong>的哈希表，函数规则为提取数字部分再对表的大小取模</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> hash_func(key, table_size):</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    num <span class="op">=</span> <span class="bu">int</span>(key.split(<span class="st">"-"</span>)[<span class="dv">1</span>])</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> num <span class="op">%</span> table_size</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>但是<code>S-042</code>和<code>S-055</code>会算出同一个值，这就是<strong>哈希冲突</strong>。 <strong>冲突是不可避免的</strong>，根据Pigeonhole Principle，键的空间比表的空间大的时候冲突必然会发生。所以关键在于<strong>处理冲突</strong>，而<strong>非避免冲突</strong>。</p>
+</section>
+</section>
+<section id="冲突处理" class="level3">
+<h3 class="anchored" data-anchor-id="冲突处理">冲突处理</h3>
+<section id="开链法-separate-chaining" class="level4">
+<h4 class="anchored" data-anchor-id="开链法-separate-chaining">开链法 Separate Chaining</h4>
+<p>相当于每一个槽位储存的是一个列表，而不是单一的值，<strong>冲突发生</strong>后，就把新元素加到对应位置的链表里，然后在查找时，再在小的列表里做遍历查找。</p>
+<section id="初始化哈希表" class="level5">
+<h5 class="anchored" data-anchor-id="初始化哈希表">初始化哈希表</h5>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 遍历添加</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>hash_table <span class="op">=</span> []</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(table_size):</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    hash_table.append([])</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 列表推导式</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>hash_table <span class="op">=</span> [[] <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(table_size)]</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>上述两种方法都为每个槽位新建列表。下面的重复操作会使所有槽位指向<strong>同一个</strong>内层列表：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>table <span class="op">=</span> [[]] <span class="op">*</span> table_size  <span class="co"># 不适合开链法</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="构建表" class="level5">
+<h5 class="anchored" data-anchor-id="构建表">构建表</h5>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>table_size <span class="op">=</span> <span class="dv">13</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>hash_table <span class="op">=</span> [[] <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(table_size)]</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>collision_count <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> insert(key, value):</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">global</span> collision_count</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    idx <span class="op">=</span> hash_func(key, table_size)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i, (old_key, _) <span class="kw">in</span> <span class="bu">enumerate</span>(hash_table[idx]):</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> old_key <span class="op">==</span> key:</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>            hash_table[idx][i] <span class="op">=</span> (key, value)  <span class="co"># 同键更新</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> hash_table[idx]:</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>        collision_count <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    hash_table[idx].append((key, value))</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p>这里用<code>global</code>展示作用域；日常函数更适合把表作为参数传入，计数通过返回值传出。</p>
+</blockquote>
+</section>
+<section id="查找流程" class="level5">
+<h5 class="anchored" data-anchor-id="查找流程">查找流程</h5>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> hash_lookup(hash_table, key, table_size):</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    idx <span class="op">=</span> hash_func(key, table_size)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    slot <span class="op">=</span> hash_table[idx]</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> k, v <span class="kw">in</span> slot:</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> k <span class="op">==</span> key:</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> v</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">None</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>关键分析</strong>： - 理想状态下（无冲突），查找只需要<span class="math inline">\(O(1)\)</span> - 冲突的时候需要进行线性查找，但是如果哈希函数设计的好，表的大小合适，每个槽位的列表都很短，仍然近似于<span class="math inline">\(O(1)\)</span> - 极端情况（所有键都冲突）哈希表退化为链表，查找退化为<span class="math inline">\(O(n)\)</span></p>
+</section>
+</section>
+<section id="线性探测-linear-probing" class="level4">
+<h4 class="anchored" data-anchor-id="线性探测-linear-probing">线性探测 Linear Probing</h4>
+<p>线性探测的思路就是如果当前槽位冲突了，就往后找到下一个空槽位储存。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> insert_probe(hash_table, key, value, table_size):</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    idx <span class="op">=</span> hash_func(key, table_size)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(table_size):</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> hash_table[idx] <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>            hash_table[idx] <span class="op">=</span> (key, value)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> hash_table[idx][<span class="dv">0</span>] <span class="op">==</span> key:</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>            hash_table[idx] <span class="op">=</span> (key, value)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>        idx <span class="op">=</span> (idx <span class="op">+</span> <span class="dv">1</span>) <span class="op">%</span> table_size</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">'哈希表已满'</span>)</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>本例须先用<code>[None] * table_size</code>建表。同键更新不会无限探测；表满时明确报错。查找也必须沿同样路径探测。删除时直接设为<code>None</code>会截断后续键的查找，需要删除标记。</p>
+</section>
+<section id="冲突处理策略的比较" class="level4">
+<h4 class="anchored" data-anchor-id="冲突处理策略的比较">冲突处理策略的比较</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>维度</th>
+<th><strong>开链法</strong></th>
+<th><strong>线性探测</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>储存结构</td>
+<td>每个槽位是列表</td>
+<td>每个槽位是元素或空</td>
+</tr>
+<tr class="even">
+<td>冲突处理</td>
+<td>追加到列表</td>
+<td>向后找空位</td>
+</tr>
+<tr class="odd">
+<td>空间利用</td>
+<td>需要额外储存链表/列表</td>
+<td>紧凑，无需额外指针</td>
+</tr>
+<tr class="even">
+<td>删除难度</td>
+<td>容易</td>
+<td>困难</td>
+</tr>
+<tr class="odd">
+<td>Python dict</td>
+<td>不采用此法</td>
+<td>采用更复杂的开放寻址策略</td>
+</tr>
+</tbody>
+</table>
+<p>Python中<code>dict</code>类型采用更复杂的开放寻址策略（Open Addressing）。</p>
+</section>
+</section>
+<section id="局部变量与全局变量" class="level3">
+<h3 class="anchored" data-anchor-id="局部变量与全局变量">局部变量与全局变量</h3>
+<section id="global关键字" class="level4">
+<h4 class="anchored" data-anchor-id="global关键字"><code>global</code>关键字</h4>
+<p>在函数内需要<strong>重新绑定</strong>全局变量名时才用<code>global</code>；只读全局变量或修改全局列表、字典的内容不需要。</p>
+</section>
+<section id="全局变量vs局部变量" class="level4">
+<h4 class="anchored" data-anchor-id="全局变量vs局部变量">全局变量vs局部变量</h4>
+<ul>
+<li>Python不需要声明变量，第一次赋值就声明了变量</li>
+<li>在函数内
+<ul>
+<li>对一个变量赋值，如果之前没有<code>global</code>声明，就产生一个局部变量</li>
+<li>只读未在函数内赋值的名字时，会查找全局名字</li>
+<li>若函数内给同名变量赋值，Python把它视为局部变量；赋值前先读会得到<code>UnboundLocalError</code></li>
+<li>确需重新绑定全局名时，在函数体开头写<code>global 名字</code></li>
+</ul></li>
+<li>建议：<strong>不是万不得已不要使用全局变量</strong></li>
+</ul>
+</section>
+</section>
+<section id="字符串哈希" class="level3">
+<h3 class="anchored" data-anchor-id="字符串哈希">字符串哈希</h3>
+<p><code>ord(ch)</code>取得字符的Unicode码位，<code>chr(n)</code>做反向转换。简单相加再取模容易让换位词冲突；可让字符顺序参与计算：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> string_hash(key, table_size):</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    h <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> ch <span class="kw">in</span> key:</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>        h <span class="op">=</span> (h <span class="op">*</span> <span class="dv">31</span> <span class="op">+</span> <span class="bu">ord</span>(ch)) <span class="op">%</span> table_size</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> h</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>这仍可能冲突，也不是Python内置<code>hash()</code>的具体实现。内置<code>hash()</code>对字符串的结果在不同进程中可能不同，不适合保存跨运行的固定槽位。</p>
+</section>
+<section id="python字典" class="level3">
+<h3 class="anchored" data-anchor-id="python字典">Python字典</h3>
+<p>字典（<code>dict</code>）存<strong>键-&gt;值</strong>的映射，键唯一；同键再次赋值会覆盖旧值。查找、插入、删除平均<span class="math inline">\(O(1)\)</span>，建含<span class="math inline">\(n\)</span>项的字典需要<span class="math inline">\(O(n)\)</span>时间和空间。</p>
+<section id="创建与访问" class="level4">
+<h4 class="anchored" data-anchor-id="创建与访问">创建与访问</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>sensor <span class="op">=</span> {<span class="st">'S-042'</span>: <span class="fl">28.1</span>, <span class="st">'S-117'</span>: <span class="fl">24.2</span>}</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sensor[<span class="st">'S-042'</span>])               <span class="co"># 28.1</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sensor.get(<span class="st">'S-999'</span>, <span class="st">'未找到'</span>))  <span class="co"># 未找到</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'S-042'</span> <span class="kw">in</span> sensor)              <span class="co"># True</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>sensor[<span class="st">'S-042'</span>] <span class="op">=</span> <span class="fl">29.0</span>                <span class="co"># 修改</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>sensor[<span class="st">'S-333'</span>] <span class="op">=</span> <span class="fl">27.8</span>                <span class="co"># 新增</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><code>sensor[key]</code>读不到键会抛<code>KeyError</code>；<code>get(key, default)</code>返回默认值，<strong>不会</strong>插入键</li>
+<li><code>key in sensor</code>检查<strong>键</strong>；查值要用<code>value in sensor.values()</code>，通常需逐项扫描</li>
+<li><code>del sensor[key]</code>删不存在的键也会抛<code>KeyError</code>；<code>len(sensor)</code>给出键值对个数</li>
+<li><code>{}</code>是空字典；空集合要写<code>set()</code></li>
+</ul>
+</section>
+<section id="键必须可哈希" class="level4">
+<h4 class="anchored" data-anchor-id="键必须可哈希">键必须可哈希</h4>
+<p>键需要稳定的哈希值。<code>int</code>、<code>str</code>、以及<strong>元素也都可哈希</strong>的元组可以作键；<code>list</code>、<code>dict</code>、<code>set</code>不能作键。只说“不可变”还不够：<code>([1],)</code>虽然是元组，但内层列表不可哈希。</p>
+</section>
+<section id="其他常用方法" class="level4">
+<h4 class="anchored" data-anchor-id="其他常用方法">其他常用方法</h4>
+<ul>
+<li><code>setdefault(k, v)</code>：键不存在时插入<code>v</code>，返回该键的值；<code>get</code>不会插入</li>
+<li><code>update(...)</code>批量写入，同键覆盖，返回<code>None</code>；<code>pop(k[, default])</code>删除并返回值；<code>clear()</code>清空</li>
+<li><code>copy()</code>是浅拷贝，若值是列表，内层列表仍共享</li>
+</ul>
+</section>
+</section>
+<section id="字典应用" class="level3">
+<h3 class="anchored" data-anchor-id="字典应用">字典应用</h3>
+<section id="get与" class="level4">
+<h4 class="anchored" data-anchor-id="get与"><code>get()</code>与<code>[]</code></h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>score <span class="op">=</span> {<span class="st">'张三'</span>: <span class="dv">78</span>, <span class="st">'李四'</span>: <span class="dv">92</span>}</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(score.get(<span class="st">'王五'</span>))      <span class="co"># None</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(score.get(<span class="st">'王五'</span>, <span class="dv">0</span>))   <span class="co"># 0</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'王五'</span> <span class="kw">in</span> score)       <span class="co"># False，get不会插入键</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># score['王五']              # KeyError</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>d[k]</code>适合<strong>确定键存在</strong>时取值；<code>d.get(k, default)</code>适合键可能缺失时给出默认值。<code>get(k)</code>缺省返回<code>None</code>；若字典本来就存<code>None</code>，要区分“缺键”与“值为None”，请用<code>k in d</code>。<code>d.setdefault(k, default)</code>在缺键时<strong>插入</strong>默认值，与<code>get</code>不同。</p>
+</section>
+<section id="词频统计与查重" class="level4">
+<h4 class="anchored" data-anchor-id="词频统计与查重">词频统计与查重</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>words <span class="op">=</span> <span class="st">'the quick fox and the dog'</span>.split()</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>count <span class="op">=</span> {}</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> word <span class="kw">in</span> words:</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    count[word] <span class="op">=</span> count.get(word, <span class="dv">0</span>) <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(count[<span class="st">'the'</span>])  <span class="co"># 2</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>第一次出现时<code>get(word, 0)</code>提供初值0，之后每次加1；直接<code>count[word] += 1</code>会在第一次出现时抛<code>KeyError</code>。如果只问“是否见过”，用集合存元素即可，不必存次数。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> has_duplicate(lst):</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    seen <span class="op">=</span> <span class="bu">set</span>()</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> item <span class="kw">in</span> lst:</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> item <span class="kw">in</span> seen:</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>        seen.add(item)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">False</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="从文件读词" class="level4">
+<h4 class="anchored" data-anchor-id="从文件读词">从文件读词</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>count <span class="op">=</span> {}</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="bu">open</span>(<span class="st">'fox.txt'</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> line <span class="kw">in</span> f:</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> word <span class="kw">in</span> line.split():</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>        count[word] <span class="op">=</span> count.get(word, <span class="dv">0</span>) <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>f.close()</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>for line in f</code>按行读文件，再对每行<code>split()</code>；文件对象没有<code>split()</code>方法。路径从当前工作目录查找，用完关闭。文件不存在会抛<code>FileNotFoundError</code>。</p>
+</section>
+<section id="遍历字典" class="level4">
+<h4 class="anchored" data-anchor-id="遍历字典">遍历字典</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> key <span class="kw">in</span> count:                 <span class="co"># 默认取键</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(key, count[key])</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> key, value <span class="kw">in</span> count.items(): <span class="co"># 同时取键和值</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(key, value)</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>keys()</code>、<code>values()</code>、<code>items()</code>返回随字典变化的视图。Python 3.7+按插入顺序遍历，但字典没有列表那样的整数下标。</p>
+</section>
+<section id="寻找单身汉" class="level4">
+<h4 class="anchored" data-anchor-id="寻找单身汉">寻找单身汉</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_single(lst):</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    count <span class="op">=</span> {}</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> item <span class="kw">in</span> lst:</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>        count[item] <span class="op">=</span> count.get(item, <span class="dv">0</span>) <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> item, times <span class="kw">in</span> count.items():</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> times <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> item</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">None</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>find_single([1, 2, 2, 3, 3, 1, 4])</code>返回<code>4</code>。若有两个单身汉，就把第二轮中<code>times == 1</code>的元素追加到结果列表。建表加遍历总时间<span class="math inline">\(O(n)\)</span>，额外空间<span class="math inline">\(O(n)\)</span>；元素须可作键。</p>
+</section>
+<section id="众数" class="level4">
+<h4 class="anchored" data-anchor-id="众数">众数</h4>
+<p>求众数：先用字典计数，再找最大出现次数；如有多个众数，将它们排序输出。分数若题设固定两位小数，可保留输入的字符串作键，排序时按<code>float</code>值排序，避免把显示格式交给浮点数处理。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> modes(scores):</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    count <span class="op">=</span> {}</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> score <span class="kw">in</span> scores:</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>        count[score] <span class="op">=</span> count.get(score, <span class="dv">0</span>) <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> count:</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> []</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    most <span class="op">=</span> <span class="bu">max</span>(count.values())</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">sorted</span>((s <span class="cf">for</span> s, n <span class="kw">in</span> count.items() <span class="cf">if</span> n <span class="op">==</span> most), key<span class="op">=</span><span class="bu">float</span>)</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="两数之和" class="level4">
+<h4 class="anchored" data-anchor-id="两数之和">两数之和</h4>
+<p>两数之和可边遍历边存已见过的值及其下标。先查补数，再存当前数，避免同一个位置使用两次：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> two_sum(nums, target):</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    seen <span class="op">=</span> {}</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i, x <span class="kw">in</span> <span class="bu">enumerate</span>(nums):</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> target <span class="op">-</span> x <span class="kw">in</span> seen:</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> seen[target <span class="op">-</span> x], i</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>        seen[x] <span class="op">=</span> i</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(two_sum([<span class="dv">2</span>, <span class="dv">11</span>, <span class="dv">7</span>, <span class="dv">15</span>], <span class="dv">9</span>))  <span class="co"># (0, 2)</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>平均时间<span class="math inline">\(O(n)\)</span>、额外空间<span class="math inline">\(O(n)\)</span>。课件把“需要的补数”存成键，上面改为存“已经见过的数”，两种写法都要保证先查后存。</p>
+</section>
+</section>
+<section id="python集合" class="level3">
+<h3 class="anchored" data-anchor-id="python集合">Python集合</h3>
+<p>集合（<code>set</code>）只记录<strong>元素在不在</strong>，不存关联值。元素唯一、无下标、遍历顺序不应依赖；元素也必须可哈希。<code>in</code>、<code>add</code>、<code>discard</code>平均<span class="math inline">\(O(1)\)</span>。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="bu">set</span>()                   <span class="co"># 空集合；{}是空字典</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>s.add(<span class="dv">2</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>s.add(<span class="dv">2</span>)                   <span class="co"># 重复值不再加入</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">2</span> <span class="kw">in</span> s)              <span class="co"># True</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(<span class="bu">set</span>([<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>]))) <span class="co"># 2</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="集合运算" class="level4">
+<h4 class="anchored" data-anchor-id="集合运算">集合运算</h4>
+<p>对于<code>a = {1, 2, 3}</code>、<code>b = {3, 4}</code>：</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>运算</th>
+<th>写法</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>并集</td>
+<td><code>a \| b</code></td>
+<td><code>{1, 2, 3, 4}</code></td>
+</tr>
+<tr class="even">
+<td>交集</td>
+<td><code>a &amp; b</code></td>
+<td><code>{3}</code></td>
+</tr>
+<tr class="odd">
+<td>差集</td>
+<td><code>a - b</code></td>
+<td><code>{1, 2}</code></td>
+</tr>
+<tr class="even">
+<td>对称差</td>
+<td><code>a ^ b</code></td>
+<td><code>{1, 2, 4}</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>a &lt;= b</code>判断子集，<code>a &lt; b</code>判断真子集；<code>isdisjoint(b)</code>判断是否无交集</li>
+<li><code>add(x)</code>原地加入；<code>remove(x)</code>在元素不存在时抛<code>KeyError</code>，<code>discard(x)</code>则不报错</li>
+<li><code>pop()</code>删除并返回<strong>任意</strong>元素；<code>clear()</code>清空，<code>copy()</code>浅拷贝</li>
+<li><code>len(lst) != len(set(lst))</code>可判断列表中是否有重复，前提是元素可哈希</li>
+<li>遍历同一集合时不要同时增删它；集合运算符的两侧应为集合</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="阅读材料补充" class="level2">
+<h2 class="anchored" data-anchor-id="阅读材料补充">阅读材料补充</h2>
+<p>阅读材料：5 哈希阅读材料.pdf</p>
+<section id="字典与集合方法补充" class="level3">
+<h3 class="anchored" data-anchor-id="字典与集合方法补充">字典与集合方法补充</h3>
+<ul>
+<li><code>dict.pop(k[, default])</code>删键并返回值；<code>popitem()</code>删并返回最后插入的键值对（空字典报错）</li>
+<li><code>set.remove(x)</code>在元素不存在时报<code>KeyError</code>；<code>discard(x)</code>则不报错</li>
+<li><code>set.union()</code>、<code>intersection()</code>、<code>difference()</code>对应并、交、差，返回新集合；同名<code>_update</code>方法原地修改</li>
+<li><code>dict.copy()</code>和<code>set.copy()</code>都是浅拷贝；遍历同一字典或集合时避免改变其大小</li>
+</ul>
+</section>
+<section id="异常" class="level3">
+<h3 class="anchored" data-anchor-id="异常">异常</h3>
+<p>键不存在：<code>KeyError</code>；文件不存在：<code>FileNotFoundError</code>。先看报错最后一行的异常类型和信息，再回头看自己代码中的出错行。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    value <span class="op">=</span> sensor[<span class="st">'S-999'</span>]</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">KeyError</span>:</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    value <span class="op">=</span> <span class="st">'未找到'</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> safe_div(a, b):</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> b <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">'分母为零'</span>)</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a <span class="op">/</span> b</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>try/except</code>只捕获预期会发生且有明确处理办法的异常；<code>raise</code>主动报告违反函数规格的情况。词频缺键优先用<code>get</code>，不要写<code>except: pass</code>把错误吞掉。</p>
+</section>
+<section id="推导式与查找策略" class="level3">
+<h3 class="anchored" data-anchor-id="推导式与查找策略">推导式与查找策略</h3>
+<p><code>[[] for _ in range(n)]</code>每轮新建一个内层列表；<code>[[]] * n</code>让<span class="math inline">\(n\)</span>个槽共享同一内层列表。开链法只能用前者。列表推导式本周会认即可。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>方法</th>
+<th>前提</th>
+<th>单次查找</th>
+<th>准备成本</th>
+<th>下标含义</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>线性查找</td>
+<td>无序即可</td>
+<td><span class="math inline">\(O(n)\)</span></td>
+<td>无</td>
+<td>原列表下标</td>
+</tr>
+<tr class="even">
+<td>二分查找</td>
+<td>已排序</td>
+<td><span class="math inline">\(O(\log n)\)</span></td>
+<td>未排序时先排序，通常<span class="math inline">\(O(n\log n)\)</span></td>
+<td>排序后下标</td>
+</tr>
+<tr class="odd">
+<td>字典查找</td>
+<td>键可哈希</td>
+<td>平均<span class="math inline">\(O(1)\)</span></td>
+<td>建表<span class="math inline">\(O(n)\)</span>时间和空间</td>
+<td>建表时保存的值</td>
+</tr>
+</tbody>
+</table>
+<p>只查一次通常直接扫描；数据已排序且多次查可用二分；按键反复查则考虑先建字典。字典按键快，遍历整个字典仍需<span class="math inline">\(O(n)\)</span>。</p>
+</section>
+</section>
+<section id="研讨课内容" class="level2">
+<h2 class="anchored" data-anchor-id="研讨课内容">研讨课内容</h2>
+<p>研讨材料：5 哈希-研讨课.pdf</p>
+<section id="温度映射到原下标" class="level3">
+<h3 class="anchored" data-anchor-id="温度映射到原下标">温度映射到原下标</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>temps <span class="op">=</span> [<span class="fl">29.5</span>, <span class="fl">28.1</span>, <span class="fl">29.5</span>, <span class="fl">26.8</span>]</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>index <span class="op">=</span> {}</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, t <span class="kw">in</span> <span class="bu">enumerate</span>(temps):</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    index[t] <span class="op">=</span> i</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(index[<span class="fl">29.5</span>])  <span class="co"># 2，重复键覆盖了原下标0</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>要保留所有位置，就让值为列表：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>positions <span class="op">=</span> {}</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, t <span class="kw">in</span> <span class="bu">enumerate</span>(temps):</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    positions.setdefault(t, []).append(i)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(positions[<span class="fl">29.5</span>])  <span class="co"># [0, 2]</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<section id="comments" class="comments-section" aria-labelledby="comments-heading">
+  <h2 id="comments-heading">评论</h2>
+  <p id="comments-status">评论暂未开放。</p>
+  <div class="giscus"></div>
+</section>
+<script src="../../assets/comments-config.js?v=0740342d2f79"></script>
+<script src="../../assets/comments.js?v=efc269bc7855"></script>
+
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "已复制");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "已复制");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/easoncyy\.github\.io");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p><a href="../../posts/20261013-fip-w05-hash/index.html">~/notes</a> · 记录与探索</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p><a class="footer-repository" href="https://github.com/easoncyy/easoncyy.github.io" target="_blank" rel="noopener noreferrer" aria-label="查看本站 GitHub 仓库"><i class="bi bi-github" aria-hidden="true"></i><span>source/</span></a><span class="footer-builder">Built with Quarto</span></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
