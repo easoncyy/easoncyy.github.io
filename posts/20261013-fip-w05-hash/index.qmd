@@ -1,0 +1,416 @@
+---
+title: "FIP W05 · 哈希"
+description: "FIPW05的课程笔记以及阅读材料笔记，包含哈希·字典·集合"
+date: "2026-10-13T14:59:50+08:00"
+category-path: ["AI", "FIP", "学习笔记"]
+categories: ["学习笔记"]
+execute: {"enabled": false}
+---
+
+> 从$O(\log n)$到平均$O(1)$。
+
+# 哈希
+
+## 理论课内容
+
+课程材料：26FIP5 哈希.pdf
+
+### 回顾查找算法
+
+#### 遍历查找
+
+如果每次遍历查找，时间复杂度是$O(n)$。 
+
+#### 二分查找 
+在排序基础上每次二分查找时间复杂度是$O(\log n)$。
+
+**有没有更快的方法？** 如果能通过键算出槽位，就可以先定位，再检查该槽位的键。 
+
+### 哈希的核心思想 
+
+**哈希**把“键”输入哈希函数，得到槽位索引，再检查该槽位是否对应目标键。
+
+``` text
+哈希的工作流程
+键 -> 哈希函数 -> 槽位 -> 检查键 -> 取值
+```
+
+哈希先算槽位，再检查冲突位置上的键。查找平均$O(1)$；极端冲突时可能退化为$O(n)$，计算哈希值本身也有成本。
+
+### 哈希的设计方法
+
+#### 大小选择
+
+教学中的取模哈希常选**素数**作为表长，减少某些规律性输入的聚集，但不保证没有冲突。Python的`dict`不要求表长为素数。 
+
+#### 实际案例 
+
+假设我们有传感器ID：
+
+``` text
+S-042, S-117, S-205, S-333, S-055
+```
+
+设计一个大小为**13**的哈希表，函数规则为提取数字部分再对表的大小取模
+
+``` python
+def hash_func(key, table_size):
+    num = int(key.split("-")[1])
+    return num % table_size
+```
+
+但是`S-042`和`S-055`会算出同一个值，这就是**哈希冲突**。 **冲突是不可避免的**，根据Pigeonhole Principle，键的空间比表的空间大的时候冲突必然会发生。所以关键在于**处理冲突**，而**非避免冲突**。
+
+### 冲突处理
+
+#### 开链法 Separate Chaining
+
+相当于每一个槽位储存的是一个列表，而不是单一的值，**冲突发生**后，就把新元素加到对应位置的链表里，然后在查找时，再在小的列表里做遍历查找。 
+
+##### 初始化哈希表
+
+``` python
+# 遍历添加
+hash_table = []
+for _ in range(table_size):
+    hash_table.append([])
+# 列表推导式
+hash_table = [[] for _ in range(table_size)]
+```
+
+上述两种方法都为每个槽位新建列表。下面的重复操作会使所有槽位指向**同一个**内层列表：
+
+``` python
+table = [[]] * table_size  # 不适合开链法
+```
+
+##### 构建表
+
+``` python
+table_size = 13
+hash_table = [[] for _ in range(table_size)]
+collision_count = 0
+
+def insert(key, value):
+    global collision_count
+    idx = hash_func(key, table_size)
+    for i, (old_key, _) in enumerate(hash_table[idx]):
+        if old_key == key:
+            hash_table[idx][i] = (key, value)  # 同键更新
+            return
+    if hash_table[idx]:
+        collision_count += 1
+    hash_table[idx].append((key, value))
+```
+
+> 这里用`global`展示作用域；日常函数更适合把表作为参数传入，计数通过返回值传出。
+
+##### 查找流程
+
+``` python
+def hash_lookup(hash_table, key, table_size):
+    idx = hash_func(key, table_size)
+    slot = hash_table[idx]
+    for k, v in slot:
+        if k == key:
+            return v
+    return None
+```
+
+**关键分析**： 
+- 理想状态下（无冲突），查找只需要$O(1)$ 
+- 冲突的时候需要进行线性查找，但是如果哈希函数设计的好，表的大小合适，每个槽位的列表都很短，仍然近似于$O(1)$ 
+- 极端情况（所有键都冲突）哈希表退化为链表，查找退化为$O(n)$
+
+#### 线性探测 Linear Probing
+
+线性探测的思路就是如果当前槽位冲突了，就往后找到下一个空槽位储存。
+
+``` python
+def insert_probe(hash_table, key, value, table_size):
+    idx = hash_func(key, table_size)
+    for _ in range(table_size):
+        if hash_table[idx] is None:
+            hash_table[idx] = (key, value)
+            return
+        if hash_table[idx][0] == key:
+            hash_table[idx] = (key, value)
+            return
+        idx = (idx + 1) % table_size
+    raise ValueError('哈希表已满')
+```
+
+本例须先用`[None] * table_size`建表。同键更新不会无限探测；表满时明确报错。查找也必须沿同样路径探测。删除时直接设为`None`会截断后续键的查找，需要删除标记。
+
+#### 冲突处理策略的比较
+
+| 维度        | **开链法**            | **线性探测**             |
+|-------------|-----------------------|--------------------------|
+| 储存结构    | 每个槽位是列表        | 每个槽位是元素或空       |
+| 冲突处理    | 追加到列表            | 向后找空位               |
+| 空间利用    | 需要额外储存链表/列表 | 紧凑，无需额外指针       |
+| 删除难度    | 容易                  | 困难                     |
+| Python dict | 不采用此法            | 采用更复杂的开放寻址策略 |
+
+Python中`dict`类型采用更复杂的开放寻址策略（Open Addressing）。
+
+### 局部变量与全局变量
+
+#### `global`关键字
+
+在函数内需要**重新绑定**全局变量名时才用`global`；只读全局变量或修改全局列表、字典的内容不需要。 
+
+#### 全局变量vs局部变量 
+
+- Python不需要声明变量，第一次赋值就声明了变量 
+- 在函数内
+    - 对一个变量赋值，如果之前没有`global`声明，就产生一个局部变量
+    - 只读未在函数内赋值的名字时，会查找全局名字 
+    - 若函数内给同名变量赋值，Python把它视为局部变量；赋值前先读会得到`UnboundLocalError` 
+    - 确需重新绑定全局名时，在函数体开头写`global 名字` 
+ - 建议：**不是万不得已不要使用全局变量**
+
+### 字符串哈希
+
+`ord(ch)`取得字符的Unicode码位，`chr(n)`做反向转换。简单相加再取模容易让换位词冲突；可让字符顺序参与计算：
+
+``` python
+def string_hash(key, table_size):
+    h = 0
+    for ch in key:
+        h = (h * 31 + ord(ch)) % table_size
+    return h
+```
+
+这仍可能冲突，也不是Python内置`hash()`的具体实现。内置`hash()`对字符串的结果在不同进程中可能不同，不适合保存跨运行的固定槽位。
+
+### Python字典
+
+字典（`dict`）存**键->值**的映射，键唯一；同键再次赋值会覆盖旧值。查找、插入、删除平均$O(1)$，建含$n$项的字典需要$O(n)$时间和空间。
+
+#### 创建与访问
+
+``` python
+sensor = {'S-042': 28.1, 'S-117': 24.2}
+print(sensor['S-042'])               # 28.1
+print(sensor.get('S-999', '未找到'))  # 未找到
+print('S-042' in sensor)              # True
+sensor['S-042'] = 29.0                # 修改
+sensor['S-333'] = 27.8                # 新增
+```
+
+- `sensor[key]`读不到键会抛`KeyError`；`get(key, default)`返回默认值，**不会**插入键
+- `key in sensor`检查**键**；查值要用`value in sensor.values()`，通常需逐项扫描
+- `del sensor[key]`删不存在的键也会抛`KeyError`；`len(sensor)`给出键值对个数
+- `{}`是空字典；空集合要写`set()`
+
+#### 键必须可哈希
+
+键需要稳定的哈希值。`int`、`str`、以及**元素也都可哈希**的元组可以作键；`list`、`dict`、`set`不能作键。只说“不可变”还不够：`([1],)`虽然是元组，但内层列表不可哈希。
+
+#### 其他常用方法
+
+- `setdefault(k, v)`：键不存在时插入`v`，返回该键的值；`get`不会插入
+- `update(...)`批量写入，同键覆盖，返回`None`；`pop(k[, default])`删除并返回值；`clear()`清空
+- `copy()`是浅拷贝，若值是列表，内层列表仍共享
+
+### 字典应用
+
+#### `get()`与`[]`
+
+``` python
+score = {'张三': 78, '李四': 92}
+print(score.get('王五'))      # None
+print(score.get('王五', 0))   # 0
+print('王五' in score)       # False，get不会插入键
+# score['王五']              # KeyError
+```
+
+`d[k]`适合**确定键存在**时取值；`d.get(k, default)`适合键可能缺失时给出默认值。`get(k)`缺省返回`None`；若字典本来就存`None`，要区分“缺键”与“值为None”，请用`k in d`。`d.setdefault(k, default)`在缺键时**插入**默认值，与`get`不同。
+
+#### 词频统计与查重
+
+``` python
+words = 'the quick fox and the dog'.split()
+count = {}
+for word in words:
+    count[word] = count.get(word, 0) + 1
+print(count['the'])  # 2
+```
+
+第一次出现时`get(word, 0)`提供初值0，之后每次加1；直接`count[word] += 1`会在第一次出现时抛`KeyError`。如果只问“是否见过”，用集合存元素即可，不必存次数。
+
+``` python
+def has_duplicate(lst):
+    seen = set()
+    for item in lst:
+        if item in seen:
+            return True
+        seen.add(item)
+    return False
+```
+
+#### 从文件读词
+
+``` python
+count = {}
+f = open('fox.txt')
+for line in f:
+    for word in line.split():
+        count[word] = count.get(word, 0) + 1
+f.close()
+```
+
+`for line in f`按行读文件，再对每行`split()`；文件对象没有`split()`方法。路径从当前工作目录查找，用完关闭。文件不存在会抛`FileNotFoundError`。
+
+#### 遍历字典
+
+``` python
+for key in count:                 # 默认取键
+    print(key, count[key])
+for key, value in count.items(): # 同时取键和值
+    print(key, value)
+```
+
+`keys()`、`values()`、`items()`返回随字典变化的视图。Python 3.7+按插入顺序遍历，但字典没有列表那样的整数下标。
+
+#### 寻找单身汉
+
+``` python
+def find_single(lst):
+    count = {}
+    for item in lst:
+        count[item] = count.get(item, 0) + 1
+    for item, times in count.items():
+        if times == 1:
+            return item
+    return None
+```
+
+`find_single([1, 2, 2, 3, 3, 1, 4])`返回`4`。若有两个单身汉，就把第二轮中`times == 1`的元素追加到结果列表。建表加遍历总时间$O(n)$，额外空间$O(n)$；元素须可作键。
+
+#### 众数
+
+求众数：先用字典计数，再找最大出现次数；如有多个众数，将它们排序输出。分数若题设固定两位小数，可保留输入的字符串作键，排序时按`float`值排序，避免把显示格式交给浮点数处理。
+
+``` python
+def modes(scores):
+    count = {}
+    for score in scores:
+        count[score] = count.get(score, 0) + 1
+    if not count:
+        return []
+    most = max(count.values())
+    return sorted((s for s, n in count.items() if n == most), key=float)
+```
+
+#### 两数之和
+
+两数之和可边遍历边存已见过的值及其下标。先查补数，再存当前数，避免同一个位置使用两次：
+
+``` python
+def two_sum(nums, target):
+    seen = {}
+    for i, x in enumerate(nums):
+        if target - x in seen:
+            return seen[target - x], i
+        seen[x] = i
+    return None
+
+print(two_sum([2, 11, 7, 15], 9))  # (0, 2)
+```
+
+平均时间$O(n)$、额外空间$O(n)$。课件把“需要的补数”存成键，上面改为存“已经见过的数”，两种写法都要保证先查后存。
+
+### Python集合
+
+集合（`set`）只记录**元素在不在**，不存关联值。元素唯一、无下标、遍历顺序不应依赖；元素也必须可哈希。`in`、`add`、`discard`平均$O(1)$。
+
+``` python
+s = set()                   # 空集合；{}是空字典
+s.add(2)
+s.add(2)                   # 重复值不再加入
+print(2 in s)              # True
+print(len(set([1, 1, 2]))) # 2
+```
+
+#### 集合运算
+
+对于`a = {1, 2, 3}`、`b = {3, 4}`：
+
+| 运算   | 写法     | 结果           |
+|--------|----------|----------------|
+| 并集   | `a \| b` | `{1, 2, 3, 4}` |
+| 交集   | `a & b`  | `{3}`          |
+| 差集   | `a - b`  | `{1, 2}`       |
+| 对称差 | `a ^ b`  | `{1, 2, 4}`    |
+
+- `a <= b`判断子集，`a < b`判断真子集；`isdisjoint(b)`判断是否无交集
+- `add(x)`原地加入；`remove(x)`在元素不存在时抛`KeyError`，`discard(x)`则不报错
+- `pop()`删除并返回**任意**元素；`clear()`清空，`copy()`浅拷贝
+- `len(lst) != len(set(lst))`可判断列表中是否有重复，前提是元素可哈希
+- 遍历同一集合时不要同时增删它；集合运算符的两侧应为集合
+
+## 阅读材料补充
+
+阅读材料：5 哈希阅读材料.pdf
+
+### 字典与集合方法补充
+
+- `dict.pop(k[, default])`删键并返回值；`popitem()`删并返回最后插入的键值对（空字典报错）
+- `set.remove(x)`在元素不存在时报`KeyError`；`discard(x)`则不报错
+- `set.union()`、`intersection()`、`difference()`对应并、交、差，返回新集合；同名`_update`方法原地修改
+- `dict.copy()`和`set.copy()`都是浅拷贝；遍历同一字典或集合时避免改变其大小
+
+### 异常
+
+键不存在：`KeyError`；文件不存在：`FileNotFoundError`。先看报错最后一行的异常类型和信息，再回头看自己代码中的出错行。
+
+``` python
+try:
+    value = sensor['S-999']
+except KeyError:
+    value = '未找到'
+
+def safe_div(a, b):
+    if b == 0:
+        raise ValueError('分母为零')
+    return a / b
+```
+
+`try/except`只捕获预期会发生且有明确处理办法的异常；`raise`主动报告违反函数规格的情况。词频缺键优先用`get`，不要写`except: pass`把错误吞掉。
+
+### 推导式与查找策略
+
+`[[] for _ in range(n)]`每轮新建一个内层列表；`[[]] * n`让$n$个槽共享同一内层列表。开链法只能用前者。列表推导式本周会认即可。
+
+| 方法 | 前提 | 单次查找 | 准备成本 | 下标含义 |
+|---------------|---------------|---------------|---------------|---------------|
+| 线性查找 | 无序即可 | $O(n)$ | 无 | 原列表下标 |
+| 二分查找 | 已排序 | $O(\log n)$ | 未排序时先排序，通常$O(n\log n)$ | 排序后下标 |
+| 字典查找 | 键可哈希 | 平均$O(1)$ | 建表$O(n)$时间和空间 | 建表时保存的值 |
+
+只查一次通常直接扫描；数据已排序且多次查可用二分；按键反复查则考虑先建字典。字典按键快，遍历整个字典仍需$O(n)$。
+
+## 研讨课内容
+
+研讨材料：5 哈希-研讨课.pdf
+
+### 温度映射到原下标
+
+``` python
+temps = [29.5, 28.1, 29.5, 26.8]
+index = {}
+for i, t in enumerate(temps):
+    index[t] = i
+print(index[29.5])  # 2，重复键覆盖了原下标0
+```
+
+要保留所有位置，就让值为列表：
+
+``` python
+positions = {}
+for i, t in enumerate(temps):
+    positions.setdefault(t, []).append(i)
+print(positions[29.5])  # [0, 2]
+```
