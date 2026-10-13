@@ -1,5 +1,51 @@
 ::: {.log-stream}
 
+::: {#20261013-224238-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-10-13T22:42:38+08:00">2026-10-13 22:42:38 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title">每天都在和桂花打交道</p>
+
+```
+
+为什么只能远远的闻见，走近了就闻不到了呢。
+:::
+
+![早上也可以寻桂子](/assets/log/20261013-224238-osmanthus/photo-1.jpg)
+
+![Noon](/assets/log/20261013-224238-osmanthus/photo-2.jpg)
+
+![喜欢东7的原因又多了一个](/assets/log/20261013-224238-osmanthus/photo-3.jpg)
+
+![两个](/assets/log/20261013-224238-osmanthus/photo-4.jpgg)
+
+
+:::
+
+```{=html}
+
+<details id="comments-20261013-224238-entry" class="log-comments" data-comment-term="/logs/20261013-224238-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
 ::: {#20261012-235740-entry .log-entry}
 
 ```{=html}
