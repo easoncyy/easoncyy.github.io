@@ -54,17 +54,17 @@ First day in ZJUSCT!!!
 
 ::: {.log-photo-grid}
 
-![Peaceful](assets\log\20261011-235052-BUSY\photo-1.jpg)
+![Peaceful](/assets/log/20261011-235052-BUSY/photo-1.jpg)
 
-![Choir](assets\log\20261011-235052-BUSY\photo-2.jpg)
+![Choir](/assets/log/20261011-235052-BUSY/photo-2.jpg)
 
-![Night](assets\log\20261011-235052-BUSY\photo-3.jpg)
+![Night](/assets/log/20261011-235052-BUSY/photo-3.jpg)
 
-![Server](assets\log\20261011-235052-BUSY\photo-4.jpg)
+![Server](/assets/log/20261011-235052-BUSY/photo-4.jpg)
 
-![H800](assets\log\20261011-235052-BUSY\photo-5.jpg)
+![H800](/assets/log/20261011-235052-BUSY/photo-5.jpg)
 
-![ZJUSCT](assets\log\20261011-235052-BUSY\photo-6.jpg)
+![ZJUSCT](/assets/log/20261011-235052-BUSY/photo-6.jpg)
 
 :::
 
@@ -104,13 +104,13 @@ First day in ZJUSCT!!!
 
 ::: {.log-photo-grid}
 
-![神秘舞台剧的神秘观众和寿星](D:\Personal\Homepage\assets\log\20261010-233101-extra-wednesday\photo-1.jpg)
+![神秘舞台剧的神秘观众和寿星](/assets/log/20261010-233101-extra-wednesday/photo-1.jpg)
 
-![I love you...](D:\Personal\Homepage\assets\log\20261010-233101-extra-wednesday\photo-2.jpg)
+![I love you...](/assets/log/20261010-233101-extra-wednesday/photo-2.jpg)
 
-![Night](D:\Personal\Homepage\assets\log\20261010-233101-extra-wednesday\photo-3.jpg)
+![Night](/assets/log/20261010-233101-extra-wednesday/photo-3.jpg)
 
-![Day](D:\Personal\Homepage\assets\log\20261010-233101-extra-wednesday\photo-4.jpg)
+![Day](/assets/log/20261010-233101-extra-wednesday/photo-4.jpg)
 
 
 :::
@@ -152,17 +152,17 @@ First day in ZJUSCT!!!
 
 ::: {.log-photo-grid}
 
-![骑车上早八的清晨](assets\log\20261009-225840-osmanthus-overture\photo-1.jpg)
+![骑车上早八的清晨](/assets/log/20261009-225840-osmanthus-overture/photo-1.jpg)
 
-![其实这里才应该叫临湖](assets\log\20261009-225840-osmanthus-overture\photo-2.jpg)
+![其实这里才应该叫临湖](/assets/log/20261009-225840-osmanthus-overture/photo-2.jpg)
 
-![只有自然光的世界](assets\log\20261009-225840-osmanthus-overture\photo-3.jpg)
+![只有自然光的世界](/assets/log/20261009-225840-osmanthus-overture/photo-3.jpg)
 
-![暗香](assets\log\20261009-225840-osmanthus-overture\photo-4.jpg)
+![暗香](/assets/log/20261009-225840-osmanthus-overture/photo-4.jpg)
 
-![Blossom](assets\log\20261009-225840-osmanthus-overture\photo-5.jpg)
+![Blossom](/assets/log/20261009-225840-osmanthus-overture/photo-5.jpg)
 
-![一个晚上的内训很充实呀](assets\log\20261009-225840-osmanthus-overture\photo-6.jpg)
+![一个晚上的内训很充实呀](/assets/log/20261009-225840-osmanthus-overture/photo-6.jpg)
 
 :::
 
@@ -203,11 +203,11 @@ ps. 今天《逆否》在公众号复刊啦，希望能好好的生长下去，�
 
 ::: {.log-photo-grid}
 
-![东6最喜欢的地方](\assets\log\20261008-231120-autumn-leaves\photo-1.jpg)
+![东6最喜欢的地方](/assets/log/20261008-231120-autumn-leaves/photo-1.jpg)
 
-![生机感的FIP Seminar](\assets\log\20261008-231120-autumn-leaves\photo-2.jpg)
+![生机感的FIP Seminar](/assets/log/20261008-231120-autumn-leaves/photo-2.jpg)
 
-![想踩到这个屋顶上](\assets\log\20261008-231120-autumn-leaves\photo-3.jpg)
+![想踩到这个屋顶上](/assets/log/20261008-231120-autumn-leaves/photo-3.jpg)
 
 :::
 

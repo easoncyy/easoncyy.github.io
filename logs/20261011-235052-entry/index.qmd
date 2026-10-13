@@ -7,16 +7,16 @@ First day in ZJUSCT!!!
 
 ::: {.log-photo-grid}
 
-![Peaceful](assets\log\20261011-235052-BUSY\photo-1.jpg)
+![Peaceful](/assets/log/20261011-235052-BUSY/photo-1.jpg)
 
-![Choir](assets\log\20261011-235052-BUSY\photo-2.jpg)
+![Choir](/assets/log/20261011-235052-BUSY/photo-2.jpg)
 
-![Night](assets\log\20261011-235052-BUSY\photo-3.jpg)
+![Night](/assets/log/20261011-235052-BUSY/photo-3.jpg)
 
-![Server](assets\log\20261011-235052-BUSY\photo-4.jpg)
+![Server](/assets/log/20261011-235052-BUSY/photo-4.jpg)
 
-![H800](assets\log\20261011-235052-BUSY\photo-5.jpg)
+![H800](/assets/log/20261011-235052-BUSY/photo-5.jpg)
 
-![ZJUSCT](assets\log\20261011-235052-BUSY\photo-6.jpg)
+![ZJUSCT](/assets/log/20261011-235052-BUSY/photo-6.jpg)
 
 :::

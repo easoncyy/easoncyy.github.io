@@ -9,16 +9,16 @@ entry-signature: "a4a0df726572af3a064d0adbb68fd5876921036069d7fbd59e2dfd9ee8a267
 
 ::: {.log-photo-grid}
 
-![骑车上早八的清晨](assets\log\20261009-225840-osmanthus-overture\photo-1.jpg)
+![骑车上早八的清晨](/assets/log/20261009-225840-osmanthus-overture/photo-1.jpg)
 
-![其实这里才应该叫临湖](assets\log\20261009-225840-osmanthus-overture\photo-2.jpg)
+![其实这里才应该叫临湖](/assets/log/20261009-225840-osmanthus-overture/photo-2.jpg)
 
-![只有自然光的世界](assets\log\20261009-225840-osmanthus-overture\photo-3.jpg)
+![只有自然光的世界](/assets/log/20261009-225840-osmanthus-overture/photo-3.jpg)
 
-![暗香](assets\log\20261009-225840-osmanthus-overture\photo-4.jpg)
+![暗香](/assets/log/20261009-225840-osmanthus-overture/photo-4.jpg)
 
-![Blossom](assets\log\20261009-225840-osmanthus-overture\photo-5.jpg)
+![Blossom](/assets/log/20261009-225840-osmanthus-overture/photo-5.jpg)
 
-![一个晚上的内训很充实呀](assets\log\20261009-225840-osmanthus-overture\photo-6.jpg)
+![一个晚上的内训很充实呀](/assets/log/20261009-225840-osmanthus-overture/photo-6.jpg)
 
 :::

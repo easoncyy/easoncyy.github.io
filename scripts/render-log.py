@@ -1,10 +1,26 @@
 """Assemble full Markdown entries into a single Quarto page before rendering."""
 import html
 import json
+import re
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+
+
+def normalize_image_paths(body):
+    """Convert workspace image paths to public URLs; reject private disk paths."""
+    def replace(match):
+        path = match['path'].replace('\\', '/')
+        workspace = ROOT.as_posix().rstrip('/') + '/'
+        if path.lower().startswith(workspace.lower()):
+            path = path[len(workspace):]
+        if path.startswith('assets/'):
+            path = '/' + path
+        if re.match(r'^[A-Za-z]:/', path):
+            raise ValueError(f'Log image uses a local disk path: {path}. Copy it into assets/log first.')
+        return match['prefix'] + path + ')'
+    return re.sub(r'(?P<prefix>!\[[^\]\n]*\]\()(?P<path>[^\n)]+)\)', replace, body)
 
 
 def main():
@@ -28,7 +44,7 @@ def main():
             header = header.rstrip() + "\ndate: " + json.dumps(timestamp) + "\n"
             source.write_text("---" + header + "---" + body, encoding="utf-8")
         slug = source.stem if source.parent == ROOT / "logs" else source.parent.name
-        entries.append((metadata, body.strip(), slug))
+        entries.append((metadata, normalize_image_paths(body.strip()), slug))
     entries.sort(key=lambda entry: entry[0]["date"], reverse=True)
     output = ["::: {.log-stream}"]
     for metadata, body, slug in entries:

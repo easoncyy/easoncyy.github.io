@@ -8,10 +8,10 @@ ps. 今天《逆否》在公众号复刊啦，希望能好好的生长下去，�
 
 ::: {.log-photo-grid}
 
-![东6最喜欢的地方](\assets\log\20261008-231120-autumn-leaves\photo-1.jpg)
+![东6最喜欢的地方](/assets/log/20261008-231120-autumn-leaves/photo-1.jpg)
 
-![生机感的FIP Seminar](\assets\log\20261008-231120-autumn-leaves\photo-2.jpg)
+![生机感的FIP Seminar](/assets/log/20261008-231120-autumn-leaves/photo-2.jpg)
 
-![想踩到这个屋顶上](\assets\log\20261008-231120-autumn-leaves\photo-3.jpg)
+![想踩到这个屋顶上](/assets/log/20261008-231120-autumn-leaves/photo-3.jpg)
 
 :::
