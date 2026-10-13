@@ -26,7 +26,7 @@
 
 ![喜欢东7的原因又多了一个](/assets/log/20261013-224238-osmanthus/photo-3.jpg)
 
-![两个](/assets/log/20261013-224238-osmanthus/photo-4.jpgg)
+![两个](/assets/log/20261013-224238-osmanthus/photo-4.jpg)
 
 
 :::
