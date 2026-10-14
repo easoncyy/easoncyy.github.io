@@ -1,5 +1,47 @@
 ::: {.log-stream}
 
+::: {#20261014-232909-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-10-14T23:29:09+08:00">2026-10-14 23:29:09 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title">雁过</p>
+
+```
+
+晚上校园跑的时候看见一群大雁从天空飞过，若是说雁过衡阳，那它们是去向何方呢。唉还有好多任务没完成呀。
+
+::: {.log-photo-grid}
+
+![Night](/assets/log/20261014-232909-fly/photo-1.jpg)
+
+![大雁往哪里飞呢](/assets/log/20261014-232909-fly/photo-2.jpg)
+
+:::
+
+```{=html}
+
+<details id="comments-20261014-232909-entry" class="log-comments" data-comment-term="/logs/20261014-232909-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
 ::: {#20261013-224238-entry .log-entry}
 
 ```{=html}
