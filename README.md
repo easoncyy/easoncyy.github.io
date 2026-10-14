@@ -293,3 +293,7 @@ python scripts/add-book.py "书名" "D:\Books\book.epub" --slug my-epub-book --a
 ```
 
 上传脚本会检查 EPUB 容器及格式标识，并保留 `.epub` 扩展名。单文件上限仍为 95 MB。EPUB 当前提供下载，不内置网页阅读器。旧 PDF 书目无需修改；新书目自动记录 `format` 字段。
+
+### 手动新增作业时的 PDF 路径
+
+文件放入 `assets/pdf/homework/` 后，文章里的阅读、下载和 iframe 地址都使用以 `/` 开头的网站路径，例如 `/assets/pdf/homework/2026-linear-algebra-w05-homework.pdf`。不要使用 `D:\...`、反斜杠或不带开头 `/` 的 `assets/...`：文章在多级目录下，后一种相对地址会指向文章自己的子目录，导致 404。

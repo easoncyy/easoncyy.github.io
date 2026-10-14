@@ -11,11 +11,11 @@ description: "2026 年线性代数 W05 作业，提供原版 PDF 在线阅读与
 ::: {.download-box}
 `2026-linear-algebra-w05-homework.pdf`
 
-[在线阅读 PDF ↗](assets\pdf\homework\2026-linear-algebra-w05-homework.pdf){target="_blank"} · [下载 PDF ↓](assets\pdf\homework\2026-linear-algebra-w05-homework.pdf){download="2026-linear-algebra-w05-homework.pdf"}
+[在线阅读 PDF ↗](/assets/pdf/homework/2026-linear-algebra-w05-homework.pdf){target="_blank"} · [下载 PDF ↓](/assets/pdf/homework/2026-linear-algebra-w05-homework.pdf){download="2026-linear-algebra-w05-homework.pdf"}
 :::
 
 ```{=html}
-<iframe class="homework-pdf" src="assets\pdf\homework\2026-linear-algebra-w05-homework.pdf" title="线性代数 W05 · 作业归档 PDF" loading="lazy"></iframe>
+<iframe class="homework-pdf" src="/assets/pdf/homework/2026-linear-algebra-w05-homework.pdf" title="线性代数 W05 · 作业归档 PDF" loading="lazy"></iframe>
 ```
 
 如果浏览器不支持内嵌 PDF，可使用上方阅读或下载链接。
