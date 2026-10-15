@@ -1,0 +1,21 @@
+---
+title: "阴天"
+date: "2026-10-15T23:11:25+08:00"
+entry-signature: "c9b0d3d4365e02f48d897317c2fc0a8abd74b1d718b8e7c02c3a42ed8681abca"
+---
+
+其实感觉阴天才是杭州秋天该有的天气呀。
+
+::: {.log-photo-grid}
+
+![每次到这里都想起杭二的那个地方](assets\log\20261015-231125-cloudy\photo-1.jpg)
+
+![路过的时候看见里面好多写满的黑板](assets\log\20261015-231125-cloudy\photo-2.jpg)
+
+
+![Home](assets\log\20261015-231125-cloudy\photo-3.jpg)
+
+
+![落花](assets\log\20261015-231125-cloudy\photo-4.jpg)
+
+:::
