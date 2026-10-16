@@ -247,6 +247,8 @@ blockquote { border-left: 2px solid #151515; color: var(--muted); padding-left: 
 .problem-meta, .problem-source, #problem-status, .calendar-hint { color: var(--muted); font: .78rem/1.8 var(--mono); }
 .problem-answer { margin: 1rem 0; padding: .7rem 0; }
 .problem-answer summary { cursor: pointer; font: .85rem/1.8 var(--mono); }
+.problem-discussion { margin-top: 2rem; padding: 1rem 0; }
+.problem-discussion summary { color: var(--ink); font-size: .9rem; }
 .problem-solution { margin-top: 1rem; border-left: 2px solid var(--line); padding-left: 1rem; }
 .problem-calendar { margin-top: 3rem; max-width: 660px; }
 .calendar-toolbar { display: flex; align-items: center; gap: .8rem; margin: 1rem 0; }

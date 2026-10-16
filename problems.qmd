@@ -5,7 +5,7 @@ description: "每天几道，留一点时间认真想。"
 body-classes: directory-page problems-page
 toc: false
 include-after-body:
-  text: '<script defer src="/assets/problems.js"></script>'
+  text: '<script defer src="/assets/problems.js"></script><script defer src="/assets/comments-config.js"></script><script defer src="/assets/log-comments.js"></script>'
 ---
 
 ::: {.log-console}
