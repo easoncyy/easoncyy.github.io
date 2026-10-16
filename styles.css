@@ -30,7 +30,22 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 .navbar-nav { gap: 1.15rem; }
 .nav-path { font-family: var(--mono); font-size: .85rem; }
 .nav-caption { font-size: .72rem; margin-left: .45rem; color: var(--muted); }
-.navbar .nav-link { font-size: .88rem; color: var(--muted); }
+.navbar .nav-link { font-size: .88rem; color: var(--muted); white-space: nowrap; }
+.navbar .navbar-brand-container { flex: 0 0 auto; min-width: max-content; max-width: none; }
+.navbar .navbar-brand, .navbar .navbar-title { flex-shrink: 0; overflow: visible; text-overflow: clip; white-space: nowrap; }
+.navbar .menu-text { display: inline-flex; align-items: baseline; gap: .25rem; white-space: nowrap; }
+.navbar .menu-text > span { white-space: nowrap; margin-left: 0; }
+.navbar .nav-item { flex-shrink: 0; }
+@media (min-width: 1200px) { .navbar-container { max-width: 1320px; padding-inline: 1.5rem; } .navbar-nav { gap: .5rem; } }
+/* Collapse before the bilingual menu becomes narrower than its contents. */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  #quarto-header .navbar-container { flex-wrap: wrap; }
+  #quarto-header .navbar-toggler { display: block; }
+  #quarto-header .navbar-collapse { flex-basis: 100%; }
+  #quarto-header .navbar-collapse.collapse:not(.show) { display: none !important; }
+  #quarto-header .navbar-collapse.show, #quarto-header .navbar-collapse.collapsing { display: block !important; }
+  #quarto-header .navbar-nav { flex-direction: column; gap: .25rem; }
+}
 .navbar .nav-link.active { color: #000; text-decoration: underline; text-underline-offset: .5em; }
 #quarto-content { padding-top: 2.5rem; }
 main { padding-bottom: 4rem; }
