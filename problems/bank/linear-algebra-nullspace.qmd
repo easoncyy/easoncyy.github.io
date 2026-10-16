@@ -1,7 +1,7 @@
 ---
 title: "示例：齐次方程组的非零解"
 category-path: [MATH, LINEAR-ALGEBRA, 线性方程组]
-tags: [基础, 秩, 习题]
+tags: ["基础", "秩"]
 source: "功能示例，尚未排期"
 draft: false
 ---

@@ -14,11 +14,12 @@ def main():
         out.extend([f'::: {{.problem-day data-date="{day}"}}', f'## {day} {{.problem-date-heading}}'])
         for number, slug in enumerate(schedule[day], 1):
             item = bank[slug]
-            record = json.dumps({'path':item['path'], 'tags':item['tags'], 'title':item['title']}, ensure_ascii=False)
+            tags = [tag for tag in item['tags'] if tag.strip() != '习题']
+            record = json.dumps({'path':item['path'], 'tags':tags, 'title':item['title']}, ensure_ascii=False)
             out.extend([f'::: {{.problem-entry data-problem="{esc(record)}"}}',
                         '```{=html}', f'<div class="problem-meta">{" / ".join(esc(p) for p in item["path"])}</div>',
                         f'<h3>{number:02d}. {esc(item["title"])}</h3>',
-                        '<div class="entry-tags">' + ' · '.join('#'+esc(t) for t in item['tags']) + '</div>', '```',
+                        '<div class="entry-tags">' + ' · '.join('#'+esc(t) for t in tags) + '</div>', '```',
                         item['question'], '```{=html}', '<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">', '```',
                         item['answer'], '```{=html}', '</div></details>',
                         (f'<p class="problem-source">来源：{esc(item["source"])}</p>' if item['source'] else ''), '```', ':::'])

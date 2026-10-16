@@ -196,6 +196,8 @@ blockquote { border-left: 2px solid #151515; color: var(--muted); padding-left: 
 .log-comments-body { padding-top: 1rem; }
 .log-comments-status, .log-comments-fallback { font-size: .75rem !important; color: var(--muted); }
 .log-comments-frame { width: 100%; min-height: 200px; border: 0; display: block; }
+/* Giscus leaves its root transparent; give every embed an explicit light canvas. */
+iframe.giscus-frame, iframe.log-comments-frame { background: #fff; color-scheme: light; }
 .log-comments-fallback { display: inline-block; margin-top: .5rem; }
 .log-photo-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .8rem; margin: 1.2rem 0; }
 .log-photo-grid figure, .log-photo-grid p { margin: 0; }
@@ -238,6 +240,14 @@ blockquote { border-left: 2px solid #151515; color: var(--muted); padding-left: 
 .reading-list { padding: .8rem 0; border-bottom: 1px solid #ddd; }
 @media (max-width: 700px) { .reading-features, .reading-columns { grid-template-columns: 1fr; } }
 .problem-filters { display: flex; flex-wrap: wrap; gap: .8rem; align-items: center; }
+.problem-filters { align-items: flex-start; }
+.problem-category-picker { flex: 1 1 24rem; min-width: 0; }
+.problem-category-picker > summary { cursor: pointer; font: .85rem/1.8 var(--mono); }
+.problem-category-tree { margin-top: .6rem; }
+.problem-category-tree button { white-space: nowrap; margin-bottom: .2rem; }
+.problem-category-tree button[aria-pressed="true"] { background: var(--ink); color: white; }
+.problem-category-node > button { border-color: transparent; text-align: left; }
+.problem-category-tree .directory-root-list { flex-direction: row; flex-wrap: wrap; align-items: flex-start; }
 .problem-filters label { font: .8rem var(--mono); }
 .problem-filters select { max-width: min(100%, 24rem); margin-left: .3rem; }
 .problem-filters button, .calendar-toolbar button { background: white; color: var(--ink); border: 1px solid var(--line); padding: .3rem .65rem; font: .8rem/1.6 var(--mono); }
@@ -261,4 +271,4 @@ blockquote { border-left: 2px solid #151515; color: var(--muted); padding-left: 
 .calendar-day[aria-current="date"] { outline: 1px solid var(--ink); outline-offset: 2px; }
 .calendar-day:disabled { opacity: .35; }
 .problem-day[hidden], .problem-entry[hidden], #problem-empty[hidden], .problem-initial-empty[hidden] { display: none !important; }
-@media (max-width: 600px) { .problem-filters { align-items: stretch; flex-direction: column; } .problem-filters label { display: flex; align-items: center; } .problem-filters select { flex: 1; min-width: 0; } .calendar-day { min-height: 48px; } }
+@media (max-width: 600px) { .problem-category-picker { flex: initial; } .problem-filters { align-items: stretch; flex-direction: column; } .problem-filters label { display: flex; align-items: center; } .problem-filters select { flex: 1; min-width: 0; } .calendar-day { min-height: 48px; } }

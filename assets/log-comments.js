@@ -36,6 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const container = panel.querySelector('.log-comments-widget');
     const iframe = document.createElement('iframe');
     iframe.className = 'log-comments-frame';
+    iframe.style.backgroundColor = '#fff';
+    iframe.style.colorScheme = 'light';
     iframe.title = `${panelTitle(panel)}的评论`;
     iframe.setAttribute('allow', 'clipboard-write');
     iframe.src = makeSource(panel);

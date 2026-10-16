@@ -14,7 +14,7 @@ include-after-body:
 
 ```{=html}
 <div class="problem-filters">
-  <label>分类 <select id="problem-category"><option value="">全部分类</option></select></label>
+  <details class="problem-category-picker" open><summary>分类 / <span id="problem-category-label">全部</span></summary><div id="problem-category" class="problem-category-tree" aria-label="题目分类"></div></details>
   <label>标签 <select id="problem-tag"><option value="">全部标签</option></select></label>
   <button type="button" id="problem-filter-reset">清除筛选</button>
 </div>
