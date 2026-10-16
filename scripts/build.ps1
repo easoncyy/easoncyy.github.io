@@ -14,6 +14,8 @@ if (-not $SkipPdf -or -not (Test-Path -LiteralPath assets/pdf/math-notes.pdf)) {
     Copy-Item -LiteralPath documents/math-notes.pdf -Destination assets/pdf/math-notes.pdf
 }
 # Bootstrap the include file before Quarto resolves project inputs.
+python scripts/render-problems.py
+if ($LASTEXITCODE -ne 0) { throw 'Problem generation failed.' }
 python scripts/render-blog.py
 if ($LASTEXITCODE -ne 0) { throw 'Blog generation failed.' }
 python scripts/render-reading.py

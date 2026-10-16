@@ -108,19 +108,27 @@ def main():
     site = ROOT / "_site"
     if not (site / "index.html").is_file() or not (site / "assets/pdf/math-notes.pdf").is_file():
         raise RuntimeError("Build the website and PDF with scripts/build.ps1 before publishing.")
-    # Source is committed and pushed by sync.ps1; only deploy the rendered site here.
+    # Source is committed and pushed by sync.ps1. Local publishes deploy the
+    # rendered branch; the scheduled workflow rebuilds from main without a PAT.
+    workflow = api("GET", f"{API_ROOT}/actions/workflows/publish-pages.yml", allow_missing=True)
+    if not workflow:
+        raise RuntimeError('Push .github/workflows/publish-pages.yml to main before publishing.')
+    pages = api("GET", f"{API_ROOT}/pages", allow_missing=True)
+    if not pages:
+        api("POST", f"{API_ROOT}/pages", {"build_type": "workflow"})
+    elif pages.get("build_type") != "workflow":
+        api("PUT", f"{API_ROOT}/pages", {"build_type": "workflow"})
+    environment = api("GET", f"{API_ROOT}/environments/github-pages", allow_missing=True)
+    if environment and (environment.get('deployment_branch_policy') or {}).get('custom_branch_policies'):
+        endpoint = f"{API_ROOT}/environments/github-pages/deployment-branch-policies"
+        policies = api('GET', endpoint)
+        if not any(policy['name'] == 'main' for policy in policies['branch_policies']):
+            api('POST', endpoint, {'name':'main', 'type':'branch'})
     publish_tree("gh-pages", [(p, p.relative_to(site).as_posix()) for p in site.rglob("*") if p.is_file()],
                  "Publish rendered personal website", False)
-    pages = api("GET", f"{API_ROOT}/pages", allow_missing=True)
-    source = {"branch": "gh-pages", "path": "/"}
-    if not pages:
-        api("POST", f"{API_ROOT}/pages", {"build_type": "legacy", "source": source})
-        api("PUT", f"{API_ROOT}/pages", {"build_type": "legacy", "source": source})
-        api("POST", f"{API_ROOT}/pages/builds")
-    elif pages.get("source") != source or pages.get("build_type") != "legacy":
-        api("PUT", f"{API_ROOT}/pages", {"build_type": "legacy", "source": source})
-        api("POST", f"{API_ROOT}/pages/builds")
-    # An update to the configured gh-pages branch already triggers deployment.
+    api('POST', f'{API_ROOT}/actions/workflows/publish-pages.yml/dispatches',
+        {'ref':'main', 'inputs':{'rebuild':'false'}})
+    print('Pages deployment workflow dispatched. Track progress in the repository Actions tab.', flush=True)
     print("Pages configured: https://easoncyy.github.io/", flush=True)
 
 

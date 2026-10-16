@@ -1,0 +1,53 @@
+name: Publish website and scheduled problems
+
+on:
+  schedule:
+    # Beijing 00:05, UTC 16:05 on the previous day.
+    - cron: '5 16 * * *'
+  workflow_dispatch:
+    inputs:
+      rebuild:
+        description: Rebuild from main (including today's scheduled problems)
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ (github.event_name == 'schedule' || inputs.rebuild == true) && 'main' || 'gh-pages' }}
+      - uses: actions/setup-python@v5
+        if: github.event_name == 'schedule' || inputs.rebuild == true
+        with:
+          python-version: '3.12'
+      - uses: quarto-dev/quarto-actions/setup@v2
+        if: github.event_name == 'schedule' || inputs.rebuild == true
+        with:
+          version: '1.10.18'
+      - name: Build today's website
+        if: github.event_name == 'schedule' || inputs.rebuild == true
+        shell: pwsh
+        run: |
+          python -m pip install -r requirements.txt
+          if ($LASTEXITCODE -ne 0) { throw 'Dependency installation failed' }
+          ./scripts/build.ps1 -SkipPdf
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ${{ (github.event_name == 'schedule' || inputs.rebuild == true) && '_site' || '.' }}
+      - name: Deploy GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

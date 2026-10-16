@@ -4,6 +4,7 @@ project:
   post-render:
     - python scripts/version-site-assets.py
   pre-render:
+    - python scripts/render-problems.py
     - python scripts/render-blog.py
     - python scripts/render-reading.py
     - python scripts/render-log.py
@@ -11,6 +12,7 @@ project:
   render:
     - index.qmd
     - blog.qmd
+    - problems.qmd
     - about.qmd
     - projects.qmd
     - links.qmd
@@ -35,6 +37,8 @@ website:
     left:
       - href: blog.qmd
         text: "<span class='nav-path'>blog/</span><span class='nav-caption'>博客</span>"
+      - href: problems.qmd
+        text: "<span class='nav-path'>problems/</span><span class='nav-caption'>每日好题</span>"
       - href: projects.qmd
         text: "<span class='nav-path'>projects/</span><span class='nav-caption'>项目</span>"
       - href: log.qmd

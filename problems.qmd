@@ -1,0 +1,40 @@
+---
+title: "~/notes/problems"
+subtitle: "每日好题"
+description: "每天几道，留一点时间认真想。"
+body-classes: directory-page problems-page
+toc: false
+include-after-body:
+  text: '<script defer src="/assets/problems.js"></script>'
+---
+
+::: {.log-console}
+`$ solve ~/notes/problems --date today`
+:::
+
+```{=html}
+<div class="problem-filters">
+  <label>分类 <select id="problem-category"><option value="">全部分类</option></select></label>
+  <label>标签 <select id="problem-tag"><option value="">全部标签</option></select></label>
+  <button type="button" id="problem-filter-reset">清除筛选</button>
+</div>
+<p id="problem-status" aria-live="polite"></p>
+```
+
+{{< include assets/problem-entries.md >}}
+
+```{=html}
+<p id="problem-empty" hidden>这一天暂无符合条件的题目。</p>
+<section class="problem-calendar" aria-label="按日期查看题目">
+  <h2>calendar/ <small>按日期回看</small></h2>
+  <div class="calendar-toolbar">
+    <button type="button" id="calendar-prev" aria-label="上一个月">←</button>
+    <strong id="calendar-month" aria-live="polite"></strong>
+    <button type="button" id="calendar-next" aria-label="下一个月">→</button>
+    <button type="button" id="calendar-today">今天</button>
+  </div>
+  <div class="calendar-weekdays" aria-hidden="true"><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span></div>
+  <div id="calendar-grid" class="calendar-grid"></div>
+  <p class="calendar-hint">带数量的日期已收录题目。点击日期切换上方题目，答案默认收起。</p>
+</section>
+```

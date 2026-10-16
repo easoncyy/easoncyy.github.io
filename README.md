@@ -297,3 +297,68 @@ python scripts/add-book.py "书名" "D:\Books\book.epub" --slug my-epub-book --a
 ### 手动新增作业时的 PDF 路径
 
 文件放入 `assets/pdf/homework/` 后，文章里的阅读、下载和 iframe 地址都使用以 `/` 开头的网站路径，例如 `/assets/pdf/homework/2026-linear-algebra-w05-homework.pdf`。不要使用 `D:\...`、反斜杠或不带开头 `/` 的 `assets/...`：文章在多级目录下，后一种相对地址会指向文章自己的子目录，导致 404。
+
+## 每日好题 problems/ 与本地 GUI
+
+**双击仓库根目录 `manage-site.cmd` 打开“网站管理”窗口。** 无需每次输入命令。需要本机 Python（含 Tkinter）和 `requirements.txt` 中的 PyYAML；当前电脑已具备。窗口只在本机运行，不开放网站后台登录入口，不保存 GitHub 密钥。
+
+### 日常更新流程
+
+1. **题库编辑**：新建或选择题目，填写标题、分类目录（如 `MATH/LINEAR-ALGEBRA/矩阵`）、逗号分隔标签、题目正文和答案。支持 Markdown 与 `$...$`、`$$...$$` 公式。保存到本地。
+2. **每日排期**：输入 `YYYY-MM-DD`，载入该日；从题库多选，加入当天，可上移、下移或移除。选择几道就发布几道，没有固定数量。
+3. **保存当天排期**，再到“构建与发布”点击“构建并发布网站”。发布会提交仓库全部修改，操作前窗口会提醒。
+4. 未来日期的题目会留在题库和排期中，网页构建只收录北京时间当天及以前的内容。发布一次即可同步未来安排；电脑关闭后仍由 GitHub Actions 每天 **北京时间 00:05** 自动构建和部署。
+5. GitHub 定时任务不是精确计时服务，可能延迟；公开仓库长期无活动时计划任务可能被 GitHub 停用。可在 Actions 页面手动运行 `Publish website and scheduled problems`，勾选 rebuild 从源码重新构建。
+
+GUI 还支持新建日志（多图）、修改图书阅读状态、本地 HTTP 预览、查看部署状态和一键发布。博客正文仍用编辑器修改 `.qmd`，窗口提供文件夹入口。构建或发布期间不能保存修改，防止发布内容不一致；文件覆盖前的本地备份保存在忽略上传的 `tmp/manager-backups/`。
+
+### 页面行为
+
+- 上方展示所选日期的题目；初次打开优先今天，今天没有题则显示最近一期。
+- 每道题的答案默认折叠，切换日期会重新收起。
+- 下方月历支持前后翻月、回到今天，带数量的日期可查看历史题目。
+- 分类支持任意层级，标签独立，可跨分类筛选；筛选只影响当前日期题目。
+- 可分享日期链接：`/problems.html?date=2026-10-16`。
+- 未排期和未来日期的题目不会进入网页资源或站内搜索；**本仓库公开，题库源文件仍可在 GitHub 中查看，排期不是保密措施**。
+
+### 文件格式与扩展
+
+题目保存在 `problems/bank/题目ID.qmd`。ID 使用小写英文、数字和连字符，发布后尽量保持稳定。正文与答案之间用 `<!-- answer -->` 分隔：
+
+```markdown
+---
+title: "题目标题"
+category-path: [MATH, LINEAR-ALGEBRA, 矩阵]
+tags: [习题, 基础]
+source: "可选的题目出处"
+draft: false
+---
+
+在这里写题目，例如 $Ax=0$。
+
+<!-- answer -->
+
+在这里写答案与解析。
+```
+
+`problems/schedule.json` 将日期映射到题目 ID 列表，顺序即网页顺序：
+
+```json
+{
+  "2026-10-16": ["linear-algebra-nullspace"],
+  "2026-10-17": ["linear-algebra-nullspace"]
+}
+```
+
+同一道题可跨日安排，同日不能重复。草稿不能排期；错误引用、无效日期和缺少答案会阻止构建。仓库附带一道**未排期示例题**供编辑参考，未替你指定每日正式题目。
+
+| 目的 | 操作或命令 |
+| --- | --- |
+| 打开管理窗口 | 双击 `manage-site.cmd` |
+| 生成题目页面包含文件 | `python scripts/render-problems.py`（构建自动执行） |
+| 预览与发布 | GUI“构建与发布”，或继续使用原 `preview.ps1` / `deploy.ps1` |
+| 更改定时任务时间 | 编辑 `.github/workflows/publish-pages.yml` 的 schedule；默认 UTC 16:05 对应次日北京时间 00:05 |
+
+### 部署方式
+
+Pages 使用 GitHub Actions。本地发布仍将渲染文件上传到 `gh-pages`，随后明确触发部署工作流；定时任务从 `main` 重新构建当天页面并通过官方 Pages artifact 部署。不需要另外提供 PAT 或将凭据放到网页里。部署环境允许 `main` 分支运行；原分支规则保留。原有命令保持可用，`deploy.ps1` 完成表示已提交部署任务，最终状态以 Actions 为准。

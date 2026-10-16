@@ -1,0 +1,23 @@
+---
+title: "示例：齐次方程组的非零解"
+category-path: [MATH, LINEAR-ALGEBRA, 线性方程组]
+tags: [基础, 秩, 习题]
+source: "功能示例，尚未排期"
+draft: false
+---
+
+设 $A$ 是一个 $3\times 4$ 的实矩阵，且 $\operatorname{rank}(A)=3$。
+
+齐次方程组 $Ax=0$ 是否一定有非零解？其解空间维数是多少？
+
+<!-- answer -->
+
+**一定有非零解，解空间维数为 $1$。**
+
+由秩与零空间维数的关系：
+
+$$
+\dim\ker A=4-\operatorname{rank}(A)=4-3=1.
+$$
+
+解空间维数大于零，所以存在非零解。
