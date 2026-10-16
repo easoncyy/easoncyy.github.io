@@ -1,4 +1,4 @@
-// Each journal entry owns an independent giscus iframe, loaded on expansion.
+// Each journal entry or problem date owns a giscus iframe, loaded on expansion.
 document.addEventListener('DOMContentLoaded', () => {
   const config = window.SITE_COMMENTS;
   const panels = [...document.querySelectorAll('.log-comments')];
@@ -15,8 +15,10 @@ document.addEventListener('DOMContentLoaded', () => {
     history.replaceState(null, '', page.href);
   }
   const widgets = new Map();
+  const panelTitle = panel => panel.dataset.commentTitle || panel.closest('.log-entry')?.querySelector('.log-entry-title')?.textContent || '日志';
   const makeSource = panel => {
     const backlink = new URL(page.href);
+    if (panel.dataset.commentDate) backlink.searchParams.set('date', panel.dataset.commentDate);
     backlink.hash = panel.id;
     const params = new URLSearchParams({
       origin: backlink.href, backLink: backlink.href, session,
@@ -24,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
       category: config.category, categoryId: config.categoryId,
       term: panel.dataset.commentTerm, strict: '1',
       reactionsEnabled: '1', emitMetadata: '0', inputPosition: 'top',
-      theme: 'light', description: panel.closest('.log-entry').querySelector('.log-entry-title')?.textContent || '日志评论'
+      theme: 'light', description: panelTitle(panel)
     });
     return `${origin}/zh-CN/widget?${params}`;
   };
@@ -34,7 +36,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const container = panel.querySelector('.log-comments-widget');
     const iframe = document.createElement('iframe');
     iframe.className = 'log-comments-frame';
-    iframe.title = `${panel.closest('.log-entry').querySelector('.log-entry-title')?.textContent || '日志'}的评论`;
+    iframe.style.backgroundColor = '#fff';
+    iframe.style.colorScheme = 'light';
+    iframe.title = `${panelTitle(panel)}的评论`;
     iframe.setAttribute('allow', 'clipboard-write');
     iframe.src = makeSource(panel);
     status.textContent = '正在加载评论…';

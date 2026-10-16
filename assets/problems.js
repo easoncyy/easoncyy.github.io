@@ -3,21 +3,41 @@ document.addEventListener('DOMContentLoaded',()=>{
   const days=[...document.querySelectorAll('.problem-day')];
   const questions=[...document.querySelectorAll('.problem-entry')].map(el=>({el,...JSON.parse(el.dataset.problem)}));
   const category=document.querySelector('#problem-category'),tag=document.querySelector('#problem-tag');
+  let categoryPath=[];
   const today=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
   const query=new URLSearchParams(location.search);
   const valid=d=>/^\d{4}-\d{2}-\d{2}$/.test(d)&&!Number.isNaN(Date.parse(d+'T00:00:00Z'));
   let selected=valid(query.get('date')||'')?query.get('date'):(index.dates[today]?today:Object.keys(index.dates).sort().at(-1)||today);
   let [year,month]=selected.split('-').map(Number);
   const option=(select,value,label)=>{const o=document.createElement('option');o.value=value;o.textContent=label;select.append(o);};
-  const paths=new Set();questions.forEach(q=>q.path.forEach((_,i)=>paths.add(q.path.slice(0,i+1).join('/'))));
-  [...paths].sort().forEach(p=>option(category,p,p.split('/').join(' / ')));
   [...new Set(questions.flatMap(q=>q.tags))].sort().forEach(t=>option(tag,t,t));
+  function drawCategories(){
+    category.replaceChildren();
+    document.querySelector('#problem-category-label').textContent=categoryPath.join(' / ')||'全部';
+    const button=(label,active,action)=>{const b=document.createElement('button');b.type='button';b.textContent=label;b.setAttribute('aria-pressed',String(active));b.addEventListener('click',action);return b;};
+    category.append(button('全部分类',!categoryPath.length,()=>{categoryPath=[];drawCategories();showDay();}));
+    function branch(parent,prefix){
+      const members=questions.filter(q=>prefix.every((p,i)=>q.path[i]===p));
+      const names=[...new Set(members.map(q=>q.path[prefix.length]).filter(Boolean))].sort();
+      names.forEach(name=>{
+        const current=[...prefix,name];const active=current.every((p,i)=>categoryPath[i]===p);
+        const children=members.filter(q=>q.path[prefix.length]===name);
+        const expandable=children.some(q=>q.path.length>current.length);
+        const node=document.createElement('div');node.className='problem-category-node';
+        const control=button(name+'/',active,()=>{categoryPath=active&&categoryPath.length===current.length?prefix:current;drawCategories();showDay();});
+        if(expandable)control.setAttribute('aria-expanded',String(active));node.append(control);
+        if(active&&expandable){const nested=document.createElement('div');nested.className='directory-children';branch(nested,current);node.append(nested);}
+        parent.append(node);
+      });
+    }
+    const roots=document.createElement('div');roots.className='directory-root-list';branch(roots,[]);category.append(roots);
+  }
   function showDay(resetAnswers=false){
     days.forEach(el=>el.hidden=el.dataset.date!==selected);
     if(resetAnswers)document.querySelectorAll('.problem-answer').forEach(el=>el.open=false);
     let count=0;
     questions.forEach(q=>{
-      const prefix=category.value.split('/').filter(Boolean);
+      const prefix=categoryPath;
       q.el.hidden=!prefix.every((p,i)=>q.path[i]===p)||Boolean(tag.value&&!q.tags.includes(tag.value));
       if(!q.el.hidden&&q.el.closest('.problem-day').dataset.date===selected)count++;
     });
@@ -46,7 +66,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   }
   for(const id of ['prev','next'])document.querySelector('#calendar-'+id).addEventListener('click',()=>{const date=new Date(Date.UTC(year,month-1+(id==='prev'?-1:1),1));year=date.getUTCFullYear();month=date.getUTCMonth()+1;calendar();});
   document.querySelector('#calendar-today').addEventListener('click',()=>{selected=today;[year,month]=today.split('-').map(Number);const url=new URL(location.href);url.searchParams.set('date',today);history.replaceState(null,'',url);showDay(true);calendar();});
-  category.addEventListener('change',()=>showDay());tag.addEventListener('change',()=>showDay());
-  document.querySelector('#problem-filter-reset').addEventListener('click',()=>{category.value='';tag.value='';showDay();});
-  showDay();calendar();
+  tag.addEventListener('change',()=>showDay());
+  document.querySelector('#problem-filter-reset').addEventListener('click',()=>{categoryPath=[];tag.value='';drawCategories();showDay();});
+  drawCategories();showDay();calendar();
 });

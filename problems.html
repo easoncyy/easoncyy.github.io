@@ -77,8 +77,37 @@ ul.task-list li input[type="checkbox"] {
 <style>html{ scroll-behavior: smooth; }</style>
 <script defer="" src="./assets/directory.js?v=05751f758f0b"></script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="./assets/vendor/mathjax/tex-svg-full.js?v=a4354ff94fd8" type="text/javascript"></script>
 
-<link rel="stylesheet" href="styles.css?v=b0eaf221e5b4">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css?v=c980a0946e71">
 </head>
 
 <body class="nav-fixed directory-page problems-page fullcontent quarto-light">
@@ -174,20 +203,165 @@ ul.task-list li input[type="checkbox"] {
 <p><code>$ solve ~/notes/problems --date today</code></p>
 </div>
 <div class="problem-filters">
-  <label>分类 <select id="problem-category"><option value="">全部分类</option></select></label>
+  <details class="problem-category-picker" open=""><summary>分类 / <span id="problem-category-label">全部</span></summary><div id="problem-category" class="problem-category-tree" aria-label="题目分类"></div></details>
   <label>标签 <select id="problem-tag"><option value="">全部标签</option></select></label>
   <button type="button" id="problem-filter-reset">清除筛选</button>
 </div>
 <p id="problem-status" aria-live="polite"></p>
-<div class="problem-initial-empty">
-<p>题库已就绪，等待第一组每日好题。</p>
+<section id="section" class="level2 problem-date-heading problem-day" data-date="2026-10-16">
+<h2 class="problem-date-heading anchored" data-anchor-id="section">2026-10-16</h2>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;反证法&quot;, &quot;阶乘级数&quot;], &quot;title&quot;: &quot;证明 e 是无理数&quot;}">
+
+<div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
+
+<h3 class="anchored">01. 证明 e 是无理数</h3>
+
+<div class="entry-tags">#反证法 · #阶乘级数</div>
+
+<p>证明自然常数 <span class="math inline">\(e\)</span> 是无理数。</p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p><strong>思路：</strong> 沿用博客《吉米多维奇刷题-数列-1》中的证明：利用阶乘级数的余项，构造一个严格介于 <span class="math inline">\(0\)</span> 与 <span class="math inline">\(1\)</span> 之间的整数。</p>
+<p>由 <span class="math inline">\(e\)</span> 的阶乘级数展开，对任意正整数 <span class="math inline">\(n\)</span>，记</p>
+<p><span class="math display">\[
+R_n=e-\sum_{k=0}^{n}\frac1{k!}=\sum_{k=n+1}^{\infty}\frac1{k!}.
+\]</span></p>
+<p>余项首项为 <span class="math inline">\(1/(n+1)!\)</span>，后续相邻项的比值不超过 <span class="math inline">\(1/(n+2)\)</span>，且从某项起严格小于它。因此</p>
+<p><span class="math display">\[
+0&lt;R_n&lt;\frac1{(n+1)!}\sum_{j=0}^{\infty}\frac1{(n+2)^j}
+=\frac{n+2}{(n+1)^2n!}&lt;\frac1{n\,n!}.
+\]</span></p>
+<p>反设 <span class="math inline">\(e=p/q\)</span>，其中 <span class="math inline">\(p,q\)</span> 为正整数。取 <span class="math inline">\(n=q\)</span>，两边同乘 <span class="math inline">\(q!q\)</span>，得到</p>
+<p><span class="math display">\[
+0&lt;q!q\,e-\sum_{k=0}^{q}\frac{q!q}{k!}&lt;1.
+\]</span></p>
+<p>然而 <span class="math inline">\(q!q\,e=pq!\)</span> 为整数，且当 <span class="math inline">\(0\le k\le q\)</span> 时，<span class="math inline">\(q!q/k!\)</span> 也为整数。因此中间的数是整数，与它严格介于 <span class="math inline">\(0\)</span> 和 <span class="math inline">\(1\)</span> 之间矛盾。</p>
+<p>故 <span class="math inline">\(e\)</span> 是无理数。</p>
+<p>参考：<a href="./posts/20261009-analysis-array-1/">本站博客第 72、73 题</a>。</p>
+
+</div></details>
+
+<p class="problem-source">来源：本站博客《吉米多维奇刷题-数列-1》第 72、73 题</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;行列式&quot;], &quot;tags&quot;: [&quot;拆分法&quot;, &quot;行列式性质&quot;], &quot;title&quot;: &quot;乘积为 1 的四元行列式&quot;}">
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 行列式</div>
+
+<h3 class="anchored">02. 乘积为 1 的四元行列式</h3>
+
+<div class="entry-tags">#拆分法 · #行列式性质</div>
+
+<p>设 <span class="math inline">\(abcd=1\)</span>，计算</p>
+<p><span class="math display">\[
+D=\begin{vmatrix}
+a^2+\dfrac1{a^2}&amp;a&amp;\dfrac1a&amp;1\\
+b^2+\dfrac1{b^2}&amp;b&amp;\dfrac1b&amp;1\\
+c^2+\dfrac1{c^2}&amp;c&amp;\dfrac1c&amp;1\\
+d^2+\dfrac1{d^2}&amp;d&amp;\dfrac1d&amp;1
+\end{vmatrix}.
+\]</span></p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p><strong>解：</strong> 按第一列的加法拆分，得</p>
+<p><span class="math display">\[
+D=
+\begin{vmatrix}
+a^2&amp;a&amp;1/a&amp;1\\
+b^2&amp;b&amp;1/b&amp;1\\
+c^2&amp;c&amp;1/c&amp;1\\
+d^2&amp;d&amp;1/d&amp;1
+\end{vmatrix}
++
+\begin{vmatrix}
+1/a^2&amp;a&amp;1/a&amp;1\\
+1/b^2&amp;b&amp;1/b&amp;1\\
+1/c^2&amp;c&amp;1/c&amp;1\\
+1/d^2&amp;d&amp;1/d&amp;1
+\end{vmatrix}.
+\]</span></p>
+<p>从第一个行列式的四行分别提出 <span class="math inline">\(a,b,c,d\)</span>，得到</p>
+<p><span class="math display">\[
+D=abcd
+\begin{vmatrix}
+a&amp;1&amp;1/a^2&amp;1/a\\
+b&amp;1&amp;1/b^2&amp;1/b\\
+c&amp;1&amp;1/c^2&amp;1/c\\
+d&amp;1&amp;1/d^2&amp;1/d
+\end{vmatrix}
++
+\begin{vmatrix}
+1/a^2&amp;a&amp;1/a&amp;1\\
+1/b^2&amp;b&amp;1/b&amp;1\\
+1/c^2&amp;c&amp;1/c&amp;1\\
+1/d^2&amp;d&amp;1/d&amp;1
+\end{vmatrix}.
+\]</span></p>
+<p>将第二个行列式的列顺序调整为原来的第 <span class="math inline">\(2,4,1,3\)</span> 列：先交换第 <span class="math inline">\(1,2\)</span> 列，再将第 <span class="math inline">\(4\)</span> 列向左交换两次，共交换三次，因此变号。于是</p>
+<p><span class="math display">\[
+D=(abcd-1)
+\begin{vmatrix}
+a&amp;1&amp;1/a^2&amp;1/a\\
+b&amp;1&amp;1/b^2&amp;1/b\\
+c&amp;1&amp;1/c^2&amp;1/c\\
+d&amp;1&amp;1/d^2&amp;1/d
+\end{vmatrix}
+=0.
+\]</span></p>
+
+</div></details>
+
+<p class="problem-source">来源：线性代数习题精选精解</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;COMBINATORICS&quot;, &quot;抽屉原理&quot;], &quot;tags&quot;: [&quot;同余&quot;, &quot;抽屉原理&quot;], &quot;title&quot;: &quot;52 个整数中的和或差&quot;}">
+
+<div class="problem-meta">MATH / COMBINATORICS / 抽屉原理</div>
+
+<h3 class="anchored">03. 52 个整数中的和或差</h3>
+
+<div class="entry-tags">#同余 · #抽屉原理</div>
+
+<p>证明：任给 <span class="math inline">\(52\)</span> 个整数，其中必有两个整数，它们的和或差能被 <span class="math inline">\(100\)</span> 整除。</p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p><strong>思路：</strong> 将模 <span class="math inline">\(100\)</span> 意义下互为相反数的余数放进同一个抽屉。</p>
+<p>将模 <span class="math inline">\(100\)</span> 的 <span class="math inline">\(100\)</span> 种余数分成以下 <span class="math inline">\(51\)</span> 组：</p>
+<p><span class="math display">\[
+\{0\},\quad\{50\},\quad\{1,99\},\quad\{2,98\},\quad\ldots,\quad\{49,51\}.
+\]</span></p>
+<p>每个整数按照它除以 <span class="math inline">\(100\)</span> 的非负余数归入对应组。由于有 <span class="math inline">\(52\)</span> 个整数、只有 <span class="math inline">\(51\)</span> 个组，由抽屉原理，至少有两个整数 <span class="math inline">\(u,v\)</span> 被归入同一组。</p>
+<ul>
+<li>如果两者的余数相同，则 <span class="math inline">\(u-v\equiv0\pmod{100}\)</span>，即它们的差能被 <span class="math inline">\(100\)</span> 整除。</li>
+<li>如果两者的余数不同，则该组必为 <span class="math inline">\(\{r,100-r\}\)</span>，从而 <span class="math inline">\(u+v\equiv0\pmod{100}\)</span>，即它们的和能被 <span class="math inline">\(100\)</span> 整除。</li>
+</ul>
+<p>因此结论成立。整数允许为负数，也允许重复；这里选取的是所给 <span class="math inline">\(52\)</span> 个整数中的两个不同位置。</p>
+<p><strong>补充：为什么是 52？</strong> 取 <span class="math inline">\(0,1,2,\ldots,50\)</span> 这 <span class="math inline">\(51\)</span> 个整数，任意两个不同数的差的绝对值介于 <span class="math inline">\(1\)</span> 与 <span class="math inline">\(50\)</span> 之间，和介于 <span class="math inline">\(1\)</span> 与 <span class="math inline">\(99\)</span> 之间，都不能被 <span class="math inline">\(100\)</span> 整除。因此 <span class="math inline">\(52\)</span> 是保证结论成立的最小数量。</p>
+
+</div></details>
+
+<p class="problem-source">来源：Introductory Combinatics</p>
+
 </div>
 
-<script id="problem-index" type="application/json">{"builtDate": "2026-10-16", "dates": {}}</script>
+<details id="discussion-2026-10-16" class="log-comments problem-discussion" data-comment-term="/problems/2026-10-16/" data-comment-date="2026-10-16" data-comment-title="每日好题 · 2026-10-16">
+
+<summary>discussion/ <span>2026-10-16 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+</section>
+
+<script id="problem-index" type="application/json">{"builtDate": "2026-10-16", "dates": {"2026-10-16": 3}}</script>
 
 <p id="problem-empty" hidden="">这一天暂无符合条件的题目。</p>
 <section class="problem-calendar" aria-label="按日期查看题目">
-  <h2 class="anchored">calendar/ <small>按日期回看</small></h2>
+  <h2 class="anchored">calendar/ <small>日历</small></h2>
   <div class="calendar-toolbar">
     <button type="button" id="calendar-prev" aria-label="上一个月">←</button>
     <strong id="calendar-month" aria-live="polite"></strong>
@@ -196,7 +370,7 @@ ul.task-list li input[type="checkbox"] {
   </div>
   <div class="calendar-weekdays" aria-hidden="true"><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span></div>
   <div id="calendar-grid" class="calendar-grid"></div>
-  <p class="calendar-hint">带数量的日期已收录题目。点击日期切换上方题目，答案默认收起。</p>
+  <p class="calendar-hint">带数量的日期已收录题目。</p>
 </section>
 
 
@@ -616,7 +790,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
   </div>
 </footer>
-<script defer="" src="./assets/problems.js?v=19634b5023e1"></script>
+<script defer="" src="./assets/problems.js?v=e26ce5d175a8"></script><script defer="" src="./assets/comments-config.js?v=0740342d2f79"></script><script defer="" src="./assets/log-comments.js?v=91613ddb85e7"></script>
 
 
 
