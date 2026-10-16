@@ -12,26 +12,36 @@ from pathlib import Path
 import tkinter as tk
 from tkinter import ttk, messagebox, filedialog
 from tkinter.scrolledtext import ScrolledText
-from problem_store import ROOT, BANK, SCHEDULE, today, load_bank, load_schedule, save_problem, write_json, valid_id
+from problem_store import ROOT, BANK, SCHEDULE, today, load_bank, load_schedule, save_problem, write_json, valid_id, trash_problem, restore_problem, problem_status
+from library_panel import LibraryPanel
 
 class Manager(tk.Tk):
     def __init__(self):
         super().__init__()
         self.title('~/notes · 网站管理')
-        self.geometry('1180x820'); self.minsize(900,650)
+        self.geometry('1320x900'); self.minsize(1100,780)
         self.busy=False; self.events=queue.Queue(); self.current=None; self.photos=[]
         self.bank={}; self.day_ids=[]
         style=ttk.Style(self); style.theme_use('clam')
         style.configure('.',font=('Microsoft YaHei UI',10))
+        style.configure('Heading.TLabel',font=('Microsoft YaHei UI',15,'bold'))
+        style.configure('Muted.TLabel',foreground='#666666',font=('Microsoft YaHei UI',9))
+        style.configure('TButton',padding=(12,7))
+        style.configure('Primary.TButton',background='#202020',foreground='white',padding=(14,8))
+        style.map('Primary.TButton',background=[('active','#444444')],foreground=[('active','white')])
+        style.configure('Treeview',rowheight=32)
+        style.configure('Treeview.Heading',padding=(6,8),font=('Microsoft YaHei UI',10,'bold'))
+        ttk.Label(self,text='~/notes  /  网站管理',style='Heading.TLabel',padding=(18,14,18,0)).pack(anchor='w')
         tabs=ttk.Notebook(self); tabs.pack(fill='both',expand=True,padx=12,pady=12)
         self.problem_tab=ttk.Frame(tabs,padding=12); tabs.add(self.problem_tab,text='题库编辑')
         self.schedule_tab=ttk.Frame(tabs,padding=12); tabs.add(self.schedule_tab,text='每日排期')
-        self.content_tab=ttk.Frame(tabs,padding=12); tabs.add(self.content_tab,text='日志与图书')
+        self.content_tab=ttk.Frame(tabs,padding=12); tabs.add(self.content_tab,text='日志')
+        self.library_tab=LibraryPanel(tabs,self);tabs.add(self.library_tab,text='图书馆')
         self.publish_tab=ttk.Frame(tabs,padding=12); tabs.add(self.publish_tab,text='构建与发布')
         self.make_bank(); self.make_schedule(); self.make_content(); self.make_publish()
         self.status=tk.StringVar(value='修改保存在本地；点击“构建并发布网站”后才会更新到线上。')
         ttk.Label(self,textvariable=self.status,padding=(15,4)).pack(fill='x')
-        self.refresh(); self.new_problem(); self.after(150,self.poll)
+        self.refresh(); self.new_problem(); self.load_day(); self.after(150,self.poll)
         self.protocol('WM_DELETE_WINDOW',self.close)
 
     def guard(self):
@@ -49,21 +59,25 @@ class Manager(tk.Tk):
     def make_bank(self):
         pane=ttk.Panedwindow(self.problem_tab,orient='horizontal'); pane.pack(fill='both',expand=True)
         left=ttk.Frame(pane); right=ttk.Frame(pane,padding=(14,0)); pane.add(left,weight=1); pane.add(right,weight=3)
-        self.bank_tree=ttk.Treeview(left,columns=('title','state'),show='headings',selectmode='browse')
-        self.bank_tree.heading('title',text='题目');self.bank_tree.heading('state',text='状态')
-        self.bank_tree.column('title',width=245);self.bank_tree.column('state',width=55)
+        self.bank_tree=ttk.Treeview(left,columns=('title','state','schedule','dates'),show='headings',selectmode='browse')
+        self.bank_tree.heading('title',text='题目');self.bank_tree.heading('state',text='内容状态');self.bank_tree.heading('schedule',text='排期情况')
+        self.bank_tree.column('title',width=210,minwidth=120);self.bank_tree.column('state',width=75,minwidth=70);self.bank_tree.column('schedule',width=95,minwidth=80)
+        self.bank_tree.heading('dates',text='已保存日期');self.bank_tree.column('dates',width=120,minwidth=90)
         self.bank_tree.pack(fill='both',expand=True)
         self.bank_tree.bind('<<TreeviewSelect>>',lambda _:self.select_problem())
         bar=ttk.Frame(left);bar.pack(fill='x',pady=8)
         ttk.Button(bar,text='新建题目',command=self.new_problem).pack(side='left')
         ttk.Button(bar,text='刷新',command=lambda:self.safely(self.refresh)).pack(side='left',padx=5)
+        deletion=ttk.Frame(left);deletion.pack(fill='x')
+        ttk.Button(deletion,text='删除题目',command=lambda:self.safely(self.delete_question)).pack(side='left')
+        ttk.Button(deletion,text='从回收站恢复',command=lambda:self.safely(self.restore_question)).pack(side='left',padx=5)
         self.fields={}
         for row,(key,label) in enumerate([('id','ID（英文、数字、连字符）'),('title','题目标题'),('path','分类目录（用 / 分隔）'),('tags','标签（逗号分隔）'),('source','来源 / 出处')]):
             ttk.Label(right,text=label).grid(row=row,column=0,sticky='w',pady=3)
             value=tk.StringVar();self.fields[key]=value
             ttk.Entry(right,textvariable=value).grid(row=row,column=1,sticky='ew',pady=3)
         self.draft=tk.BooleanVar(value=False)
-        ttk.Checkbutton(right,text='草稿（草稿不能排期）',variable=self.draft).grid(row=5,column=1,sticky='w')
+        ttk.Checkbutton(right,text='草稿：允许未写完，保存后暂不允许排期',variable=self.draft).grid(row=5,column=1,sticky='w')
         ttk.Label(right,text='题目正文 · Markdown / $行内公式$ / $$独立公式$$').grid(row=6,column=0,columnspan=2,sticky='w',pady=(10,3))
         self.question=ScrolledText(right,height=8,undo=True,font=('Consolas',11));self.question.grid(row=7,column=0,columnspan=2,sticky='nsew')
         ttk.Label(right,text='答案与解析 · 网页默认折叠').grid(row=8,column=0,columnspan=2,sticky='w',pady=(10,3))
@@ -73,10 +87,11 @@ class Manager(tk.Tk):
 
     def new_problem(self):
         self.current=None
+        self.bank_tree.selection_remove(self.bank_tree.selection())
         for key,v in self.fields.items(): v.set('')
         self.fields['id'].set('p-'+datetime.now().strftime('%Y%m%d-%H%M%S'))
         self.fields['path'].set('MATH/LINEAR-ALGEBRA')
-        self.draft.set(False);self.question.delete('1.0','end');self.answer.delete('1.0','end')
+        self.draft.set(True);self.question.delete('1.0','end');self.answer.delete('1.0','end')
 
     def select_problem(self):
         selected=self.bank_tree.selection()
@@ -97,14 +112,41 @@ class Manager(tk.Tk):
         self.current=slug;self.refresh();self.status.set('题目已保存到本地；去“每日排期”安排日期，再发布。')
 
     def refresh(self):
-        self.bank=load_bank();load_schedule(self.bank)
+        day=self.schedule_date.get().strip()
+        pending=self.day_ids!=getattr(self,'schedule',{}).get(day,[])
+        self.bank=load_bank();self.schedule=load_schedule(self.bank)
         self.bank_tree.delete(*self.bank_tree.get_children())
-        for slug,item in self.bank.items():self.bank_tree.insert('', 'end',iid=slug,values=(item['title'],'草稿' if item['draft'] else '可排期'))
-        self.available_ids=[slug for slug,item in self.bank.items() if not item['draft']]
-        self.available.delete(0,'end')
-        for slug in self.available_ids:self.available.insert('end',self.bank[slug]['title']+' ['+slug+']')
-        self.scheduled_days['values']=sorted(load_schedule().keys(),reverse=True)
-        self.refresh_books()
+        for slug,item in self.bank.items():
+            state,progress,dates=problem_status(item,self.schedule)
+            self.bank_tree.insert('', 'end',iid=slug,values=(item['title'],state,progress,', '.join(dates) or '—'))
+        self.available.delete(*self.available.get_children())
+        for slug,item in self.bank.items():
+            if item['draft']:continue
+            state,progress,dates=problem_status(item,self.schedule)
+            self.available.insert('', 'end',iid=slug,values=(item['title'],state,progress,', '.join(dates) or '—'))
+        self.scheduled_days['values']=sorted(self.schedule.keys(),reverse=True)
+        # Saved metadata updates both lists. Keep any unsaved daily ordering,
+        # removing only entries that are no longer eligible for scheduling.
+        if not pending:self.day_ids=list(self.schedule.get(day,[]))
+        self.day_ids=[slug for slug in self.day_ids if slug in self.bank and not self.bank[slug]['draft']]
+        self.draw_day()
+        self.library_tab.refresh()
+
+    def delete_question(self):
+        self.guard();selected=self.bank_tree.selection()
+        if not selected:raise ValueError('请先从左侧列表选择要删除的题目')
+        slug=selected[0];schedule=load_schedule(self.bank);days=[day for day,ids in schedule.items() if slug in ids]
+        detail='\n涉及排期：'+', '.join(sorted(days)) if days else '\n这道题尚未排期。'
+        if not messagebox.askyesno('删除题目',f'将“{self.bank[slug]["title"]}”移至本地回收站？{detail}\n\n同时从所有日期移除；已上线内容需再次发布后才会移除。可从回收站恢复。',parent=self):return
+        self.backup(SCHEDULE);trash_problem(slug);self.refresh();self.load_day();self.new_problem()
+        self.status.set('题目已移至本地回收站，排期引用已移除。线上删除需重新发布。')
+
+    def restore_question(self):
+        self.guard();folder=ROOT/'archive/problem-trash';folder.mkdir(parents=True,exist_ok=True)
+        name=filedialog.askopenfilename(parent=self,title='进入回收站日期文件夹，选择要恢复的题目',initialdir=folder,filetypes=[('题目','*.qmd')])
+        if not name:return
+        target=restore_problem(name);self.refresh();self.bank_tree.selection_set(target.stem);self.bank_tree.see(target.stem);self.select_problem()
+        self.status.set('题目已恢复到题库；原排期不自动恢复，请重新安排日期。')
 
     def make_schedule(self):
         frame=self.schedule_tab
@@ -119,22 +161,29 @@ class Manager(tk.Tk):
         self.scheduled_days.bind('<<ComboboxSelected>>',lambda _:self.choose_day())
         columns=ttk.Frame(frame);columns.pack(fill='both',expand=True)
         left=ttk.LabelFrame(columns,text='可用题库 · 可多选',padding=8);left.pack(side='left',fill='both',expand=True)
-        self.available=tk.Listbox(left,selectmode='extended',exportselection=False,font=('Microsoft YaHei UI',10));self.available.pack(fill='both',expand=True)
+        self.available=ttk.Treeview(left,columns=('title','state','schedule','dates'),show='headings',selectmode='extended')
+        for key,label,width in [('title','题目',210),('state','内容状态',75),('schedule','排期情况',100),('dates','已保存日期',150)]:
+            self.available.heading(key,text=label);self.available.column(key,width=width,minwidth=70)
+        self.available.pack(fill='both',expand=True)
         ttk.Button(left,text='加入当天 →',command=self.add_day_items).pack(pady=8)
         right=ttk.LabelFrame(columns,text='当天题目 · 显示顺序',padding=8);right.pack(side='left',fill='both',expand=True,padx=(12,0))
         self.chosen=tk.Listbox(right,exportselection=False,font=('Microsoft YaHei UI',10));self.chosen.pack(fill='both',expand=True)
         row=ttk.Frame(right);row.pack(pady=8)
         for text,action in [('移除',self.remove_day_item),('上移',lambda:self.move_day_item(-1)),('下移',lambda:self.move_day_item(1))]:ttk.Button(row,text=text,command=action).pack(side='left',padx=3)
         ttk.Button(frame,text='保存当天排期',command=lambda:self.safely(self.save_day)).pack(anchor='e',pady=12)
+        self.day_summary=tk.StringVar()
+        ttk.Label(frame,textvariable=self.day_summary,style='Muted.TLabel').pack(anchor='w')
 
     def choose_day(self):self.schedule_date.set(self.scheduled_days.get());self.safely(self.load_day)
     def load_day(self):self.day_ids=list(load_schedule(self.bank).get(self.schedule_date.get().strip(),[]));self.draw_day()
     def draw_day(self):
         self.chosen.delete(0,'end')
         for i,slug in enumerate(self.day_ids,1):self.chosen.insert('end',f'{i:02d}. '+self.bank[slug]['title'])
+        day=self.schedule_date.get().strip();saved=getattr(self,'schedule',{}).get(day,[])
+        state='已保存，两页排期状态已同步' if self.day_ids==saved else '有未保存调整，保存后同步到题库列表'
+        self.day_summary.set(f'{day} · {len(self.day_ids)} 道题 · {state}')
     def add_day_items(self):
-        for i in self.available.curselection():
-            slug=self.available_ids[i]
+        for slug in self.available.selection():
             if slug not in self.day_ids:self.day_ids.append(slug)
         self.draw_day()
     def remove_day_item(self):
@@ -161,18 +210,10 @@ class Manager(tk.Tk):
         ttk.Button(row,text='选择照片（可多选）',command=self.choose_photos).pack(side='left')
         self.photo_label=ttk.Label(row,text='0 张');self.photo_label.pack(side='left',padx=10)
         ttk.Button(row,text='创建日志',command=lambda:self.safely(self.create_log)).pack(side='right')
-        books=ttk.LabelFrame(frame,text='阅读状态',padding=12);books.pack(fill='x',pady=12)
-        self.book_choice=ttk.Combobox(books,state='readonly',width=44);self.book_choice.pack(side='left')
-        self.reading_state=ttk.Combobox(books,state='readonly',values=['正在阅读','计划阅读','完成阅读'],width=12);self.reading_state.set('正在阅读');self.reading_state.pack(side='left',padx=8)
-        ttk.Button(books,text='保存状态',command=lambda:self.safely(self.update_reading)).pack(side='left')
         row=ttk.Frame(frame);row.pack(fill='x')
         ttk.Button(row,text='打开博客文件夹',command=lambda:os.startfile(ROOT/'posts')).pack(side='left')
         ttk.Button(row,text='打开日志文件夹',command=lambda:os.startfile(ROOT/'logs')).pack(side='left',padx=8)
         ttk.Button(row,text='打开网站目录',command=lambda:os.startfile(ROOT)).pack(side='left')
-    def refresh_books(self):
-        self.books=json.loads((ROOT/'library/catalog.json').read_text(encoding='utf-8'))
-        self.book_choice['values']=[b['title'] for b in self.books]
-        if self.books and not self.book_choice.get():self.book_choice.current(0)
     def choose_photos(self):
         self.photos=list(filedialog.askopenfilenames(parent=self,title='选择日志照片',filetypes=[('照片','*.jpg *.jpeg *.png *.webp *.gif *.avif')]))
         self.photo_label.config(text=f'{len(self.photos)} 张')
@@ -181,11 +222,6 @@ class Manager(tk.Tk):
         args=[sys.executable,str(ROOT/'scripts/new-log.py'),self.log_title.get(),'--text',self.log_text.get('1.0','end').strip()]
         if self.photos:args+=['--photo',*self.photos]
         self.run_job(args,'创建日志')
-    def update_reading(self):
-        self.guard();i=self.book_choice.current()
-        if i<0:raise ValueError('请选择图书')
-        status={'正在阅读':'reading','计划阅读':'planned','完成阅读':'completed'}[self.reading_state.get()]
-        self.run_job([sys.executable,str(ROOT/'scripts/set-reading.py'),self.books[i]['slug'],'--status',status],'保存阅读状态')
 
     def make_publish(self):
         frame=self.publish_tab
@@ -198,7 +234,7 @@ class Manager(tk.Tk):
         ttk.Button(row,text='构建并发布网站',command=lambda:self.safely(self.publish)).pack(side='left')
         ttk.Button(row,text='查看线上网站',command=lambda:webbrowser.open('https://easoncyy.github.io/problems.html')).pack(side='left',padx=8)
         ttk.Button(row,text='查看部署状态',command=lambda:webbrowser.open('https://github.com/easoncyy/easoncyy.github.io/actions')).pack(side='left')
-        ttk.Label(frame,text='排好未来日期后，只需发布一次。云端每天北京时间 00:05 尝试自动更新；GitHub 定时任务可能延迟。').pack(anchor='w',pady=10)
+        ttk.Label(frame,text='每日 00:05 会重新构建 main 上的整个网站（含博客、日志和图书馆）。只在本地保存的改动不会自动上传。',wraplength=1000).pack(anchor='w',pady=10)
         self.output=ScrolledText(frame,font=('Consolas',10),state='disabled');self.output.pack(fill='both',expand=True)
     def powershell(self):return shutil.which('pwsh') or shutil.which('powershell') or 'powershell.exe'
     def run_powershell(self,script,args,title):self.run_job([self.powershell(),'-NoProfile','-ExecutionPolicy','Bypass','-File',str(ROOT/'scripts'/script),*args],title)

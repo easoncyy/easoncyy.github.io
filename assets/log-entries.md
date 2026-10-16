@@ -1,5 +1,45 @@
 ::: {.log-stream}
 
+::: {#20261016-225159-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-10-16T22:51:59+08:00">2026-10-16 22:51:59 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title">星期五最忙</p>
+
+```
+
+明明周五课最少，但是课最忙，好神奇呀。
+
+![雨蒙蒙](/assets/log/20261016-225159-entry/photo-01.jpg)
+
+![走廊](/assets/log/20261016-225159-entry/photo-02.jpg)
+
+![排练到十点](/assets/log/20261016-225159-entry/photo-03.jpg)
+
+```{=html}
+
+<details id="comments-20261016-225159-entry" class="log-comments" data-comment-term="/logs/20261016-225159-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
 ::: {#20261015-231125-entry .log-entry}
 
 ```{=html}
