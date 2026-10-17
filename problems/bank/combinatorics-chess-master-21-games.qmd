@@ -2,7 +2,7 @@
 title: "A chess master and exactly 21 games"
 category-path: ["MATH", "COMBINATORICS", "抽屉原理"]
 tags: ["前缀和", "抽屉原理"]
-source: "用户提供英文图片，Application 3；英文题面保留，解析按原思路整理"
+source: "Introductory Combinatics"
 draft: false
 ---
 

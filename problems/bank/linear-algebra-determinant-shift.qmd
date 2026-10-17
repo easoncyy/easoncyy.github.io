@@ -2,7 +2,7 @@
 title: "换元法计算上 a 下 b 的行列式"
 category-path: ["MATH", "LINEAR-ALGEBRA", "行列式"]
 tags: ["换元法", "多项式", "三角行列式"]
-source: "用户提供图片，第 4.20 题（换元法）"
+source: "线性代数习题精选精解"
 draft: false
 ---
 
