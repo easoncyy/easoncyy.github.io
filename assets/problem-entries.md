@@ -88,7 +88,7 @@ $$
 
 </div></details>
 
-<p class="problem-source">来源：用户提供手写笔记，第 137 题（Fekete 引理）</p>
+<p class="problem-source">来源：吉米多维奇数学分析习题集-137题</p>
 
 ```
 
@@ -183,7 +183,7 @@ $$
 
 </div></details>
 
-<p class="problem-source">来源：用户提供图片，第 4.20 题（换元法）</p>
+<p class="problem-source">来源：线性代数习题精选精解</p>
 
 ```
 
@@ -255,7 +255,7 @@ as required.
 
 </div></details>
 
-<p class="problem-source">来源：用户提供英文图片，Application 3；英文题面保留，解析按原思路整理</p>
+<p class="problem-source">来源：Introductory Combinatics</p>
 
 ```
 
