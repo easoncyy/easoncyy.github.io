@@ -1,0 +1,53 @@
+---
+title: "A chess master and exactly 21 games"
+category-path: ["MATH", "COMBINATORICS", "抽屉原理"]
+tags: ["前缀和", "抽屉原理"]
+source: "用户提供英文图片，Application 3；英文题面保留，解析按原思路整理"
+draft: false
+---
+
+A chess master who has 11 weeks to prepare for a tournament decides to play at least one game every day, but in order not to tire himself he decides not to play more than 12 games during any one week. Show that there exists a succession of days during which the chess master will have played exactly 21 games.
+
+<!-- answer -->
+
+Let $a_i$ be the total number of games played during the first $i$ days, for $1\le i\le77$.
+
+Since at least one game is played each day,
+
+$$
+1\le a_1<a_2<\cdots<a_{77}.
+$$
+
+There are $11$ weeks, with at most $12$ games in each week, so
+
+$$
+a_{77}\le11\cdot12=132.
+$$
+
+Now consider the two lists
+
+$$
+a_1,a_2,\ldots,a_{77}
+$$
+
+and
+
+$$
+a_1+21,a_2+21,\ldots,a_{77}+21.
+$$
+
+Together they contain $154$ integer entries, all lying between $1$ and $153$. By the pigeonhole principle, two entries must be equal.
+
+Each list is strictly increasing, so equality cannot occur between two entries from the same list. Hence there exist indices $i,j$ such that
+
+$$
+a_i=a_j+21.
+$$
+
+Since $a_i>a_j$, we have $i>j$. Consequently, the total number of games played on the consecutive days $j+1,j+2,\ldots,i$ is
+
+$$
+a_i-a_j=21,
+$$
+
+as required.

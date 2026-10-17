@@ -1,5 +1,47 @@
 ::: {.log-stream}
 
+::: {#20261017-230016-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-10-17T23:00:16+08:00">2026-10-17 23:00:16 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title">喜欢摆烂的一天</p>
+
+```
+
+昨天班会上兼辅说想要停下来的时候就停下来吧，于是今天就实践了一下。晚上的超算队例会木有拍照，但是还是很开兴呀(FREE DINNER!)
+
+![SUNNY](/assets/log/20261017-230016-entry/photo-01.jpg)
+
+![SUNNY](/assets/log/20261017-230016-entry/photo-02.jpg)
+
+![其实很好奇划龙舟是什么感觉](/assets/log/20261017-230016-entry/photo-03.jpg)
+
+![东教废土风](/assets/log/20261017-230016-entry/photo-04.jpg)
+
+```{=html}
+
+<details id="comments-20261017-230016-entry" class="log-comments" data-comment-term="/logs/20261017-230016-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
 ::: {#20261016-225159-entry .log-entry}
 
 ```{=html}

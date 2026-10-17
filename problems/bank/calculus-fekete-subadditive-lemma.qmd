@@ -1,0 +1,73 @@
+---
+title: "次可加数列与 Fekete 引理"
+category-path: ["MATH", "CALCULUS", "数列与极限"]
+tags: ["次可加性", "下确界", "极限"]
+source: "用户提供手写笔记，第 137 题（Fekete 引理）"
+draft: false
+---
+
+设实数数列 $\{x_n\}_{n\ge1}$ 满足：对任意正整数 $m,n$，
+
+$$
+0\le x_{m+n}\le x_m+x_n.
+$$
+
+证明 $\displaystyle\lim_{n\to\infty}\frac{x_n}{n}$ 存在，且
+
+$$
+\lim_{n\to\infty}\frac{x_n}{n}
+=\inf_{k\ge1}\frac{x_k}{k}.
+$$
+
+<!-- answer -->
+
+**思路：** 固定一个分块长度 $k$，将 $n$ 写成 $qk+r$。次可加性控制完整的块，有限种余数产生的误差除以 $n$ 后趋于零。
+
+**1. 确定下确界。** 题设直接保证 $x_n\ge0$（$n\ge2$）。同时，由 $0\le x_2\le2x_1$ 可知 $x_1\ge0$。因此
+
+$$
+\alpha=\inf_{k\ge1}\frac{x_k}{k}
+$$
+
+是有限的非负实数，且对所有 $n\ge1$，$x_n/n\ge\alpha$。
+
+**2. 固定分块长度。** 固定正整数 $k$，对 $n\ge k$，作带余除法
+
+$$
+n=qk+r,\qquad q\ge1,\quad0\le r<k.
+$$
+
+反复使用次可加性：当 $r>0$ 时，$x_n\le qx_k+x_r$；当 $r=0$ 时，$x_n\le qx_k$。
+
+仅为统一记号，令 $x_0=0$，再记
+
+$$
+M_k=\max\{x_0,x_1,\ldots,x_{k-1}\}.
+$$
+
+于是两种情形均给出
+
+$$
+\alpha\le\frac{x_n}{n}
+\le\frac{qx_k}{n}+\frac{M_k}{n}
+\le\frac{x_k}{k}+\frac{M_k}{n},
+$$
+
+其中最后一步用到了 $qk\le n$ 和 $x_k\ge0$。
+
+**3. 用下确界收束。** 任给 $\varepsilon>0$，由下确界的定义，可选定 $k$ 使
+
+$$
+\alpha\le\frac{x_k}{k}<\alpha+\frac\varepsilon2.
+$$
+
+固定这个 $k$，再取充分大的 $n$，使 $M_k/n<\varepsilon/2$，便有
+
+$$
+0\le\frac{x_n}{n}-\alpha
+\le\frac{x_k}{k}-\alpha+\frac{M_k}{n}<\varepsilon.
+$$
+
+故 $x_n/n\to\alpha$，即得结论。
+
+这里先选 $k$，再令 $n$ 充分大；不能让分块长度随 $n$ 任意变化。

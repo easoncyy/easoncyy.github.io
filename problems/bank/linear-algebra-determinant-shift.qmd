@@ -1,0 +1,76 @@
+---
+title: "换元法计算上 a 下 b 的行列式"
+category-path: ["MATH", "LINEAR-ALGEBRA", "行列式"]
+tags: ["换元法", "多项式", "三角行列式"]
+source: "用户提供图片，第 4.20 题（换元法）"
+draft: false
+---
+
+设 $a\ne b$，证明
+
+$$
+D=\begin{vmatrix}
+x_1&a&\cdots&a\\
+b&x_2&\cdots&a\\
+\vdots&\vdots&\ddots&\vdots\\
+b&b&\cdots&x_n
+\end{vmatrix}
+=\frac{a f(b)-b f(a)}{a-b},
+$$
+
+其中
+
+$$
+f(t)=\prod_{i=1}^{n}(x_i-t).
+$$
+
+<!-- answer -->
+
+**思路：** 给行列式的每个元素加上同一个参数 $t$，得到一个至多一次的多项式；令 $t=-a,-b$，它分别变成下三角、上三角行列式。
+
+令
+
+$$
+P(t)=\begin{vmatrix}
+x_1+t&a+t&\cdots&a+t\\
+b+t&x_2+t&\cdots&a+t\\
+\vdots&\vdots&\ddots&\vdots\\
+b+t&b+t&\cdots&x_n+t
+\end{vmatrix}.
+$$
+
+从最后一行向第二行依次作 $R_i\leftarrow R_i-R_{i-1}$。由于按从下往上的顺序操作，减去的都是尚未改变的原行。这些操作不改变行列式，并且使第二行至第 $n$ 行中的参数 $t$ 全部消去。
+
+所以只有第一行含 $t$，按第一行展开可知 $P(t)$ 是关于 $t$ 的至多一次多项式。又 $P(0)=D$，故可写为
+
+$$
+P(t)=ct+D.
+$$
+
+当 $t=-a$ 时，上三角区域全为零，故
+
+$$
+P(-a)=\prod_{i=1}^{n}(x_i-a)=f(a).
+$$
+
+当 $t=-b$ 时，下三角区域全为零，故
+
+$$
+P(-b)=\prod_{i=1}^{n}(x_i-b)=f(b).
+$$
+
+因此
+
+$$
+-ac+D=f(a),\qquad -bc+D=f(b).
+$$
+
+第二式乘 $a$，第一式乘 $b$，相减消去 $c$，得到
+
+$$
+(a-b)D=a f(b)-b f(a).
+$$
+
+因为 $a\ne b$，除以 $a-b$ 即得所证公式。
+
+这里应说“至多一次”，因为某些参数下 $c$ 可以为零。
