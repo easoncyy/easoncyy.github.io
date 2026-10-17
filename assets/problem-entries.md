@@ -1,3 +1,280 @@
+::: {.problem-day data-date="2026-10-17"}
+
+## 2026-10-17 {.problem-date-heading}
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;次可加性&quot;, &quot;下确界&quot;, &quot;极限&quot;], &quot;title&quot;: &quot;次可加数列与 Fekete 引理&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
+
+<h3>01. 次可加数列与 Fekete 引理</h3>
+
+<div class="entry-tags">#次可加性 · #下确界 · #极限</div>
+
+```
+
+设实数数列 $\{x_n\}_{n\ge1}$ 满足：对任意正整数 $m,n$，
+
+$$
+0\le x_{m+n}\le x_m+x_n.
+$$
+
+证明 $\displaystyle\lim_{n\to\infty}\frac{x_n}{n}$ 存在，且
+
+$$
+\lim_{n\to\infty}\frac{x_n}{n}
+=\inf_{k\ge1}\frac{x_k}{k}.
+$$
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+**思路：** 固定一个分块长度 $k$，将 $n$ 写成 $qk+r$。次可加性控制完整的块，有限种余数产生的误差除以 $n$ 后趋于零。
+
+**1. 确定下确界。** 题设直接保证 $x_n\ge0$（$n\ge2$）。同时，由 $0\le x_2\le2x_1$ 可知 $x_1\ge0$。因此
+
+$$
+\alpha=\inf_{k\ge1}\frac{x_k}{k}
+$$
+
+是有限的非负实数，且对所有 $n\ge1$，$x_n/n\ge\alpha$。
+
+**2. 固定分块长度。** 固定正整数 $k$，对 $n\ge k$，作带余除法
+
+$$
+n=qk+r,\qquad q\ge1,\quad0\le r<k.
+$$
+
+反复使用次可加性：当 $r>0$ 时，$x_n\le qx_k+x_r$；当 $r=0$ 时，$x_n\le qx_k$。
+
+仅为统一记号，令 $x_0=0$，再记
+
+$$
+M_k=\max\{x_0,x_1,\ldots,x_{k-1}\}.
+$$
+
+于是两种情形均给出
+
+$$
+\alpha\le\frac{x_n}{n}
+\le\frac{qx_k}{n}+\frac{M_k}{n}
+\le\frac{x_k}{k}+\frac{M_k}{n},
+$$
+
+其中最后一步用到了 $qk\le n$ 和 $x_k\ge0$。
+
+**3. 用下确界收束。** 任给 $\varepsilon>0$，由下确界的定义，可选定 $k$ 使
+
+$$
+\alpha\le\frac{x_k}{k}<\alpha+\frac\varepsilon2.
+$$
+
+固定这个 $k$，再取充分大的 $n$，使 $M_k/n<\varepsilon/2$，便有
+
+$$
+0\le\frac{x_n}{n}-\alpha
+\le\frac{x_k}{k}-\alpha+\frac{M_k}{n}<\varepsilon.
+$$
+
+故 $x_n/n\to\alpha$，即得结论。
+
+这里先选 $k$，再令 $n$ 充分大；不能让分块长度随 $n$ 任意变化。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：用户提供手写笔记，第 137 题（Fekete 引理）</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;行列式&quot;], &quot;tags&quot;: [&quot;换元法&quot;, &quot;多项式&quot;, &quot;三角行列式&quot;], &quot;title&quot;: &quot;换元法计算上 a 下 b 的行列式&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 行列式</div>
+
+<h3>02. 换元法计算上 a 下 b 的行列式</h3>
+
+<div class="entry-tags">#换元法 · #多项式 · #三角行列式</div>
+
+```
+
+设 $a\ne b$，证明
+
+$$
+D=\begin{vmatrix}
+x_1&a&\cdots&a\\
+b&x_2&\cdots&a\\
+\vdots&\vdots&\ddots&\vdots\\
+b&b&\cdots&x_n
+\end{vmatrix}
+=\frac{a f(b)-b f(a)}{a-b},
+$$
+
+其中
+
+$$
+f(t)=\prod_{i=1}^{n}(x_i-t).
+$$
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+**思路：** 给行列式的每个元素加上同一个参数 $t$，得到一个至多一次的多项式；令 $t=-a,-b$，它分别变成下三角、上三角行列式。
+
+令
+
+$$
+P(t)=\begin{vmatrix}
+x_1+t&a+t&\cdots&a+t\\
+b+t&x_2+t&\cdots&a+t\\
+\vdots&\vdots&\ddots&\vdots\\
+b+t&b+t&\cdots&x_n+t
+\end{vmatrix}.
+$$
+
+从最后一行向第二行依次作 $R_i\leftarrow R_i-R_{i-1}$。由于按从下往上的顺序操作，减去的都是尚未改变的原行。这些操作不改变行列式，并且使第二行至第 $n$ 行中的参数 $t$ 全部消去。
+
+所以只有第一行含 $t$，按第一行展开可知 $P(t)$ 是关于 $t$ 的至多一次多项式。又 $P(0)=D$，故可写为
+
+$$
+P(t)=ct+D.
+$$
+
+当 $t=-a$ 时，上三角区域全为零，故
+
+$$
+P(-a)=\prod_{i=1}^{n}(x_i-a)=f(a).
+$$
+
+当 $t=-b$ 时，下三角区域全为零，故
+
+$$
+P(-b)=\prod_{i=1}^{n}(x_i-b)=f(b).
+$$
+
+因此
+
+$$
+-ac+D=f(a),\qquad -bc+D=f(b).
+$$
+
+第二式乘 $a$，第一式乘 $b$，相减消去 $c$，得到
+
+$$
+(a-b)D=a f(b)-b f(a).
+$$
+
+因为 $a\ne b$，除以 $a-b$ 即得所证公式。
+
+这里应说“至多一次”，因为某些参数下 $c$ 可以为零。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：用户提供图片，第 4.20 题（换元法）</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;COMBINATORICS&quot;, &quot;抽屉原理&quot;], &quot;tags&quot;: [&quot;前缀和&quot;, &quot;抽屉原理&quot;], &quot;title&quot;: &quot;A chess master and exactly 21 games&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / COMBINATORICS / 抽屉原理</div>
+
+<h3>03. A chess master and exactly 21 games</h3>
+
+<div class="entry-tags">#前缀和 · #抽屉原理</div>
+
+```
+
+A chess master who has 11 weeks to prepare for a tournament decides to play at least one game every day, but in order not to tire himself he decides not to play more than 12 games during any one week. Show that there exists a succession of days during which the chess master will have played exactly 21 games.
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+Let $a_i$ be the total number of games played during the first $i$ days, for $1\le i\le77$.
+
+Since at least one game is played each day,
+
+$$
+1\le a_1<a_2<\cdots<a_{77}.
+$$
+
+There are $11$ weeks, with at most $12$ games in each week, so
+
+$$
+a_{77}\le11\cdot12=132.
+$$
+
+Now consider the two lists
+
+$$
+a_1,a_2,\ldots,a_{77}
+$$
+
+and
+
+$$
+a_1+21,a_2+21,\ldots,a_{77}+21.
+$$
+
+Together they contain $154$ integer entries, all lying between $1$ and $153$. By the pigeonhole principle, two entries must be equal.
+
+Each list is strictly increasing, so equality cannot occur between two entries from the same list. Hence there exist indices $i,j$ such that
+
+$$
+a_i=a_j+21.
+$$
+
+Since $a_i>a_j$, we have $i>j$. Consequently, the total number of games played on the consecutive days $j+1,j+2,\ldots,i$ is
+
+$$
+a_i-a_j=21,
+$$
+
+as required.
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：用户提供英文图片，Application 3；英文题面保留，解析按原思路整理</p>
+
+```
+
+:::
+
+```{=html}
+
+<details id="discussion-2026-10-17" class="log-comments problem-discussion" data-comment-term="/problems/2026-10-17/" data-comment-date="2026-10-17" data-comment-title="每日好题 · 2026-10-17">
+
+<summary>discussion/ <span>2026-10-17 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
 ::: {.problem-day data-date="2026-10-16"}
 
 ## 2026-10-16 {.problem-date-heading}
@@ -212,6 +489,6 @@ $$
 
 ```{=html}
 
-<script id="problem-index" type="application/json">{"builtDate": "2026-10-16", "dates": {"2026-10-16": 3}}</script>
+<script id="problem-index" type="application/json">{"builtDate": "2026-10-17", "dates": {"2026-10-17": 3, "2026-10-16": 3}}</script>
 
 ```
