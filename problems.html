@@ -208,8 +208,208 @@ window.Quarto = {
   <button type="button" id="problem-filter-reset">清除筛选</button>
 </div>
 <p id="problem-status" aria-live="polite"></p>
-<section id="section" class="level2 problem-date-heading problem-day" data-date="2026-10-17">
-<h2 class="problem-date-heading anchored" data-anchor-id="section">2026-10-17</h2>
+<section id="section" class="level2 problem-date-heading problem-day" data-date="2026-10-18">
+<h2 class="problem-date-heading anchored" data-anchor-id="section">2026-10-18</h2>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;夹逼定理&quot;, &quot;变项数列和&quot;], &quot;title&quot;: &quot;含根式分母的平方和极限&quot;}">
+
+<div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
+
+<h3 class="anchored">01. 含根式分母的平方和极限</h3>
+
+<div class="entry-tags">#夹逼定理 · #变项数列和</div>
+
+<p>计算</p>
+<p><span class="math display">\[
+\lim_{n\to+\infty}\left(
+\frac{1^2}{\sqrt{n^6+1^2}}+
+\frac{2^2}{\sqrt{n^6+2^2}}+\cdots+
+\frac{n^2}{\sqrt{n^6+n^2}}
+\right).
+\]</span></p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p><strong>答案：</strong> <span class="math inline">\(\displaystyle\frac13\)</span>。</p>
+<p>记括号内的和为 <span class="math inline">\(S_n\)</span>。对 <span class="math inline">\(1\le k\le n\)</span>，有</p>
+<p><span class="math display">\[
+n^3\le\sqrt{n^6+k^2}\le\sqrt{n^6+n^2}
+=n^3\sqrt{1+\frac1{n^4}}.
+\]</span></p>
+<p>各项分子均为正，因此</p>
+<p><span class="math display">\[
+\frac{\sum_{k=1}^{n}k^2}{n^3\sqrt{1+1/n^4}}
+\le S_n\le
+\frac{\sum_{k=1}^{n}k^2}{n^3}.
+\]</span></p>
+<p>利用平方和公式，</p>
+<p><span class="math display">\[
+\frac{\sum_{k=1}^{n}k^2}{n^3}
+=\frac{n(n+1)(2n+1)}{6n^3}\longrightarrow\frac13,
+\qquad
+\sqrt{1+\frac1{n^4}}\longrightarrow1.
+\]</span></p>
+<p>由夹逼定理，<span class="math inline">\(S_n\to1/3\)</span>。</p>
+<p><strong>关键：</strong> 对所有 <span class="math inline">\(1\le k\le n\)</span> 统一估计分母，再控制整个和；不能只看固定一项的极限。</p>
+
+</div></details>
+
+<p class="problem-source">来源：微积分甲课程教师分享</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;单调有界定理&quot;, &quot;对数不等式&quot;], &quot;title&quot;: &quot;调和和减去对数的收敛性&quot;}">
+
+<div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
+
+<h3 class="anchored">02. 调和和减去对数的收敛性</h3>
+
+<div class="entry-tags">#单调有界定理 · #对数不等式</div>
+
+<p>设</p>
+<p><span class="math display">\[
+a_n=1+\frac12+\cdots+\frac1n-\ln n.
+\]</span></p>
+<p>证明数列 <span class="math inline">\(\{a_n\}\)</span> 收敛。</p>
+<p>该数列的极限记为 <span class="math inline">\(\gamma\)</span>，称为 Euler 常数（欧拉–马歇罗尼常数），<span class="math inline">\(\gamma=0.5772\ldots\)</span>。</p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p><strong>思路：</strong> 证明 <span class="math inline">\(a_n\)</span> 单调递减且有下界。</p>
+<p>由于 <span class="math inline">\(1/x\)</span> 在正半轴严格递减，有</p>
+<p><span class="math display">\[
+\ln\frac{n+1}{n}
+=\int_n^{n+1}\frac{\mathrm dx}{x}
+&gt;\frac1{n+1}.
+\]</span></p>
+<p>因此</p>
+<p><span class="math display">\[
+a_{n+1}-a_n
+=\frac1{n+1}-\ln\frac{n+1}{n}&lt;0,
+\]</span></p>
+<p>故 <span class="math inline">\(\{a_n\}\)</span> 严格递减。</p>
+<p>另一方面，对每个正整数 <span class="math inline">\(k\)</span>，</p>
+<p><span class="math display">\[
+\int_k^{k+1}\frac{\mathrm dx}{x}&lt;\frac1k.
+\]</span></p>
+<p>将 <span class="math inline">\(k=1,\ldots,n\)</span> 的不等式相加，得</p>
+<p><span class="math display">\[
+\ln(n+1)&lt;\sum_{k=1}^{n}\frac1k.
+\]</span></p>
+<p>从而</p>
+<p><span class="math display">\[
+a_n&gt;\ln(n+1)-\ln n&gt;0.
+\]</span></p>
+<p>数列单调递减且以 <span class="math inline">\(0\)</span> 为下界，由单调有界定理可知它收敛，其极限即为 <span class="math inline">\(\gamma\)</span>。</p>
+<p><strong>不使用积分的表述：</strong> 上述估计也可由基本对数不等式</p>
+<p><span class="math display">\[
+\frac{t}{1+t}&lt;\ln(1+t)&lt;t\qquad(t&gt;0)
+\]</span></p>
+<p>得到。取 <span class="math inline">\(t=1/n\)</span>，左侧用于证明递减；将右侧从 <span class="math inline">\(n=1\)</span> 起累加，用于证明下界。</p>
+
+</div></details>
+
+<p class="problem-source">来源：微积分甲课程教师分享</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;反正切&quot;, &quot;等价无穷小&quot;], &quot;title&quot;: &quot;反正切趋于四分之 π 的一阶极限&quot;}">
+
+<div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
+
+<h3 class="anchored">03. 反正切趋于四分之 π 的一阶极限</h3>
+
+<div class="entry-tags">#反正切 · #等价无穷小</div>
+
+<p>计算</p>
+<p><span class="math display">\[
+\lim_{n\to+\infty}
+n\left(\frac\pi4-\arctan\frac{n}{n+1}\right).
+\]</span></p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p><strong>答案：</strong> <span class="math inline">\(\displaystyle\frac12\)</span>。</p>
+<p>由 <span class="math inline">\(0&lt;n/(n+1)&lt;1\)</span>，角 <span class="math inline">\(\pi/4-\arctan(n/(n+1))\)</span> 位于 <span class="math inline">\((0,\pi/4)\)</span>。利用正切差角公式，</p>
+<p><span class="math display">\[
+\tan\left(\frac\pi4-\arctan\frac{n}{n+1}\right)
+=\frac{1-\frac n{n+1}}{1+\frac n{n+1}}
+=\frac1{2n+1}.
+\]</span></p>
+<p>角度在反正切的主值区间内，故</p>
+<p><span class="math display">\[
+\frac\pi4-\arctan\frac{n}{n+1}
+=\arctan\frac1{2n+1}.
+\]</span></p>
+<p>再由 <span class="math inline">\(\arctan t/t\to1\)</span>（<span class="math inline">\(t\to0\)</span>），得到</p>
+<p><span class="math display">\[
+n\arctan\frac1{2n+1}
+=\frac{n}{2n+1}
+\frac{\arctan\frac1{2n+1}}{\frac1{2n+1}}
+\longrightarrow\frac12.
+\]</span></p>
+
+</div></details>
+
+<p class="problem-source">来源：微积分甲课程教师分享</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;反正切&quot;, &quot;差角公式&quot;, &quot;等价无穷小&quot;], &quot;title&quot;: &quot;相邻反正切值之差的二阶极限&quot;}">
+
+<div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
+
+<h3 class="anchored">04. 相邻反正切值之差的二阶极限</h3>
+
+<div class="entry-tags">#反正切 · #差角公式 · #等价无穷小</div>
+
+<p>计算</p>
+<p><span class="math display">\[
+\lim_{n\to+\infty}
+n^2\left(\arctan\frac{n+1}{n+2}-\arctan\frac n{n+1}\right).
+\]</span></p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p><strong>答案：</strong> <span class="math inline">\(\displaystyle\frac12\)</span>。</p>
+<p>记括号内的差为 <span class="math inline">\(\theta_n\)</span>。由于</p>
+<p><span class="math display">\[
+0&lt;\frac n{n+1}&lt;\frac{n+1}{n+2}&lt;1,
+\]</span></p>
+<p>故 <span class="math inline">\(0&lt;\theta_n&lt;\pi/4\)</span>。由正切差角公式，</p>
+<p><span class="math display">\[
+\tan\theta_n
+=\frac{\frac{n+1}{n+2}-\frac n{n+1}}
+{1+\frac{n+1}{n+2}\frac n{n+1}}
+=\frac{\frac1{(n+1)(n+2)}}{\frac{2(n+1)}{n+2}}
+=\frac1{2(n+1)^2}.
+\]</span></p>
+<p>因此</p>
+<p><span class="math display">\[
+\theta_n=\arctan\frac1{2(n+1)^2}.
+\]</span></p>
+<p>利用 <span class="math inline">\(\arctan t/t\to1\)</span>，可得</p>
+<p><span class="math display">\[
+n^2\theta_n
+=\frac{n^2}{2(n+1)^2}
+\frac{\arctan\frac1{2(n+1)^2}}{\frac1{2(n+1)^2}}
+\longrightarrow\frac12.
+\]</span></p>
+<p><strong>注意：</strong> 两个反正切值都趋于 <span class="math inline">\(\pi/4\)</span>，不能分别作一阶等价替换后相减；这里先将差准确化为一个反正切，再求极限。</p>
+
+</div></details>
+
+<p class="problem-source">来源：微积分甲课程教师分享</p>
+
+</div>
+
+<details id="discussion-2026-10-18" class="log-comments problem-discussion" data-comment-term="/problems/2026-10-18/" data-comment-date="2026-10-18" data-comment-title="每日好题 · 2026-10-18">
+
+<summary>discussion/ <span>2026-10-18 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+</section>
+<section id="section-1" class="level2 problem-date-heading problem-day" data-date="2026-10-17">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-1">2026-10-17</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;次可加性&quot;, &quot;下确界&quot;, &quot;极限&quot;], &quot;title&quot;: &quot;次可加数列与 Fekete 引理&quot;}">
 
 <div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
@@ -388,8 +588,8 @@ a_i-a_j=21,
 </details>
 
 </section>
-<section id="section-1" class="level2 problem-date-heading problem-day" data-date="2026-10-16">
-<h2 class="problem-date-heading anchored" data-anchor-id="section-1">2026-10-16</h2>
+<section id="section-2" class="level2 problem-date-heading problem-day" data-date="2026-10-16">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-2">2026-10-16</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;反证法&quot;, &quot;阶乘级数&quot;], &quot;title&quot;: &quot;证明 e 是无理数&quot;}">
 
 <div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
@@ -537,7 +737,7 @@ d&amp;1&amp;1/d^2&amp;1/d
 
 </section>
 
-<script id="problem-index" type="application/json">{"builtDate": "2026-10-18", "dates": {"2026-10-17": 3, "2026-10-16": 3}}</script>
+<script id="problem-index" type="application/json">{"builtDate": "2026-10-18", "dates": {"2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
 
 <p id="problem-empty" hidden="">这一天暂无符合条件的题目。</p>
 <section class="problem-calendar" aria-label="按日期查看题目">
