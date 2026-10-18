@@ -1,0 +1,42 @@
+---
+title: "反正切趋于四分之 π 的一阶极限"
+category-path: ["MATH", "CALCULUS", "数列与极限"]
+tags: ["反正切", "等价无穷小"]
+source: "微积分甲课程教师分享"
+draft: false
+---
+
+计算
+
+$$
+\lim_{n\to+\infty}
+ n\left(\frac\pi4-\arctan\frac{n}{n+1}\right).
+$$
+
+<!-- answer -->
+
+**答案：** $\displaystyle\frac12$。
+
+由 $0<n/(n+1)<1$，角 $\pi/4-\arctan(n/(n+1))$ 位于 $(0,\pi/4)$。利用正切差角公式，
+
+$$
+\tan\left(\frac\pi4-\arctan\frac{n}{n+1}\right)
+=\frac{1-\frac n{n+1}}{1+\frac n{n+1}}
+=\frac1{2n+1}.
+$$
+
+角度在反正切的主值区间内，故
+
+$$
+\frac\pi4-\arctan\frac{n}{n+1}
+=\arctan\frac1{2n+1}.
+$$
+
+再由 $\arctan t/t\to1$（$t\to0$），得到
+
+$$
+n\arctan\frac1{2n+1}
+=\frac{n}{2n+1}
+\frac{\arctan\frac1{2n+1}}{\frac1{2n+1}}
+\longrightarrow\frac12.
+$$

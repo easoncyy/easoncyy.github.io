@@ -1,3 +1,305 @@
+::: {.problem-day data-date="2026-10-18"}
+
+## 2026-10-18 {.problem-date-heading}
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;夹逼定理&quot;, &quot;变项数列和&quot;], &quot;title&quot;: &quot;含根式分母的平方和极限&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
+
+<h3>01. 含根式分母的平方和极限</h3>
+
+<div class="entry-tags">#夹逼定理 · #变项数列和</div>
+
+```
+
+计算
+
+$$
+\lim_{n\to+\infty}\left(
+\frac{1^2}{\sqrt{n^6+1^2}}+
+\frac{2^2}{\sqrt{n^6+2^2}}+\cdots+
+\frac{n^2}{\sqrt{n^6+n^2}}
+\right).
+$$
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+**答案：** $\displaystyle\frac13$。
+
+记括号内的和为 $S_n$。对 $1\le k\le n$，有
+
+$$
+n^3\le\sqrt{n^6+k^2}\le\sqrt{n^6+n^2}
+=n^3\sqrt{1+\frac1{n^4}}.
+$$
+
+各项分子均为正，因此
+
+$$
+\frac{\sum_{k=1}^{n}k^2}{n^3\sqrt{1+1/n^4}}
+\le S_n\le
+\frac{\sum_{k=1}^{n}k^2}{n^3}.
+$$
+
+利用平方和公式，
+
+$$
+\frac{\sum_{k=1}^{n}k^2}{n^3}
+=\frac{n(n+1)(2n+1)}{6n^3}\longrightarrow\frac13,
+\qquad
+\sqrt{1+\frac1{n^4}}\longrightarrow1.
+$$
+
+由夹逼定理，$S_n\to1/3$。
+
+**关键：** 对所有 $1\le k\le n$ 统一估计分母，再控制整个和；不能只看固定一项的极限。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：微积分甲课程教师分享</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;单调有界定理&quot;, &quot;对数不等式&quot;], &quot;title&quot;: &quot;调和和减去对数的收敛性&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
+
+<h3>02. 调和和减去对数的收敛性</h3>
+
+<div class="entry-tags">#单调有界定理 · #对数不等式</div>
+
+```
+
+设
+
+$$
+a_n=1+\frac12+\cdots+\frac1n-\ln n.
+$$
+
+证明数列 $\{a_n\}$ 收敛。
+
+该数列的极限记为 $\gamma$，称为 Euler 常数（欧拉–马歇罗尼常数），$\gamma=0.5772\ldots$。
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+**思路：** 证明 $a_n$ 单调递减且有下界。
+
+由于 $1/x$ 在正半轴严格递减，有
+
+$$
+\ln\frac{n+1}{n}
+=\int_n^{n+1}\frac{\mathrm dx}{x}
+>\frac1{n+1}.
+$$
+
+因此
+
+$$
+a_{n+1}-a_n
+=\frac1{n+1}-\ln\frac{n+1}{n}<0,
+$$
+
+故 $\{a_n\}$ 严格递减。
+
+另一方面，对每个正整数 $k$，
+
+$$
+\int_k^{k+1}\frac{\mathrm dx}{x}<\frac1k.
+$$
+
+将 $k=1,\ldots,n$ 的不等式相加，得
+
+$$
+\ln(n+1)<\sum_{k=1}^{n}\frac1k.
+$$
+
+从而
+
+$$
+a_n>\ln(n+1)-\ln n>0.
+$$
+
+数列单调递减且以 $0$ 为下界，由单调有界定理可知它收敛，其极限即为 $\gamma$。
+
+**不使用积分的表述：** 上述估计也可由基本对数不等式
+
+$$
+\frac{t}{1+t}<\ln(1+t)<t\qquad(t>0)
+$$
+
+得到。取 $t=1/n$，左侧用于证明递减；将右侧从 $n=1$ 起累加，用于证明下界。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：微积分甲课程教师分享</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;反正切&quot;, &quot;等价无穷小&quot;], &quot;title&quot;: &quot;反正切趋于四分之 π 的一阶极限&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
+
+<h3>03. 反正切趋于四分之 π 的一阶极限</h3>
+
+<div class="entry-tags">#反正切 · #等价无穷小</div>
+
+```
+
+计算
+
+$$
+\lim_{n\to+\infty}
+ n\left(\frac\pi4-\arctan\frac{n}{n+1}\right).
+$$
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+**答案：** $\displaystyle\frac12$。
+
+由 $0<n/(n+1)<1$，角 $\pi/4-\arctan(n/(n+1))$ 位于 $(0,\pi/4)$。利用正切差角公式，
+
+$$
+\tan\left(\frac\pi4-\arctan\frac{n}{n+1}\right)
+=\frac{1-\frac n{n+1}}{1+\frac n{n+1}}
+=\frac1{2n+1}.
+$$
+
+角度在反正切的主值区间内，故
+
+$$
+\frac\pi4-\arctan\frac{n}{n+1}
+=\arctan\frac1{2n+1}.
+$$
+
+再由 $\arctan t/t\to1$（$t\to0$），得到
+
+$$
+n\arctan\frac1{2n+1}
+=\frac{n}{2n+1}
+\frac{\arctan\frac1{2n+1}}{\frac1{2n+1}}
+\longrightarrow\frac12.
+$$
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：微积分甲课程教师分享</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;反正切&quot;, &quot;差角公式&quot;, &quot;等价无穷小&quot;], &quot;title&quot;: &quot;相邻反正切值之差的二阶极限&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
+
+<h3>04. 相邻反正切值之差的二阶极限</h3>
+
+<div class="entry-tags">#反正切 · #差角公式 · #等价无穷小</div>
+
+```
+
+计算
+
+$$
+\lim_{n\to+\infty}
+ n^2\left(\arctan\frac{n+1}{n+2}-\arctan\frac n{n+1}\right).
+$$
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+**答案：** $\displaystyle\frac12$。
+
+记括号内的差为 $\theta_n$。由于
+
+$$
+0<\frac n{n+1}<\frac{n+1}{n+2}<1,
+$$
+
+故 $0<\theta_n<\pi/4$。由正切差角公式，
+
+$$
+\tan\theta_n
+=\frac{\frac{n+1}{n+2}-\frac n{n+1}}
+{1+\frac{n+1}{n+2}\frac n{n+1}}
+=\frac{\frac1{(n+1)(n+2)}}{\frac{2(n+1)}{n+2}}
+=\frac1{2(n+1)^2}.
+$$
+
+因此
+
+$$
+\theta_n=\arctan\frac1{2(n+1)^2}.
+$$
+
+利用 $\arctan t/t\to1$，可得
+
+$$
+n^2\theta_n
+=\frac{n^2}{2(n+1)^2}
+\frac{\arctan\frac1{2(n+1)^2}}{\frac1{2(n+1)^2}}
+\longrightarrow\frac12.
+$$
+
+**注意：** 两个反正切值都趋于 $\pi/4$，不能分别作一阶等价替换后相减；这里先将差准确化为一个反正切，再求极限。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：微积分甲课程教师分享</p>
+
+```
+
+:::
+
+```{=html}
+
+<details id="discussion-2026-10-18" class="log-comments problem-discussion" data-comment-term="/problems/2026-10-18/" data-comment-date="2026-10-18" data-comment-title="每日好题 · 2026-10-18">
+
+<summary>discussion/ <span>2026-10-18 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
 ::: {.problem-day data-date="2026-10-17"}
 
 ## 2026-10-17 {.problem-date-heading}
@@ -489,6 +791,6 @@ $$
 
 ```{=html}
 
-<script id="problem-index" type="application/json">{"builtDate": "2026-10-18", "dates": {"2026-10-17": 3, "2026-10-16": 3}}</script>
+<script id="problem-index" type="application/json">{"builtDate": "2026-10-18", "dates": {"2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
 
 ```

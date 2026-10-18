@@ -1,0 +1,51 @@
+---
+title: "相邻反正切值之差的二阶极限"
+category-path: ["MATH", "CALCULUS", "数列与极限"]
+tags: ["反正切", "差角公式", "等价无穷小"]
+source: "微积分甲课程教师分享"
+draft: false
+---
+
+计算
+
+$$
+\lim_{n\to+\infty}
+ n^2\left(\arctan\frac{n+1}{n+2}-\arctan\frac n{n+1}\right).
+$$
+
+<!-- answer -->
+
+**答案：** $\displaystyle\frac12$。
+
+记括号内的差为 $\theta_n$。由于
+
+$$
+0<\frac n{n+1}<\frac{n+1}{n+2}<1,
+$$
+
+故 $0<\theta_n<\pi/4$。由正切差角公式，
+
+$$
+\tan\theta_n
+=\frac{\frac{n+1}{n+2}-\frac n{n+1}}
+{1+\frac{n+1}{n+2}\frac n{n+1}}
+=\frac{\frac1{(n+1)(n+2)}}{\frac{2(n+1)}{n+2}}
+=\frac1{2(n+1)^2}.
+$$
+
+因此
+
+$$
+\theta_n=\arctan\frac1{2(n+1)^2}.
+$$
+
+利用 $\arctan t/t\to1$，可得
+
+$$
+n^2\theta_n
+=\frac{n^2}{2(n+1)^2}
+\frac{\arctan\frac1{2(n+1)^2}}{\frac1{2(n+1)^2}}
+\longrightarrow\frac12.
+$$
+
+**注意：** 两个反正切值都趋于 $\pi/4$，不能分别作一阶等价替换后相减；这里先将差准确化为一个反正切，再求极限。

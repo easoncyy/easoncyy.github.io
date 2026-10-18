@@ -8,5 +8,11 @@
     "calculus-fekete-subadditive-lemma",
     "linear-algebra-determinant-shift",
     "combinatorics-chess-master-21-games"
+  ],
+  "2026-10-18": [
+    "calculus-square-sum-radical-limit",
+    "calculus-euler-mascheroni-convergence",
+    "calculus-arctangent-quarter-pi-limit",
+    "calculus-arctangent-adjacent-difference"
   ]
 }

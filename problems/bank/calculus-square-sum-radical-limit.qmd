@@ -1,0 +1,49 @@
+---
+title: "含根式分母的平方和极限"
+category-path: ["MATH", "CALCULUS", "数列与极限"]
+tags: ["夹逼定理", "变项数列和"]
+source: "微积分甲课程教师分享"
+draft: false
+---
+
+计算
+
+$$
+\lim_{n\to+\infty}\left(
+\frac{1^2}{\sqrt{n^6+1^2}}+
+\frac{2^2}{\sqrt{n^6+2^2}}+\cdots+
+\frac{n^2}{\sqrt{n^6+n^2}}
+\right).
+$$
+
+<!-- answer -->
+
+**答案：** $\displaystyle\frac13$。
+
+记括号内的和为 $S_n$。对 $1\le k\le n$，有
+
+$$
+n^3\le\sqrt{n^6+k^2}\le\sqrt{n^6+n^2}
+=n^3\sqrt{1+\frac1{n^4}}.
+$$
+
+各项分子均为正，因此
+
+$$
+\frac{\sum_{k=1}^{n}k^2}{n^3\sqrt{1+1/n^4}}
+\le S_n\le
+\frac{\sum_{k=1}^{n}k^2}{n^3}.
+$$
+
+利用平方和公式，
+
+$$
+\frac{\sum_{k=1}^{n}k^2}{n^3}
+=\frac{n(n+1)(2n+1)}{6n^3}\longrightarrow\frac13,
+\qquad
+\sqrt{1+\frac1{n^4}}\longrightarrow1.
+$$
+
+由夹逼定理，$S_n\to1/3$。
+
+**关键：** 对所有 $1\le k\le n$ 统一估计分母，再控制整个和；不能只看固定一项的极限。
