@@ -1,5 +1,45 @@
 ::: {.log-stream}
 
+::: {#20261018-233237-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-10-18T23:32:37+08:00">2026-10-18 23:32:37 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title">又没有学习</p>
+
+```
+
+早上去图书馆本来想刷题，结果刚刚理完历年题时间就差不多了。下午的排练没想到快进行了4个小时。
+
+![超长排练](/assets/log/20261018-233237-entry/photo-01.jpg)
+
+![基图好有设计感，门口遇到很多老校友](/assets/log/20261018-233237-entry/photo-02.jpg)
+
+![第一次来基图，以前路过地下室总感觉氛围很好](/assets/log/20261018-233237-entry/photo-03.jpg)
+
+```{=html}
+
+<details id="comments-20261018-233237-entry" class="log-comments" data-comment-term="/logs/20261018-233237-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
 ::: {#20261017-230016-entry .log-entry}
 
 ```{=html}
