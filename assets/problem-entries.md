@@ -489,6 +489,6 @@ $$
 
 ```{=html}
 
-<script id="problem-index" type="application/json">{"builtDate": "2026-10-17", "dates": {"2026-10-17": 3, "2026-10-16": 3}}</script>
+<script id="problem-index" type="application/json">{"builtDate": "2026-10-18", "dates": {"2026-10-17": 3, "2026-10-16": 3}}</script>
 
 ```

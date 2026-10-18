@@ -24,6 +24,12 @@ Msmile 的个人网站（VPN Required）。
 CYB的博客网站。
 :::
 
+::: {.link-entry}
+### [lemoncat ↗](https://oslemoncat.github.io/){target="_blank" rel="noopener noreferrer"}
+
+lemoncat的博客网站（VPN Suggested）。
+:::
+
 <!--
 添加新友链时，每条复制一个 link-entry 区块。
 
