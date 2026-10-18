@@ -1,0 +1,424 @@
+---
+title: 2025-2026 学年秋冬《微积分》第一次小测归档
+description: 2025-2026 学年微积分第一次小测：题目归档、详细解析与知识点总结。
+date: '2026-10-18'
+author: easoncyy（整理）
+category-path:
+- MATH
+- CALCULUS
+- 历年卷
+categories:
+- 历年卷
+- 小测
+- 秋冬
+execute:
+  enabled: false
+---
+
+原卷标题：2025～2026 学年 XRY&ZJF 微积分秋冬第一次小测（解析）。
+
+考试时间：45 分钟。总分：100 分。题型：不定项选择（多选、漏选、错选均不给分），每题 10 分。
+
+来源：[原帖链接](https://www.cc98.org/topic/6347352)，共 5 页。原参考答案及解析署名：【CC98】路人甲苯色。
+
+## 第一部分：题目 {#questions}
+
+### 1.（10 分）
+
+设 $f(x)$ 是周期为 $4$ 的偶函数，且 $f(x)=x^2-2x$（$0\le x\le2$），则 $f'(\frac72)=$ ______。
+
+- A. $-2$
+- B. $-1$
+- C. $2$
+- D. $1$
+
+### 2.（10 分）
+
+下列陈述错误的是：
+
+- A. 对数列 $\{a_n\}$，若 $\{a_{2n-1}\}$ 与 $\{a_{2n}\}$ 都收敛，则数列 $\{a_n\}$ 也收敛。
+- B. 对数列 $\{a_n\}$ 与常数 $A\in\mathbb R$，若 $\exists\varepsilon_0>0$，$\forall N>0$，$\exists n_0>N$，有 $|a_{n_0}-A|\ge\varepsilon_0$，则数列 $\{a_n\}$ 收敛。
+- C. 设数列 $\{a_n\}$ 满足 $a_1=2$，$a_{n+1}=3a_n-\frac4{a_n+1}$（$n\ge1$），则 $\lim_{n\to+\infty}a_n=1$。
+- D. 若数列 $\{a_n\}$ 收敛于 $A\in\mathbb R$，则：$\exists N>0$，$\forall\varepsilon>0$，当 $n>N$ 时，有 $|a_n-A|<\varepsilon$。
+
+### 3.（10 分）
+
+函数 $f(x)=\arcsin(\sin x)+\arccos(\cos x)$ 在 $[0,\pi]$ 上的表达式为：
+
+- A. $f(x)=\pi$
+- B. $f(x)=2\pi$
+- C. $f(x)=\begin{cases}2x,&0\le x\le\frac\pi2,\\\pi-x,&\frac\pi2<x\le\pi.\end{cases}$
+- D. $f(x)=\begin{cases}2x,&0\le x\le\frac\pi2,\\\pi,&\frac\pi2<x\le\pi.\end{cases}$
+
+### 4.（10 分）
+
+下列结论中，正确的个数有 ______ 个。
+
+① $\displaystyle\lim_{x\to0}\frac{\sin(x\sin\frac1x)}{x\sin\frac1x}=1$。
+
+② 若 $0<a_n<1$，则 $\displaystyle\lim_{n\to+\infty}[1-(a_n)^n]=1$。
+
+③ $\displaystyle\lim_{n\to+\infty}\sqrt[n]{1+\frac1{\sqrt2}+\cdots+\frac1{\sqrt n}}=1$。
+
+④ $\displaystyle\lim_{n\to+\infty}(n!)^{1/n^2}=1$。
+
+- A. $4$
+- B. $3$
+- C. $2$
+- D. $1$
+
+### 5.（10 分）
+
+下列关于极限计算正确的是：
+
+- A. $\displaystyle\lim_{x\to0}(\sqrt{\cos2x})^{1/x^2}=e^{-1}$。
+- B. $\displaystyle\lim_{x\to+\infty}\left(\frac{2x+3}{2x+1}\right)^x=e$。
+- C. $\displaystyle\lim_{x\to0}\left(\frac{3x-1}{x-1}\right)^{1/x}=e^{-2}$。
+- D. $\displaystyle\lim_{x\to+\infty}(1+x)^{1/x}=e$。
+
+### 6.（10 分）
+
+求极限
+
+$$
+\lim_{x\to+\infty}x\left(\sqrt[5]{x^5+10x^3-7}-\sqrt[3]{x^3-3x+4}\right)=\underline{\qquad}.
+$$
+
+- A. $\frac{23}{15}$
+- B. $3$
+- C. $\frac{16}{15}$
+- D. $2$
+
+### 7.（10 分）
+
+设 $f(x)$ 和 $g(x)$ 均为定义在 $\mathbb R$ 上的函数，则下列陈述错误的是：
+
+- A. 若 $f(x)$ 是 $\mathbb R$ 上的周期函数，则 $g(f(x))$ 是 $\mathbb R$ 上的周期函数。
+- B. 若 $f(x)$ 和 $g(x)$ 是 $\mathbb R$ 上的周期函数，则 $f(x)+g(x)$ 也是 $\mathbb R$ 上的周期函数。
+- C. 若 $f(x)$ 和 $g(x)$ 是 $\mathbb R$ 上的奇函数，则 $f(g(x))$ 是 $\mathbb R$ 上的偶函数。
+- D. 若 $f(x)$ 和 $g(x)$ 在 $\mathbb R$ 上单调递减，则 $f(x)\cdot g(x)$ 在 $\mathbb R$ 上单调递增。
+
+### 8.（10 分）
+
+下列陈述正确的是：
+
+- A. 设函数 $f(x)$ 在 $[a,b]$ 上连续，且其最小值与最大值分别为 $m$ 和 $M$，则 $f(x)$ 的值域为 $[m,M]$。
+- B. 若函数 $f(x)$ 在 $[a,b]$ 上只有第一类间断点，则 $f(x)$ 在 $[a,b]$ 上有界。
+- C. 定义在 $[a,b]$ 上的函数 $f(x)$，若其值域为区间 $[m,n]$（$m<n$，$m,n\in\mathbb R$），则 $f(x)$ 在 $[a,b]$ 上连续。
+- D. 若函数 $f(x)$ 在 $(a,b)$ 内连续，且 $f(a+0)$ 和 $f(b-0)$ 均存在，则函数 $f(x)$ 在 $(a,b)$ 内有界。
+
+### 9.（10 分）
+
+设 $\alpha(x)=\frac{1-x}{3+x}$，$\beta(x)=1-\sqrt[4]x$，当 $x\to1$ 时，下列陈述正确的是：
+
+- A. $\alpha(x)$ 与 $\beta(x)$ 为同阶非等价无穷小量。
+- B. $\alpha(x)$ 与 $\beta(x)$ 为等价无穷小量。
+- C. $\alpha(x)$ 是比 $\beta(x)$ 更低阶的无穷小量。
+- D. $\alpha(x)$ 是比 $\beta(x)$ 更高阶的无穷小量。
+
+### 10.（10 分）
+
+函数
+
+$$f(x)=|x-1|^{\frac1{x(x-2)}}$$
+
+的第一类间断点的个数为：
+
+- A. $0$
+- B. $1$
+- C. $2$
+- D. $3$
+
+## 第二部分：详细解析 {#solutions}
+
+### 1.（10 分）
+
+设 $f(x)$ 是周期为 $4$ 的偶函数，且 $f(x)=x^2-2x$（$0\le x\le2$），则 $f'(\frac72)=$ ______。
+
+- A. $-2$
+- B. $-1$
+- C. $2$
+- D. $1$
+
+**答案** D。
+
+**解** 周期性与偶性给出 $f'(x+4)=f'(x)$、$f'(-x)=-f'(x)$。又 $f'(\frac12)=2\cdot\frac12-2=-1$，因此
+
+$$f'(\tfrac72)=f'(-\tfrac12)=-f'(\tfrac12)=1.$$
+
+### 2.（10 分）
+
+下列陈述错误的是：
+
+- A. 对数列 $\{a_n\}$，若 $\{a_{2n-1}\}$ 与 $\{a_{2n}\}$ 都收敛，则数列 $\{a_n\}$ 也收敛。
+- B. 对数列 $\{a_n\}$ 与常数 $A\in\mathbb R$，若 $\exists\varepsilon_0>0$，$\forall N>0$，$\exists n_0>N$，有 $|a_{n_0}-A|\ge\varepsilon_0$，则数列 $\{a_n\}$ 收敛。
+- C. 设数列 $\{a_n\}$ 满足 $a_1=2$，$a_{n+1}=3a_n-\frac4{a_n+1}$（$n\ge1$），则 $\lim_{n\to+\infty}a_n=1$。
+- D. 若数列 $\{a_n\}$ 收敛于 $A\in\mathbb R$，则：$\exists N>0$，$\forall\varepsilon>0$，当 $n>N$ 时，有 $|a_n-A|<\varepsilon$。
+
+**答案** ABCD（选出错误陈述）。
+
+**解** A：取 $a_n=(-1)^n$，奇、偶子列分别收敛于 $-1$、$1$，原数列不收敛；还需要两个子列的极限相同。
+
+B：条件只表示 $a_n$ 不趋于指定的 $A$，不能推出数列收敛。例如 $a_n=(-1)^n$、$A=0$ 满足条件，但不收敛。
+
+C：当 $a_n\ge2$ 时，
+
+$$a_{n+1}-a_n=2a_n-\frac4{a_n+1}\ge\frac83.$$
+
+由归纳法 $a_n\ge2+\frac83(n-1)\to+\infty$，不趋于 $1$。
+
+D：收敛定义的量词顺序应为 $\forall\varepsilon>0$，$\exists N>0$。题中顺序实际上要求数列从某项起恒等于 $A$；反例为 $a_n=A+1/n$。
+
+### 3.（10 分）
+
+函数 $f(x)=\arcsin(\sin x)+\arccos(\cos x)$ 在 $[0,\pi]$ 上的表达式为：
+
+- A. $f(x)=\pi$
+- B. $f(x)=2\pi$
+- C. $f(x)=\begin{cases}2x,&0\le x\le\frac\pi2,\\\pi-x,&\frac\pi2<x\le\pi.\end{cases}$
+- D. $f(x)=\begin{cases}2x,&0\le x\le\frac\pi2,\\\pi,&\frac\pi2<x\le\pi.\end{cases}$
+
+**答案** D。
+
+**解** 在 $[0,\pi]$ 上，$\arccos(\cos x)=x$；而
+
+$$\arcsin(\sin x)=\begin{cases}x,&0\le x\le\pi/2,\\\pi-x,&\pi/2<x\le\pi.\end{cases}$$
+
+相加即得 D。关键是反三角函数的主值范围。
+
+### 4.（10 分）
+
+下列结论中，正确的个数有 ______ 个。
+
+① $\displaystyle\lim_{x\to0}\frac{\sin(x\sin\frac1x)}{x\sin\frac1x}=1$。
+
+② 若 $0<a_n<1$，则 $\displaystyle\lim_{n\to+\infty}[1-(a_n)^n]=1$。
+
+③ $\displaystyle\lim_{n\to+\infty}\sqrt[n]{1+\frac1{\sqrt2}+\cdots+\frac1{\sqrt n}}=1$。
+
+④ $\displaystyle\lim_{n\to+\infty}(n!)^{1/n^2}=1$。
+
+- A. $4$
+- B. $3$
+- C. $2$
+- D. $1$
+
+**答案** B（3 个：①③④）。
+
+**解** ①正确。令 $u=x\sin(1/x)$，由 $|u|\le|x|$ 可知 $u\to0$。沿原表达式的定义域（排除 $x=0$ 及 $\sin(1/x)=0$ 的点），有
+
+$$\frac{\sin(x\sin(1/x))}{x\sin(1/x)}=\frac{\sin u}{u}\to1.$$
+
+②错误。取 $a_n=2^{-1/n}$，则 $0<a_n<1$，但 $1-a_n^n=1/2$。
+
+③正确。记 $S_n=\sum_{k=1}^n1/\sqrt k$，则 $\sqrt n\le S_n\le n$，故
+
+$$n^{1/(2n)}\le S_n^{1/n}\le n^{1/n}\to1.$$
+
+④正确。由 $1\le n!\le n^n$，得 $1\le(n!)^{1/n^2}\le n^{1/n}\to1$。
+
+### 5.（10 分）
+
+下列关于极限计算正确的是：
+
+- A. $\displaystyle\lim_{x\to0}(\sqrt{\cos2x})^{1/x^2}=e^{-1}$。
+- B. $\displaystyle\lim_{x\to+\infty}\left(\frac{2x+3}{2x+1}\right)^x=e$。
+- C. $\displaystyle\lim_{x\to0}\left(\frac{3x-1}{x-1}\right)^{1/x}=e^{-2}$。
+- D. $\displaystyle\lim_{x\to+\infty}(1+x)^{1/x}=e$。
+
+**答案** ABC。
+
+**解** 对正底数的幂函数先取对数。
+
+A：$\frac{\ln(\cos2x)}{2x^2}\to-1$，故原极限为 $e^{-1}$。这里用 $\ln(1+t)\sim t$、$\cos2x-1\sim-2x^2$。
+
+B：$x\ln(1+\frac2{2x+1})\to1$，故原极限为 $e$。
+
+C：$\frac1x\ln(1+\frac{2x}{x-1})\to-2$，故原极限为 $e^{-2}$。
+
+D：$\frac{\ln(1+x)}x\to0$，故极限为 $1$，不是 $e$。
+
+### 6.（10 分）
+
+求极限
+
+$$
+\lim_{x\to+\infty}x\left(\sqrt[5]{x^5+10x^3-7}-\sqrt[3]{x^3-3x+4}\right)=\underline{\qquad}.
+$$
+
+- A. $\frac{23}{15}$
+- B. $3$
+- C. $\frac{16}{15}$
+- D. $2$
+
+**答案** B。
+
+**解** 提出根式中的 $x$，原式化为
+
+$$\lim_{x\to+\infty}x^2\left[\left(1+\frac{10}{x^2}-\frac7{x^5}\right)^{1/5}-\left(1-\frac3{x^2}+\frac4{x^3}\right)^{1/3}\right].$$
+
+使用 $(1+t)^a=1+at+o(t)$：
+
+$$\left(1+\frac{10}{x^2}-\frac7{x^5}\right)^{1/5}=1+\frac2{x^2}+o(x^{-2}),$$
+
+$$\left(1-\frac3{x^2}+\frac4{x^3}\right)^{1/3}=1-\frac1{x^2}+o(x^{-2}).$$
+
+相减再乘 $x^2$ 得 $3+o(1)$，极限为 $3$。
+
+### 7.（10 分）
+
+设 $f(x)$ 和 $g(x)$ 均为定义在 $\mathbb R$ 上的函数，则下列陈述错误的是：
+
+- A. 若 $f(x)$ 是 $\mathbb R$ 上的周期函数，则 $g(f(x))$ 是 $\mathbb R$ 上的周期函数。
+- B. 若 $f(x)$ 和 $g(x)$ 是 $\mathbb R$ 上的周期函数，则 $f(x)+g(x)$ 也是 $\mathbb R$ 上的周期函数。
+- C. 若 $f(x)$ 和 $g(x)$ 是 $\mathbb R$ 上的奇函数，则 $f(g(x))$ 是 $\mathbb R$ 上的偶函数。
+- D. 若 $f(x)$ 和 $g(x)$ 在 $\mathbb R$ 上单调递减，则 $f(x)\cdot g(x)$ 在 $\mathbb R$ 上单调递增。
+
+**答案** BCD（选出错误陈述）。
+
+**解** A 正确：若 $T>0$ 是 $f$ 的周期，则 $g(f(x+T))=g(f(x))$；不必假定存在最小正周期。
+
+B 错误：取 $f(x)=\sin x$、$g(x)=\sin(\pi x)$。若它们的和有正周期 $T$，展开 $h(x+T)-h(x)$，利用不同频率的正弦、余弦函数线性无关，可得 $T=2k\pi$ 且 $T=2l$（$k,l$ 为整数），与 $\pi$ 无理矛盾。
+
+C 错误：$f(g(-x))=f(-g(x))=-f(g(x))$，复合后为奇函数，未必是偶函数；取 $f(x)=g(x)=x$ 即为反例。
+
+D 错误：取 $f(x)=-x$、$g(x)=1-x$，两者均严格递减，但乘积 $x^2-x$ 在 $\mathbb R$ 上并不单调递增。
+
+### 8.（10 分）
+
+下列陈述正确的是：
+
+- A. 设函数 $f(x)$ 在 $[a,b]$ 上连续，且其最小值与最大值分别为 $m$ 和 $M$，则 $f(x)$ 的值域为 $[m,M]$。
+- B. 若函数 $f(x)$ 在 $[a,b]$ 上只有第一类间断点，则 $f(x)$ 在 $[a,b]$ 上有界。
+- C. 定义在 $[a,b]$ 上的函数 $f(x)$，若其值域为区间 $[m,n]$（$m<n$，$m,n\in\mathbb R$），则 $f(x)$ 在 $[a,b]$ 上连续。
+- D. 若函数 $f(x)$ 在 $(a,b)$ 内连续，且 $f(a+0)$ 和 $f(b-0)$ 均存在，则函数 $f(x)$ 在 $(a,b)$ 内有界。
+
+**答案** ABD。
+
+**解** A：由闭区间连续函数的最值定理及介值定理，值域恰为 $[m,M]$。
+
+B：端点处按相应单侧极限有限理解。连续点附近有界；第一类间断点处左右极限有限，也局部有界。由 $[a,b]$ 的紧致性，取有限个这样的邻域即可得到全区间的统一上界。
+
+C：值域是区间不能反推连续。取 $[0,1]$ 上
+
+$$f(x)=\begin{cases}1,&x=0,\\0,&x=1,\\x,&0<x<1.\end{cases}$$
+
+值域为 $[0,1]$，但在两个端点不连续。
+
+D：这里“极限存在”按有限实数极限理解。在端点附近由有限单侧极限得到有界性，在剩余闭子区间上由连续性得到有界性，合并可知在 $(a,b)$ 内有界。
+
+### 9.（10 分）
+
+设 $\alpha(x)=\frac{1-x}{3+x}$，$\beta(x)=1-\sqrt[4]x$，当 $x\to1$ 时，下列陈述正确的是：
+
+- A. $\alpha(x)$ 与 $\beta(x)$ 为同阶非等价无穷小量。
+- B. $\alpha(x)$ 与 $\beta(x)$ 为等价无穷小量。
+- C. $\alpha(x)$ 是比 $\beta(x)$ 更低阶的无穷小量。
+- D. $\alpha(x)$ 是比 $\beta(x)$ 更高阶的无穷小量。
+
+**答案** B。
+
+**解** 利用四次方差分解，
+
+$$\frac{\alpha(x)}{\beta(x)}=\frac{1-x}{(3+x)(1-\sqrt[4]x)}=\frac{(1+\sqrt[4]x)(1+\sqrt x)}{3+x}\to\frac{2\cdot2}4=1.$$
+
+因此 $\alpha(x)\sim\beta(x)$（$x\to1$）。
+
+### 10.（10 分）
+
+函数
+
+$$f(x)=|x-1|^{\frac1{x(x-2)}}$$
+
+的第一类间断点的个数为：
+
+- A. $0$
+- B. $1$
+- C. $2$
+- D. $3$
+
+**答案** C（2 个）。
+
+**解** 实数范围内定义域为 $\mathbb R\setminus\{0,1,2\}$。其中 $x=1$ 时形式为 $0^{-1}$，没有定义。其余点可写为
+
+$$f(x)=\exp\left(\frac{\ln|x-1|}{x(x-2)}\right).$$
+
+只需检查 $0,1,2$。
+
+当 $x\to0$ 时，$\ln(1-x)\sim-x$，故
+
+$$\lim_{x\to0}\frac{\ln(1-x)}{x(x-2)}=\frac12,\qquad\lim_{x\to0}f(x)=e^{1/2}.$$
+
+当 $x\to2$ 时，$\ln(x-1)=\ln(1+(x-2))\sim x-2$，故 $\lim_{x\to2}f(x)=e^{1/2}$。两点均为可去间断点。
+
+当 $x\to1$ 时，$\ln|x-1|\to-\infty$，$x(x-2)\to-1$，所以 $f(x)\to+\infty$，为无穷间断点，属于第二类。
+
+按原题将定义域缺口也纳入间断点分类的惯例，第一类间断点为 $0,2$，共 $2$ 个。
+
+## 第三部分：知识点总结 {#summary}
+
+### 答案与考点
+
+| 题号 | 答案 | 主要考点 |
+| --- | --- | --- |
+| 1 | D | 周期性、偶函数导数 |
+| 2 | ABCD | 子列、收敛定义与量词、递推数列 |
+| 3 | D | 反三角函数主值范围 |
+| 4 | **B** | 定义域上的极限、夹逼定理、数列幂 |
+| 5 | ABC | 幂指函数极限、取对数 |
+| 6 | B | 根式差、展开余项 |
+| 7 | BCD | 周期函数之和、复合奇偶性、乘积单调性 |
+| 8 | ABD | 连续性、值域、有界性、第一类间断点 |
+| 9 | B | 等价无穷小、四次方差 |
+| 10 | C | 定义域、可去与无穷间断点 |
+
+### 复习要点
+
+- 先确认题目要求选“正确”还是“错误”，再逐项判断。
+- 奇、偶子列都收敛且极限相同，才能推出原数列收敛；量词顺序决定命题强弱。
+- 幂指型极限先取对数；根式相减应将展开精度保留到外部放大因子所需的阶数。
+- 极限由定义域中的点趋近决定；函数在某点无定义与该点极限不存在是不同结论。
+- 反例必须满足全部前提，尤其是值域为整个区间这一条件。
+- 间断点先查定义域，再查左右极限是否有限、相等，最后判断是否与函数值相同。
+
+---
+
+## ⚖️AI 协作与版权声明
+
+### AI 协作说明
+
+本文件由整理者提供资料并确定整理要求，使用 OpenAI Codex 辅助完成题目转写、LaTeX 公式录入、解题推导、知识点分析和 Markdown 排版。AI 辅助生成的解析属于学习参考内容，不代表命题教师、原资料作者或学校的官方解答；本声明不表示内容已经过人工逐题审核。使用时请结合教材与课程要求核验，发现问题可提出更正。
+
+### 来源与权利归属
+
+原始试卷及参考解析来自 CC98 论坛用户 [@路人甲苯色](https://www.cc98.org/user/id/791453) 的[资料整理帖](https://www.cc98.org/topic/6347352)。 原题、原始参考解析、截图及其他引用材料的权利归各自权利人所有，本文件的整理行为不改变其权利归属。来源标注用于说明出处，不表示已取得原资料的开放许可，也不表示原作者对本文件作出认可。
+
+### 开放许可与转载要求
+
+在整理贡献者依法有权许可的范围内，本文件新增的转写编排、补充解析和知识点整理采用 **MIT License**，许可正文如下。该许可不涵盖原题、原始参考解析、截图或其他第三方材料；使用这些材料须遵守其原有许可，或另行取得必要授权。
+
+转载或修改适用 MIT 许可的内容时，应保留以下版权与许可声明。转载包含原题或引用资料的版本时，也请保留资料来源及本节 AI 协作说明；修改者应注明修改内容，避免将补充或修改的结论归于原资料作者。
+
+```text
+MIT License
+
+Copyright (c) 2026 easoncyy
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
