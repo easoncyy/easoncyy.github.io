@@ -26,63 +26,86 @@ $$
 
 ```
 
-**答案：** $2$。
+用夹逼。考虑
 
-记 $S_n=\frac1n\sum_{k=1}^{n}n^{1/k}$。第一项对和的贡献为 $1$，其余各项均不小于 $1$，故
-
-$$
-S_n\ge1+\frac{n-1}{n}=2-\frac1n.
-$$
-
-**上界沿用手写稿的分段思路。** 对 $n\ge16$，取
+**① 下界**
 
 $$
-m=m_n=\lfloor n^{1/4}\rfloor,
+\frac1n\sum_{k=1}^{n}n^{1/k}
+=1+\frac1n\sum_{k=2}^{n}n^{1/k}
+\ge1+\frac1n\cdot(n-1)
+=2-\frac1n.
 $$
 
-将和分为前 $m$ 项与其余 $n-m$ 项。
+**② 上界**
 
-当 $2\le k\le m$ 时，$n^{1/k}\le\sqrt n$，所以
+我们考虑用无限项放缩。
+
+取 $m$，$m\ge2$。则
 
 $$
+\frac1n\sum_{k=1}^{n}n^{1/k}
+=\frac1n\sum_{k=1}^{m}n^{1/k}
++\frac1n\sum_{k=m+1}^{n}n^{1/k}.
+$$
+
+**前 $m$ 项**
+
+$$
+\begin{aligned}
 \frac1n\sum_{k=1}^{m}n^{1/k}
-\le1+\frac{m-1}{\sqrt n}.
+&=\frac1n\left(n+\sum_{k=2}^{m}n^{1/k}\right)\\
+&\le1+\frac1n\sum_{k=2}^{m}\sqrt n\\
+&=1+\frac{m-1}{n}\sqrt n
+=1+\frac{m-1}{\sqrt n}.
+\end{aligned}
 $$
 
-当 $k\ge m+1$ 时，$n^{1/k}\le n^{1/(m+1)}$，因此
+**后 $(n-m)$ 项**
+
+$\because k\ge m+1$，
+
+$\therefore\dfrac1k\le\dfrac1{m+1}$，即 $n^{1/k}\le n^{1/(m+1)}$。
 
 $$
 \frac1n\sum_{k=m+1}^{n}n^{1/k}
-\le\left(1-\frac mn\right)n^{1/(m+1)}.
+\le\frac1n(n-m)\cdot n^{1/(m+1)}
+=\left(1-\frac mn\right)n^{1/(m+1)}.
 $$
 
-合起来得到
+则
 
 $$
-2-\frac1n\le S_n
+2-\frac1n
+\le\frac1n\sum_{k=1}^{n}n^{1/k}
 \le1+\frac{m-1}{\sqrt n}
 +\left(1-\frac mn\right)n^{1/(m+1)}.
 $$
 
-这里 $m$ 是随 $n$ 变化的整数。由于
+我们不难猜出极限是 $2$，为了让右侧收敛于 $2$，要有
 
 $$
-\frac{m-1}{\sqrt n}\longrightarrow0,\qquad
-\frac mn\longrightarrow0,
+\lim_{n\to\infty}\left[
+\frac{m-1}{\sqrt n}
++\left(1-\frac mn\right)n^{1/(m+1)}
+\right]=1.
 $$
 
-且 $m+1>n^{1/4}$，从而
+则当 $m\sim n^{\alpha}$，$0<\alpha<\dfrac12$ 时，
 
 $$
-0\le\frac{\ln n}{m+1}<\frac{\ln n}{n^{1/4}}\longrightarrow0,
-\qquad n^{1/(m+1)}\longrightarrow1,
+\begin{aligned}
+&\lim_{n\to\infty}\left[
+\frac{m-1}{\sqrt n}
++\left(1-\frac mn\right)n^{1/(m+1)}
+\right]\\
+&=\lim_{n\to\infty}\left[0+n^{1/(m+1)}\right]\\
+&=\lim_{n\to\infty}e^{\frac{\ln n}{m+1}}\\
+&=e^0=1.
+\end{aligned}
 $$
 
-上述上界趋于 $2$。由夹逼定理，$S_n\to2$。
-
-**易错点：** 不能固定 $m$ 后直接声称 $n^{1/(m+1)}\to1$；必须明确选择随 $n$ 增长的分段点。这里取 $\lfloor n^{1/4}\rfloor$，对应手写稿中 $0<\alpha<1/2$ 的一种具体选择。
-
-参考：[2023–2024 微积分第一次小测归档，另甲-3](/posts/20261018-calculus-quiz-1-2023-2024/#另甲-3.-多个不同指数项之和)。
+而 $n^{\alpha}$ 阶数高于 $\ln n$，满足题意。
 
 ```{=html}
 
