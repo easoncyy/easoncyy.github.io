@@ -10,6 +10,13 @@ on:
         description: Rebuild from main (including today's scheduled problems)
         type: boolean
         default: true
+      runner:
+        description: Build runner (choose Windows if Ubuntu is queued)
+        type: choice
+        options:
+          - ubuntu-latest
+          - windows-latest
+        default: ubuntu-latest
 
 permissions:
   contents: read
@@ -22,7 +29,7 @@ concurrency:
 
 jobs:
   publish:
-    runs-on: ubuntu-latest
+    runs-on: ${{ inputs.runner || 'ubuntu-latest' }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
