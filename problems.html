@@ -208,8 +208,124 @@ window.Quarto = {
   <button type="button" id="problem-filter-reset">清除筛选</button>
 </div>
 <p id="problem-status" aria-live="polite"></p>
-<section id="section" class="level2 problem-date-heading problem-day" data-date="2026-10-18">
-<h2 class="problem-date-heading anchored" data-anchor-id="section">2026-10-18</h2>
+<section id="section" class="level2 problem-date-heading problem-day" data-date="2026-10-19">
+<h2 class="problem-date-heading anchored" data-anchor-id="section">2026-10-19</h2>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;分段估计&quot;, &quot;夹逼定理&quot;], &quot;title&quot;: &quot;不同次根组成的变项数列和&quot;}">
+
+<div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
+
+<h3 class="anchored">01. 不同次根组成的变项数列和</h3>
+
+<div class="entry-tags">#分段估计 · #夹逼定理</div>
+
+<p>求极限</p>
+<p><span class="math display">\[
+\lim_{n\to+\infty}\frac{n+n^{1/2}+n^{1/3}+\cdots+n^{1/n}}{n}.
+\]</span></p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p><strong>答案：</strong> <span class="math inline">\(2\)</span>。</p>
+<p>记 <span class="math inline">\(S_n=\frac1n\sum_{k=1}^{n}n^{1/k}\)</span>。第一项对和的贡献为 <span class="math inline">\(1\)</span>，其余各项均不小于 <span class="math inline">\(1\)</span>，故</p>
+<p><span class="math display">\[
+S_n\ge1+\frac{n-1}{n}=2-\frac1n.
+\]</span></p>
+<p><strong>上界沿用手写稿的分段思路。</strong> 对 <span class="math inline">\(n\ge16\)</span>，取</p>
+<p><span class="math display">\[
+m=m_n=\lfloor n^{1/4}\rfloor,
+\]</span></p>
+<p>将和分为前 <span class="math inline">\(m\)</span> 项与其余 <span class="math inline">\(n-m\)</span> 项。</p>
+<p>当 <span class="math inline">\(2\le k\le m\)</span> 时，<span class="math inline">\(n^{1/k}\le\sqrt n\)</span>，所以</p>
+<p><span class="math display">\[
+\frac1n\sum_{k=1}^{m}n^{1/k}
+\le1+\frac{m-1}{\sqrt n}.
+\]</span></p>
+<p>当 <span class="math inline">\(k\ge m+1\)</span> 时，<span class="math inline">\(n^{1/k}\le n^{1/(m+1)}\)</span>，因此</p>
+<p><span class="math display">\[
+\frac1n\sum_{k=m+1}^{n}n^{1/k}
+\le\left(1-\frac mn\right)n^{1/(m+1)}.
+\]</span></p>
+<p>合起来得到</p>
+<p><span class="math display">\[
+2-\frac1n\le S_n
+\le1+\frac{m-1}{\sqrt n}
++\left(1-\frac mn\right)n^{1/(m+1)}.
+\]</span></p>
+<p>这里 <span class="math inline">\(m\)</span> 是随 <span class="math inline">\(n\)</span> 变化的整数。由于</p>
+<p><span class="math display">\[
+\frac{m-1}{\sqrt n}\longrightarrow0,\qquad
+\frac mn\longrightarrow0,
+\]</span></p>
+<p>且 <span class="math inline">\(m+1&gt;n^{1/4}\)</span>，从而</p>
+<p><span class="math display">\[
+0\le\frac{\ln n}{m+1}&lt;\frac{\ln n}{n^{1/4}}\longrightarrow0,
+\qquad n^{1/(m+1)}\longrightarrow1,
+\]</span></p>
+<p>上述上界趋于 <span class="math inline">\(2\)</span>。由夹逼定理，<span class="math inline">\(S_n\to2\)</span>。</p>
+<p><strong>易错点：</strong> 不能固定 <span class="math inline">\(m\)</span> 后直接声称 <span class="math inline">\(n^{1/(m+1)}\to1\)</span>；必须明确选择随 <span class="math inline">\(n\)</span> 增长的分段点。这里取 <span class="math inline">\(\lfloor n^{1/4}\rfloor\)</span>，对应手写稿中 <span class="math inline">\(0&lt;\alpha&lt;1/2\)</span> 的一种具体选择。</p>
+<p>参考：<a href="./posts/20261018-calculus-quiz-1-2023-2024/#另甲-3.-多个不同指数项之和">2023–2024 微积分第一次小测归档，另甲-3</a>。</p>
+
+</div></details>
+
+<p class="problem-source">来源：微积分第一次小测往年题（2023–2024 学年题目汇编）</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;有界扰动&quot;, &quot;夹逼定理&quot;], &quot;title&quot;: &quot;有界扰动的变项数列和&quot;}">
+
+<div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
+
+<h3 class="anchored">02. 有界扰动的变项数列和</h3>
+
+<div class="entry-tags">#有界扰动 · #夹逼定理</div>
+
+<p>求极限</p>
+<p><span class="math display">\[
+\lim_{n\to+\infty}\sum_{k=1}^{n}\frac{k+\sin k}{n^2+k}.
+\]</span></p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p><strong>答案：</strong> <span class="math inline">\(\displaystyle\frac12\)</span>。</p>
+<p>将整个和拆成主项与扰动：</p>
+<p><span class="math display">\[
+A_n=\sum_{k=1}^{n}\frac{k}{n^2+k},\qquad
+R_n=\sum_{k=1}^{n}\frac{\sin k}{n^2+k}.
+\]</span></p>
+<p>当 <span class="math inline">\(1\le k\le n\)</span> 时，<span class="math inline">\(n^2\le n^2+k\le n^2+n\)</span>，故</p>
+<p><span class="math display">\[
+\frac{\sum_{k=1}^{n}k}{n^2+n}\le A_n
+\le\frac{\sum_{k=1}^{n}k}{n^2},
+\]</span></p>
+<p>即</p>
+<p><span class="math display">\[
+\frac12\le A_n\le\frac{n+1}{2n}.
+\]</span></p>
+<p>由夹逼定理，<span class="math inline">\(A_n\to1/2\)</span>。另一方面，利用 <span class="math inline">\(|\sin k|\le1\)</span>，</p>
+<p><span class="math display">\[
+|R_n|\le\sum_{k=1}^{n}\frac1{n^2+k}
+\le\frac{n}{n^2}=\frac1n\longrightarrow0.
+\]</span></p>
+<p>因此原极限为 <span class="math inline">\(\lim(A_n+R_n)=1/2\)</span>。</p>
+<p><strong>易错点：</strong> 不需要求 <span class="math inline">\(\sin k\)</span> 的部分和；控制每项误差后，还要计入总项数 <span class="math inline">\(n\)</span>。固定每一项趋于零，并不意味着整个变项和趋于零。</p>
+<p>参考：<a href="./posts/20261018-calculus-quiz-1-2023-2024/#甲-2.-有界扰动的变项数列和">2023–2024 微积分第一次小测归档，甲-2</a>。</p>
+
+</div></details>
+
+<p class="problem-source">来源：微积分第一次小测往年题（2023–2024 学年题目汇编）</p>
+
+</div>
+
+<details id="discussion-2026-10-19" class="log-comments problem-discussion" data-comment-term="/problems/2026-10-19/" data-comment-date="2026-10-19" data-comment-title="每日好题 · 2026-10-19">
+
+<summary>discussion/ <span>2026-10-19 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+</section>
+<section id="section-1" class="level2 problem-date-heading problem-day" data-date="2026-10-18">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-1">2026-10-18</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;夹逼定理&quot;, &quot;变项数列和&quot;], &quot;title&quot;: &quot;含根式分母的平方和极限&quot;}">
 
 <div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
@@ -408,8 +524,8 @@ n^2\theta_n
 </details>
 
 </section>
-<section id="section-1" class="level2 problem-date-heading problem-day" data-date="2026-10-17">
-<h2 class="problem-date-heading anchored" data-anchor-id="section-1">2026-10-17</h2>
+<section id="section-2" class="level2 problem-date-heading problem-day" data-date="2026-10-17">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-2">2026-10-17</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;次可加性&quot;, &quot;下确界&quot;, &quot;极限&quot;], &quot;title&quot;: &quot;次可加数列与 Fekete 引理&quot;}">
 
 <div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
@@ -588,8 +704,8 @@ a_i-a_j=21,
 </details>
 
 </section>
-<section id="section-2" class="level2 problem-date-heading problem-day" data-date="2026-10-16">
-<h2 class="problem-date-heading anchored" data-anchor-id="section-2">2026-10-16</h2>
+<section id="section-3" class="level2 problem-date-heading problem-day" data-date="2026-10-16">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-3">2026-10-16</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;反证法&quot;, &quot;阶乘级数&quot;], &quot;title&quot;: &quot;证明 e 是无理数&quot;}">
 
 <div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
@@ -737,7 +853,7 @@ d&amp;1&amp;1/d^2&amp;1/d
 
 </section>
 
-<script id="problem-index" type="application/json">{"builtDate": "2026-10-18", "dates": {"2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
+<script id="problem-index" type="application/json">{"builtDate": "2026-10-19", "dates": {"2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
 
 <p id="problem-empty" hidden="">这一天暂无符合条件的题目。</p>
 <section class="problem-calendar" aria-label="按日期查看题目">

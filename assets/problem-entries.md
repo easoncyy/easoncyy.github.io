@@ -1,3 +1,182 @@
+::: {.problem-day data-date="2026-10-19"}
+
+## 2026-10-19 {.problem-date-heading}
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;分段估计&quot;, &quot;夹逼定理&quot;], &quot;title&quot;: &quot;不同次根组成的变项数列和&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
+
+<h3>01. 不同次根组成的变项数列和</h3>
+
+<div class="entry-tags">#分段估计 · #夹逼定理</div>
+
+```
+
+求极限
+
+$$
+\lim_{n\to+\infty}\frac{n+n^{1/2}+n^{1/3}+\cdots+n^{1/n}}{n}.
+$$
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+**答案：** $2$。
+
+记 $S_n=\frac1n\sum_{k=1}^{n}n^{1/k}$。第一项对和的贡献为 $1$，其余各项均不小于 $1$，故
+
+$$
+S_n\ge1+\frac{n-1}{n}=2-\frac1n.
+$$
+
+**上界沿用手写稿的分段思路。** 对 $n\ge16$，取
+
+$$
+m=m_n=\lfloor n^{1/4}\rfloor,
+$$
+
+将和分为前 $m$ 项与其余 $n-m$ 项。
+
+当 $2\le k\le m$ 时，$n^{1/k}\le\sqrt n$，所以
+
+$$
+\frac1n\sum_{k=1}^{m}n^{1/k}
+\le1+\frac{m-1}{\sqrt n}.
+$$
+
+当 $k\ge m+1$ 时，$n^{1/k}\le n^{1/(m+1)}$，因此
+
+$$
+\frac1n\sum_{k=m+1}^{n}n^{1/k}
+\le\left(1-\frac mn\right)n^{1/(m+1)}.
+$$
+
+合起来得到
+
+$$
+2-\frac1n\le S_n
+\le1+\frac{m-1}{\sqrt n}
++\left(1-\frac mn\right)n^{1/(m+1)}.
+$$
+
+这里 $m$ 是随 $n$ 变化的整数。由于
+
+$$
+\frac{m-1}{\sqrt n}\longrightarrow0,\qquad
+\frac mn\longrightarrow0,
+$$
+
+且 $m+1>n^{1/4}$，从而
+
+$$
+0\le\frac{\ln n}{m+1}<\frac{\ln n}{n^{1/4}}\longrightarrow0,
+\qquad n^{1/(m+1)}\longrightarrow1,
+$$
+
+上述上界趋于 $2$。由夹逼定理，$S_n\to2$。
+
+**易错点：** 不能固定 $m$ 后直接声称 $n^{1/(m+1)}\to1$；必须明确选择随 $n$ 增长的分段点。这里取 $\lfloor n^{1/4}\rfloor$，对应手写稿中 $0<\alpha<1/2$ 的一种具体选择。
+
+参考：[2023–2024 微积分第一次小测归档，另甲-3](/posts/20261018-calculus-quiz-1-2023-2024/#另甲-3.-多个不同指数项之和)。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：微积分第一次小测往年题（2023–2024 学年题目汇编）</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;有界扰动&quot;, &quot;夹逼定理&quot;], &quot;title&quot;: &quot;有界扰动的变项数列和&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
+
+<h3>02. 有界扰动的变项数列和</h3>
+
+<div class="entry-tags">#有界扰动 · #夹逼定理</div>
+
+```
+
+求极限
+
+$$
+\lim_{n\to+\infty}\sum_{k=1}^{n}\frac{k+\sin k}{n^2+k}.
+$$
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+**答案：** $\displaystyle\frac12$。
+
+将整个和拆成主项与扰动：
+
+$$
+A_n=\sum_{k=1}^{n}\frac{k}{n^2+k},\qquad
+R_n=\sum_{k=1}^{n}\frac{\sin k}{n^2+k}.
+$$
+
+当 $1\le k\le n$ 时，$n^2\le n^2+k\le n^2+n$，故
+
+$$
+\frac{\sum_{k=1}^{n}k}{n^2+n}\le A_n
+\le\frac{\sum_{k=1}^{n}k}{n^2},
+$$
+
+即
+
+$$
+\frac12\le A_n\le\frac{n+1}{2n}.
+$$
+
+由夹逼定理，$A_n\to1/2$。另一方面，利用 $|\sin k|\le1$，
+
+$$
+|R_n|\le\sum_{k=1}^{n}\frac1{n^2+k}
+\le\frac{n}{n^2}=\frac1n\longrightarrow0.
+$$
+
+因此原极限为 $\lim(A_n+R_n)=1/2$。
+
+**易错点：** 不需要求 $\sin k$ 的部分和；控制每项误差后，还要计入总项数 $n$。固定每一项趋于零，并不意味着整个变项和趋于零。
+
+参考：[2023–2024 微积分第一次小测归档，甲-2](/posts/20261018-calculus-quiz-1-2023-2024/#甲-2.-有界扰动的变项数列和)。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：微积分第一次小测往年题（2023–2024 学年题目汇编）</p>
+
+```
+
+:::
+
+```{=html}
+
+<details id="discussion-2026-10-19" class="log-comments problem-discussion" data-comment-term="/problems/2026-10-19/" data-comment-date="2026-10-19" data-comment-title="每日好题 · 2026-10-19">
+
+<summary>discussion/ <span>2026-10-19 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
 ::: {.problem-day data-date="2026-10-18"}
 
 ## 2026-10-18 {.problem-date-heading}
@@ -791,6 +970,6 @@ $$
 
 ```{=html}
 
-<script id="problem-index" type="application/json">{"builtDate": "2026-10-18", "dates": {"2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
+<script id="problem-index" type="application/json">{"builtDate": "2026-10-19", "dates": {"2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
 
 ```
