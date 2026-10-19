@@ -1,0 +1,50 @@
+---
+title: "有界扰动的变项数列和"
+category-path: ["MATH", "CALCULUS", "数列与极限"]
+tags: ["有界扰动", "夹逼定理"]
+source: "微积分第一次小测往年题（2023–2024 学年题目汇编）"
+draft: false
+---
+
+求极限
+
+$$
+\lim_{n\to+\infty}\sum_{k=1}^{n}\frac{k+\sin k}{n^2+k}.
+$$
+
+<!-- answer -->
+
+**答案：** $\displaystyle\frac12$。
+
+将整个和拆成主项与扰动：
+
+$$
+A_n=\sum_{k=1}^{n}\frac{k}{n^2+k},\qquad
+R_n=\sum_{k=1}^{n}\frac{\sin k}{n^2+k}.
+$$
+
+当 $1\le k\le n$ 时，$n^2\le n^2+k\le n^2+n$，故
+
+$$
+\frac{\sum_{k=1}^{n}k}{n^2+n}\le A_n
+\le\frac{\sum_{k=1}^{n}k}{n^2},
+$$
+
+即
+
+$$
+\frac12\le A_n\le\frac{n+1}{2n}.
+$$
+
+由夹逼定理，$A_n\to1/2$。另一方面，利用 $|\sin k|\le1$，
+
+$$
+|R_n|\le\sum_{k=1}^{n}\frac1{n^2+k}
+\le\frac{n}{n^2}=\frac1n\longrightarrow0.
+$$
+
+因此原极限为 $\lim(A_n+R_n)=1/2$。
+
+**易错点：** 不需要求 $\sin k$ 的部分和；控制每项误差后，还要计入总项数 $n$。固定每一项趋于零，并不意味着整个变项和趋于零。
+
+参考：[2023–2024 微积分第一次小测归档，甲-2](/posts/20261018-calculus-quiz-1-2023-2024/#甲-2.-有界扰动的变项数列和)。

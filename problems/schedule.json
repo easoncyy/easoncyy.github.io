@@ -14,5 +14,9 @@
     "calculus-euler-mascheroni-convergence",
     "calculus-arctangent-quarter-pi-limit",
     "calculus-arctangent-adjacent-difference"
+  ],
+  "2026-10-19": [
+    "calculus-varying-root-sum",
+    "calculus-bounded-sine-perturbation-sum"
   ]
 }
