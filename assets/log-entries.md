@@ -18,9 +18,13 @@
 
 想过很多次回到一年以前的这一天，但是我想我已经可以平静的面对过去了吧。都怪杭州的秋天，搞得人这么忧郁。正好今天合唱团加练《明天会更好》，让我相信明天会更好。
 
+::: {.log-photo-grid}
+
 ![忘记](/assets/log/20261019-232524-entry/photo-01.jpg)
 
 ![明天会更好](/assets/log/20261019-232524-entry/photo-02.jpg)
+
+:::
 
 ```{=html}
 
@@ -56,11 +60,15 @@
 
 早上去图书馆本来想刷题，结果刚刚理完历年题时间就差不多了。下午的排练没想到快进行了4个小时。
 
+::: {.log-photo-grid}
+
 ![超长排练](/assets/log/20261018-233237-entry/photo-01.jpg)
 
 ![基图好有设计感，门口遇到很多老校友](/assets/log/20261018-233237-entry/photo-02.jpg)
 
 ![第一次来基图，以前路过地下室总感觉氛围很好](/assets/log/20261018-233237-entry/photo-03.jpg)
+
+:::
 
 ```{=html}
 
@@ -96,6 +104,8 @@
 
 昨天班会上兼辅说想要停下来的时候就停下来吧，于是今天就实践了一下。晚上的超算队例会木有拍照，但是还是很开兴呀(FREE DINNER!)
 
+::: {.log-photo-grid}
+
 ![SUNNY](/assets/log/20261017-230016-entry/photo-01.jpg)
 
 ![SUNNY](/assets/log/20261017-230016-entry/photo-02.jpg)
@@ -103,6 +113,8 @@
 ![其实很好奇划龙舟是什么感觉](/assets/log/20261017-230016-entry/photo-03.jpg)
 
 ![东教废土风](/assets/log/20261017-230016-entry/photo-04.jpg)
+
+:::
 
 ```{=html}
 
@@ -138,11 +150,15 @@
 
 明明周五课最少，但是课最忙，好神奇呀。
 
+::: {.log-photo-grid}
+
 ![雨蒙蒙](/assets/log/20261016-225159-entry/photo-01.jpg)
 
 ![走廊](/assets/log/20261016-225159-entry/photo-02.jpg)
 
 ![排练到十点](/assets/log/20261016-225159-entry/photo-03.jpg)
+
+:::
 
 ```{=html}
 

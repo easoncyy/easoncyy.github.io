@@ -64,12 +64,18 @@ def main():
     body = [args.text or "在这里写下你的记录。"]
     if args.url:
         body.append(f"[打开分享的链接](<{args.url}>)")
+    photos = []
     for index, photo in enumerate(args.photo or [], 1):
         name = f"photo-{index:02d}{photo.suffix.lower()}"
         media = ROOT / "assets/log" / slug
         media.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(photo, media / name)
-        body.append(f"![照片 {index}，可修改这里的说明](/assets/log/{slug}/{name})")
+        photos.append(f"![照片 {index}，可修改这里的说明](/assets/log/{slug}/{name})")
+    if photos:
+        gallery = "\n\n".join(photos)
+        if len(photos) > 1:
+            gallery = "::: {.log-photo-grid}\n\n" + gallery + "\n\n:::"
+        body.append(gallery)
     frontmatter = "\n".join(f"{key}: {json.dumps(value, ensure_ascii=False)}" for key, value in metadata.items())
     target = folder / "index.qmd"
     target.write_text("---\n" + frontmatter + "\n---\n\n" + "\n\n".join(body) + "\n", encoding="utf-8")

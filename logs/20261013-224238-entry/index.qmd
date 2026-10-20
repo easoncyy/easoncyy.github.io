@@ -8,13 +8,13 @@ entry-signature: "77b6b9d18f38d3ac331f6a08a18abdb77ada4fe09af9c6d5d4aa922b094254
 
 ::: {.log-photo-grid}
 
-![早上也可以寻桂子](assets\log\20261013-224238-osmanthus\photo-1.jpg)
+![早上也可以寻桂子](/assets/log/20261013-224238-osmanthus/photo-1.jpg)
 
-![Noon](assets\log\20261013-224238-osmanthus\photo-2.jpg)
+![Noon](/assets/log/20261013-224238-osmanthus/photo-2.jpg)
 
-![喜欢东7的原因又多了一个](assets\log\20261013-224238-osmanthus\photo-3.jpg)
+![喜欢东7的原因又多了一个](/assets/log/20261013-224238-osmanthus/photo-3.jpg)
 
-![两个](assets\log\20261013-224238-osmanthus\photo-4.jpg)
+![两个](/assets/log/20261013-224238-osmanthus/photo-4.jpg)
 
 
 :::

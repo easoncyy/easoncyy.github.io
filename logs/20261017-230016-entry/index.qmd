@@ -6,6 +6,8 @@ entry-signature: "8825cc107fe17af805a31f270ee0f094eb0fa8e4b5f09cc75ff597939751b0
 
 昨天班会上兼辅说想要停下来的时候就停下来吧，于是今天就实践了一下。晚上的超算队例会木有拍照，但是还是很开兴呀(FREE DINNER!)
 
+::: {.log-photo-grid}
+
 ![SUNNY](/assets/log/20261017-230016-entry/photo-01.jpg)
 
 ![SUNNY](/assets/log/20261017-230016-entry/photo-02.jpg)
@@ -13,3 +15,5 @@ entry-signature: "8825cc107fe17af805a31f270ee0f094eb0fa8e4b5f09cc75ff597939751b0
 ![其实很好奇划龙舟是什么感觉](/assets/log/20261017-230016-entry/photo-03.jpg)
 
 ![东教废土风](/assets/log/20261017-230016-entry/photo-04.jpg)
+
+:::

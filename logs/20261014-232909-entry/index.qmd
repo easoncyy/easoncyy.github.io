@@ -8,8 +8,8 @@ entry-signature: "ca93eb2885c0dd2a008a09864af8f79cf46442c5243143160b8b162cb9c581
 
 ::: {.log-photo-grid}
 
-![Night](assets\log\20261014-232909-fly\photo-1.jpg)
+![Night](/assets/log/20261014-232909-fly/photo-1.jpg)
 
-![大雁往哪里飞呢](assets\log\20261014-232909-fly\photo-2.jpg)
+![大雁往哪里飞呢](/assets/log/20261014-232909-fly/photo-2.jpg)
 
 :::

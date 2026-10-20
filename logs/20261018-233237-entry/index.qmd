@@ -6,8 +6,12 @@ entry-signature: "f941e3247dd4bacadb95cf9eb75b5431fd903b93ee28d1b7029da31c994791
 
 早上去图书馆本来想刷题，结果刚刚理完历年题时间就差不多了。下午的排练没想到快进行了4个小时。
 
+::: {.log-photo-grid}
+
 ![超长排练](/assets/log/20261018-233237-entry/photo-01.jpg)
 
 ![基图好有设计感，门口遇到很多老校友](/assets/log/20261018-233237-entry/photo-02.jpg)
 
 ![第一次来基图，以前路过地下室总感觉氛围很好](/assets/log/20261018-233237-entry/photo-03.jpg)
+
+:::
