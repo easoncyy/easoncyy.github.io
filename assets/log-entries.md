@@ -1,5 +1,43 @@
 ::: {.log-stream}
 
+::: {#20261019-232524-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-10-19T23:25:24+08:00">2026-10-19 23:25:24 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title">想回到过去...吗？</p>
+
+```
+
+想过很多次回到一年以前的这一天，但是我想我已经可以平静的面对过去了吧。都怪杭州的秋天，搞得人这么忧郁。正好今天合唱团加练《明天会更好》，让我相信明天会更好。
+
+![忘记](/assets/log/20261019-232524-entry/photo-01.jpg)
+
+![明天会更好](/assets/log/20261019-232524-entry/photo-02.jpg)
+
+```{=html}
+
+<details id="comments-20261019-232524-entry" class="log-comments" data-comment-term="/logs/20261019-232524-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
 ::: {#20261018-233237-entry .log-entry}
 
 ```{=html}

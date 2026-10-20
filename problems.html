@@ -225,45 +225,67 @@ window.Quarto = {
 
 <details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
 
-<p><strong>答案：</strong> <span class="math inline">\(2\)</span>。</p>
-<p>记 <span class="math inline">\(S_n=\frac1n\sum_{k=1}^{n}n^{1/k}\)</span>。第一项对和的贡献为 <span class="math inline">\(1\)</span>，其余各项均不小于 <span class="math inline">\(1\)</span>，故</p>
+<p>用夹逼。考虑</p>
+<p><strong>① 下界</strong></p>
 <p><span class="math display">\[
-S_n\ge1+\frac{n-1}{n}=2-\frac1n.
+\frac1n\sum_{k=1}^{n}n^{1/k}
+=1+\frac1n\sum_{k=2}^{n}n^{1/k}
+\ge1+\frac1n\cdot(n-1)
+=2-\frac1n.
 \]</span></p>
-<p><strong>上界沿用手写稿的分段思路。</strong> 对 <span class="math inline">\(n\ge16\)</span>，取</p>
+<p><strong>② 上界</strong></p>
+<p>我们考虑用无限项放缩。</p>
+<p>取 <span class="math inline">\(m\)</span>，<span class="math inline">\(m\ge2\)</span>。则</p>
 <p><span class="math display">\[
-m=m_n=\lfloor n^{1/4}\rfloor,
+\frac1n\sum_{k=1}^{n}n^{1/k}
+=\frac1n\sum_{k=1}^{m}n^{1/k}
++\frac1n\sum_{k=m+1}^{n}n^{1/k}.
 \]</span></p>
-<p>将和分为前 <span class="math inline">\(m\)</span> 项与其余 <span class="math inline">\(n-m\)</span> 项。</p>
-<p>当 <span class="math inline">\(2\le k\le m\)</span> 时，<span class="math inline">\(n^{1/k}\le\sqrt n\)</span>，所以</p>
+<p><strong>前 <span class="math inline">\(m\)</span> 项</strong></p>
 <p><span class="math display">\[
+\begin{aligned}
 \frac1n\sum_{k=1}^{m}n^{1/k}
-\le1+\frac{m-1}{\sqrt n}.
+&amp;=\frac1n\left(n+\sum_{k=2}^{m}n^{1/k}\right)\\
+&amp;\le1+\frac1n\sum_{k=2}^{m}\sqrt n\\
+&amp;=1+\frac{m-1}{n}\sqrt n
+=1+\frac{m-1}{\sqrt n}.
+\end{aligned}
 \]</span></p>
-<p>当 <span class="math inline">\(k\ge m+1\)</span> 时，<span class="math inline">\(n^{1/k}\le n^{1/(m+1)}\)</span>，因此</p>
+<p><strong>后 <span class="math inline">\((n-m)\)</span> 项</strong></p>
+<p><span class="math inline">\(\because k\ge m+1\)</span>，</p>
+<p><span class="math inline">\(\therefore\dfrac1k\le\dfrac1{m+1}\)</span>，即 <span class="math inline">\(n^{1/k}\le n^{1/(m+1)}\)</span>。</p>
 <p><span class="math display">\[
 \frac1n\sum_{k=m+1}^{n}n^{1/k}
-\le\left(1-\frac mn\right)n^{1/(m+1)}.
+\le\frac1n(n-m)\cdot n^{1/(m+1)}
+=\left(1-\frac mn\right)n^{1/(m+1)}.
 \]</span></p>
-<p>合起来得到</p>
+<p>则</p>
 <p><span class="math display">\[
-2-\frac1n\le S_n
+2-\frac1n
+\le\frac1n\sum_{k=1}^{n}n^{1/k}
 \le1+\frac{m-1}{\sqrt n}
 +\left(1-\frac mn\right)n^{1/(m+1)}.
 \]</span></p>
-<p>这里 <span class="math inline">\(m\)</span> 是随 <span class="math inline">\(n\)</span> 变化的整数。由于</p>
+<p>我们不难猜出极限是 <span class="math inline">\(2\)</span>，为了让右侧收敛于 <span class="math inline">\(2\)</span>，要有</p>
 <p><span class="math display">\[
-\frac{m-1}{\sqrt n}\longrightarrow0,\qquad
-\frac mn\longrightarrow0,
+\lim_{n\to\infty}\left[
+\frac{m-1}{\sqrt n}
++\left(1-\frac mn\right)n^{1/(m+1)}
+\right]=1.
 \]</span></p>
-<p>且 <span class="math inline">\(m+1&gt;n^{1/4}\)</span>，从而</p>
+<p>则当 <span class="math inline">\(m\sim n^{\alpha}\)</span>，<span class="math inline">\(0&lt;\alpha&lt;\dfrac12\)</span> 时，</p>
 <p><span class="math display">\[
-0\le\frac{\ln n}{m+1}&lt;\frac{\ln n}{n^{1/4}}\longrightarrow0,
-\qquad n^{1/(m+1)}\longrightarrow1,
+\begin{aligned}
+&amp;\lim_{n\to\infty}\left[
+\frac{m-1}{\sqrt n}
++\left(1-\frac mn\right)n^{1/(m+1)}
+\right]\\
+&amp;=\lim_{n\to\infty}\left[0+n^{1/(m+1)}\right]\\
+&amp;=\lim_{n\to\infty}e^{\frac{\ln n}{m+1}}\\
+&amp;=e^0=1.
+\end{aligned}
 \]</span></p>
-<p>上述上界趋于 <span class="math inline">\(2\)</span>。由夹逼定理，<span class="math inline">\(S_n\to2\)</span>。</p>
-<p><strong>易错点：</strong> 不能固定 <span class="math inline">\(m\)</span> 后直接声称 <span class="math inline">\(n^{1/(m+1)}\to1\)</span>；必须明确选择随 <span class="math inline">\(n\)</span> 增长的分段点。这里取 <span class="math inline">\(\lfloor n^{1/4}\rfloor\)</span>，对应手写稿中 <span class="math inline">\(0&lt;\alpha&lt;1/2\)</span> 的一种具体选择。</p>
-<p>参考：<a href="./posts/20261018-calculus-quiz-1-2023-2024/#另甲-3.-多个不同指数项之和">2023–2024 微积分第一次小测归档，另甲-3</a>。</p>
+<p>而 <span class="math inline">\(n^{\alpha}\)</span> 阶数高于 <span class="math inline">\(\ln n\)</span>，满足题意。</p>
 
 </div></details>
 
@@ -853,7 +875,7 @@ d&amp;1&amp;1/d^2&amp;1/d
 
 </section>
 
-<script id="problem-index" type="application/json">{"builtDate": "2026-10-19", "dates": {"2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
+<script id="problem-index" type="application/json">{"builtDate": "2026-10-20", "dates": {"2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
 
 <p id="problem-empty" hidden="">这一天暂无符合条件的题目。</p>
 <section class="problem-calendar" aria-label="按日期查看题目">
