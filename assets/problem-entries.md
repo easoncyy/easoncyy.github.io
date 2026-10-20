@@ -993,6 +993,6 @@ $$
 
 ```{=html}
 
-<script id="problem-index" type="application/json">{"builtDate": "2026-10-19", "dates": {"2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
+<script id="problem-index" type="application/json">{"builtDate": "2026-10-20", "dates": {"2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
 
 ```
