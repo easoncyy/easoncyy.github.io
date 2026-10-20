@@ -1,0 +1,43 @@
+---
+title: "FIP W06 · Quick Check 3"
+category-path: ["AI", "FIP", "递归"]
+tags: ["基准情形", "递归", "列表"]
+source: "FIP W06 递归 · Quick Check 3"
+date: "2026-10-20T23:11:21+08:00"
+draft: false
+---
+
+已知`first(xs)`返回第一个元素，`butfirst(xs)`返回去掉首元素后的剩余列表，`isempty(xs)`判断列表是否为空。不使用循环，实现`count`、`reverse`、`find`、`iterate`和讲义中的`accumarate`（累计）。以下默认`xs`支持构造空列表、单元素列表以及列表拼接。
+
+<!-- answer -->
+
+```python
+def count(xs):
+	if isempty(xs):
+		return 0
+	return 1 + count(butfirst(xs))
+
+def reverse(xs):
+	if isempty(xs):
+		return []
+	return reverse(butfirst(xs)) + [first(xs)]
+
+def find(xs, element):
+	if isempty(xs):
+		return False
+	return first(xs) == element or find(butfirst(xs), element)
+
+def iterate(xs, f):
+	if isempty(xs):
+		return
+	f(first(xs))
+	iterate(butfirst(xs), f)
+
+def accumarate(xs, f, value):
+	if isempty(xs):
+		return value
+	return accumarate(butfirst(xs), f, f(first(xs), value))
+```
+
+
+五题的**Base Case**都是空列表：数量为`0`、逆序为空列表、查找为`False`、遍历直接结束、累计则返回当前`value`；**Progress**都是递归处理`butfirst(xs)`。`reverse`必须把当前首元素放在剩余列表逆序结果的末尾；`find`借助`or`短路，找到后不再继续查；`iterate`先调用`f`再递归，保持原有顺序；`accumarate`先算`f(first(xs), value)`，再把新值交给下一层，所以`f`的两个参数顺序不能颠倒。
