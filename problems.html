@@ -243,8 +243,129 @@ window.Quarto = {
   <button type="button" id="problem-filter-reset">清除筛选</button>
 </div>
 <p id="problem-status" aria-live="polite"></p>
-<section id="section" class="level2 problem-date-heading problem-day" data-date="2026-10-20">
-<h2 class="problem-date-heading anchored" data-anchor-id="section">2026-10-20</h2>
+<section id="section" class="level2 problem-date-heading problem-day" data-date="2026-10-21">
+<h2 class="problem-date-heading anchored" data-anchor-id="section">2026-10-21</h2>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;连续性&quot;], &quot;tags&quot;: [&quot;反例&quot;, &quot;反函数&quot;, &quot;数列&quot;], &quot;title&quot;: &quot;反函数、连续性与数列最小项&quot;}">
+
+<div class="problem-meta">MATH / CALCULUS / 连续性</div>
+
+<h3 class="anchored">01. 反函数、连续性与数列最小项</h3>
+
+<div class="entry-tags">#反例 · #反函数 · #数列</div>
+
+<p>下列陈述<strong>错误</strong>的是（　）。</p>
+<ul>
+<li>A. 若 <span class="math inline">\(f(x)\)</span> 在 <span class="math inline">\([a,b]\)</span> 上存在反函数，则 <span class="math inline">\(f(x)\)</span> 在 <span class="math inline">\([a,b]\)</span> 上严格单调。</li>
+<li>B. 若 <span class="math inline">\(f(x)\)</span> 在 <span class="math inline">\(x_0\)</span> 处连续，则 <span class="math inline">\(f(x)\)</span> 在 <span class="math inline">\(x_0\)</span> 的某邻域内连续。</li>
+<li>C. 不存在定义在 <span class="math inline">\(\mathbb R\)</span> 上只有一点连续的函数。</li>
+<li>D. 对实数列 <span class="math inline">\(\{a_n\}\)</span>，若 <span class="math inline">\(\displaystyle\lim_{n\to+\infty}a_n=+\infty\)</span>，则数列 <span class="math inline">\(\{a_n\}\)</span> 一定存在最小项。</li>
+</ul>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p><strong>答案：ABC。</strong></p>
+<p>A：在 <span class="math inline">\([0,1]\)</span> 上令 <span class="math inline">\(f(0)=1\)</span>，<span class="math inline">\(f(1)=0\)</span>，其余点取 <span class="math inline">\(f(x)=x\)</span>。此函数有反函数，但不严格单调。</p>
+<p>B、C：令</p>
+<p><span class="math display">\[
+g(x)=\begin{cases}x,&amp;x\in\mathbb Q,\\-x,&amp;x\notin\mathbb Q.\end{cases}
+\]</span></p>
+<p>由 <span class="math inline">\(|g(x)|=|x|\)</span>，<span class="math inline">\(g\)</span> 在 <span class="math inline">\(0\)</span> 处连续；在任意非零点，有理数列与无理数列给出不同的极限，故不连续。</p>
+<p>D：由 <span class="math inline">\(a_n\to+\infty\)</span>，可取 <span class="math inline">\(N\ge2\)</span>，使 <span class="math inline">\(n\ge N\)</span> 时 <span class="math inline">\(a_n&gt;a_1\)</span>。有限集 <span class="math inline">\(\{a_1,\ldots,a_{N-1}\}\)</span> 的最小值即为数列的最小项。</p>
+
+</div></details>
+
+<p class="problem-source">来源：2026–2027 学年微积分小测 · 第10题</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;行列式&quot;], &quot;tags&quot;: [&quot;递推关系&quot;, &quot;行列式&quot;], &quot;title&quot;: &quot;三对角行列式&quot;}">
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 行列式</div>
+
+<h3 class="anchored">02. 三对角行列式</h3>
+
+<div class="entry-tags">#递推关系 · #行列式</div>
+
+<p>计算 <span class="math inline">\(n\)</span> 阶行列式</p>
+<p><span class="math display">\[
+D_n=\begin{vmatrix}
+\alpha+\beta&amp;\alpha\beta&amp;0&amp;\cdots&amp;0\\
+1&amp;\alpha+\beta&amp;\alpha\beta&amp;\ddots&amp;\vdots\\
+0&amp;1&amp;\alpha+\beta&amp;\ddots&amp;0\\
+\vdots&amp;\ddots&amp;\ddots&amp;\ddots&amp;\alpha\beta\\
+0&amp;\cdots&amp;0&amp;1&amp;\alpha+\beta
+\end{vmatrix}.
+\]</span></p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>约定 <span class="math inline">\(D_0=1\)</span>，则 <span class="math inline">\(D_1=\alpha+\beta\)</span>。按第一行展开，得</p>
+<p><span class="math display">\[D_n=(\alpha+\beta)D_{n-1}-\alpha\beta D_{n-2}.\]</span></p>
+<p>因此</p>
+<p><span class="math display">\[D_n-\alpha D_{n-1}=\beta(D_{n-1}-\alpha D_{n-2})=\cdots=\beta^n.\]</span></p>
+<p>逐次代入 <span class="math inline">\(D_n=\alpha D_{n-1}+\beta^n\)</span>，得</p>
+<p><span class="math display">\[\boxed{D_n=\sum_{k=0}^{n}\alpha^{n-k}\beta^k
+=\begin{cases}
+\dfrac{\alpha^{n+1}-\beta^{n+1}}{\alpha-\beta},&amp;\alpha\ne\beta,\\
+(n+1)\alpha^n,&amp;\alpha=\beta.
+\end{cases}}\]</span></p>
+
+</div></details>
+
+<p class="problem-source">来源：《线性代数习题精选精解》· 4.11</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;ALGEBRA&quot;, &quot;方程与置换&quot;], &quot;tags&quot;: [&quot;范德蒙德方法&quot;, &quot;单位根&quot;, &quot;置换&quot;], &quot;title&quot;: &quot;三次方程与根的置换&quot;}">
+
+<div class="problem-meta">MATH / ALGEBRA / 方程与置换</div>
+
+<h3 class="anchored">03. 三次方程与根的置换</h3>
+
+<div class="entry-tags">#范德蒙德方法 · #单位根 · #置换</div>
+
+<p>设 <span class="math inline">\(a,b,c\)</span> 是方程 <span class="math inline">\(x^3-3x-1=0\)</span> 的三个根，<span class="math inline">\(\omega=e^{2\pi i/3}\)</span>。令</p>
+<p><span class="math display">\[A=a+\omega b+\omega^2c,\qquad B=a+\omega^2b+\omega c,\qquad U=A^3,\quad V=B^3.\]</span></p>
+<ol type="1">
+<li>分别将 <span class="math inline">\((a,b,c)\)</span> 换为 <span class="math inline">\((b,c,a)\)</span> 和 <span class="math inline">\((a,c,b)\)</span>，求 <span class="math inline">\(U,V\)</span> 的变化。</li>
+<li>求 <span class="math inline">\(U+V\)</span> 与 <span class="math inline">\(UV\)</span>。</li>
+<li>用范德蒙德方法求原方程的三个根。</li>
+</ol>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p><strong>1.</strong> 由 <span class="math inline">\(\omega^3=1\)</span>，循环置换 <span class="math inline">\((a,b,c)\mapsto(b,c,a)\)</span> 给出</p>
+<p><span class="math display">\[(A,B)\mapsto(\omega^2A,\omega B),\qquad(U,V)\mapsto(U,V).\]</span></p>
+<p>交换 <span class="math inline">\(b,c\)</span> 则给出 <span class="math inline">\((A,B)\mapsto(B,A)\)</span>，从而 <span class="math inline">\((U,V)\mapsto(V,U)\)</span>。</p>
+<p><strong>2.</strong> 由韦达定理，</p>
+<p><span class="math display">\[a+b+c=0,\qquad ab+bc+ca=-3,\qquad abc=1.\]</span></p>
+<p>利用 <span class="math inline">\(1+\omega+\omega^2=0\)</span>，得</p>
+<p><span class="math display">\[AB=a^2+b^2+c^2-ab-bc-ca=9,\]</span></p>
+<p><span class="math display">\[A+B=2a-b-c=3a.\]</span></p>
+<p>故</p>
+<p><span class="math display">\[U+V=(A+B)^3-3AB(A+B)=27(a^3-3a)=27,\]</span></p>
+<p><span class="math display">\[UV=(AB)^3=729.\]</span></p>
+<p>因此 <span class="math inline">\(U,V\)</span> 是 <span class="math inline">\(t^2-27t+729=0\)</span> 的两个根，即</p>
+<p><span class="math display">\[\{U,V\}=\left\{\frac{27+27i\sqrt3}{2},\frac{27-27i\sqrt3}{2}\right\}.\]</span></p>
+<p><strong>3.</strong> 取 <span class="math inline">\(A=3e^{i\pi/9}\)</span>，<span class="math inline">\(B=3e^{-i\pi/9}\)</span>，满足 <span class="math inline">\(AB=9\)</span>。三个相容的立方根组合为 <span class="math inline">\((\omega^kA,\omega^{-k}B)\)</span>，故原方程的根为</p>
+<p><span class="math display">\[\boxed{x_k=\frac{\omega^kA+\omega^{-k}B}{3}
+=2\cos\left(\frac\pi9+\frac{2k\pi}{3}\right),\qquad k=0,1,2.}\]</span></p>
+
+</div></details>
+
+<p class="problem-source">来源：据《从一元一次方程到伽罗瓦理论》§5.2 范德蒙德方法改编</p>
+
+</div>
+
+<details id="discussion-2026-10-21" class="log-comments problem-discussion" data-comment-term="/problems/2026-10-21/" data-comment-date="2026-10-21" data-comment-title="每日好题 · 2026-10-21">
+
+<summary>discussion/ <span>2026-10-21 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+</section>
+<section id="section-1" class="level2 problem-date-heading problem-day" data-date="2026-10-20">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-1">2026-10-20</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;介值定理&quot;, &quot;单调性&quot;, &quot;隐式数列&quot;], &quot;title&quot;: &quot;隐式定义的根与指数极限&quot;}">
 
 <div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
@@ -330,8 +451,8 @@ window.Quarto = {
 </details>
 
 </section>
-<section id="section-1" class="level2 problem-date-heading problem-day" data-date="2026-10-19">
-<h2 class="problem-date-heading anchored" data-anchor-id="section-1">2026-10-19</h2>
+<section id="section-2" class="level2 problem-date-heading problem-day" data-date="2026-10-19">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-2">2026-10-19</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;分段估计&quot;, &quot;夹逼定理&quot;], &quot;title&quot;: &quot;不同次根组成的变项数列和&quot;}">
 
 <div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
@@ -468,8 +589,8 @@ R_n=\sum_{k=1}^{n}\frac{\sin k}{n^2+k}.
 </details>
 
 </section>
-<section id="section-2" class="level2 problem-date-heading problem-day" data-date="2026-10-18">
-<h2 class="problem-date-heading anchored" data-anchor-id="section-2">2026-10-18</h2>
+<section id="section-3" class="level2 problem-date-heading problem-day" data-date="2026-10-18">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-3">2026-10-18</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;夹逼定理&quot;, &quot;变项数列和&quot;], &quot;title&quot;: &quot;含根式分母的平方和极限&quot;}">
 
 <div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
@@ -668,8 +789,8 @@ n^2\theta_n
 </details>
 
 </section>
-<section id="section-3" class="level2 problem-date-heading problem-day" data-date="2026-10-17">
-<h2 class="problem-date-heading anchored" data-anchor-id="section-3">2026-10-17</h2>
+<section id="section-4" class="level2 problem-date-heading problem-day" data-date="2026-10-17">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-4">2026-10-17</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;次可加性&quot;, &quot;下确界&quot;, &quot;极限&quot;], &quot;title&quot;: &quot;次可加数列与 Fekete 引理&quot;}">
 
 <div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
@@ -848,8 +969,8 @@ a_i-a_j=21,
 </details>
 
 </section>
-<section id="section-4" class="level2 problem-date-heading problem-day" data-date="2026-10-16">
-<h2 class="problem-date-heading anchored" data-anchor-id="section-4">2026-10-16</h2>
+<section id="section-5" class="level2 problem-date-heading problem-day" data-date="2026-10-16">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-5">2026-10-16</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;反证法&quot;, &quot;阶乘级数&quot;], &quot;title&quot;: &quot;证明 e 是无理数&quot;}">
 
 <div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
@@ -997,7 +1118,7 @@ d&amp;1&amp;1/d^2&amp;1/d
 
 </section>
 
-<script id="problem-index" type="application/json">{"builtDate": "2026-10-21", "dates": {"2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
+<script id="problem-index" type="application/json">{"builtDate": "2026-10-21", "dates": {"2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
 
 <p id="problem-empty" hidden="">这一天暂无符合条件的题目。</p>
 <section class="problem-calendar" aria-label="按日期查看题目">
