@@ -1,3 +1,193 @@
+::: {.problem-day data-date="2026-10-21"}
+
+## 2026-10-21 {.problem-date-heading}
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;连续性&quot;], &quot;tags&quot;: [&quot;反例&quot;, &quot;反函数&quot;, &quot;数列&quot;], &quot;title&quot;: &quot;反函数、连续性与数列最小项&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / CALCULUS / 连续性</div>
+
+<h3>01. 反函数、连续性与数列最小项</h3>
+
+<div class="entry-tags">#反例 · #反函数 · #数列</div>
+
+```
+
+下列陈述**错误**的是（　）。
+
+- A. 若 $f(x)$ 在 $[a,b]$ 上存在反函数，则 $f(x)$ 在 $[a,b]$ 上严格单调。
+- B. 若 $f(x)$ 在 $x_0$ 处连续，则 $f(x)$ 在 $x_0$ 的某邻域内连续。
+- C. 不存在定义在 $\mathbb R$ 上只有一点连续的函数。
+- D. 对实数列 $\{a_n\}$，若 $\displaystyle\lim_{n\to+\infty}a_n=+\infty$，则数列 $\{a_n\}$ 一定存在最小项。
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+**答案：ABC。**
+
+A：在 $[0,1]$ 上令 $f(0)=1$，$f(1)=0$，其余点取 $f(x)=x$。此函数有反函数，但不严格单调。
+
+B、C：令
+
+$$
+g(x)=\begin{cases}x,&x\in\mathbb Q,\\-x,&x\notin\mathbb Q.\end{cases}
+$$
+
+由 $|g(x)|=|x|$，$g$ 在 $0$ 处连续；在任意非零点，有理数列与无理数列给出不同的极限，故不连续。
+
+D：由 $a_n\to+\infty$，可取 $N\ge2$，使 $n\ge N$ 时 $a_n>a_1$。有限集 $\{a_1,\ldots,a_{N-1}\}$ 的最小值即为数列的最小项。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：2026–2027 学年微积分小测 · 第10题</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;行列式&quot;], &quot;tags&quot;: [&quot;递推关系&quot;, &quot;行列式&quot;], &quot;title&quot;: &quot;三对角行列式&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 行列式</div>
+
+<h3>02. 三对角行列式</h3>
+
+<div class="entry-tags">#递推关系 · #行列式</div>
+
+```
+
+计算 $n$ 阶行列式
+
+$$
+D_n=\begin{vmatrix}
+\alpha+\beta&\alpha\beta&0&\cdots&0\\
+1&\alpha+\beta&\alpha\beta&\ddots&\vdots\\
+0&1&\alpha+\beta&\ddots&0\\
+\vdots&\ddots&\ddots&\ddots&\alpha\beta\\
+0&\cdots&0&1&\alpha+\beta
+\end{vmatrix}.
+$$
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+约定 $D_0=1$，则 $D_1=\alpha+\beta$。按第一行展开，得
+
+$$D_n=(\alpha+\beta)D_{n-1}-\alpha\beta D_{n-2}.$$
+
+因此
+
+$$D_n-\alpha D_{n-1}=\beta(D_{n-1}-\alpha D_{n-2})=\cdots=\beta^n.$$
+
+逐次代入 $D_n=\alpha D_{n-1}+\beta^n$，得
+
+$$\boxed{D_n=\sum_{k=0}^{n}\alpha^{n-k}\beta^k
+=\begin{cases}
+\dfrac{\alpha^{n+1}-\beta^{n+1}}{\alpha-\beta},&\alpha\ne\beta,\\
+(n+1)\alpha^n,&\alpha=\beta.
+\end{cases}}$$
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：《线性代数习题精选精解》· 4.11</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;ALGEBRA&quot;, &quot;方程与置换&quot;], &quot;tags&quot;: [&quot;范德蒙德方法&quot;, &quot;单位根&quot;, &quot;置换&quot;], &quot;title&quot;: &quot;三次方程与根的置换&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / ALGEBRA / 方程与置换</div>
+
+<h3>03. 三次方程与根的置换</h3>
+
+<div class="entry-tags">#范德蒙德方法 · #单位根 · #置换</div>
+
+```
+
+设 $a,b,c$ 是方程 $x^3-3x-1=0$ 的三个根，$\omega=e^{2\pi i/3}$。令
+
+$$A=a+\omega b+\omega^2c,\qquad B=a+\omega^2b+\omega c,\qquad U=A^3,\quad V=B^3.$$
+
+1. 分别将 $(a,b,c)$ 换为 $(b,c,a)$ 和 $(a,c,b)$，求 $U,V$ 的变化。
+2. 求 $U+V$ 与 $UV$。
+3. 用范德蒙德方法求原方程的三个根。
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+**1.** 由 $\omega^3=1$，循环置换 $(a,b,c)\mapsto(b,c,a)$ 给出
+
+$$(A,B)\mapsto(\omega^2A,\omega B),\qquad(U,V)\mapsto(U,V).$$
+
+交换 $b,c$ 则给出 $(A,B)\mapsto(B,A)$，从而 $(U,V)\mapsto(V,U)$。
+
+**2.** 由韦达定理，
+
+$$a+b+c=0,\qquad ab+bc+ca=-3,\qquad abc=1.$$
+
+利用 $1+\omega+\omega^2=0$，得
+
+$$AB=a^2+b^2+c^2-ab-bc-ca=9,$$
+
+$$A+B=2a-b-c=3a.$$
+
+故
+
+$$U+V=(A+B)^3-3AB(A+B)=27(a^3-3a)=27,$$
+
+$$UV=(AB)^3=729.$$
+
+因此 $U,V$ 是 $t^2-27t+729=0$ 的两个根，即
+
+$$\{U,V\}=\left\{\frac{27+27i\sqrt3}{2},\frac{27-27i\sqrt3}{2}\right\}.$$
+
+**3.** 取 $A=3e^{i\pi/9}$，$B=3e^{-i\pi/9}$，满足 $AB=9$。三个相容的立方根组合为 $(\omega^kA,\omega^{-k}B)$，故原方程的根为
+
+$$\boxed{x_k=\frac{\omega^kA+\omega^{-k}B}{3}
+=2\cos\left(\frac\pi9+\frac{2k\pi}{3}\right),\qquad k=0,1,2.}$$
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：据《从一元一次方程到伽罗瓦理论》§5.2 范德蒙德方法改编</p>
+
+```
+
+:::
+
+```{=html}
+
+<details id="discussion-2026-10-21" class="log-comments problem-discussion" data-comment-term="/problems/2026-10-21/" data-comment-date="2026-10-21" data-comment-title="每日好题 · 2026-10-21">
+
+<summary>discussion/ <span>2026-10-21 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
 ::: {.problem-day data-date="2026-10-20"}
 
 ## 2026-10-20 {.problem-date-heading}
@@ -1123,6 +1313,6 @@ $$
 
 ```{=html}
 
-<script id="problem-index" type="application/json">{"builtDate": "2026-10-21", "dates": {"2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
+<script id="problem-index" type="application/json">{"builtDate": "2026-10-21", "dates": {"2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
 
 ```

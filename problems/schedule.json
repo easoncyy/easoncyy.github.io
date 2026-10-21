@@ -22,5 +22,10 @@
   "2026-10-20": [
     "calculus-implicit-root-exponential-limit",
     "fip-w06-quick-check-3"
+  ],
+  "2026-10-21": [
+    "calculus-inverse-continuity-minimum",
+    "linear-algebra-tridiagonal-recurrence",
+    "algebra-vandermonde-cubic-permutations"
   ]
 }

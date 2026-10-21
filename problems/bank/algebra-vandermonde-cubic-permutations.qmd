@@ -1,0 +1,48 @@
+---
+title: "三次方程与根的置换"
+category-path: ["MATH", "ALGEBRA", "方程与置换"]
+tags: ["范德蒙德方法", "单位根", "置换"]
+source: "据《从一元一次方程到伽罗瓦理论》§5.2 范德蒙德方法改编"
+draft: false
+---
+
+设 $a,b,c$ 是方程 $x^3-3x-1=0$ 的三个根，$\omega=e^{2\pi i/3}$。令
+
+$$A=a+\omega b+\omega^2c,\qquad B=a+\omega^2b+\omega c,\qquad U=A^3,\quad V=B^3.$$
+
+1. 分别将 $(a,b,c)$ 换为 $(b,c,a)$ 和 $(a,c,b)$，求 $U,V$ 的变化。
+2. 求 $U+V$ 与 $UV$。
+3. 用范德蒙德方法求原方程的三个根。
+
+<!-- answer -->
+
+**1.** 由 $\omega^3=1$，循环置换 $(a,b,c)\mapsto(b,c,a)$ 给出
+
+$$(A,B)\mapsto(\omega^2A,\omega B),\qquad(U,V)\mapsto(U,V).$$
+
+交换 $b,c$ 则给出 $(A,B)\mapsto(B,A)$，从而 $(U,V)\mapsto(V,U)$。
+
+**2.** 由韦达定理，
+
+$$a+b+c=0,\qquad ab+bc+ca=-3,\qquad abc=1.$$
+
+利用 $1+\omega+\omega^2=0$，得
+
+$$AB=a^2+b^2+c^2-ab-bc-ca=9,$$
+
+$$A+B=2a-b-c=3a.$$
+
+故
+
+$$U+V=(A+B)^3-3AB(A+B)=27(a^3-3a)=27,$$
+
+$$UV=(AB)^3=729.$$
+
+因此 $U,V$ 是 $t^2-27t+729=0$ 的两个根，即
+
+$$\{U,V\}=\left\{\frac{27+27i\sqrt3}{2},\frac{27-27i\sqrt3}{2}\right\}.$$
+
+**3.** 取 $A=3e^{i\pi/9}$，$B=3e^{-i\pi/9}$，满足 $AB=9$。三个相容的立方根组合为 $(\omega^kA,\omega^{-k}B)$，故原方程的根为
+
+$$\boxed{x_k=\frac{\omega^kA+\omega^{-k}B}{3}
+=2\cos\left(\frac\pi9+\frac{2k\pi}{3}\right),\qquad k=0,1,2.}$$

@@ -1,0 +1,37 @@
+---
+title: "三对角行列式"
+category-path: ["MATH", "LINEAR-ALGEBRA", "行列式"]
+tags: ["递推关系", "行列式"]
+source: "《线性代数习题精选精解》· 4.11"
+draft: false
+---
+
+计算 $n$ 阶行列式
+
+$$
+D_n=\begin{vmatrix}
+\alpha+\beta&\alpha\beta&0&\cdots&0\\
+1&\alpha+\beta&\alpha\beta&\ddots&\vdots\\
+0&1&\alpha+\beta&\ddots&0\\
+\vdots&\ddots&\ddots&\ddots&\alpha\beta\\
+0&\cdots&0&1&\alpha+\beta
+\end{vmatrix}.
+$$
+
+<!-- answer -->
+
+约定 $D_0=1$，则 $D_1=\alpha+\beta$。按第一行展开，得
+
+$$D_n=(\alpha+\beta)D_{n-1}-\alpha\beta D_{n-2}.$$
+
+因此
+
+$$D_n-\alpha D_{n-1}=\beta(D_{n-1}-\alpha D_{n-2})=\cdots=\beta^n.$$
+
+逐次代入 $D_n=\alpha D_{n-1}+\beta^n$，得
+
+$$\boxed{D_n=\sum_{k=0}^{n}\alpha^{n-k}\beta^k
+=\begin{cases}
+\dfrac{\alpha^{n+1}-\beta^{n+1}}{\alpha-\beta},&\alpha\ne\beta,\\
+(n+1)\alpha^n,&\alpha=\beta.
+\end{cases}}$$

@@ -1,5 +1,51 @@
 ::: {.log-stream}
 
+::: {#20261021-223730-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-10-21T22:37:30+08:00">2026-10-21 22:37:30 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title">Chill</p>
+
+```
+
+杭州特有的一夜降温吗？努力复习好几天的微积分小测最后还是被开挂的低素质人群打爆了，在AI这么发达的年代，考试的形式是不是最好有那么一点改革呢？考完小测后直接丧失了复习明天线代小测的欲望。随遇而安吧。
+
+::: {.log-photo-grid}
+
+![晨起感受冷空气](/assets/log/20261021-223730-entry/photo-01.jpg)
+
+![总感觉东四像个大祭坛](/assets/log/20261021-223730-entry/photo-02.jpg)
+
+![校园走也很冷](/assets/log/20261021-223730-entry/photo-03.jpg)
+
+![等蚊子死光我也想住在512](/assets/log/20261021-223730-entry/photo-04.jpg)
+
+:::
+
+```{=html}
+
+<details id="comments-20261021-223730-entry" class="log-comments" data-comment-term="/logs/20261021-223730-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
 ::: {#20261020-231121-entry .log-entry}
 
 ```{=html}
