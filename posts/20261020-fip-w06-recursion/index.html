@@ -1,0 +1,1616 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="个人笔记">
+<meta name="description" content="递归四原则、汉诺塔、阶乘与斐波那契、记忆化与 lru_cache，以及杨辉三角的递归和迭代实现。">
+
+<title>FIP W06 · 递归 – 个人笔记</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/favicon.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-a7952132dd87ce33f437addd0578540c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-dc090d8f6625c822698d9a6ee9cd1ac5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "没有结果",
+    "search-matching-documents-text": "匹配的文档",
+    "search-copy-link-title": "复制搜索链接",
+    "search-hide-matches-text": "隐藏其它匹配结果",
+    "search-more-match-text": "更多匹配结果",
+    "search-more-matches-text": "更多匹配结果",
+    "search-clear-button-title": "清除",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "取消",
+    "search-submit-button-title": "提交",
+    "search-label": "搜索"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script defer="" src="../../assets/directory.js?v=05751f758f0b"></script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="../../assets/vendor/mathjax/tex-svg-full.js?v=a4354ff94fd8" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css?v=c980a0946e71">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/logo.svg" alt="Ce · easoncyy" class="navbar-logo light-content">
+    <img src="../../assets/logo.svg" alt="Ce · easoncyy" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">~/notes</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="搜索"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="展开或折叠导航栏" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html"> 
+<span class="menu-text"><span class="nav-path">blog/</span><span class="nav-caption">博客</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../problems.html"> 
+<span class="menu-text"><span class="nav-path">problems/</span><span class="nav-caption">每日好题</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../projects.html"> 
+<span class="menu-text"><span class="nav-path">projects/</span><span class="nav-caption">项目</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../log.html"> 
+<span class="menu-text"><span class="nav-path">log/</span><span class="nav-caption">日志</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../links.html"> 
+<span class="menu-text"><span class="nav-path">links/</span><span class="nav-caption">友链</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../library.html"> 
+<span class="menu-text"><span class="nav-path">library/</span><span class="nav-caption">图书馆</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text"><span class="nav-path">about/</span><span class="nav-caption">关于</span></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">本页目录</h2>
+   
+  <ul>
+  <li><a href="#理论课内容" id="toc-理论课内容" class="nav-link active" data-scroll-target="#理论课内容">理论课内容</a>
+  <ul class="collapse">
+  <li><a href="#递归" id="toc-递归" class="nav-link" data-scroll-target="#递归">递归</a></li>
+  <li><a href="#阶乘线性递归" id="toc-阶乘线性递归" class="nav-link" data-scroll-target="#阶乘线性递归">阶乘：线性递归</a></li>
+  <li><a href="#斐波那契数列问题合成效益法则的重要性" id="toc-斐波那契数列问题合成效益法则的重要性" class="nav-link" data-scroll-target="#斐波那契数列问题合成效益法则的重要性">斐波那契数列问题：合成效益法则的重要性</a></li>
+  <li><a href="#斐波那契数列的记忆化优化递归算法" id="toc-斐波那契数列的记忆化优化递归算法" class="nav-link" data-scroll-target="#斐波那契数列的记忆化优化递归算法">斐波那契数列的记忆化优化递归算法</a></li>
+  <li><a href="#lru_cache函数进函数出" id="toc-lru_cache函数进函数出" class="nav-link" data-scroll-target="#lru_cache函数进函数出"><code>@lru_cache</code>：函数进、函数出</a></li>
+  <li><a href="#euclid算法" id="toc-euclid算法" class="nav-link" data-scroll-target="#euclid算法">Euclid算法</a></li>
+  <li><a href="#尾递归tail-recursion" id="toc-尾递归tail-recursion" class="nav-link" data-scroll-target="#尾递归tail-recursion">尾递归(tail recursion)</a></li>
+  <li><a href="#quick-check-3" id="toc-quick-check-3" class="nav-link" data-scroll-target="#quick-check-3">Quick Check 3</a></li>
+  </ul></li>
+  <li><a href="#阅读材料补充" id="toc-阅读材料补充" class="nav-link" data-scroll-target="#阅读材料补充">阅读材料补充</a>
+  <ul class="collapse">
+  <li><a href="#递归四基础" id="toc-递归四基础" class="nav-link" data-scroll-target="#递归四基础">递归四基础</a></li>
+  <li><a href="#线性递归与尾递归" id="toc-线性递归与尾递归" class="nav-link" data-scroll-target="#线性递归与尾递归">线性递归与尾递归</a></li>
+  <li><a href="#树状递归记忆化与默认参数" id="toc-树状递归记忆化与默认参数" class="nav-link" data-scroll-target="#树状递归记忆化与默认参数">树状递归、记忆化与默认参数</a></li>
+  <li><a href="#多维状态与缓存键" id="toc-多维状态与缓存键" class="nav-link" data-scroll-target="#多维状态与缓存键">多维状态与缓存键</a></li>
+  <li><a href="#functools.lru_cache" id="toc-functools.lru_cache" class="nav-link" data-scroll-target="#functools.lru_cache"><code>functools.lru_cache</code></a></li>
+  <li><a href="#类型注解与递归审查" id="toc-类型注解与递归审查" class="nav-link" data-scroll-target="#类型注解与递归审查">类型注解与递归审查</a></li>
+  </ul></li>
+  <li><a href="#研讨课内容" id="toc-研讨课内容" class="nav-link" data-scroll-target="#研讨课内容">研讨课内容</a>
+  <ul class="collapse">
+  <li><a href="#任务一先读fib4调用树" id="toc-任务一先读fib4调用树" class="nav-link" data-scroll-target="#任务一先读fib4调用树">任务一：先读<code>fib(4)</code>调用树</a></li>
+  <li><a href="#任务二整行杨辉三角的递推关系" id="toc-任务二整行杨辉三角的递推关系" class="nav-link" data-scroll-target="#任务二整行杨辉三角的递推关系">任务二：整行杨辉三角的递推关系</a></li>
+  <li><a href="#坏写法上一行在循环中反复计算" id="toc-坏写法上一行在循环中反复计算" class="nav-link" data-scroll-target="#坏写法上一行在循环中反复计算">坏写法：上一行在循环中反复计算</a></li>
+  <li><a href="#好写法上一行只求一次" id="toc-好写法上一行只求一次" class="nav-link" data-scroll-target="#好写法上一行只求一次">好写法：上一行只求一次</a></li>
+  <li><a href="#任务三迭代实现" id="toc-任务三迭代实现" class="nav-link" data-scroll-target="#任务三迭代实现">任务三：迭代实现</a></li>
+  <li><a href="#易错点与代码审查" id="toc-易错点与代码审查" class="nav-link" data-scroll-target="#易错点与代码审查">易错点与代码审查</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">FIP W06 · 递归</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">学习笔记</div>
+    <div class="quarto-category">递归</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    递归四原则、汉诺塔、阶乘与斐波那契、记忆化与 lru_cache，以及杨辉三角的递归和迭代实现。
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">作者</div>
+    <div class="quarto-title-meta-contents">
+             <p>个人笔记 </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">发布于</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2026年10月20日</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="理论课内容" class="level2">
+<h2 class="anchored" data-anchor-id="理论课内容">理论课内容</h2>
+<p>课程材料：26FIP6 递归.pdf</p>
+<section id="递归" class="level3">
+<h3 class="anchored" data-anchor-id="递归">递归</h3>
+<section id="汉诺塔问题" class="level4">
+<h4 class="anchored" data-anchor-id="汉诺塔问题">汉诺塔问题</h4>
+<blockquote class="blockquote">
+<p>印度传说大梵天创世时制作了三根金刚石柱。在一根柱子上从下往上按照大小顺序摞着64片黄金圆盘。大梵天命令婆罗门把圆盘从下面按照大小顺序重新摆放在另一根柱子上。规定：在小圆盘上不能放大圆盘，在三根柱子之间一次只能移动一个圆盘。</p>
+</blockquote>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="hanoi.png" class="img-fluid figure-img"></p>
+<figcaption>汉诺塔示意图：将圆盘从 A 柱移到 C 柱，B 柱作为辅助</figcaption>
+</figure>
+</div>
+<p>如果使用普通的循环问题考虑，想要描述64片圆盘从A柱子移到C柱子，会陷入几乎无穷无尽的条件判断。这个问题是难以通过普通的枚举解决的。</p>
+<p>但是我们可以换一种思维方式： <strong>假设我们已经知道了如何把63片圆盘从一根柱子移动到另外一根柱子</strong>。那么整个问题就可以化归为：先把63片移动到B柱子，再把最大的圆盘移动到C柱子，再用同样的方法把63片圆盘移动到C柱子。</p>
+<p>这种思维就是<strong>递归</strong>。</p>
+<blockquote class="blockquote">
+<p><strong>递归四原则</strong>（Mark Allen Weiss, 《数据结构与算法分析》）</p>
+<ol type="1">
+<li><strong>基准情形</strong>(Base Cases)：必须总有某些基准情形，无须递归就能直接求解，作为递归的出口。</li>
+<li><strong>不断推进</strong>(Making Progress)：对于需要递归求解的情形，每一次递归调用都必须使状况朝向基准情形推进。</li>
+<li><strong>设计法则</strong>(Design Rule——You Gotta Believe!)：假设所有的递归调用都能正常运行，专注于用递归假设来构建当前步骤，而无需追踪每一层调用的细节。</li>
+<li><strong>合成效益法则</strong>(Compound Interest Rule)：在求解同一问题的同一实例时，切勿在不同的递归调用中做重复性的工作。</li>
+</ol>
+</blockquote>
+</section>
+<section id="递归求解汉诺塔问题" class="level4">
+<h4 class="anchored" data-anchor-id="递归求解汉诺塔问题">递归求解汉诺塔问题</h4>
+<p>用算法的语言描述，上述问题和方法可以描述为： 问题：把<span class="math inline">\(n\)</span>个圆盘从source柱移到target柱，aux柱可以作为辅助 - <strong>Progress</strong>（把<span class="math inline">\(n\)</span>个盘从source柱移动到target柱的方法是）：</p>
+<pre><code>- 把上面的$n-1$个盘从source移到aux（**假设我们可以解决这个子问题**）
+
+- 把第$n$个盘从source移动到target
+
+- 把$n-1$个盘从aux移动到target（**假设我们可以解决这个子问题**）</code></pre>
+<ul>
+<li><strong>Base Case</strong>：没有盘（<span class="math inline">\(n=0\)</span>），直接结束。</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> hanoi(n, source, target, aux):</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    hanoi(n <span class="op">-</span> <span class="dv">1</span>, source, aux, target)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Move disk </span><span class="sc">{</span>n<span class="sc">}</span><span class="ss"> from </span><span class="sc">{</span>source<span class="sc">}</span><span class="ss"> to </span><span class="sc">{</span>target<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    hanoi(n <span class="op">-</span> <span class="dv">1</span>, aux, target, source)</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>当<span class="math inline">\(n=3\)</span>时，调用树如下：</p>
+<pre class="text"><code>hanoi(3, A, C, B) 
+├── hanoi(2, A, B, C) 
+│   ├── hanoi(1, A, C, B) 
+│   │    ├── hanoi(0, A, B, C) → 返回 
+│   │    ├── move 1 from A to C 
+│   │    └── hanoi(0, B, A, C) → 返回 
+│   ├── move 2 from A to B 
+│   └── hanoi(1, C, B, A) ... 
+├── move 3 from A to C 
+└── hanoi(2, B, C, A) ... </code></pre>
+</section>
+<section id="always-believe" class="level4">
+<h4 class="anchored" data-anchor-id="always-believe">Always Believe</h4>
+<p>就个人体会而言，<strong>递归</strong>对于初学者来说是比较反直觉的，但是可以这样思考：我们在写的只不过是对子问题的整合，而不是真正在“解决”这个问题，我们只需要相信子问题是对的，整合这些子问题的解法，就足够了。</p>
+</section>
+<section id="递进与回归" class="level4">
+<h4 class="anchored" data-anchor-id="递进与回归">递进与回归</h4>
+<ul>
+<li>递归的执行可以拆分为“递进”和“回归”两个阶段</li>
+<li>递归总是从要解决的问题的最大状态开始</li>
+<li>在递进阶段，问题不断被分解、缩小，直到遇到base case；有些计算也会在调用前完成</li>
+<li>在回归阶段，从已知结果的base case出发，按照递进的反方向逐层返回；阶乘中的乘法就在此时完成</li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>递归的底层实现</strong> 如果你熟悉数据结构，会发现递归的实现方法和 <strong>“栈”</strong> 是强相关的。递归在“递进”阶段事实上是在一个栈中不断加入新的调用层，最大规模问题的调用层在栈底，base case的调用层被加到栈顶后，我们触发“回归”例程，按照<strong>后进先出(LIFO)原则</strong>，从base case出发，向下触发越来越大规模问题的子调用例程，完成一层调用后就让这个调用层出栈。直到栈空（所有调用层都被调用完成），就得到原始问题的答案。 这个对原理的讨论也让我们更加清楚，为什么<strong>Base Case</strong>是极其重要的：如果没有出口，或者参数始终无法到达出口，Python最终会抛出<code>RecursionError</code>。</p>
+</blockquote>
+</section>
+</section>
+<section id="阶乘线性递归" class="level3">
+<h3 class="anchored" data-anchor-id="阶乘线性递归">阶乘：线性递归</h3>
+<p><span class="math display">\[
+n!=\begin{cases}
+1, &amp; n=0\\
+n\times(n-1)!, &amp; n&gt;0
+\end{cases}
+\]</span></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> factorial(n):</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">1</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> n <span class="op">*</span> factorial(n <span class="op">-</span> <span class="dv">1</span>)</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>factorial(4)</code>先逐层调用到<code>factorial(0)</code>，再依次算出<code>1!</code>、<code>2!</code>、<code>3!</code>、<code>4!</code>。每层只产生一个子调用：时间<span class="math inline">\(O(n)\)</span>，调用栈<span class="math inline">\(O(n)\)</span>。汉诺塔则每层产生两次规模为<span class="math inline">\(n-1\)</span>的调用，移动次数满足<span class="math inline">\(T(n)=2T(n-1)+1=2^n-1\)</span>，调用栈深度为<span class="math inline">\(O(n)\)</span>。</p>
+</section>
+<section id="斐波那契数列问题合成效益法则的重要性" class="level3">
+<h3 class="anchored" data-anchor-id="斐波那契数列问题合成效益法则的重要性">斐波那契数列问题：合成效益法则的重要性</h3>
+<p>考虑最经典的斐波那契数列问题</p>
+<section id="递归定义斐波那契数列" class="level4">
+<h4 class="anchored" data-anchor-id="递归定义斐波那契数列">递归定义斐波那契数列</h4>
+<p><span class="math display">\[
+f(n)=\begin{cases}
+n, &amp; n=0\text{ 或 }1\\
+f(n-1)+f(n-2), &amp; n&gt;1
+\end{cases}
+\]</span></p>
+</section>
+<section id="代码实现" class="level4">
+<h4 class="anchored" data-anchor-id="代码实现">代码实现</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fib(n):</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">==</span> <span class="dv">0</span> <span class="kw">or</span> n <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> n</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> fib(n <span class="op">-</span><span class="dv">1</span>) <span class="op">+</span> fib(n <span class="op">-</span> <span class="dv">2</span>)</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="调用树" class="level4">
+<h4 class="anchored" data-anchor-id="调用树">调用树</h4>
+<pre class="text"><code>fib(5)
+├── fib(4) 
+│   ├── fib(3) 
+│   │   ├── fib(2) 
+│   │   │   ├── fib(1) 
+│   │   │   └── fib(0)
+│   │   └── fib(1)
+│   └── fib(2)
+│       ├── fib(1)
+│       └── fib(0)
+└── fib(3)
+    ├── fib(2) 
+    │   ├── fib(1)
+    │   └── fib(0) 
+    └── fib(1)</code></pre>
+<p>这是一个树状递归，算法的效率事实上<strong>远低于</strong>一般的迭代算法。<strong>为什么？</strong> 因为这个算法违反了之前所说的<strong>合成效益法则</strong>：<code>fib(2)</code>被计算了<strong>3次</strong>，<code>fib(1)</code>被计算了<strong>5次</strong>，也就是说我们<strong>重复计算了多次同一个子问题</strong> ，这样会导致算法的效率极其低下。</p>
+</section>
+<section id="复杂度分析" class="level4">
+<h4 class="anchored" data-anchor-id="复杂度分析">复杂度分析</h4>
+<ul>
+<li>每次调用产生2个子调用，递归树深度为<span class="math inline">\(n\)</span></li>
+<li>时间复杂度为<span class="math inline">\(O(2^n)\)</span></li>
+<li>调用栈深度为<span class="math inline">\(O(n)\)</span></li>
+</ul>
+</section>
+</section>
+<section id="斐波那契数列的记忆化优化递归算法" class="level3">
+<h3 class="anchored" data-anchor-id="斐波那契数列的记忆化优化递归算法">斐波那契数列的记忆化优化递归算法</h3>
+<p>既然重复计算会导致算法效率极大下降，那我们不妨<strong>记录已经算出过的调用值</strong>，因为我们几乎肯定在数据规模增大时，前面算出的数值一定会被后续调用层调用，减少重复计算的收益远高于储存计算结果的开销。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fib_memo(n, memo<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> memo <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>        memo <span class="op">=</span> {}</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="kw">in</span> memo:</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> memo[n]</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">==</span> <span class="dv">0</span> <span class="kw">or</span> n <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        result <span class="op">=</span> n</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        result <span class="op">=</span> fib_memo(n <span class="op">-</span> <span class="dv">1</span>, memo) <span class="op">+</span> fib_memo(n <span class="op">-</span> <span class="dv">2</span>, memo)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    memo[n] <span class="op">=</span> result</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>通过记忆化，每个不同的<span class="math inline">\(n\)</span>只计算一次，时间和缓存空间都是<span class="math inline">\(O(n)\)</span>；递归调用栈仍是<span class="math inline">\(O(n)\)</span>。默认参数写成<code>None</code>，避免多次调用共用同一个可变字典。</p>
+</section>
+<section id="lru_cache函数进函数出" class="level3">
+<h3 class="anchored" data-anchor-id="lru_cache函数进函数出"><code>@lru_cache</code>：函数进、函数出</h3>
+<p>手写的<code>memo</code>可以换成库：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> functools <span class="im">import</span> lru_cache</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="at">@lru_cache</span>(maxsize<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fib(n):</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">==</span> <span class="dv">0</span> <span class="kw">or</span> n <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> n</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> fib(n <span class="op">-</span> <span class="dv">1</span>) <span class="op">+</span> fib(n <span class="op">-</span> <span class="dv">2</span>)</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><code>@</code>是装饰器：输入一个函数，返回一个<strong>增强后的函数</strong>（带有cache）。内部是函数进、函数出，也即<strong>高阶函数</strong>。缓存的键来自函数参数，参数必须可哈希；<code>maxsize=None</code>表示不限制缓存条目数。<code>fib.cache_info()</code>可查看命中情况，需要重新统计或清空缓存时调用<code>fib.cache_clear()</code></p>
+</blockquote>
+</section>
+<section id="euclid算法" class="level3">
+<h3 class="anchored" data-anchor-id="euclid算法">Euclid算法</h3>
+<p>辗转相除法也可以写成递归函数的形式，这里直接给出代码形式：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> gcd(x, y):</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> y <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> x</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> gcd(y, x <span class="op">%</span> y)</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="尾递归tail-recursion" class="level3">
+<h3 class="anchored" data-anchor-id="尾递归tail-recursion">尾递归(tail recursion)</h3>
+<ul>
+<li>当递进结束时，不对递进调用返回的值再做任何计算就直接返回的是尾递归：
+<ul>
+<li><code>return gcd(y, x % y)</code></li>
+</ul></li>
+<li>尾调用返回后没有待完成的计算，但在Python中它仍然会占用调用栈；Python不会自动把它优化成循环</li>
+</ul>
+<section id="尾递归和循环的转化" class="level4">
+<h4 class="anchored" data-anchor-id="尾递归和循环的转化">尾递归和循环的转化</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> gcd(x, y):</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> y <span class="op">!=</span> <span class="dv">0</span>:</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>        x, y <span class="op">=</span> y, x <span class="op">%</span> y</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="一般递归与循环的转化递归变迭代" class="level4">
+<h4 class="anchored" data-anchor-id="一般递归与循环的转化递归变迭代">一般递归与循环的转化（递归变迭代）</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 引入结果变量p，改造为尾递归</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(n, p<span class="op">=</span><span class="dv">1</span>):</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">==</span> <span class="dv">0</span> <span class="kw">or</span> n <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> p</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> f(n <span class="op">-</span> <span class="dv">1</span>, p <span class="op">*</span> n)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 把尾递归改写为循环 </span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(n, p<span class="op">=</span><span class="dv">1</span>):</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> n <span class="op">!=</span> <span class="dv">0</span> <span class="kw">and</span> n <span class="op">!=</span> <span class="dv">1</span>:</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>        n, p <span class="op">=</span> n <span class="op">-</span> <span class="dv">1</span>, n <span class="op">*</span> p</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> p</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>把（线性）递归往往可以改写为循环，而这往往可以提高程序运行的性能。换言之，递归可以作为算法思考的方法，具体的实现方法可以通过改写为循环实现。</p>
+</section>
+</section>
+<section id="quick-check-3" class="level3">
+<h3 class="anchored" data-anchor-id="quick-check-3">Quick Check 3</h3>
+<p>已知<code>first(xs)</code>返回第一个元素，<code>butfirst(xs)</code>返回去掉首元素后的剩余列表，<code>isempty(xs)</code>判断列表是否为空。不使用循环，实现<code>count</code>、<code>reverse</code>、<code>find</code>、<code>iterate</code>和讲义中的<code>accumarate</code>（累计）。以下默认<code>xs</code>支持构造空列表、单元素列表以及列表拼接。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> count(xs):</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> isempty(xs):</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">0</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">1</span> <span class="op">+</span> count(butfirst(xs))</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> reverse(xs):</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> isempty(xs):</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> []</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> reverse(butfirst(xs)) <span class="op">+</span> [first(xs)]</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find(xs, element):</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> isempty(xs):</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> first(xs) <span class="op">==</span> element <span class="kw">or</span> find(butfirst(xs), element)</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> iterate(xs, f):</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> isempty(xs):</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>    f(first(xs))</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>    iterate(butfirst(xs), f)</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> accumarate(xs, f, value):</span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> isempty(xs):</span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> value</span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> accumarate(butfirst(xs), f, f(first(xs), value))</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>五题的<strong>Base Case</strong>都是空列表：数量为<code>0</code>、逆序为空列表、查找为<code>False</code>、遍历直接结束、累计则返回当前<code>value</code>；<strong>Progress</strong>都是递归处理<code>butfirst(xs)</code>。<code>reverse</code>必须把当前首元素放在剩余列表逆序结果的末尾；<code>find</code>借助<code>or</code>短路，找到后不再继续查；<code>iterate</code>先调用<code>f</code>再递归，保持原有顺序；<code>accumarate</code>先算<code>f(first(xs), value)</code>，再把新值交给下一层，所以<code>f</code>的两个参数顺序不能颠倒。</p>
+</section>
+</section>
+<section id="阅读材料补充" class="level2">
+<h2 class="anchored" data-anchor-id="阅读材料补充">阅读材料补充</h2>
+<p>课程材料：6 递归阅读材料.pdf</p>
+<section id="递归四基础" class="level3">
+<h3 class="anchored" data-anchor-id="递归四基础">递归四基础</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>基础</th>
+<th>含义</th>
+<th>缺了会怎样</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Base Case</td>
+<td>最小规模直接返回，不再递归</td>
+<td>无限递归，最终<code>RecursionError</code></td>
+</tr>
+<tr class="even">
+<td>Make Progress</td>
+<td>每次调用都向Base Case靠近</td>
+<td>规模不变或变大，同样无法结束</td>
+</tr>
+<tr class="odd">
+<td>Always Believe</td>
+<td>相信子调用能正确解决更小的问题，只考虑当前层如何组合</td>
+<td>总想展开完整调用树，难以写清递推关系</td>
+</tr>
+<tr class="even">
+<td>Compound Interest</td>
+<td>同一子问题不要反复计算</td>
+<td>树状递归可能出现指数级重复计算</td>
+</tr>
+</tbody>
+</table>
+<p>思考时通常<strong>先想Progress，再找Base Case</strong>。例如汉诺塔先假设会移动上面<code>n-1</code>个盘，于是当前层只需“移走上层 → 移最大盘 → 移回上层”；顺着规模不断缩小，才得到<code>n=0</code>时什么也不做。阶乘则是先相信<code>factorial(n-1)</code>已算好，再乘<code>n</code>。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>常见问题</th>
+<th>应如何检查</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>忘记Base Case</td>
+<td>手推<code>n=0</code>或<code>n=1</code>，确认直接返回</td>
+</tr>
+<tr class="even">
+<td>有出口却到不了</td>
+<td>看每次参数是否严格缩小；<code>n&lt;0</code>时一直做<code>n-1</code>就到不了<code>0</code></td>
+</tr>
+<tr class="odd">
+<td>汉诺塔柱子传错</td>
+<td>每次递归重新辨认<code>source</code>、<code>target</code>、<code>aux</code>的角色</td>
+</tr>
+<tr class="even">
+<td>试图手推所有步骤</td>
+<td>只手推小规模，写代码时相信子问题的返回结果</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="线性递归与尾递归" class="level3">
+<h3 class="anchored" data-anchor-id="线性递归与尾递归">线性递归与尾递归</h3>
+<p>每层只调用一次自身的是<strong>线性递归</strong>；阶乘和欧几里得算法都是例子。<code>factorial(5)</code>在递进时依次走向<code>5 → 4 → 3 → 2 → 1</code>，回归时结果依次为<code>1 → 2 → 6 → 24 → 120</code>。阶乘的乘法要等子调用返回后才能完成。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>判断点</th>
+<th>尾递归</th>
+<th>非尾递归</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>返回形式</td>
+<td><code>return gcd(y, x % y)</code></td>
+<td><code>return n * factorial(n-1)</code></td>
+</tr>
+<tr class="even">
+<td>子调用返回后</td>
+<td>直接返回，没有额外计算</td>
+<td>还要乘、加或合并</td>
+</tr>
+<tr class="odd">
+<td>例子</td>
+<td>GCD</td>
+<td>阶乘、朴素斐波那契</td>
+</tr>
+</tbody>
+</table>
+<p>“写在最后一行”不足以判断尾递归；关键是<strong>回归阶段还要不要计算</strong>。将尾递归改为循环时，用<code>while</code>保留重复过程，把Base Case改成退出条件，并按原Progress同时更新循环变量。GCD中要一起更新<code>x, y = y, x % y</code>，不能先改<code>x</code>再用新<code>x</code>计算余数。Python不会自动消除尾递归，深层调用仍可能抛出<code>RecursionError</code>；可以改写为循环。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>改写时的错误</th>
+<th>修正</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>把函数末尾的递归调用都当作尾递归</td>
+<td>看子调用返回后是否还有运算</td>
+</tr>
+<tr class="even">
+<td>循环版漏更新某个变量</td>
+<td>逐一对照递归调用中的下一轮参数</td>
+</tr>
+<tr class="odd">
+<td>认为尾递归不会占用栈</td>
+<td>Python中深层尾递归仍有调用栈</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="树状递归记忆化与默认参数" class="level3">
+<h3 class="anchored" data-anchor-id="树状递归记忆化与默认参数">树状递归、记忆化与默认参数</h3>
+<p><code>fib(n)</code>每次需要<code>fib(n-1)</code>和<code>fib(n-2)</code>，因而形成树状调用；<code>fib(5)</code>中<code>fib(2)</code>会计算3次，<code>fib(1)</code>会计算5次。朴素版时间约<code>O(2^n)</code>。把结果存入字典后，每个不同的<code>n</code>只计算一次，时间变为<code>O(n)</code>。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>项目</th>
+<th>线性递归</th>
+<th>无记忆化的树状递归</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>每层子调用</td>
+<td>一次</td>
+<td>两次或更多</td>
+</tr>
+<tr class="even">
+<td>调用形状</td>
+<td>一条链</td>
+<td>一棵树</td>
+</tr>
+<tr class="odd">
+<td>重复计算</td>
+<td>通常没有</td>
+<td>常见</td>
+</tr>
+<tr class="even">
+<td>典型处理</td>
+<td>可考虑改循环</td>
+<td>记忆化或自底向上递推</td>
+</tr>
+</tbody>
+</table>
+<p>手写<code>fib_memo(n, memo=None)</code>时，第一次调用若<code>memo is None</code>才创建空字典；后续递归调用都传入<strong>同一个字典</strong>。<code>memo={}</code>不能直接写成默认值，因为默认值只在定义函数时求值一次，多次外层调用会共用字典。有默认值的形参也须放在无默认值形参后面。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>陷阱</th>
+<th>原因与处理</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>memo={}</code>作为默认参数</td>
+<td>字典跨调用共享；用<code>None</code>作哨兵，在函数内新建</td>
+</tr>
+<tr class="even">
+<td>子调用漏传<code>memo</code></td>
+<td>每层重新建字典，无法共享结果；递归时继续传<code>memo</code></td>
+</tr>
+<tr class="odd">
+<td>多组测试要独立统计</td>
+<td>每组新建字典，或清空装饰器缓存</td>
+</tr>
+<tr class="even">
+<td>以为记忆化消除递归深度</td>
+<td>它消除重复计算，调用栈仍可能达到<code>O(n)</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="多维状态与缓存键" class="level3">
+<h3 class="anchored" data-anchor-id="多维状态与缓存键">多维状态与缓存键</h3>
+<p>缓存键必须包含<strong>全部决定答案的状态</strong>。格子版杨辉三角<code>pascal(n, k)</code>由行<code>n</code>、列<code>k</code>共同决定，仅以<code>n</code>为键会把同一行的不同格子混在一起。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> pascal_cell(n, k, memo<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> memo <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>        memo <span class="op">=</span> {}</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> k <span class="op">==</span> <span class="dv">0</span> <span class="kw">or</span> k <span class="op">==</span> n:</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">1</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    key <span class="op">=</span> (n, k)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> key <span class="kw">not</span> <span class="kw">in</span> memo:</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>        memo[key] <span class="op">=</span> (pascal_cell(n <span class="op">-</span> <span class="dv">1</span>, k <span class="op">-</span> <span class="dv">1</span>, memo)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>                     <span class="op">+</span> pascal_cell(n <span class="op">-</span> <span class="dv">1</span>, k, memo))</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> memo[key]</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>键的写法</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>n</code></td>
+<td>漏掉<code>k</code>，不同格子可能共用错误答案</td>
+</tr>
+<tr class="even">
+<td><code>[n, k]</code></td>
+<td>列表不可哈希，不能作字典键</td>
+</tr>
+<tr class="odd">
+<td><code>(n, k)</code></td>
+<td>元组可哈希，能完整表示状态</td>
+</tr>
+</tbody>
+</table>
+<p>这里的格子版只用于理解缓存键；研讨课实现的是返回<strong>整行</strong>的<code>pascal(n)</code>。</p>
+</section>
+<section id="functools.lru_cache" class="level3">
+<h3 class="anchored" data-anchor-id="functools.lru_cache"><code>functools.lru_cache</code></h3>
+<p><code>@lru_cache</code>把缓存放进装饰器，适合“相同参数总得到相同结果”的计算函数。本周会使用、能认出<code>@</code>即可，不要求手写装饰器。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>项目</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>@lru_cache(maxsize=None)</code></td>
+<td>缓存条目数不设上限</td>
+</tr>
+<tr class="even">
+<td><code>@lru_cache(maxsize=128)</code></td>
+<td>最多保留128项，按最近使用情况淘汰旧项</td>
+</tr>
+<tr class="odd">
+<td><code>typed=False</code></td>
+<td>默认值，不保证区分不同参数类型</td>
+</tr>
+<tr class="even">
+<td><code>typed=True</code></td>
+<td>按参数类型区分缓存键</td>
+</tr>
+<tr class="odd">
+<td><code>cache_info()</code></td>
+<td>返回<code>hits</code>、<code>misses</code>、<code>maxsize</code>、<code>currsize</code></td>
+</tr>
+<tr class="even">
+<td><code>cache_clear()</code></td>
+<td>清空缓存，返回<code>None</code></td>
+</tr>
+</tbody>
+</table>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> functools <span class="im">import</span> lru_cache</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="at">@lru_cache</span>(maxsize<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fib_cached(n):</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">&lt;=</span> <span class="dv">1</span>:</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> n</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> fib_cached(n <span class="op">-</span> <span class="dv">1</span>) <span class="op">+</span> fib_cached(n <span class="op">-</span> <span class="dv">2</span>)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>fib_cached(<span class="dv">10</span>)</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(fib_cached.cache_info())</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>fib_cached.cache_clear()</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>多参数函数会自动把参数组成缓存键，不必自己写<code>(n, k)</code>；但<strong>参数须可哈希</strong>，列表、字典、集合不能直接作参数。返回列表可以，不过不应改动已缓存的返回值。带输入输出、副作用或依赖可变外部状态的函数不适合缓存，因为命中缓存时不会执行函数体。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>对比</th>
+<th>手写字典<code>memo</code></th>
+<th><code>@lru_cache</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>缓存键</td>
+<td>自行设计</td>
+<td>自动根据参数生成</td>
+</tr>
+<tr class="even">
+<td>容量</td>
+<td>自己管理</td>
+<td><code>maxsize</code>控制</td>
+</tr>
+<tr class="odd">
+<td>统计</td>
+<td>需自己实现</td>
+<td><code>cache_info()</code></td>
+</tr>
+<tr class="even">
+<td>适用</td>
+<td>需要自定义状态或缓存行为</td>
+<td>参数可哈希的纯计算函数</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="类型注解与递归审查" class="level3">
+<h3 class="anchored" data-anchor-id="类型注解与递归审查">类型注解与递归审查</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>写法</th>
+<th>读法</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>list[int]</code></td>
+<td>元素预期为<code>int</code>的列表</td>
+</tr>
+<tr class="even">
+<td><code>int \| None</code></td>
+<td>值可能是整数，也可能是<code>None</code></td>
+</tr>
+</tbody>
+</table>
+<p>类型注解是给读代码的人和静态工具看的，Python运行时不会自动据此检查实参类型。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>检查项</th>
+<th>具体看什么</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Base Case</td>
+<td>小规模输入能否直接返回；非法输入是否会无限递归</td>
+</tr>
+<tr class="even">
+<td>Progress</td>
+<td>参数是否严格向出口靠近</td>
+</tr>
+<tr class="odd">
+<td>合并结果</td>
+<td>阶乘是否乘回<code>n</code>；杨辉三角是否正确拼接</td>
+</tr>
+<tr class="even">
+<td>记忆化键</td>
+<td>是否包含所有维度；键能否哈希</td>
+</tr>
+<tr class="odd">
+<td>缓存使用</td>
+<td>参数是否可哈希，函数是否有副作用，是否需要清空缓存</td>
+</tr>
+<tr class="even">
+<td>类型注解</td>
+<td>是否把标注误当作运行时检查</td>
+</tr>
+</tbody>
+</table>
+<p>要求生成递归代码时，要先写清输入输出、Base Case、Progress和返回值的组合方式；得到代码后仍用小规模轨迹逐项核对。</p>
+</section>
+</section>
+<section id="研讨课内容" class="level2">
+<h2 class="anchored" data-anchor-id="研讨课内容">研讨课内容</h2>
+<p>课程材料：6 递归-研讨课.pdf</p>
+<section id="任务一先读fib4调用树" class="level3">
+<h3 class="anchored" data-anchor-id="任务一先读fib4调用树">任务一：先读<code>fib(4)</code>调用树</h3>
+<p>不运行代码，先画出完整调用树：</p>
+<pre class="text"><code>fib(4)
+├── fib(3)
+│   ├── fib(2)
+│   │   ├── fib(1)
+│   │   └── fib(0)
+│   └── fib(1)
+└── fib(2)
+    ├── fib(1)
+    └── fib(0)</code></pre>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>问题</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>包含<code>fib(4)</code>自身，共调用几次？</td>
+<td>9次</td>
+</tr>
+<tr class="even">
+<td><code>fib(2)</code>调用几次？</td>
+<td>2次</td>
+</tr>
+<tr class="odd">
+<td>重复从哪里来？</td>
+<td>两条分支都重新计算同一个<code>fib(2)</code></td>
+</tr>
+</tbody>
+</table>
+<p>这正是后面杨辉三角“上一行不要算两遍”的引子。</p>
+</section>
+<section id="任务二整行杨辉三角的递推关系" class="level3">
+<h3 class="anchored" data-anchor-id="任务二整行杨辉三角的递推关系">任务二：整行杨辉三角的递推关系</h3>
+<p>本节的<code>pascal(n)</code>返回<strong>第<code>n</code>行整个列表</strong>，从第0行计数；返回单个格子的<code>pascal(n, k)</code>留到后续课程。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>行号</th>
+<th>返回值</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td><code>[1]</code></td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td><code>[1, 1]</code></td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td><code>[1, 2, 1]</code></td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td><code>[1, 3, 3, 1]</code></td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td><code>[1, 4, 6, 4, 1]</code></td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>部分</th>
+<th>规则</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Base Case</td>
+<td><code>pascal(0)</code>返回<code>[1]</code></td>
+</tr>
+<tr class="even">
+<td>Progress</td>
+<td>先得到上一整行<code>prev = pascal(n-1)</code></td>
+</tr>
+<tr class="odd">
+<td>当前行两端</td>
+<td>都是<code>1</code></td>
+</tr>
+<tr class="even">
+<td>当前行中间</td>
+<td><code>prev[i] + prev[i+1]</code></td>
+</tr>
+<tr class="odd">
+<td>结果长度</td>
+<td>第<code>n</code>行有<code>n+1</code>个元素</td>
+</tr>
+</tbody>
+</table>
+<p>上一行长度为<code>n</code>，有<code>n-1</code>对相邻元素。想清楚函数返回的是“整行”，才不会把整行问题写成逐个格子重复求值。</p>
+</section>
+<section id="坏写法上一行在循环中反复计算" class="level3">
+<h3 class="anchored" data-anchor-id="坏写法上一行在循环中反复计算">坏写法：上一行在循环中反复计算</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> pascal_bad(n):</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> [<span class="dv">1</span>]</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    row <span class="op">=</span> [<span class="dv">1</span>]</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n <span class="op">-</span> <span class="dv">1</span>):</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>        row.append(pascal_bad(n <span class="op">-</span> <span class="dv">1</span>)[i] <span class="op">+</span> pascal_bad(n <span class="op">-</span> <span class="dv">1</span>)[i <span class="op">+</span> <span class="dv">1</span>])</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    row.append(<span class="dv">1</span>)</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> row</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>pascal_bad(3)</code>有两个中间元素，每个元素两次调用<code>pascal_bad(2)</code>，因此仅顶层就调用上一行<strong>4次</strong>；这些调用又会继续重复计算更小的行。结果虽对，计算却会迅速膨胀。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>现象</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>pascal_bad(16)</code>可能明显变慢</td>
+<td>同一上一行在循环内反复递归生成</td>
+</tr>
+<tr class="even">
+<td><code>pascal_bad(1)</code>没有中间元素</td>
+<td>仍须在末尾补<code>1</code>，结果才是<code>[1, 1]</code></td>
+</tr>
+<tr class="odd">
+<td>加了记忆化后可能变快</td>
+<td>重复调用命中缓存，但没有解决写法上不必要的重复请求</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="好写法上一行只求一次" class="level3">
+<h3 class="anchored" data-anchor-id="好写法上一行只求一次">好写法：上一行只求一次</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> pascal(n):</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> [<span class="dv">1</span>]</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    prev <span class="op">=</span> pascal(n <span class="op">-</span> <span class="dv">1</span>)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    row <span class="op">=</span> [<span class="dv">1</span>]</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(prev) <span class="op">-</span> <span class="dv">1</span>):</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>        row.append(prev[i] <span class="op">+</span> prev[i <span class="op">+</span> <span class="dv">1</span>])</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    row.append(<span class="dv">1</span>)</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> row</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th><code>pascal(3)</code>的阶段</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>递进</td>
+<td><code>3 → 2 → 1 → 0</code></td>
+</tr>
+<tr class="even">
+<td>Base Case</td>
+<td><code>pascal(0) → [1]</code></td>
+</tr>
+<tr class="odd">
+<td>回归一层</td>
+<td><code>pascal(1) → [1, 1]</code></td>
+</tr>
+<tr class="even">
+<td>再回归</td>
+<td><code>pascal(2) → [1, 2, 1]</code></td>
+</tr>
+<tr class="odd">
+<td>最后回归</td>
+<td><code>pascal(3) → [1, 3, 3, 1]</code></td>
+</tr>
+</tbody>
+</table>
+<p>每层只调用一次上一行，调用关系是一条链。第<code>k</code>行拼接花<code>O(k)</code>，从第0行到第<code>n</code>行总时间为<code>O(n^2)</code>；调用栈深<code>O(n)</code>，各层保留的行可能使峰值空间达到<code>O(n^2)</code>。</p>
+<p>也可以用列表推导式拼当前行，但<strong>上一行仍须先存进变量</strong>：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> pascal(n):</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> [<span class="dv">1</span>]</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    prev <span class="op">=</span> pascal(n <span class="op">-</span> <span class="dv">1</span>)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [<span class="dv">1</span>] <span class="op">+</span> [prev[i] <span class="op">+</span> prev[i <span class="op">+</span> <span class="dv">1</span>]</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>                  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(prev) <span class="op">-</span> <span class="dv">1</span>)] <span class="op">+</span> [<span class="dv">1</span>]</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>若加<code>@lru_cache</code>，键<code>n</code>是可哈希的整数；返回列表本身不妨碍缓存，但不要修改缓存返回的列表。</p>
+</section>
+<section id="任务三迭代实现" class="level3">
+<h3 class="anchored" data-anchor-id="任务三迭代实现">任务三：迭代实现</h3>
+<p>递归版是从第<code>n</code>行问到第0行，再逐层回归；迭代版从第0行出发，一行一行生成到第<code>n</code>行。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> pascal_iter(n):</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    row <span class="op">=</span> [<span class="dv">1</span>]</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>        new_row <span class="op">=</span> [<span class="dv">1</span>]</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(row) <span class="op">-</span> <span class="dv">1</span>):</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>            new_row.append(row[i] <span class="op">+</span> row[i <span class="op">+</span> <span class="dv">1</span>])</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>        new_row.append(<span class="dv">1</span>)</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>        row <span class="op">=</span> new_row</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> row</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>pascal_iter(4)</code>返回<code>[1, 4, 6, 4, 1]</code>。它与好写法都构造前面各行，时间同为<code>O(n^2)</code>；迭代版只保留当前行和新行，额外空间<code>O(n)</code>，且没有递归调用栈。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>实现</th>
+<th>上一行的处理</th>
+<th>时间</th>
+<th>空间</th>
+<th>使用时的判断</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>坏写法</td>
+<td>每拼一个中间项就重新递归</td>
+<td>重复计算严重</td>
+<td>调用数膨胀</td>
+<td>避免</td>
+</tr>
+<tr class="even">
+<td>好写法</td>
+<td>递归一次，存入<code>prev</code></td>
+<td><code>O(n^2)</code></td>
+<td>最坏<code>O(n^2)</code></td>
+<td>便于理解递推</td>
+</tr>
+<tr class="odd">
+<td>迭代</td>
+<td>从第0行逐行更新<code>row</code></td>
+<td><code>O(n^2)</code></td>
+<td><code>O(n)</code></td>
+<td>大规模时更稳妥</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="易错点与代码审查" class="level3">
+<h3 class="anchored" data-anchor-id="易错点与代码审查">易错点与代码审查</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>错误</th>
+<th>现象</th>
+<th>修正</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>pascal(0)</code>返回<code>[]</code>或<code>1</code></td>
+<td>类型或长度不对</td>
+<td>返回列表<code>[1]</code></td>
+</tr>
+<tr class="even">
+<td>忘记行末<code>append(1)</code></td>
+<td>每行少一个<code>1</code></td>
+<td>中间元素拼完后补末尾</td>
+</tr>
+<tr class="odd">
+<td>循环到<code>len(prev)</code>仍取<code>prev[i+1]</code></td>
+<td><code>IndexError</code></td>
+<td>使用<code>range(len(prev)-1)</code></td>
+</tr>
+<tr class="even">
+<td>在循环中调用<code>pascal(n-1)</code></td>
+<td>同一行反复计算</td>
+<td>先保存<code>prev</code></td>
+</tr>
+<tr class="odd">
+<td>缓存键用列表</td>
+<td><code>TypeError</code></td>
+<td>整行版以整数<code>n</code>作键</td>
+</tr>
+</tbody>
+</table>
+<p>对照代码时，先手推<code>pascal(0)</code>到<code>pascal(3)</code>，再检查Base Case、<code>n-1</code>是否真正缩小问题、上一行是否只算一次、行末是否补<code>1</code>。汉诺塔可用<code>n=3</code>的移动序列核对柱子顺序。若把文件引用给工具审查，仍应明确写出这些检查条件；文件引用只提供上下文，不会代替规格。</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<section id="comments" class="comments-section" aria-labelledby="comments-heading">
+  <h2 id="comments-heading">评论</h2>
+  <p id="comments-status">评论暂未开放。</p>
+  <div class="giscus"></div>
+</section>
+<script src="../../assets/comments-config.js?v=0740342d2f79"></script>
+<script src="../../assets/comments.js?v=efc269bc7855"></script>
+
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "已复制");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "已复制");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/easoncyy\.github\.io");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p><a href="../../posts/20261020-fip-w06-recursion/index.html">~/notes</a> · 记录与探索</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p><a class="footer-repository" href="https://github.com/easoncyy/easoncyy.github.io" target="_blank" rel="noopener noreferrer" aria-label="查看本站 GitHub 仓库"><i class="bi bi-github" aria-hidden="true"></i><span>source/</span></a><span class="footer-builder">Built with Quarto</span></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

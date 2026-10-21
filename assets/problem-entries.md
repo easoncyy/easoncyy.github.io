@@ -1,3 +1,133 @@
+::: {.problem-day data-date="2026-10-20"}
+
+## 2026-10-20 {.problem-date-heading}
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;介值定理&quot;, &quot;单调性&quot;, &quot;隐式数列&quot;], &quot;title&quot;: &quot;隐式定义的根与指数极限&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
+
+<h3>01. 隐式定义的根与指数极限</h3>
+
+<div class="entry-tags">#介值定理 · #单调性 · #隐式数列</div>
+
+```
+
+设 $f_n(x)=x^n+nx-2$，$x\in(0,+\infty)$，$n\in\mathbb N_+$。
+
+1. 证明 $f_n$ 有唯一正根，记为 $x_n$。
+2. 求 $\displaystyle\lim_{n\to+\infty}(1+x_n)^n$。
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+**答案** 唯一正根存在；所求极限为 $e^2$。
+
+**详细解析**
+
+对固定 $n$，$x^n+nx-2$ 连续严格递增。在延拓后的端点 $f_n(0)=-2<0$，而 $f_n(2)=2^n+2n-2>0$，由介值定理至少有一个正根，再由严格递增性保证唯一。
+
+根满足 $x_n^n+nx_n=2$，所以 $0<x_n<2/n$，进而 $x_n\to0$。对 $n\ge3$，
+
+$$0<x_n^n<(2/n)^n\to0,$$
+
+故 $nx_n=2-x_n^n\to2$。于是
+
+$$n\ln(1+x_n)=nx_n\frac{\ln(1+x_n)}{x_n}\to2,$$
+
+取指数得到 $e^2$。核心是从根方程估计 $x_n$ 的尺度，而非试图写出高次方程根式。
+
+**知识点与易错点** 根的存在与唯一分别用介值定理和单调性；根方程给出尺度。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：2023–2024 学年微积分第一次小测往年题 · 另甲-7</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;AI&quot;, &quot;FIP&quot;, &quot;递归&quot;], &quot;tags&quot;: [&quot;基准情形&quot;, &quot;递归&quot;, &quot;列表&quot;], &quot;title&quot;: &quot;FIP W06 · Quick Check 3&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">AI / FIP / 递归</div>
+
+<h3>02. FIP W06 · Quick Check 3</h3>
+
+<div class="entry-tags">#基准情形 · #递归 · #列表</div>
+
+```
+
+已知`first(xs)`返回第一个元素，`butfirst(xs)`返回去掉首元素后的剩余列表，`isempty(xs)`判断列表是否为空。不使用循环，实现`count`、`reverse`、`find`、`iterate`和讲义中的`accumarate`（累计）。以下默认`xs`支持构造空列表、单元素列表以及列表拼接。
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+```python
+def count(xs):
+	if isempty(xs):
+		return 0
+	return 1 + count(butfirst(xs))
+
+def reverse(xs):
+	if isempty(xs):
+		return []
+	return reverse(butfirst(xs)) + [first(xs)]
+
+def find(xs, element):
+	if isempty(xs):
+		return False
+	return first(xs) == element or find(butfirst(xs), element)
+
+def iterate(xs, f):
+	if isempty(xs):
+		return
+	f(first(xs))
+	iterate(butfirst(xs), f)
+
+def accumarate(xs, f, value):
+	if isempty(xs):
+		return value
+	return accumarate(butfirst(xs), f, f(first(xs), value))
+```
+
+
+五题的**Base Case**都是空列表：数量为`0`、逆序为空列表、查找为`False`、遍历直接结束、累计则返回当前`value`；**Progress**都是递归处理`butfirst(xs)`。`reverse`必须把当前首元素放在剩余列表逆序结果的末尾；`find`借助`or`短路，找到后不再继续查；`iterate`先调用`f`再递归，保持原有顺序；`accumarate`先算`f(first(xs), value)`，再把新值交给下一层，所以`f`的两个参数顺序不能颠倒。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：FIP W06 递归 · Quick Check 3</p>
+
+```
+
+:::
+
+```{=html}
+
+<details id="discussion-2026-10-20" class="log-comments problem-discussion" data-comment-term="/problems/2026-10-20/" data-comment-date="2026-10-20" data-comment-title="每日好题 · 2026-10-20">
+
+<summary>discussion/ <span>2026-10-20 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
 ::: {.problem-day data-date="2026-10-19"}
 
 ## 2026-10-19 {.problem-date-heading}
@@ -993,6 +1123,6 @@ $$
 
 ```{=html}
 
-<script id="problem-index" type="application/json">{"builtDate": "2026-10-20", "dates": {"2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
+<script id="problem-index" type="application/json">{"builtDate": "2026-10-21", "dates": {"2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
 
 ```

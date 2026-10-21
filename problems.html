@@ -27,6 +27,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -208,8 +243,95 @@ window.Quarto = {
   <button type="button" id="problem-filter-reset">清除筛选</button>
 </div>
 <p id="problem-status" aria-live="polite"></p>
-<section id="section" class="level2 problem-date-heading problem-day" data-date="2026-10-19">
-<h2 class="problem-date-heading anchored" data-anchor-id="section">2026-10-19</h2>
+<section id="section" class="level2 problem-date-heading problem-day" data-date="2026-10-20">
+<h2 class="problem-date-heading anchored" data-anchor-id="section">2026-10-20</h2>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;介值定理&quot;, &quot;单调性&quot;, &quot;隐式数列&quot;], &quot;title&quot;: &quot;隐式定义的根与指数极限&quot;}">
+
+<div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
+
+<h3 class="anchored">01. 隐式定义的根与指数极限</h3>
+
+<div class="entry-tags">#介值定理 · #单调性 · #隐式数列</div>
+
+<p>设 <span class="math inline">\(f_n(x)=x^n+nx-2\)</span>，<span class="math inline">\(x\in(0,+\infty)\)</span>，<span class="math inline">\(n\in\mathbb N_+\)</span>。</p>
+<ol type="1">
+<li>证明 <span class="math inline">\(f_n\)</span> 有唯一正根，记为 <span class="math inline">\(x_n\)</span>。</li>
+<li>求 <span class="math inline">\(\displaystyle\lim_{n\to+\infty}(1+x_n)^n\)</span>。</li>
+</ol>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p><strong>答案</strong> 唯一正根存在；所求极限为 <span class="math inline">\(e^2\)</span>。</p>
+<p><strong>详细解析</strong></p>
+<p>对固定 <span class="math inline">\(n\)</span>，<span class="math inline">\(x^n+nx-2\)</span> 连续严格递增。在延拓后的端点 <span class="math inline">\(f_n(0)=-2&lt;0\)</span>，而 <span class="math inline">\(f_n(2)=2^n+2n-2&gt;0\)</span>，由介值定理至少有一个正根，再由严格递增性保证唯一。</p>
+<p>根满足 <span class="math inline">\(x_n^n+nx_n=2\)</span>，所以 <span class="math inline">\(0&lt;x_n&lt;2/n\)</span>，进而 <span class="math inline">\(x_n\to0\)</span>。对 <span class="math inline">\(n\ge3\)</span>，</p>
+<p><span class="math display">\[0&lt;x_n^n&lt;(2/n)^n\to0,\]</span></p>
+<p>故 <span class="math inline">\(nx_n=2-x_n^n\to2\)</span>。于是</p>
+<p><span class="math display">\[n\ln(1+x_n)=nx_n\frac{\ln(1+x_n)}{x_n}\to2,\]</span></p>
+<p>取指数得到 <span class="math inline">\(e^2\)</span>。核心是从根方程估计 <span class="math inline">\(x_n\)</span> 的尺度，而非试图写出高次方程根式。</p>
+<p><strong>知识点与易错点</strong> 根的存在与唯一分别用介值定理和单调性；根方程给出尺度。</p>
+
+</div></details>
+
+<p class="problem-source">来源：2023–2024 学年微积分第一次小测往年题 · 另甲-7</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;AI&quot;, &quot;FIP&quot;, &quot;递归&quot;], &quot;tags&quot;: [&quot;基准情形&quot;, &quot;递归&quot;, &quot;列表&quot;], &quot;title&quot;: &quot;FIP W06 · Quick Check 3&quot;}">
+
+<div class="problem-meta">AI / FIP / 递归</div>
+
+<h3 class="anchored">02. FIP W06 · Quick Check 3</h3>
+
+<div class="entry-tags">#基准情形 · #递归 · #列表</div>
+
+<p>已知<code>first(xs)</code>返回第一个元素，<code>butfirst(xs)</code>返回去掉首元素后的剩余列表，<code>isempty(xs)</code>判断列表是否为空。不使用循环，实现<code>count</code>、<code>reverse</code>、<code>find</code>、<code>iterate</code>和讲义中的<code>accumarate</code>（累计）。以下默认<code>xs</code>支持构造空列表、单元素列表以及列表拼接。</p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> count(xs):</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> isempty(xs):</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">0</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">1</span> <span class="op">+</span> count(butfirst(xs))</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> reverse(xs):</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> isempty(xs):</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> []</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> reverse(butfirst(xs)) <span class="op">+</span> [first(xs)]</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find(xs, element):</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> isempty(xs):</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> first(xs) <span class="op">==</span> element <span class="kw">or</span> find(butfirst(xs), element)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> iterate(xs, f):</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> isempty(xs):</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    f(first(xs))</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    iterate(butfirst(xs), f)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> accumarate(xs, f, value):</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> isempty(xs):</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> value</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> accumarate(butfirst(xs), f, f(first(xs), value))</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>五题的<strong>Base Case</strong>都是空列表：数量为<code>0</code>、逆序为空列表、查找为<code>False</code>、遍历直接结束、累计则返回当前<code>value</code>；<strong>Progress</strong>都是递归处理<code>butfirst(xs)</code>。<code>reverse</code>必须把当前首元素放在剩余列表逆序结果的末尾；<code>find</code>借助<code>or</code>短路，找到后不再继续查；<code>iterate</code>先调用<code>f</code>再递归，保持原有顺序；<code>accumarate</code>先算<code>f(first(xs), value)</code>，再把新值交给下一层，所以<code>f</code>的两个参数顺序不能颠倒。</p>
+
+</div></details>
+
+<p class="problem-source">来源：FIP W06 递归 · Quick Check 3</p>
+
+</div>
+
+<details id="discussion-2026-10-20" class="log-comments problem-discussion" data-comment-term="/problems/2026-10-20/" data-comment-date="2026-10-20" data-comment-title="每日好题 · 2026-10-20">
+
+<summary>discussion/ <span>2026-10-20 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+</section>
+<section id="section-1" class="level2 problem-date-heading problem-day" data-date="2026-10-19">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-1">2026-10-19</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;分段估计&quot;, &quot;夹逼定理&quot;], &quot;title&quot;: &quot;不同次根组成的变项数列和&quot;}">
 
 <div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
@@ -346,8 +468,8 @@ R_n=\sum_{k=1}^{n}\frac{\sin k}{n^2+k}.
 </details>
 
 </section>
-<section id="section-1" class="level2 problem-date-heading problem-day" data-date="2026-10-18">
-<h2 class="problem-date-heading anchored" data-anchor-id="section-1">2026-10-18</h2>
+<section id="section-2" class="level2 problem-date-heading problem-day" data-date="2026-10-18">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-2">2026-10-18</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;夹逼定理&quot;, &quot;变项数列和&quot;], &quot;title&quot;: &quot;含根式分母的平方和极限&quot;}">
 
 <div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
@@ -546,8 +668,8 @@ n^2\theta_n
 </details>
 
 </section>
-<section id="section-2" class="level2 problem-date-heading problem-day" data-date="2026-10-17">
-<h2 class="problem-date-heading anchored" data-anchor-id="section-2">2026-10-17</h2>
+<section id="section-3" class="level2 problem-date-heading problem-day" data-date="2026-10-17">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-3">2026-10-17</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;次可加性&quot;, &quot;下确界&quot;, &quot;极限&quot;], &quot;title&quot;: &quot;次可加数列与 Fekete 引理&quot;}">
 
 <div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
@@ -726,8 +848,8 @@ a_i-a_j=21,
 </details>
 
 </section>
-<section id="section-3" class="level2 problem-date-heading problem-day" data-date="2026-10-16">
-<h2 class="problem-date-heading anchored" data-anchor-id="section-3">2026-10-16</h2>
+<section id="section-4" class="level2 problem-date-heading problem-day" data-date="2026-10-16">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-4">2026-10-16</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;反证法&quot;, &quot;阶乘级数&quot;], &quot;title&quot;: &quot;证明 e 是无理数&quot;}">
 
 <div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
@@ -875,7 +997,7 @@ d&amp;1&amp;1/d^2&amp;1/d
 
 </section>
 
-<script id="problem-index" type="application/json">{"builtDate": "2026-10-20", "dates": {"2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
+<script id="problem-index" type="application/json">{"builtDate": "2026-10-21", "dates": {"2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
 
 <p id="problem-empty" hidden="">这一天暂无符合条件的题目。</p>
 <section class="problem-calendar" aria-label="按日期查看题目">
