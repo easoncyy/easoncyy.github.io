@@ -1,0 +1,25 @@
+---
+title: "爽吗"
+date: "2026-10-22T23:19:20+08:00"
+entry-signature: "2100014612d18ccc1bf6762ad47a84749e5d5b74d7e6665640a42e1f79da1ad3"
+---
+
+被线性代数小测击溃之后酒吧写作业初体验，其实感觉氛围还不错。
+
+::: {.log-photo-grid}
+
+![阳光晴朗的天](/assets/log/20261022-231920-entry/photo-01.jpg)
+
+![还是晴朗的天](/assets/log/20261022-231920-entry/photo-02.jpg)
+
+![第一次来到学院](/assets/log/20261022-231920-entry/photo-03.jpg)
+
+![在尝试这个滤镜](/assets/log/20261022-231920-entry/photo-04.jpg)
+
+![喜欢在这里自修](/assets/log/20261022-231920-entry/photo-05.jpg)
+
+![特别喜欢这里的氛围](/assets/log/20261022-231920-entry/photo-06.jpg)
+
+![想这段这根许愿柳...吗？](/assets/log/20261022-231920-entry/photo-07.jpg)
+
+:::
