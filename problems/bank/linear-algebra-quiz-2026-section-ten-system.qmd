@@ -1,0 +1,39 @@
+---
+title: "第十节（一）：解的分类与通解"
+category-path: ["MATH", "LINEAR-ALGEBRA", "线性方程组"]
+tags: ["参数讨论", "矩阵的秩"]
+source: "2026–2027 学年线性代数小测 · 第十节（一）：解的分类与通解"
+draft: false
+---
+
+讨论方程组有唯一解、无穷多解或无解的条件，并在有解时求解：
+
+$$\begin{cases}
+x+2y+3z=1,\\
+2x+3y+az=3,\\
+3x+4y+5z=b.
+\end{cases}$$
+
+<!-- answer -->
+
+对增广矩阵作 $R_2\leftarrow R_2-2R_1$，$R_3\leftarrow R_3-3R_1$，再作 $R_3\leftarrow R_3-2R_2$，$R_2\leftarrow-R_2$，得
+
+$$\left(\begin{array}{ccc|c}
+1&2&3&1\\0&1&6-a&-1\\0&0&8-2a&b-5
+\end{array}\right).$$
+
+**当 $a\ne4$ 时，有唯一解：**
+
+$$\boxed{\begin{aligned}
+z&=\frac{b-5}{8-2a},\\
+y&=-1-\frac{(6-a)(b-5)}{8-2a},\\
+x&=3+\frac{(9-2a)(b-5)}{8-2a}.
+\end{aligned}}$$
+
+**当 $a=4,b=5$ 时，有无穷多解：**
+
+$$\boxed{\begin{pmatrix}x\\y\\z\end{pmatrix}
+=\begin{pmatrix}3\\-1\\0\end{pmatrix}
++c\begin{pmatrix}1\\-2\\1\end{pmatrix},\quad c\in\mathbb R.}$$
+
+**当 $a=4,b\ne5$ 时，无解。**

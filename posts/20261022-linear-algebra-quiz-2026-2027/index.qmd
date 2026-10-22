@@ -1,0 +1,175 @@
+---
+title: "2026–2027 学年《线性代数》小测真题：第九节与第十节"
+description: "两组小测共四题，含含参线性方程组与行列式计算，附解析及原 PDF。"
+date: "2026-10-22"
+author: "easoncyy（整理）"
+category-path: ["MATH", "LINEAR-ALGEBRA", "历年题"]
+categories: ["小测", "秋冬", "真题"]
+execute: {"enabled": false}
+---
+
+本篇按《线性代数第一次小测参考答案》中的“第九节”“第十节”顺序整理，共四题。[下载原 PDF](original.pdf)。
+
+## 第一部分：题目 {#questions}
+
+
+### 第九节（一）：含参方程组的解
+
+讨论方程组何时有解，并在有解时求全部解：
+
+$$
+\begin{cases}
+x_1+x_2+x_3+x_4+x_5=2,\\
+-x_1+x_3+3x_4+x_5=a,\\
+x_1+2x_2+3x_3+5x_4+3x_5=3,\\
+3x_1+2x_2+x_3-x_4+x_5=b.
+\end{cases}
+$$
+
+### 第九节（二）：四阶三对角行列式
+
+计算行列式
+
+$$D_4=\begin{vmatrix}
+x-1&x&0&0\\
+-x&x^2-x&x^2&0\\
+0&-x^2&x^3-x^2&x^3\\
+0&0&-x^3&x^4-x^3
+\end{vmatrix}.$$
+
+
+### 第十节（一）：解的分类与通解
+
+讨论方程组有唯一解、无穷多解或无解的条件，并在有解时求解：
+
+$$\begin{cases}
+x+2y+3z=1,\\
+2x+3y+az=3,\\
+3x+4y+5z=b.
+\end{cases}$$
+
+### 第十节（二）：加边法计算行列式
+
+计算 $n$ 阶行列式
+
+$$D_n=\begin{vmatrix}
+1-a_1^2&-a_1a_2&\cdots&-a_1a_n\\
+-a_2a_1&1-a_2^2&\cdots&-a_2a_n\\
+\vdots&\vdots&\ddots&\vdots\\
+-a_na_1&-a_na_2&\cdots&1-a_n^2
+\end{vmatrix}.$$
+
+
+## 第二部分：解析 {#solutions}
+
+### 第九节（一）：含参方程组的解
+
+对增广矩阵依次作 $R_2\leftarrow R_2+R_1$，$R_3\leftarrow R_3-R_1$，$R_4\leftarrow R_4-3R_1$，再作 $R_3\leftarrow R_3-R_2$，$R_4\leftarrow R_4+R_2$，得
+
+$$
+\left(\begin{array}{ccccc|c}
+1&1&1&1&1&2\\
+0&1&2&4&2&a+2\\
+0&0&0&0&0&-a-1\\
+0&0&0&0&0&a+b-4
+\end{array}\right).
+$$
+
+故方程组有解当且仅当 $a=-1,b=5$。此时作 $R_1\leftarrow R_1-R_2$，得
+
+$$x_1=1+x_3+3x_4+x_5,\qquad x_2=1-2x_3-4x_4-2x_5.$$
+
+全部解为
+
+$$
+\boxed{\begin{pmatrix}x_1\\x_2\\x_3\\x_4\\x_5\end{pmatrix}
+=\begin{pmatrix}1\\1\\0\\0\\0\end{pmatrix}
++c_1\begin{pmatrix}1\\-2\\1\\0\\0\end{pmatrix}
++c_2\begin{pmatrix}3\\-4\\0\\1\\0\end{pmatrix}
++c_3\begin{pmatrix}1\\-2\\0\\0\\1\end{pmatrix},\quad c_1,c_2,c_3\in\mathbb R.}
+$$
+
+### 第九节（二）：四阶三对角行列式
+
+从第 $2,3,4$ 列分别提取 $x,x^2,x^3$，得
+
+$$D_4=x^6\Delta_4,\qquad
+\Delta_4=\begin{vmatrix}
+x-1&1&0&0\\-x&x-1&1&0\\0&-x&x-1&1\\0&0&-x&x-1
+\end{vmatrix}.$$
+
+记同型的 $k$ 阶行列式为 $\Delta_k$。按第一行展开，有
+
+$$\Delta_k=(x-1)\Delta_{k-1}+x\Delta_{k-2},\qquad\Delta_0=1,\quad\Delta_1=x-1.$$
+
+依次得到
+
+$$\begin{aligned}
+\Delta_2&=x^2-x+1,\\
+\Delta_3&=x^3-x^2+x-1,\\
+\Delta_4&=x^4-x^3+x^2-x+1.
+\end{aligned}$$
+
+因此
+
+$$\boxed{D_4=x^6(x^4-x^3+x^2-x+1).}$$
+
+### 第十节（一）：解的分类与通解
+
+对增广矩阵作 $R_2\leftarrow R_2-2R_1$，$R_3\leftarrow R_3-3R_1$，再作 $R_3\leftarrow R_3-2R_2$，$R_2\leftarrow-R_2$，得
+
+$$\left(\begin{array}{ccc|c}
+1&2&3&1\\0&1&6-a&-1\\0&0&8-2a&b-5
+\end{array}\right).$$
+
+**当 $a\ne4$ 时，有唯一解：**
+
+$$\boxed{\begin{aligned}
+z&=\frac{b-5}{8-2a},\\
+y&=-1-\frac{(6-a)(b-5)}{8-2a},\\
+x&=3+\frac{(9-2a)(b-5)}{8-2a}.
+\end{aligned}}$$
+
+**当 $a=4,b=5$ 时，有无穷多解：**
+
+$$\boxed{\begin{pmatrix}x\\y\\z\end{pmatrix}
+=\begin{pmatrix}3\\-1\\0\end{pmatrix}
++c\begin{pmatrix}1\\-2\\1\end{pmatrix},\quad c\in\mathbb R.}$$
+
+**当 $a=4,b\ne5$ 时，无解。**
+
+### 第十节（二）：加边法计算行列式
+
+在左侧加一列、上方加一行，得
+
+$$D_n=\begin{vmatrix}
+1&a_1&a_2&\cdots&a_n\\
+0&1-a_1^2&-a_1a_2&\cdots&-a_1a_n\\
+0&-a_2a_1&1-a_2^2&\cdots&-a_2a_n\\
+\vdots&\vdots&\vdots&\ddots&\vdots\\
+0&-a_na_1&-a_na_2&\cdots&1-a_n^2
+\end{vmatrix}.$$
+
+对 $i=1,\ldots,n$ 作 $R_{i+1}\leftarrow R_{i+1}+a_iR_1$，得
+
+$$D_n=\begin{vmatrix}
+1&a_1&a_2&\cdots&a_n\\
+a_1&1&0&\cdots&0\\
+a_2&0&1&\cdots&0\\
+\vdots&\vdots&\vdots&\ddots&\vdots\\
+a_n&0&0&\cdots&1
+\end{vmatrix}.$$
+
+再作 $R_1\leftarrow R_1-\sum_{i=1}^n a_iR_{i+1}$，即得
+
+$$\boxed{D_n=1-\sum_{i=1}^n a_i^2.}$$
+
+## 第三部分：答案汇总 {#summary}
+
+| 题目 | 答案 |
+| --- | --- |
+| 第九节（一） | $a=-1,b=5$ 时有解，通解含三个自由参数 |
+| 第九节（二） | $x^6(x^4-x^3+x^2-x+1)$ |
+| 第十节（一） | $a\ne4$ 时唯一解；$a=4,b=5$ 时无穷多解；$a=4,b\ne5$ 时无解 |
+| 第十节（二） | $1-\sum_{i=1}^n a_i^2$ |
+

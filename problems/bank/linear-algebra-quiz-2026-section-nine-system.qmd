@@ -1,0 +1,45 @@
+---
+title: "第九节（一）：含参方程组的解"
+category-path: ["MATH", "LINEAR-ALGEBRA", "线性方程组"]
+tags: ["参数讨论", "通解"]
+source: "2026–2027 学年线性代数小测 · 第九节（一）：含参方程组的解"
+draft: false
+---
+
+讨论方程组何时有解，并在有解时求全部解：
+
+$$
+\begin{cases}
+x_1+x_2+x_3+x_4+x_5=2,\\
+-x_1+x_3+3x_4+x_5=a,\\
+x_1+2x_2+3x_3+5x_4+3x_5=3,\\
+3x_1+2x_2+x_3-x_4+x_5=b.
+\end{cases}
+$$
+
+<!-- answer -->
+
+对增广矩阵依次作 $R_2\leftarrow R_2+R_1$，$R_3\leftarrow R_3-R_1$，$R_4\leftarrow R_4-3R_1$，再作 $R_3\leftarrow R_3-R_2$，$R_4\leftarrow R_4+R_2$，得
+
+$$
+\left(\begin{array}{ccccc|c}
+1&1&1&1&1&2\\
+0&1&2&4&2&a+2\\
+0&0&0&0&0&-a-1\\
+0&0&0&0&0&a+b-4
+\end{array}\right).
+$$
+
+故方程组有解当且仅当 $a=-1,b=5$。此时作 $R_1\leftarrow R_1-R_2$，得
+
+$$x_1=1+x_3+3x_4+x_5,\qquad x_2=1-2x_3-4x_4-2x_5.$$
+
+全部解为
+
+$$
+\boxed{\begin{pmatrix}x_1\\x_2\\x_3\\x_4\\x_5\end{pmatrix}
+=\begin{pmatrix}1\\1\\0\\0\\0\end{pmatrix}
++c_1\begin{pmatrix}1\\-2\\1\\0\\0\end{pmatrix}
++c_2\begin{pmatrix}3\\-4\\0\\1\\0\end{pmatrix}
++c_3\begin{pmatrix}1\\-2\\0\\0\\1\end{pmatrix},\quad c_1,c_2,c_3\in\mathbb R.}
+$$

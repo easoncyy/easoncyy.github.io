@@ -27,5 +27,11 @@
     "calculus-inverse-continuity-minimum",
     "linear-algebra-tridiagonal-recurrence",
     "algebra-vandermonde-cubic-permutations"
+  ],
+  "2026-10-22": [
+    "linear-algebra-quiz-2026-section-nine-system",
+    "linear-algebra-quiz-2026-section-nine-determinant",
+    "linear-algebra-quiz-2026-section-ten-system",
+    "linear-algebra-quiz-2026-section-ten-determinant"
   ]
 }

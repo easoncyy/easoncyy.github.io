@@ -1,0 +1,41 @@
+---
+title: "第九节（二）：四阶三对角行列式"
+category-path: ["MATH", "LINEAR-ALGEBRA", "行列式"]
+tags: ["递推关系", "三对角行列式"]
+source: "2026–2027 学年线性代数小测 · 第九节（二）：四阶三对角行列式"
+draft: false
+---
+
+计算行列式
+
+$$D_4=\begin{vmatrix}
+x-1&x&0&0\\
+-x&x^2-x&x^2&0\\
+0&-x^2&x^3-x^2&x^3\\
+0&0&-x^3&x^4-x^3
+\end{vmatrix}.$$
+
+<!-- answer -->
+
+从第 $2,3,4$ 列分别提取 $x,x^2,x^3$，得
+
+$$D_4=x^6\Delta_4,\qquad
+\Delta_4=\begin{vmatrix}
+x-1&1&0&0\\-x&x-1&1&0\\0&-x&x-1&1\\0&0&-x&x-1
+\end{vmatrix}.$$
+
+记同型的 $k$ 阶行列式为 $\Delta_k$。按第一行展开，有
+
+$$\Delta_k=(x-1)\Delta_{k-1}+x\Delta_{k-2},\qquad\Delta_0=1,\quad\Delta_1=x-1.$$
+
+依次得到
+
+$$\begin{aligned}
+\Delta_2&=x^2-x+1,\\
+\Delta_3&=x^3-x^2+x-1,\\
+\Delta_4&=x^4-x^3+x^2-x+1.
+\end{aligned}$$
+
+因此
+
+$$\boxed{D_4=x^6(x^4-x^3+x^2-x+1).}$$

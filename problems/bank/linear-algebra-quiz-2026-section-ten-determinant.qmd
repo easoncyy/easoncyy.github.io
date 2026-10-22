@@ -1,0 +1,42 @@
+---
+title: "第十节（二）：加边法计算行列式"
+category-path: ["MATH", "LINEAR-ALGEBRA", "行列式"]
+tags: ["加边法", "行列式性质"]
+source: "2026–2027 学年线性代数小测 · 第十节（二）：加边法计算行列式"
+draft: false
+---
+
+计算 $n$ 阶行列式
+
+$$D_n=\begin{vmatrix}
+1-a_1^2&-a_1a_2&\cdots&-a_1a_n\\
+-a_2a_1&1-a_2^2&\cdots&-a_2a_n\\
+\vdots&\vdots&\ddots&\vdots\\
+-a_na_1&-a_na_2&\cdots&1-a_n^2
+\end{vmatrix}.$$
+
+<!-- answer -->
+
+在左侧加一列、上方加一行，得
+
+$$D_n=\begin{vmatrix}
+1&a_1&a_2&\cdots&a_n\\
+0&1-a_1^2&-a_1a_2&\cdots&-a_1a_n\\
+0&-a_2a_1&1-a_2^2&\cdots&-a_2a_n\\
+\vdots&\vdots&\vdots&\ddots&\vdots\\
+0&-a_na_1&-a_na_2&\cdots&1-a_n^2
+\end{vmatrix}.$$
+
+对 $i=1,\ldots,n$ 作 $R_{i+1}\leftarrow R_{i+1}+a_iR_1$，得
+
+$$D_n=\begin{vmatrix}
+1&a_1&a_2&\cdots&a_n\\
+a_1&1&0&\cdots&0\\
+a_2&0&1&\cdots&0\\
+\vdots&\vdots&\vdots&\ddots&\vdots\\
+a_n&0&0&\cdots&1
+\end{vmatrix}.$$
+
+再作 $R_1\leftarrow R_1-\sum_{i=1}^n a_iR_{i+1}$，即得
+
+$$\boxed{D_n=1-\sum_{i=1}^n a_i^2.}$$
