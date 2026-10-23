@@ -1,3 +1,264 @@
+::: {.problem-day data-date="2026-10-22"}
+
+## 2026-10-22 {.problem-date-heading}
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;线性方程组&quot;], &quot;tags&quot;: [&quot;参数讨论&quot;, &quot;通解&quot;], &quot;title&quot;: &quot;第九节（一）：含参方程组的解&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 线性方程组</div>
+
+<h3>01. 第九节（一）：含参方程组的解</h3>
+
+<div class="entry-tags">#参数讨论 · #通解</div>
+
+```
+
+讨论方程组何时有解，并在有解时求全部解：
+
+$$
+\begin{cases}
+x_1+x_2+x_3+x_4+x_5=2,\\
+-x_1+x_3+3x_4+x_5=a,\\
+x_1+2x_2+3x_3+5x_4+3x_5=3,\\
+3x_1+2x_2+x_3-x_4+x_5=b.
+\end{cases}
+$$
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+对增广矩阵依次作 $R_2\leftarrow R_2+R_1$，$R_3\leftarrow R_3-R_1$，$R_4\leftarrow R_4-3R_1$，再作 $R_3\leftarrow R_3-R_2$，$R_4\leftarrow R_4+R_2$，得
+
+$$
+\left(\begin{array}{ccccc|c}
+1&1&1&1&1&2\\
+0&1&2&4&2&a+2\\
+0&0&0&0&0&-a-1\\
+0&0&0&0&0&a+b-4
+\end{array}\right).
+$$
+
+故方程组有解当且仅当 $a=-1,b=5$。此时作 $R_1\leftarrow R_1-R_2$，得
+
+$$x_1=1+x_3+3x_4+x_5,\qquad x_2=1-2x_3-4x_4-2x_5.$$
+
+全部解为
+
+$$
+\boxed{\begin{pmatrix}x_1\\x_2\\x_3\\x_4\\x_5\end{pmatrix}
+=\begin{pmatrix}1\\1\\0\\0\\0\end{pmatrix}
++c_1\begin{pmatrix}1\\-2\\1\\0\\0\end{pmatrix}
++c_2\begin{pmatrix}3\\-4\\0\\1\\0\end{pmatrix}
++c_3\begin{pmatrix}1\\-2\\0\\0\\1\end{pmatrix},\quad c_1,c_2,c_3\in\mathbb R.}
+$$
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：2026–2027 学年线性代数小测 · 第九节（一）：含参方程组的解</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;行列式&quot;], &quot;tags&quot;: [&quot;递推关系&quot;, &quot;三对角行列式&quot;], &quot;title&quot;: &quot;第九节（二）：四阶三对角行列式&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 行列式</div>
+
+<h3>02. 第九节（二）：四阶三对角行列式</h3>
+
+<div class="entry-tags">#递推关系 · #三对角行列式</div>
+
+```
+
+计算行列式
+
+$$D_4=\begin{vmatrix}
+x-1&x&0&0\\
+-x&x^2-x&x^2&0\\
+0&-x^2&x^3-x^2&x^3\\
+0&0&-x^3&x^4-x^3
+\end{vmatrix}.$$
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+从第 $2,3,4$ 列分别提取 $x,x^2,x^3$，得
+
+$$D_4=x^6\Delta_4,\qquad
+\Delta_4=\begin{vmatrix}
+x-1&1&0&0\\-x&x-1&1&0\\0&-x&x-1&1\\0&0&-x&x-1
+\end{vmatrix}.$$
+
+记同型的 $k$ 阶行列式为 $\Delta_k$。按第一行展开，有
+
+$$\Delta_k=(x-1)\Delta_{k-1}+x\Delta_{k-2},\qquad\Delta_0=1,\quad\Delta_1=x-1.$$
+
+依次得到
+
+$$\begin{aligned}
+\Delta_2&=x^2-x+1,\\
+\Delta_3&=x^3-x^2+x-1,\\
+\Delta_4&=x^4-x^3+x^2-x+1.
+\end{aligned}$$
+
+因此
+
+$$\boxed{D_4=x^6(x^4-x^3+x^2-x+1).}$$
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：2026–2027 学年线性代数小测 · 第九节（二）：四阶三对角行列式</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;线性方程组&quot;], &quot;tags&quot;: [&quot;参数讨论&quot;, &quot;矩阵的秩&quot;], &quot;title&quot;: &quot;第十节（一）：解的分类与通解&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 线性方程组</div>
+
+<h3>03. 第十节（一）：解的分类与通解</h3>
+
+<div class="entry-tags">#参数讨论 · #矩阵的秩</div>
+
+```
+
+讨论方程组有唯一解、无穷多解或无解的条件，并在有解时求解：
+
+$$\begin{cases}
+x+2y+3z=1,\\
+2x+3y+az=3,\\
+3x+4y+5z=b.
+\end{cases}$$
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+对增广矩阵作 $R_2\leftarrow R_2-2R_1$，$R_3\leftarrow R_3-3R_1$，再作 $R_3\leftarrow R_3-2R_2$，$R_2\leftarrow-R_2$，得
+
+$$\left(\begin{array}{ccc|c}
+1&2&3&1\\0&1&6-a&-1\\0&0&8-2a&b-5
+\end{array}\right).$$
+
+**当 $a\ne4$ 时，有唯一解：**
+
+$$\boxed{\begin{aligned}
+z&=\frac{b-5}{8-2a},\\
+y&=-1-\frac{(6-a)(b-5)}{8-2a},\\
+x&=3+\frac{(9-2a)(b-5)}{8-2a}.
+\end{aligned}}$$
+
+**当 $a=4,b=5$ 时，有无穷多解：**
+
+$$\boxed{\begin{pmatrix}x\\y\\z\end{pmatrix}
+=\begin{pmatrix}3\\-1\\0\end{pmatrix}
++c\begin{pmatrix}1\\-2\\1\end{pmatrix},\quad c\in\mathbb R.}$$
+
+**当 $a=4,b\ne5$ 时，无解。**
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：2026–2027 学年线性代数小测 · 第十节（一）：解的分类与通解</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;行列式&quot;], &quot;tags&quot;: [&quot;加边法&quot;, &quot;行列式性质&quot;], &quot;title&quot;: &quot;第十节（二）：加边法计算行列式&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 行列式</div>
+
+<h3>04. 第十节（二）：加边法计算行列式</h3>
+
+<div class="entry-tags">#加边法 · #行列式性质</div>
+
+```
+
+计算 $n$ 阶行列式
+
+$$D_n=\begin{vmatrix}
+1-a_1^2&-a_1a_2&\cdots&-a_1a_n\\
+-a_2a_1&1-a_2^2&\cdots&-a_2a_n\\
+\vdots&\vdots&\ddots&\vdots\\
+-a_na_1&-a_na_2&\cdots&1-a_n^2
+\end{vmatrix}.$$
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+在左侧加一列、上方加一行，得
+
+$$D_n=\begin{vmatrix}
+1&a_1&a_2&\cdots&a_n\\
+0&1-a_1^2&-a_1a_2&\cdots&-a_1a_n\\
+0&-a_2a_1&1-a_2^2&\cdots&-a_2a_n\\
+\vdots&\vdots&\vdots&\ddots&\vdots\\
+0&-a_na_1&-a_na_2&\cdots&1-a_n^2
+\end{vmatrix}.$$
+
+对 $i=1,\ldots,n$ 作 $R_{i+1}\leftarrow R_{i+1}+a_iR_1$，得
+
+$$D_n=\begin{vmatrix}
+1&a_1&a_2&\cdots&a_n\\
+a_1&1&0&\cdots&0\\
+a_2&0&1&\cdots&0\\
+\vdots&\vdots&\vdots&\ddots&\vdots\\
+a_n&0&0&\cdots&1
+\end{vmatrix}.$$
+
+再作 $R_1\leftarrow R_1-\sum_{i=1}^n a_iR_{i+1}$，即得
+
+$$\boxed{D_n=1-\sum_{i=1}^n a_i^2.}$$
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：2026–2027 学年线性代数小测 · 第十节（二）：加边法计算行列式</p>
+
+```
+
+:::
+
+```{=html}
+
+<details id="discussion-2026-10-22" class="log-comments problem-discussion" data-comment-term="/problems/2026-10-22/" data-comment-date="2026-10-22" data-comment-title="每日好题 · 2026-10-22">
+
+<summary>discussion/ <span>2026-10-22 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
 ::: {.problem-day data-date="2026-10-21"}
 
 ## 2026-10-21 {.problem-date-heading}
@@ -1313,6 +1574,6 @@ $$
 
 ```{=html}
 
-<script id="problem-index" type="application/json">{"builtDate": "2026-10-21", "dates": {"2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
+<script id="problem-index" type="application/json">{"builtDate": "2026-10-23", "dates": {"2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
 
 ```

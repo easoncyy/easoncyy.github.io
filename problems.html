@@ -243,8 +243,184 @@ window.Quarto = {
   <button type="button" id="problem-filter-reset">清除筛选</button>
 </div>
 <p id="problem-status" aria-live="polite"></p>
-<section id="section" class="level2 problem-date-heading problem-day" data-date="2026-10-21">
-<h2 class="problem-date-heading anchored" data-anchor-id="section">2026-10-21</h2>
+<section id="section" class="level2 problem-date-heading problem-day" data-date="2026-10-22">
+<h2 class="problem-date-heading anchored" data-anchor-id="section">2026-10-22</h2>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;线性方程组&quot;], &quot;tags&quot;: [&quot;参数讨论&quot;, &quot;通解&quot;], &quot;title&quot;: &quot;第九节（一）：含参方程组的解&quot;}">
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 线性方程组</div>
+
+<h3 class="anchored">01. 第九节（一）：含参方程组的解</h3>
+
+<div class="entry-tags">#参数讨论 · #通解</div>
+
+<p>讨论方程组何时有解，并在有解时求全部解：</p>
+<p><span class="math display">\[
+\begin{cases}
+x_1+x_2+x_3+x_4+x_5=2,\\
+-x_1+x_3+3x_4+x_5=a,\\
+x_1+2x_2+3x_3+5x_4+3x_5=3,\\
+3x_1+2x_2+x_3-x_4+x_5=b.
+\end{cases}
+\]</span></p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>对增广矩阵依次作 <span class="math inline">\(R_2\leftarrow R_2+R_1\)</span>，<span class="math inline">\(R_3\leftarrow R_3-R_1\)</span>，<span class="math inline">\(R_4\leftarrow R_4-3R_1\)</span>，再作 <span class="math inline">\(R_3\leftarrow R_3-R_2\)</span>，<span class="math inline">\(R_4\leftarrow R_4+R_2\)</span>，得</p>
+<p><span class="math display">\[
+\left(\begin{array}{ccccc|c}
+1&amp;1&amp;1&amp;1&amp;1&amp;2\\
+0&amp;1&amp;2&amp;4&amp;2&amp;a+2\\
+0&amp;0&amp;0&amp;0&amp;0&amp;-a-1\\
+0&amp;0&amp;0&amp;0&amp;0&amp;a+b-4
+\end{array}\right).
+\]</span></p>
+<p>故方程组有解当且仅当 <span class="math inline">\(a=-1,b=5\)</span>。此时作 <span class="math inline">\(R_1\leftarrow R_1-R_2\)</span>，得</p>
+<p><span class="math display">\[x_1=1+x_3+3x_4+x_5,\qquad x_2=1-2x_3-4x_4-2x_5.\]</span></p>
+<p>全部解为</p>
+<p><span class="math display">\[
+\boxed{\begin{pmatrix}x_1\\x_2\\x_3\\x_4\\x_5\end{pmatrix}
+=\begin{pmatrix}1\\1\\0\\0\\0\end{pmatrix}
++c_1\begin{pmatrix}1\\-2\\1\\0\\0\end{pmatrix}
++c_2\begin{pmatrix}3\\-4\\0\\1\\0\end{pmatrix}
++c_3\begin{pmatrix}1\\-2\\0\\0\\1\end{pmatrix},\quad c_1,c_2,c_3\in\mathbb R.}
+\]</span></p>
+
+</div></details>
+
+<p class="problem-source">来源：2026–2027 学年线性代数小测 · 第九节（一）：含参方程组的解</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;行列式&quot;], &quot;tags&quot;: [&quot;递推关系&quot;, &quot;三对角行列式&quot;], &quot;title&quot;: &quot;第九节（二）：四阶三对角行列式&quot;}">
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 行列式</div>
+
+<h3 class="anchored">02. 第九节（二）：四阶三对角行列式</h3>
+
+<div class="entry-tags">#递推关系 · #三对角行列式</div>
+
+<p>计算行列式</p>
+<p><span class="math display">\[D_4=\begin{vmatrix}
+x-1&amp;x&amp;0&amp;0\\
+-x&amp;x^2-x&amp;x^2&amp;0\\
+0&amp;-x^2&amp;x^3-x^2&amp;x^3\\
+0&amp;0&amp;-x^3&amp;x^4-x^3
+\end{vmatrix}.\]</span></p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>从第 <span class="math inline">\(2,3,4\)</span> 列分别提取 <span class="math inline">\(x,x^2,x^3\)</span>，得</p>
+<p><span class="math display">\[D_4=x^6\Delta_4,\qquad
+\Delta_4=\begin{vmatrix}
+x-1&amp;1&amp;0&amp;0\\-x&amp;x-1&amp;1&amp;0\\0&amp;-x&amp;x-1&amp;1\\0&amp;0&amp;-x&amp;x-1
+\end{vmatrix}.\]</span></p>
+<p>记同型的 <span class="math inline">\(k\)</span> 阶行列式为 <span class="math inline">\(\Delta_k\)</span>。按第一行展开，有</p>
+<p><span class="math display">\[\Delta_k=(x-1)\Delta_{k-1}+x\Delta_{k-2},\qquad\Delta_0=1,\quad\Delta_1=x-1.\]</span></p>
+<p>依次得到</p>
+<p><span class="math display">\[\begin{aligned}
+\Delta_2&amp;=x^2-x+1,\\
+\Delta_3&amp;=x^3-x^2+x-1,\\
+\Delta_4&amp;=x^4-x^3+x^2-x+1.
+\end{aligned}\]</span></p>
+<p>因此</p>
+<p><span class="math display">\[\boxed{D_4=x^6(x^4-x^3+x^2-x+1).}\]</span></p>
+
+</div></details>
+
+<p class="problem-source">来源：2026–2027 学年线性代数小测 · 第九节（二）：四阶三对角行列式</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;线性方程组&quot;], &quot;tags&quot;: [&quot;参数讨论&quot;, &quot;矩阵的秩&quot;], &quot;title&quot;: &quot;第十节（一）：解的分类与通解&quot;}">
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 线性方程组</div>
+
+<h3 class="anchored">03. 第十节（一）：解的分类与通解</h3>
+
+<div class="entry-tags">#参数讨论 · #矩阵的秩</div>
+
+<p>讨论方程组有唯一解、无穷多解或无解的条件，并在有解时求解：</p>
+<p><span class="math display">\[\begin{cases}
+x+2y+3z=1,\\
+2x+3y+az=3,\\
+3x+4y+5z=b.
+\end{cases}\]</span></p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>对增广矩阵作 <span class="math inline">\(R_2\leftarrow R_2-2R_1\)</span>，<span class="math inline">\(R_3\leftarrow R_3-3R_1\)</span>，再作 <span class="math inline">\(R_3\leftarrow R_3-2R_2\)</span>，<span class="math inline">\(R_2\leftarrow-R_2\)</span>，得</p>
+<p><span class="math display">\[\left(\begin{array}{ccc|c}
+1&amp;2&amp;3&amp;1\\0&amp;1&amp;6-a&amp;-1\\0&amp;0&amp;8-2a&amp;b-5
+\end{array}\right).\]</span></p>
+<p><strong>当 <span class="math inline">\(a\ne4\)</span> 时，有唯一解：</strong></p>
+<p><span class="math display">\[\boxed{\begin{aligned}
+z&amp;=\frac{b-5}{8-2a},\\
+y&amp;=-1-\frac{(6-a)(b-5)}{8-2a},\\
+x&amp;=3+\frac{(9-2a)(b-5)}{8-2a}.
+\end{aligned}}\]</span></p>
+<p><strong>当 <span class="math inline">\(a=4,b=5\)</span> 时，有无穷多解：</strong></p>
+<p><span class="math display">\[\boxed{\begin{pmatrix}x\\y\\z\end{pmatrix}
+=\begin{pmatrix}3\\-1\\0\end{pmatrix}
++c\begin{pmatrix}1\\-2\\1\end{pmatrix},\quad c\in\mathbb R.}\]</span></p>
+<p><strong>当 <span class="math inline">\(a=4,b\ne5\)</span> 时，无解。</strong></p>
+
+</div></details>
+
+<p class="problem-source">来源：2026–2027 学年线性代数小测 · 第十节（一）：解的分类与通解</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;行列式&quot;], &quot;tags&quot;: [&quot;加边法&quot;, &quot;行列式性质&quot;], &quot;title&quot;: &quot;第十节（二）：加边法计算行列式&quot;}">
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 行列式</div>
+
+<h3 class="anchored">04. 第十节（二）：加边法计算行列式</h3>
+
+<div class="entry-tags">#加边法 · #行列式性质</div>
+
+<p>计算 <span class="math inline">\(n\)</span> 阶行列式</p>
+<p><span class="math display">\[D_n=\begin{vmatrix}
+1-a_1^2&amp;-a_1a_2&amp;\cdots&amp;-a_1a_n\\
+-a_2a_1&amp;1-a_2^2&amp;\cdots&amp;-a_2a_n\\
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\
+-a_na_1&amp;-a_na_2&amp;\cdots&amp;1-a_n^2
+\end{vmatrix}.\]</span></p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>在左侧加一列、上方加一行，得</p>
+<p><span class="math display">\[D_n=\begin{vmatrix}
+1&amp;a_1&amp;a_2&amp;\cdots&amp;a_n\\
+0&amp;1-a_1^2&amp;-a_1a_2&amp;\cdots&amp;-a_1a_n\\
+0&amp;-a_2a_1&amp;1-a_2^2&amp;\cdots&amp;-a_2a_n\\
+\vdots&amp;\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\
+0&amp;-a_na_1&amp;-a_na_2&amp;\cdots&amp;1-a_n^2
+\end{vmatrix}.\]</span></p>
+<p>对 <span class="math inline">\(i=1,\ldots,n\)</span> 作 <span class="math inline">\(R_{i+1}\leftarrow R_{i+1}+a_iR_1\)</span>，得</p>
+<p><span class="math display">\[D_n=\begin{vmatrix}
+1&amp;a_1&amp;a_2&amp;\cdots&amp;a_n\\
+a_1&amp;1&amp;0&amp;\cdots&amp;0\\
+a_2&amp;0&amp;1&amp;\cdots&amp;0\\
+\vdots&amp;\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\
+a_n&amp;0&amp;0&amp;\cdots&amp;1
+\end{vmatrix}.\]</span></p>
+<p>再作 <span class="math inline">\(R_1\leftarrow R_1-\sum_{i=1}^n a_iR_{i+1}\)</span>，即得</p>
+<p><span class="math display">\[\boxed{D_n=1-\sum_{i=1}^n a_i^2.}\]</span></p>
+
+</div></details>
+
+<p class="problem-source">来源：2026–2027 学年线性代数小测 · 第十节（二）：加边法计算行列式</p>
+
+</div>
+
+<details id="discussion-2026-10-22" class="log-comments problem-discussion" data-comment-term="/problems/2026-10-22/" data-comment-date="2026-10-22" data-comment-title="每日好题 · 2026-10-22">
+
+<summary>discussion/ <span>2026-10-22 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+</section>
+<section id="section-1" class="level2 problem-date-heading problem-day" data-date="2026-10-21">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-1">2026-10-21</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;连续性&quot;], &quot;tags&quot;: [&quot;反例&quot;, &quot;反函数&quot;, &quot;数列&quot;], &quot;title&quot;: &quot;反函数、连续性与数列最小项&quot;}">
 
 <div class="problem-meta">MATH / CALCULUS / 连续性</div>
@@ -364,8 +540,8 @@ D_n=\begin{vmatrix}
 </details>
 
 </section>
-<section id="section-1" class="level2 problem-date-heading problem-day" data-date="2026-10-20">
-<h2 class="problem-date-heading anchored" data-anchor-id="section-1">2026-10-20</h2>
+<section id="section-2" class="level2 problem-date-heading problem-day" data-date="2026-10-20">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-2">2026-10-20</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;介值定理&quot;, &quot;单调性&quot;, &quot;隐式数列&quot;], &quot;title&quot;: &quot;隐式定义的根与指数极限&quot;}">
 
 <div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
@@ -451,8 +627,8 @@ D_n=\begin{vmatrix}
 </details>
 
 </section>
-<section id="section-2" class="level2 problem-date-heading problem-day" data-date="2026-10-19">
-<h2 class="problem-date-heading anchored" data-anchor-id="section-2">2026-10-19</h2>
+<section id="section-3" class="level2 problem-date-heading problem-day" data-date="2026-10-19">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-3">2026-10-19</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;分段估计&quot;, &quot;夹逼定理&quot;], &quot;title&quot;: &quot;不同次根组成的变项数列和&quot;}">
 
 <div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
@@ -589,8 +765,8 @@ R_n=\sum_{k=1}^{n}\frac{\sin k}{n^2+k}.
 </details>
 
 </section>
-<section id="section-3" class="level2 problem-date-heading problem-day" data-date="2026-10-18">
-<h2 class="problem-date-heading anchored" data-anchor-id="section-3">2026-10-18</h2>
+<section id="section-4" class="level2 problem-date-heading problem-day" data-date="2026-10-18">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-4">2026-10-18</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;夹逼定理&quot;, &quot;变项数列和&quot;], &quot;title&quot;: &quot;含根式分母的平方和极限&quot;}">
 
 <div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
@@ -789,8 +965,8 @@ n^2\theta_n
 </details>
 
 </section>
-<section id="section-4" class="level2 problem-date-heading problem-day" data-date="2026-10-17">
-<h2 class="problem-date-heading anchored" data-anchor-id="section-4">2026-10-17</h2>
+<section id="section-5" class="level2 problem-date-heading problem-day" data-date="2026-10-17">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-5">2026-10-17</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;次可加性&quot;, &quot;下确界&quot;, &quot;极限&quot;], &quot;title&quot;: &quot;次可加数列与 Fekete 引理&quot;}">
 
 <div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
@@ -969,8 +1145,8 @@ a_i-a_j=21,
 </details>
 
 </section>
-<section id="section-5" class="level2 problem-date-heading problem-day" data-date="2026-10-16">
-<h2 class="problem-date-heading anchored" data-anchor-id="section-5">2026-10-16</h2>
+<section id="section-6" class="level2 problem-date-heading problem-day" data-date="2026-10-16">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-6">2026-10-16</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;反证法&quot;, &quot;阶乘级数&quot;], &quot;title&quot;: &quot;证明 e 是无理数&quot;}">
 
 <div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
@@ -1118,7 +1294,7 @@ d&amp;1&amp;1/d^2&amp;1/d
 
 </section>
 
-<script id="problem-index" type="application/json">{"builtDate": "2026-10-21", "dates": {"2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
+<script id="problem-index" type="application/json">{"builtDate": "2026-10-23", "dates": {"2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
 
 <p id="problem-empty" hidden="">这一天暂无符合条件的题目。</p>
 <section class="problem-calendar" aria-label="按日期查看题目">

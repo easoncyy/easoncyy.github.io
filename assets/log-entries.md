@@ -1,5 +1,57 @@
 ::: {.log-stream}
 
+::: {#20261022-231920-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-10-22T23:19:20+08:00">2026-10-22 23:19:20 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title">爽吗</p>
+
+```
+
+被线性代数小测击溃之后酒吧写作业初体验，其实感觉氛围还不错。
+
+::: {.log-photo-grid}
+
+![阳光晴朗的天](/assets/log/20261022-231920-entry/photo-01.jpg)
+
+![还是晴朗的天](/assets/log/20261022-231920-entry/photo-02.jpg)
+
+![第一次来到学院](/assets/log/20261022-231920-entry/photo-03.jpg)
+
+![在尝试这个滤镜](/assets/log/20261022-231920-entry/photo-04.jpg)
+
+![喜欢在这里自修](/assets/log/20261022-231920-entry/photo-05.jpg)
+
+![特别喜欢这里的氛围](/assets/log/20261022-231920-entry/photo-06.jpg)
+
+![想折断这根许愿柳...吗？](/assets/log/20261022-231920-entry/photo-07.jpg)
+
+:::
+
+```{=html}
+
+<details id="comments-20261022-231920-entry" class="log-comments" data-comment-term="/logs/20261022-231920-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
 ::: {#20261021-223730-entry .log-entry}
 
 ```{=html}
