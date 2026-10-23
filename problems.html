@@ -243,8 +243,81 @@ window.Quarto = {
   <button type="button" id="problem-filter-reset">清除筛选</button>
 </div>
 <p id="problem-status" aria-live="polite"></p>
-<section id="section" class="level2 problem-date-heading problem-day" data-date="2026-10-22">
-<h2 class="problem-date-heading anchored" data-anchor-id="section">2026-10-22</h2>
+<section id="section" class="level2 problem-date-heading problem-day" data-date="2026-10-23">
+<h2 class="problem-date-heading anchored" data-anchor-id="section">2026-10-23</h2>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;导数&quot;], &quot;tags&quot;: [&quot;导数定义&quot;, &quot;绝对值&quot;], &quot;title&quot;: &quot;绝对值与零点可导性&quot;}">
+
+<div class="problem-meta">MATH / CALCULUS / 导数</div>
+
+<h3 class="anchored">01. 绝对值与零点可导性</h3>
+
+<div class="entry-tags">#导数定义 · #绝对值</div>
+
+<p>下列函数中，在 <span class="math inline">\(x=0\)</span> 处<strong>不可导</strong>的是（　）。</p>
+<ul>
+<li>A. <span class="math inline">\(f(x)=(1-x)\sin|x|\)</span></li>
+<li>B. <span class="math inline">\(f(x)=\cos|x|\)</span></li>
+<li>C. <span class="math inline">\(f(x)=x\cos|x|\)</span></li>
+<li>D. <span class="math inline">\(f(x)=|x|\sin x\)</span></li>
+</ul>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p><strong>答案：A。</strong></p>
+<p>A：<span class="math inline">\(f(0)=0\)</span>，由导数定义，</p>
+<p><span class="math display">\[\lim_{h\to0^+}\frac{(1-h)\sin|h|}{h}=1,\qquad
+\lim_{h\to0^-}\frac{(1-h)\sin|h|}{h}=-1.\]</span></p>
+<p>左右导数不相等，故不可导。</p>
+<p>B、C：由 <span class="math inline">\(\cos|x|=\cos x\)</span>，两者分别为 <span class="math inline">\(\cos x\)</span> 与 <span class="math inline">\(x\cos x\)</span>，在 <span class="math inline">\(0\)</span> 处均可导，导数分别为 <span class="math inline">\(0,1\)</span>。</p>
+<p>D：<span class="math inline">\(f(0)=0\)</span>，且</p>
+<p><span class="math display">\[\lim_{h\to0}\frac{|h|\sin h}{h}
+=\lim_{h\to0}|h|\frac{\sin h}{h}=0,\]</span></p>
+<p>故在 <span class="math inline">\(0\)</span> 处可导。</p>
+
+</div></details>
+
+<p class="problem-source">来源：2026–2027 学年微积分第一次小测 · 第5题</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;线性方程组&quot;], &quot;tags&quot;: [&quot;矩阵的秩&quot;, &quot;齐次方程组&quot;, &quot;解空间&quot;], &quot;title&quot;: &quot;两个齐次方程组的公共非零解&quot;}">
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 线性方程组</div>
+
+<h3 class="anchored">02. 两个齐次方程组的公共非零解</h3>
+
+<div class="entry-tags">#矩阵的秩 · #齐次方程组 · #解空间</div>
+
+<p>设 <span class="math inline">\(A,B\)</span> 为 <span class="math inline">\(n\)</span> 阶矩阵，且 <span class="math inline">\(r(A)+r(B)&lt;n\)</span>。证明齐次线性方程组</p>
+<p><span class="math display">\[Ax=0,\qquad Bx=0\]</span></p>
+<p>有公共非零解。</p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>将两个方程组联立，系数矩阵为</p>
+<p><span class="math display">\[C=\begin{pmatrix}A\\B\end{pmatrix}.\]</span></p>
+<p>由矩阵秩的不等式，</p>
+<p><span class="math display">\[r(C)\le r(A)+r(B)&lt;n.\]</span></p>
+<p>因此 <span class="math inline">\(Cx=0\)</span> 有非零解。此解同时满足 <span class="math inline">\(Ax=0\)</span> 和 <span class="math inline">\(Bx=0\)</span>，即为公共非零解。</p>
+<p>公共解空间的维数还满足</p>
+<p><span class="math display">\[\dim(\ker A\cap\ker B)=n-r(C)\ge n-r(A)-r(B)&gt;0.\]</span></p>
+
+</div></details>
+
+<p class="problem-source">来源：2026–2027 学年线性代数第一次小测 · 第3题</p>
+
+</div>
+
+<details id="discussion-2026-10-23" class="log-comments problem-discussion" data-comment-term="/problems/2026-10-23/" data-comment-date="2026-10-23" data-comment-title="每日好题 · 2026-10-23">
+
+<summary>discussion/ <span>2026-10-23 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+</section>
+<section id="section-1" class="level2 problem-date-heading problem-day" data-date="2026-10-22">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-1">2026-10-22</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;线性方程组&quot;], &quot;tags&quot;: [&quot;参数讨论&quot;, &quot;通解&quot;], &quot;title&quot;: &quot;第九节（一）：含参方程组的解&quot;}">
 
 <div class="problem-meta">MATH / LINEAR-ALGEBRA / 线性方程组</div>
@@ -419,8 +492,8 @@ a_n&amp;0&amp;0&amp;\cdots&amp;1
 </details>
 
 </section>
-<section id="section-1" class="level2 problem-date-heading problem-day" data-date="2026-10-21">
-<h2 class="problem-date-heading anchored" data-anchor-id="section-1">2026-10-21</h2>
+<section id="section-2" class="level2 problem-date-heading problem-day" data-date="2026-10-21">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-2">2026-10-21</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;连续性&quot;], &quot;tags&quot;: [&quot;反例&quot;, &quot;反函数&quot;, &quot;数列&quot;], &quot;title&quot;: &quot;反函数、连续性与数列最小项&quot;}">
 
 <div class="problem-meta">MATH / CALCULUS / 连续性</div>
@@ -540,8 +613,8 @@ D_n=\begin{vmatrix}
 </details>
 
 </section>
-<section id="section-2" class="level2 problem-date-heading problem-day" data-date="2026-10-20">
-<h2 class="problem-date-heading anchored" data-anchor-id="section-2">2026-10-20</h2>
+<section id="section-3" class="level2 problem-date-heading problem-day" data-date="2026-10-20">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-3">2026-10-20</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;介值定理&quot;, &quot;单调性&quot;, &quot;隐式数列&quot;], &quot;title&quot;: &quot;隐式定义的根与指数极限&quot;}">
 
 <div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
@@ -627,8 +700,8 @@ D_n=\begin{vmatrix}
 </details>
 
 </section>
-<section id="section-3" class="level2 problem-date-heading problem-day" data-date="2026-10-19">
-<h2 class="problem-date-heading anchored" data-anchor-id="section-3">2026-10-19</h2>
+<section id="section-4" class="level2 problem-date-heading problem-day" data-date="2026-10-19">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-4">2026-10-19</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;分段估计&quot;, &quot;夹逼定理&quot;], &quot;title&quot;: &quot;不同次根组成的变项数列和&quot;}">
 
 <div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
@@ -765,8 +838,8 @@ R_n=\sum_{k=1}^{n}\frac{\sin k}{n^2+k}.
 </details>
 
 </section>
-<section id="section-4" class="level2 problem-date-heading problem-day" data-date="2026-10-18">
-<h2 class="problem-date-heading anchored" data-anchor-id="section-4">2026-10-18</h2>
+<section id="section-5" class="level2 problem-date-heading problem-day" data-date="2026-10-18">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-5">2026-10-18</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;夹逼定理&quot;, &quot;变项数列和&quot;], &quot;title&quot;: &quot;含根式分母的平方和极限&quot;}">
 
 <div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
@@ -965,8 +1038,8 @@ n^2\theta_n
 </details>
 
 </section>
-<section id="section-5" class="level2 problem-date-heading problem-day" data-date="2026-10-17">
-<h2 class="problem-date-heading anchored" data-anchor-id="section-5">2026-10-17</h2>
+<section id="section-6" class="level2 problem-date-heading problem-day" data-date="2026-10-17">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-6">2026-10-17</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;次可加性&quot;, &quot;下确界&quot;, &quot;极限&quot;], &quot;title&quot;: &quot;次可加数列与 Fekete 引理&quot;}">
 
 <div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
@@ -1145,8 +1218,8 @@ a_i-a_j=21,
 </details>
 
 </section>
-<section id="section-6" class="level2 problem-date-heading problem-day" data-date="2026-10-16">
-<h2 class="problem-date-heading anchored" data-anchor-id="section-6">2026-10-16</h2>
+<section id="section-7" class="level2 problem-date-heading problem-day" data-date="2026-10-16">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-7">2026-10-16</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;反证法&quot;, &quot;阶乘级数&quot;], &quot;title&quot;: &quot;证明 e 是无理数&quot;}">
 
 <div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
@@ -1294,7 +1367,7 @@ d&amp;1&amp;1/d^2&amp;1/d
 
 </section>
 
-<script id="problem-index" type="application/json">{"builtDate": "2026-10-23", "dates": {"2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
+<script id="problem-index" type="application/json">{"builtDate": "2026-10-23", "dates": {"2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
 
 <p id="problem-empty" hidden="">这一天暂无符合条件的题目。</p>
 <section class="problem-calendar" aria-label="按日期查看题目">
