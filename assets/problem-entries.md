@@ -1,3 +1,122 @@
+::: {.problem-day data-date="2026-10-23"}
+
+## 2026-10-23 {.problem-date-heading}
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;导数&quot;], &quot;tags&quot;: [&quot;导数定义&quot;, &quot;绝对值&quot;], &quot;title&quot;: &quot;绝对值与零点可导性&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / CALCULUS / 导数</div>
+
+<h3>01. 绝对值与零点可导性</h3>
+
+<div class="entry-tags">#导数定义 · #绝对值</div>
+
+```
+
+下列函数中，在 $x=0$ 处**不可导**的是（　）。
+
+- A. $f(x)=(1-x)\sin|x|$
+- B. $f(x)=\cos|x|$
+- C. $f(x)=x\cos|x|$
+- D. $f(x)=|x|\sin x$
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+**答案：A。**
+
+A：$f(0)=0$，由导数定义，
+
+$$\lim_{h\to0^+}\frac{(1-h)\sin|h|}{h}=1,\qquad
+\lim_{h\to0^-}\frac{(1-h)\sin|h|}{h}=-1.$$
+
+左右导数不相等，故不可导。
+
+B、C：由 $\cos|x|=\cos x$，两者分别为 $\cos x$ 与 $x\cos x$，在 $0$ 处均可导，导数分别为 $0,1$。
+
+D：$f(0)=0$，且
+
+$$\lim_{h\to0}\frac{|h|\sin h}{h}
+=\lim_{h\to0}|h|\frac{\sin h}{h}=0,$$
+
+故在 $0$ 处可导。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：2026–2027 学年微积分第一次小测 · 第5题</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;线性方程组&quot;], &quot;tags&quot;: [&quot;矩阵的秩&quot;, &quot;齐次方程组&quot;, &quot;解空间&quot;], &quot;title&quot;: &quot;两个齐次方程组的公共非零解&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 线性方程组</div>
+
+<h3>02. 两个齐次方程组的公共非零解</h3>
+
+<div class="entry-tags">#矩阵的秩 · #齐次方程组 · #解空间</div>
+
+```
+
+设 $A,B$ 为 $n$ 阶矩阵，且 $r(A)+r(B)<n$。证明齐次线性方程组
+
+$$Ax=0,\qquad Bx=0$$
+
+有公共非零解。
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+将两个方程组联立，系数矩阵为
+
+$$C=\begin{pmatrix}A\\B\end{pmatrix}.$$
+
+由矩阵秩的不等式，
+
+$$r(C)\le r(A)+r(B)<n.$$
+
+因此 $Cx=0$ 有非零解。此解同时满足 $Ax=0$ 和 $Bx=0$，即为公共非零解。
+
+公共解空间的维数还满足
+
+$$\dim(\ker A\cap\ker B)=n-r(C)\ge n-r(A)-r(B)>0.$$
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：2026–2027 学年线性代数第一次小测 · 第3题</p>
+
+```
+
+:::
+
+```{=html}
+
+<details id="discussion-2026-10-23" class="log-comments problem-discussion" data-comment-term="/problems/2026-10-23/" data-comment-date="2026-10-23" data-comment-title="每日好题 · 2026-10-23">
+
+<summary>discussion/ <span>2026-10-23 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
 ::: {.problem-day data-date="2026-10-22"}
 
 ## 2026-10-22 {.problem-date-heading}
@@ -1574,6 +1693,6 @@ $$
 
 ```{=html}
 
-<script id="problem-index" type="application/json">{"builtDate": "2026-10-23", "dates": {"2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
+<script id="problem-index" type="application/json">{"builtDate": "2026-10-23", "dates": {"2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
 
 ```

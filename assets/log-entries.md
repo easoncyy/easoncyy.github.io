@@ -1,5 +1,50 @@
 ::: {.log-stream}
 
+::: {#20261023-231103-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-10-23T23:11:03+08:00">2026-10-23 23:11:03 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title">Extraordinary Friday</p>
+
+```
+
+今天是Kaggle竞赛截止的日子，本想早上起来最后选择一下submission，结果打开网站错愕的发现自己号被封了，也没有收到任何邮件。在比赛截止的当天被封号，我觉得这简直是不人性的，却又没有任何办法。多少感觉很遗憾，维护了两个半月的项目就这样暴毙，最后也没有拿到奖牌，也感觉很对不起我的teammate...
+其实除了一节大素课，今天就是在研究HPC。下午参加了佳期的宣讲会，也非常感谢获得蹭上晚宴的机会。其实之前对量化没有什么理解，也很感谢能有这种机会了解各个行业吧。
+
+::: {.log-photo-grid}
+
+![走进门的时候没有被发现，于是被欢迎了好几遍](/assets/log/20261023-231103-entry/photo-01.jpg)
+
+![宣讲会](/assets/log/20261023-231103-entry/photo-02.jpg)
+
+![晚宴在西溪湿地，我的手机拍得像掉进水里](/assets/log/20261023-231103-entry/photo-03.jpg)
+
+:::
+
+```{=html}
+
+<details id="comments-20261023-231103-entry" class="log-comments" data-comment-term="/logs/20261023-231103-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
 ::: {#20261022-231920-entry .log-entry}
 
 ```{=html}

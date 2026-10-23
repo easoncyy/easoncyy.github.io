@@ -1,0 +1,34 @@
+---
+title: "绝对值与零点可导性"
+category-path: ["MATH", "CALCULUS", "导数"]
+tags: ["导数定义", "绝对值"]
+source: "2026–2027 学年微积分第一次小测 · 第5题"
+draft: false
+---
+
+下列函数中，在 $x=0$ 处**不可导**的是（　）。
+
+- A. $f(x)=(1-x)\sin|x|$
+- B. $f(x)=\cos|x|$
+- C. $f(x)=x\cos|x|$
+- D. $f(x)=|x|\sin x$
+
+<!-- answer -->
+
+**答案：A。**
+
+A：$f(0)=0$，由导数定义，
+
+$$\lim_{h\to0^+}\frac{(1-h)\sin|h|}{h}=1,\qquad
+\lim_{h\to0^-}\frac{(1-h)\sin|h|}{h}=-1.$$
+
+左右导数不相等，故不可导。
+
+B、C：由 $\cos|x|=\cos x$，两者分别为 $\cos x$ 与 $x\cos x$，在 $0$ 处均可导，导数分别为 $0,1$。
+
+D：$f(0)=0$，且
+
+$$\lim_{h\to0}\frac{|h|\sin h}{h}
+=\lim_{h\to0}|h|\frac{\sin h}{h}=0,$$
+
+故在 $0$ 处可导。

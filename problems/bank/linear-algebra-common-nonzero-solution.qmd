@@ -1,0 +1,29 @@
+---
+title: "两个齐次方程组的公共非零解"
+category-path: ["MATH", "LINEAR-ALGEBRA", "线性方程组"]
+tags: ["矩阵的秩", "齐次方程组", "解空间"]
+source: "2026–2027 学年线性代数第一次小测 · 第3题"
+draft: false
+---
+
+设 $A,B$ 为 $n$ 阶矩阵，且 $r(A)+r(B)<n$。证明齐次线性方程组
+
+$$Ax=0,\qquad Bx=0$$
+
+有公共非零解。
+
+<!-- answer -->
+
+将两个方程组联立，系数矩阵为
+
+$$C=\begin{pmatrix}A\\B\end{pmatrix}.$$
+
+由矩阵秩的不等式，
+
+$$r(C)\le r(A)+r(B)<n.$$
+
+因此 $Cx=0$ 有非零解。此解同时满足 $Ax=0$ 和 $Bx=0$，即为公共非零解。
+
+公共解空间的维数还满足
+
+$$\dim(\ker A\cap\ker B)=n-r(C)\ge n-r(A)-r(B)>0.$$
