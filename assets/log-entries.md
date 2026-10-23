@@ -32,7 +32,7 @@
 
 ![特别喜欢这里的氛围](/assets/log/20261022-231920-entry/photo-06.jpg)
 
-![想这段这根许愿柳...吗？](/assets/log/20261022-231920-entry/photo-07.jpg)
+![想折断这根许愿柳...吗？](/assets/log/20261022-231920-entry/photo-07.jpg)
 
 :::
 
