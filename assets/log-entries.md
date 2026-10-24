@@ -26,9 +26,9 @@
 
 ![废土东教冷飕飕](/assets/log/20261024-235309-entry/photo-03.jpg)
 
-![紫云5也有自己的奶娃了](/assets/log/20261024-235309-entry/photo-04.jpg)
+![紫云5也有自己的奶蛙了](/assets/log/20261024-235309-entry/photo-04.jpg)
 
-![东郊 还是废土风](/assets/log/20261024-235309-entry/photo-05.jpg)
+![东教 还是废土风](/assets/log/20261024-235309-entry/photo-05.jpg)
 
 ![超算队超好的](/assets/log/20261024-235309-entry/photo-02.jpg)
 
