@@ -1,3 +1,163 @@
+::: {.problem-day data-date="2026-10-24"}
+
+## 2026-10-24 {.problem-date-heading}
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;ALGEBRA&quot;, &quot;方程与置换&quot;], &quot;tags&quot;: [&quot;拉格朗日预解式&quot;, &quot;单位根&quot;, &quot;置换&quot;], &quot;title&quot;: &quot;从 120 个排列到 24 次预解方程&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / ALGEBRA / 方程与置换</div>
+
+<h3>01. 从 120 个排列到 24 次预解方程</h3>
+
+<div class="entry-tags">#拉格朗日预解式 · #单位根 · #置换</div>
+
+```
+
+设 $a_1,\ldots,a_5$ 为五个独立变量，$\zeta=e^{2\pi i/5}$。对 $\{1,2,3,4,5\}$ 的每个排列 $\sigma$，令
+
+$$r_\sigma=a_{\sigma(1)}+\zeta a_{\sigma(2)}+\zeta^2a_{\sigma(3)}+\zeta^3a_{\sigma(4)}+\zeta^4a_{\sigma(5)},$$
+
+并记
+
+$$\Phi(X)=\prod_{\sigma\in S_5}(X-r_\sigma).$$
+
+1. 将排列中的五个位置循环移动一次，$r_\sigma$ 如何变化？
+2. 证明存在一个首一的 $24$ 次多项式 $\Psi$，使 $\Phi(X)=\Psi(X^5)$。
+3. 证明 $\Psi$ 的系数是 $a_1,\ldots,a_5$ 的对称多项式。若将 $a_1,\ldots,a_5$ 换为一个五次方程的五个根，这个预解方程的次数是否低于原方程？
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+**1.** 将 $(\sigma(1),\ldots,\sigma(5))$ 换为 $(\sigma(5),\sigma(1),\ldots,\sigma(4))$，对应的线性式变为
+
+$$a_{\sigma(5)}+\zeta a_{\sigma(1)}+\cdots+\zeta^4a_{\sigma(4)}=\zeta r_\sigma.$$
+
+连续移动得到 $r_\sigma,\zeta r_\sigma,\ldots,\zeta^4r_\sigma$。
+
+**2.** $120$ 个排列按位置循环移动分成 $120/5=24$ 组。每组对应的五个因子之积为
+
+$$\prod_{j=0}^4(X-\zeta^jr_\sigma)=X^5-r_\sigma^5.$$
+
+每组取一个代表 $\sigma_k$，令
+
+$$\Psi(T)=\prod_{k=1}^{24}(T-r_{\sigma_k}^5),$$
+
+则 $\Psi$ 首一且次数为 $24$，并满足 $\Phi(X)=\Psi(X^5)$。代表的选择不影响 $r_{\sigma_k}^5$。
+
+**3.** 对变量 $a_1,\ldots,a_5$ 作任意置换，只会重新排列上述 $24$ 组，故 $\Psi$ 的各项系数在变量置换下不变，都是对称多项式。由对称多项式基本定理，可用五个初等对称多项式表示，再由韦达定理用原方程的系数表示。
+
+代入五个根后，所得 $24$ 次预解方程的次数高于原来的 $5$ 次。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：据《从一元一次方程到伽罗瓦理论》§6.4 改编</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;CS&quot;, &quot;ALGORITHMS&quot;, &quot;数组&quot;], &quot;tags&quot;: [&quot;Python&quot;, &quot;数组&quot;], &quot;title&quot;: &quot;接雨水&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">CS / ALGORITHMS / 数组</div>
+
+<h3>02. 接雨水</h3>
+
+<div class="entry-tags">#Python · #数组</div>
+
+```
+
+给定非负整数列表 `height`，其中 `height[i]` 表示第 $i$ 根柱子的高度，每根柱子的宽度为 $1$。这些柱子按顺序紧密排列。下雨后，求柱子之间最多能储存多少单位的雨水。
+
+用 Python 实现：
+
+```python
+def trap(height: list[int]) -> int:
+    ...
+```
+
+**示例 1**
+
+```text
+输入：height = [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]
+输出：6
+```
+
+**示例 2**
+
+```text
+输入：height = [4, 2, 0, 3, 2, 5]
+输出：9
+```
+
+列表可以为空。要求时间复杂度为 $O(n)$。
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+维护一个存储下标的栈，使栈中柱高从栈底到栈顶单调不增。
+
+遇到比栈顶更高的柱子时，弹出栈顶作为凹槽底部。若栈仍非空，新栈顶为左边界，当前柱子为右边界。这一层新增的水量为
+
+$$(\text{right}-\text{left}-1)\bigl(\min(h_{\text{left}},h_{\text{right}})-h_{\text{bottom}}\bigr).$$
+
+```python
+def trap(height: list[int]) -> int:
+    stack = []
+    water = 0
+
+    for right, h in enumerate(height):
+        while stack and h > height[stack[-1]]:
+            bottom = stack.pop()
+            if not stack:
+                break
+
+            left = stack[-1]
+            width = right - left - 1
+            depth = min(height[left], h) - height[bottom]
+            water += width * depth
+
+        stack.append(right)
+
+    return water
+```
+
+每个下标最多入栈、出栈各一次，时间复杂度为 $O(n)$，空间复杂度为 $O(n)$。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：经典算法题：接雨水（Trapping Rain Water）</p>
+
+```
+
+:::
+
+```{=html}
+
+<details id="discussion-2026-10-24" class="log-comments problem-discussion" data-comment-term="/problems/2026-10-24/" data-comment-date="2026-10-24" data-comment-title="每日好题 · 2026-10-24">
+
+<summary>discussion/ <span>2026-10-24 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
 ::: {.problem-day data-date="2026-10-23"}
 
 ## 2026-10-23 {.problem-date-heading}
@@ -1693,6 +1853,6 @@ $$
 
 ```{=html}
 
-<script id="problem-index" type="application/json">{"builtDate": "2026-10-23", "dates": {"2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
+<script id="problem-index" type="application/json">{"builtDate": "2026-10-24", "dates": {"2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
 
 ```

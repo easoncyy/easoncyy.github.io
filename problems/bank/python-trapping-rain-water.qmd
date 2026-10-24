@@ -1,0 +1,63 @@
+---
+title: "接雨水"
+category-path: ["CS", "ALGORITHMS", "数组"]
+tags: ["Python", "数组"]
+source: "经典算法题：接雨水（Trapping Rain Water）"
+draft: false
+---
+
+给定非负整数列表 `height`，其中 `height[i]` 表示第 $i$ 根柱子的高度，每根柱子的宽度为 $1$。这些柱子按顺序紧密排列。下雨后，求柱子之间最多能储存多少单位的雨水。
+
+用 Python 实现：
+
+```python
+def trap(height: list[int]) -> int:
+    ...
+```
+
+**示例 1**
+
+```text
+输入：height = [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]
+输出：6
+```
+
+**示例 2**
+
+```text
+输入：height = [4, 2, 0, 3, 2, 5]
+输出：9
+```
+
+列表可以为空。要求时间复杂度为 $O(n)$。
+
+<!-- answer -->
+
+维护一个存储下标的栈，使栈中柱高从栈底到栈顶单调不增。
+
+遇到比栈顶更高的柱子时，弹出栈顶作为凹槽底部。若栈仍非空，新栈顶为左边界，当前柱子为右边界。这一层新增的水量为
+
+$$(\text{right}-\text{left}-1)\bigl(\min(h_{\text{left}},h_{\text{right}})-h_{\text{bottom}}\bigr).$$
+
+```python
+def trap(height: list[int]) -> int:
+    stack = []
+    water = 0
+
+    for right, h in enumerate(height):
+        while stack and h > height[stack[-1]]:
+            bottom = stack.pop()
+            if not stack:
+                break
+
+            left = stack[-1]
+            width = right - left - 1
+            depth = min(height[left], h) - height[bottom]
+            water += width * depth
+
+        stack.append(right)
+
+    return water
+```
+
+每个下标最多入栈、出栈各一次，时间复杂度为 $O(n)$，空间复杂度为 $O(n)$。

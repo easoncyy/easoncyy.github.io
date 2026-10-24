@@ -37,5 +37,9 @@
   "2026-10-23": [
     "calculus-absolute-value-differentiability",
     "linear-algebra-common-nonzero-solution"
+  ],
+  "2026-10-24": [
+    "algebra-lagrange-quintic-resolvent",
+    "python-trapping-rain-water"
   ]
 }

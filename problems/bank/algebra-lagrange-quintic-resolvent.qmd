@@ -1,0 +1,41 @@
+---
+title: "从 120 个排列到 24 次预解方程"
+category-path: ["MATH", "ALGEBRA", "方程与置换"]
+tags: ["拉格朗日预解式", "单位根", "置换"]
+source: "据《从一元一次方程到伽罗瓦理论》§6.4 改编"
+draft: false
+---
+
+设 $a_1,\ldots,a_5$ 为五个独立变量，$\zeta=e^{2\pi i/5}$。对 $\{1,2,3,4,5\}$ 的每个排列 $\sigma$，令
+
+$$r_\sigma=a_{\sigma(1)}+\zeta a_{\sigma(2)}+\zeta^2a_{\sigma(3)}+\zeta^3a_{\sigma(4)}+\zeta^4a_{\sigma(5)},$$
+
+并记
+
+$$\Phi(X)=\prod_{\sigma\in S_5}(X-r_\sigma).$$
+
+1. 将排列中的五个位置循环移动一次，$r_\sigma$ 如何变化？
+2. 证明存在一个首一的 $24$ 次多项式 $\Psi$，使 $\Phi(X)=\Psi(X^5)$。
+3. 证明 $\Psi$ 的系数是 $a_1,\ldots,a_5$ 的对称多项式。若将 $a_1,\ldots,a_5$ 换为一个五次方程的五个根，这个预解方程的次数是否低于原方程？
+
+<!-- answer -->
+
+**1.** 将 $(\sigma(1),\ldots,\sigma(5))$ 换为 $(\sigma(5),\sigma(1),\ldots,\sigma(4))$，对应的线性式变为
+
+$$a_{\sigma(5)}+\zeta a_{\sigma(1)}+\cdots+\zeta^4a_{\sigma(4)}=\zeta r_\sigma.$$
+
+连续移动得到 $r_\sigma,\zeta r_\sigma,\ldots,\zeta^4r_\sigma$。
+
+**2.** $120$ 个排列按位置循环移动分成 $120/5=24$ 组。每组对应的五个因子之积为
+
+$$\prod_{j=0}^4(X-\zeta^jr_\sigma)=X^5-r_\sigma^5.$$
+
+每组取一个代表 $\sigma_k$，令
+
+$$\Psi(T)=\prod_{k=1}^{24}(T-r_{\sigma_k}^5),$$
+
+则 $\Psi$ 首一且次数为 $24$，并满足 $\Phi(X)=\Psi(X^5)$。代表的选择不影响 $r_{\sigma_k}^5$。
+
+**3.** 对变量 $a_1,\ldots,a_5$ 作任意置换，只会重新排列上述 $24$ 组，故 $\Psi$ 的各项系数在变量置换下不变，都是对称多项式。由对称多项式基本定理，可用五个初等对称多项式表示，再由韦达定理用原方程的系数表示。
+
+代入五个根后，所得 $24$ 次预解方程的次数高于原来的 $5$ 次。
