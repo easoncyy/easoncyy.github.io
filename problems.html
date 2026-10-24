@@ -243,8 +243,106 @@ window.Quarto = {
   <button type="button" id="problem-filter-reset">清除筛选</button>
 </div>
 <p id="problem-status" aria-live="polite"></p>
-<section id="section" class="level2 problem-date-heading problem-day" data-date="2026-10-23">
-<h2 class="problem-date-heading anchored" data-anchor-id="section">2026-10-23</h2>
+<section id="section" class="level2 problem-date-heading problem-day" data-date="2026-10-24">
+<h2 class="problem-date-heading anchored" data-anchor-id="section">2026-10-24</h2>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;ALGEBRA&quot;, &quot;方程与置换&quot;], &quot;tags&quot;: [&quot;拉格朗日预解式&quot;, &quot;单位根&quot;, &quot;置换&quot;], &quot;title&quot;: &quot;从 120 个排列到 24 次预解方程&quot;}">
+
+<div class="problem-meta">MATH / ALGEBRA / 方程与置换</div>
+
+<h3 class="anchored">01. 从 120 个排列到 24 次预解方程</h3>
+
+<div class="entry-tags">#拉格朗日预解式 · #单位根 · #置换</div>
+
+<p>设 <span class="math inline">\(a_1,\ldots,a_5\)</span> 为五个独立变量，<span class="math inline">\(\zeta=e^{2\pi i/5}\)</span>。对 <span class="math inline">\(\{1,2,3,4,5\}\)</span> 的每个排列 <span class="math inline">\(\sigma\)</span>，令</p>
+<p><span class="math display">\[r_\sigma=a_{\sigma(1)}+\zeta a_{\sigma(2)}+\zeta^2a_{\sigma(3)}+\zeta^3a_{\sigma(4)}+\zeta^4a_{\sigma(5)},\]</span></p>
+<p>并记</p>
+<p><span class="math display">\[\Phi(X)=\prod_{\sigma\in S_5}(X-r_\sigma).\]</span></p>
+<ol type="1">
+<li>将排列中的五个位置循环移动一次，<span class="math inline">\(r_\sigma\)</span> 如何变化？</li>
+<li>证明存在一个首一的 <span class="math inline">\(24\)</span> 次多项式 <span class="math inline">\(\Psi\)</span>，使 <span class="math inline">\(\Phi(X)=\Psi(X^5)\)</span>。</li>
+<li>证明 <span class="math inline">\(\Psi\)</span> 的系数是 <span class="math inline">\(a_1,\ldots,a_5\)</span> 的对称多项式。若将 <span class="math inline">\(a_1,\ldots,a_5\)</span> 换为一个五次方程的五个根，这个预解方程的次数是否低于原方程？</li>
+</ol>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p><strong>1.</strong> 将 <span class="math inline">\((\sigma(1),\ldots,\sigma(5))\)</span> 换为 <span class="math inline">\((\sigma(5),\sigma(1),\ldots,\sigma(4))\)</span>，对应的线性式变为</p>
+<p><span class="math display">\[a_{\sigma(5)}+\zeta a_{\sigma(1)}+\cdots+\zeta^4a_{\sigma(4)}=\zeta r_\sigma.\]</span></p>
+<p>连续移动得到 <span class="math inline">\(r_\sigma,\zeta r_\sigma,\ldots,\zeta^4r_\sigma\)</span>。</p>
+<p><strong>2.</strong> <span class="math inline">\(120\)</span> 个排列按位置循环移动分成 <span class="math inline">\(120/5=24\)</span> 组。每组对应的五个因子之积为</p>
+<p><span class="math display">\[\prod_{j=0}^4(X-\zeta^jr_\sigma)=X^5-r_\sigma^5.\]</span></p>
+<p>每组取一个代表 <span class="math inline">\(\sigma_k\)</span>，令</p>
+<p><span class="math display">\[\Psi(T)=\prod_{k=1}^{24}(T-r_{\sigma_k}^5),\]</span></p>
+<p>则 <span class="math inline">\(\Psi\)</span> 首一且次数为 <span class="math inline">\(24\)</span>，并满足 <span class="math inline">\(\Phi(X)=\Psi(X^5)\)</span>。代表的选择不影响 <span class="math inline">\(r_{\sigma_k}^5\)</span>。</p>
+<p><strong>3.</strong> 对变量 <span class="math inline">\(a_1,\ldots,a_5\)</span> 作任意置换，只会重新排列上述 <span class="math inline">\(24\)</span> 组，故 <span class="math inline">\(\Psi\)</span> 的各项系数在变量置换下不变，都是对称多项式。由对称多项式基本定理，可用五个初等对称多项式表示，再由韦达定理用原方程的系数表示。</p>
+<p>代入五个根后，所得 <span class="math inline">\(24\)</span> 次预解方程的次数高于原来的 <span class="math inline">\(5\)</span> 次。</p>
+
+</div></details>
+
+<p class="problem-source">来源：据《从一元一次方程到伽罗瓦理论》§6.4 改编</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;CS&quot;, &quot;ALGORITHMS&quot;, &quot;数组&quot;], &quot;tags&quot;: [&quot;Python&quot;, &quot;数组&quot;], &quot;title&quot;: &quot;接雨水&quot;}">
+
+<div class="problem-meta">CS / ALGORITHMS / 数组</div>
+
+<h3 class="anchored">02. 接雨水</h3>
+
+<div class="entry-tags">#Python · #数组</div>
+
+<p>给定非负整数列表 <code>height</code>，其中 <code>height[i]</code> 表示第 <span class="math inline">\(i\)</span> 根柱子的高度，每根柱子的宽度为 <span class="math inline">\(1\)</span>。这些柱子按顺序紧密排列。下雨后，求柱子之间最多能储存多少单位的雨水。</p>
+<p>用 Python 实现：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> trap(height: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    ...</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>示例 1</strong></p>
+<pre class="text"><code>输入：height = [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]
+输出：6</code></pre>
+<p><strong>示例 2</strong></p>
+<pre class="text"><code>输入：height = [4, 2, 0, 3, 2, 5]
+输出：9</code></pre>
+<p>列表可以为空。要求时间复杂度为 <span class="math inline">\(O(n)\)</span>。</p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>维护一个存储下标的栈，使栈中柱高从栈底到栈顶单调不增。</p>
+<p>遇到比栈顶更高的柱子时，弹出栈顶作为凹槽底部。若栈仍非空，新栈顶为左边界，当前柱子为右边界。这一层新增的水量为</p>
+<p><span class="math display">\[(\text{right}-\text{left}-1)\bigl(\min(h_{\text{left}},h_{\text{right}})-h_{\text{bottom}}\bigr).\]</span></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> trap(height: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    stack <span class="op">=</span> []</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    water <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> right, h <span class="kw">in</span> <span class="bu">enumerate</span>(height):</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> stack <span class="kw">and</span> h <span class="op">&gt;</span> height[stack[<span class="op">-</span><span class="dv">1</span>]]:</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>            bottom <span class="op">=</span> stack.pop()</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="kw">not</span> stack:</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>                <span class="cf">break</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>            left <span class="op">=</span> stack[<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>            width <span class="op">=</span> right <span class="op">-</span> left <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>            depth <span class="op">=</span> <span class="bu">min</span>(height[left], h) <span class="op">-</span> height[bottom]</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>            water <span class="op">+=</span> width <span class="op">*</span> depth</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        stack.append(right)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> water</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>每个下标最多入栈、出栈各一次，时间复杂度为 <span class="math inline">\(O(n)\)</span>，空间复杂度为 <span class="math inline">\(O(n)\)</span>。</p>
+
+</div></details>
+
+<p class="problem-source">来源：经典算法题：接雨水（Trapping Rain Water）</p>
+
+</div>
+
+<details id="discussion-2026-10-24" class="log-comments problem-discussion" data-comment-term="/problems/2026-10-24/" data-comment-date="2026-10-24" data-comment-title="每日好题 · 2026-10-24">
+
+<summary>discussion/ <span>2026-10-24 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+</section>
+<section id="section-1" class="level2 problem-date-heading problem-day" data-date="2026-10-23">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-1">2026-10-23</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;导数&quot;], &quot;tags&quot;: [&quot;导数定义&quot;, &quot;绝对值&quot;], &quot;title&quot;: &quot;绝对值与零点可导性&quot;}">
 
 <div class="problem-meta">MATH / CALCULUS / 导数</div>
@@ -316,8 +414,8 @@ window.Quarto = {
 </details>
 
 </section>
-<section id="section-1" class="level2 problem-date-heading problem-day" data-date="2026-10-22">
-<h2 class="problem-date-heading anchored" data-anchor-id="section-1">2026-10-22</h2>
+<section id="section-2" class="level2 problem-date-heading problem-day" data-date="2026-10-22">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-2">2026-10-22</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;线性方程组&quot;], &quot;tags&quot;: [&quot;参数讨论&quot;, &quot;通解&quot;], &quot;title&quot;: &quot;第九节（一）：含参方程组的解&quot;}">
 
 <div class="problem-meta">MATH / LINEAR-ALGEBRA / 线性方程组</div>
@@ -492,8 +590,8 @@ a_n&amp;0&amp;0&amp;\cdots&amp;1
 </details>
 
 </section>
-<section id="section-2" class="level2 problem-date-heading problem-day" data-date="2026-10-21">
-<h2 class="problem-date-heading anchored" data-anchor-id="section-2">2026-10-21</h2>
+<section id="section-3" class="level2 problem-date-heading problem-day" data-date="2026-10-21">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-3">2026-10-21</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;连续性&quot;], &quot;tags&quot;: [&quot;反例&quot;, &quot;反函数&quot;, &quot;数列&quot;], &quot;title&quot;: &quot;反函数、连续性与数列最小项&quot;}">
 
 <div class="problem-meta">MATH / CALCULUS / 连续性</div>
@@ -613,8 +711,8 @@ D_n=\begin{vmatrix}
 </details>
 
 </section>
-<section id="section-3" class="level2 problem-date-heading problem-day" data-date="2026-10-20">
-<h2 class="problem-date-heading anchored" data-anchor-id="section-3">2026-10-20</h2>
+<section id="section-4" class="level2 problem-date-heading problem-day" data-date="2026-10-20">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-4">2026-10-20</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;介值定理&quot;, &quot;单调性&quot;, &quot;隐式数列&quot;], &quot;title&quot;: &quot;隐式定义的根与指数极限&quot;}">
 
 <div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
@@ -658,31 +756,31 @@ D_n=\begin{vmatrix}
 
 <details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
 
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> count(xs):</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> isempty(xs):</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">0</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">1</span> <span class="op">+</span> count(butfirst(xs))</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> reverse(xs):</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> isempty(xs):</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> []</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> reverse(butfirst(xs)) <span class="op">+</span> [first(xs)]</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find(xs, element):</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> isempty(xs):</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">False</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> first(xs) <span class="op">==</span> element <span class="kw">or</span> find(butfirst(xs), element)</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> iterate(xs, f):</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> isempty(xs):</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    f(first(xs))</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    iterate(butfirst(xs), f)</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> accumarate(xs, f, value):</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> isempty(xs):</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> value</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> accumarate(butfirst(xs), f, f(first(xs), value))</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> count(xs):</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> isempty(xs):</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">0</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">1</span> <span class="op">+</span> count(butfirst(xs))</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> reverse(xs):</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> isempty(xs):</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> []</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> reverse(butfirst(xs)) <span class="op">+</span> [first(xs)]</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find(xs, element):</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> isempty(xs):</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> first(xs) <span class="op">==</span> element <span class="kw">or</span> find(butfirst(xs), element)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> iterate(xs, f):</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> isempty(xs):</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    f(first(xs))</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    iterate(butfirst(xs), f)</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> accumarate(xs, f, value):</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> isempty(xs):</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> value</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> accumarate(butfirst(xs), f, f(first(xs), value))</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
 <p>五题的<strong>Base Case</strong>都是空列表：数量为<code>0</code>、逆序为空列表、查找为<code>False</code>、遍历直接结束、累计则返回当前<code>value</code>；<strong>Progress</strong>都是递归处理<code>butfirst(xs)</code>。<code>reverse</code>必须把当前首元素放在剩余列表逆序结果的末尾；<code>find</code>借助<code>or</code>短路，找到后不再继续查；<code>iterate</code>先调用<code>f</code>再递归，保持原有顺序；<code>accumarate</code>先算<code>f(first(xs), value)</code>，再把新值交给下一层，所以<code>f</code>的两个参数顺序不能颠倒。</p>
 
 </div></details>
@@ -700,8 +798,8 @@ D_n=\begin{vmatrix}
 </details>
 
 </section>
-<section id="section-4" class="level2 problem-date-heading problem-day" data-date="2026-10-19">
-<h2 class="problem-date-heading anchored" data-anchor-id="section-4">2026-10-19</h2>
+<section id="section-5" class="level2 problem-date-heading problem-day" data-date="2026-10-19">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-5">2026-10-19</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;分段估计&quot;, &quot;夹逼定理&quot;], &quot;title&quot;: &quot;不同次根组成的变项数列和&quot;}">
 
 <div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
@@ -838,8 +936,8 @@ R_n=\sum_{k=1}^{n}\frac{\sin k}{n^2+k}.
 </details>
 
 </section>
-<section id="section-5" class="level2 problem-date-heading problem-day" data-date="2026-10-18">
-<h2 class="problem-date-heading anchored" data-anchor-id="section-5">2026-10-18</h2>
+<section id="section-6" class="level2 problem-date-heading problem-day" data-date="2026-10-18">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-6">2026-10-18</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;夹逼定理&quot;, &quot;变项数列和&quot;], &quot;title&quot;: &quot;含根式分母的平方和极限&quot;}">
 
 <div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
@@ -1038,8 +1136,8 @@ n^2\theta_n
 </details>
 
 </section>
-<section id="section-6" class="level2 problem-date-heading problem-day" data-date="2026-10-17">
-<h2 class="problem-date-heading anchored" data-anchor-id="section-6">2026-10-17</h2>
+<section id="section-7" class="level2 problem-date-heading problem-day" data-date="2026-10-17">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-7">2026-10-17</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;次可加性&quot;, &quot;下确界&quot;, &quot;极限&quot;], &quot;title&quot;: &quot;次可加数列与 Fekete 引理&quot;}">
 
 <div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
@@ -1218,8 +1316,8 @@ a_i-a_j=21,
 </details>
 
 </section>
-<section id="section-7" class="level2 problem-date-heading problem-day" data-date="2026-10-16">
-<h2 class="problem-date-heading anchored" data-anchor-id="section-7">2026-10-16</h2>
+<section id="section-8" class="level2 problem-date-heading problem-day" data-date="2026-10-16">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-8">2026-10-16</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;反证法&quot;, &quot;阶乘级数&quot;], &quot;title&quot;: &quot;证明 e 是无理数&quot;}">
 
 <div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
@@ -1367,7 +1465,7 @@ d&amp;1&amp;1/d^2&amp;1/d
 
 </section>
 
-<script id="problem-index" type="application/json">{"builtDate": "2026-10-23", "dates": {"2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
+<script id="problem-index" type="application/json">{"builtDate": "2026-10-24", "dates": {"2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
 
 <p id="problem-empty" hidden="">这一天暂无符合条件的题目。</p>
 <section class="problem-calendar" aria-label="按日期查看题目">

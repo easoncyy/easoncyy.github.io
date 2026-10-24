@@ -1,5 +1,55 @@
 ::: {.log-stream}
 
+::: {#20261024-235309-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-10-24T23:53:09+08:00">2026-10-24 23:53:09 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title">周末</p>
+
+```
+
+在家睡到八点，急匆匆地扛着电吉他来北教上微积分复习课。上了一节吉协的电吉他课感觉还不错，可惜让我错过了微积分模拟考，只能在冷风里做了一个半小时卷子，Refreshing. 晚上的例会依旧很快乐！（绝对不只是因为麦当劳（（（） 感觉自己也在慢慢融入这个集体啦，期待后续有机会参加ICT/ISC的比赛。
+
+::: {.log-photo-grid}
+
+![学园的复习课](/assets/log/20261024-235309-entry/photo-01.jpg)
+
+![电吉他初级班](/assets/log/20261024-235309-entry/photo-06.jpg)
+
+![废土东教冷飕飕](/assets/log/20261024-235309-entry/photo-03.jpg)
+
+![紫云5也有自己的奶娃了](/assets/log/20261024-235309-entry/photo-04.jpg)
+
+![东郊 还是废土风](/assets/log/20261024-235309-entry/photo-05.jpg)
+
+![超算队超好的](/assets/log/20261024-235309-entry/photo-02.jpg)
+
+:::
+
+```{=html}
+
+<details id="comments-20261024-235309-entry" class="log-comments" data-comment-term="/logs/20261024-235309-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
 ::: {#20261023-231103-entry .log-entry}
 
 ```{=html}
