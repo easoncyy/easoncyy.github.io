@@ -1,0 +1,27 @@
+---
+title: "置换矩阵的幂"
+category-path: ["MATH", "LINEAR-ALGEBRA", "矩阵"]
+tags: ["置换矩阵", "矩阵的幂"]
+source: "Introduction to Linear Algebra · §2.4 · Challenge Problem 28"
+draft: false
+---
+
+为什么对任意置换矩阵 $P$，总存在正整数 $k$，使 $P^k=I$？
+
+构造一个 $5\times5$ 置换矩阵 $P$，使得满足 $P^k=I$ 的最小正整数 $k$ 为 $6$。
+
+<!-- answer -->
+
+一个置换可分解为互不相交的循环。若循环长度为 $\ell_1,\ldots,\ell_s$，则该置换的阶为
+
+$$\operatorname{lcm}(\ell_1,\ldots,\ell_s),$$
+
+因此相应置换矩阵的某个正整数次幂必为 $I$。
+
+取置换 $(1\ 2)(3\ 4\ 5)$，令 $Pe_1=e_2,Pe_2=e_1,Pe_3=e_4,Pe_4=e_5,Pe_5=e_3$，则
+
+$$P=\begin{pmatrix}
+0&1&0&0&0\\1&0&0&0&0\\0&0&0&0&1\\0&0&1&0&0\\0&0&0&1&0
+\end{pmatrix}.$$
+
+$P^k=I$ 当且仅当 $2\mid k$ 且 $3\mid k$，故最小正整数为 $\boxed6$。

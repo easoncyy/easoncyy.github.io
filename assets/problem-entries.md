@@ -1,3 +1,161 @@
+::: {.problem-day data-date="2026-10-25"}
+
+## 2026-10-25 {.problem-date-heading}
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;矩阵&quot;], &quot;tags&quot;: [&quot;置换矩阵&quot;, &quot;矩阵的幂&quot;], &quot;title&quot;: &quot;置换矩阵的幂&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 矩阵</div>
+
+<h3>01. 置换矩阵的幂</h3>
+
+<div class="entry-tags">#置换矩阵 · #矩阵的幂</div>
+
+```
+
+为什么对任意置换矩阵 $P$，总存在正整数 $k$，使 $P^k=I$？
+
+构造一个 $5\times5$ 置换矩阵 $P$，使得满足 $P^k=I$ 的最小正整数 $k$ 为 $6$。
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+一个置换可分解为互不相交的循环。若循环长度为 $\ell_1,\ldots,\ell_s$，则该置换的阶为
+
+$$\operatorname{lcm}(\ell_1,\ldots,\ell_s),$$
+
+因此相应置换矩阵的某个正整数次幂必为 $I$。
+
+取置换 $(1\ 2)(3\ 4\ 5)$，令 $Pe_1=e_2,Pe_2=e_1,Pe_3=e_4,Pe_4=e_5,Pe_5=e_3$，则
+
+$$P=\begin{pmatrix}
+0&1&0&0&0\\1&0&0&0&0\\0&0&0&0&1\\0&0&1&0&0\\0&0&0&1&0
+\end{pmatrix}.$$
+
+$P^k=I$ 当且仅当 $2\mid k$ 且 $3\mid k$，故最小正整数为 $\boxed6$。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：Introduction to Linear Algebra · §2.4 · Challenge Problem 28</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;矩阵&quot;], &quot;tags&quot;: [&quot;转置&quot;, &quot;对称矩阵&quot;], &quot;title&quot;: &quot;对称部分与反对称部分&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 矩阵</div>
+
+<h3>02. 对称部分与反对称部分</h3>
+
+<div class="entry-tags">#转置 · #对称矩阵</div>
+
+```
+
+1. 任取一个 $3\times3$ 实矩阵 $M$，将它写成 $M=S+A$，其中 $S=S^{\mathsf T}$，$A=-A^{\mathsf T}$。
+2. 对一般的实方阵 $M$，用 $M$ 与 $M^{\mathsf T}$ 表示 $S,A$。
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+取
+
+$$M=\begin{pmatrix}1&2&3\\0&4&5\\-1&1&6\end{pmatrix}.$$
+
+则
+
+$$S=\begin{pmatrix}1&1&1\\1&4&3\\1&3&6\end{pmatrix},\qquad
+A=\begin{pmatrix}0&1&2\\-1&0&2\\-2&-2&0\end{pmatrix},$$
+
+满足 $M=S+A$，$S^{\mathsf T}=S$，$A^{\mathsf T}=-A$。
+
+一般地，将 $M=S+A$ 转置，得 $M^{\mathsf T}=S-A$。相加、相减即得
+
+$$\boxed{S=\frac{M+M^{\mathsf T}}2,\qquad A=\frac{M-M^{\mathsf T}}2.}$$
+
+这也说明分解唯一。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：Introduction to Linear Algebra · §2.4 · Challenge Problem 29</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;矩阵&quot;], &quot;tags&quot;: [&quot;正交矩阵&quot;, &quot;内积&quot;], &quot;title&quot;: &quot;正交矩阵的列向量&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 矩阵</div>
+
+<h3>03. 正交矩阵的列向量</h3>
+
+<div class="entry-tags">#正交矩阵 · #内积</div>
+
+```
+
+设实方阵 $Q$ 满足 $Q^{\mathsf T}=Q^{-1}$，即 $Q^{\mathsf T}Q=I$。记其列向量为 $q_1,\ldots,q_n$。
+
+1. 证明每个列向量都是单位向量：$\lVert q_i\rVert^2=1$。
+2. 证明任意两个不同的列向量互相垂直。
+3. 给出一个 $2\times2$ 的例子，使其左上角元素 $q_{11}=\cos\theta$。
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+乘积 $Q^{\mathsf T}Q$ 的第 $(i,j)$ 个元素为 $q_i^{\mathsf T}q_j$。由于 $Q^{\mathsf T}Q=I$，
+
+$$q_i^{\mathsf T}q_j=\begin{cases}1,&i=j,\\0,&i\ne j.\end{cases}$$
+
+取 $i=j$，得 $\lVert q_i\rVert^2=1$；取 $i\ne j$，得 $q_i^{\mathsf T}q_j=0$，故不同列向量互相垂直。
+
+例如旋转矩阵
+
+$$\boxed{Q=\begin{pmatrix}\cos\theta&-\sin\theta\\\sin\theta&\cos\theta\end{pmatrix}}$$
+
+满足 $Q^{\mathsf T}Q=I$，且 $q_{11}=\cos\theta$。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：Introduction to Linear Algebra · §2.4 · Challenge Problem 30</p>
+
+```
+
+:::
+
+```{=html}
+
+<details id="discussion-2026-10-25" class="log-comments problem-discussion" data-comment-term="/problems/2026-10-25/" data-comment-date="2026-10-25" data-comment-title="每日好题 · 2026-10-25">
+
+<summary>discussion/ <span>2026-10-25 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
 ::: {.problem-day data-date="2026-10-24"}
 
 ## 2026-10-24 {.problem-date-heading}
@@ -1853,6 +2011,6 @@ $$
 
 ```{=html}
 
-<script id="problem-index" type="application/json">{"builtDate": "2026-10-25", "dates": {"2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
+<script id="problem-index" type="application/json">{"builtDate": "2026-10-25", "dates": {"2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
 
 ```

@@ -1,0 +1,27 @@
+---
+title: "正交矩阵的列向量"
+category-path: ["MATH", "LINEAR-ALGEBRA", "矩阵"]
+tags: ["正交矩阵", "内积"]
+source: "Introduction to Linear Algebra · §2.4 · Challenge Problem 30"
+draft: false
+---
+
+设实方阵 $Q$ 满足 $Q^{\mathsf T}=Q^{-1}$，即 $Q^{\mathsf T}Q=I$。记其列向量为 $q_1,\ldots,q_n$。
+
+1. 证明每个列向量都是单位向量：$\lVert q_i\rVert^2=1$。
+2. 证明任意两个不同的列向量互相垂直。
+3. 给出一个 $2\times2$ 的例子，使其左上角元素 $q_{11}=\cos\theta$。
+
+<!-- answer -->
+
+乘积 $Q^{\mathsf T}Q$ 的第 $(i,j)$ 个元素为 $q_i^{\mathsf T}q_j$。由于 $Q^{\mathsf T}Q=I$，
+
+$$q_i^{\mathsf T}q_j=\begin{cases}1,&i=j,\\0,&i\ne j.\end{cases}$$
+
+取 $i=j$，得 $\lVert q_i\rVert^2=1$；取 $i\ne j$，得 $q_i^{\mathsf T}q_j=0$，故不同列向量互相垂直。
+
+例如旋转矩阵
+
+$$\boxed{Q=\begin{pmatrix}\cos\theta&-\sin\theta\\\sin\theta&\cos\theta\end{pmatrix}}$$
+
+满足 $Q^{\mathsf T}Q=I$，且 $q_{11}=\cos\theta$。

@@ -1,0 +1,29 @@
+---
+title: "对称部分与反对称部分"
+category-path: ["MATH", "LINEAR-ALGEBRA", "矩阵"]
+tags: ["转置", "对称矩阵"]
+source: "Introduction to Linear Algebra · §2.4 · Challenge Problem 29"
+draft: false
+---
+
+1. 任取一个 $3\times3$ 实矩阵 $M$，将它写成 $M=S+A$，其中 $S=S^{\mathsf T}$，$A=-A^{\mathsf T}$。
+2. 对一般的实方阵 $M$，用 $M$ 与 $M^{\mathsf T}$ 表示 $S,A$。
+
+<!-- answer -->
+
+取
+
+$$M=\begin{pmatrix}1&2&3\\0&4&5\\-1&1&6\end{pmatrix}.$$
+
+则
+
+$$S=\begin{pmatrix}1&1&1\\1&4&3\\1&3&6\end{pmatrix},\qquad
+A=\begin{pmatrix}0&1&2\\-1&0&2\\-2&-2&0\end{pmatrix},$$
+
+满足 $M=S+A$，$S^{\mathsf T}=S$，$A^{\mathsf T}=-A$。
+
+一般地，将 $M=S+A$ 转置，得 $M^{\mathsf T}=S-A$。相加、相减即得
+
+$$\boxed{S=\frac{M+M^{\mathsf T}}2,\qquad A=\frac{M-M^{\mathsf T}}2.}$$
+
+这也说明分解唯一。

@@ -41,5 +41,10 @@
   "2026-10-24": [
     "algebra-lagrange-quintic-resolvent",
     "python-trapping-rain-water"
+  ],
+  "2026-10-25": [
+    "strang-2-4-permutation-powers",
+    "strang-2-4-symmetric-decomposition",
+    "strang-2-4-orthogonal-columns"
   ]
 }
