@@ -14,22 +14,6 @@ toc: false
 
 ::: {.project-entry}
 ::: {.entry-topline}
-### rsna-knee/
-
-[GitHub ↗](https://github.com/Msmile-shiny/CVproject_RSNA-knee-detection){.repository-link target="_blank" rel="noopener noreferrer"}
-:::
-
-RSNA 膝关节 MRI 异常识别
-
-面向膝关节 MRI 的 12 类异常识别项目，围绕公开模型复现、预测融合与实验记录展开。
-
-::: {.entry-tags}
-`Computer Vision` `Python` `Kaggle`
-:::
-:::
-
-::: {.project-entry}
-::: {.entry-topline}
 ### personal-site/
 
 [GitHub ↗](https://github.com/easoncyy/easoncyy.github.io){.repository-link target="_blank" rel="noopener noreferrer"}
@@ -41,6 +25,30 @@ RSNA 膝关节 MRI 异常识别
 
 ::: {.entry-tags}
 `Quarto` `Markdown` `GitHub Pages`
+:::
+:::
+
+::: {.collection-heading}
+## archive/ {.directory-heading}
+
+已结束
+:::
+
+::: {.project-entry}
+::: {.entry-topline}
+### rsna-knee/
+
+[GitHub ↗](https://github.com/Msmile-shiny/CVproject_RSNA-knee-detection){.repository-link target="_blank" rel="noopener noreferrer"}
+:::
+
+RSNA 膝关节 MRI 异常识别
+
+**已结束 · 最终得分：0.942**
+
+面向膝关节 MRI 的 12 类异常识别项目，围绕公开模型复现、预测融合与实验记录展开。
+
+::: {.entry-tags}
+`Computer Vision` `Python` `Kaggle`
 :::
 :::
 

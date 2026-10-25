@@ -1,0 +1,17 @@
+---
+title: "摸鱼"
+date: "2026-10-25T23:42:04+08:00"
+entry-signature: "dfd11023eeedeb5f84728b639c957aa14154c2ceba2b7aad6e41c2961142271c"
+---
+
+在这里写下你的记录。
+
+::: {.log-photo-grid}
+
+![临水报告厅 诗歌节有点草台](/assets/log/20261025-234204-entry/photo-01.jpg)
+
+![想要的一定实现](/assets/log/20261025-234204-entry/photo-02.jpg)
+
+![其实上台后看见了0个指挥](/assets/log/20261025-234204-entry/photo-03.jpg)
+
+:::
