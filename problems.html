@@ -243,8 +243,106 @@ window.Quarto = {
   <button type="button" id="problem-filter-reset">清除筛选</button>
 </div>
 <p id="problem-status" aria-live="polite"></p>
-<section id="section" class="level2 problem-date-heading problem-day" data-date="2026-10-24">
-<h2 class="problem-date-heading anchored" data-anchor-id="section">2026-10-24</h2>
+<section id="section" class="level2 problem-date-heading problem-day" data-date="2026-10-25">
+<h2 class="problem-date-heading anchored" data-anchor-id="section">2026-10-25</h2>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;矩阵&quot;], &quot;tags&quot;: [&quot;置换矩阵&quot;, &quot;矩阵的幂&quot;], &quot;title&quot;: &quot;置换矩阵的幂&quot;}">
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 矩阵</div>
+
+<h3 class="anchored">01. 置换矩阵的幂</h3>
+
+<div class="entry-tags">#置换矩阵 · #矩阵的幂</div>
+
+<p>为什么对任意置换矩阵 <span class="math inline">\(P\)</span>，总存在正整数 <span class="math inline">\(k\)</span>，使 <span class="math inline">\(P^k=I\)</span>？</p>
+<p>构造一个 <span class="math inline">\(5\times5\)</span> 置换矩阵 <span class="math inline">\(P\)</span>，使得满足 <span class="math inline">\(P^k=I\)</span> 的最小正整数 <span class="math inline">\(k\)</span> 为 <span class="math inline">\(6\)</span>。</p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>一个置换可分解为互不相交的循环。若循环长度为 <span class="math inline">\(\ell_1,\ldots,\ell_s\)</span>，则该置换的阶为</p>
+<p><span class="math display">\[\operatorname{lcm}(\ell_1,\ldots,\ell_s),\]</span></p>
+<p>因此相应置换矩阵的某个正整数次幂必为 <span class="math inline">\(I\)</span>。</p>
+<p>取置换 <span class="math inline">\((1\ 2)(3\ 4\ 5)\)</span>，令 <span class="math inline">\(Pe_1=e_2,Pe_2=e_1,Pe_3=e_4,Pe_4=e_5,Pe_5=e_3\)</span>，则</p>
+<p><span class="math display">\[P=\begin{pmatrix}
+0&amp;1&amp;0&amp;0&amp;0\\1&amp;0&amp;0&amp;0&amp;0\\0&amp;0&amp;0&amp;0&amp;1\\0&amp;0&amp;1&amp;0&amp;0\\0&amp;0&amp;0&amp;1&amp;0
+\end{pmatrix}.\]</span></p>
+<p><span class="math inline">\(P^k=I\)</span> 当且仅当 <span class="math inline">\(2\mid k\)</span> 且 <span class="math inline">\(3\mid k\)</span>，故最小正整数为 <span class="math inline">\(\boxed6\)</span>。</p>
+
+</div></details>
+
+<p class="problem-source">来源：Introduction to Linear Algebra · §2.4 · Challenge Problem 28</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;矩阵&quot;], &quot;tags&quot;: [&quot;转置&quot;, &quot;对称矩阵&quot;], &quot;title&quot;: &quot;对称部分与反对称部分&quot;}">
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 矩阵</div>
+
+<h3 class="anchored">02. 对称部分与反对称部分</h3>
+
+<div class="entry-tags">#转置 · #对称矩阵</div>
+
+<ol type="1">
+<li>任取一个 <span class="math inline">\(3\times3\)</span> 实矩阵 <span class="math inline">\(M\)</span>，将它写成 <span class="math inline">\(M=S+A\)</span>，其中 <span class="math inline">\(S=S^{\mathsf T}\)</span>，<span class="math inline">\(A=-A^{\mathsf T}\)</span>。</li>
+<li>对一般的实方阵 <span class="math inline">\(M\)</span>，用 <span class="math inline">\(M\)</span> 与 <span class="math inline">\(M^{\mathsf T}\)</span> 表示 <span class="math inline">\(S,A\)</span>。</li>
+</ol>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>取</p>
+<p><span class="math display">\[M=\begin{pmatrix}1&amp;2&amp;3\\0&amp;4&amp;5\\-1&amp;1&amp;6\end{pmatrix}.\]</span></p>
+<p>则</p>
+<p><span class="math display">\[S=\begin{pmatrix}1&amp;1&amp;1\\1&amp;4&amp;3\\1&amp;3&amp;6\end{pmatrix},\qquad
+A=\begin{pmatrix}0&amp;1&amp;2\\-1&amp;0&amp;2\\-2&amp;-2&amp;0\end{pmatrix},\]</span></p>
+<p>满足 <span class="math inline">\(M=S+A\)</span>，<span class="math inline">\(S^{\mathsf T}=S\)</span>，<span class="math inline">\(A^{\mathsf T}=-A\)</span>。</p>
+<p>一般地，将 <span class="math inline">\(M=S+A\)</span> 转置，得 <span class="math inline">\(M^{\mathsf T}=S-A\)</span>。相加、相减即得</p>
+<p><span class="math display">\[\boxed{S=\frac{M+M^{\mathsf T}}2,\qquad A=\frac{M-M^{\mathsf T}}2.}\]</span></p>
+<p>这也说明分解唯一。</p>
+
+</div></details>
+
+<p class="problem-source">来源：Introduction to Linear Algebra · §2.4 · Challenge Problem 29</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;矩阵&quot;], &quot;tags&quot;: [&quot;正交矩阵&quot;, &quot;内积&quot;], &quot;title&quot;: &quot;正交矩阵的列向量&quot;}">
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 矩阵</div>
+
+<h3 class="anchored">03. 正交矩阵的列向量</h3>
+
+<div class="entry-tags">#正交矩阵 · #内积</div>
+
+<p>设实方阵 <span class="math inline">\(Q\)</span> 满足 <span class="math inline">\(Q^{\mathsf T}=Q^{-1}\)</span>，即 <span class="math inline">\(Q^{\mathsf T}Q=I\)</span>。记其列向量为 <span class="math inline">\(q_1,\ldots,q_n\)</span>。</p>
+<ol type="1">
+<li>证明每个列向量都是单位向量：<span class="math inline">\(\lVert q_i\rVert^2=1\)</span>。</li>
+<li>证明任意两个不同的列向量互相垂直。</li>
+<li>给出一个 <span class="math inline">\(2\times2\)</span> 的例子，使其左上角元素 <span class="math inline">\(q_{11}=\cos\theta\)</span>。</li>
+</ol>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>乘积 <span class="math inline">\(Q^{\mathsf T}Q\)</span> 的第 <span class="math inline">\((i,j)\)</span> 个元素为 <span class="math inline">\(q_i^{\mathsf T}q_j\)</span>。由于 <span class="math inline">\(Q^{\mathsf T}Q=I\)</span>，</p>
+<p><span class="math display">\[q_i^{\mathsf T}q_j=\begin{cases}1,&amp;i=j,\\0,&amp;i\ne j.\end{cases}\]</span></p>
+<p>取 <span class="math inline">\(i=j\)</span>，得 <span class="math inline">\(\lVert q_i\rVert^2=1\)</span>；取 <span class="math inline">\(i\ne j\)</span>，得 <span class="math inline">\(q_i^{\mathsf T}q_j=0\)</span>，故不同列向量互相垂直。</p>
+<p>例如旋转矩阵</p>
+<p><span class="math display">\[\boxed{Q=\begin{pmatrix}\cos\theta&amp;-\sin\theta\\\sin\theta&amp;\cos\theta\end{pmatrix}}\]</span></p>
+<p>满足 <span class="math inline">\(Q^{\mathsf T}Q=I\)</span>，且 <span class="math inline">\(q_{11}=\cos\theta\)</span>。</p>
+
+</div></details>
+
+<p class="problem-source">来源：Introduction to Linear Algebra · §2.4 · Challenge Problem 30</p>
+
+</div>
+
+<details id="discussion-2026-10-25" class="log-comments problem-discussion" data-comment-term="/problems/2026-10-25/" data-comment-date="2026-10-25" data-comment-title="每日好题 · 2026-10-25">
+
+<summary>discussion/ <span>2026-10-25 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+</section>
+<section id="section-1" class="level2 problem-date-heading problem-day" data-date="2026-10-24">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-1">2026-10-24</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;ALGEBRA&quot;, &quot;方程与置换&quot;], &quot;tags&quot;: [&quot;拉格朗日预解式&quot;, &quot;单位根&quot;, &quot;置换&quot;], &quot;title&quot;: &quot;从 120 个排列到 24 次预解方程&quot;}">
 
 <div class="problem-meta">MATH / ALGEBRA / 方程与置换</div>
@@ -341,8 +439,8 @@ window.Quarto = {
 </details>
 
 </section>
-<section id="section-1" class="level2 problem-date-heading problem-day" data-date="2026-10-23">
-<h2 class="problem-date-heading anchored" data-anchor-id="section-1">2026-10-23</h2>
+<section id="section-2" class="level2 problem-date-heading problem-day" data-date="2026-10-23">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-2">2026-10-23</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;导数&quot;], &quot;tags&quot;: [&quot;导数定义&quot;, &quot;绝对值&quot;], &quot;title&quot;: &quot;绝对值与零点可导性&quot;}">
 
 <div class="problem-meta">MATH / CALCULUS / 导数</div>
@@ -414,8 +512,8 @@ window.Quarto = {
 </details>
 
 </section>
-<section id="section-2" class="level2 problem-date-heading problem-day" data-date="2026-10-22">
-<h2 class="problem-date-heading anchored" data-anchor-id="section-2">2026-10-22</h2>
+<section id="section-3" class="level2 problem-date-heading problem-day" data-date="2026-10-22">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-3">2026-10-22</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;线性方程组&quot;], &quot;tags&quot;: [&quot;参数讨论&quot;, &quot;通解&quot;], &quot;title&quot;: &quot;第九节（一）：含参方程组的解&quot;}">
 
 <div class="problem-meta">MATH / LINEAR-ALGEBRA / 线性方程组</div>
@@ -590,8 +688,8 @@ a_n&amp;0&amp;0&amp;\cdots&amp;1
 </details>
 
 </section>
-<section id="section-3" class="level2 problem-date-heading problem-day" data-date="2026-10-21">
-<h2 class="problem-date-heading anchored" data-anchor-id="section-3">2026-10-21</h2>
+<section id="section-4" class="level2 problem-date-heading problem-day" data-date="2026-10-21">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-4">2026-10-21</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;连续性&quot;], &quot;tags&quot;: [&quot;反例&quot;, &quot;反函数&quot;, &quot;数列&quot;], &quot;title&quot;: &quot;反函数、连续性与数列最小项&quot;}">
 
 <div class="problem-meta">MATH / CALCULUS / 连续性</div>
@@ -711,8 +809,8 @@ D_n=\begin{vmatrix}
 </details>
 
 </section>
-<section id="section-4" class="level2 problem-date-heading problem-day" data-date="2026-10-20">
-<h2 class="problem-date-heading anchored" data-anchor-id="section-4">2026-10-20</h2>
+<section id="section-5" class="level2 problem-date-heading problem-day" data-date="2026-10-20">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-5">2026-10-20</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;介值定理&quot;, &quot;单调性&quot;, &quot;隐式数列&quot;], &quot;title&quot;: &quot;隐式定义的根与指数极限&quot;}">
 
 <div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
@@ -798,8 +896,8 @@ D_n=\begin{vmatrix}
 </details>
 
 </section>
-<section id="section-5" class="level2 problem-date-heading problem-day" data-date="2026-10-19">
-<h2 class="problem-date-heading anchored" data-anchor-id="section-5">2026-10-19</h2>
+<section id="section-6" class="level2 problem-date-heading problem-day" data-date="2026-10-19">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-6">2026-10-19</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;分段估计&quot;, &quot;夹逼定理&quot;], &quot;title&quot;: &quot;不同次根组成的变项数列和&quot;}">
 
 <div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
@@ -936,8 +1034,8 @@ R_n=\sum_{k=1}^{n}\frac{\sin k}{n^2+k}.
 </details>
 
 </section>
-<section id="section-6" class="level2 problem-date-heading problem-day" data-date="2026-10-18">
-<h2 class="problem-date-heading anchored" data-anchor-id="section-6">2026-10-18</h2>
+<section id="section-7" class="level2 problem-date-heading problem-day" data-date="2026-10-18">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-7">2026-10-18</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;夹逼定理&quot;, &quot;变项数列和&quot;], &quot;title&quot;: &quot;含根式分母的平方和极限&quot;}">
 
 <div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
@@ -1136,8 +1234,8 @@ n^2\theta_n
 </details>
 
 </section>
-<section id="section-7" class="level2 problem-date-heading problem-day" data-date="2026-10-17">
-<h2 class="problem-date-heading anchored" data-anchor-id="section-7">2026-10-17</h2>
+<section id="section-8" class="level2 problem-date-heading problem-day" data-date="2026-10-17">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-8">2026-10-17</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;次可加性&quot;, &quot;下确界&quot;, &quot;极限&quot;], &quot;title&quot;: &quot;次可加数列与 Fekete 引理&quot;}">
 
 <div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
@@ -1316,8 +1414,8 @@ a_i-a_j=21,
 </details>
 
 </section>
-<section id="section-8" class="level2 problem-date-heading problem-day" data-date="2026-10-16">
-<h2 class="problem-date-heading anchored" data-anchor-id="section-8">2026-10-16</h2>
+<section id="section-9" class="level2 problem-date-heading problem-day" data-date="2026-10-16">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-9">2026-10-16</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;反证法&quot;, &quot;阶乘级数&quot;], &quot;title&quot;: &quot;证明 e 是无理数&quot;}">
 
 <div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
@@ -1465,7 +1563,7 @@ d&amp;1&amp;1/d^2&amp;1/d
 
 </section>
 
-<script id="problem-index" type="application/json">{"builtDate": "2026-10-25", "dates": {"2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
+<script id="problem-index" type="application/json">{"builtDate": "2026-10-25", "dates": {"2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
 
 <p id="problem-empty" hidden="">这一天暂无符合条件的题目。</p>
 <section class="problem-calendar" aria-label="按日期查看题目">

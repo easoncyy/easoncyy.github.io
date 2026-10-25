@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="个人笔记">
+<meta name="description" content="读懂哲学第四期讲座笔记：科学与哲学的进步、分歧，以及衡量哲学进步的四种阐释。">
+
+<title>科学进步 vs 哲学进步 – 个人笔记</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/favicon.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-a7952132dd87ce33f437addd0578540c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-dc090d8f6625c822698d9a6ee9cd1ac5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "没有结果",
+    "search-matching-documents-text": "匹配的文档",
+    "search-copy-link-title": "复制搜索链接",
+    "search-hide-matches-text": "隐藏其它匹配结果",
+    "search-more-match-text": "更多匹配结果",
+    "search-more-matches-text": "更多匹配结果",
+    "search-clear-button-title": "清除",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "取消",
+    "search-submit-button-title": "提交",
+    "search-label": "搜索"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script defer="" src="../../assets/directory.js?v=05751f758f0b"></script>
+
+
+<link rel="stylesheet" href="../../styles.css?v=c980a0946e71">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/logo.svg" alt="Ce · easoncyy" class="navbar-logo light-content">
+    <img src="../../assets/logo.svg" alt="Ce · easoncyy" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">~/notes</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="搜索"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="展开或折叠导航栏" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html"> 
+<span class="menu-text"><span class="nav-path">blog/</span><span class="nav-caption">博客</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../problems.html"> 
+<span class="menu-text"><span class="nav-path">problems/</span><span class="nav-caption">每日好题</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../projects.html"> 
+<span class="menu-text"><span class="nav-path">projects/</span><span class="nav-caption">项目</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../log.html"> 
+<span class="menu-text"><span class="nav-path">log/</span><span class="nav-caption">日志</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../links.html"> 
+<span class="menu-text"><span class="nav-path">links/</span><span class="nav-caption">友链</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../library.html"> 
+<span class="menu-text"><span class="nav-path">library/</span><span class="nav-caption">图书馆</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text"><span class="nav-path">about/</span><span class="nav-caption">关于</span></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">本页目录</h2>
+   
+  <ul>
+  <li><a href="#回顾发展进程" id="toc-回顾发展进程" class="nav-link active" data-scroll-target="#回顾发展进程">回顾发展进程</a></li>
+  <li><a href="#两千年来哲学有进步吗" id="toc-两千年来哲学有进步吗" class="nav-link" data-scroll-target="#两千年来哲学有进步吗">两千年来，哲学有进步吗？</a></li>
+  <li><a href="#如何看待科学进步与哲学进步" id="toc-如何看待科学进步与哲学进步" class="nav-link" data-scroll-target="#如何看待科学进步与哲学进步">如何看待科学进步与哲学进步</a>
+  <ul class="collapse">
+  <li><a href="#科学进步的朴素观点" id="toc-科学进步的朴素观点" class="nav-link" data-scroll-target="#科学进步的朴素观点">科学进步的朴素观点</a></li>
+  <li><a href="#科学家和哲学家如何解释科学进步" id="toc-科学家和哲学家如何解释科学进步" class="nav-link" data-scroll-target="#科学家和哲学家如何解释科学进步">科学家和哲学家如何解释科学进步</a></li>
+  <li><a href="#科学里也有分歧与固执" id="toc-科学里也有分歧与固执" class="nav-link" data-scroll-target="#科学里也有分歧与固执">科学里也有分歧与固执</a></li>
+  </ul></li>
+  <li><a href="#哲学有进步吗" id="toc-哲学有进步吗" class="nav-link" data-scroll-target="#哲学有进步吗">哲学有进步吗？</a>
+  <ul class="collapse">
+  <li><a href="#悲观者的证据哲学家缺少共识" id="toc-悲观者的证据哲学家缺少共识" class="nav-link" data-scroll-target="#悲观者的证据哲学家缺少共识">悲观者的证据：哲学家缺少共识</a></li>
+  <li><a href="#一个例子什么是知识" id="toc-一个例子什么是知识" class="nav-link" data-scroll-target="#一个例子什么是知识">一个例子：什么是“知识”？</a></li>
+  <li><a href="#悲观论的两条论证" id="toc-悲观论的两条论证" class="nav-link" data-scroll-target="#悲观论的两条论证">悲观论的两条论证</a></li>
+  <li><a href="#乐观主义者的回应" id="toc-乐观主义者的回应" class="nav-link" data-scroll-target="#乐观主义者的回应">乐观主义者的回应</a></li>
+  <li><a href="#争论仍在继续" id="toc-争论仍在继续" class="nav-link" data-scroll-target="#争论仍在继续">争论仍在继续</a></li>
+  </ul></li>
+  <li><a href="#为什么要先问什么算哲学进步" id="toc-为什么要先问什么算哲学进步" class="nav-link" data-scroll-target="#为什么要先问什么算哲学进步">为什么要先问：什么算哲学进步？</a></li>
+  <li><a href="#阐释1逼真度" id="toc-阐释1逼真度" class="nav-link" data-scroll-target="#阐释1逼真度">阐释1：逼真度</a></li>
+  <li><a href="#阐释2解决问题" id="toc-阐释2解决问题" class="nav-link" data-scroll-target="#阐释2解决问题">阐释2：解决问题</a></li>
+  <li><a href="#阐释3促成式理解说" id="toc-阐释3促成式理解说" class="nav-link" data-scroll-target="#阐释3促成式理解说">阐释3：促成式理解说</a></li>
+  <li><a href="#阐释4基于平衡的多元论" id="toc-阐释4基于平衡的多元论" class="nav-link" data-scroll-target="#阐释4基于平衡的多元论">阐释4：基于平衡的多元论</a>
+  <ul class="collapse">
+  <li><a href="#基础条件平衡" id="toc-基础条件平衡" class="nav-link" data-scroll-target="#基础条件平衡">基础条件：平衡</a></li>
+  <li><a href="#附加维度进步的程度" id="toc-附加维度进步的程度" class="nav-link" data-scroll-target="#附加维度进步的程度">附加维度：进步的程度</a></li>
+  <li><a href="#为什么以平衡作为基础条件" id="toc-为什么以平衡作为基础条件" class="nav-link" data-scroll-target="#为什么以平衡作为基础条件">为什么以平衡作为基础条件？</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">科学进步 vs 哲学进步</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">讲座笔记</div>
+    <div class="quarto-category">读懂哲学</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    读懂哲学第四期讲座笔记：科学与哲学的进步、分歧，以及衡量哲学进步的四种阐释。
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">作者</div>
+    <div class="quarto-title-meta-contents">
+             <p>个人笔记 </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">发布于</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2026年10月23日</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<blockquote class="blockquote">
+<p>2026 年 10 月 23 日 14:00–15:00 · 读懂哲学读书讲座第四期<br>
+主讲：高洁（浙江大学哲学学院）</p>
+</blockquote>
+<section id="回顾发展进程" class="level2">
+<h2 class="anchored" data-anchor-id="回顾发展进程">回顾发展进程</h2>
+<p>科学不断取得引人注目的成就：新现象被发现，预测更精确，技术应用改变生活。相比之下，哲学似乎仍在追问一些古老的问题：</p>
+<ul>
+<li><strong>心与身是什么关系？</strong> 心理状态能否完全还原为物理状态？</li>
+<li><strong>我们有自由意志吗？</strong> 如果行为有原因，人还能作出自由选择、承担责任吗？</li>
+<li><strong>道德的根本原则是什么？</strong> 怎样判断一个行为正当，一种生活值得过？</li>
+</ul>
+<p>笛卡尔的身心二元论是身心问题的重要历史背景；“心理状态能否完全还原为物理状态”成为后世哲学家争论点。</p>
+<p>哲学家持续研究这些问题，却少有一致答案。这形成了本讲的起点：<strong>问题一直在，争论也一直在，哲学究竟积累了什么？</strong></p>
+<p><strong>补注：</strong> 这是一种引出问题的对比。科学也有长期争论，哲学也出现过新问题、方法和工具；不能仅凭研究主题的名称相似，就认定研究对象和论证毫无变化。</p>
+</section>
+<section id="两千年来哲学有进步吗" class="level2">
+<h2 class="anchored" data-anchor-id="两千年来哲学有进步吗">两千年来，哲学有进步吗？</h2>
+<p>这里其实有两个问题：</p>
+<ol type="1">
+<li><strong>什么算进步？</strong> 先提出衡量标准。</li>
+<li><strong>实际进步了多少？</strong> 再用标准考察具体研究。</li>
+</ol>
+<p>如果有人把进步理解为“共同获得真理”，另一个人把它理解为“形成更清楚的问题”，二者对哲学的评价可能不同，甚至还没有在讨论同一件事。</p>
+</section>
+<section id="如何看待科学进步与哲学进步" class="level2">
+<h2 class="anchored" data-anchor-id="如何看待科学进步与哲学进步">如何看待科学进步与哲学进步</h2>
+<section id="科学进步的朴素观点" class="level3">
+<h3 class="anchored" data-anchor-id="科学进步的朴素观点">科学进步的朴素观点</h3>
+<blockquote class="blockquote">
+<p>进步＝提出并接受更多真的理论。</p>
+</blockquote>
+<p>这个观点把进步与真理联系起来，但“整个理论完全为真”的门槛可能过高：历史上有些后来被修正的理论，仍带来了明显的认识进展。</p>
+<p><strong>例子：汤姆孙原子模型 → 玻尔原子模型。</strong></p>
+<p>玻尔模型也不是现代物理学对原子的最终描述，但它能够解释氢原子的某些光谱规律。由此可问：一个理论即使并非完全正确，是否仍能比原先的理论更有进步？</p>
+<p>关键在于：<strong>“仍然有错”与“没有进步”并不等价。</strong> 但新理论也不会仅因出现得晚，就自动比旧理论进步。</p>
+</section>
+<section id="科学家和哲学家如何解释科学进步" class="level3">
+<h3 class="anchored" data-anchor-id="科学家和哲学家如何解释科学进步">科学家和哲学家如何解释科学进步</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>解释方向</th>
+<th>进步体现在哪里？</th>
+<th>需要追问</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>逼真度</strong></td>
+<td>理论更接近完整的真相</td>
+<td>怎样比较两个理论离真相的距离？</td>
+</tr>
+<tr class="even">
+<td><strong>解决问题</strong></td>
+<td>重要问题得到解决，未解决的困难减少</td>
+<td>新理论解决旧问题时，是否也制造了新问题？</td>
+</tr>
+<tr class="odd">
+<td><strong>知识</strong></td>
+<td>获得并积累更多知识</td>
+<td>怎样区分知识与碰巧正确、依据不足的信念？</td>
+</tr>
+<tr class="even">
+<td><strong>理解</strong></td>
+<td>更能把握现象之间的依赖关系，说明为什么如此</td>
+<td>预测准确与真正理解是否总是一回事？</td>
+</tr>
+</tbody>
+</table>
+<p>课堂将知识入门地概括为“有依据的真信念”。不过，后面的盖梯尔问题恰好说明，这个定义并不充分；知识说本身也不必采用这一具体分析。</p>
+<p>这四种解释不是简单的四个同义词。一个模型可能预测得很准，却没有提供同等程度的解释；一项研究也可能澄清了一个问题，却尚未得到被证成的真答案。</p>
+</section>
+<section id="科学里也有分歧与固执" class="level3">
+<h3 class="anchored" data-anchor-id="科学里也有分歧与固执">科学里也有分歧与固执</h3>
+<p>普朗克在《科学自传》中的著名说法：</p>
+<blockquote class="blockquote">
+<p>“新的科学真理不是靠说服对手让他们看到光明而获胜，而是因为对手终将逝去，熟悉新理论的新一代成长起来。”</p>
+</blockquote>
+<p>这提醒我们关注科学共同体中的代际、教育与信念惯性。它不是“所有科学争论都只能等对手去世”的普遍规律。</p>
+<p>课堂提到 Santana（2021）：科学家的坚持可能保住不同研究路线，避免所有人过早集中到同一条路上。</p>
+<p><strong>文献补注：</strong> Carlos Santana 的 <em>Let’s not agree to disagree: the role of strategic disagreement in science</em>，讨论的正是分歧、多样性与科学劳动分工。他也考察能否以代价更低的方式保留多样性；有益的坚持仍需包含改变想法的可能，而不是一概拒绝证据。<a href="https://doi.org/10.1007/s11229-019-02202-z">原论文</a></p>
+<p><strong>由科学转向哲学：</strong> 分歧的存在本身，未必足以证明研究失败；还要问它在研究中发挥了什么作用，以及有没有形成可辨认的成果。</p>
+</section>
+</section>
+<section id="哲学有进步吗" class="level2">
+<h2 class="anchored" data-anchor-id="哲学有进步吗">哲学有进步吗？</h2>
+<section id="悲观者的证据哲学家缺少共识" class="level3">
+<h3 class="anchored" data-anchor-id="悲观者的证据哲学家缺少共识">悲观者的证据：哲学家缺少共识</h3>
+<p>援引2020年 PhilPapers 调查：</p>
+<ul>
+<li>参与者：<strong>1785位英语世界专业哲学家</strong>。</li>
+<li>调查共涉及100个哲学问题，其中40个是主要问题。</li>
+<li><strong>课堂统计：40个主要问题中，33个问题的主流观点支持率不到60%。</strong></li>
+</ul>
+<p><strong>统计口径补注：</strong> 人数、总题数与主要题数可由调查资料核对；“33/40”暂按课堂记录保留，尚未逐项复算。调查区分“接受或倾向于接受”、可兼选的支持率与排他支持率，引用百分比时应说明口径。它也不能直接代表所有语言、所有哲学传统中的研究者。<a href="https://survey2020.philpeople.org/">调查主页</a>与<a href="https://survey2020.philpeople.org/survey/results/all">结果说明</a></p>
+<p>悲观者据此追问：经过长期研究，专家为什么还在基本问题上分歧？如果连专家都无法达成一致，哲学研究的方法可靠吗？</p>
+<p>不过，<strong>缺少共识 → 没有知识 → 没有进步</strong>并不是无需论证的推理。每一个箭头都依赖进一步的前提。</p>
+</section>
+<section id="一个例子什么是知识" class="level3">
+<h3 class="anchored" data-anchor-id="一个例子什么是知识">一个例子：什么是“知识”？</h3>
+<p>一种经典分析是 <strong>JTB</strong>：</p>
+<ul>
+<li><strong>J — Justified：</strong> 有依据／得到证成。</li>
+<li><strong>T — True：</strong> 所相信的内容为真。</li>
+<li><strong>B — Belief：</strong> 主体确实相信它。</li>
+</ul>
+<p>1963年，盖梯尔在《有证成的真信念是知识吗？》中提出反例，质疑这三项条件足以构成知识。<a href="https://staticweb.hum.uu.nl/susanne.k.langer/gettier.html">原论文</a></p>
+<p><strong>补充例子：盖梯尔的“工作与十枚硬币”。</strong></p>
+<p>史密斯有很强的证据相信琼斯会得到工作，也数过琼斯口袋里的十枚硬币，于是推出：“将得到工作的人，口袋里有十枚硬币。”</p>
+<p>结果，得到工作的其实是史密斯；他不知道，自己口袋里也恰好有十枚硬币。这个结论是真的，他相信它，也有推理依据，却仍像是碰巧说对，而非真正知道。</p>
+<p>此后出现了因果论、可靠主义等不同研究方向。它们继续检验：信念与事实之间需要怎样的联系，才能排除这种认识上的运气？</p>
+<p>同一段研究史可被作出不同评价：</p>
+<ul>
+<li><strong>悲观的读法：</strong> 争论这么久，仍没有统一的知识定义。</li>
+<li><strong>乐观的读法：</strong> 我们识别出了旧分析的问题，提出了新的区分、反例与解释；“尚未取得最终共识”未必意味着原地踏步。</li>
+</ul>
+</section>
+<section id="悲观论的两条论证" class="level3">
+<h3 class="anchored" data-anchor-id="悲观论的两条论证">悲观论的两条论证</h3>
+<p><strong>一、分歧论证</strong></p>
+<ol type="1">
+<li>对方与你能力相当，也充分掌握相关信息，属于认识上的同行。</li>
+<li>这样的同行仍不同意你的结论。</li>
+<li>因而，你需要重新评价确信自己正确的理由。</li>
+<li>若这种情形在哲学中长期、普遍存在，就可能威胁哲学知识的获得。</li>
+</ol>
+<p>这里尤其要区分“有理由降低确信程度”与“完全没有理由相信自己的观点”。从同行分歧推出普遍怀疑，还需要说明怎样认定同行，以及分歧究竟削弱多少证成。</p>
+<p><strong>二、方法质疑</strong></p>
+<p>简洁、优雅、统一性等“理论美德”，常被用来选择和发展理论。但是：</p>
+<blockquote class="blockquote">
+<p>一个理论值得研究，是否就说明它值得被相信为真？</p>
+</blockquote>
+<p>前者关乎研究取舍，后者关乎信念的根据。如果不能说明这些美德为何指向真理，仅凭“更漂亮”就接受理论，依据可能不足。</p>
+<p><strong>两条论证的共同预设：</strong> 在本讲的重构中，它们都把获得知识当作哲学的重要目标。若进步还有其他形式，知识难以获得并不自动取消所有进步。</p>
+</section>
+<section id="乐观主义者的回应" class="level3">
+<h3 class="anchored" data-anchor-id="乐观主义者的回应">乐观主义者的回应</h3>
+<p><strong>适度乐观主义：问题变了——Stoljar。</strong></p>
+<p>今天争论的可能是古老问题的后继问题。旧问题得到处理以后，相关研究会继续提出新问题，所以“仍有人讨论身心关系”不等于每一代人都在重复完全相同的论证。</p>
+<p><strong>补充理解：</strong> 应具体比较问题的表述、预设和可用工具，不能只看题目相同；当然，问题变得不同本身也不足以证明它变得更好。Stoljar 的相关著作是 <em>Philosophical Progress: In Defence of a Reasonable Optimism</em>（2017）。<a href="https://academic.oup.com/book/8055">著作资料</a></p>
+<p><strong>超级乐观主义：草堆里的金币——Cappelen。</strong></p>
+<p>课堂用寻金比喻说明：只要有人找到了金币，就有一种意义可以说“我们找到了”；不必先让所有搜寻者一致承认。</p>
+<p>对应到哲学：正确答案或知识的获得，与整个共同体形成共识，并不是同一个条件。分歧未必能直接取消已经取得的成果。</p>
+<p><strong>仍需追问：</strong> 如果大家分不清谁找到的是真金币，这种成果能否被辨认、分享并用于后续研究？个人成就与共同体可使用的成就，是否需要区分？<a href="https://hermancappelen.net/docs/DisagreementinPhilosophyCambridge.pdf">Cappelen，2017，相关原文</a></p>
+</section>
+<section id="争论仍在继续" class="level3">
+<h3 class="anchored" data-anchor-id="争论仍在继续">争论仍在继续</h3>
+<p>PhilPapers 2020调查也询问哲学进步本身。它既能展示具体问题上的分歧，也能让我们比较哲学家怎样评价自己的学科。</p>
+<p>但调查主要告诉我们<strong>人们持有什么观点</strong>；它不会单独裁定哪个观点正确，也不会替我们决定什么算进步。</p>
+</section>
+</section>
+<section id="为什么要先问什么算哲学进步" class="level2">
+<h2 class="anchored" data-anchor-id="为什么要先问什么算哲学进步">为什么要先问：什么算哲学进步？</h2>
+<ul>
+<li><strong>评估过去：</strong> 哲学到底进步了多少？哪些成果可以算进去？</li>
+<li><strong>评估价值：</strong> 一项研究是否值得投入时间、精力与资源？</li>
+<li><strong>选择方法：</strong> 哪种方法更可能带来我们希望获得的成果？</li>
+</ul>
+<p>先明确目标，才有依据比较研究方法与成果。本讲接下来依次讨论四种阐释。</p>
+</section>
+<section id="阐释1逼真度" class="level2">
+<h2 class="anchored" data-anchor-id="阐释1逼真度">阐释1：逼真度</h2>
+<p><strong>理论越接近完整真相，进步的程度越大。</strong></p>
+<p>它允许并非完全正确的理论仍然构成进步。重点是理论与真相的关系，而不一定是有多少人接受它，或接受者是否已经具备充分证成。</p>
+<p><strong>这怎样改变对分歧的理解？</strong></p>
+<p>如果某个理论确实更接近真相，即使同行仍不同意，它也可能已经取得进步。在这个标准下，分歧不是对进步的直接反驳。</p>
+<p><strong>课堂评价：</strong> 这给乐观主义留下较大空间。</p>
+<p><strong>补注：</strong>“不要求证成”是说证成未必构成进步本身的必要条件；我们要判断某个理论更逼真，仍需要比较依据。逼真度标准也不在逻辑上保证哲学已经进步：还要证明理论实际上更接近真相。困难正是，尚无完整真相可作对照时，怎样衡量接近程度？</p>
+</section>
+<section id="阐释2解决问题" class="level2">
+<h2 class="anchored" data-anchor-id="阐释2解决问题">阐释2：解决问题</h2>
+<p><strong>重要的哲学问题被解决，就是进步。</strong></p>
+<p>课堂借 Stoljar 的讨论，区分两类问题：</p>
+<ul>
+<li><strong>边界问题：</strong> 某类事实是否存在，不同类别的事实之间有什么关系。<br>
+补充例子：心理事实与物理事实是什么关系？价值事实与自然事实怎样联系？</li>
+<li><strong>构成问题：</strong> 某一类事实由什么构成。<br>
+补充例子：一个人知道某件事，需要满足哪些条件？知识是否可由信念、真和证成来分析？</li>
+</ul>
+<p><strong>这一解释面临的问题：</strong></p>
+<ol type="1">
+<li>什么算重要问题？由谁判断重要性？</li>
+<li>什么算解决？正确回答、获得知识、达成共识，还是排除一个错误预设？</li>
+<li>形成新工具、框架和区分，却没有直接解决一个问题，算不算进步？</li>
+</ol>
+</section>
+<section id="阐释3促成式理解说" class="level2">
+<h2 class="anchored" data-anchor-id="阐释3促成式理解说">阐释3：促成式理解说</h2>
+<p><strong>进步＝让人有机会增进理解。</strong></p>
+<p>Dellsén、Firing、Lawler 与 Norton（2024）的 <em>What is philosophical progress?</em> 提出 <strong>Enabling Noeticism</strong>，本讲记作“促成式理解说”。其中，理解涉及更准确、全面地把握现象之间的依赖关系。<a href="https://doi.org/10.1111/phpr.13067">原论文</a></p>
+<p>课堂可简记为：</p>
+<blockquote class="blockquote">
+<p>哲学研究形成成果 → 成果公开可得 → 人们被置于能够增进理解的位置。</p>
+</blockquote>
+<p>这里强调的是“能够增进理解”的机会，而不是要求每个人实际上已经阅读、接受研究成果；也不等于只要发表文章，就自动促成理解。</p>
+<p><strong>课堂质疑：</strong> 当专家公开对立，外行又没有现实可行的方法判断双方，外行是否真的被置于能增进理解的位置？</p>
+<p>这一质疑尤其针对专家分布相近、外行难以裁决的分歧。它不意味着所有分歧都使理解不可能，也不等于论文主张公开传播就足够。</p>
+</section>
+<section id="阐释4基于平衡的多元论" class="level2">
+<h2 class="anchored" data-anchor-id="阐释4基于平衡的多元论">阐释4：基于平衡的多元论</h2>
+<p><strong>基础条件：形成平衡；附加维度：衡量进步的程度。</strong></p>
+<p>课堂的核心表述：</p>
+<blockquote class="blockquote">
+<p>哲学进步在于出现新的、自洽的理论，并与一套合理的指导性假设和方法原则相协调。</p>
+</blockquote>
+<p>这里的“平衡”涉及理论、假设和方法之间的协调，不是各方各让一步、折中出一个大家都满意的答案。它也不只是检查一句话是否前后矛盾，而要考察理论能否回应相关质疑。</p>
+<section id="基础条件平衡" class="level3">
+<h3 class="anchored" data-anchor-id="基础条件平衡">基础条件：平衡</h3>
+<ul>
+<li>理论内部自洽。</li>
+<li>与合理的指导性假设相协调。</li>
+<li>与所使用的方法原则相协调。</li>
+<li>面对反例和批评时，能够接受检验、修正与辩护。</li>
+</ul>
+<p>不同理论可能分别依托不同的合理假设形成平衡。因此，不必先要求全体哲学家接受同一个最终理论，才能承认某种成果。</p>
+</section>
+<section id="附加维度进步的程度" class="level3">
+<h3 class="anchored" data-anchor-id="附加维度进步的程度">附加维度：进步的程度</h3>
+<p><strong>任何一个附加维度，单独都不是所有进步的必要条件。</strong></p>
+<p>文献补充：高洁的相关论文讨论把逼真度、解决问题、促成理解等解释中的成分纳入平衡框架，以比较进步的程度。这里保留为补充提示，具体维度和权重仍以讲座课件或论文完整论证为准。<a href="https://philarchive.org/rec/GAOWIP">高洁，相关论文资料</a></p>
+<p>这一区分使我们既能问“有没有形成一种站得住的理论”，也能继续问“它在哪些方面比已有理论做得更多、更好”。</p>
+</section>
+<section id="为什么以平衡作为基础条件" class="level3">
+<h3 class="anchored" data-anchor-id="为什么以平衡作为基础条件">为什么以平衡作为基础条件？</h3>
+<p>有四个理由：</p>
+<ol type="1">
+<li><strong>较容易取得共识。</strong> 即使不同意结论，也可能共同要求理论自洽、回应质疑。</li>
+<li><strong>是其他标准的基础。</strong> 课堂认为，讨论更高层次的成果，需要先有可理解、可检验的理论立场。</li>
+<li><strong>较容易检验。</strong> 相较于直接比较“离完整真相有多远”，检查理论与其假设、方法是否协调，更有操作空间。</li>
+<li><strong>本身就是成就。</strong> 提出经得起讨论的新立场，能够扩展我们可理解、可比较的理论空间。</li>
+</ol>
+<p><strong>补注：</strong> 这是支持平衡框架的论证，并非已经确立的普遍共识。“自洽”也不自动等于“真”；合理性与方法原则仍需要辩护。</p>
+<p>可以接着追问：如果两个相互冲突的理论都达到平衡，它们各自贡献了什么？怎样比较它们的价值，又怎样避免只因体系内部协调就把任何理论都算作进步？</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<section id="comments" class="comments-section" aria-labelledby="comments-heading">
+  <h2 id="comments-heading">评论</h2>
+  <p id="comments-status">评论暂未开放。</p>
+  <div class="giscus"></div>
+</section>
+<script src="../../assets/comments-config.js?v=0740342d2f79"></script>
+<script src="../../assets/comments.js?v=efc269bc7855"></script>
+
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "已复制");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "已复制");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/easoncyy\.github\.io");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p><a href="../../posts/20261023-scientific-and-philosophical-progress/index.html">~/notes</a> · 记录与探索</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p><a class="footer-repository" href="https://github.com/easoncyy/easoncyy.github.io" target="_blank" rel="noopener noreferrer" aria-label="查看本站 GitHub 仓库"><i class="bi bi-github" aria-hidden="true"></i><span>source/</span></a><span class="footer-builder">Built with Quarto</span></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
