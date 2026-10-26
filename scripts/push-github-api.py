@@ -2,6 +2,7 @@
 import base64
 import re
 import subprocess
+import time
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from github_api import api
@@ -53,7 +54,17 @@ def main():
                     raise RuntimeError('Uploaded blob hash differs from local object.')
                 known.add(blob_sha)
             entries.append({'path': name.decode('utf-8'), 'mode': mode, 'type': kind, 'sha': blob_sha})
-        tree = api('POST', f'{REPO}/git/trees', {'tree': entries})
+        # GitHub can temporarily reject a tree immediately after accepting its blobs.
+        # Retry only this idempotent object creation; retain hash checks before refs change.
+        for attempt in range(3):
+            try:
+                tree = api('POST', f'{REPO}/git/trees', {'tree': entries})
+                break
+            except RuntimeError as error:
+                if 'HTTP 422' not in str(error) or attempt == 2:
+                    raise
+                print('GitHub tree validation returned 422; retrying shortly.', flush=True)
+                time.sleep(2 ** (attempt + 1))
         header, message = git('cat-file', 'commit', sha).decode('utf-8').split('\n\n', 1)
         payload = {'parents': [], 'message': message}
         for line in header.splitlines():

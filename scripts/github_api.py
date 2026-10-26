@@ -34,7 +34,15 @@ def api(method, endpoint, payload=None, allow_missing=False):
             if error.code == 401:
                 raise RuntimeError('GitHub rejected the active credential (HTTP 401). Run gh auth login again.') from None
             if error.code not in (429, 500, 502, 503, 504):
-                raise RuntimeError(f'GitHub API {method} {endpoint}: HTTP {error.code}. Check repository permissions and API limits.') from None
+                try:
+                    response_error = json.loads(error.read().decode('utf-8'))
+                    reason = str(response_error.get('message', ''))
+                    errors = response_error.get('errors', [])
+                    if errors:
+                        reason += ' ' + json.dumps(errors, ensure_ascii=False)
+                except (ValueError, UnicodeError):
+                    reason = 'No structured error detail returned.'
+                raise RuntimeError(f'GitHub API {method} {endpoint}: HTTP {error.code}. {reason[:1200]}') from None
             detail = f'HTTP {error.code}'
         except (urllib.error.URLError, TimeoutError, OSError) as error:
             detail = str(error)
