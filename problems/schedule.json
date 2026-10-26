@@ -46,5 +46,9 @@
     "strang-2-4-permutation-powers",
     "strang-2-4-symmetric-decomposition",
     "strang-2-4-orthogonal-columns"
+  ],
+  "2026-10-26": [
+    "demidovich-236-exponential-periodic-factor",
+    "grokking-algorithms-hash-distribution"
   ]
 }

@@ -1,0 +1,17 @@
+---
+title: "不想说话了？"
+date: "2026-10-26T23:20:08+08:00"
+entry-signature: "72abe1a6860005b073fe5cacb24d17667a279e136b11e4c111eda8612932fb21"
+---
+
+在这里写下你的记录。
+
+::: {.log-photo-grid}
+
+![Dos farm](/assets/log/20261026-232008-entry/photo-01.jpg)
+
+![走廊玻璃让我想起每天走向杭二的教学楼](/assets/log/20261026-232008-entry/photo-02.jpg)
+
+![网球课好晒](/assets/log/20261026-232008-entry/photo-03.jpg)
+
+:::

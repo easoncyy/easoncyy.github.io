@@ -1,3 +1,141 @@
+::: {.problem-day data-date="2026-10-26"}
+
+## 2026-10-26 {.problem-date-heading}
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;函数&quot;], &quot;tags&quot;: [&quot;周期函数&quot;, &quot;函数方程&quot;], &quot;title&quot;: &quot;指数因子与周期函数&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / CALCULUS / 函数</div>
+
+<h3>01. 指数因子与周期函数</h3>
+
+<div class="entry-tags">#周期函数 · #函数方程</div>
+
+```
+
+设函数 $f:\mathbb R\to\mathbb R$ 满足
+
+$$f(x+T)=kf(x),$$
+
+其中 $k,T$ 为正常数。证明：存在正常数 $a$ 及以 $T$ 为周期的函数 $\varphi$，使
+
+$$f(x)=a^x\varphi(x).$$
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+取 $a=k^{1/T}>0$，令
+
+$$\varphi(x)=a^{-x}f(x).$$
+
+由于 $a^T=k$，有
+
+$$\varphi(x+T)=a^{-x-T}f(x+T)
+=a^{-x-T}kf(x)=a^{-x}f(x)=\varphi(x).$$
+
+故 $\varphi$ 以 $T$ 为周期，且 $f(x)=a^x\varphi(x)$。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：《吉米多维奇数学分析习题集》第三章 · 第236题</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;CS&quot;, &quot;ALGORITHMS&quot;, &quot;哈希表&quot;], &quot;tags&quot;: [&quot;哈希函数&quot;, &quot;冲突&quot;], &quot;title&quot;: &quot;哈希函数的分布&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">CS / ALGORITHMS / 哈希表</div>
+
+<h3>02. 哈希函数的分布</h3>
+
+<div class="entry-tags">#哈希函数 · #冲突</div>
+
+```
+
+哈希表长度为 $10$，考虑以下四种字符串哈希函数：
+
+1. 无论输入什么，都返回 $1$。
+2. 返回字符串长度除以 $10$ 的余数。
+3. 按首字符分配位置，首字符相同的字符串映射到同一位置。
+4. 按字母顺序将字符映射到素数：$a\mapsto2,b\mapsto3,c\mapsto5,\ldots$；将字符对应的素数相加，再对 $10$ 取余。例如 `bag` 映射为 $(3+2+17)\bmod10=2$。
+
+忽略字母大小写。对于下面两组键，分别判断哪些函数能够使它们分散存储，并说明发生冲突的情况。
+
+- **5.5** 电话簿中的姓名：`Esther`、`Ben`、`Bob`、`Dan`。
+- **5.6** 电池尺寸：`A`、`AA`、`AAA`、`AAAA`。
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+**5.5：函数 4。**
+
+| 键 | 函数 1 | 函数 2 | 函数 3：首字符 | 函数 4 |
+| --- | --- | --- | --- | --- |
+| Esther | 1 | 6 | e | 0 |
+| Ben | 1 | 3 | b | 7 |
+| Bob | 1 | 3 | b | 3 |
+| Dan | 1 | 3 | d | 2 |
+
+函数 1 将所有键放在同一位置；函数 2 使 `Ben`、`Bob`、`Dan` 冲突；函数 3 使 `Ben`、`Bob` 冲突。函数 4 的计算为
+
+$$\begin{aligned}
+h(\text{Esther})&=(11+67+71+19+11+61)\bmod10=0,\\
+h(\text{Ben})&=(3+11+43)\bmod10=7,\\
+h(\text{Bob})&=(3+47+3)\bmod10=3,\\
+h(\text{Dan})&=(7+2+43)\bmod10=2.
+\end{aligned}$$
+
+四个键落在不同位置。
+
+**5.6：函数 2 和函数 4。**
+
+| 键 | 函数 1 | 函数 2 | 函数 3：首字符 | 函数 4 |
+| --- | --- | --- | --- | --- |
+| A | 1 | 1 | a | 2 |
+| AA | 1 | 2 | a | 4 |
+| AAA | 1 | 3 | a | 6 |
+| AAAA | 1 | 4 | a | 8 |
+
+函数 1 和函数 3 都将四个键放在同一位置；函数 2 和函数 4 在这组键上均无冲突。
+
+这里比较的是给定键集的分布；在这两组输入上无冲突，并不保证对其他输入也无冲突。例如函数 4 不区分字符顺序，`bag` 与 `gab` 必然冲突。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：《算法图解》第5章 · 练习5.5–5.6</p>
+
+```
+
+:::
+
+```{=html}
+
+<details id="discussion-2026-10-26" class="log-comments problem-discussion" data-comment-term="/problems/2026-10-26/" data-comment-date="2026-10-26" data-comment-title="每日好题 · 2026-10-26">
+
+<summary>discussion/ <span>2026-10-26 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
 ::: {.problem-day data-date="2026-10-25"}
 
 ## 2026-10-25 {.problem-date-heading}
@@ -2011,6 +2149,6 @@ $$
 
 ```{=html}
 
-<script id="problem-index" type="application/json">{"builtDate": "2026-10-25", "dates": {"2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
+<script id="problem-index" type="application/json">{"builtDate": "2026-10-26", "dates": {"2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
 
 ```

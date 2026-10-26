@@ -1,0 +1,28 @@
+---
+title: "指数因子与周期函数"
+category-path: ["MATH", "CALCULUS", "函数"]
+tags: ["周期函数", "函数方程"]
+source: "《吉米多维奇数学分析习题集》第三章 · 第236题"
+draft: false
+---
+
+设函数 $f:\mathbb R\to\mathbb R$ 满足
+
+$$f(x+T)=kf(x),$$
+
+其中 $k,T$ 为正常数。证明：存在正常数 $a$ 及以 $T$ 为周期的函数 $\varphi$，使
+
+$$f(x)=a^x\varphi(x).$$
+
+<!-- answer -->
+
+取 $a=k^{1/T}>0$，令
+
+$$\varphi(x)=a^{-x}f(x).$$
+
+由于 $a^T=k$，有
+
+$$\varphi(x+T)=a^{-x-T}f(x+T)
+=a^{-x-T}kf(x)=a^{-x}f(x)=\varphi(x).$$
+
+故 $\varphi$ 以 $T$ 为周期，且 $f(x)=a^x\varphi(x)$。

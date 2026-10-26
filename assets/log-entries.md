@@ -1,5 +1,49 @@
 ::: {.log-stream}
 
+::: {#20261026-232008-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-10-26T23:20:08+08:00">2026-10-26 23:20:08 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title">不想说话了？</p>
+
+```
+
+在这里写下你的记录。
+
+::: {.log-photo-grid}
+
+![Dos farm](/assets/log/20261026-232008-entry/photo-01.jpg)
+
+![走廊玻璃让我想起每天走向杭二的教学楼](/assets/log/20261026-232008-entry/photo-02.jpg)
+
+![网球课好晒](/assets/log/20261026-232008-entry/photo-03.jpg)
+
+:::
+
+```{=html}
+
+<details id="comments-20261026-232008-entry" class="log-comments" data-comment-term="/logs/20261026-232008-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
 ::: {#20261025-234204-entry .log-entry}
 
 ```{=html}
