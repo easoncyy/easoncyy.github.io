@@ -1,0 +1,295 @@
+---
+title: "FIP W07 · 分治"
+description: "减治与分治、二分查找、归并排序、最大子段和、逆序对，以及快速排序与三路分区。"
+date: "2026-10-27"
+category-path: ["AI", "FIP", "学习笔记"]
+categories: ["学习笔记", "分治", "排序"]
+execute: {"enabled": false}
+toc-depth: 3
+---
+
+## 理论课内容
+
+课程材料：26FIP7 分治算法.pdf
+
+### 减治与分治
+
+递归是思考和实现子问题的方式；**减治**与**分治**描述的是子问题怎样产生、怎样得到原问题的答案。
+
+| 方法 | 子问题 | 例子 |
+|---|---|---|
+| 减治 | 只做缩小后的一个问题 | 二分查找比较中点后舍弃另一半 |
+| 分治 | 多个子问题都要做，再处理它们之间的关系 | 归并排序分别排好两半，再合并 |
+
+
+### 递归二分查找
+
+二分查找前提是**列表已排序**。
+
+```python
+def binary_search_rec(lst, target, left=0, right=None):
+    if right is None:
+        right = len(lst) - 1
+    if left > right:
+        return -1
+    mid = left + (right - left) // 2
+    if lst[mid] == target:
+        return mid
+    if lst[mid] < target:
+        return binary_search_rec(lst, target, mid + 1, right)
+    return binary_search_rec(lst, target, left, mid - 1)
+```
+
+e.g. 在`[1,3,5,7,9]`中找`7`：先看下标`2`的`5`，缩到右半区间`[3,4]`；再看下标`3`，返回`3`。每次减半，时间为$O(\log n)$。递归调用后的结果直接返回，所以这是**尾递归**；递归栈为$O(\log n)$。
+
+**不要为了“切一半”反复写列表切片**：`lst[:mid]`会创建并复制新列表，还要重新换算原列表下标；保留原列表、只改边界更直接。若每层切片，全部复制成本可达$O(n)$。
+
+### 归并排序：先分，再合
+
+只排好左半，整表还不一定有序。归并排序先把列表拆到长度至多为`1`，回归时相信左右两半都已排好，再用两个指针合并：
+
+```python
+def merge(left, right):
+    result = []
+    i = j = 0
+    while i < len(left) and j < len(right):
+        if left[i] <= right[j]:
+            result.append(left[i])
+            i += 1
+        else:
+            result.append(right[j])
+            j += 1
+    result.extend(left[i:])
+    result.extend(right[j:])
+    return result
+
+def merge_sort(arr):
+    if len(arr) <= 1:
+        return arr
+    mid = len(arr) // 2
+    left = merge_sort(arr[:mid])
+    right = merge_sort(arr[mid:])
+    return merge(left, right)
+```
+
+`merge([1,3,5],[2,4,6])`依次取`1,2,3,4,5`，左边耗尽后还须追加右边剩余的`[6]`。**漏掉`extend`会丢元素**。相等时用`<=`先取左边，这样相等元素的原有顺序不变，归并是稳定排序。
+
+递归树深度约为$\log_2 n$；每层总共合并$n$个元素，所以时间$O(n\log n)$。结果缓冲需要$O(n)$额外空间；这里的`arr[:mid]`、`arr[mid:]`也会复制。下标区间版可省去分割切片，但合并仍需要缓冲。
+
+#### 自底向上的纯循环版
+
+对于归并这种非线性递归，其转化为循环的方式有一点不一样。
+可以从长度为$1$的有序段开始，两两合并成长度约为$2,4,8,\ldots$的有序段。每轮用上面的`merge`，没有递归调用：
+
+```python
+def merge_sort_iter(arr):
+    result = arr[:]
+    width = 1
+    while width < len(result):
+        merged = []
+        for start in range(0, len(result), 2 * width):
+            left = result[start:start + width]
+            right = result[start + width:start + 2 * width]
+            merged.extend(merge(left, right))
+        result = merged
+        width *= 2
+    return result
+```
+
+两版时间都是$O(n\log n)$；这个循环版仍通过切片和`merged`构造新列表，额外空间为$O(n)$，只是省掉了递归调用栈。
+
+### 最大子串和
+
+连续子串的最大和可能**完全在左边、完全在右边，或跨过中点**。前两类由递归给出；第三类必须在当前层计算：从`mid-1`向左找最大后缀，从`mid`向右找最大前缀，两者相加。
+
+```python
+def max_crossing(arr, lo, mid, hi):
+    total = best_left = arr[mid - 1]
+    for i in range(mid - 2, lo - 1, -1):
+        total += arr[i]
+        best_left = max(best_left, total)
+    total = best_right = arr[mid]
+    for j in range(mid + 1, hi):
+        total += arr[j]
+        best_right = max(best_right, total)
+    return best_left + best_right
+
+def max_subarray(arr, lo=0, hi=None):
+    if hi is None:
+        hi = len(arr)
+    if hi <= lo:
+        raise ValueError("需要非空区间")
+    if hi - lo == 1:
+        return arr[lo]
+    mid = (lo + hi) // 2
+    return max(
+        max_subarray(arr, lo, mid),
+        max_subarray(arr, mid, hi),
+        max_crossing(arr, lo, mid, hi),
+    )
+```
+
+例如`[-2,3,-1,4]`切成`[-2,3] | [-1,4]`，左、右各自最优是$3$和$4$；跨中点为左后缀$3$加右前缀$-1+4=3$，得到$6$。这一写法求**非空**子串，单元素就是Base Case；空列表要另行约定。每层扫描合计$O(n)$，时间$O(n\log n)$。
+
+#### Kadane算法
+
+如果不必用分治，也可以从左到右扫描。到元素$a_i$时，以它结尾的最大子段和要么**从$a_i$重新开始**，要么**接在前一个最优后缀后面**：
+
+$$
+E_i=\max(a_i,E_{i-1}+a_i),\qquad M_i=\max(M_{i-1},E_i)
+$$
+
+其中$E_i$是以$i$结尾的最大子串和，$M_i$是前$i$个位置中出现过的最大值。
+
+```python
+def max_subarray_linear(arr):
+    current = best = arr[0]
+    for i in range(1, len(arr)):
+        current = max(arr[i], current + arr[i])
+        best = max(best, current)
+    return best
+```
+
+对`[-2,3,-1,4]`，`current`依次为$-2,3,2,6$，最终返回$6$。用首元素初始化，而非初始化为$0$，才能正确处理全负数列表。只扫描一次，时间$O(n)$，额外空间$O(1)$。
+
+#### 前缀和思路
+
+设$P_0=0$，$P_j$是前$j$个元素的和。以第$j$个元素结尾的子串和为$P_j-P_i$（$i<j$）；要让它最大，就减去**此前最小**的$P_i$。
+
+```python
+def max_sum(lst):
+    min_prefix = 0
+    prefix = 0
+    best = lst[0]
+    for x in lst:
+        prefix += x
+        best = max(best, prefix - min_prefix)
+        min_prefix = min(min_prefix, prefix)
+    return best
+```
+
+`min_prefix`初值为$P_0=0$，所以子串可以从第一个元素开始。**先用旧的`min_prefix`更新答案，再纳入当前前缀**，才能保证$i<j$、子段非空；如果反过来，当前前缀可以减去自己，得到空子段的和$0$，全负数时就会出错。这与Kadane是同一个$O(n)$问题的两种视角，额外空间都是$O(1)$。
+
+### 逆序对：合并同时计数
+
+若下标$i<j$且$a_i>a_j$，就有一对逆序。递归分别统计左右内部的`c1,c2`；合并时若当前右元素小于左元素，左边**尚未取走的元素**都与它构成逆序，一次增加`len(left)-i`。
+
+```python
+def merge_count(left, right):
+    result = []
+    i = j = count = 0
+    while i < len(left) and j < len(right):
+        if left[i] <= right[j]:
+            result.append(left[i])
+            i += 1
+        else:
+            result.append(right[j])
+            count += len(left) - i
+            j += 1
+    result.extend(left[i:])
+    result.extend(right[j:])
+    return result, count
+
+def inversions(arr):
+    if len(arr) <= 1:
+        return arr, 0
+    mid = len(arr) // 2
+    left, c1 = inversions(arr[:mid])
+    right, c2 = inversions(arr[mid:])
+    merged, c3 = merge_count(left, right)
+    return merged, c1 + c2 + c3
+```
+
+`[3,1,4,2]`有$(3,1)$、$(4,2)$和$(3,2)$，共$3$对。相等时取左边，不计逆序；只返回跨半的$c_3$则会漏掉左右内部的$c_1+c_2$。时间仍是$O(n\log n)$。`return result, count`实际返回元组，调用处可拆成两个变量。
+
+### `key`、`lambda`与高阶函数
+
+`key`接收一个函数，先把每个元素映射成比较用的值；它不改变结果里保存的原元素。
+
+```python
+max([-7, 4, 2], key=abs)            # -7，按绝对值比较
+sorted(nodes, key=lambda x: x.freq) # 按 freq 排序
+```
+
+已有函数可直接传函数名；只用一次的短规则可用`lambda`；规则复杂就先用`def`定义。把函数作为参数传入，属于高阶函数的用法。
+
+### 杨辉三角：两个递归调用也未必是分治
+
+W6的`pascal(n)`返回整行；这里的`pascal(n,k)`只求第$n$行第$k$个数。两侧为`1`，中间等于上一行相邻两项之和：
+
+```python
+def pascal(n, k, memo=None):
+    if not 0 <= k <= n:
+        raise ValueError("需要 0 <= k <= n")
+    if memo is None:
+        memo = {}
+    if k == 0 or k == n:
+        return 1
+    key = (n, k)
+    if key not in memo:
+        memo[key] = pascal(n - 1, k - 1, memo) + pascal(n - 1, k, memo)
+    return memo[key]
+```
+
+$\operatorname{pascal}(4,2)=6$。左右分支会重复遇到同一状态，如`pascal(2,1)`，所以用元组`(n,k)`作缓存键。这里不是折半处理两段，而是规模每次减$1$的**重叠子问题**；不能因为有两次递归调用就把它当成归并式分治。
+
+### 递归总结
+
+| 问题 | 缩小方式 | 当前层还要做什么 | 时间 |
+|---|---|---|---|
+| 二分查找 | 只走一半 | 比较中点 | $O(\log n)$ |
+| 归并排序 | 两半都做 | 合并有序列表 | $O(n\log n)$ |
+| 最大子段和 | 两半都做 | 扫描跨中点情况 | $O(n\log n)$ |
+| 逆序对 | 两半都做 | 合并时计跨半逆序 | $O(n\log n)$ |
+| 格子版杨辉三角 | 两个重叠状态，各减`1` | 两值相加、记忆化 | 不是折半分治 |
+
+## 研讨课内容
+
+课程材料：7 分治算法-研讨课.pdf
+
+### 归并与快排：工作在不同阶段
+
+手推`merge([1,3],[2,4])`：依次取`1,2,3`后，左边已空；必须追加剩余的`4`。归并是**先排好两半，再合并**；快排则是**先按基准分区，再递归排两侧**。
+
+| | 归并排序 | 快速排序 |
+|---|---|---|
+| 当前层重点 | 合并两个已排序的列表 | 选`pivot`，把小于它的放左边，其余放右边 |
+| 递归后 | 做`merge` | 直接拼接两侧和基准 |
+| 容易出错 | 忘记追加剩余段 | 基准又进入子问题，或漏掉相等元素 |
+
+### 简洁快速排序
+
+以首元素为`pivot`。`arr[1:]`排除基准；左边取`< pivot`，右边取`>= pivot`，相等元素才不会丢：
+
+```python
+def quick_sort(arr):
+    if len(arr) <= 1:
+        return arr
+    pivot = arr[0]
+    left = [x for x in arr[1:] if x < pivot]
+    right = [x for x in arr[1:] if x >= pivot]
+    return quick_sort(left) + [pivot] + quick_sort(right)
+```
+
+`[3,1,4,1,5,9,2,6]`以`3`为基准时，左边是`[1,1,2]`，右边是`[4,5,9,6]`；右边仍需递归排序。验证结果时除了看是否有序，还要确认元素和出现次数都没有变化。
+
+### 首元素基准的退化与三路分区
+
+对已排序的$[1,2,\ldots,n]$，首元素每次都是最小值：左边为空，右边只少一个元素。于是递归深度从平均的$O(\log n)$变成$O(n)$，时间最坏$O(n^2)$，Python中还可能触及递归深度限制。随机选基准能降低固定坏输入的影响，但不能保证次次平衡。
+
+重复值很多时，把`== pivot`单独放在中间，**相等项无需再递归**：
+
+```python
+def quick_sort_3way(arr):
+    if len(arr) <= 1:
+        return arr
+    pivot = arr[0]
+    less = [x for x in arr if x < pivot]
+    equal = [x for x in arr if x == pivot]
+    greater = [x for x in arr if x > pivot]
+    return quick_sort_3way(less) + equal + quick_sort_3way(greater)
+```
+
+例如`[8,3,5,1,7,2,9,4]`以`5`为基准，分为`[3,1,2,4] | 5 | [8,7,9]`。简洁版快排的列表推导式和拼接会创建新列表；它只是为了把分区思路写清楚，不等同于常见的原地快排。归并时间稳定在$O(n\log n)$；快排平均$O(n\log n)$、最坏$O(n^2)$。
+
+> 检查分治代码，重点看三处：Base Case能否结束；子问题是否真的缩小；当前层有没有漏掉必须处理的部分——归并的剩余段、最大子段和的跨中点情况、快排的相等元素与基准排除。
