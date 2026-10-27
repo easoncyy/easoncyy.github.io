@@ -1,0 +1,424 @@
+---
+title: 2022-2023 学年秋冬《线性代数（甲）》期中归档
+description: 2022-2023 学年期中试卷：题目、详细解析与知识点总结。
+date: '2026-10-27'
+author: easoncyy（整理）
+category-path:
+- MATH
+- LINEAR-ALGEBRA
+- 历年卷
+- 期中
+categories:
+- 历年卷
+- 期中
+- 真题
+execute:
+  enabled: false
+toc-depth: 3
+---
+
+共 8 道题，保留试卷题号和分值。先独立作答，再对照解析与考点索引。
+
+来源：[题目合集](/assets/pdf/exams/linear-algebra-midterm-questions.pdf)、[解析合集](/assets/pdf/exams/linear-algebra-midterm-solutions.pdf)。合集整理者：macanine。
+
+
+
+::: {.download-box}
+[在线阅读练习卷 PDF ↗](/assets/pdf/exams/practice/linear-algebra-midterm-2022-2023-practice.pdf){target="_blank"} · [下载练习卷 PDF ↓](/assets/pdf/exams/practice/linear-algebra-midterm-2022-2023-practice.pdf){download="linear-algebra-midterm-2022-2023-practice.pdf"}
+
+根据归档题目整理的练习版，非原卷扫描件；仅含题目，并留有作答空间。
+:::
+
+## 第一部分：题目 {#questions}
+
+
+
+### 1. {#section-2}
+
+
+计算行列式
+
+$$D_1 = \begin{vmatrix} 2 & 4 & 6 & 8 \\ 4 & 6 & 8 & 2 \\ 6 & 8 & 2 & 4 \\ 8 & 2 & 4 & 6 \end{vmatrix}。$$
+
+
+### 2. {#section-3}
+
+
+已知 $n + 1$ 阶行列式
+
+$$D = \begin{vmatrix} -1 & x_1 & x_2 & \cdots & x_n \\ 1 & 2 & 0 & \cdots & 0 \\ 1 & 0 & 3 & \cdots & 0 \\ \vdots & \vdots & \vdots & & \vdots \\ 1 & 0 & 0 & \cdots & n + 1 \end{vmatrix},$$
+
+$x_1, x_2, \cdots, x_n$ 为任意常数，求
+
+$$4A_1 + 9A_2 + \cdots + (n + 1)^2A_n,$$
+
+其中 $A_1, A_2, \cdots, A_n$ 分别为 $x_1, x_2, \cdots, x_n$ 的代数余子式。
+
+
+### 3. {#section-4}
+
+
+求解线性方程组
+
+$$\begin{cases} \lambda x_1 + x_2 + x_3 + x_4 = 1, \\ x_1 + \lambda x_2 + x_3 + x_4 = \lambda, \\ x_1 + x_2 + \lambda x_3 + x_4 = \lambda^2. \end{cases}$$
+
+
+### 4. {#section-5}
+
+
+用初等行变换将矩阵
+
+$$A = \begin{pmatrix} 1 & 2 & 5 & -1 & -1 \\ 1 & 2 & 3 & 1 & 3 \\ 3 & 6 & 13 & -1 & 1 \\ 5 & 10 & 21 & -1 & 3 \end{pmatrix}$$
+
+化简成行阶梯形矩阵 $B$，使 $B$ 的阶梯头为 1。
+
+
+### 5. {#section-6}
+
+
+设 $r$ 为自然数。
+
+（1）叙述秩的定义；
+
+（2）证明：$r(A) \leq r$ 当且仅当 $A$ 中 $r + 1$ 阶子式（若有）均为 0；
+
+（3）设 $A$ 通过一次行倍加得到 $B$，求证：$r(B) = r(A)$。
+
+
+### 6. {#section-7}
+
+
+设有 $n\ (\geq 2)$ 阶方阵 $A$，$A^{*}$ 为 $A$ 的伴随矩阵，证明：
+
+（1）$r(A^{*}) = \begin{cases} n, & r(A) = n, \\ 1, & r(A) = n - 1, \\ 0, & r(A) < n - 1; \end{cases}$
+
+（2）$(A^{*})^{*} = |A|^{n-2}A$；
+
+（3）若 $r(A) > 0$，则 $(A^{*})^{*} = A$ 当且仅当 $|A|^{n-2} = 1$。
+
+
+### 7. {#section-8}
+
+
+设 $A, C, D$ 均为 $m \times n$ 阶矩阵，$B, D$ 均为 $n \times s$ 阶矩阵，证明：$r(AB - CD) \leq r(A - C) + r(B - D)$。
+
+
+### 8. {#section-9}
+
+
+设 $A$ 为 $2022^{2022}$ 阶方阵，用数学归纳法证明：
+
+$$\forall n \in Z^{+},\ \forall m \in Z^{+},\quad (n + 1)r(A^2) \leq r(A^{n+2}) + mr(A).$$
+
+
+## 第二部分：详细解析 {#solutions}
+
+
+
+### 1. {#section-11}
+
+
+各行的四个数之和都是 $2 + 4 + 6 + 8 = 20$，故把第 2, 3, 4 列统统加到第 1 列，第 1 列的元素全变成 20，提出公因子 20：
+
+$$D_1 = 20\begin{vmatrix} 1 & 4 & 6 & 8 \\ 1 & 6 & 8 & 2 \\ 1 & 8 & 2 & 4 \\ 1 & 2 & 4 & 6 \end{vmatrix}.$$
+
+再用行倍加 $R_i \leftarrow R_i - R_1$（$i = 2, 3, 4$）把第 1 列的后三个元素消成零，并按第 1 列展开：
+
+$$D_1 = 20\begin{vmatrix} 1 & 4 & 6 & 8 \\ 0 & 2 & 2 & -6 \\ 0 & 4 & -4 & -4 \\ 0 & -2 & -2 & -2 \end{vmatrix} = 20\begin{vmatrix} 2 & 2 & -6 \\ 4 & -4 & -4 \\ -2 & -2 & -2 \end{vmatrix}.$$
+
+右边三阶行列式按第一行展开，两个二阶余子式分别是 $\begin{vmatrix} -4 & -4 \\ -2 & -2 \end{vmatrix} = 0$ 与 $\begin{vmatrix} 4 & -4 \\ -2 & -2 \end{vmatrix} = -16$，于是
+
+$$D_1 = 20\left(2 \cdot 0 - 2 \cdot (-16) + (-6) \cdot (-16)\right) = 20 \cdot 128 = 2560.$$
+
+**答案** $D_1 = 2560$。
+
+**考点** 行列式。
+
+**易错点** 交换两行变号；倍乘一行才提取一个因子；余子式须带 $(-1)^{i+j}$。
+
+<span id="answer-1"></span>
+
+### 2. {#section-12}
+
+
+构造新行列式。记 $D'$ 为把 $D$ 的第一行换成 $(0, 2^2, 3^2, \cdots, (n + 1)^2)$（即第 $i + 1$ 列放 $(i + 1)^2$）、其余各行不动所得到的行列式。$D$ 与 $D'$ 只在第一行不同，而代数余子式只依赖于划去该行该列后剩下的子式，所以 $D$ 中 $x_i$ 所在位置（第一行第 $i + 1$ 列）的代数余子式在 $D'$ 中仍然是 $A_i$。把 $D'$ 按第一行展开，第一列的元素是 0，于是
+
+$$D' = 0 \cdot A_0 + 2^2A_1 + 3^2A_2 + \cdots + (n + 1)^2A_n = \sum_{i=1}^{n}(i + 1)^2A_i,$$
+
+（$A_0$ 是第一行第一列元素的代数余子式，它乘 0，不影响结果。）这说明所求的组合恰好就是 $D'$ 的值。
+
+计算 $D'$。$D'$ 的第一列是 $(0, 1, 1, \cdots, 1)^{\mathrm{T}}$，按第一列展开得
+
+$$D' = \sum_{j=2}^{n+1}(-1)^{j+1}M_{j1},$$
+
+$M_{j1}$ 是划去 $D'$ 的第 $j$ 行与第 1 列后余下的 $n$ 阶子式。划去后，原第一行剩下 $(2^2, 3^2, \cdots, (n+1)^2)$，而原来的第 $\ell$ 行（$\ell = 2, \cdots, n + 1$，$\ell \neq j$）只剩下一个非零元：数值为 $\ell$、位于第 $\ell$ 列。把 $(2^2, 3^2, \cdots, (n+1)^2)$ 这一行逐次与相邻行交换、下移到第 $j - 1$ 行（共 $j - 2$ 次交换，代价符号 $(-1)^{j-2}$）。此时前 $j - 2$ 行各只有一个非零元 $2, 3, \cdots, j - 1$，沿它们依次展开后余下的子块为上三角阵，其对角元依次为 $j, j + 1, \cdots, n + 1$，于是
+
+$$M_{j1} = (-1)^{j-2} \cdot j^2 \cdot \prod_{\substack{\ell=2 \\ \ell \neq j}}^{n+1}\ell = (-1)^{j-2}j^2 \cdot \frac{(n + 1)!}{j} = (-1)^{j-2}j\,(n + 1)!,$$
+
+最后一步用了 $\prod_{\ell=2}^{n+1}\ell = (n + 1)!$。代入 $(-1)^{j+1}(-1)^{j-2} = (-1)^{2j-1} = -1$，得
+
+$$D' = -(n + 1)!\sum_{j=2}^{n+1}j = -(n + 1)! \cdot \frac{(n + 1)(n + 2) - 2}{2} = -\frac{n(n + 3)}{2}(n + 1)!.$$
+
+**答案** $4A_1 + 9A_2 + \cdots + (n + 1)^2A_n = -\dfrac{n(n + 3)}{2}(n + 1)!$。
+
+**验算**：取 $n = 2$ 时 $D$ 为三阶行列式，直接算得 $A_1 = -3$，$A_2 = -2$，所求为 $4 \times (-3) + 9 \times (-2) = -30$，与公式 $-\dfrac{2 \times 5}{2} \cdot 3! = -30$ 一致。
+
+**考点** 行列式。
+
+**易错点** 交换两行变号；倍乘一行才提取一个因子；余子式须带 $(-1)^{i+j}$。
+
+<span id="answer-2"></span>
+
+### 3. {#section-13}
+
+
+对增广矩阵作初等行变换：先交换第 1, 3 行，再作行倍加 $R_2 - R_1$ 与 $R_3 - \lambda R_1$，得
+
+$$\begin{pmatrix} 1 & 1 & \lambda & 1 & \Big|\ \lambda^2 \\ 0 & \lambda - 1 & 1 - \lambda & 0 & \Big|\ \lambda - \lambda^2 \\ 0 & 1 - \lambda & 1 - \lambda^2 & 1 - \lambda & \Big|\ 1 - \lambda^3 \end{pmatrix}.$$
+
+先设 $\lambda \neq 1$，此时可把后两行分别除以 $\lambda - 1$ 与 $1 - \lambda$（用 $1 - \lambda^3 = (1 - \lambda)(1 + \lambda + \lambda^2)$），再作 $R_3 - R_2$：
+
+$$\begin{pmatrix} 1 & 1 & \lambda & 1 & \Big|\ \lambda^2 \\ 0 & 1 & -1 & 0 & \Big|\ -\lambda \\ 0 & 0 & \lambda + 2 & 1 & \Big|\ (\lambda + 1)^2 \end{pmatrix}.$$
+
+当 $\lambda \neq -2$ 时系数矩阵的秩为 3，取 $x_4 = t$ 为自由未知量，回代得
+
+$$x_3 = \frac{(\lambda + 1)^2 - t}{\lambda + 2},\quad x_2 = x_3 - \lambda = \frac{1 - t}{\lambda + 2},\quad x_1 = \lambda^2 - x_2 - \lambda x_3 - x_4 = -\frac{\lambda + 1 + t}{\lambda + 2},$$
+
+即通解
+
+$$(x_1, x_2, x_3, x_4)^{\mathrm{T}} = \frac{1}{\lambda + 2}\left(-(\lambda + 1), 1, (\lambda + 1)^2, 0\right)^{\mathrm{T}} + t \cdot \frac{1}{\lambda + 2}\left(-1, -1, -1, \lambda + 2\right)^{\mathrm{T}} \quad (t \in \mathbb{R}).$$
+
+当 $\lambda = -2$ 时第三行变成 $x_4 = (\lambda + 1)^2 = 1$，系数矩阵的秩仍为 3，取 $x_3 = t$，由 $x_2 - x_3 = -\lambda = 2$ 得
+
+$$(x_1, x_2, x_3, x_4)^{\mathrm{T}} = (1, 2, 0, 1)^{\mathrm{T}} + t\,(1, 1, 1, 0)^{\mathrm{T}} \quad (t \in \mathbb{R}).$$
+
+再设 $\lambda = 1$，三个方程都成为 $x_1 + x_2 + x_3 + x_4 = 1$，系数矩阵的秩为 1，解集是一个三维平面：
+
+$$x_1 = 1 - t_1 - t_2 - t_3,\quad x_2 = t_1,\quad x_3 = t_2,\quad x_4 = t_3 \quad (t_1, t_2, t_3 \in \mathbb{R}).$$
+
+**答案** 方程组总有无穷多解：$\lambda \neq 1, -2$ 时通解为 $\left(-(\lambda + 1), 1, (\lambda + 1)^2, 0\right)^{\mathrm{T}}/(\lambda + 2) + t\left(-1, -1, -1, \lambda + 2\right)^{\mathrm{T}}/(\lambda + 2)$；$\lambda = -2$ 时通解为 $(1, 2, 0, 1)^{\mathrm{T}} + t(1, 1, 1, 0)^{\mathrm{T}}$；$\lambda = 1$ 时解集为 $x_1 + x_2 + x_3 + x_4 = 1$。
+
+**考点** 线性方程组。
+
+**易错点** 含参消元在除以参数前先分情形；通解写成特解加齐次通解。
+
+<span id="answer-3"></span>
+
+### 4. {#section-14}
+
+
+把第 2, 3, 4 行分别减去第 1 行的 1, 3, 5 倍：
+
+$$A \to \begin{pmatrix} 1 & 2 & 5 & -1 & -1 \\ 0 & 0 & -2 & 2 & 4 \\ 0 & 0 & -2 & 2 & 4 \\ 0 & 0 & -4 & 4 & 8 \end{pmatrix}.$$
+
+此时第 3 行与第 2 行相同，第 4 行是第 2 行的 2 倍，故再作 $R_3 - R_2$、$R_4 - 2R_2$ 得
+
+$$\to \begin{pmatrix} 1 & 2 & 5 & -1 & -1 \\ 0 & 0 & -2 & 2 & 4 \\ 0 & 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & 0 \end{pmatrix} \to \begin{pmatrix} 1 & 2 & 5 & -1 & -1 \\ 0 & 0 & 1 & -1 & -2 \\ 0 & 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & 0 \end{pmatrix} = B,$$
+
+最后一步是把第 2 行乘以 $-\dfrac{1}{2}$。$B$ 的阶梯头（每行第一个非零元）分别为第 1, 3 列的 1，已是所要求的行阶梯形，且 $r(A) = r(B) = 2$。若继续把第 1 行减去 5 倍的第 2 行，可得行最简形
+
+$$\begin{pmatrix} 1 & 2 & 0 & 4 & 9 \\ 0 & 0 & 1 & -1 & -2 \\ 0 & 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & 0 \end{pmatrix}.$$
+
+**答案** $B = \begin{pmatrix} 1 & 2 & 5 & -1 & -1 \\ 0 & 0 & 1 & -1 & -2 \\ 0 & 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & 0 \end{pmatrix}$（阶梯头在第 1, 3 列，$r(A) = r(B) = 2$）。
+
+**考点** 初等变换。
+
+**易错点** 行、列操作混用时要区分作用侧；同侧变换的先后次序不能随意交换。
+
+<span id="answer-4"></span>
+
+### 5. {#section-15}
+
+
+（1）秩的定义。设 $A$ 是 $m \times n$ 矩阵。如果在 $A$ 中有一个 $r$ 阶子式不为零，而所有 $r + 1$ 阶子式（如果存在的话）全为零，就称 $A$ 的秩为 $r$，记作 $r(A)$；即 $r(A)$ 就是 $A$ 中非零子式的最高阶数。零矩阵没有非零子式，规定 $r(O) = 0$。（由此 $0 \leq r(A) \leq \min\{m, n\}$。）
+
+（2）必要性（$r(A) \leq r \Rightarrow$ 所有 $r + 1$ 阶子式为零）：若 $A$ 有一个非零的 $r + 1$ 阶子式，则 $A$ 中非零子式的最高阶数至少为 $r + 1$，即 $r(A) \geq r + 1$，矛盾。
+
+充分性（所有 $r + 1$ 阶子式为零 $\Rightarrow r(A) \leq r$）：先用一个事实——若非零的 $s$ 阶子式 $D$ 存在，则 $D$ 中必有一行不全为零，把 $D$ 按这一行展开，$D$ 等于该行各元素与其代数余子式乘积之和；既然 $D \neq 0$，至少有一个 $s - 1$ 阶余子式不为零，即 $A$ 中存在非零的 $s - 1$ 阶子式。假若 $r(A) = s > r$，取一个非零的 $s$ 阶子式，反复使用上述事实，便从非零的 $s$ 阶子式依次得到非零的 $s - 1$ 阶、$s - 2$ 阶、$\cdots$、$r + 1$ 阶子式，与“所有 $r + 1$ 阶子式为零”矛盾，故 $r(A) \leq r$。（当 $r + 1 > \min\{m, n\}$ 时 $A$ 没有 $r + 1$ 阶子式，条件空真，而此时 $r(A) \leq \min\{m, n\} \leq r$，结论同样成立。）
+
+（3）设 $B$ 由 $A$ 经一次行倍加得到，即 $B$ 的第 $j$ 行等于 $A$ 的第 $j$ 行加上第 $i$ 行的 $k$ 倍（$i \neq j$），其余各行与 $A$ 的对应行相同。
+
+考察 $B$ 的任一 $s$ 阶子式，设它的行取自 $B$ 的第 $r_1 < \cdots < r_s$ 行。若行标中不含 $j$，该子式就是 $A$ 的同一个 $s$ 阶子式；若含 $j$，则由行列式对行的线性性，该子式的行列式等于 $D_1 + kD_2$，其中 $D_1$ 是把这一行换回 $A$ 的第 $j$ 行所得的行列式，$D_2$ 是把这一行换成 $A$ 的第 $i$ 行所得的行列式：$D_1$ 是 $A$ 的 $s$ 阶子式；$D_2$ 当 $i$ 也在行标中时因两行相同而为 0，否则也是 $A$ 的 $s$ 阶子式。总之，$B$ 的每个 $s$ 阶子式都是 $A$ 的 $s$ 阶子式的线性组合。
+
+取 $s = r(A) + 1$：由（2），$A$ 的 $r(A) + 1$ 阶子式全为零，故 $B$ 的 $r(A) + 1$ 阶子式也全为零，再由（2）得 $r(B) \leq r(A)$。反过来，$A$ 也可由 $B$ 经一次行倍加得到（第 $j$ 行加上第 $i$ 行的 $-k$ 倍），同理 $r(A) \leq r(B)$。故 $r(B) = r(A)$。
+
+**考点** 秩与空间维数。
+
+**易错点** 秩是最大非零子式的阶数；区分零空间、列空间与行空间。
+
+<span id="answer-5"></span>
+
+### 6. {#section-16}
+
+
+（1）分三种情形。若 $r(A) = n$：$A$ 可逆，由 $A^{*} = |A|A^{-1}$ 知 $A^{*}$ 也可逆，故 $r(A^{*}) = n$。若 $r(A) = n - 1$：$A$ 有非零的 $n - 1$ 阶子式，而 $A^{*}$ 的每个元素都是 $A$ 的 $n - 1$ 阶代数余子式，故 $A^{*} \neq O$，$r(A^{*}) \geq 1$。另一方面 $|A| = 0$，由基本等式 $AA^{*} = |A|E$ 得 $AA^{*} = O$，即 $A^{*}$ 的每一列 $X$ 都满足 $AX = \theta$，于是
+
+$$\mathrm{Col}(A^{*}) \subseteq \ker A.$$
+
+由秩－零化度定理（并把秩看作列空间的维数）得 $\dim \ker A = n - r(A) = 1$；又 $r(A^{*}) = \dim \mathrm{Col}(A^{*})$，故 $r(A^{*}) \leq 1$。两端合起来得 $r(A^{*}) = 1$。若 $r(A) < n - 1$：$A$ 的所有 $n - 1$ 阶子式全为零，故 $A^{*} = O$，$r(A^{*}) = 0$。
+
+（2）当 $|A| \neq 0$ 时 $A^{*} = |A|A^{-1}$。对 $A^{*}A = |A|E$ 两边取行列式：$|A^{*}| \cdot |A| = |A|^{n}$，故 $|A^{*}| = |A|^{n-1}$，于是
+
+$$(A^{*})^{*} = |A^{*}|(A^{*})^{-1} = |A|^{n-1} \cdot \frac{A}{|A|} = |A|^{n-2}A.$$
+
+当 $|A| = 0$ 时 $r(A) \leq n - 1$，由（1）知 $r(A^{*}) \leq 1$。若 $n \geq 3$，则 $r(A^{*}) \leq 1 \leq n - 2 < n - 1$，把（1）用于 $n$ 阶矩阵 $A^{*}$ 得 $(A^{*})^{*} = O$；又此时 $n - 2 \geq 1$，$|A|^{n-2} = 0$，故仍成立 $(A^{*})^{*} = |A|^{n-2}A$。若 $n = 2$，规定 $|A|^{0} = 1$，直接验证（$A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$，$A^{*} = \begin{pmatrix} d & -b \\ -c & a \end{pmatrix}$）得 $(A^{*})^{*} = \begin{pmatrix} a & b \\ c & d \end{pmatrix} = A = |A|^{0}A$。故对一切 $n \geq 2$ 有 $(A^{*})^{*} = |A|^{n-2}A$。
+
+（3）由（2），$(A^{*})^{*} = |A|^{n-2}A$，于是
+
+$$(A^{*})^{*} = A \iff |A|^{n-2}A = A \iff \left(|A|^{n-2} - 1\right)A = O.$$
+
+若 $|A|^{n-2} = 1$，显然右边的等式成立，即 $(A^{*})^{*} = A$。反之设 $\left(|A|^{n-2} - 1\right)A = O$：条件 $r(A) > 0$ 等价于 $A \neq O$，取 $A$ 的一个非零元素 $a_{pq}$，比较矩阵等式两边的 $(p, q)$ 元得 $\left(|A|^{n-2} - 1\right)a_{pq} = 0$，故 $|A|^{n-2} = 1$。因此当 $r(A) > 0$ 时 $(A^{*})^{*} = A$ 当且仅当 $|A|^{n-2} = 1$。
+
+**考点** 伴随矩阵、线性方程组、秩与空间维数。
+
+**易错点** 先判断阶数与可逆性，不能把伴随矩阵当作转置。
+
+<span id="answer-6"></span>
+
+### 7. {#section-17}
+
+
+矩阵尺寸须满足：$A,C$ 为 $m\times n$ 矩阵，$B,D$ 为 $n\times s$ 矩阵。
+
+插入中间项 $CB$，可得
+
+$$AB-CD=(A-C)B+C(B-D).$$
+
+由秩的和、积不等式，
+
+$$\begin{aligned}
+r(AB-CD)&\le r((A-C)B)+r(C(B-D))\\
+&\le r(A-C)+r(B-D).
+\end{aligned}$$
+
+其中乘积 $XY$ 的每一列都是 $X$ 的列向量的线性组合，故 $\operatorname{Col}(XY)\subseteq\operatorname{Col}(X)$，从而 $r(XY)\le r(X)$；转置后同理得 $r(XY)\le r(Y)$。
+
+**考点** 秩与空间维数。
+
+**易错点** 秩是最大非零子式的阶数；区分零空间、列空间与行空间。
+
+<span id="answer-7"></span>
+
+### 8. {#section-18}
+
+
+**结论** 对任意正整数 $n,m$ 的命题不成立。取 $A=E_N$，$N=2022^{2022}$，不等式变为 $(n+1)N\le(m+1)N$，在 $m<n$ 时不成立。
+
+正确且更强的结论是
+
+$$\boxed{(n+1)r(A^2)\le r(A^{n+2})+n\,r(A).}$$
+
+它进一步保证题中不等式对所有 $m\ge n$ 成立。下面用归纳法证明。
+
+由 Frobenius 秩不等式，对 $k\ge1$ 有
+
+$$2r(A^{k+1})\le r(A^k)+r(A^{k+2}).$$
+
+因此 $d_k=r(A^k)-r(A^{k+1})$ 随 $k$ 单调不增，特别地
+
+$$r(A^{n+2})+r(A^2)\le r(A^{n+3})+r(A).$$
+
+当 $n=1$ 时，所证不等式正是 $2r(A^2)\le r(A^3)+r(A)$。假设对 $n$ 成立，则
+
+$$\begin{aligned}
+(n+2)r(A^2)&\le r(A^{n+2})+r(A^2)+n\,r(A)\\
+&\le r(A^{n+3})+(n+1)r(A).
+\end{aligned}$$
+
+故结论对 $n+1$ 也成立。最后由 $m\ge n$ 和 $r(A)\ge0$，得 $nr(A)\le mr(A)$，即得题中对应的有效情形。
+
+**考点** 矩阵幂与多项式、秩与空间维数。
+
+**易错点** 二项式展开须保证参与的矩阵可交换；幂零与零矩阵不是同一概念。
+
+<span id="answer-8"></span>
+
+## 第三部分：知识点总结 {#summary}
+
+
+
+### 答案与考点 {#section-20}
+
+
+| 题号 | 答案要点 | 主要考点 |
+| --- | --- | --- |
+| [1](#answer-1) | 行列式计算：$D_1=2560$。 | 行列式 |
+| [2](#answer-2) | 代数余子式的线性组合：$4A_1+\cdots+(n+1)^{2}A_n=-\frac{n(n+3)}{2}(n+1)!$。 | 行列式 |
+| [3](#answer-3) | 含参方程组：$\lambda\neq1,-2$ 时唯一解；$\lambda=-2$ 时有无穷多解（含特解）；$\lambda=1$ 时解为平面 $x_1+x_2+x_3+x_4=1$。 | 线性方程组 |
+| [4](#answer-4) | 初等行变换化行阶梯形：阶梯头在第 1、3 列，$r(A)=r(B)=2$。 | 初等变换 |
+| [5](#answer-5) | 秩的定义与子式刻画（三小问）：$r+1$ 阶子式全为零 $\iff r(A)\le r$；行倍加不改变秩。 | 秩与空间维数 |
+| [6](#answer-6) | 伴随矩阵：(1) $r(A^{*})=n/1/0$ 分情形；(2) $(A^{*})^{*}=\|A\|^{n-2}A$；(3) 由 $a_{pq}\neq0$ 得充要条件。 | 伴随矩阵、线性方程组、秩与空间维数 |
+| [7](#answer-7) | $AB-CD=(A-C)B+C(B-D)$，再用秩不等式。 | 秩与空间维数 |
+| [8](#answer-8) | 任意 $n,m$ 的命题不成立；$m\ge n$ 时成立。 | 矩阵幂与多项式、秩与空间维数 |
+
+
+### 复习要点 {#section-21}
+
+
+- **行列式：**优先用行、列倍加制造零元；三对角型按首行展开建立递推，并核对初值。
+- **线性方程组：**$r(A)<r(A\mid b)$ 时无解；两秩相等时有解，自由参数个数为 $n-r(A)$。
+- **初等变换：**行变换对应左乘初等矩阵，列变换对应右乘初等矩阵，连续操作按实际次序组合。
+- **秩与空间维数：**$r(XY)\le\min\{r(X),r(Y)\}$，$r(X+Y)\le r(X)+r(Y)$；可逆初等变换不改变秩。
+- **伴随矩阵：**$AA^*=A^*A=|A|E$；$|A^*|=|A|^{n-1}$；可逆时 $A^*=|A|A^{-1}$。
+- **矩阵幂与多项式：**由已知的矩阵多项式关系降低幂次；秩一矩阵 $uv^{\mathsf T}$ 满足 $(uv^{\mathsf T})^m=(v^{\mathsf T}u)^{m-1}uv^{\mathsf T}$。
+
+
+### 易错点清单 {#section-22}
+
+
+- 交换两行变号；倍乘一行才提取一个因子；余子式须带 $(-1)^{i+j}$。
+- 含参消元在除以参数前先分情形；通解写成特解加齐次通解。
+- 行、列操作混用时要区分作用侧；同侧变换的先后次序不能随意交换。
+- 秩是最大非零子式的阶数；区分零空间、列空间与行空间。
+- 先判断阶数与可逆性，不能把伴随矩阵当作转置。
+- 二项式展开须保证参与的矩阵可交换；幂零与零矩阵不是同一概念。
+
+---
+
+
+## ⚖️AI 协作与版权声明 {#section-23}
+
+
+
+### AI 协作说明 {#section-24}
+
+
+本文件由整理者提供资料并确定整理要求，使用 OpenAI Codex 辅助完成题目转写、LaTeX 公式录入、解题推导、知识点分析和 Markdown 排版。AI 辅助生成的解析属于学习参考内容，不代表命题教师、原资料作者或学校的官方解答；本声明不表示内容已经过人工逐题审核。使用时请结合教材与课程要求核验，发现问题可提出更正。
+
+
+### 来源与权利归属 {#section-25}
+
+
+原始试卷及参考解析来自本库保存的浙江大学《线性代数（甲）》历年期中题目卷与解析卷 PDF 合集。合集署名整理者为 macanine，项目地址为 [zju-linear-algebra-papers](https://github.com/macanine/zju-linear-algebra-papers)。原题、参考解析及其他第三方材料的权利归各自权利人所有，本文件的整理行为不改变其权利归属。来源标注用于说明出处，不表示已取得原资料的开放许可，也不表示原作者对本文件作出认可。
+
+
+### 开放许可与转载要求 {#section-26}
+
+
+在整理贡献者依法有权许可的范围内，本文件新增的转写编排、补充解析和知识点整理采用 **MIT License**，许可正文如下。该许可不涵盖原题、原始参考解析、截图或其他第三方材料；使用这些材料须遵守其原有许可，或另行取得必要授权。
+
+转载或修改适用 MIT 许可的内容时，应保留以下版权与许可声明。转载包含原题或引用资料的版本时，也请保留资料来源及本节 AI 协作说明；修改者应注明修改内容，避免将补充或修改的结论归于原资料作者。
+
+```text
+MIT License
+
+Copyright (c) 2026 easoncyy
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```

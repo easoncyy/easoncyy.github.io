@@ -1,0 +1,488 @@
+---
+title: 2025-2026 学年秋冬《线性代数（甲）》期中归档
+description: 2025-2026 学年期中试卷：题目、详细解析与知识点总结。
+date: '2026-10-27'
+author: easoncyy（整理）
+category-path:
+- MATH
+- LINEAR-ALGEBRA
+- 历年卷
+- 期中
+categories:
+- 历年卷
+- 期中
+- 真题
+execute:
+  enabled: false
+toc-depth: 3
+---
+
+共 9 道题，保留试卷题号和分值。先独立作答，再对照解析与考点索引。
+
+来源：[题目合集](/assets/pdf/exams/linear-algebra-midterm-questions.pdf)、[解析合集](/assets/pdf/exams/linear-algebra-midterm-solutions.pdf)。合集整理者：macanine。
+
+
+
+::: {.download-box}
+[在线阅读练习卷 PDF ↗](/assets/pdf/exams/practice/linear-algebra-midterm-2025-2026-practice.pdf){target="_blank"} · [下载练习卷 PDF ↓](/assets/pdf/exams/practice/linear-algebra-midterm-2025-2026-practice.pdf){download="linear-algebra-midterm-2025-2026-practice.pdf"}
+
+根据归档题目整理的练习版，非原卷扫描件；仅含题目，并留有作答空间。
+:::
+
+## 第一部分：题目 {#questions}
+
+
+**填空题（85 分）**
+
+
+### 1. {#section-2}
+
+
+已知非齐次线性方程组
+
+$$
+\begin{cases}
+x_1 + x_2 + x_3 + x_4 = -1,\\
+4x_1 + 3x_2 + 5x_3 - x_4 = -1,\\
+px_1 + x_2 + 3x_3 - qx_4 = 1
+\end{cases}
+$$
+
+有解，且通解中有 2 个任意常数，则 $p=$ ______，$q=$ ______，方程组的系数矩阵的秩 $r=$ ______，通解为 ______。
+
+
+### 2. {#section-3}
+
+
+设
+
+$$
+A=\begin{pmatrix}1 & 1 & 1\\ 1 & 0 & 2\\ 4 & 4 & a^2+3\end{pmatrix},\qquad
+B=\begin{pmatrix}1 & 0 & 1\\ 1 & 3 & 3\\ a+3 & 1-a & a^2+3\end{pmatrix}
+$$
+
+则当 $a=$ ______ 时，矩阵 $A$ 和 $B$ 不相抵（或不等价）；当 $a=$ ______ 时，矩阵 $A$ 和 $B$ 的秩都是 2；当矩阵 $A$ 和 $B$ 的秩都是 3 时，$x_1=$ ______，$x_2=$ ______，$x_3=$ ______ 满足 $A\begin{pmatrix}x_1\\ x_2\\ x_3\end{pmatrix}=\begin{pmatrix}1\\ 3\\ a^2+3\end{pmatrix}$。
+
+
+### 3. {#section-4}
+
+
+若 $A_{11}=1$，$A_{21}=1$，$A_{31}=1$，$A_{41}=1$ 是行列式
+
+$$
+D=\begin{vmatrix}1 & s & t & u\\ 1 & v & w & x\\ 1 & y & z & j\\ 1 & k & h & i\end{vmatrix}
+$$
+
+的第一列相应元素的代数余子式，则 $D=$ ______。
+
+
+### 4. {#section-5}
+
+
+设 $A_{11}=-8$，$A_{12}=0$，$A_{13}=4$，$A_{14}=-4$ 是行列式
+
+$$
+D=\begin{vmatrix}a & b & c & d\\ x & -1 & 0 & z+1\\ 1 & -2 & x+3 & 0\\ -2 & x+1 & 0 & z+3\end{vmatrix}
+$$
+
+的第一行相应元素的代数余子式，则 $x=$ ______，$z=$ ______。
+
+
+### 5. {#section-6}
+
+
+设
+
+$$
+A^{*}=\begin{pmatrix}1 & 0 & 2 & 0\\ 0 & 1 & 2 & 5\\ 0 & 0 & 1 & 0\\ 0 & 0 & 0 & x\end{pmatrix}
+$$
+
+是矩阵 $A$ 的伴随矩阵，则当 $x$ ______ 时，矩阵 $A$ 可逆，且 $|A|=$ ______。
+
+
+### 6. {#section-7}
+
+
+设
+
+$$
+A=\begin{pmatrix}a_{11} & a_{12} & a_{13}\\ a_{21} & a_{22} & a_{23}\\ a_{31} & a_{32} & a_{33}\end{pmatrix},\qquad
+P=\begin{pmatrix}1 & 0 & 0\\ 0 & 1 & 0\\ 2 & 0 & 1\end{pmatrix},\qquad
+Q=\begin{pmatrix}0 & 0 & 1\\ 0 & 1 & 0\\ 1 & 0 & 0\end{pmatrix}
+$$
+
+则 $PAQ^{2025}=$ ______，$P^{1025}AQ^{1000}=$ ______。
+
+
+### 7. {#section-8}
+
+
+矩阵被称为是一个置换矩阵，如果它是由单位矩阵 $E$ 经过一系列的列和行的互换所得。假设矩阵 $A$ 是置换矩阵，则 $A^{\mathrm{T}}A=$ ______。
+
+**证明题（15 分）**
+
+
+### 8. {#section-9}
+
+
+设 $n$ 阶矩阵 $A=\begin{pmatrix}a_1\\ a_2\\ \vdots\\ a_n\end{pmatrix}\begin{pmatrix}b_1 & b_2 & \cdots & b_n\end{pmatrix}$，如果 $a_1b_1+a_2b_2+\cdots+a_nb_n=1$，证明 $A^2=A$。
+
+
+### 9. {#section-10}
+
+
+设 $A,B,C$ 为 $n$ 阶方阵满足 $r(A)<r(C)\le n$，且 $BC=0$。证明存在非零的矩阵 $X$ 满足 $AX=BX$。
+
+
+## 第二部分：详细解析 {#solutions}
+
+
+**填空题（85 分）**
+
+
+### 1. {#section-12}
+
+
+记系数矩阵的三个行向量为 $r_1,r_2,r_3$。未知数共 4 个，通解含 2 个任意常数，说明解空间的维数（即零空间的维数）为 2；由秩－零化度定理
+
+$$r+2=4\implies r=2.$$
+
+又 $\begin{vmatrix}1 & 1\\ 4 & 3\end{vmatrix}=3-4=-1\ne 0$，故 $r_1,r_2$ 线性无关。秩为 2 的三个行向量中 $r_3$ 必是 $r_1,r_2$ 的线性组合，设
+
+$$r_3=\lambda r_1+\mu r_2.$$
+
+比较第 2, 3 个坐标：$\lambda+3\mu=1$，$\lambda+5\mu=3$，相减得 $2\mu=2$，故 $\mu=1$，再代回得 $\lambda=-2$。于是
+
+$$p=\lambda+4\mu=-2+4=2,\qquad -q=\lambda-\mu=-2-1=-3\implies q=3.$$
+
+此时第三式的右端由方程组自洽给出为 $\lambda\cdot(-1)+\mu\cdot(-1)=2-1=1$，恰等于题给右端 1，故有解且增广矩阵的秩也为 2。注意 $(p,q)$ 是被 “秩为 2” 与 “有解” 两条要求共同锁定的唯一取值。
+
+取 $x_3,x_4$ 为自由未知量。前两个方程为
+
+$$x_1+x_2=-1-x_3-x_4,\qquad 4x_1+3x_2=-1-5x_3+x_4.$$
+
+第一式乘 4 后减去第二式得 $x_2=-3+x_3-5x_4$，再代回第一式得 $x_1=2-2x_3+4x_4$。
+
+**答案** $p=2$，$q=3$，$r=2$，通解为
+
+$$X=\begin{pmatrix}2\\ -3\\ 0\\ 0\end{pmatrix}+t_1\begin{pmatrix}-2\\ 1\\ 1\\ 0\end{pmatrix}+t_2\begin{pmatrix}4\\ -5\\ 0\\ 1\end{pmatrix},\qquad t_1,t_2\in\mathbb{R}$$
+
+**考点** 线性方程组、秩与空间维数。
+
+**易错点** 含参消元在除以参数前先分情形；通解写成特解加齐次通解。
+
+<span id="answer-1"></span>
+
+### 2. {#section-13}
+
+
+两矩阵相抵（等价）当且仅当秩相等，故先算两个行列式并定秩。按第一行展开得
+
+$$|A|=-(a-1)(a+1)=1-a^2,\qquad |B|=(a-1)(3a+2).$$
+
+**秩的分布。** $r(A)=3$ 当 $a\ne\pm1$；$a=1$ 时 $A$ 的第三行 $(4,4,4)$ 是第一行 $(1,1,1)$ 的 4 倍，$a=-1$ 时第三行也是 $(4,4,4)$，故两种情形下都是 $r(A)\le 2$；而 $A$ 的前两行 $(1,1,1)$、$(1,0,2)$ 线性无关（$\begin{vmatrix}1 & 1\\ 1 & 0\end{vmatrix}=-1\ne 0$），故这两种情形下都是 $r(A)=2$。$r(B)=3$ 当 $a\ne 1,-\frac{2}{3}$；$a=1$ 时 $B$ 的第三行 $(4,0,4)$ 是第一行 $(1,0,1)$ 的 4 倍，$a=-\frac{2}{3}$ 时 $|B|=0$，故这两种情形下都是 $r(B)\le 2$；而 $B$ 的前两行 $(1,0,1)$、$(1,3,3)$ 线性无关（$\begin{vmatrix}1 & 0\\ 1 & 3\end{vmatrix}=3\ne 0$），故这两种情形下都是 $r(B)=2$。逐值比较：
+
+（1）$a=1$：$r(A)=r(B)=2$；
+
+（2）$a=-1$：$r(A)=2\ne 3=r(B)$；
+
+（3）$a=-\frac{2}{3}$：$r(A)=3\ne 2=r(B)$；
+
+（4）其余 $a$：$r(A)=r(B)=3$。
+
+所以不相抵只可能发生在（2）（3），即 $a=-1$ 或 $a=-\frac{2}{3}$；秩同为 2 只在（1），即 $a=1$。
+
+**解方程。** 第（4）种情形下 $r(A)=3$，$|A|\ne 0$，解唯一。直接代入 $X=(1,-1,1)^{\mathrm{T}}$：
+
+$$A\begin{pmatrix}1\\ -1\\ 1\end{pmatrix}=\begin{pmatrix}1-1+1\\ 1+0+2\\ 4-4+a^2+3\end{pmatrix}=\begin{pmatrix}1\\ 3\\ a^2+3\end{pmatrix},$$
+
+故 $x_1=1$，$x_2=-1$，$x_3=1$。
+
+**答案** $a=-1$ 或 $a=-\frac{2}{3}$ 时 $A,B$ 不相抵；$a=1$ 时二者的秩都是 2；秩都是 3 时 $x_1=1$，$x_2=-1$，$x_3=1$。
+
+**考点** 秩与空间维数。
+
+**易错点** 秩是最大非零子式的阶数；区分零空间、列空间与行空间。
+
+<span id="answer-2"></span>
+
+### 3. {#section-14}
+
+
+由展开定理，$D$ 按第一列展开为
+
+$$D=a_{11}A_{11}+a_{21}A_{21}+a_{31}A_{31}+a_{41}A_{41}.$$
+
+本题第一列的元素全为 1，即 $a_{11}=a_{21}=a_{31}=a_{41}=1$，而题设又给出 $A_{11}=A_{21}=A_{31}=A_{41}=1$，故直接得
+
+$$D=1\cdot 1+1\cdot 1+1\cdot 1+1\cdot 1=4.$$
+
+一般地，$A_{i1}$ 与第一列的元素无关，所以 $\sum_{i=1}^{4}c_iA_{i1}$ 等于把 $D$ 的第一列换成 $(c_1,c_2,c_3,c_4)^{\mathrm{T}}$ 后所得的行列式。本题取 $c_i=1$ 时换出的列恰是原来的全 1 列，该行列式就是 $D$，两种算法给出同一结果。
+
+**答案** $D=4$。
+
+**考点** 行列式。
+
+**易错点** 交换两行变号；倍乘一行才提取一个因子；余子式须带 $(-1)^{i+j}$。
+
+<span id="answer-3"></span>
+
+### 4. {#section-15}
+
+
+第一行元素 $a,b,c,d$ 可以是任意的，$A_{1j}$ 与它们无关，只由去掉第一行后剩下的 3 阶子式决定，$x,z$ 也正是出现在这三行里。按代数余子式的定义逐项展开（$(1,j)$ 元带符号 $(-1)^{1+j}$）：
+
+$$A_{11}=-(x+3)(xz+x+2z+4),\qquad A_{12}=-(x+3)(xz+3x+2z+2),$$
+
+$$A_{13}=-xz-5x-2z,\qquad A_{14}=(x-1)(x+2)(x+3).$$
+
+同一组 $x,z$ 必须同时满足四个给定值。先看 $A_{14}$：由 $(x-1)(x+2)(x+3)=-4$，若 $x=-3$ 则左端为 0，矛盾，故 $x\ne -3$；于是 $A_{12}=0$ 可约去因子 $x+3$，化为
+
+$$xz+3x+2z+2=0.$$
+
+又 $A_{13}=4$ 即 $xz+5x+2z=-4$。两式相减得 $2x=-2$，故 $x=-1$；代回 $xz+3x+2z+2=0$ 得 $-z-3+2z+2=0$，即 $z=1$。
+
+回代检验：$A_{11}=-(2)(-1-1+2+4)=-8$，$A_{14}=(-2)(1)(2)=-4$，与题设相符。
+
+**答案** $x=-1$，$z=1$。
+
+**注** 不要试图用 $D=\sum_j a_{1j}A_{1j}$ 去定 $x,z$ ——第一行是任意的，这条路走不通；正确的入口是 “子式与第一行无关” 以及同一组 $x,z$ 要让四个值同时成立。
+
+**考点** 行列式。
+
+**易错点** 交换两行变号；倍乘一行才提取一个因子；余子式须带 $(-1)^{i+j}$。
+
+<span id="answer-4"></span>
+
+### 5. {#section-16}
+
+
+$A^{*}$ 是上三角矩阵，其行列式等于对角元之积：
+
+$$|A^{*}|=1\cdot 1\cdot 1\cdot x=x.$$
+
+对 $n=4$ 阶矩阵有伴随矩阵的行列式公式 $|A^{*}|=|A|^{n-1}=|A|^3$，于是
+
+$$|A|^3=x.$$
+
+又 $n\ge 2$ 时 $A$ 可逆当且仅当 $A^{*}$ 可逆：$A$ 可逆时 $A^{*}=|A|A^{-1}$ 可逆；反之若 $A$ 不可逆则 $|A|=0$，从而 $|A^{*}|=|A|^{n-1}=0$，$A^{*}$ 不可逆。故
+
+$$A\ \text{可逆}\iff |A^{*}|\ne 0\iff x\ne 0.$$
+
+当 $x\ne 0$ 时由 $|A|^3=x$ 得 $|A|=\sqrt[3]{x}$（实数的立方根唯一）。若 $x=0$，则 $|A|=0$，$A$ 不可逆，两种说法一致。
+
+**答案** 当 $x\ne 0$ 时矩阵 $A$ 可逆；此时 $|A|=\sqrt[3]{x}$。
+
+**注** $|A^{*}|$ 是 $x$ 的一次式，而 $|A^{*}|=|A|^{n-1}$ 中的指数是 $n-1=3$ 不是 $n$，把 $|A|$ 写成 $\sqrt[4]{x}$ 是常见错误。
+
+**考点** 伴随矩阵。
+
+**易错点** 先判断阶数与可逆性，不能把伴随矩阵当作转置。
+
+<span id="answer-5"></span>
+
+### 6. {#section-17}
+
+
+$P$ 是初等矩阵，作用为 “第 3 行加上第 1 行的 2 倍”，即左乘 $P$ 实施 $R_3\leftarrow R_3+2R_1$；$Q$ 是交换第 1, 3 行（同时交换第 1, 3 列）的置换矩阵，满足
+
+$$Q^2=E\implies Q^{2k+1}=Q,\quad Q^{2k}=E\qquad(k\ge 0),$$
+
+即 $Q$ 的奇数次幂为 $Q$、偶数次幂为 $E$。2025 为奇数、1000 为偶数，故 $Q^{2025}=Q$，$Q^{1000}=E$。
+
+先算 $PA$：只动第三行，
+
+$$PA=\begin{pmatrix}a_{11} & a_{12} & a_{13}\\ a_{21} & a_{22} & a_{23}\\ a_{31}+2a_{11} & a_{32}+2a_{12} & a_{33}+2a_{13}\end{pmatrix}.$$
+
+右乘 $Q^{2025}=Q$ 即交换第 1, 3 列，得
+
+$$PAQ^{2025}=\begin{pmatrix}a_{13} & a_{12} & a_{11}\\ a_{23} & a_{22} & a_{21}\\ a_{33}+2a_{13} & a_{32}+2a_{12} & a_{31}+2a_{11}\end{pmatrix}.$$
+
+再算 $P^{1025}$。记 $E_{31}$ 为仅 $(3,1)$ 元为 1、其余为 0 的矩阵，则 $P=E+2E_{31}$，且 $E_{31}^2=O$，故二项式展开只剩前两项：
+
+$$P^k=(E+2E_{31})^k=E+2kE_{31}\qquad(k\ge 1),$$
+
+即 $P^k$ 总是 “第 3 行加上第 1 行的 $2k$ 倍”；取 $k=1025$ 得系数 2050。又 $Q^{1000}=E$，于是
+
+$$P^{1025}AQ^{1000}=P^{1025}A=\begin{pmatrix}a_{11} & a_{12} & a_{13}\\ a_{21} & a_{22} & a_{23}\\ a_{31}+2050a_{11} & a_{32}+2050a_{12} & a_{33}+2050a_{13}\end{pmatrix}.$$
+
+**答案**
+
+$$PAQ^{2025}=\begin{pmatrix}a_{13} & a_{12} & a_{11}\\ a_{23} & a_{22} & a_{21}\\ a_{33}+2a_{13} & a_{32}+2a_{12} & a_{31}+2a_{11}\end{pmatrix},$$
+
+$$P^{1025}AQ^{1000}=\begin{pmatrix}a_{11} & a_{12} & a_{13}\\ a_{21} & a_{22} & a_{23}\\ a_{31}+2050a_{11} & a_{32}+2050a_{12} & a_{33}+2050a_{13}\end{pmatrix}。$$
+
+**考点** 矩阵幂与多项式、初等变换。
+
+**易错点** 二项式展开须保证参与的矩阵可交换；幂零与零矩阵不是同一概念。
+
+<span id="answer-6"></span>
+
+### 7. {#section-18}
+
+
+置换矩阵由 $E$ 经行、列互换得到，故它每行、每列恰有一个 1，其余元素为 0。于是 $A$ 的列向量是某个排列下的标准单位向量
+
+$$A=(e_{p_1}\ e_{p_2}\ \cdots\ e_{p_n}),$$
+
+其中 $p_1,\dots,p_n$ 是 $1,\dots,n$ 的一个排列。由 $(A^{\mathrm{T}}A)_{ij}$ 等于 $A$ 的第 $i$ 列与第 $j$ 列的内积，
+
+$$(A^{\mathrm{T}}A)_{ij}=e_{p_i}^{\mathrm{T}}e_{p_j}=\delta_{ij}=\begin{cases}1, & i=j,\\ 0, & i\ne j,\end{cases}$$
+
+故 $A^{\mathrm{T}}A=E$。几何上这正说明 $A$ 的列是一组标准正交基，$A$ 是正交矩阵。
+
+**答案** $A^{\mathrm{T}}A=E$。
+
+**考点** 初等变换。
+
+**易错点** 行、列操作混用时要区分作用侧；同侧变换的先后次序不能随意交换。
+
+<span id="answer-7"></span>
+
+**证明题（15 分）**
+
+
+### 8. {#section-19}
+
+
+记 $\alpha=(a_1,a_2,\dots,a_n)^{\mathrm{T}}$，$\beta=(b_1,b_2,\dots,b_n)^{\mathrm{T}}$，则 $A=\alpha\beta^{\mathrm{T}}$，题设即
+
+$$\beta^{\mathrm{T}}\alpha=a_1b_1+a_2b_2+\cdots+a_nb_n=1.$$
+
+由矩阵乘法的结合律
+
+$$A^2=(\alpha\beta^{\mathrm{T}})(\alpha\beta^{\mathrm{T}})=\alpha(\beta^{\mathrm{T}}\alpha)\beta^{\mathrm{T}}.$$
+
+其中 $\beta^{\mathrm{T}}\alpha$ 是 $1\times 1$ 的数，可以与向量交换次序提到最前面，故
+
+$$A^2=(\beta^{\mathrm{T}}\alpha)\alpha\beta^{\mathrm{T}}=1\cdot A=A.\qquad\square$$
+
+**考点** 矩阵幂与多项式。
+
+**易错点** 二项式展开须保证参与的矩阵可交换；幂零与零矩阵不是同一概念。
+
+<span id="answer-8"></span>
+
+### 9. {#section-20}
+
+
+由 $BC=0$，对每个 $j=1,\dots,n$ 都有
+
+$$B(Ce_j)=(BC)e_j=0,$$
+
+即 $C$ 的每一列都是齐次方程组 $BX=0$ 的解。因此 $C$ 的列空间含于 $\ker B$：
+
+$$\mathrm{Col}(C)\subseteq\ker B\implies \dim\ker B\ge \dim\mathrm{Col}(C)=r(C).$$
+
+再由秩－零化度定理，$\dim\ker A=n-r(A)$。结合 $r(A)<r(C)$ 得
+
+$$\dim\ker A=n-r(A)>n-r(C)\ge n-\dim\ker B,$$
+
+即 $\dim\ker A+\dim\ker B>n$。$\ker A$ 与 $\ker B$ 都是 $\mathbb{R}^n$ 的子空间，由维数公式
+
+$$\dim(\ker A\cap\ker B)=\dim\ker A+\dim\ker B-\dim(\ker A+\ker B)\ge \dim\ker A+\dim\ker B-n>0.$$
+
+故 $\ker A\cap\ker B$ 中含非零向量 $X_0$，它满足 $AX_0=0$ 且 $BX_0=0$，从而 $AX_0=BX_0$。取 $n$ 阶矩阵 $X=(X_0,0,\dots,0)$（只有第一列为 $X_0$，其余列为零），则 $X\ne O$ 且
+
+$$AX=BX=0.\qquad\square$$
+
+**注** 关键在于把 “$BC=0$” 翻译成 “$C$ 的列都在 $\ker B$ 里”，于是 $\dim\ker B\ge r(C)>r(A)=n-\dim\ker A$；条件 $r(A)<r(C)$ 的作用正是把两个零空间的维数之和顶过 $n$，从而交集非零。
+
+**考点** 矩阵方程、秩与空间维数。
+
+**易错点** 逆矩阵不能随意跨过其他因子；只可在同侧作相应运算。
+
+<span id="answer-9"></span>
+
+## 第三部分：知识点总结 {#summary}
+
+
+
+### 答案与考点 {#section-22}
+
+
+| 题号 | 答案要点 | 主要考点 |
+| --- | --- | --- |
+| [1](#answer-1) | （填空）非齐次方程组有解且通解含 2 个任意常数：$p=2,\ q=3,\ r=2$，$X=(2,-3,0,0)^{\mathrm{T}}+t_1(-2,1,1,0)^{\mathrm{T}}+t_2(4,-5,0,1)^{\mathrm{T}}$。 | 线性方程组、秩与空间维数 |
+| [2](#answer-2) | （填空）相抵与秩的讨论：$a=-1$ 或 $a=-\frac23$ 时 $A,B$ 不相抵；$a=1$ 时同秩为 2；秩为 3 时解 $x=(1,-1,1)^{\mathrm{T}}$。 | 秩与空间维数 |
+| [3](#answer-3) | （填空）行列式按第一列展开：$D=4$。 | 行列式 |
+| [4](#answer-4) | （填空）由代数余子式反求参数：$x=-1,\ z=1$。 | 行列式 |
+| [5](#answer-5) | （填空）$\|A^{*}\|=\|A\|^{n-1}$：$x\neq0$ 时 $A$ 可逆，$\|A\|=\sqrt[3]{x}$。 | 伴随矩阵 |
+| [6](#answer-6) | （填空）初等/置换矩阵的幂：$PAQ^{2025}$ 交换第 1、3 列；$P^{1025}AQ^{1000}=P^{1025}A$（系数 2050）。 | 矩阵幂与多项式、初等变换 |
+| [7](#answer-7) | （填空）置换矩阵的正交性：$A^{\mathrm{T}}A=E$。 | 初等变换 |
+| [8](#answer-8) | （证明）秩 1 矩阵 $A=\boldsymbol\alpha\boldsymbol\beta^{\mathrm{T}}$：$A^{2}=\boldsymbol\alpha(\boldsymbol\beta^{\mathrm{T}}\boldsymbol\alpha)\boldsymbol\beta^{\mathrm{T}}=A$ 的条件即 $\boldsymbol\beta^{\mathrm{T}}\boldsymbol\alpha=1$。 | 矩阵幂与多项式 |
+| [9](#answer-9) | （证明）$BC=O$ 与零空间交集：由 $\dim\ker A+\dim\ker B>n$ 得存在 $X\neq O$ 使 $AX=BX=O$。 | 矩阵方程、秩与空间维数 |
+
+
+### 复习要点 {#section-23}
+
+
+- **线性方程组：**$r(A)<r(A\mid b)$ 时无解；两秩相等时有解，自由参数个数为 $n-r(A)$。
+- **秩与空间维数：**$r(XY)\le\min\{r(X),r(Y)\}$，$r(X+Y)\le r(X)+r(Y)$；可逆初等变换不改变秩。
+- **行列式：**优先用行、列倍加制造零元；三对角型按首行展开建立递推，并核对初值。
+- **伴随矩阵：**$AA^*=A^*A=|A|E$；$|A^*|=|A|^{n-1}$；可逆时 $A^*=|A|A^{-1}$。
+- **矩阵幂与多项式：**由已知的矩阵多项式关系降低幂次；秩一矩阵 $uv^{\mathsf T}$ 满足 $(uv^{\mathsf T})^m=(v^{\mathsf T}u)^{m-1}uv^{\mathsf T}$。
+- **初等变换：**行变换对应左乘初等矩阵，列变换对应右乘初等矩阵，连续操作按实际次序组合。
+- **矩阵方程：**$AX=B$ 左乘 $A^{-1}$，$XA=B$ 右乘 $A^{-1}$；先移项因式分解，再判断可逆性。
+
+
+### 易错点清单 {#section-24}
+
+
+- 含参消元在除以参数前先分情形；通解写成特解加齐次通解。
+- 秩是最大非零子式的阶数；区分零空间、列空间与行空间。
+- 交换两行变号；倍乘一行才提取一个因子；余子式须带 $(-1)^{i+j}$。
+- 先判断阶数与可逆性，不能把伴随矩阵当作转置。
+- 二项式展开须保证参与的矩阵可交换；幂零与零矩阵不是同一概念。
+- 行、列操作混用时要区分作用侧；同侧变换的先后次序不能随意交换。
+- 逆矩阵不能随意跨过其他因子；只可在同侧作相应运算。
+
+---
+
+
+## ⚖️AI 协作与版权声明 {#section-25}
+
+
+
+### AI 协作说明 {#section-26}
+
+
+本文件由整理者提供资料并确定整理要求，使用 OpenAI Codex 辅助完成题目转写、LaTeX 公式录入、解题推导、知识点分析和 Markdown 排版。AI 辅助生成的解析属于学习参考内容，不代表命题教师、原资料作者或学校的官方解答；本声明不表示内容已经过人工逐题审核。使用时请结合教材与课程要求核验，发现问题可提出更正。
+
+
+### 来源与权利归属 {#section-27}
+
+
+原始试卷及参考解析来自本库保存的浙江大学《线性代数（甲）》历年期中题目卷与解析卷 PDF 合集。合集署名整理者为 macanine，项目地址为 [zju-linear-algebra-papers](https://github.com/macanine/zju-linear-algebra-papers)。原题、参考解析及其他第三方材料的权利归各自权利人所有，本文件的整理行为不改变其权利归属。来源标注用于说明出处，不表示已取得原资料的开放许可，也不表示原作者对本文件作出认可。
+
+
+### 开放许可与转载要求 {#section-28}
+
+
+在整理贡献者依法有权许可的范围内，本文件新增的转写编排、补充解析和知识点整理采用 **MIT License**，许可正文如下。该许可不涵盖原题、原始参考解析、截图或其他第三方材料；使用这些材料须遵守其原有许可，或另行取得必要授权。
+
+转载或修改适用 MIT 许可的内容时，应保留以下版权与许可声明。转载包含原题或引用资料的版本时，也请保留资料来源及本节 AI 协作说明；修改者应注明修改内容，避免将补充或修改的结论归于原资料作者。
+
+```text
+MIT License
+
+Copyright (c) 2026 easoncyy
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```

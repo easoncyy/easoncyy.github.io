@@ -1,0 +1,629 @@
+---
+title: 2021-2022 学年秋冬《线性代数（甲）》期中归档
+description: 2021-2022 学年期中试卷：题目、详细解析与知识点总结。
+date: '2026-10-27'
+author: easoncyy（整理）
+category-path:
+- MATH
+- LINEAR-ALGEBRA
+- 历年卷
+- 期中
+categories:
+- 历年卷
+- 期中
+- 真题
+execute:
+  enabled: false
+toc-depth: 3
+---
+
+共 8 道题，保留试卷题号和分值。先独立作答，再对照解析与考点索引。
+
+来源：[题目合集](/assets/pdf/exams/linear-algebra-midterm-questions.pdf)、[解析合集](/assets/pdf/exams/linear-algebra-midterm-solutions.pdf)。合集整理者：macanine。
+
+
+
+::: {.download-box}
+[在线阅读练习卷 PDF ↗](/assets/pdf/exams/practice/linear-algebra-midterm-2021-2022-practice.pdf){target="_blank"} · [下载练习卷 PDF ↓](/assets/pdf/exams/practice/linear-algebra-midterm-2021-2022-practice.pdf){download="linear-algebra-midterm-2021-2022-practice.pdf"}
+
+根据归档题目整理的练习版，非原卷扫描件；仅含题目，并留有作答空间。
+:::
+
+## 第一部分：题目 {#questions}
+
+
+
+### 1.（15 分） {#section-2}
+
+
+设有下列 $n$ 阶行列式
+
+$$
+D_n = \begin{vmatrix}
+7 & -6 & 0 & \cdots & 0 & 0\\
+-1 & 7 & -6 & 0 & \cdots & 0\\
+0 & -1 & 7 & -6 & 0 & \cdots\\
+\vdots & \vdots & \vdots & \vdots & \vdots & \vdots\\
+0 & \cdots & 0 & -1 & 7 & -6\\
+0 & 0 & \cdots & 0 & -1 & 7
+\end{vmatrix}.
+$$
+
+（1）计算 $D_1, D_2$；
+
+（2）假设当 $n \le k$ 时有 $D_n = \dfrac{6^{n+1}-1}{5}$，证明：$D_{k+1} = \dfrac{6^{k+2}-1}{5}$。
+
+
+### 2.（10 分） {#section-3}
+
+
+设 $B = \begin{pmatrix}1 & 1 & 1\\ 0 & 1 & 1\\ 0 & 0 & 1\end{pmatrix}$，矩阵 $A$ 满足方程 $BA = B^{\mathrm{T}}B$，求 $|A^{*} - 2E|$。
+
+
+### 3.（10 分） {#section-4}
+
+
+设 $n$ 阶实方阵 $A$ 满足 $A^2 = A$，证明：$r(A) + r(A - E) = n$。
+
+
+### 4.（20 分） {#section-5}
+
+
+设有四元线性方程组
+
+$$
+\begin{cases}
+x_1 + x_2 - x_3 + 2x_4 = 0,\\
+2x_1 + 3x_2 - 3x_3 + 5x_4 = 0,\\
+3x_1 + x_2 - 2x_3 + 3x_4 = 0,\\
+2x_1 + x_2 - 5x_3 - x_4 = 0.
+\end{cases}
+$$
+
+（1）写出该方程组的系数矩阵 $A$；
+
+（2）利用初等行变换将矩阵 $A$ 化为阶梯形矩阵 $U$；
+
+（3）求 $r(A)$；
+
+（4）写出该方程组的通解。
+
+
+### 5.（10 分） {#section-6}
+
+
+设实方阵 $A$ 的伴随矩阵为 $A^{*} = \begin{pmatrix}1 & 0 & 0\\ 0 & 1 & 0\\ 1 & 0 & 1\end{pmatrix}$，且 $|A| > 0$，已知矩阵 $B$ 满足 $AB = E + 3A$，求矩阵 $B$。
+
+
+### 6.（25 分） {#section-7}
+
+
+设矩阵 $A = \begin{pmatrix}3 & 1 & 0\\ 0 & 3 & 1\\ 0 & 0 & 3\end{pmatrix}$。求
+
+（1）$A^2$；
+
+（2）$A^3$；
+
+（3）$A^{100}$；
+
+（4）$A^{-1}$；
+
+（5）一个三次实系数多项式 $f(x) = x^3 + ax^2 + bx + c$ 使得 $f(A)$ 为三阶零方阵。
+
+
+### 7.（10 分） {#section-8}
+
+
+设有 $n$ 阶实方阵 $A = (a_{ij})$ 满足：当 $i = j$ 时，$a_{ij} = 2021$；当 $i < j$ 时，$a_{ij} = i^j$；当 $i > j$ 时，$a_{ij} = (i + j)!$。证明：$|A| \ne 0$。
+
+
+### 8.（10 分） {#section-9}
+
+
+设 $A$ 为 $n$ 阶方阵，且 $r(A) = r > 0$。证明存在秩为 $r$ 的实方阵 $B$ 和 $C$，使得 $AB = CA$。
+
+
+## 第二部分：详细解析 {#solutions}
+
+
+
+### 1.（15 分） {#section-11}
+
+
+记所给 $n$ 阶行列式为 $D_n$（并约定 $D_0 = 1$，即空行列式的值）。
+
+（1）按定义直接算：
+
+$$
+D_1 = |7| = 7, \qquad
+D_2 = \begin{vmatrix}7 & -6\\ -1 & 7\end{vmatrix} = 7 \times 7 - (-6) \times (-1) = 43.
+$$
+
+（2）先找递推式。按第一列展开，第一列只有 $a_{11} = 7$ 与 $a_{21} = -1$ 非零：
+
+$$
+D_n = 7M_{11} + M_{21} = 7D_{n-1} + M_{21},
+$$
+
+其中 $M_{11} = D_{n-1}$；而删去第 2 行、第 1 列后，余下矩阵的第一行是 $(-6, 0, \dots, 0)$，按这一行展开得 $M_{21} = (-6) \cdot D_{n-2}$（余下的正是同形状的 $n-2$ 阶行列式）。于是
+
+$$
+D_n = 7D_{n-1} - 6D_{n-2} \qquad (n \ge 2).
+$$
+
+再作归纳。$n = 0, 1$ 时公式 $(6^{n+1}-1)/5$ 成立（分别为 $1$ 与 $7$）。设 $n \le k$ 时 $D_n = \dfrac{6^{n+1}-1}{5}$，则特别地 $D_k = \dfrac{6^{k+1}-1}{5}$，$D_{k-1} = \dfrac{6^{k}-1}{5}$，代入递推式
+
+$$
+\begin{aligned}
+D_{k+1} &= 7D_k - 6D_{k-1} = 7 \cdot \frac{6^{k+1}-1}{5} - 6 \cdot \frac{6^{k}-1}{5}\\
+&= \frac{7 \cdot 6^{k+1} - 7 - 6^{k+1} + 6}{5} = \frac{6 \cdot 6^{k+1} - 1}{5} = \frac{6^{k+2}-1}{5}.
+\end{aligned}
+$$
+
+代 $n = 3$ 检验：$D_3 = 7 \times 43 - 6 \times 7 = 259 = \dfrac{6^4-1}{5}$。
+
+**答案** $D_1 = 7$，$D_2 = 43$；且 $D_n = \dfrac{6^{n+1}-1}{5}$，故 $D_{k+1} = \dfrac{6^{k+2}-1}{5}$。
+
+**考点** 行列式。
+
+**易错点** 交换两行变号；倍乘一行才提取一个因子；余子式须带 $(-1)^{i+j}$。
+
+<span id="answer-1"></span>
+
+### 2.（10 分） {#section-12}
+
+
+由 $|B| = 1 \ne 0$ 知 $B$ 可逆，于是 $BA = B^{\mathrm{T}}B$ 给出
+
+$$
+A = B^{-1}B^{\mathrm{T}}B.
+$$
+
+取行列式，注意 $|B^{\mathrm{T}}| = |B|$、$|B^{-1}| = |B|^{-1}$：
+
+$$
+|A| = |B^{-1}| \cdot |B^{\mathrm{T}}| \cdot |B| = |B| = 1.
+$$
+
+故 $A$ 可逆，且 $A^{*} = |A|A^{-1} = A^{-1}$。于是
+
+$$
+|A^{*} - 2E| = |A^{-1} - 2E| = |A^{-1}| \cdot |E - 2A| = |E - 2A|.
+$$
+
+把 $A = B^{-1}B^{\mathrm{T}}B$ 代入，注意 $E = B^{-1}B$：
+
+$$
+E - 2A = B^{-1}B - 2B^{-1}B^{\mathrm{T}}B = B^{-1}\left(B - 2B^{\mathrm{T}}B\right),
+$$
+
+两边取行列式并用 $|B| = 1$，得 $|E - 2A| = |B - 2B^{\mathrm{T}}B|$。逐项算出
+
+$$
+B^{\mathrm{T}}B = \begin{pmatrix}1 & 1 & 1\\ 1 & 2 & 2\\ 1 & 2 & 3\end{pmatrix},
+\qquad
+B - 2B^{\mathrm{T}}B = \begin{pmatrix}-1 & -1 & -1\\ -2 & -3 & -3\\ -2 & -4 & -5\end{pmatrix}.
+$$
+
+对右边矩阵作行倍加（不改变行列式）：$R_2 - 2R_1$，$R_3 - 2R_1$，再 $R_3 - 2R_2$，化为上三角
+
+$$
+\begin{pmatrix}-1 & -1 & -1\\ 0 & -1 & -1\\ 0 & 0 & -1\end{pmatrix},
+$$
+
+故 $|B - 2B^{\mathrm{T}}B| = (-1)^3 = -1$，从而 $|A^{*} - 2E| = -1$。
+
+顺带算出
+
+$$
+A = B^{-1}B^{\mathrm{T}}B = \begin{pmatrix}0 & -1 & -1\\ 0 & 0 & -1\\ 1 & 2 & 3\end{pmatrix},
+\qquad |A| = 1,
+$$
+
+与上面一致。
+
+**答案** $|A^{*} - 2E| = -1$。
+
+**注** 这里 $A$ 是三阶方阵，所以 $A^{*} = |A|A^{-1}$、进而 $A^{*} = A^{-1}$ 成立的前提是 $|A| \ne 0$；本题由 $|A| = |B| = 1$ 保证。若误把 $A^{*}$ 与 $A$ 的阶数关系写成 $|A^{*}| = |A|^n$，结果就会差一个因子。
+
+**考点** 伴随矩阵。
+
+**易错点** 先判断阶数与可逆性，不能把伴随矩阵当作转置。
+
+<span id="answer-2"></span>
+
+### 3.（10 分） {#section-13}
+
+
+由 $A^2 = A$ 得
+
+$$
+A(A - E) = A^2 - A = O.
+$$
+
+用到两条关于秩的基本事实，设 $X, Y$ 为 $n$ 阶方阵：
+
+（i）若 $XY = O$，则 $\operatorname{Im} Y \subseteq \ker X$，由秩－零化度定理 $r(Y) \le \dim \ker X = n - r(X)$，即 $r(X) + r(Y) \le n$；
+
+（ii）$\operatorname{Im}(X + Y) \subseteq \operatorname{Im} X + \operatorname{Im} Y$，故 $r(X + Y) \le r(X) + r(Y)$。
+
+**上界。** 在（i）中取 $X = A$，$Y = A - E$，由 $A(A - E) = O$ 得
+
+$$
+r(A) + r(A - E) \le n.
+$$
+
+**下界。** 在（ii）中取 $X = A$，$Y = E - A$，注意 $A + (E - A) = E$ 且 $r(E - A) = r(A - E)$：
+
+$$
+n = r(E) = r\left(A + (E - A)\right) \le r(A) + r(E - A) = r(A) + r(A - E).
+$$
+
+两式合并即得 $r(A) + r(A - E) = n$。$\square$
+
+**考点** 矩阵幂与多项式、秩与空间维数。
+
+**易错点** 二项式展开须保证参与的矩阵可交换；幂零与零矩阵不是同一概念。
+
+<span id="answer-3"></span>
+
+### 4.（20 分） {#section-14}
+
+
+（1）按未知量 $x_1, x_2, x_3, x_4$ 的顺序取出系数：
+
+$$
+A = \begin{pmatrix}
+1 & 1 & -1 & 2\\
+2 & 3 & -3 & 5\\
+3 & 1 & -2 & 3\\
+2 & 1 & -5 & -1
+\end{pmatrix}.
+$$
+
+（2）对 $A$ 作初等行变换：先以第一行消去第一列其余元素，
+
+$$
+A \to \begin{pmatrix}
+1 & 1 & -1 & 2\\
+0 & 1 & -1 & 1\\
+0 & -2 & 1 & -3\\
+0 & -1 & -3 & -5
+\end{pmatrix},
+\qquad
+\begin{array}{l}
+R_2 \leftarrow R_2 - 2R_1,\\
+R_3 \leftarrow R_3 - 3R_1,\\
+R_4 \leftarrow R_4 - 2R_1,
+\end{array}
+$$
+
+再以第二行消去第二列下方元素，
+
+$$
+\to \begin{pmatrix}
+1 & 1 & -1 & 2\\
+0 & 1 & -1 & 1\\
+0 & 0 & -1 & -1\\
+0 & 0 & -4 & -4
+\end{pmatrix},
+\qquad
+\begin{array}{l}
+R_3 \leftarrow R_3 + 2R_2,\\
+R_4 \leftarrow R_4 + R_2,
+\end{array}
+$$
+
+最后 $R_4 \leftarrow R_4 - 4R_3$，得阶梯形
+
+$$
+U = \begin{pmatrix}
+1 & 1 & -1 & 2\\
+0 & 1 & -1 & 1\\
+0 & 0 & -1 & -1\\
+0 & 0 & 0 & 0
+\end{pmatrix}.
+$$
+
+（3）$U$ 有三个非零行（主元分别在 1, 2, 3 列），故 $r(A) = r(U) = 3$。
+
+（4）继续化为行最简形：$R_3 \leftarrow -R_3$ 后依次作 $R_2 + R_3$，$R_1 + R_3$，$R_1 - R_2$，得
+
+$$
+\begin{pmatrix}
+1 & 0 & 0 & 1\\
+0 & 1 & 0 & 2\\
+0 & 0 & 1 & 1\\
+0 & 0 & 0 & 0
+\end{pmatrix}.
+$$
+
+同解方程组为 $x_1 = -x_4$，$x_2 = -2x_4$，$x_3 = -x_4$。未知量 4 个、秩为 3，故自由未知量恰一个 $x_4$；令 $x_4 = t$（$t$ 为任意实数）即得通解。代回原方程组四个方程均成立。
+
+**答案** $A = \begin{pmatrix}1 & 1 & -1 & 2\\ 2 & 3 & -3 & 5\\ 3 & 1 & -2 & 3\\ 2 & 1 & -5 & -1\end{pmatrix}$，$U = \begin{pmatrix}1 & 1 & -1 & 2\\ 0 & 1 & -1 & 1\\ 0 & 0 & -1 & -1\\ 0 & 0 & 0 & 0\end{pmatrix}$，$r(A) = 3$，通解为 $X = t\begin{pmatrix}-1\\ -2\\ -1\\ 1\end{pmatrix}$（$t \in \mathbb{R}$）。
+
+**考点** 线性方程组、秩与空间维数、初等变换。
+
+**易错点** 含参消元在除以参数前先分情形；通解写成特解加齐次通解。
+
+<span id="answer-4"></span>
+
+### 5.（10 分） {#section-15}
+
+
+先定 $|A|$。$A^{*}$ 是主对角线全为 1 的下三角阵，故 $|A^{*}| = 1$。又对 $n$ 阶方阵有 $|A^{*}| = |A|^{n-1}$，这里 $n = 3$，所以
+
+$$
+|A|^2 = 1 \implies |A| = \pm 1.
+$$
+
+题目给出 $|A| > 0$，故 $|A| = 1$，从而 $A$ 可逆且
+
+$$
+A^{*} = |A|A^{-1} = A^{-1},
+$$
+
+即 $A^{-1} = A^{*}$。
+
+由 $AB = E + 3A$，两边左乘 $A^{-1}$：
+
+$$
+B = A^{-1}(E + 3A) = A^{-1} + 3E = A^{*} + 3E
+= \begin{pmatrix}1 & 0 & 0\\ 0 & 1 & 0\\ 1 & 0 & 1\end{pmatrix} + 3E
+= \begin{pmatrix}4 & 0 & 0\\ 0 & 4 & 0\\ 1 & 0 & 4\end{pmatrix}.
+$$
+
+回代验算：$AB = A(A^{*} + 3E) = AA^{*} + 3A = |A|E + 3A = E + 3A$，满足方程。顺带算出
+
+$$
+A = (A^{*})^{-1} = \begin{pmatrix}1 & 0 & 0\\ 0 & 1 & 0\\ -1 & 0 & 1\end{pmatrix},
+\qquad |A| = 1 > 0,
+$$
+
+与题设 $|A| > 0$ 相容。
+
+**答案** $B = \begin{pmatrix}4 & 0 & 0\\ 0 & 4 & 0\\ 1 & 0 & 4\end{pmatrix}$。
+
+**考点** 伴随矩阵、矩阵方程。
+
+**易错点** 先判断阶数与可逆性，不能把伴随矩阵当作转置。
+
+<span id="answer-5"></span>
+
+### 6.（25 分） {#section-16}
+
+
+记
+
+$$
+N = A - 3E = \begin{pmatrix}0 & 1 & 0\\ 0 & 0 & 1\\ 0 & 0 & 0\end{pmatrix},
+$$
+
+则 $A = 3E + N$，其中 $3E$ 与 $N$ 可交换，且
+
+$$
+N^2 = \begin{pmatrix}0 & 0 & 1\\ 0 & 0 & 0\\ 0 & 0 & 0\end{pmatrix} \ne O, \qquad N^3 = O.
+$$
+
+$N$ 幂零，故二项式定理可用：对 $k \ge 3$
+
+$$
+A^k = (3E + N)^k = \sum_{i=0}^{k} \binom{k}{i} 3^{k-i} N^i = 3^k E + k 3^{k-1} N + \binom{k}{2} 3^{k-2} N^2,
+$$
+
+求和只到 $i = 2$ 是因为 $N^3 = O$。由此逐项求值。
+
+（1）取 $k = 2$：
+
+$$
+A^2 = 9E + 6N + N^2 = 9E + 6\begin{pmatrix}0 & 1 & 0\\ 0 & 0 & 1\\ 0 & 0 & 0\end{pmatrix} + \begin{pmatrix}0 & 0 & 1\\ 0 & 0 & 0\\ 0 & 0 & 0\end{pmatrix} = \begin{pmatrix}9 & 6 & 1\\ 0 & 9 & 6\\ 0 & 0 & 9\end{pmatrix}.
+$$
+
+（2）取 $k = 3$：
+
+$$
+A^3 = 27E + 27N + 9N^2 = \begin{pmatrix}27 & 27 & 9\\ 0 & 27 & 27\\ 0 & 0 & 27\end{pmatrix}.
+$$
+
+（3）取 $k = 100$，$\dbinom{100}{2} = \dfrac{100 \times 99}{2} = 4950$：
+
+$$
+A^{100} = 3^{100}E + 100 \cdot 3^{99}N + 4950 \cdot 3^{98}N^2
+= \begin{pmatrix}
+3^{100} & 100 \cdot 3^{99} & 4950 \cdot 3^{98}\\
+0 & 3^{100} & 100 \cdot 3^{99}\\
+0 & 0 & 3^{100}
+\end{pmatrix}.
+$$
+
+（与（2）对照：把 $k = 3$ 代入 $A^k$ 的公式即得 $A^3$，$27, 27, 9$ 分别对应 $3^3, 3 \cdot 3^2, \binom{3}{2}3^1$。）
+
+（4）由 $A = 3\left(E + \dfrac{N}{3}\right)$ 及 $N^3 = O$，对 $X = \dfrac{N}{3}$ 用 $(E + X)^{-1} = E - X + X^2$（因 $E = (E + X)(E - X + X^2)$）：
+
+$$
+A^{-1} = \frac{1}{3}\left(E - \frac{N}{3} + \frac{N^2}{9}\right)
+= \frac{1}{3}E - \frac{1}{9}N + \frac{1}{27}N^2
+= \frac{1}{27}\begin{pmatrix}9 & -3 & 1\\ 0 & 9 & -3\\ 0 & 0 & 9\end{pmatrix}.
+$$
+
+把 $A$ 乘回即可验证 $A^{-1}A = E$：$N, N^2, N^3$ 的系数两两抵消。
+
+（5）取
+
+$$
+f(x) = (x - 3)^3 = x^3 - 9x^2 + 27x - 27,
+$$
+
+即 $a = -9$，$b = 27$，$c = -27$，则
+
+$$
+f(A) = (A - 3E)^3 = N^3 = O.
+$$
+
+再说明次数不能再低：$A$ 的特征多项式为 $(x - 3)^3$，极小多项式与特征多项式有相同的根，故极小多项式必为 $(x - 3)^k$（$k = 1, 2, 3$）；而 $(A - 3E)^2 = N^2 \ne O$、$A - 3E = N \ne O$，所以 $k = 3$，$(x - 3)^3$ 正是极小多项式，它是零化 $A$ 的最低次多项式。
+
+**答案**（1）$A^2 = \begin{pmatrix}9 & 6 & 1\\ 0 & 9 & 6\\ 0 & 0 & 9\end{pmatrix}$；（2）$A^3 = \begin{pmatrix}27 & 27 & 9\\ 0 & 27 & 27\\ 0 & 0 & 27\end{pmatrix}$；（3）$A^{100} = \begin{pmatrix}3^{100} & 100 \cdot 3^{99} & 4950 \cdot 3^{98}\\ 0 & 3^{100} & 100 \cdot 3^{99}\\ 0 & 0 & 3^{100}\end{pmatrix}$；（4）$A^{-1} = \dfrac{1}{27}\begin{pmatrix}9 & -3 & 1\\ 0 & 9 & -3\\ 0 & 0 & 9\end{pmatrix}$；（5）$f(x) = (x - 3)^3 = x^3 - 9x^2 + 27x - 27$（即 $a = -9$，$b = 27$，$c = -27$）。
+
+**考点** 矩阵幂与多项式。
+
+**易错点** 二项式展开须保证参与的矩阵可交换；幂零与零矩阵不是同一概念。
+
+<span id="answer-6"></span>
+
+### 7.（10 分） {#section-17}
+
+
+把元素全部模 2 来看。记 $\bar{a}$ 为整数 $a$ 模 2 的余数，$\bar{A} = (\bar{a}_{ij})$。当 $i > j$ 时 $i + j \ge 2 + 1 = 3$，故 $(i + j)!$ 含因子 2，故 $\bar{a}_{ij} = 0$；当 $i = j$ 时 $a_{ii} = 2021 = 2 \times 1010 + 1$ 为奇数，故 $\bar{a}_{ii} = 1$。于是 $\bar{A}$ 是主对角线全为 1 的上三角矩阵，从而 $\det \bar{A} = 1$。
+
+行列式是各元素的整系数多项式，取模 2 与取行列式可交换，即
+
+$$
+|A| \equiv \det \bar{A} = 1 \pmod 2.
+$$
+
+所以 $|A|$ 是奇数，特别地 $|A| \ne 0$。$\square$
+
+（可任取 $n$ 检验：$n = 2$ 时 $|A| = 4084435$，为奇数。）
+
+**考点** 行列式、矩阵幂与多项式。
+
+**易错点** 交换两行变号；倍乘一行才提取一个因子；余子式须带 $(-1)^{i+j}$。
+
+<span id="answer-7"></span>
+
+### 8.（10 分） {#section-18}
+
+
+由矩阵的标准形理论，$\operatorname{rank} A = r$ 意味存在可逆矩阵 $P, Q$ 使
+
+$$
+PAQ = J := \begin{pmatrix}E_r & 0\\ 0 & 0\end{pmatrix}.
+$$
+
+（把 $A$ 经初等行、列变换化为标准形即可得到这样的 $P, Q$，$J$ 的左上角是 $r$ 阶单位阵。）由此 $A = P^{-1}JQ^{-1}$。
+
+**构造。** 取
+
+$$
+B = QJQ^{-1}, \qquad C = P^{-1}JP.
+$$
+
+$B$ 是 $J$ 的相似变换、$C$ 也是（$C = P^{-1}JP$），乘可逆矩阵不改变秩，而 $r(J) = r$，故
+
+$$
+r(B) = r(J) = r, \qquad r(C) = r(J) = r,
+$$
+
+且 $B, C$ 都是 $n$ 阶实方阵，符合要求。
+
+**验证** $AB = CA$。注意 $J^2 = J$（$J$ 是幂等阵），且 $PP^{-1} = QQ^{-1} = E$：
+
+$$
+AB = P^{-1}JQ^{-1} \cdot QJQ^{-1} = P^{-1}J^2Q^{-1} = P^{-1}JQ^{-1} = A,
+$$
+
+$$
+CA = P^{-1}JP \cdot P^{-1}JQ^{-1} = P^{-1}J^2Q^{-1} = P^{-1}JQ^{-1} = A.
+$$
+
+两个乘积都等于 $A$ 本身，当然相等，即 $AB = CA$。故所求的 $B, C$ 存在。$\square$
+
+**注** 构造的要害是让 $AB$ 与 $CA$ 都等于 $A$：把 $A$ 写成 $P^{-1}JQ^{-1}$ 后，分别用 $QJQ^{-1}$、$P^{-1}JP$ 去“抵消”两侧的因子。
+
+**考点** 矩阵方程、秩与空间维数。
+
+**易错点** 逆矩阵不能随意跨过其他因子；只可在同侧作相应运算。
+
+<span id="answer-8"></span>
+
+## 第三部分：知识点总结 {#summary}
+
+
+
+### 答案与考点 {#section-20}
+
+
+| 题号 | 答案要点 | 主要考点 |
+| --- | --- | --- |
+| [1](#answer-1) | （15）$n$ 阶三对角行列式：$D_n=(6^{n+1}-1)/5$（$D_1=7,D_2=43$）。 | 行列式 |
+| [2](#answer-2) | （10）逆矩阵、伴随与行列式：$\|A^{*}-2E\|=-1$。 | 伴随矩阵 |
+| [3](#answer-3) | （10）幂等矩阵的秩：$r(A)+r(A-E)=n$（用 $\operatorname{Im}$/$\ker$ 夹逼）。 | 矩阵幂与多项式、秩与空间维数 |
+| [4](#answer-4) | （20）齐次方程组：$r(A)=3$，$X=t(-1,-2,-1,1)^{\mathrm{T}}$。 | 线性方程组、秩与空间维数、初等变换 |
+| [5](#answer-5) | （10）伴随矩阵定 $\|A\|$ 并解矩阵方程：$\|A\|=1$，$B=\begin{pmatrix}4&0&0\\0&4&0\\1&0&4\end{pmatrix}$。 | 伴随矩阵、矩阵方程 |
+| [6](#answer-6) | （25）$3E+N$（$N$ 幂零）的二项式展开：$A^{2},A^{3},A^{100}$、$A^{-1}$，零化多项式 $f=(x-3)^{3}$。 | 矩阵幂与多项式 |
+| [7](#answer-7) | （10）行列式取模 2：$\|A\|\equiv1\pmod 2$，故 $\|A\|\neq0$。 | 行列式、矩阵幂与多项式 |
+| [8](#answer-8) | （10）标准形构造：$A=P^{-1}JQ^{-1}$，取 $B=QJQ^{-1}$、$C=P^{-1}JP$，得 $AB=CA=A$。 | 矩阵方程、秩与空间维数 |
+
+
+### 复习要点 {#section-21}
+
+
+- **行列式：**优先用行、列倍加制造零元；三对角型按首行展开建立递推，并核对初值。
+- **伴随矩阵：**$AA^*=A^*A=|A|E$；$|A^*|=|A|^{n-1}$；可逆时 $A^*=|A|A^{-1}$。
+- **矩阵幂与多项式：**由已知的矩阵多项式关系降低幂次；秩一矩阵 $uv^{\mathsf T}$ 满足 $(uv^{\mathsf T})^m=(v^{\mathsf T}u)^{m-1}uv^{\mathsf T}$。
+- **秩与空间维数：**$r(XY)\le\min\{r(X),r(Y)\}$，$r(X+Y)\le r(X)+r(Y)$；可逆初等变换不改变秩。
+- **线性方程组：**$r(A)<r(A\mid b)$ 时无解；两秩相等时有解，自由参数个数为 $n-r(A)$。
+- **初等变换：**行变换对应左乘初等矩阵，列变换对应右乘初等矩阵，连续操作按实际次序组合。
+- **矩阵方程：**$AX=B$ 左乘 $A^{-1}$，$XA=B$ 右乘 $A^{-1}$；先移项因式分解，再判断可逆性。
+
+
+### 易错点清单 {#section-22}
+
+
+- 交换两行变号；倍乘一行才提取一个因子；余子式须带 $(-1)^{i+j}$。
+- 先判断阶数与可逆性，不能把伴随矩阵当作转置。
+- 二项式展开须保证参与的矩阵可交换；幂零与零矩阵不是同一概念。
+- 秩是最大非零子式的阶数；区分零空间、列空间与行空间。
+- 含参消元在除以参数前先分情形；通解写成特解加齐次通解。
+- 行、列操作混用时要区分作用侧；同侧变换的先后次序不能随意交换。
+- 逆矩阵不能随意跨过其他因子；只可在同侧作相应运算。
+
+---
+
+
+## ⚖️AI 协作与版权声明 {#section-23}
+
+
+
+### AI 协作说明 {#section-24}
+
+
+本文件由整理者提供资料并确定整理要求，使用 OpenAI Codex 辅助完成题目转写、LaTeX 公式录入、解题推导、知识点分析和 Markdown 排版。AI 辅助生成的解析属于学习参考内容，不代表命题教师、原资料作者或学校的官方解答；本声明不表示内容已经过人工逐题审核。使用时请结合教材与课程要求核验，发现问题可提出更正。
+
+
+### 来源与权利归属 {#section-25}
+
+
+原始试卷及参考解析来自本库保存的浙江大学《线性代数（甲）》历年期中题目卷与解析卷 PDF 合集。合集署名整理者为 macanine，项目地址为 [zju-linear-algebra-papers](https://github.com/macanine/zju-linear-algebra-papers)。原题、参考解析及其他第三方材料的权利归各自权利人所有，本文件的整理行为不改变其权利归属。来源标注用于说明出处，不表示已取得原资料的开放许可，也不表示原作者对本文件作出认可。
+
+
+### 开放许可与转载要求 {#section-26}
+
+
+在整理贡献者依法有权许可的范围内，本文件新增的转写编排、补充解析和知识点整理采用 **MIT License**，许可正文如下。该许可不涵盖原题、原始参考解析、截图或其他第三方材料；使用这些材料须遵守其原有许可，或另行取得必要授权。
+
+转载或修改适用 MIT 许可的内容时，应保留以下版权与许可声明。转载包含原题或引用资料的版本时，也请保留资料来源及本节 AI 协作说明；修改者应注明修改内容，避免将补充或修改的结论归于原资料作者。
+
+```text
+MIT License
+
+Copyright (c) 2026 easoncyy
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```

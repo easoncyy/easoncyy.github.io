@@ -1,0 +1,499 @@
+---
+title: 2016-2017 学年秋冬《线性代数（甲）》期中归档
+description: 2016-2017 学年期中试卷：题目、详细解析与知识点总结。
+date: '2026-10-27'
+author: easoncyy（整理）
+category-path:
+- MATH
+- LINEAR-ALGEBRA
+- 历年卷
+- 期中
+categories:
+- 历年卷
+- 期中
+- 真题
+execute:
+  enabled: false
+toc-depth: 3
+---
+
+共 7 道题，保留试卷题号和分值。先独立作答，再对照解析与考点索引。
+
+来源：[题目合集](/assets/pdf/exams/linear-algebra-midterm-questions.pdf)、[解析合集](/assets/pdf/exams/linear-algebra-midterm-solutions.pdf)。合集整理者：macanine。
+
+
+
+::: {.download-box}
+[在线阅读练习卷 PDF ↗](/assets/pdf/exams/practice/linear-algebra-midterm-2016-2017-practice.pdf){target="_blank"} · [下载练习卷 PDF ↓](/assets/pdf/exams/practice/linear-algebra-midterm-2016-2017-practice.pdf){download="linear-algebra-midterm-2016-2017-practice.pdf"}
+
+根据归档题目整理的练习版，非原卷扫描件；仅含题目，并留有作答空间。
+:::
+
+## 第一部分：题目 {#questions}
+
+
+
+### 1.（10 分） {#section-2}
+
+
+试计算行列式
+
+$$
+\begin{vmatrix}
+1 & 0 & 2 & 0 & x\\
+0 & 2 & 0 & 1 & 0\\
+1 & 0 & 4 & 0 & x^{2}\\
+0 & 5 & 0 & 3 & 0\\
+1 & 0 & 8 & 0 & x^{3}
+\end{vmatrix}.
+$$
+
+
+### 2.（15 分） {#section-3}
+
+
+解齐次线性方程组
+
+$$
+\begin{cases}
+x_{1} + x_{3} - x_{4} - 3x_{5} = -2,\\
+x_{1} + 2x_{2} - x_{3} - x_{5} = 1,\\
+4x_{1} + 6x_{2} - 2x_{3} - 4x_{4} + 3x_{5} = 7,\\
+2x_{1} - 2x_{2} + 4x_{3} - 7x_{4} + 4x_{5} = 1.
+\end{cases}
+$$
+
+
+### 3.（15 分） {#section-4}
+
+
+（1）试叙述矩阵秩的定义。
+
+（2）设 $\lambda$ 可取任意参数，试求矩阵
+
+$$
+\begin{pmatrix}
+1 & -1 & 1 & 1\\
+1 & \lambda & 1 & 1\\
+2 & 2\lambda & \lambda + 4 & 3
+\end{pmatrix}
+$$
+
+的秩。
+
+
+### 4.（15 分） {#section-5}
+
+
+试求解矩阵方程 $AXB = C$ 的解，其中
+
+$$
+A = \begin{pmatrix}1 & 2 & 3\\ 2 & 1 & 2\\ 1 & 3 & 4\end{pmatrix},\qquad
+B = \begin{pmatrix}7 & 9\\ 4 & 5\end{pmatrix},\qquad
+C = \begin{pmatrix}1 & 2\\ 1 & 0\\ 2 & 3\end{pmatrix}.
+$$
+
+
+### 5.（15 分） {#section-6}
+
+
+已知 $A^{*}BA = 2BA - 12E$，其中 $A = \begin{pmatrix}2 & 0 & 0\\ 0 & -2 & 1\\ 0 & -1 & 1\end{pmatrix}$，求 $B$。
+
+
+### 6.（15 分） {#section-7}
+
+
+试证明 $\begin{pmatrix}O & A\\ B & C\end{pmatrix}$ 可逆并求其逆，这里 $A, B$ 分别为 $r$ 阶和 $s$ 阶可逆矩阵。
+
+
+### 7.（15 分） {#section-8}
+
+
+（1）试证明对矩阵 $A$ 实施一次初等行变换等价于用相应的初等矩阵左乘 $A$。
+
+（2）试证明方阵 $A$ 可逆的充分必要条件是 $|A| \neq 0$。
+
+
+## 第二部分：详细解析 {#solutions}
+
+
+
+### 1.（10 分） {#section-10}
+
+
+第 2、4 列只在第 2、4 行有非零元，第 1、3、5 列只在第 1、3、5 行有非零元。把第 2、4 行依次换到最前（3 次行交换），再把第 2、4 列依次换到最前（同样 3 次列交换），两次的符号因子 $(-1)^{3}\cdot(-1)^{3}=1$ 相抵，行列式的值不变，而矩阵已化为分块对角形，故可用分块行列式：
+
+$$
+D = \begin{vmatrix}2 & 1\\ 5 & 3\end{vmatrix}\cdot
+\begin{vmatrix}
+1 & 2 & x\\
+1 & 4 & x^{2}\\
+1 & 8 & x^{3}
+\end{vmatrix}
+= (6 - 5)\begin{vmatrix}
+1 & 2 & x\\
+1 & 4 & x^{2}\\
+1 & 8 & x^{3}
+\end{vmatrix}.
+$$
+
+右端的 3 阶行列式把第 2、3 行分别减去第 1 行，再按第 1 列展开：
+
+$$
+\begin{vmatrix}
+1 & 2 & x\\
+1 & 4 & x^{2}\\
+1 & 8 & x^{3}
+\end{vmatrix}
+= \begin{vmatrix}
+1 & 2 & x\\
+0 & 2 & x^{2} - x\\
+0 & 6 & x^{3} - x
+\end{vmatrix}
+= \begin{vmatrix}2 & x^{2} - x\\ 6 & x^{3} - x\end{vmatrix}
+= 2(x^{3} - x) - 6(x^{2} - x) = 2x(x - 1)(x - 2).
+$$
+
+**答案** $D = 2x(x - 1)(x - 2) = 2x^{3} - 6x^{2} + 4x$。
+
+验算：$x = 0$ 时第 5 列全为零，$x = 1$ 时第 5 列与第 1 列相同，$x = 2$ 时第 5 列与第 3 列相同，故 $0, 1, 2$ 都是零点，与三次式相符。
+
+**考点** 行列式。
+
+**易错点** 交换两行变号；倍乘一行才提取一个因子；余子式须带 $(-1)^{i+j}$。
+
+<span id="answer-1"></span>
+
+### 2.（15 分） {#section-11}
+
+
+先把方程组解清楚。对增广矩阵作初等行变换（$R_{2} - R_{1}$，$R_{3} - 4R_{1}$，$R_{4} - 2R_{1}$，再 $R_{3} - 3R_{2}$，$R_{4} + R_{2}$，最后 $R_{4} - \frac{4}{3}R_{3}$）：
+
+$$
+\begin{pmatrix}
+1 & 0 & 1 & -1 & -3 & -2\\
+1 & 2 & -1 & 0 & -1 & 1\\
+4 & 6 & -2 & -4 & 3 & 7\\
+2 & -2 & 4 & -7 & 4 & 1
+\end{pmatrix}
+\to
+\begin{pmatrix}
+1 & 0 & 1 & -1 & -3 & -2\\
+0 & 2 & -2 & 1 & 2 & 3\\
+0 & 0 & 0 & -3 & 9 & 6\\
+0 & 0 & 0 & 0 & 0 & 0
+\end{pmatrix}.
+$$
+
+系数矩阵与增广矩阵的秩同为 $3$（主元在第 $1, 2, 4$ 列），故方程组相容，未知量有 $5$ 个，自由未知量有 $5 - 3 = 2$ 个。取 $x_{3}, x_{5}$ 为自由未知量，由化简后的三个非零行自下而上回代：
+
+$$
+x_{4} = 3x_{5} - 2,
+$$
+
+$$
+x_{2} = x_{3} + \frac{3 - x_{4} - 2x_{5}}{2} = x_{3} + \frac{5(1 - x_{5})}{2},
+$$
+
+$$
+x_{1} = -2 - x_{3} + x_{4} + 3x_{5} = 6x_{5} - x_{3} - 4.
+$$
+
+直接令 $x_{5} = c_{2}$ 会出现分数，故取 $x_{3} = c_{1}$、$x_{5} = 1 + 2c_{2}$（$x_{5}$ 仍取遍所有实数），得整系数的通解
+
+$$
+(x_{1}, x_{2}, x_{3}, x_{4}, x_{5})^{\mathrm{T}} = (2, 0, 0, 1, 1)^{\mathrm{T}} + c_{1}(-1, 1, 1, 0, 0)^{\mathrm{T}} + c_{2}(12, -5, 0, 6, 2)^{\mathrm{T}}.
+$$
+
+**答案** 通解为 $\mathbf{x} = (2, 0, 0, 1, 1)^{\mathrm{T}} + c_{1}(-1, 1, 1, 0, 0)^{\mathrm{T}} + c_{2}(12, -5, 0, 6, 2)^{\mathrm{T}}$（$c_{1}, c_{2}$ 任意）。
+
+验算：取 $c_{1} = c_{2} = 0$ 得 $(2, 0, 0, 1, 1)^{\mathrm{T}}$，代入四个方程分别得 $-2, 1, 7, 1$，与常数项一致；两个方向向量代入左端分别得零向量，故确为解。
+
+**注** 题面写“齐次线性方程组”，但齐次方程组要求各方程的常数项全为零，而题面给出的方程常数项不全为零，故实际是非齐次方程组。这里按题面给出的方程（非齐次）求解。
+
+**考点** 线性方程组。
+
+**易错点** 含参消元在除以参数前先分情形；通解写成特解加齐次通解。
+
+<span id="answer-2"></span>
+
+### 3.（15 分） {#section-12}
+
+
+（1）在 $m \times n$ 矩阵 $A$ 中任取 $k$ 行与 $k$ 列，位于这些行、列交叉处的 $k^{2}$ 个元素按原次序排成的 $k$ 阶行列式，称为 $A$ 的一个 $k$ 阶子式。若 $A$ 中有一个 $r$ 阶子式不为零，而所有 $r + 1$ 阶子式（若存在）全为零，则称 $A$ 的秩为 $r$，记作 $r(A)$；零矩阵的秩规定为 $0$。也就是说，$r(A)$ 就是 $A$ 中非零子式的最高阶数，它也等于 $A$ 的行阶梯形中非零行的行数。
+
+（2）对 $A$ 作初等行变换：先 $R_{3} \leftarrow R_{3} - 2R_{2}$ 得 $(0, 0, \lambda + 2, 1)$，再 $R_{2} \leftarrow R_{2} - R_{1}$ 得 $(0, \lambda + 1, 0, 0)$，于是 $A$ 行等价于
+
+$$
+\begin{pmatrix}
+1 & -1 & 1 & 1\\
+0 & \lambda + 1 & 0 & 0\\
+0 & 0 & \lambda + 2 & 1
+\end{pmatrix}.
+$$
+
+它至多有 $3$ 个非零行。当 $\lambda \neq -1$ 时第 $2$ 行非零：$\lambda \neq -2$ 时三行分别在第 $1, 2, 3$ 列取得主元，$\lambda = -2$ 时第 $3$ 行是 $(0, 0, 0, 1)$、三行分别在第 $1, 2, 4$ 列取得主元。两种情形三行都线性无关，故 $r(A) = 3$；当 $\lambda = -1$ 时第 $2$ 行全为零，剩下的 $(1, -1, 1, 1)$ 与 $(0, 0, 1, 1)$ 线性无关，故 $r(A) = 2$。
+
+**答案**
+
+$$
+r(A) = \begin{cases}
+3, & \lambda \neq -1,\\
+2, & \lambda = -1.
+\end{cases}
+$$
+
+**考点** 秩与空间维数。
+
+**易错点** 秩是最大非零子式的阶数；区分零空间、列空间与行空间。
+
+<span id="answer-3"></span>
+
+### 4.（15 分） {#section-13}
+
+
+先判断可逆性。按第 1 行展开得
+
+$$
+|A| = 1\cdot(4 - 6) - 2\cdot(8 - 2) + 3\cdot(6 - 1) = -2 - 12 + 15 = 1 \neq 0,
+$$
+
+同理 $|B| = 7\cdot 5 - 9\cdot 4 = -1 \neq 0$，故 $A, B$ 都可逆。方程 $AXB = C$ 两边左乘 $A^{-1}$、右乘 $B^{-1}$，得
+
+$$
+X = A^{-1}CB^{-1}.
+$$
+
+用初等行变换求 $A^{-1}$，二阶的 $B^{-1}$ 由伴随矩阵公式 $B^{-1} = \frac{1}{|B|}B^{*}$ 直接写出：
+
+$$
+A^{-1} = \begin{pmatrix}-2 & 1 & 1\\ -6 & 1 & 4\\ 5 & -1 & -3\end{pmatrix},\qquad
+B^{-1} = \frac{1}{-1}\begin{pmatrix}5 & -9\\ -4 & 7\end{pmatrix} = \begin{pmatrix}-5 & 9\\ 4 & -7\end{pmatrix}.
+$$
+
+先算 $A^{-1}C$（$3 \times 2$ 矩阵），再右乘 $B^{-1}$：
+
+$$
+A^{-1}C = \begin{pmatrix}1 & -1\\ 3 & 0\\ -2 & 1\end{pmatrix},\qquad
+X = \begin{pmatrix}1 & -1\\ 3 & 0\\ -2 & 1\end{pmatrix}\begin{pmatrix}-5 & 9\\ 4 & -7\end{pmatrix}
+= \begin{pmatrix}-9 & 16\\ -15 & 27\\ 14 & -25\end{pmatrix}.
+$$
+
+验算：把 $X$ 代回，$AXB = \begin{pmatrix}1 & 2\\ 1 & 0\\ 2 & 3\end{pmatrix} = C$，成立。
+
+**答案** $X = \begin{pmatrix}-9 & 16\\ -15 & 27\\ 14 & -25\end{pmatrix}$。
+
+**考点** 矩阵方程。
+
+**易错点** 逆矩阵不能随意跨过其他因子；只可在同侧作相应运算。
+
+<span id="answer-4"></span>
+
+### 5.（15 分） {#section-14}
+
+
+$A$ 是分块下三角矩阵，按第一行展开得 $|A| = 2\cdot((-2)\cdot 1 - 1\cdot(-1)) = -2 \neq 0$，且容易求出
+
+$$
+A^{-1} = \begin{pmatrix}\frac{1}{2} & 0 & 0\\ 0 & -1 & 1\\ 0 & -1 & 2\end{pmatrix},\qquad
+A^{*} = |A|A^{-1} = -2A^{-1} = \begin{pmatrix}-1 & 0 & 0\\ 0 & 2 & -2\\ 0 & 2 & -4\end{pmatrix}.
+$$
+
+关键一步是用 $|A| = -2$ 把 $A^{*}$ 换成 $-2A^{-1}$，于是原方程化为
+
+$$
+(-2A^{-1} - 2E)BA = -12E \quad\Longrightarrow\quad (A^{-1} + E)BA = 6E.
+$$
+
+两边右乘 $A^{-1}$，得 $(A^{-1} + E)B = 6A^{-1}$，即 $B = 6(A^{-1} + E)^{-1}A^{-1}$。又 $(A^{-1} + E)A = A^{-1}A + A = E + A$，由 $(AQ)^{-1} = Q^{-1}A^{-1}$（取 $Q = A^{-1} + E$）得
+
+$$
+(A^{-1} + E)^{-1}A^{-1} = (A(A^{-1} + E))^{-1} = (A + E)^{-1},
+$$
+
+故 $B = 6(A + E)^{-1}$。而
+
+$$
+A + E = \begin{pmatrix}3 & 0 & 0\\ 0 & -1 & 1\\ 0 & -1 & 2\end{pmatrix},\qquad
+(A + E)^{-1} = \begin{pmatrix}\frac{1}{3} & 0 & 0\\ 0 & -2 & 1\\ 0 & -1 & 1\end{pmatrix},
+$$
+
+于是 $B = 6(A + E)^{-1}$。验算：代入得
+
+$$
+BA = \begin{pmatrix}4 & 0 & 0\\ 0 & 18 & -6\\ 0 & 6 & 0\end{pmatrix},\qquad
+A^{*}BA = 2BA - 12E = \begin{pmatrix}-4 & 0 & 0\\ 0 & 24 & -12\\ 0 & 12 & -12\end{pmatrix},
+$$
+
+成立。
+
+**答案** $B = 6(A + E)^{-1} = \begin{pmatrix}2 & 0 & 0\\ 0 & -12 & 6\\ 0 & -6 & 6\end{pmatrix}$。
+
+**注** 伴随矩阵与转置容易混淆，这里不妨验一下：若把 $A^{*}$ 误当转置，方程化为 $(A^{\mathrm{T}} - 2E)BA = -12E$，而 $A$ 的首行与首列都是 $(2, 0, 0)$，故 $A^{\mathrm{T}} - 2E$ 的首行全为零，左端乘积的首行必为零行，右端 $-12E$ 的首行却是 $(-12, 0, 0)$，矛盾，方程无解。可见此处的 $A^{*}$ 只能是伴随矩阵。
+
+**考点** 伴随矩阵。
+
+**易错点** 先判断阶数与可逆性，不能把伴随矩阵当作转置。
+
+<span id="answer-5"></span>
+
+### 6.（15 分） {#section-15}
+
+
+记 $M = \begin{pmatrix}O & A\\ B & C\end{pmatrix}$，其中 $O$ 是 $r \times s$ 零块、$C$ 是 $s \times r$ 块，故 $M$ 是 $r + s$ 阶方阵。按“先猜后验”的办法，把待求的逆矩阵按块行 $(s, r)$、块列 $(r, s)$ 分块（即左上 $s \times r$、右下 $r \times s$），取
+
+$$
+X = \begin{pmatrix}-B^{-1}CA^{-1} & B^{-1}\\ A^{-1} & O\end{pmatrix},
+$$
+
+用分块乘法逐块检验：
+
+$$
+MX = \begin{pmatrix}
+O(-B^{-1}CA^{-1}) + AA^{-1} & OB^{-1} + AO\\
+B(-B^{-1}CA^{-1}) + CA^{-1} & BB^{-1} + CO
+\end{pmatrix}
+= \begin{pmatrix}E_{r} & O\\ O & E_{s}\end{pmatrix} = E_{r+s},
+$$
+
+其中左下块 $B(-B^{-1}CA^{-1}) + CA^{-1} = -CA^{-1} + CA^{-1} = O$，右上块 $OB^{-1} + AO = O$；各行用到了 $A, B$ 可逆给出的 $AA^{-1} = E_{r}$、$BB^{-1} = E_{s}$。于是 $M$ 可逆，且 $M^{-1} = X$。
+
+若只想先判断可逆，也可算行列式：把两块行组互换需 $r \cdot s$ 次行交换，互换后成为分块三角阵 $\begin{pmatrix}B & C\\ O & A\end{pmatrix}$，故 $|M| = (-1)^{rs}|A||B| \neq 0$。
+
+**答案** $\begin{pmatrix}O & A\\ B & C\end{pmatrix}^{-1} = \begin{pmatrix}-B^{-1}CA^{-1} & B^{-1}\\ A^{-1} & O\end{pmatrix}$。
+
+**考点** 行列式、分块矩阵。
+
+**易错点** 交换两行变号；倍乘一行才提取一个因子；余子式须带 $(-1)^{i+j}$。
+
+<span id="answer-6"></span>
+
+### 7.（15 分） {#section-16}
+
+
+（1）设 $A$ 是 $m \times n$ 矩阵，其行向量为 $\alpha_{1}^{\mathrm{T}}, \alpha_{2}^{\mathrm{T}}, \dots, \alpha_{m}^{\mathrm{T}}$。先记一条乘法事实：对任意 $m$ 阶矩阵 $P = (p_{ij})$，由 $(PA)_{ik} = \sum_{j=1}^{m}p_{ij}a_{jk}$ 得
+
+$$
+PA \text{ 的第 } i \text{ 行} = \sum_{j=1}^{m}p_{ij}\alpha_{j}^{\mathrm{T}},
+$$
+
+即 $P$ 的第 $i$ 行元素正是把 $A$ 的各行作线性组合时的系数。
+
+对 $m$ 阶单位矩阵 $E$ 作一次初等行变换，得到的矩阵称为相应的初等矩阵，共三类，逐类验证即可：
+
+（i）互换第 $i, j$ 行得 $E(i, j)$，它的第 $i$ 行是 $e_{j}^{\mathrm{T}}$、第 $j$ 行是 $e_{i}^{\mathrm{T}}$，其余第 $k$ 行仍为 $e_{k}^{\mathrm{T}}$。于是 $E(i, j)A$ 的第 $i$ 行是 $\alpha_{j}^{\mathrm{T}}$、第 $j$ 行是 $\alpha_{i}^{\mathrm{T}}$，其余行不变，恰为互换 $A$ 的第 $i, j$ 行。
+
+（ii）第 $i$ 行乘非零数 $k$ 得 $E(i(k))$，它的第 $i$ 行是 $ke_{i}^{\mathrm{T}}$，于是 $E(i(k))A$ 的第 $i$ 行是 $k\alpha_{i}^{\mathrm{T}}$，其余行不变，恰为把 $A$ 的第 $i$ 行乘 $k$。
+
+（iii）第 $j$ 行的 $k$ 倍加到第 $i$ 行得 $E(i, j(k))$，它的第 $i$ 行是 $e_{i}^{\mathrm{T}} + ke_{j}^{\mathrm{T}}$，于是 $E(i, j(k))A$ 的第 $i$ 行是 $\alpha_{i}^{\mathrm{T}} + k\alpha_{j}^{\mathrm{T}}$，其余行不变，恰为把 $A$ 的第 $j$ 行的 $k$ 倍加到第 $i$ 行。
+
+三类初等行变换都如此，故对 $A$ 施行一次初等行变换，等价于用相应的初等矩阵左乘 $A$。顺带由上还可读出：初等矩阵都可逆，且逆仍为同类初等矩阵（$E(i, j)^{-1} = E(i, j)$，$E(i(k))^{-1} = E(i(1/k))$，$E(i, j(k))^{-1} = E(i, j(-k))$）。
+
+（2）必要性：设 $A$ 可逆，则 $AA^{-1} = E$。两边取行列式并用 $|XY| = |X||Y|$，得 $|A| \cdot |A^{-1}| = 1$，故 $|A| \neq 0$（且 $|A^{-1}| = \frac{1}{|A|}$）。
+
+充分性：设 $|A| \neq 0$。用初等行变换把 $A$ 化为行阶梯形 $U$。由（1），$U = PA$，其中 $P$ 是有限个初等矩阵之积；三类初等矩阵的行列式分别为 $-1, k\ (k \neq 0), 1$，都非零，故 $|P| \neq 0$，从而
+
+$$
+|U| = |P| \cdot |A| \neq 0.
+$$
+
+特别地 $U$ 没有零行。$n$ 阶矩阵的行阶梯形没有零行，说明它有 $n$ 个主元，即 $U$ 是主元全不为零的上三角矩阵。再对 $U$ 作倍加变换（把第 $i$ 行减去上方各行的适当倍数）消去每个主元上方的元素，并用倍乘变换把各主元化为 $1$，就把 $U$ 化成了 $E$。即 $A$ 行等价于 $E$，故存在初等矩阵之积 $Q$ 使 $QA = E$。
+
+由 $QA = E$ 两边左乘 $Q^{-1}$ 得 $A = Q^{-1}$；而由（1）后的说明 $Q$ 可逆，故 $A$ 可逆（且 $A^{-1} = Q$，即 $A^{-1}$ 也是初等矩阵之积）。必要性、充分性都成立。$\square$
+
+**考点** 初等变换。
+
+**易错点** 行、列操作混用时要区分作用侧；同侧变换的先后次序不能随意交换。
+
+<span id="answer-7"></span>
+
+## 第三部分：知识点总结 {#summary}
+
+
+
+### 答案与考点 {#section-18}
+
+
+| 题号 | 答案要点 | 主要考点 |
+| --- | --- | --- |
+| [1](#answer-1) | （10）五阶数字行列式：$D=2x(x-1)(x-2)=2x^{3}-6x^{2}+4x$。 | 行列式 |
+| [2](#answer-2) | （15）线性方程组通解（题面称"齐次"实为非齐次，4 方程 5 未知量）：$x=(2,0,0,1,1)^{\mathrm{T}}+c_1(-1,1,1,0,0)^{\mathrm{T}}+c_2(12,-5,0,6,2)^{\mathrm{T}}$。 | 线性方程组 |
+| [3](#answer-3) | （15）叙述秩的定义 + 含参 $\lambda$ 的 $3\times4$ 矩阵求秩：$\lambda\neq-1$ 时 $r(A)=3$；$\lambda=-1$ 时 $r(A)=2$。 | 秩与空间维数 |
+| [4](#answer-4) | （15）矩阵方程 $AXB=C$：$X=A^{-1}CB^{-1}=\begin{pmatrix}-9&16\\-15&27\\14&-25\end{pmatrix}$。 | 矩阵方程 |
+| [5](#answer-5) | （15）伴随矩阵方程 $A^{*}BA=2BA-12E$（$\|A\|=-2$，故 $A^{*}=-2A^{-1}$）：$B=6(A+E)^{-1}=\begin{pmatrix}2&0&0\\0&-12&6\\0&-6&6\end{pmatrix}$。 | 伴随矩阵 |
+| [6](#answer-6) | （15）分块矩阵 $\begin{pmatrix}O&A\\B&C\end{pmatrix}$ 的可逆性证明并求逆：逆为 $\begin{pmatrix}-B^{-1}CA^{-1}&B^{-1}\\A^{-1}&O\end{pmatrix}$。 | 行列式、分块矩阵 |
+| [7](#answer-7) | （15）(1) 初等行变换 $\equiv$ 左乘初等矩阵；(2) $A$ 可逆 $\iff \|A\|\neq0$（三类初等矩阵逐类验证；必要性用 $\|XY\|=\|X\|\|Y\|$，充分性用行阶梯形 $U=PA$）。 | 初等变换 |
+
+
+### 复习要点 {#section-19}
+
+
+- **行列式：**优先用行、列倍加制造零元；三对角型按首行展开建立递推，并核对初值。
+- **线性方程组：**$r(A)<r(A\mid b)$ 时无解；两秩相等时有解，自由参数个数为 $n-r(A)$。
+- **秩与空间维数：**$r(XY)\le\min\{r(X),r(Y)\}$，$r(X+Y)\le r(X)+r(Y)$；可逆初等变换不改变秩。
+- **矩阵方程：**$AX=B$ 左乘 $A^{-1}$，$XA=B$ 右乘 $A^{-1}$；先移项因式分解，再判断可逆性。
+- **伴随矩阵：**$AA^*=A^*A=|A|E$；$|A^*|=|A|^{n-1}$；可逆时 $A^*=|A|A^{-1}$。
+- **分块矩阵：**左上块 $A$ 可逆时，Schur 补为 $D-CA^{-1}B$；分块消元可用于行列式、逆与秩。
+- **初等变换：**行变换对应左乘初等矩阵，列变换对应右乘初等矩阵，连续操作按实际次序组合。
+
+
+### 易错点清单 {#section-20}
+
+
+- 交换两行变号；倍乘一行才提取一个因子；余子式须带 $(-1)^{i+j}$。
+- 含参消元在除以参数前先分情形；通解写成特解加齐次通解。
+- 秩是最大非零子式的阶数；区分零空间、列空间与行空间。
+- 逆矩阵不能随意跨过其他因子；只可在同侧作相应运算。
+- 先判断阶数与可逆性，不能把伴随矩阵当作转置。
+- 先检查块的尺寸；矩阵相乘的次序一般不可交换。
+- 行、列操作混用时要区分作用侧；同侧变换的先后次序不能随意交换。
+
+---
+
+
+## ⚖️AI 协作与版权声明 {#section-21}
+
+
+
+### AI 协作说明 {#section-22}
+
+
+本文件由整理者提供资料并确定整理要求，使用 OpenAI Codex 辅助完成题目转写、LaTeX 公式录入、解题推导、知识点分析和 Markdown 排版。AI 辅助生成的解析属于学习参考内容，不代表命题教师、原资料作者或学校的官方解答；本声明不表示内容已经过人工逐题审核。使用时请结合教材与课程要求核验，发现问题可提出更正。
+
+
+### 来源与权利归属 {#section-23}
+
+
+原始试卷及参考解析来自本库保存的浙江大学《线性代数（甲）》历年期中题目卷与解析卷 PDF 合集。合集署名整理者为 macanine，项目地址为 [zju-linear-algebra-papers](https://github.com/macanine/zju-linear-algebra-papers)。原题、参考解析及其他第三方材料的权利归各自权利人所有，本文件的整理行为不改变其权利归属。来源标注用于说明出处，不表示已取得原资料的开放许可，也不表示原作者对本文件作出认可。
+
+
+### 开放许可与转载要求 {#section-24}
+
+
+在整理贡献者依法有权许可的范围内，本文件新增的转写编排、补充解析和知识点整理采用 **MIT License**，许可正文如下。该许可不涵盖原题、原始参考解析、截图或其他第三方材料；使用这些材料须遵守其原有许可，或另行取得必要授权。
+
+转载或修改适用 MIT 许可的内容时，应保留以下版权与许可声明。转载包含原题或引用资料的版本时，也请保留资料来源及本节 AI 协作说明；修改者应注明修改内容，避免将补充或修改的结论归于原资料作者。
+
+```text
+MIT License
+
+Copyright (c) 2026 easoncyy
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```

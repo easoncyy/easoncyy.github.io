@@ -1,0 +1,433 @@
+---
+title: 2018-2019 学年秋冬《线性代数（甲）》期中归档
+description: 2018-2019 学年期中试卷：题目、详细解析与知识点总结。
+date: '2026-10-27'
+author: easoncyy（整理）
+category-path:
+- MATH
+- LINEAR-ALGEBRA
+- 历年卷
+- 期中
+categories:
+- 历年卷
+- 期中
+- 真题
+execute:
+  enabled: false
+toc-depth: 3
+---
+
+共 8 道题，保留试卷题号和分值。先独立作答，再对照解析与考点索引。
+
+来源：[题目合集](/assets/pdf/exams/linear-algebra-midterm-questions.pdf)、[解析合集](/assets/pdf/exams/linear-algebra-midterm-solutions.pdf)。合集整理者：macanine。
+
+
+
+::: {.download-box}
+[在线阅读练习卷 PDF ↗](/assets/pdf/exams/practice/linear-algebra-midterm-2018-2019-practice.pdf){target="_blank"} · [下载练习卷 PDF ↓](/assets/pdf/exams/practice/linear-algebra-midterm-2018-2019-practice.pdf){download="linear-algebra-midterm-2018-2019-practice.pdf"}
+
+根据归档题目整理的练习版，非原卷扫描件；仅含题目，并留有作答空间。
+:::
+
+## 第一部分：题目 {#questions}
+
+
+
+### 1.（15 分） {#section-2}
+
+
+$$
+D=\begin{vmatrix}
+a_1+x & a_2 & \cdots & a_n\\
+a_1 & a_2+x & \cdots & a_n\\
+\vdots & \vdots & & \vdots\\
+a_1 & a_2 & \cdots & a_n+x
+\end{vmatrix}.
+$$
+
+
+### 2.（15 分） {#section-3}
+
+
+设 $\sigma=(i_1i_2\cdots i_n)$ 是一个 $n$ 阶排列，$A=[a_{ij}]$ 是一个 $n$ 阶方阵，并且 $A$ 中元素满足：对于每个固定 $r$，当 $j=i_r$ 时，$a_{rj}=1$，否则 $a_{rj}=0$，求 $|A|$。
+
+
+### 3.（15 分） {#section-4}
+
+
+问：当 $\lambda$ 取什么值时，方程组无解？唯一解？无穷多解？有解时求解。
+
+$$
+\begin{cases}
+\lambda x_1+x_2+x_3=1,\\
+x_1+\lambda x_2+x_3=1,\\
+x_1+x_2+\lambda x_3=1.
+\end{cases}
+$$
+
+
+### 4.（15 分） {#section-5}
+
+
+设 $A=\begin{pmatrix}1 & 1 & 1\\ 1 & 1 & 1\\ 1 & 1 & 1\end{pmatrix}$，求矩阵方程：$AX=A+2X$。
+
+
+### 5.（15 分） {#section-6}
+
+
+设 $A$ 为 4 阶反对称矩阵，$B=\begin{pmatrix}0 & 0 & 0 & 0\\ 0 & 0 & 0 & 0\\ 0 & 0 & 1 & 0\\ 0 & 0 & 0 & 2\end{pmatrix}$，证明：$E+AB$ 可逆。
+
+
+### 6.（10 分） {#section-7}
+
+
+设 $A$ 为 $n$ 阶实对称矩阵 $(n>1)$，$|A|=0$，证明：$A_{ij}A_{ji}=(A_{ij})^2$，$(i,j=1,2,\cdots,n)$。
+
+
+### 7.（7 分） {#section-8}
+
+
+$A,B\in P^{n\times n}$，$M=\begin{pmatrix}A & B\\ B & A\end{pmatrix}$，证明：$R(M)\ge R(A+B)+R(A-B)$。
+
+
+### 8.（8 分） {#section-9}
+
+
+设 $A,B\in P^{n\times n}$，满足 $B=E+AB$，证明：$AB=BA$。
+
+
+## 第二部分：详细解析 {#solutions}
+
+
+
+### 1.（15 分） {#section-11}
+
+
+每行都是「$x$ 倍的单位行加上同一个行向量 $a^{\mathrm{T}}$」。记 $\mathbf{1}=(1,1,\cdots,1)^{\mathrm{T}}$，$a=(a_1,a_2,\cdots,a_n)^{\mathrm{T}}$，$S=a_1+a_2+\cdots+a_n$，则
+
+$$
+D=|xE+\mathbf{1}a^{\mathrm{T}}|.
+$$
+
+当 $x\ne 0$ 时提出因子 $x^n$，再用矩阵行列式引理 $|E+uv^{\mathrm{T}}|=1+v^{\mathrm{T}}u$：
+
+$$
+D=x^n\left|E+\frac{1}{x}\mathbf{1}a^{\mathrm{T}}\right|=x^n\left(1+\frac{1}{x}a^{\mathrm{T}}\mathbf{1}\right)=x^n+x^{n-1}S.
+$$
+
+当 $x=0$ 时矩阵的 $n$ 行全是同一个行向量 $a^{\mathrm{T}}$：$n\ge 2$ 时秩不超过 1（$a=\theta$ 时秩为 0），$D=0$；$n=1$ 时 $D=a_1$。两者都等于 $x^{n-1}(x+S)$ 在 $x=0$ 处的值，故上式对一切 $x$ 成立。
+
+答案 $D=x^{n-1}\left(x+\sum\limits_{i=1}^{n}a_i\right)$。
+
+**考点** 行列式。
+
+**易错点** 交换两行变号；倍乘一行才提取一个因子；余子式须带 $(-1)^{i+j}$。
+
+<span id="answer-1"></span>
+
+### 2.（15 分） {#section-12}
+
+
+这里 $A$ 是置换矩阵：第 $r$ 行只有第 $i_r$ 列的元素为 1；因 $\sigma$ 是排列，$i_1,\cdots,i_n$ 互不相同，故每行每列恰有一个 1。
+
+按行列式定义展开，
+
+$$
+|A|=\sum_{j_1j_2\cdots j_n}(-1)^{\tau(j_1j_2\cdots j_n)}a_{1j_1}a_{2j_2}\cdots a_{nj_n},
+$$
+
+其中和式跑遍 $1,2,\cdots,n$ 的所有排列。由 $a_{rj}=1$ 只可能在 $j=i_r$ 处，乘积非零当且仅当 $j_r=i_r\ (r=1,\cdots,n)$；因 $(i_1,\cdots,i_n)$ 本身是排列，只贡献一项，于是
+
+$$
+|A|=(-1)^{\tau(i_1i_2\cdots i_n)}.
+$$
+
+这里 $\tau(i_1i_2\cdots i_n)$ 是排列 $\sigma$ 的逆序数，即满足 $r<s$ 而 $i_r>i_s$ 的数对 $(r,s)$ 的个数；排列的符号按定义就是 $\operatorname{sgn}\sigma=(-1)^{\tau(\sigma)}$，它也可写成 $\operatorname{sgn}\sigma=\prod\limits_{1\le r<s\le n}\dfrac{i_s-i_r}{s-r}$：交换相邻两项正好改变一个逆序数，而恒等排列的符号为 1。因此
+
+答案 $|A|=\operatorname{sgn}\sigma=(-1)^{\tau(i_1i_2\cdots i_n)}$，即 1 或 $-1$，由 $\sigma$ 的逆序数决定。
+
+**考点** 行列式、初等变换。
+
+**易错点** 交换两行变号；倍乘一行才提取一个因子；余子式须带 $(-1)^{i+j}$。
+
+<span id="answer-2"></span>
+
+### 3.（15 分） {#section-13}
+
+
+系数矩阵为 $A=\begin{pmatrix}\lambda & 1 & 1\\ 1 & \lambda & 1\\ 1 & 1 & \lambda\end{pmatrix}$。把第 2, 3 列加到第 1 列，提出公因子 $\lambda+2$，再把第 1 行分别乘 $-1$ 加到第 2, 3 行：
+
+$$
+|A|=(\lambda+2)\begin{vmatrix}1 & 1 & 1\\ 1 & \lambda & 1\\ 1 & 1 & \lambda\end{vmatrix}=(\lambda+2)\begin{vmatrix}1 & 1 & 1\\ 0 & \lambda-1 & 0\\ 0 & 0 & \lambda-1\end{vmatrix}=(\lambda+2)(\lambda-1)^2.
+$$
+
+故 $\lambda\ne 1$ 且 $\lambda\ne -2$ 时 $|A|\ne 0$，有唯一解；$\lambda=1$ 与 $\lambda=-2$ 时需另作判断。
+
+唯一解（$\lambda\ne 1,-2$）。方程组对 $x_1,x_2,x_3$ 完全对称而右端又都是 1，把三个未知量任意互换方程组不变；既然解唯一，解也必须在同一互换下不变，即 $x_1=x_2=x_3=x$。代入任一式得 $(\lambda+2)x=1$，故
+
+$$
+x_1=x_2=x_3=\frac{1}{\lambda+2}.
+$$
+
+无穷多解（$\lambda=1$）。三式都化为 $x_1+x_2+x_3=1$，系数矩阵与增广矩阵的秩同为 $1<3$，故有无穷多解，自由度为 2，通解为
+
+$$
+(x_1,x_2,x_3)^{\mathrm{T}}=(1,0,0)^{\mathrm{T}}+c_1(-1,1,0)^{\mathrm{T}}+c_2(-1,0,1)^{\mathrm{T}},
+$$
+
+其中 $c_1,c_2$ 任意。
+
+无解（$\lambda=-2$）。把三式相加，左端为 $(\lambda+2)(x_1+x_2+x_3)=0$，右端为 3，得 $0=3$，矛盾，故方程组无解。
+
+$|A|=0$ 只可能 $\lambda=1$ 或 $\lambda=-2$，情形已穷尽。
+
+答案 $\lambda\ne 1,-2$ 时唯一解 $x_1=x_2=x_3=\dfrac{1}{\lambda+2}$；$\lambda=1$ 时无穷多解，通解为 $(1,0,0)^{\mathrm{T}}+c_1(-1,1,0)^{\mathrm{T}}+c_2(-1,0,1)^{\mathrm{T}}$；$\lambda=-2$ 时无解。
+
+**考点** 线性方程组。
+
+**易错点** 含参消元在除以参数前先分情形；通解写成特解加齐次通解。
+
+<span id="answer-3"></span>
+
+### 4.（15 分） {#section-14}
+
+
+方程即 $(A-2E)X=A$。由 $A=\mathbf{1}\mathbf{1}^{\mathrm{T}}$（$\mathbf{1}=(1,1,1)^{\mathrm{T}}$）得
+
+$$
+A^2=\mathbf{1}(\mathbf{1}^{\mathrm{T}}\mathbf{1})\mathbf{1}^{\mathrm{T}}=3A.
+$$
+
+猜想 $A-2E$ 的逆为 $\frac{1}{2}(A-E)$，直接验证：
+
+$$
+(A-2E)\cdot\frac{1}{2}(A-E)=\frac{1}{2}(A^2-3A+2E)=\frac{1}{2}\cdot 2E=E,
+$$
+
+故 $A-2E$ 可逆，$(A-2E)^{-1}=\frac{1}{2}(A-E)$，矩阵方程的解唯一，且
+
+$$
+X=(A-2E)^{-1}A=\frac{1}{2}(A-E)A=\frac{1}{2}(A^2-A)=\frac{1}{2}(3A-A)=A.
+$$
+
+回代验算：$AX=A^2=3A$，$A+2X=A+2A=3A$，相符。
+
+答案 $X=A=\begin{pmatrix}1 & 1 & 1\\ 1 & 1 & 1\\ 1 & 1 & 1\end{pmatrix}$。
+
+**考点** 矩阵方程。
+
+**易错点** 逆矩阵不能随意跨过其他因子；只可在同侧作相应运算。
+
+<span id="answer-4"></span>
+
+### 5.（15 分） {#section-15}
+
+
+证明 $E+AB$ 可逆，只需证明齐次方程组 $(E+AB)X=0$ 只有零解。设实列向量 $X$ 满足
+
+$$
+(E+AB)X=0,\quad\text{即}\quad X=-ABX.
+$$
+
+记 $Y=BX$，则 $X=-AY$。两边左乘 $Y^{\mathrm{T}}$，得
+
+$$
+Y^{\mathrm{T}}X=-Y^{\mathrm{T}}AY.
+$$
+
+$A$ 反对称（$A^{\mathrm{T}}=-A$），故对任意实向量 $Y$ 有 $Y^{\mathrm{T}}AY=(Y^{\mathrm{T}}AY)^{\mathrm{T}}=Y^{\mathrm{T}}A^{\mathrm{T}}Y=-Y^{\mathrm{T}}AY$，即 $Y^{\mathrm{T}}AY=0$，于是
+
+$$
+Y^{\mathrm{T}}X=0.
+$$
+
+又 $B=\operatorname{diag}(0,0,1,2)$ 是对称矩阵，$Y=BX$，设 $X=(x_1,x_2,x_3,x_4)^{\mathrm{T}}$，则
+
+$$
+Y^{\mathrm{T}}X=(BX)^{\mathrm{T}}X=X^{\mathrm{T}}B^{\mathrm{T}}X=x_3^2+2x_4^2.
+$$
+
+由 $x_3^2+2x_4^2=0$ 且 $x_3,x_4$ 为实数得 $x_3=x_4=0$，于是 $BX=0$，再由 $X=-ABX=0$ 得 $X=0$。
+
+齐次方程组只有零解，故 $E+AB$ 可逆。
+
+顺带可用 Sylvester 恒等式 $|E_m+XY|=|E_n+YX|$ 求出行列式：取 $C=\begin{pmatrix}e_3 & e_4\end{pmatrix}$（$4\times 2$），$D=\operatorname{diag}(1,2)$，则 $B=CDC^{\mathrm{T}}$。而 $(C^{\mathrm{T}}AC)^{\mathrm{T}}=C^{\mathrm{T}}A^{\mathrm{T}}C=-C^{\mathrm{T}}AC$，故 $C^{\mathrm{T}}AC=\begin{pmatrix}0 & a\\ -a & 0\end{pmatrix}$，其中 $a=a_{34}$，于是
+
+$$
+|E+AB|=|E_4+ACDC^{\mathrm{T}}|=|E_2+DC^{\mathrm{T}}AC|=\begin{vmatrix}1 & a\\ -2a & 1\end{vmatrix}=1+2a_{34}^2>0.
+$$
+
+注 注意 $(AB)^{\mathrm{T}}=B^{\mathrm{T}}A^{\mathrm{T}}=-BA$，$AB$ 一般并不反对称，不能直接说“反对称矩阵乘反对称矩阵”就下结论；真正起作用的是 $A$ 反对称给出的 $Y^{\mathrm{T}}AY\equiv 0$，它把 $B$ 的二次型 $x_3^2+2x_4^2$ 逼成零。$\square$
+
+**考点** 正交与对称。
+
+**易错点** 内积的正定性须对所有非零向量成立；矩阵乘积转置时要倒序。
+
+<span id="answer-5"></span>
+
+### 6.（10 分） {#section-16}
+
+
+记 $M_{ij}$ 为元素 $a_{ij}$ 的余子式，则 $A_{ij}=(-1)^{i+j}M_{ij}$。
+
+由 $A$ 对称有 $A^{\mathrm{T}}=A$。删去 $A$ 的第 $i$ 行、第 $j$ 列所得子矩阵，恰是删去 $A^{\mathrm{T}}$ 的第 $j$ 行、第 $i$ 列所得子矩阵的转置；转置不改变行列式，故 $M_{ij}=M_{ji}$。又 $(-1)^{i+j}=(-1)^{j+i}$，于是
+
+$$
+A_{ij}=A_{ji}.
+$$
+
+代入即得
+
+$$
+A_{ij}A_{ji}=A_{ij}A_{ij}=(A_{ij})^2.
+$$
+
+注 题设 $|A|=0$ 对这条等式其实用不上，对称性已足够；它起作用的地方是伴随矩阵的结构：由标准结论，$R(A^{*})$ 依次取 $n,1,0$（对应 $R(A)=n,\ n-1,\ \le n-2$），$|A|=0$ 即 $R(A)\le n-1$ 时 $R(A^{*})\le 1$。$R(A)\le n-2$ 时全部 $A_{ij}=0$；$R(A)=n-1$ 时由秩－零化度定理，$AX=\theta$ 的解空间是一维的，取非零实解 $\alpha$，则 $A^{*}=c\alpha\alpha^{\mathrm{T}}$（$AA^{*}=O$ 说明 $A^{*}$ 的每列都在 $\ker A$ 内，$A^{*}A=O$ 说明每行都在 $\ker A^{\mathrm{T}}=\ker A$ 内），即 $A_{ij}=c\alpha_i\alpha_j$，同样得到上式。$\square$
+
+**考点** 正交与对称。
+
+**易错点** 内积的正定性须对所有非零向量成立；矩阵乘积转置时要倒序。
+
+<span id="answer-6"></span>
+
+### 7.（7 分） {#section-17}
+
+
+取 $2n$ 阶矩阵
+
+$$
+Q=\begin{pmatrix}E & E\\ E & -E\end{pmatrix},\qquad Q^2=\begin{pmatrix}2E & O\\ O & 2E\end{pmatrix}=2E_{2n},
+$$
+
+故 $Q$ 可逆，$Q^{-1}=\frac{1}{2}Q$（只要域 $P$ 的特征不等于 2，如实数域）。对 $M$ 作行列变换 $M\mapsto QMQ$，秩不变，而
+
+$$
+QMQ=\begin{pmatrix}A+B & A+B\\ A-B & B-A\end{pmatrix}\begin{pmatrix}E & E\\ E & -E\end{pmatrix}=\begin{pmatrix}2(A+B) & O\\ O & 2(A-B)\end{pmatrix}.
+$$
+
+如第一块行：$(A+B)E+(A+B)E=2(A+B)$，$(A+B)E-(A+B)E=O$，第二块行同理。分块对角矩阵的秩等于各对角块秩之和，又 $2\ne 0$ 时 $R(2C)=R(C)$，故
+
+$$
+R(M)=R(QMQ)=R\big(2(A+B)\big)+R\big(2(A-B)\big)=R(A+B)+R(A-B),
+$$
+
+特别地 $R(M)\ge R(A+B)+R(A-B)$。$\square$
+
+**考点** 矩阵方程、秩与空间维数。
+
+**易错点** 逆矩阵不能随意跨过其他因子；只可在同侧作相应运算。
+
+<span id="answer-7"></span>
+
+### 8.（8 分） {#section-18}
+
+
+由 $B=E+AB$ 得
+
+$$
+B-AB=E,\quad\text{即}\quad (E-A)B=E.
+$$
+
+$E-A$ 与 $B$ 都是 $n$ 阶方阵，上式说明 $B$ 是 $E-A$ 的右逆，故 $B$ 可逆且 $B^{-1}=E-A$。于是也有 $B(E-A)=E$，即
+
+$$
+B-BA=E,\quad BA=B-E.
+$$
+
+而由已知等式移项立即得到 $AB=B-E$，两式比较得 $AB=BA$。$\square$
+
+**考点** 矩阵方程。
+
+**易错点** 逆矩阵不能随意跨过其他因子；只可在同侧作相应运算。
+
+<span id="answer-8"></span>
+
+## 第三部分：知识点总结 {#summary}
+
+
+
+### 答案与考点 {#section-20}
+
+
+| 题号 | 答案要点 | 主要考点 |
+| --- | --- | --- |
+| [1](#answer-1) | （15）$n$ 阶行列式（每行为 $x$ 倍单位行加同一行向量）：$D=x^{n-1}(x+\sum a_i)$。 | 行列式 |
+| [2](#answer-2) | （15）置换矩阵的行列式：$\|A\|=\operatorname{sgn}\sigma=(-1)^{\tau(i_1i_2\cdots i_n)}$。 | 行列式、初等变换 |
+| [3](#answer-3) | （15）含参 $\lambda$ 方程组：$\lambda\neq1,-2$ 唯一解 $\frac{1}{\lambda+2}$；$\lambda=1$ 无穷多解；$\lambda=-2$ 无解。 | 线性方程组 |
+| [4](#answer-4) | （15）$AX=A+2X$（$A$ 为全 1 矩阵）：$X=A$。 | 矩阵方程 |
+| [5](#answer-5) | （15）反对称 $A$ 与 $B=\operatorname{diag}(0,0,1,2)$：由 $Y^{\mathrm{T}}AY=0$ 得 $x_3^{2}+2x_4^{2}=0$，故 $E+AB$ 可逆。 | 正交与对称 |
+| [6](#answer-6) | （10）实对称阵的代数余子式：$M_{ij}=M_{ji}\Rightarrow A_{ij}=A_{ji}$。 | 正交与对称 |
+| [7](#answer-7) | （7）分块阵秩不等式：取 $Q=\begin{pmatrix}E&E\\E&-E\end{pmatrix}$ 使 $QMQ$ 分块对角，等号成立。 | 矩阵方程、秩与空间维数 |
+| [8](#answer-8) | （8）$B=E+AB$：由 $(E-A)B=E$ 得 $B$ 可逆且 $BA=B-E=AB$。 | 矩阵方程 |
+
+
+### 复习要点 {#section-21}
+
+
+- **行列式：**优先用行、列倍加制造零元；三对角型按首行展开建立递推，并核对初值。
+- **初等变换：**行变换对应左乘初等矩阵，列变换对应右乘初等矩阵，连续操作按实际次序组合。
+- **线性方程组：**$r(A)<r(A\mid b)$ 时无解；两秩相等时有解，自由参数个数为 $n-r(A)$。
+- **矩阵方程：**$AX=B$ 左乘 $A^{-1}$，$XA=B$ 右乘 $A^{-1}$；先移项因式分解，再判断可逆性。
+- **正交与对称：**正交矩阵满足 $Q^{\mathsf T}Q=E$；实内积须满足对称性、双线性和正定性。
+- **秩与空间维数：**$r(XY)\le\min\{r(X),r(Y)\}$，$r(X+Y)\le r(X)+r(Y)$；可逆初等变换不改变秩。
+
+
+### 易错点清单 {#section-22}
+
+
+- 交换两行变号；倍乘一行才提取一个因子；余子式须带 $(-1)^{i+j}$。
+- 行、列操作混用时要区分作用侧；同侧变换的先后次序不能随意交换。
+- 含参消元在除以参数前先分情形；通解写成特解加齐次通解。
+- 逆矩阵不能随意跨过其他因子；只可在同侧作相应运算。
+- 内积的正定性须对所有非零向量成立；矩阵乘积转置时要倒序。
+- 秩是最大非零子式的阶数；区分零空间、列空间与行空间。
+
+---
+
+
+## ⚖️AI 协作与版权声明 {#section-23}
+
+
+
+### AI 协作说明 {#section-24}
+
+
+本文件由整理者提供资料并确定整理要求，使用 OpenAI Codex 辅助完成题目转写、LaTeX 公式录入、解题推导、知识点分析和 Markdown 排版。AI 辅助生成的解析属于学习参考内容，不代表命题教师、原资料作者或学校的官方解答；本声明不表示内容已经过人工逐题审核。使用时请结合教材与课程要求核验，发现问题可提出更正。
+
+
+### 来源与权利归属 {#section-25}
+
+
+原始试卷及参考解析来自本库保存的浙江大学《线性代数（甲）》历年期中题目卷与解析卷 PDF 合集。合集署名整理者为 macanine，项目地址为 [zju-linear-algebra-papers](https://github.com/macanine/zju-linear-algebra-papers)。原题、参考解析及其他第三方材料的权利归各自权利人所有，本文件的整理行为不改变其权利归属。来源标注用于说明出处，不表示已取得原资料的开放许可，也不表示原作者对本文件作出认可。
+
+
+### 开放许可与转载要求 {#section-26}
+
+
+在整理贡献者依法有权许可的范围内，本文件新增的转写编排、补充解析和知识点整理采用 **MIT License**，许可正文如下。该许可不涵盖原题、原始参考解析、截图或其他第三方材料；使用这些材料须遵守其原有许可，或另行取得必要授权。
+
+转载或修改适用 MIT 许可的内容时，应保留以下版权与许可声明。转载包含原题或引用资料的版本时，也请保留资料来源及本节 AI 协作说明；修改者应注明修改内容，避免将补充或修改的结论归于原资料作者。
+
+```text
+MIT License
+
+Copyright (c) 2026 easoncyy
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```

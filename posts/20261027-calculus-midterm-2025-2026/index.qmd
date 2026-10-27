@@ -1,0 +1,595 @@
+---
+title: 2025-2026 学年《微积分（甲）Ⅰ》期中试卷归档
+description: 2025-2026 学年期中试卷：题目、详细解析与知识点总结。
+date: '2026-10-27'
+author: easoncyy（整理）
+category-path:
+- MATH
+- CALCULUS
+- 历年卷
+- 期中
+categories:
+- 历年卷
+- 期中
+- 真题
+execute:
+  enabled: false
+toc-depth: 3
+---
+
+来源：题目转录标注为《微积分甲期中卷.pdf》第 12 页。跨年度复习建议见 [期中复习指南](/posts/20261027-calculus-midterm-review-guide/)；返回 [微积分历年卷索引](/blog.html)。
+
+本卷共 13 题。考试时间和各题分值在现有转录中未标注。本档依据现有转录整理题目，并补充完整解析；不另行推定原卷未标明的信息。
+
+
+
+::: {.download-box}
+[在线阅读练习卷 PDF ↗](/assets/pdf/exams/practice/calculus-midterm-2025-2026-practice.pdf){target="_blank"} · [下载练习卷 PDF ↓](/assets/pdf/exams/practice/calculus-midterm-2025-2026-practice.pdf){download="calculus-midterm-2025-2026-practice.pdf"}
+
+根据归档题目整理的练习版，非原卷扫描件；仅含题目，并留有作答空间。
+:::
+
+## 第一部分：题目 {#questions}
+
+
+
+### 1. {#section-2}
+
+
+利用 $\varepsilon-N$ 定义证明，若数列 $\{a_n^3\}$ 收敛，则 $\{a_n\}$ 必收敛.
+
+
+### 2. {#section-3}
+
+
+利用夹逼定理求极限 $\lim\limits_{n\to+\infty}\dfrac{(2n-1)!!}{(2n)!!}$.
+
+注：奇数双阶乘 $(2n-1)!!=1\cdot 3\cdot\cdots\cdot(2n-1)$，偶数双阶乘 $(2n)!!=2\cdot 4\cdot\cdots\cdot(2n)$.
+
+
+### 3. {#section-4}
+
+
+设 $f(x)$ 在 $x=1$ 处可导，且 $f(1)=0$，$f'(1)=-2$，求 $\lim\limits_{x\to 0}\dfrac{xf(\cos x)}{e^{\tan x}-e^{\sin x}}$.
+
+
+### 4. {#section-5}
+
+
+设函数 $y=y(x)$ 由方程 $x^2y+\sin(xy)=\ln(1+y)$ 确定，求 $dy$.
+
+
+### 5. {#section-6}
+
+
+设 $\begin{cases} x=\ln\left(t+\sqrt{1+t^2}\right), \\ y=\arctan t. \end{cases}$ 求 $\dfrac{dx}{dy}$，$\dfrac{d^2x}{dy^2}$.
+
+
+### 6. {#section-7}
+
+
+求螺旋线 $C:r=e^{\theta}$ 在 $\theta=\dfrac{\pi}{2}$ 处的切线方程.
+
+
+### 7. {#section-8}
+
+
+设 $y=\arcsin x$，求 $y^{(n)}(0)$.
+
+
+### 8. {#section-9}
+
+
+求下列函数极限.
+
+(1) $\lim\limits_{x\to 0}\dfrac{(2^x-1)\sin x\ln(1+x)}{\tan x-\sin x}$； (2) $\lim\limits_{x\to 0}(\cos x)^{\csc^2 x}$.
+
+
+### 9. {#section-10}
+
+
+设 $a_n=1+\dfrac{1}{3^2}+\dots+\dfrac{1}{(2n-1)^2}$. 分别用单调有界定理，柯西收敛准则两种方法证明数列 $\{a_n\}$ 收敛.
+
+
+### 10. {#section-11}
+
+
+设函数 $f(x)$ 在 $[0,2]$ 上连续，在 $(0,2)$ 上可导，且 $f(0)=0$，$f(1)=f(2)=e$.
+
+证明：(1) $\exists\eta\in(0,2)$ 使得 $f(\eta)=2$；
+
+(2) $\exists\xi\in(0,2)$ 使得 $f'(\xi)+f(\xi)=e$.
+
+
+### 11. {#section-12}
+
+
+设 $y=f(x)$ 是由方程 $x^3+e^{xy}-\sin 3x+y=2$ 确定的隐函数，求 $f'(0)$，$f''(0)$，以及 $\lim\limits_{n\to+\infty} n\left[f\left(\dfrac{1}{n}\right)-1\right]$.
+
+
+### 12. {#section-13}
+
+
+设 $f_n(x)=x^n+2nx-2$，$n\in\mathbb{N}_+$. 证明 $f_n(x)=0$ 在 $(0,+\infty)$ 上有唯一正根 $a_n$，并计算 $\lim\limits_{n\to+\infty}(1+a_n)^n$.
+
+
+### 13. {#section-14}
+
+
+设 $f(x)=\begin{cases} |x|^{\alpha}\sin(x^2), & x\ne 0, \\ 0, & x=0. \end{cases}$ 问 $\alpha$ 取何值时，$f(x)$ 在 $x=0$ 处
+
+(1) 连续； (2) 可导； (3) 一阶导数连续.
+
+
+## 第二部分：详细解析 {#solutions}
+
+
+
+### 解析 1：用定义证明立方根保收敛 {#section-16}
+
+
+**题目**
+
+利用 $\varepsilon-N$ 定义证明，若数列 $\{a_n^3\}$ 收敛，则 $\{a_n\}$ 必收敛.
+
+**答案** 若 $a_n^3\to A$，则 $a_n\to\sqrt[3]A$。
+
+**详细解析**
+
+设 $b=\sqrt[3]A$。任意实数 $u,v$ 满足
+
+$$u^2+uv+v^2=\frac{(u-v)^2+3(u+v)^2}{4}\ge\frac{(u-v)^2}{4},$$
+
+因而
+
+$$|u^3-v^3|=|u-v|(u^2+uv+v^2)\ge\frac14|u-v|^3.$$
+
+给定 $\varepsilon>0$，由 $a_n^3\to A=b^3$，存在 $N$，使 $n>N$ 时 $|a_n^3-b^3|<\varepsilon^3/4$。于是
+
+$$|a_n-b|^3\le4|a_n^3-b^3|<\varepsilon^3,$$
+
+故 $|a_n-b|<\varepsilon$，按 $\varepsilon$–$N$ 定义得到 $a_n\to b$。该证明同时覆盖 $A=0$ 和正、负的极限。
+
+**知识点与易错点** 把立方差转换为原数差的统一估计，可避免在极限为零时除以趋零因子。
+
+
+### 解析 2：双阶乘比的夹逼 {#section-17}
+
+
+**题目**
+
+利用夹逼定理求极限 $\lim\limits_{n\to+\infty}\dfrac{(2n-1)!!}{(2n)!!}$.
+
+注：奇数双阶乘 $(2n-1)!!=1\cdot 3\cdot\cdots\cdot(2n-1)$，偶数双阶乘 $(2n)!!=2\cdot 4\cdot\cdots\cdot(2n)$.
+
+**答案** $0$。
+
+**详细解析**
+
+记
+
+$$A_n=\prod_{k=1}^n\frac{2k-1}{2k},\qquad B_n=\prod_{k=1}^n\frac{2k}{2k+1}.$$
+
+因为 $(2k-1)(2k+1)<(2k)^2$，逐项有 $(2k-1)/(2k)<2k/(2k+1)$，所以 $0<A_n<B_n$。相乘后裂项得
+
+$$A_nB_n=\prod_{k=1}^n\frac{2k-1}{2k+1}=\frac1{2n+1}.$$
+
+故 $0<A_n^2<A_nB_n=1/(2n+1)$，从而
+
+$$0<A_n<\frac1{\sqrt{2n+1}}\to0.$$
+
+由夹逼定理，所求极限为 $0$。
+
+**知识点与易错点** 构造相邻偶奇因子组成的配对乘积，使其裂项并形成平方上界。
+
+
+### 解析 3：导数信息与三阶分母极限 {#section-18}
+
+
+**题目**
+
+设 $f(x)$ 在 $x=1$ 处可导，且 $f(1)=0$，$f'(1)=-2$，求 $\lim\limits_{x\to 0}\dfrac{xf(\cos x)}{e^{\tan x}-e^{\sin x}}$.
+
+**答案** $2$。
+
+**详细解析**
+
+由 $f(1)=0$、$f'(1)=-2$，可写
+
+$$f(\cos x)=-2(\cos x-1)+o(\cos x-1)=x^2+o(x^2).$$
+
+分母先提指数公共因子：
+
+$$e^{\tan x}-e^{\sin x}=e^{\sin x}\left(e^{\tan x-\sin x}-1\right)\sim\tan x-\sin x.$$
+
+又
+
+$$\tan x-\sin x=\frac{\sin x(1-\cos x)}{\cos x}\sim\frac{x^3}{2}.$$
+
+所以分子为 $x^3+o(x^3)$，分母为 $x^3/2+o(x^3)$，比值趋于 $2$。
+
+**知识点与易错点** 函数只在给定点可导即可提供一阶增量；先因式分解指数差，避免两项分别替换后抵消。
+
+
+### 解析 4：隐函数的全微分表达 {#section-19}
+
+
+**题目**
+
+设函数 $y=y(x)$ 由方程 $x^2y+\sin(xy)=\ln(1+y)$ 确定，求 $dy$.
+
+**答案** $\displaystyle dy=\frac{y(2x+\cos(xy))}{1/(1+y)-x^2-x\cos(xy)}\,dx$（分母非零处）。
+
+**详细解析**
+
+题给对数要求 $y>-1$。视 $y$ 为 $x$ 的函数，两边求导：
+
+$$2xy+x^2y'+\cos(xy)(y+xy')=\frac{y'}{1+y}.$$
+
+把含 $y'$ 的项移到同一边，得到
+
+$$\left[\frac1{1+y}-x^2-x\cos(xy)\right]y'=2xy+y\cos(xy).$$
+
+在方括号非零的局部可导分支上，除以该系数并乘 $dx$，即得答案。若该系数为零，不能直接使用分式，应另分析方程在该点是否确定可导函数。
+
+**知识点与易错点** 隐函数求微分先整理 dy/dx；保留对数定义域和除法条件。
+
+
+### 解析 5：反函数方向的参数二阶导数 {#section-20}
+
+
+**题目**
+
+设 $\begin{cases} x=\ln\left(t+\sqrt{1+t^2}\right), \\ y=\arctan t. \end{cases}$ 求 $\dfrac{dx}{dy}$，$\dfrac{d^2x}{dy^2}$.
+
+**答案** $dx/dy=\sqrt{1+t^2}$；$d^2x/dy^2=t\sqrt{1+t^2}$。
+
+**详细解析**
+
+参数导数分别为
+
+$$\frac{dx}{dt}=\frac1{\sqrt{1+t^2}},\qquad\frac{dy}{dt}=\frac1{1+t^2}.$$
+
+题目要求的是对 $y$ 求导，因此
+
+$$\frac{dx}{dy}=\frac{dx/dt}{dy/dt}=\sqrt{1+t^2},$$
+
+$$\frac{d^2x}{dy^2}=\frac{d}{dt}\left(\sqrt{1+t^2}\right)\frac1{dy/dt}=\frac{t}{\sqrt{1+t^2}}(1+t^2)=t\sqrt{1+t^2}.$$
+
+也可用 $t=\tan y$、$y\in(-\pi/2,\pi/2)$，写为 $dx/dy=\sec y$、$d^2x/dy^2=\sec y\tan y$。
+
+**知识点与易错点** 先看清自变量是 x 还是 y；二阶参数求导再除以相应自变量的参数导数。
+
+
+### 解析 6：螺旋线的直角坐标切线 {#section-21}
+
+
+**题目**
+
+求螺旋线 $C:r=e^{\theta}$ 在 $\theta=\dfrac{\pi}{2}$ 处的切线方程.
+
+**答案** $x+y=e^{\pi/2}$。
+
+**详细解析**
+
+参数化为 $x=e^\theta\cos\theta$、$y=e^\theta\sin\theta$，则
+
+$$\frac{dx}{d\theta}=e^\theta(\cos\theta-\sin\theta),\qquad\frac{dy}{d\theta}=e^\theta(\sin\theta+\cos\theta).$$
+
+在 $\theta=\pi/2$，切点是 $(0,e^{\pi/2})$，$dx/d\theta=-e^{\pi/2}\ne0$，所以斜率为 $-1$。点斜式给出
+
+$$y-e^{\pi/2}=-x,\quad\text{即 }x+y=e^{\pi/2}.$$
+
+**知识点与易错点** 与参数方程切线统一处理，不能直接用 dr/dθ 代替 dy/dx。
+
+
+### 解析 7：反正弦在原点的任意阶导数 {#section-22}
+
+
+**题目**
+
+设 $y=\arcsin x$，求 $y^{(n)}(0)$.
+
+**答案** $\displaystyle y^{(2k)}(0)=0$（$k\ge1$）；$y^{(2k+1)}(0)=\frac{[(2k)!]^2}{4^k(k!)^2}=[(2k-1)!!]^2$（$k\ge0$）。
+
+**详细解析**
+
+由 $y=\arcsin x$，有 $y'=(1-x^2)^{-1/2}$，进一步得到
+
+$$ (1-x^2)y''=xy'.$$
+
+对该等式求 $n$ 阶导数，并在 $x=0$ 代入。莱布尼茨公式给出
+
+$$y^{(n+2)}(0)-n(n-1)y^{(n)}(0)=ny^{(n)}(0),$$
+
+即 $y^{(n+2)}(0)=n^2y^{(n)}(0)$。结合 $y(0)=0$、$y'(0)=1$：所有偶数阶都为 $0$，奇数阶依次为
+
+$$y^{(2k+1)}(0)=1^2\cdot3^2\cdots(2k-1)^2=[(2k-1)!!]^2.$$
+
+由 $(2k-1)!!=(2k)!/(2^kk!)$ 得答案中的阶乘形式。约定 $(-1)!!=1$，覆盖 $k=0$ 时的一阶导数；若问零阶，$y(0)=0$。
+
+**知识点与易错点** 高阶导数可用函数满足的微分关系递推；系数与导数相差阶乘，不能混淆。
+
+
+### 解析 8：三角差式与幂指型的两个极限 {#section-23}
+
+
+**题目**
+
+求下列函数极限.
+
+(1) $\lim\limits_{x\to 0}\dfrac{(2^x-1)\sin x\ln(1+x)}{\tan x-\sin x}$； (2) $\lim\limits_{x\to 0}(\cos x)^{\csc^2 x}$.
+
+**答案** （1）$2\ln2$；（2）$e^{-1/2}$。
+
+**详细解析**
+
+（1）利用
+
+$$\tan x-\sin x=\frac{\sin x(1-\cos x)}{\cos x},$$
+
+在充分小的非零 $x$ 处约去 $\sin x$，原式化为
+
+$$\frac{(2^x-1)\ln(1+x)\cos x}{1-\cos x}.$$
+
+由 $2^x-1\sim x\ln2$、$\ln(1+x)\sim x$、$1-\cos x\sim x^2/2$，极限为 $2\ln2$。
+
+（2）零点附近 $\cos x>0$，取对数后为
+
+$$\frac{\ln\cos x}{\sin^2x}\to-\frac12,$$
+
+因此原幂指函数极限为 $e^{-1/2}$。两小问分别依靠分母的三阶与二阶主项。
+
+**知识点与易错点** 指数底数为 2 时主项系数是 ln2；三角差式先变形比直接相减更稳妥。
+
+
+### 解析 9：部分和收敛的两种证明 {#section-24}
+
+
+**题目**
+
+设 $a_n=1+\dfrac{1}{3^2}+\dots+\dfrac{1}{(2n-1)^2}$. 分别用单调有界定理，柯西收敛准则两种方法证明数列 $\{a_n\}$ 收敛.
+
+**答案** $\{a_n\}$ 收敛，且 $1\le a_n<5/4$（不要求求其精确极限）。
+
+**详细解析**
+
+写为 $a_n=\sum_{k=1}^n1/(2k-1)^2$。
+
+**方法一：单调有界定理。** 每次增加一个正项，故 $a_n$ 递增。对 $k\ge2$，
+
+$$\frac1{(2k-1)^2}\le\frac1{4k(k-1)}=\frac14\left(\frac1{k-1}-\frac1k\right).$$
+
+求和得 $a_n\le1+\frac14(1-1/n)<5/4$（$n=1$ 时也满足界）。因此单调有界，数列收敛。
+
+**方法二：柯西收敛准则。** 对任意 $m>n$，用同一放缩得
+
+$$|a_m-a_n|\le\frac14\sum_{k=n+1}^m\left(\frac1{k-1}-\frac1k\right)=\frac14\left(\frac1n-\frac1m\right)<\frac1{4n}.$$
+
+给定 $\varepsilon>0$，取 $N=\lceil1/(4\varepsilon)\rceil$，则所有 $m>n>N$ 都使差小于 $\varepsilon$，由实数列柯西准则得收敛。
+
+**知识点与易错点** 尾和估计必须对任意更后项 m 统一成立；两种方法分别交代单调有界和量词。
+
+
+### 解析 10：介值定理与平移后的指数辅助函数 {#section-25}
+
+
+**题目**
+
+设函数 $f(x)$ 在 $[0,2]$ 上连续，在 $(0,2)$ 上可导，且 $f(0)=0$，$f(1)=f(2)=e$.
+
+证明：(1) $\exists\eta\in(0,2)$ 使得 $f(\eta)=2$；
+
+(2) $\exists\xi\in(0,2)$ 使得 $f'(\xi)+f(\xi)=e$.
+
+**答案** （1）存在 $\eta\in(0,1)$；（2）存在 $\xi\in(1,2)$。
+
+**详细解析**
+
+（1）因为 $f(0)=0<2<e=f(1)$，由连续函数的介值定理，存在 $\eta\in(0,1)$，使 $f(\eta)=2$。
+
+（2）构造 $F(x)=e^x[f(x)-e]$。它在 $[1,2]$ 上连续、内点可导，且 $F(1)=F(2)=0$。由罗尔定理，存在 $\xi\in(1,2)$，使
+
+$$F'(\xi)=e^\xi[f'(\xi)+f(\xi)-e]=0.$$
+
+消去非零的指数因子，即得 $f'(\xi)+f(\xi)=e$。其中减去常数 $e$ 的目的，是让辅助函数在两端同为零。
+
+**知识点与易错点** 目标 f′+f=常数时先平移 f，再乘指数函数；用同值端点选定罗尔区间。
+
+
+### 解析 11：隐函数二阶导数与数列差商 {#section-26}
+
+
+**题目**
+
+设 $y=f(x)$ 是由方程 $x^3+e^{xy}-\sin 3x+y=2$ 确定的隐函数，求 $f'(0)$，$f''(0)$，以及 $\lim\limits_{n\to+\infty} n\left[f\left(\dfrac{1}{n}\right)-1\right]$.
+
+**答案** $f'(0)=2$，$f''(0)=-5$，所求数列极限为 $2$。
+
+**详细解析**
+
+在 $x=0$ 时，原方程变为 $1+y=2$，故 $f(0)=1$。一次求导为
+
+$$3x^2+e^{xy}(y+xy')-3\cos3x+y'=0.$$
+
+代入 $(0,1)$，得到 $1-3+f'(0)=0$，所以 $f'(0)=2$。再次求导：
+
+$$6x+e^{xy}\left[(y+xy')^2+2y'+xy''\right]+9\sin3x+y''=0.$$
+
+代入 $x=0$、$y=1$、$y'=2$，得 $1+4+f''(0)=0$，所以 $f''(0)=-5$。
+
+最后
+
+$$n[f(1/n)-1]=\frac{f(1/n)-f(0)}{1/n}\to f'(0)=2.$$
+
+这里 $1/n\to0^+$，可直接使用已经存在的导数，不需要再写二阶展开。
+
+**知识点与易错点** 隐式二阶求导包含指数链式项的平方；数列差商可直接识别为导数。
+
+
+### 解析 12：正根存在唯一性与尺度极限 {#section-27}
+
+
+**题目**
+
+设 $f_n(x)=x^n+2nx-2$，$n\in\mathbb{N}_+$. 证明 $f_n(x)=0$ 在 $(0,+\infty)$ 上有唯一正根 $a_n$，并计算 $\lim\limits_{n\to+\infty}(1+a_n)^n$.
+
+**答案** 唯一正根 $a_n$ 存在；$\displaystyle\lim_{n\to\infty}(1+a_n)^n=e$。
+
+**详细解析**
+
+$f_n(x)=x^n+2nx-2$ 在 $[0,+\infty)$ 连续，且在正半轴严格递增。由 $f_n(0)=-2<0$、$f_n(1)=2n-1>0$，知有唯一正根 $a_n\in(0,1)$。
+
+根方程给出 $a_n^n+2na_n=2$，所以 $0<a_n<1/n$。从而 $a_n\to0$，且当 $n\ge2$ 时，
+
+$$0<a_n^n<n^{-n}\to0,\qquad na_n=1-\frac{a_n^n}{2}\to1.$$
+
+因此
+
+$$n\ln(1+a_n)=na_n\frac{\ln(1+a_n)}{a_n}\to1,$$
+
+取指数得 $(1+a_n)^n\to e$。先求 $na_n$ 的尺度，而不是只知道 $a_n\to0$，才能确定幂指极限。
+
+**知识点与易错点** 正根用介值加严格单调；从根方程估计 n·a_n 与变指数余项。
+
+
+### 解析 13：带绝对值幂的连续与可导阈值 {#section-28}
+
+
+**题目**
+
+设 $f(x)=\begin{cases} |x|^{\alpha}\sin(x^2), & x\ne 0, \\ 0, & x=0. \end{cases}$ 问 $\alpha$ 取何值时，$f(x)$ 在 $x=0$ 处
+
+(1) 连续； (2) 可导； (3) 一阶导数连续.
+
+**答案** 连续当且仅当 $\alpha>-2$；可导当且仅当 $\alpha>-1$；一阶导数连续当且仅当 $\alpha>-1$。
+
+**详细解析**
+
+（1）因 $\sin(x^2)/(x^2)\to1$，有
+
+$$f(x)=|x|^{\alpha+2}\frac{\sin(x^2)}{x^2}.$$
+
+故在 $0$ 处趋于 $f(0)=0$ 当且仅当 $\alpha+2>0$。$\alpha=-2$ 时极限为 $1$，$\alpha<-2$ 时趋于正无穷，均不连续。
+
+（2）零点差商为
+
+$$\frac{f(x)}x=\operatorname{sgn}(x)|x|^{\alpha+1}\frac{\sin(x^2)}{x^2}.$$
+
+若 $\alpha>-1$，极限为 $0$，故 $f'(0)=0$；若 $\alpha=-1$，两侧分别趋于 $1,-1$；若 $\alpha<-1$，差商无有限极限。因此可导的充要条件是 $\alpha>-1$。
+
+（3）对 $x\ne0$，
+
+$$f'(x)=\alpha\operatorname{sgn}(x)|x|^{\alpha-1}\sin(x^2)+2x|x|^\alpha\cos(x^2).$$
+
+利用 $|\sin(x^2)|\le x^2$、$|\cos(x^2)|\le1$，得
+
+$$|f'(x)|\le(|\alpha|+2)|x|^{\alpha+1}.$$
+
+当 $\alpha>-1$ 时趋于零，与 $f'(0)=0$ 一致，故一阶导数连续。反之，导函数在零点连续至少要求零点可导，已知必须 $\alpha>-1$，所以也是充要条件。
+
+**知识点与易错点** 这里是 sin(x²)，不是 sin(1/x²)；先写精确差商，再检查临界参数两侧极限。
+
+
+## 第三部分：知识点总结 {#summary}
+
+
+
+### 答案与考点索引 {#section-30}
+
+
+| 题号 | 答案或结论 | 主要考点 |
+| --- | --- | --- |
+| 1 | 若 $a_n^3\to A$，则 $a_n\to\sqrt[3]A$。 | 用定义证明立方根保收敛 |
+| 2 | $0$。 | 双阶乘比的夹逼 |
+| 3 | $2$。 | 导数信息与三阶分母极限 |
+| 4 | $\displaystyle dy=\frac{y(2x+\cos(xy))}{1/(1+y)-x^2-x\cos(xy)}\,dx$（分母非零处）。 | 隐函数的全微分表达 |
+| 5 | $dx/dy=\sqrt{1+t^2}$；$d^2x/dy^2=t\sqrt{1+t^2}$。 | 反函数方向的参数二阶导数 |
+| 6 | $x+y=e^{\pi/2}$。 | 螺旋线的直角坐标切线 |
+| 7 | $\displaystyle y^{(2k)}(0)=0$（$k\ge1$）；$y^{(2k+1)}(0)=\frac{[(2k)!]^2}{4^k(k!)^2}=[(2k-1)!!]^2$（$k\ge0$）。 | 反正弦在原点的任意阶导数 |
+| 8 | （1）$2\ln2$；（2）$e^{-1/2}$。 | 三角差式与幂指型的两个极限 |
+| 9 | $\{a_n\}$ 收敛，且 $1\le a_n<5/4$（不要求求其精确极限）。 | 部分和收敛的两种证明 |
+| 10 | （1）存在 $\eta\in(0,1)$；（2）存在 $\xi\in(1,2)$。 | 介值定理与平移后的指数辅助函数 |
+| 11 | $f'(0)=2$，$f''(0)=-5$，所求数列极限为 $2$。 | 隐函数二阶导数与数列差商 |
+| 12 | 唯一正根 $a_n$ 存在；$\displaystyle\lim_{n\to\infty}(1+a_n)^n=e$。 | 正根存在唯一性与尺度极限 |
+| 13 | 连续当且仅当 $\alpha>-2$；可导当且仅当 $\alpha>-1$；一阶导数连续当且仅当 $\alpha>-1$。 | 带绝对值幂的连续与可导阈值 |
+
+
+### 题型分布与复习重点 {#section-31}
+
+
+- **收敛性证明（1、2、9）**：立方差给出统一的三次方估计；双阶乘构造配对乘积；柯西准则必须统一控制所有尾项。
+- **复合极限（3、8、12）**：导数信息转换成增量；指数底数贡献 ln2；根方程先给出 n·a_n 的尺度，再求幂指极限。
+- **导数与微分（4–7、11）**：读清 dx/dy 的方向；二阶隐式求导保留平方项；反正弦高阶导数用微分方程递推。
+- **中值定理与阈值（10、13）**：平移后乘指数以制造等端值；参数阈值分别检查临界点，sin(x²) 不按高频振荡处理。
+
+
+
+### 通用解题检查清单 {#section-32}
+
+
+- **定义证明**：写出任意误差、明确选择尾部起点或邻域半径，并验证它对全部相关变量统一有效。
+- **极限计算**：先检查定义域与趋近方向；等价替换用于乘除，相减有抵消时先变形或保留足够阶数。
+- **连续与可导**：先检查函数值及左右极限，再比较左右差商；表达式化简不会自动恢复原来无定义的点。
+- **高阶或参数导数**：区分求导对象；每次参数二阶求导都要除以对应自变量的一阶参数导数。
+- **存在性证明**：先证明极限或根存在，再计算其候选值；应用介值或中值定理前逐项核对连续性、可导性和端值。
+
+
+### 常用公式 {#section-33}
+
+
+$$\sin t\sim t,\quad\tan t\sim t,\quad1-\cos t\sim\frac{t^2}{2},\quad\ln(1+t)\sim t,\quad e^t-1\sim t\qquad(t\to0).$$
+
+$$\frac{dy}{dx}=\frac{dy/dt}{dx/dt},\qquad\frac{d^2y}{dx^2}=\frac1{dx/dt}\frac{d}{dt}\left(\frac{dy}{dx}\right),\qquad dy=f'(x)\,dx.$$
+
+若目标含 $f'+\lambda f$，可考虑 $(e^{\lambda x}f)'=e^{\lambda x}(f'+\lambda f)$；若右边为常数，先适当平移函数。使用这些公式时仍需保留相应定义域和分母非零条件。
+
+---
+
+
+## ⚖️AI 协作与版权声明 {#section-34}
+
+
+
+### AI 协作说明 {#section-35}
+
+
+本文件由整理者提供资料并确定整理要求，使用 OpenAI Codex 辅助完成题目转写、LaTeX 公式录入、解题推导、知识点分析和 Markdown 排版。AI 辅助生成的解析属于学习参考内容，不代表命题教师、原资料作者或学校的官方解答；本声明不表示内容已经过人工逐题审核。使用时请结合教材与课程要求核验，发现问题可提出更正。
+
+
+### 来源与权利归属 {#section-36}
+
+
+本文件题目依据已合并收录的期中题目转录整理，转录标注来源为《微积分甲期中卷.pdf》。补充解析与知识点总结由本次整理提供。原题、原始参考解析、截图及其他引用材料的权利归各自权利人所有，本文件的整理行为不改变其权利归属。来源标注用于说明出处，不表示已取得原资料的开放许可，也不表示原作者对本文件作出认可。
+
+
+### 开放许可与转载要求 {#section-37}
+
+
+在整理贡献者依法有权许可的范围内，本文件新增的转写编排、补充解析和知识点整理采用 **MIT License**，许可正文如下。该许可不涵盖原题、原始参考解析、截图或其他第三方材料；使用这些材料须遵守其原有许可，或另行取得必要授权。
+
+转载或修改适用 MIT 许可的内容时，应保留以下版权与许可声明。转载包含原题或引用资料的版本时，也请保留资料来源及本节 AI 协作说明；修改者应注明修改内容，避免将补充或修改的结论归于原资料作者。
+
+```text
+MIT License
+
+Copyright (c) 2026 easoncyy
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```

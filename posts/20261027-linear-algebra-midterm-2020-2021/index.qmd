@@ -1,0 +1,425 @@
+---
+title: 2020-2021 学年秋冬《线性代数（甲）》期中归档
+description: 2020-2021 学年期中试卷：题目、详细解析与知识点总结。
+date: '2026-10-27'
+author: easoncyy（整理）
+category-path:
+- MATH
+- LINEAR-ALGEBRA
+- 历年卷
+- 期中
+categories:
+- 历年卷
+- 期中
+- 真题
+execute:
+  enabled: false
+toc-depth: 3
+---
+
+共 8 道题，保留试卷题号和分值。先独立作答，再对照解析与考点索引。
+
+来源：[题目合集](/assets/pdf/exams/linear-algebra-midterm-questions.pdf)、[解析合集](/assets/pdf/exams/linear-algebra-midterm-solutions.pdf)。合集整理者：macanine。
+
+
+
+::: {.download-box}
+[在线阅读练习卷 PDF ↗](/assets/pdf/exams/practice/linear-algebra-midterm-2020-2021-practice.pdf){target="_blank"} · [下载练习卷 PDF ↓](/assets/pdf/exams/practice/linear-algebra-midterm-2020-2021-practice.pdf){download="linear-algebra-midterm-2020-2021-practice.pdf"}
+
+根据归档题目整理的练习版，非原卷扫描件；仅含题目，并留有作答空间。
+:::
+
+## 第一部分：题目 {#questions}
+
+
+
+### 1.（10 分） {#section-2}
+
+
+设
+
+$$D_n = \begin{vmatrix}
+4 & -3 & 0 & \cdots & 0 & 0 \\
+-1 & 4 & -3 & 0 & \cdots & 0 \\
+0 & -1 & 4 & -3 & 0 & \cdots \\
+\vdots & \vdots & \vdots & \vdots & \vdots & \vdots \\
+0 & \cdots & 0 & -1 & 4 & 3 \\
+0 & 0 & \cdots & 0 & -1 & 4
+\end{vmatrix},$$
+
+试证明：$D_n = \frac{3^{n+1} - 1}{2}$。
+
+
+### 2.（10 分） {#section-3}
+
+
+设 $B = \begin{pmatrix} 1 & -5 & 1 \\ 0 & -1 & 0 \\ 2 & -2 & 3 \end{pmatrix}$，$C = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 2 & 0 \\ 0 & 0 & -1 \end{pmatrix}$，三阶方阵满足方程 $2BA + CB = O$，其中 $O$ 为三阶零方阵，试求 $|A + 3E|$。
+
+
+### 3.（15 分） {#section-4}
+
+
+设有实方阵 $A = \begin{pmatrix} 1 & 2 & 3 \\ 2 & 4 & t \\ 3 & t & 9 \end{pmatrix}$，其中 $t$ 为实常数，已知 $B$ 为三阶非零方阵且满足 $BA = O$，其中 $O$ 为三阶零方阵，试求 $t$ 的值以及 $B$ 的秩的可能取值。
+
+
+### 4.（15 分） {#section-5}
+
+
+设 $a, b, c$ 为实常数，且满足 $b^2 \ne ac$，$a + b + c = 0$，试证明线性方程组
+
+$$\begin{cases}
+ax_1 + bx_2 + c = 0, \\
+bx_1 + cx_2 + a = 0, \\
+cx_1 + bx_2 + b = 0
+\end{cases}$$
+
+有唯一解并求出这个唯一解。
+
+
+### 5.（15 分） {#section-6}
+
+
+设方阵 $A$ 的伴随矩阵为 $A^{*} = \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 1 & 0 & 1 & 0 \\ 0 & -3 & 0 & 8 \end{pmatrix}$，已知矩阵 $B$ 满足 $AB = B + 3A$，试求矩阵 $B$。
+
+
+### 6.（20 分） {#section-7}
+
+
+设 $A = \begin{pmatrix} 1 & \cdots & 1 \\ \vdots & \ddots & \vdots \\ 1 & \cdots & 1 \end{pmatrix}_{n \times n}$。求
+
+（1）一个二次实系数多项式 $f(x) = x^2 + ax$ 使得 $f(A)$ 为二阶零方阵；
+
+（2）$A^{100}$；
+
+（3）$(A + E)^3$；
+
+（4）$(A + E)^{-1}$。
+
+
+### 7.（8 分） {#section-8}
+
+
+设 $A, B$ 是两个 $n$ 阶实方阵，试证明：$r(A) = r(AB)$ 当且仅当存在 $n$ 阶实方阵 $C$ 使得 $A = ABC$。
+
+
+### 8.（7 分） {#section-9}
+
+
+设 $A$ 为 $n$ 阶方阵，试证明：存在对称矩阵 $S$ 和可逆矩阵 $P$ 使得 $A = SP$。
+
+
+## 第二部分：详细解析 {#solutions}
+
+
+
+### 1.（10 分） {#section-11}
+
+
+**答案** 按题面末个上对角元为 $3$ 计算，$D_1=4$，且 $n\ge2$ 时
+
+$$D_n=\frac{5\cdot3^n-7}{2}.$$
+
+因此题面要求证明的等式不成立。例如 $n=3$ 时 $D_3=64$，而 $(3^4-1)/2=40$。
+
+令 $T_k$ 为主对角元全为 $4$、下对角元全为 $-1$、上对角元全为 $-3$ 的三对角行列式。取 $T_0=1$、$T_1=4$，按首行展开得
+
+$$T_k=4T_{k-1}-3T_{k-2},\qquad T_k=\frac{3^{k+1}-1}{2}.$$
+
+题面所给 $D_n$ 按末行展开，有
+
+$$D_n=4T_{n-1}+3T_{n-2}=\frac{5\cdot3^n-7}{2}\quad(n\ge2).$$
+
+若将末个上对角元也取为 $-3$，则整个行列式等于 $T_n$，此时才有 $D_n=(3^{n+1}-1)/2$。
+
+**考点** 行列式。
+
+**易错点** 交换两行变号；倍乘一行才提取一个因子；余子式须带 $(-1)^{i+j}$。
+
+<span id="answer-1"></span>
+
+### 2.（10 分） {#section-12}
+
+
+先说明 $B$ 可逆。按第二行展开
+
+$$|B| = (-1)\cdot\begin{vmatrix} 1 & 1 \\ 2 & 3 \end{vmatrix} = -1 \ne 0.$$
+
+由 $2BA + CB = O$ 得 $2BA = -CB$，两边左乘 $B^{-1}$，得 $2A = -B^{-1}CB$，即
+
+$$A = -\frac{1}{2}B^{-1}CB.$$
+
+于是
+
+$$A + 3E = B^{-1}\left(3E - \frac{1}{2}C\right)B,$$
+
+两端取行列式，由相似矩阵行列式相等得
+
+$$|A + 3E| = \left|3E - \frac{1}{2}C\right|.$$
+
+$C = \mathrm{diag}(1, 2, -1)$，故 $3E - \frac{1}{2}C = \mathrm{diag}\left(\frac{5}{2}, 2, \frac{7}{2}\right)$，从而
+
+$$|A + 3E| = \frac{5}{2} \times 2 \times \frac{7}{2} = \frac{35}{2}.$$
+
+**答案** $|A + 3E| = \frac{35}{2}$。
+
+**考点** 行列式。
+
+**易错点** 交换两行变号；倍乘一行才提取一个因子；余子式须带 $(-1)^{i+j}$。
+
+<span id="answer-2"></span>
+
+### 3.（15 分） {#section-13}
+
+
+$BA = O$ 表示 $B$ 的每一行 $y^{\mathrm{T}}$ 都满足 $y^{\mathrm{T}}A = 0$，即 $B$ 的各行（看作列向量）都属于 $N(A^{\mathrm{T}})$。
+
+先由“存在非零 $B$”定 $t$。若 $|A| \ne 0$，则 $A$ 可逆，由 $BA = O$ 两边右乘 $A^{-1}$ 得 $B = O$，与 $B$ 非零矛盾。故必须 $|A| = 0$。按第一行展开
+
+$$|A| = 1\cdot(36 - t^2) - 2\cdot(18 - 3t) + 3\cdot(2t - 12) = -t^2 + 12t - 36 = -(t - 6)^2,$$
+
+故 $|A| = 0$ 给出 $t = 6$。
+
+再定 $r(B)$。$t = 6$ 时 $A$ 的三行都成比例（均为 $(1, 2, 3)$ 的倍数），故 $r(A) = 1$。由秩－零化度定理
+
+$$\dim N(A^{\mathrm{T}}) = 3 - r(A) = 2.$$
+
+$B$ 的各行都在 $N(A^{\mathrm{T}})$ 中，故 $r(B) \le 2$；又 $B \ne O$，故 $r(B) \ge 1$。这里 $N(A^{\mathrm{T}})$ 恰是方程 $y_1 + 2y_2 + 3y_3 = 0$ 的解空间，取一行非零解（如 $(-2, 1, 0)^{\mathrm{T}}$）作 $B$ 的唯一非零行，得 $r(B) = 1$；取两个线性无关解 $(-2, 1, 0)^{\mathrm{T}}$、$(-3, 0, 1)^{\mathrm{T}}$ 作 $B$ 的前两行、第三行取零，得 $r(B) = 2$。两种秩都确实能取到。
+
+**答案** $t = 6$；$r(B)$ 的可能取值为 $1$ 或 $2$。
+
+**考点** 秩与空间维数。
+
+**易错点** 秩是最大非零子式的阶数；区分零空间、列空间与行空间。
+
+<span id="answer-3"></span>
+
+### 4.（15 分） {#section-14}
+
+
+**答案** 对题面所列三式，$a=b$ 时有唯一解 $(x_1,x_2)=(1,1)$；$a\ne b$ 时无解。
+
+前两个方程的系数行列式为
+
+$$\begin{vmatrix}a&b\\b&c\end{vmatrix}=ac-b^2\ne0.$$
+
+又 $a+b+c=0$，故 $(1,1)$ 满足前两式，因此它是前两式的唯一解。将它代入第三式，左端为
+
+$$c+2b=b-a.$$
+
+所以三式联立有解当且仅当 $a=b$，有解时必为上述唯一解。$a=b$ 时还有 $c=-2a$，且题设保证 $a\ne0$。
+
+若第三式采用循环形式 $cx_1+ax_2+b=0$，则 $(1,1)$ 自动满足第三式，方程组对所有满足题设的参数均有唯一解。
+
+**考点** 线性方程组。
+
+**易错点** 含参消元在除以参数前先分情形；通解写成特解加齐次通解。
+
+<span id="answer-4"></span>
+
+### 5.（15 分） {#section-15}
+
+
+先由 $A^{*}$ 读出 $|A|$。$A^{*}$ 是下三角矩阵，故 $|A^{*}| = 1\cdot 1\cdot 1\cdot 8 = 8$。此处 $n = 4$，伴随矩阵的行列式满足 $|A^{*}| = |A|^{n-1} = |A|^3$，故 $|A|^3 = 8$，$|A| = 2 \ne 0$，即 $A$ 可逆，且由 $AA^{*} = |A|E$ 得
+
+$$A^{-1} = \frac{1}{|A|}A^{*} = \frac{1}{2}A^{*} = \begin{pmatrix} \frac{1}{2} & 0 & 0 & 0 \\ 0 & \frac{1}{2} & 0 & 0 \\ \frac{1}{2} & 0 & \frac{1}{2} & 0 \\ 0 & -\frac{3}{2} & 0 & 4 \end{pmatrix}.$$
+
+由 $AB = B + 3A$ 得 $(A - E)B = 3A$。两边左乘 $A^{-1}$，注意 $A$ 与 $B$ 不可交换、只能整体左乘：
+
+$$(E - A^{-1})B = 3E.$$
+
+又 $E - A^{-1} = \frac{1}{2}(2E - A^{*})$，而
+
+$$2E - A^{*} = \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ -1 & 0 & 1 & 0 \\ 0 & 3 & 0 & -6 \end{pmatrix}$$
+
+仍是下三角矩阵，$|2E - A^{*}| = -6 \ne 0$，故 $E - A^{-1}$ 可逆。解 $(2E - A^{*})X = E$ 得
+
+$$(2E - A^{*})^{-1} = \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 1 & 0 & 1 & 0 \\ 0 & \frac{1}{2} & 0 & -\frac{1}{6} \end{pmatrix},$$
+
+于是
+
+$$B = 3(E - A^{-1})^{-1} = 6(2E - A^{*})^{-1} = \begin{pmatrix} 6 & 0 & 0 & 0 \\ 0 & 6 & 0 & 0 \\ 6 & 0 & 6 & 0 \\ 0 & 3 & 0 & -1 \end{pmatrix}.$$
+
+验算：把上式代回，$(A - E)B = 3A$，即 $AB = B + 3A$，说明结论正确。
+
+**答案** $B = \begin{pmatrix} 6 & 0 & 0 & 0 \\ 0 & 6 & 0 & 0 \\ 6 & 0 & 6 & 0 \\ 0 & 3 & 0 & -1 \end{pmatrix}$。
+
+**考点** 伴随矩阵、矩阵方程。
+
+**易错点** 先判断阶数与可逆性，不能把伴随矩阵当作转置。
+
+<span id="answer-5"></span>
+
+### 6.（20 分） {#section-16}
+
+
+（1）$A$ 的每一列都等于 $e = (1, 1, \cdots, 1)^{\mathrm{T}}$，即 $A = ee^{\mathrm{T}}$，而 $e^{\mathrm{T}}e = n$，故
+
+$$A^2 = (ee^{\mathrm{T}})(ee^{\mathrm{T}}) = e(e^{\mathrm{T}}e)e^{\mathrm{T}} = nee^{\mathrm{T}} = nA.$$
+
+于是对 $f(x) = x^2 + ax$ 有 $f(A) = A^2 + aA = (n + a)A$。因 $A \ne O$，故 $f(A) = O$ 当且仅当 $a = -n$，即 $f(x) = x^2 - nx$。（$f(A)$ 与 $A$ 同为 $n$ 阶方阵，题面“二阶零方阵”应作“$n$ 阶零方阵”理解，即 $O$；若按 $2 \times 2$ 字面理解，则 $n \ne 2$ 时不可能。）
+
+（2）由 $A^2 = nA$ 归纳证明 $A^k = n^{k-1}A$：$k = 1$ 时显然；设对 $k$ 成立，则
+
+$$A^{k+1} = A^k A = n^{k-1}A^2 = n^{k-1}\cdot nA = n^k A.$$
+
+取 $k = 100$ 得 $A^{100} = n^{99}A$。
+
+（3）$A^3 = A^2A = nA\cdot A = nA^2 = n^2A$；又 $E$ 与 $A$ 可交换，直接展开：
+
+$$(A + E)^3 = A^3 + 3A^2 + 3A + E = n^2A + 3nA + 3A + E = E + (n^2 + 3n + 3)A.$$
+
+（4）由 $A^2 = nA$ 直接验算
+
+$$(A + E)\left(E - \frac{1}{n+1}A\right) = E + A - \frac{1}{n+1}A - \frac{1}{n+1}A^2 = E + A - \frac{1}{n+1}A - \frac{n}{n+1}A = E,$$
+
+故 $A + E$ 可逆，且
+
+$$(A + E)^{-1} = E - \frac{1}{n+1}A.$$
+
+**答案** （1）$f(x) = x^2 - nx$（$a = -n$）；（2）$A^{100} = n^{99}A$；（3）$(A + E)^3 = E + (n^2 + 3n + 3)A$；（4）$(A + E)^{-1} = E - \frac{1}{n+1}A$。
+
+**考点** 矩阵幂与多项式。
+
+**易错点** 二项式展开须保证参与的矩阵可交换；幂零与零矩阵不是同一概念。
+
+<span id="answer-6"></span>
+
+### 7.（8 分） {#section-17}
+
+
+充分性。设存在 $C$ 使 $A = ABC$。乘一个矩阵不会增大秩，故
+
+$$r(A) = r(ABC) \le r(AB) \le r(A),$$
+
+两端夹逼得 $r(A) = r(AB)$。
+
+必要性。设 $r(A) = r(AB)$。$AB$ 的每一列都是 $A$ 的列的线性组合（$AB$ 的第 $j$ 列等于 $A$ 乘以 $B$ 的第 $j$ 列），故
+
+$$\mathrm{Col}(AB) \subseteq \mathrm{Col}(A);$$
+
+而 $\dim \mathrm{Col}(AB) = r(AB) = r(A) = \dim \mathrm{Col}(A)$，于是 $\mathrm{Col}(AB) = \mathrm{Col}(A)$。
+
+因此 $A$ 的每一列 $a_j$ 都是 $AB$ 的列的线性组合，即存在列向量 $c_j$ 使 $a_j = ABc_j$（$j = 1, 2, \cdots, n$）。令 $C = (c_1, c_2, \cdots, c_n)$，则 $C$ 为 $n$ 阶实方阵，且
+
+$$A = (a_1, \cdots, a_n) = (ABc_1, \cdots, ABc_n) = ABC. \qquad \square$$
+
+**考点** 秩与空间维数。
+
+**易错点** 秩是最大非零子式的阶数；区分零空间、列空间与行空间。
+
+<span id="answer-7"></span>
+
+### 8.（7 分） {#section-18}
+
+
+取矩阵的等价标准形：存在可逆矩阵 $U, V$ 与对角矩阵
+
+$$D = \mathrm{diag}(d_1, \cdots, d_r, 0, \cdots, 0) \qquad (d_1d_2\cdots d_r \ne 0,\ r = r(A))$$
+
+使得 $UAV = D$，即 $A = U^{-1}DV^{-1}$。在中插入 $U^{-\mathrm{T}}U^{\mathrm{T}} = E$：
+
+$$A = U^{-1}DU^{-\mathrm{T}}\cdot U^{\mathrm{T}}V^{-1}.$$
+
+令 $S = U^{-1}DU^{-\mathrm{T}}$，$P = U^{\mathrm{T}}V^{-1}$。由 $U, V$ 可逆知 $P$ 可逆；又 $D$ 是对角矩阵，
+
+$$S^{\mathrm{T}} = (U^{-1}DU^{-\mathrm{T}})^{\mathrm{T}} = U^{-1}D^{\mathrm{T}}U^{-\mathrm{T}} = U^{-1}DU^{-\mathrm{T}} = S,$$
+
+即 $S$ 对称。于是 $A = SP$，其中 $S$ 对称、$P$ 可逆（$r = 0$ 时 $D = O$，$S = O$ 同样对称）。$\square$
+
+**考点** 正交与对称。
+
+**易错点** 内积的正定性须对所有非零向量成立；矩阵乘积转置时要倒序。
+
+<span id="answer-8"></span>
+
+## 第三部分：知识点总结 {#summary}
+
+
+
+### 答案与考点 {#section-20}
+
+
+| 题号 | 答案要点 | 主要考点 |
+| --- | --- | --- |
+| [1](#answer-1) | 题面末个上对角元取 $3$ 时，$D_n=(5\cdot3^n-7)/2$（$n\ge2$）；全部取 $-3$ 时为 $(3^{n+1}-1)/2$。 | 行列式 |
+| [2](#answer-2) | （10）伴随与相似的行列式：$\|A+3E\|=\frac{35}{2}$。 | 行列式 |
+| [3](#answer-3) | （15）秩与解空间 $N(A^{\mathrm{T}})$：$t=6$；$r(B)$ 可取 1 或 2。 | 秩与空间维数 |
+| [4](#answer-4) | 按题面三式，$a=b$ 时唯一解为 $(1,1)$，$a\ne b$ 时无解。 | 线性方程组 |
+| [5](#answer-5) | （15）$\|A^{*}\|=\|A\|^{n-1}$ 与矩阵方程：$B=\begin{pmatrix}6&0&0&0\\0&6&0&0\\6&0&6&0\\0&3&0&-1\end{pmatrix}$。 | 伴随矩阵、矩阵方程 |
+| [6](#answer-6) | （20）秩 1 矩阵的幂与多项式：$f(x)=x^{2}-nx$；$A^{100}=n^{99}A$；$(A+E)^{3}=E+(n^{2}+3n+3)A$；$(A+E)^{-1}=E-\frac{A}{n+1}$。 | 矩阵幂与多项式 |
+| [7](#answer-7) | （8）秩的等价刻画：$r(A)=r(AB)\iff$ 存在 $C$ 使 $A=ABC$。 | 秩与空间维数 |
+| [8](#answer-8) | （7）等价标准形与对称分解：$A=SP$，其中 $S=U^{-1}DU^{-\mathrm{T}}$ 对称、$P=U^{\mathrm{T}}V^{-1}$ 可逆。 | 正交与对称 |
+
+
+### 复习要点 {#section-21}
+
+
+- **行列式：**优先用行、列倍加制造零元；三对角型按首行展开建立递推，并核对初值。
+- **秩与空间维数：**$r(XY)\le\min\{r(X),r(Y)\}$，$r(X+Y)\le r(X)+r(Y)$；可逆初等变换不改变秩。
+- **线性方程组：**$r(A)<r(A\mid b)$ 时无解；两秩相等时有解，自由参数个数为 $n-r(A)$。
+- **伴随矩阵：**$AA^*=A^*A=|A|E$；$|A^*|=|A|^{n-1}$；可逆时 $A^*=|A|A^{-1}$。
+- **矩阵方程：**$AX=B$ 左乘 $A^{-1}$，$XA=B$ 右乘 $A^{-1}$；先移项因式分解，再判断可逆性。
+- **矩阵幂与多项式：**由已知的矩阵多项式关系降低幂次；秩一矩阵 $uv^{\mathsf T}$ 满足 $(uv^{\mathsf T})^m=(v^{\mathsf T}u)^{m-1}uv^{\mathsf T}$。
+- **正交与对称：**正交矩阵满足 $Q^{\mathsf T}Q=E$；实内积须满足对称性、双线性和正定性。
+
+
+### 易错点清单 {#section-22}
+
+
+- 交换两行变号；倍乘一行才提取一个因子；余子式须带 $(-1)^{i+j}$。
+- 秩是最大非零子式的阶数；区分零空间、列空间与行空间。
+- 含参消元在除以参数前先分情形；通解写成特解加齐次通解。
+- 先判断阶数与可逆性，不能把伴随矩阵当作转置。
+- 逆矩阵不能随意跨过其他因子；只可在同侧作相应运算。
+- 二项式展开须保证参与的矩阵可交换；幂零与零矩阵不是同一概念。
+- 内积的正定性须对所有非零向量成立；矩阵乘积转置时要倒序。
+
+---
+
+
+## ⚖️AI 协作与版权声明 {#section-23}
+
+
+
+### AI 协作说明 {#section-24}
+
+
+本文件由整理者提供资料并确定整理要求，使用 OpenAI Codex 辅助完成题目转写、LaTeX 公式录入、解题推导、知识点分析和 Markdown 排版。AI 辅助生成的解析属于学习参考内容，不代表命题教师、原资料作者或学校的官方解答；本声明不表示内容已经过人工逐题审核。使用时请结合教材与课程要求核验，发现问题可提出更正。
+
+
+### 来源与权利归属 {#section-25}
+
+
+原始试卷及参考解析来自本库保存的浙江大学《线性代数（甲）》历年期中题目卷与解析卷 PDF 合集。合集署名整理者为 macanine，项目地址为 [zju-linear-algebra-papers](https://github.com/macanine/zju-linear-algebra-papers)。原题、参考解析及其他第三方材料的权利归各自权利人所有，本文件的整理行为不改变其权利归属。来源标注用于说明出处，不表示已取得原资料的开放许可，也不表示原作者对本文件作出认可。
+
+
+### 开放许可与转载要求 {#section-26}
+
+
+在整理贡献者依法有权许可的范围内，本文件新增的转写编排、补充解析和知识点整理采用 **MIT License**，许可正文如下。该许可不涵盖原题、原始参考解析、截图或其他第三方材料；使用这些材料须遵守其原有许可，或另行取得必要授权。
+
+转载或修改适用 MIT 许可的内容时，应保留以下版权与许可声明。转载包含原题或引用资料的版本时，也请保留资料来源及本节 AI 协作说明；修改者应注明修改内容，避免将补充或修改的结论归于原资料作者。
+
+```text
+MIT License
+
+Copyright (c) 2026 easoncyy
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```

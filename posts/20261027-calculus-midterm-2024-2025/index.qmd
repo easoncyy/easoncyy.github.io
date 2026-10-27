@@ -1,0 +1,527 @@
+---
+title: 2024-2025 学年《微积分（甲）Ⅰ》期中试卷归档
+description: 2024-2025 学年期中试卷：题目、详细解析与知识点总结。
+date: '2026-10-27'
+author: easoncyy（整理）
+category-path:
+- MATH
+- CALCULUS
+- 历年卷
+- 期中
+categories:
+- 历年卷
+- 期中
+- 真题
+execute:
+  enabled: false
+toc-depth: 3
+---
+
+来源：题目转录标注为《微积分甲期中卷.pdf》第 11 页。跨年度复习建议见 [期中复习指南](/posts/20261027-calculus-midterm-review-guide/)；返回 [微积分历年卷索引](/blog.html)。
+
+本卷共 13 题。考试时间和各题分值在现有转录中未标注。本档依据现有转录整理题目，并补充完整解析；不另行推定原卷未标明的信息。
+
+
+
+::: {.download-box}
+[在线阅读练习卷 PDF ↗](/assets/pdf/exams/practice/calculus-midterm-2024-2025-practice.pdf){target="_blank"} · [下载练习卷 PDF ↓](/assets/pdf/exams/practice/calculus-midterm-2024-2025-practice.pdf){download="calculus-midterm-2024-2025-practice.pdf"}
+
+根据归档题目整理的练习版，非原卷扫描件；仅含题目，并留有作答空间。
+:::
+
+## 第一部分：题目 {#questions}
+
+
+
+### 1. {#section-2}
+
+
+计算极限 $\lim\limits_{x\to 0}\dfrac{e-e^{\cos x}-x^3\sin\frac{1}{x}}{\left(\sqrt[3]{1+x^2}-1\right)\cos x}$.
+
+
+### 2. {#section-3}
+
+
+用数列极限定义证明 $\lim\limits_{n\to\infty}\dfrac{a^n}{n!}=0$，其中 $a$ 是常数.
+
+
+### 3. {#section-4}
+
+
+计算极限 $\lim\limits_{x\to 0}\left(2e^{\frac{x}{1+x}}-1\right)^{\frac{x^2+1}{x}}$.
+
+
+### 4. {#section-5}
+
+
+计算极限 $\lim\limits_{n\to\infty}\left(\dfrac{1}{n^2+2n+1}+\dfrac{2}{n^2+2n+2}+\dots+\dfrac{n}{n^2+2n+n}\right)$.
+
+
+### 5. {#section-6}
+
+
+指出函数 $f(x)=\begin{cases} e^{\frac{1}{x-1}}, & x>0, \\ \ln(1+x), & -1<x\le 0 \end{cases}$ 的间断点，并判断其类型.
+
+
+### 6. {#section-7}
+
+
+设函数 $y=x^2e^{\sin^2\frac{1}{x}}$，求 $\dfrac{dy}{dx}$.
+
+
+### 7. {#section-8}
+
+
+设函数 $y=y(x)$ 由方程 $\ln(x^2+y)=x^3y+\sin x$ 确定，求 $dy\big|_{x=0}$.
+
+
+### 8. {#section-9}
+
+
+求极坐标系下曲线 $r=e^{\theta}$ 在点 $(r,\theta)=\left(e^{\frac{\pi}{2}},\dfrac{\pi}{2}\right)$ 处在直角坐标系下的切线方程.
+
+
+### 9. {#section-10}
+
+
+设函数 $y=e^x\sin x$，证明 $y^{(n)}=2^{\frac{n}{2}}e^x\sin\left(x+\dfrac{n\pi}{4}\right)$.
+
+
+### 10. {#section-11}
+
+
+试确定常数 $a,b$ 的值，使函数 $f(x)=\begin{cases} 1+\ln(1-2x), & x\le 0, \\ a+be^x, & x>0 \end{cases}$ 在 $x=0$ 处可导，并求此时导函数 $f'(x)$.
+
+
+### 11. {#section-12}
+
+
+设函数 $f(x)=x^2D(x)$，其中 $D(x)=\begin{cases} 1, & x\text{ 是有理数}, \\ 0, & x\text{ 是无理数}. \end{cases}$ 试讨论函数 $f(x)$，$x\in(-\infty,+\infty)$ 的连续性和可导性；若可导，求其导数.
+
+
+### 12. {#section-13}
+
+
+写出无穷大量 $\lim\limits_{x\to 0^+}f(x)=+\infty$ 的定义，并举例说明无界量不一定是无穷大量.
+
+
+### 13. {#section-14}
+
+
+已知函数 $f(x)$ 在 $[0,1]$ 上连续，在 $(0,1)$ 内可导，且 $f(0)=0$，$f(1)=1$.
+
+证明：(1) 存在 $c\in(0,1)$，使得 $f(c)=1-c$；
+
+(2) 存在两个不同的数 $\xi,\eta\in(0,1)$，使得 $f'(\xi)f'(\eta)=1$.
+
+
+## 第二部分：详细解析 {#solutions}
+
+
+
+### 解析 1：主项与有界振荡的比较 {#section-16}
+
+
+**题目**
+
+计算极限 $\lim\limits_{x\to 0}\dfrac{e-e^{\cos x}-x^3\sin\frac{1}{x}}{\left(\sqrt[3]{1+x^2}-1\right)\cos x}$.
+
+**答案** $3e/2$。
+
+**详细解析**
+
+先处理非振荡部分：
+
+$$e-e^{\cos x}=-e\left(e^{\cos x-1}-1\right)\sim-e(\cos x-1)\sim\frac e2x^2.$$
+
+而 $|x^3\sin(1/x)|\le|x|^3=o(x^2)$，因此整个分子的主项仍为 $ex^2/2$。分母满足
+
+$$\left((1+x^2)^{1/3}-1\right)\cos x\sim\frac{x^2}{3}.$$
+
+所以原极限为 $(e/2)/(1/3)=3e/2$。
+
+**知识点与易错点** 忽略某项必须相对于所需主项比较阶数；振荡项只需有界，不需要自身收敛。
+
+
+### 解析 2：阶乘压倒指数的定义证明 {#section-17}
+
+
+**题目**
+
+用数列极限定义证明 $\lim\limits_{n\to\infty}\dfrac{a^n}{n!}=0$，其中 $a$ 是常数.
+
+**答案** 对任意实常数 $a$，$a^n/n!\to0$。
+
+**详细解析**
+
+若 $a=0$，结论直接成立。设 $a\ne0$，令 $b_n=|a|^n/n!$。先固定正整数 $m\ge2|a|$，则对所有 $n\ge m$，
+
+$$\frac{b_{n+1}}{b_n}=\frac{|a|}{n+1}\le\frac12.$$
+
+故 $b_n\le b_m2^{-(n-m)}$（$n\ge m$）。给定 $\varepsilon>0$，令
+
+$$L=\max\left\{0,\left\lceil\log_2\frac{b_m}{\varepsilon}\right\rceil\right\},\qquad N=m+L.$$
+
+当 $n>N$ 时，$n-m>L$，从而 $b_n\le b_m2^{-(n-m)}<\varepsilon$。所以按 $\varepsilon$–$N$ 定义有 $|a^n/n!|\to0$，即原数列趋于零。
+
+**知识点与易错点** 先固定使尾项比值统一小于 1 的位置，再由 ε 选择更后的起点；两次选点作用不同。
+
+
+### 解析 3：指数复合的一的无穷次幂 {#section-18}
+
+
+**题目**
+
+计算极限 $\lim\limits_{x\to 0}\left(2e^{\frac{x}{1+x}}-1\right)^{\frac{x^2+1}{x}}$.
+
+**答案** $e^2$。
+
+**详细解析**
+
+令 $u=x/(1+x)$，$v=2(e^u-1)$，则 $u\sim x$、$v\sim2x$，且底数 $1+v$ 在零点附近为正。原式的对数为
+
+$$\frac{x^2+1}{x}\ln(1+v)=(x^2+1)\frac{\ln(1+v)}v\frac vx\to1\cdot1\cdot2=2.$$
+
+因此原式趋于 $e^2$。式中 $x^2+1$ 不需要展开到更高阶，它只贡献极限 $1$。
+
+**知识点与易错点** 幂指型取对数后拆成有限个极限；明确每个复合层的主项。
+
+
+### 解析 4：二次主分母的变项求和 {#section-19}
+
+
+**题目**
+
+计算极限 $\lim\limits_{n\to\infty}\left(\dfrac{1}{n^2+2n+1}+\dfrac{2}{n^2+2n+2}+\dots+\dfrac{n}{n^2+2n+n}\right)$.
+
+**答案** $1/2$。
+
+**详细解析**
+
+当 $1\le k\le n$，有 $n^2+2n+1\le n^2+2n+k\le n^2+3n$。因此
+
+$$\frac{n(n+1)}{2(n^2+3n)}\le\sum_{k=1}^n\frac{k}{n^2+2n+k}\le\frac{n(n+1)}{2(n^2+2n+1)}.$$
+
+两端分别为 $(n+1)/(2(n+3))$、$n/(2(n+1))$，均趋于 $1/2$。由夹逼定理得到结论。
+
+**知识点与易错点** 分母不同但能统一夹住时，先求分子的和；注意不等号在取倒数后反向。
+
+
+### 解析 5：分界点与指数奇点的间断分类 {#section-20}
+
+
+**题目**
+
+指出函数 $f(x)=\begin{cases} e^{\frac{1}{x-1}}, & x>0, \\ \ln(1+x), & -1<x\le 0 \end{cases}$ 的间断点，并判断其类型.
+
+**答案** $x=0$ 为跳跃间断点；$x=1$ 为第二类间断点。
+
+**详细解析**
+
+自然定义域是 $(-1,+\infty)\setminus\{1\}$。两支内部均连续，只需检查分界点 $0$ 和指数分母为零的 $1$。
+
+在 $0$ 处，$f(0)=0$，且
+
+$$f(0-)=\lim_{x\to0^-}\ln(1+x)=0,\qquad f(0+)=e^{-1}.$$
+
+两侧极限都有限但不相等，故为跳跃间断点，属于第一类。
+
+在 $1$ 处，
+
+$$\lim_{x\to1^-}e^{1/(x-1)}=0,\qquad\lim_{x\to1^+}e^{1/(x-1)}=+\infty.$$
+
+右侧极限无穷，故属于第二类。端点 $-1$ 不在自然定义域及题给区间内部，不计作本题间断点。
+
+**知识点与易错点** 分段点与表达式本身的奇点都需检查；把左右方向代入指数，避免颠倒零与无穷。
+
+
+### 解析 6：振荡复合函数的链式求导 {#section-21}
+
+
+**题目**
+
+设函数 $y=x^2e^{\sin^2\frac{1}{x}}$，求 $\dfrac{dy}{dx}$.
+
+**答案** $\displaystyle y'=e^{\sin^2(1/x)}\left[2x-\sin(2/x)\right]$（$x\ne0$）。
+
+**详细解析**
+
+在原定义域 $x\ne0$ 内，使用乘积法则与链式法则：
+
+$$y'=2xe^{\sin^2(1/x)}+x^2e^{\sin^2(1/x)}\cdot2\sin(1/x)\cos(1/x)\left(-\frac1{x^2}\right).$$
+
+约去第二项中的 $x^2$，再用倍角公式，得到
+
+$$y'=e^{\sin^2(1/x)}\left[2x-2\sin(1/x)\cos(1/x)\right]=e^{\sin^2(1/x)}[2x-\sin(2/x)].$$
+
+原函数未在 $0$ 处定义，因此本题不直接给 $y'(0)$ 赋值。
+
+**知识点与易错点** 链式求导要包含最内层 1/x 的导数；定义域限制在化简后仍须保留。
+
+
+### 解析 7：隐函数基点处的微分 {#section-22}
+
+
+**题目**
+
+设函数 $y=y(x)$ 由方程 $\ln(x^2+y)=x^3y+\sin x$ 确定，求 $dy\big|_{x=0}$.
+
+**答案** $dy|_{x=0}=dx$。
+
+**详细解析**
+
+先在原方程令 $x=0$，得 $\ln y=0$，故 $y(0)=1$。两边对 $x$ 求导，
+
+$$\frac{2x+y'}{x^2+y}=3x^2y+x^3y'+\cos x.$$
+
+代入 $(x,y)=(0,1)$，左边为 $y'(0)$，右边为 $1$，故 $y'(0)=1$。因此 $dy|_{x=0}=y'(0)\,dx=dx$。
+
+在该点，关于 $y$ 的偏导 $1/(x^2+y)-x^3=1\ne0$，也保证局部可把方程解作可导的隐函数。
+
+**知识点与易错点** 求指定点的隐函数微分时先求 y 的点值；dy 与 y′ 只差一个 dx，但不可漏写。
+
+
+### 解析 8：对数螺旋线的切线 {#section-23}
+
+
+**题目**
+
+求极坐标系下曲线 $r=e^{\theta}$ 在点 $(r,\theta)=\left(e^{\frac{\pi}{2}},\dfrac{\pi}{2}\right)$ 处在直角坐标系下的切线方程.
+
+**答案** $x+y=e^{\pi/2}$。
+
+**详细解析**
+
+参数化为 $x=e^\theta\cos\theta$、$y=e^\theta\sin\theta$，则
+
+$$\frac{dx}{d\theta}=e^\theta(\cos\theta-\sin\theta),\qquad\frac{dy}{d\theta}=e^\theta(\sin\theta+\cos\theta).$$
+
+在 $\theta=\pi/2$，切点是 $(0,e^{\pi/2})$，$dx/d\theta=-e^{\pi/2}\ne0$，所以斜率为 $-1$。点斜式给出
+
+$$y-e^{\pi/2}=-x,\quad\text{即 }x+y=e^{\pi/2}.$$
+
+**知识点与易错点** 极坐标曲线先转参数方程；检查 dx/dθ 是否为零再写斜率。
+
+
+### 解析 9：指数三角函数的高阶导数 {#section-24}
+
+
+**题目**
+
+设函数 $y=e^x\sin x$，证明 $y^{(n)}=2^{\frac{n}{2}}e^x\sin\left(x+\dfrac{n\pi}{4}\right)$.
+
+**答案** $\displaystyle y^{(n)}=2^{n/2}e^x\sin(x+n\pi/4)$。
+
+**详细解析**
+
+用数学归纳法。$n=0$ 时就是原函数；$n=1$ 时
+
+$$y'=e^x(\sin x+\cos x)=\sqrt2e^x\sin(x+\pi/4),$$
+
+符合公式。假设公式对某个 $n$ 成立，令 $u=x+n\pi/4$，则
+
+$$y^{(n+1)}=2^{n/2}e^x(\sin u+\cos u)=2^{(n+1)/2}e^x\sin(u+\pi/4),$$
+
+也就是 $2^{(n+1)/2}e^x\sin(x+(n+1)\pi/4)$，完成归纳。每求一次导数，振幅乘 $\sqrt2$，相位增加 $\pi/4$。
+
+**知识点与易错点** 归纳证明写出基例与归纳步；sin u+cos u 的相位合并是关键。
+
+
+### 解析 10：分段可导确定参数与导函数 {#section-25}
+
+
+**题目**
+
+试确定常数 $a,b$ 的值，使函数 $f(x)=\begin{cases} 1+\ln(1-2x), & x\le 0, \\ a+be^x, & x>0 \end{cases}$ 在 $x=0$ 处可导，并求此时导函数 $f'(x)$.
+
+**答案** $a=3,b=-2$；$\displaystyle f'(x)=\begin{cases}-2/(1-2x),&x\le0,\\-2e^x,&x>0.\end{cases}$
+
+**详细解析**
+
+在 $0$ 处连续必须有
+
+$$a+b=\lim_{x\to0^+}(a+be^x)=f(0)=1.$$
+
+左差商的极限为
+
+$$\lim_{x\to0^-}\frac{\ln(1-2x)}x=-2,$$
+
+右差商在连续条件下为 $b(e^x-1)/x\to b$。所以可导要求 $b=-2$，进而 $a=3$。
+
+各支内部按常规求导，且零点导数为 $-2$，得到答案中的完整分段式。左支在所有 $x\le0$ 都满足对数真数 $1-2x>0$。
+
+**知识点与易错点** 先由连续性建立线性关系，再用差商确定斜率；最后写出零点处导数。
+
+
+### 解析 11：狄利克雷函数乘幂的连续与可导性 {#section-26}
+
+
+**题目**
+
+设函数 $f(x)=x^2D(x)$，其中 $D(x)=\begin{cases} 1, & x\text{ 是有理数}, \\ 0, & x\text{ 是无理数}. \end{cases}$ 试讨论函数 $f(x)$，$x\in(-\infty,+\infty)$ 的连续性和可导性；若可导，求其导数.
+
+**答案** 仅在 $x=0$ 连续且可导，$f'(0)=0$；其他点不连续且不可导。
+
+**详细解析**
+
+由 $0\le D(x)\le1$，有 $|x^2D(x)|\le x^2$，所以在 $0$ 处函数极限为 $0=f(0)$，故连续。再由
+
+$$\frac{f(h)-f(0)}h=hD(h),\qquad|hD(h)|\le|h|\to0,$$
+
+可得 $f'(0)=0$。
+
+对于 $x_0\ne0$，取趋于 $x_0$ 的有理数列 $r_n$ 与无理数列 $s_n$，则 $f(r_n)=r_n^2\to x_0^2$，而 $f(s_n)=0\to0$。两个极限不同，故函数在 $x_0$ 不连续。可导必连续，所以这些点也都不可导。
+
+**知识点与易错点** 稠密的两类点用来否定连续性；零点处由幂因子压住振荡，导数须用定义。
+
+
+### 解析 12：正无穷大量定义与无界反例 {#section-27}
+
+
+**题目**
+
+写出无穷大量 $\lim\limits_{x\to 0^+}f(x)=+\infty$ 的定义，并举例说明无界量不一定是无穷大量.
+
+**答案** 定义为“任意正阈值最终都被超过”；无界性不足以推出无穷大。
+
+**详细解析**
+
+$\lim_{x\to0^+}f(x)=+\infty$ 的定义为
+
+$$\forall M>0,\quad\exists\delta>0,\quad0<x<\delta\Longrightarrow f(x)>M,$$
+
+其中 $x$ 限于函数定义域，$0$ 是其右侧聚点。
+
+反例取 $g(x)=\sin(1/x)/x$（$x>0$）。沿 $x_n=1/(\pi/2+2n\pi)$，有 $g(x_n)=\pi/2+2n\pi\to+\infty$，所以它在任何零点右邻域内无界。但是沿 $z_n=1/(n\pi)$，有 $g(z_n)=0$，不可能最终超过任意正数；沿另一组点还可趋于负无穷。因此它既不趋于 $+\infty$，也不满足绝对值趋于无穷。
+
+**知识点与易错点** 无界性是能够找到任意大的值；无穷大要求充分靠近时所有函数值都达到阈值。
+
+
+### 解析 13：零点定理与两段中值定理 {#section-28}
+
+
+**题目**
+
+已知函数 $f(x)$ 在 $[0,1]$ 上连续，在 $(0,1)$ 内可导，且 $f(0)=0$，$f(1)=1$.
+
+证明：(1) 存在 $c\in(0,1)$，使得 $f(c)=1-c$；
+
+(2) 存在两个不同的数 $\xi,\eta\in(0,1)$，使得 $f'(\xi)f'(\eta)=1$.
+
+**答案** 存在 $c\in(0,1)$ 满足 $f(c)=1-c$，并存在不同内点使导数乘积为 1。
+
+**详细解析**
+
+（1）构造 $F(x)=f(x)+x-1$，则 $F$ 在 $[0,1]$ 连续，$F(0)=-1<0$、$F(1)=1>0$。由零点定理存在 $c\in(0,1)$，使 $F(c)=0$，即 $f(c)=1-c$。
+
+（2）分别对 $f$ 在 $[0,c]$、$[c,1]$ 应用拉格朗日中值定理，得到
+
+$$f'(\xi)=\frac{f(c)-f(0)}c=\frac{1-c}{c},\qquad f'(\eta)=\frac{f(1)-f(c)}{1-c}=\frac c{1-c}.$$
+
+其中 $\xi\in(0,c)$、$\eta\in(c,1)$，故两点不同，且相乘恰为 $1$。
+
+**知识点与易错点** 先找使两段割线斜率互为倒数的分点，再分别应用中值定理。
+
+
+## 第三部分：知识点总结 {#summary}
+
+
+
+### 答案与考点索引 {#section-30}
+
+
+| 题号 | 答案或结论 | 主要考点 |
+| --- | --- | --- |
+| 1 | $3e/2$。 | 主项与有界振荡的比较 |
+| 2 | 对任意实常数 $a$，$a^n/n!\to0$。 | 阶乘压倒指数的定义证明 |
+| 3 | $e^2$。 | 指数复合的一的无穷次幂 |
+| 4 | $1/2$。 | 二次主分母的变项求和 |
+| 5 | $x=0$ 为跳跃间断点；$x=1$ 为第二类间断点。 | 分界点与指数奇点的间断分类 |
+| 6 | $\displaystyle y'=e^{\sin^2(1/x)}\left[2x-\sin(2/x)\right]$（$x\ne0$）。 | 振荡复合函数的链式求导 |
+| 7 | $dy\|_{x=0}=dx$。 | 隐函数基点处的微分 |
+| 8 | $x+y=e^{\pi/2}$。 | 对数螺旋线的切线 |
+| 9 | $\displaystyle y^{(n)}=2^{n/2}e^x\sin(x+n\pi/4)$。 | 指数三角函数的高阶导数 |
+| 10 | $a=3,b=-2$；$\displaystyle f'(x)=\begin{cases}-2/(1-2x),&x\le0,\\-2e^x,&x>0.\end{cases}$ | 分段可导确定参数与导函数 |
+| 11 | 仅在 $x=0$ 连续且可导，$f'(0)=0$；其他点不连续且不可导。 | 狄利克雷函数乘幂的连续与可导性 |
+| 12 | 定义为“任意正阈值最终都被超过”；无界性不足以推出无穷大。 | 正无穷大量定义与无界反例 |
+| 13 | 存在 $c\in(0,1)$ 满足 $f(c)=1-c$，并存在不同内点使导数乘积为 1。 | 零点定理与两段中值定理 |
+
+
+### 题型分布与复习重点 {#section-31}
+
+
+- **极限与定义证明（1–4）**：注意有界振荡只能按相对主阶忽略；阶乘与指数用统一尾部几何估计，再写 ε–N。
+- **函数的连续与可导（5、10–12）**：先自然定义域，再检查分界点；可导参数先连续后差商；用稠密性构造反例。
+- **微分及高阶导数（6–9）**：链式法则不可漏掉内层导数；指定点隐函数先求点值；高阶公式用归纳。
+- **中值定理（13）**：先用零点定理找相交点，再在两段区间构造互为倒数的割线斜率。
+
+
+
+### 通用解题检查清单 {#section-32}
+
+
+- **定义证明**：写出任意误差、明确选择尾部起点或邻域半径，并验证它对全部相关变量统一有效。
+- **极限计算**：先检查定义域与趋近方向；等价替换用于乘除，相减有抵消时先变形或保留足够阶数。
+- **连续与可导**：先检查函数值及左右极限，再比较左右差商；表达式化简不会自动恢复原来无定义的点。
+- **高阶或参数导数**：区分求导对象；每次参数二阶求导都要除以对应自变量的一阶参数导数。
+- **存在性证明**：先证明极限或根存在，再计算其候选值；应用介值或中值定理前逐项核对连续性、可导性和端值。
+
+
+### 常用公式 {#section-33}
+
+
+$$\sin t\sim t,\quad\tan t\sim t,\quad1-\cos t\sim\frac{t^2}{2},\quad\ln(1+t)\sim t,\quad e^t-1\sim t\qquad(t\to0).$$
+
+$$\frac{dy}{dx}=\frac{dy/dt}{dx/dt},\qquad\frac{d^2y}{dx^2}=\frac1{dx/dt}\frac{d}{dt}\left(\frac{dy}{dx}\right),\qquad dy=f'(x)\,dx.$$
+
+若目标含 $f'+\lambda f$，可考虑 $(e^{\lambda x}f)'=e^{\lambda x}(f'+\lambda f)$；若右边为常数，先适当平移函数。使用这些公式时仍需保留相应定义域和分母非零条件。
+
+---
+
+
+## ⚖️AI 协作与版权声明 {#section-34}
+
+
+
+### AI 协作说明 {#section-35}
+
+
+本文件由整理者提供资料并确定整理要求，使用 OpenAI Codex 辅助完成题目转写、LaTeX 公式录入、解题推导、知识点分析和 Markdown 排版。AI 辅助生成的解析属于学习参考内容，不代表命题教师、原资料作者或学校的官方解答；本声明不表示内容已经过人工逐题审核。使用时请结合教材与课程要求核验，发现问题可提出更正。
+
+
+### 来源与权利归属 {#section-36}
+
+
+本文件题目依据已合并收录的期中题目转录整理，转录标注来源为《微积分甲期中卷.pdf》。补充解析与知识点总结由本次整理提供。原题、原始参考解析、截图及其他引用材料的权利归各自权利人所有，本文件的整理行为不改变其权利归属。来源标注用于说明出处，不表示已取得原资料的开放许可，也不表示原作者对本文件作出认可。
+
+
+### 开放许可与转载要求 {#section-37}
+
+
+在整理贡献者依法有权许可的范围内，本文件新增的转写编排、补充解析和知识点整理采用 **MIT License**，许可正文如下。该许可不涵盖原题、原始参考解析、截图或其他第三方材料；使用这些材料须遵守其原有许可，或另行取得必要授权。
+
+转载或修改适用 MIT 许可的内容时，应保留以下版权与许可声明。转载包含原题或引用资料的版本时，也请保留资料来源及本节 AI 协作说明；修改者应注明修改内容，避免将补充或修改的结论归于原资料作者。
+
+```text
+MIT License
+
+Copyright (c) 2026 easoncyy
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```

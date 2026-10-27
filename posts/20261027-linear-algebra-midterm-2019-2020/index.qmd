@@ -1,0 +1,427 @@
+---
+title: 2019-2020 学年秋冬《线性代数（甲）》期中归档
+description: 2019-2020 学年期中试卷：题目、详细解析与知识点总结。
+date: '2026-10-27'
+author: easoncyy（整理）
+category-path:
+- MATH
+- LINEAR-ALGEBRA
+- 历年卷
+- 期中
+categories:
+- 历年卷
+- 期中
+- 真题
+execute:
+  enabled: false
+toc-depth: 3
+---
+
+共 8 道题，保留试卷题号和分值。先独立作答，再对照解析与考点索引。
+
+来源：[题目合集](/assets/pdf/exams/linear-algebra-midterm-questions.pdf)、[解析合集](/assets/pdf/exams/linear-algebra-midterm-solutions.pdf)。合集整理者：macanine。
+
+
+
+::: {.download-box}
+[在线阅读练习卷 PDF ↗](/assets/pdf/exams/practice/linear-algebra-midterm-2019-2020-practice.pdf){target="_blank"} · [下载练习卷 PDF ↓](/assets/pdf/exams/practice/linear-algebra-midterm-2019-2020-practice.pdf){download="linear-algebra-midterm-2019-2020-practice.pdf"}
+
+根据归档题目整理的练习版，非原卷扫描件；仅含题目，并留有作答空间。
+:::
+
+## 第一部分：题目 {#questions}
+
+
+
+### 1.（10 分） {#section-2}
+
+
+设有下列 $n$ 阶行列式：
+
+$$
+D_n=\begin{vmatrix}
+4 & 1 & 0 & \cdots & 0 & 0\\
+4 & 4 & 1 & 0 & \cdots & 0\\
+0 & 4 & 4 & 1 & 0 & \cdots\\
+\vdots & \vdots & \vdots & \vdots & \vdots & \vdots\\
+0 & \cdots & 0 & 4 & 4 & 1\\
+0 & 0 & \cdots & 0 & 4 & 4
+\end{vmatrix},
+$$
+
+试证明：$D_n=(1+n)2^n$。
+
+
+### 2.（10 分） {#section-3}
+
+
+设 $\alpha=(1,0,-1)^{\mathrm{T}}$，矩阵 $A=\alpha\alpha^{\mathrm{T}}$，又设 $n$ 为一正整数，试求 $|2E-(A^{*})^n+A^n|$。
+
+
+### 3.（15 分） {#section-4}
+
+
+设有实方阵 $A=\begin{pmatrix}1 & 3 & 9\\ 2 & 0 & 6\\ -3 & 1 & -7\end{pmatrix}$，$B=\begin{pmatrix}0 & a & b\\ 2 & 0 & 6\\ -1 & 1 & 0\end{pmatrix}$，其中 $a,b$ 为实常数。已知 $r(A)=r(B)$，且线性方程组 $AX=(b,1,0)^{\mathrm{T}}$ 有解，试求 $a,b$ 的值。
+
+
+### 4.（20 分） {#section-5}
+
+
+当实数 $a$ 取何值时线性方程组
+
+$$
+\begin{cases}
+-x_1-4x_2+x_3=1,\\
+ax_2-3ax_3=3,\\
+x_1+3x_2+(a+1)x_3=0
+\end{cases}
+$$
+
+无解，有唯一解，有无穷解？有解时请求出所有解。
+
+
+### 5.（15 分） {#section-6}
+
+
+设 $A=\begin{pmatrix}k & 1 & 1 & 1\\ 1 & k & 1 & 1\\ 1 & 1 & k & 1\\ k & k & k & k\end{pmatrix}$，其中 $k$ 为实常数，试求 $A$ 的秩 $r(A)$。
+
+
+### 6.（20 分） {#section-7}
+
+
+设 $A,B$ 为 $n$ 阶方阵，试证明：
+
+（1）$\mathrm{tr}(A+B)=\mathrm{tr} A+\mathrm{tr} B$；
+
+（2）$\mathrm{tr}(AB)=\mathrm{tr}(BA)$；
+
+（3）设 $P$ 是一个 $n$ 阶可逆矩阵，则有 $\mathrm{tr}(P^{-1}AP)=\mathrm{tr} A$；
+
+（4）若 $A=E_{ij}$，其中 $E_{ij}$ 是第 $i$ 行第 $j$ 列处的元素为 1、其余元素全部为零的 $n$ 阶方阵，试求 $\mathrm{tr} A$。
+
+
+### 7.（5 分） {#section-8}
+
+
+设 $A$ 是一个 $n$（$n\ge 2$）阶方阵，$A^{*}$ 是 $A$ 的伴随矩阵。若存在 $n$ 维非零列向量 $\alpha$ 使得 $A\alpha=\theta$，其中 $\theta$ 为 $n$ 维零列向量，且非齐次线性方程组 $A^{*}X=\alpha$ 有解，试证明：$r(A)=n-1$。
+
+
+### 8.（5 分） {#section-9}
+
+
+设 $A$ 为 $n$ 阶可逆矩阵，$\alpha,\beta$ 为两个 $n$ 维列向量，试证明：$|A+\alpha\beta^{\mathrm{T}}|=|A|+\beta^{\mathrm{T}}A^{*}\alpha$。
+
+
+## 第二部分：详细解析 {#solutions}
+
+
+
+### 1.（10 分） {#section-11}
+
+
+记该 $n$ 阶行列式为 $D_n$。按最后一行展开：最后一行只有末两个元素非零，
+
+$$D_n=4M_{nn}-4M_{n,n-1},$$
+
+其中删去第 $n$ 行、第 $n$ 列余下的恰是 $D_{n-1}$，故 $M_{nn}=D_{n-1}$；而删去第 $n$ 行、第 $n-1$ 列后，余下矩阵呈分块下三角形状 $\begin{pmatrix}M_{n-2} & 0\\ 4e_{n-2}^{\mathrm{T}} & 1\end{pmatrix}$，故 $M_{n,n-1}=D_{n-2}$。于是
+
+$$D_n=4D_{n-1}-4D_{n-2}\qquad(n\ge 3),$$
+
+且 $D_1=4$，$D_2=4\times 4-1\times 4=12$。
+
+对 $n$ 归纳证明 $D_n=(n+1)2^n$：$n=1,2$ 已验证。设结论对 $n-1,n-2$ 成立，则
+
+$$D_n=4\cdot n2^{n-1}-4\cdot(n-1)2^{n-2}=2^{n-1}(4n)-2^n(n-1)=2^n(2n-n+1)=(n+1)2^n.$$
+
+答案 $D_n=(n+1)2^n$。
+
+**考点** 行列式。
+
+**易错点** 交换两行变号；倍乘一行才提取一个因子；余子式须带 $(-1)^{i+j}$。
+
+<span id="answer-1"></span>
+
+### 2.（10 分） {#section-12}
+
+
+先化简 $A$，再逐项求值。
+
+由 $\alpha^{\mathrm{T}}\alpha=1^2+0^2+(-1)^2=2$ 得
+
+$$A^2=\alpha(\alpha^{\mathrm{T}}\alpha)\alpha^{\mathrm{T}}=2\alpha\alpha^{\mathrm{T}}=2A,$$
+
+故对正整数 $n$ 有 $A^n=2^{n-1}A$。
+
+又 $A$ 为三阶矩阵且 $r(A)=1<3-1=2$，即 $A$ 的所有二阶子式全为零，故其伴随矩阵 $A^{*}=O$，从而 $(A^{*})^n=O$。于是待求行列式化为
+
+$$|2E-(A^{*})^n+A^n|=|2E+2^{n-1}A|=2^3\left|E+2^{n-2}A\right|.$$
+
+对秩一的 $A=\alpha\alpha^{\mathrm{T}}$ 用矩阵行列式引理 $|E+uv^{\mathrm{T}}|=1+v^{\mathrm{T}}u$，得
+
+$$\left|E+2^{n-2}A\right|=1+2^{n-2}\alpha^{\mathrm{T}}\alpha=1+2^{n-1}.$$
+
+答案 $|2E-(A^{*})^n+A^n|=8(1+2^{n-1})=2^{n+2}+8$。
+
+注 此处 $r(A)=1<3-1$（$A$ 为三阶），所以 $A^{*}=O$，不能套用 $A^{*}=|A|A^{-1}$（$A$ 本身不可逆）。
+
+**考点** 伴随矩阵。
+
+**易错点** 先判断阶数与可逆性，不能把伴随矩阵当作转置。
+
+<span id="answer-2"></span>
+
+### 3.（15 分） {#section-13}
+
+
+先求 $r(A)$。对 $A$ 作初等行变换
+
+$$A\rightarrow\begin{pmatrix}1 & 3 & 9\\ 0 & -6 & -12\\ 0 & 10 & 20\end{pmatrix},$$
+
+第三行是第二行的 $-\frac{5}{3}$ 倍，故 $r(A)=2$，于是题设 $r(A)=r(B)$ 给出 $r(B)=2$。
+
+由 $B$ 是三阶方阵，$r(B)=2$ 等价于 $|B|=0$。按第一行展开
+
+$$|B|=-a\begin{vmatrix}2 & 6\\ -1 & 0\end{vmatrix}+b\begin{vmatrix}2 & 0\\ -1 & 1\end{vmatrix}=-6a+2b,$$
+
+故 $b=3a$；此时 $B$ 的第二、三两行不成比例，秩确为 2。
+
+再处理有解条件。设 $X=(x_1,x_2,x_3)^{\mathrm{T}}$，对增广矩阵作行变换
+
+$$\begin{pmatrix}1 & 3 & 9 & b\\ 2 & 0 & 6 & 1\\ -3 & 1 & -7 & 0\end{pmatrix}\rightarrow\begin{pmatrix}1 & 3 & 9 & b\\ 0 & -6 & -12 & 1-2b\\ 0 & 10 & 20 & 3b\end{pmatrix},$$
+
+底两行成比例，方程组有解当且仅当对应的常数列也成同一比例，即
+
+$$3b=-\frac{5}{3}(1-2b)\Longrightarrow 9b=10b-5\Longrightarrow b=5.$$
+
+再由 $b=3a$ 得 $a=\frac{5}{3}$。
+
+答案 $a=\frac{5}{3}$，$b=5$。
+
+**考点** 线性方程组、矩阵方程、秩与空间维数。
+
+**易错点** 含参消元在除以参数前先分情形；通解写成特解加齐次通解。
+
+<span id="answer-3"></span>
+
+### 4.（20 分） {#section-14}
+
+
+系数矩阵的行列式
+
+$$|A|=\begin{vmatrix}-1 & -4 & 1\\ 0 & a & -3a\\ 1 & 3 & a+1\end{vmatrix}=(-1)\cdot\left[a(a+1)+9a\right]-(-4)\cdot 3a+1\cdot(-a)=a(1-a),$$
+
+故 $|A|\neq 0$ 即 $a\neq 0$ 且 $a\neq 1$ 时方程组有唯一解。
+
+（1）唯一解（$a\neq 0,1$）。由第二式（$a\neq 0$）得 $x_2=3x_3+\frac{3}{a}$，代入第一式得
+
+$$x_1=-1-4x_2+x_3=-1-\frac{12}{a}-11x_3,$$
+
+再代入第三式：
+
+$$\left(-1-\frac{12}{a}-11x_3\right)+3\left(3x_3+\frac{3}{a}\right)+(a+1)x_3=0\Longrightarrow (a-1)x_3=1+\frac{3}{a}=\frac{a+3}{a},$$
+
+于是
+
+$$x_3=\frac{a+3}{a(a-1)},\qquad x_2=3x_3+\frac{3}{a}=\frac{6(a+1)}{a(a-1)},\qquad x_1=-1-\frac{12}{a}-11x_3=-\frac{(a+1)(a+21)}{a(a-1)}.$$
+
+（2）无解（$a=0$ 或 $a=1$）。当 $a=0$ 时第二式为 $0=3$，矛盾；当 $a=1$ 时由第二式 $x_2=3x_3+3$、第一式 $x_1=-13-11x_3$，代入第三式左端恒为 $-4\neq 0$，亦矛盾。
+
+（3）无穷多解。不存在。因为 $|A|=0$ 只可能是 $a=0$ 或 $a=1$，而这两种情形都已判定无解。
+
+答案 $a\neq 0,1$ 时有唯一解如上；$a=0$ 或 $a=1$ 时无解；不存在有无穷多解的情形。
+
+**考点** 线性方程组。
+
+**易错点** 含参消元在除以参数前先分情形；通解写成特解加齐次通解。
+
+<span id="answer-4"></span>
+
+### 5.（15 分） {#section-15}
+
+
+先用行变换把 $A$ 化出大量零元。将第 4 行减到前三行（行列式不变），再提出前三行的公因子 $1-k$：
+
+$$|A|=\begin{vmatrix}0 & 1-k & 1-k & 1-k\\ 1-k & 0 & 1-k & 1-k\\ 1-k & 1-k & 0 & 1-k\\ k & k & k & k\end{vmatrix}=(1-k)^3\begin{vmatrix}0 & 1 & 1 & 1\\ 1 & 0 & 1 & 1\\ 1 & 1 & 0 & 1\\ k & k & k & k\end{vmatrix}.$$
+
+右边行列式前三行之和为 $(2,2,2,3)$，故用 $R_4\leftarrow R_4-k(R_1+R_2+R_3)$ 把末行 $(k,k,k,k)$ 化为 $(-k,-k,-k,-2k)=-k(1,1,1,2)$，再提出因子 $-k$：
+
+$$|A|=(1-k)^3\cdot(-k)\begin{vmatrix}0 & 1 & 1 & 1\\ 1 & 0 & 1 & 1\\ 1 & 1 & 0 & 1\\ 1 & 1 & 1 & 2\end{vmatrix}.$$
+
+对右边行列式交换第一、二行，再逐次消元：
+
+$$\begin{vmatrix}0 & 1 & 1 & 1\\ 1 & 0 & 1 & 1\\ 1 & 1 & 0 & 1\\ 1 & 1 & 1 & 2\end{vmatrix}=-\begin{vmatrix}1 & 0 & 1 & 1\\ 0 & 1 & 1 & 1\\ 0 & 1 & -1 & 0\\ 0 & 1 & 0 & 1\end{vmatrix}=-\begin{vmatrix}1 & 0 & 1 & 1\\ 0 & 1 & 1 & 1\\ 0 & 0 & -2 & -1\\ 0 & 0 & -1 & 0\end{vmatrix}=-(1\cdot 1\cdot(-1))=1,$$
+
+末式按前两列展开，余下二阶子式为 $\begin{vmatrix}-2 & -1\\ -1 & 0\end{vmatrix}=-1$。故
+
+$$|A|=-k(1-k)^3=k(k-1)^3,$$
+
+即 $|A|=0$ 当且仅当 $k=0$ 或 $k=1$。
+
+$k\neq 0,1$ 时 $|A|\neq 0$，$r(A)=4$。
+
+$k=1$ 时 $A$ 的元素全为 1，各行相同，$r(A)=1$。
+
+$k=0$ 时第四行全为零，而左上角三阶子式 $\begin{vmatrix}0 & 1 & 1\\ 1 & 0 & 1\\ 1 & 1 & 0\end{vmatrix}=2\neq 0$，故 $r(A)=3$。
+
+答案
+
+$$r(A)=\begin{cases}4, & k\neq 0,1,\\ 3, & k=0,\\ 1, & k=1.\end{cases}$$
+
+**考点** 秩与空间维数。
+
+**易错点** 秩是最大非零子式的阶数；区分零空间、列空间与行空间。
+
+<span id="answer-5"></span>
+
+### 6.（20 分） {#section-16}
+
+
+记 $A=(a_{ij})_{n\times n}$，$B=(b_{ij})_{n\times n}$，$AB=(c_{ij})_{n\times n}$。
+
+（1）由定义 $\mathrm{tr}(A+B)=\sum_{i=1}^{n}(a_{ii}+b_{ii})=\sum_{i=1}^{n}a_{ii}+\sum_{i=1}^{n}b_{ii}=\mathrm{tr} A+\mathrm{tr} B$。
+
+（2）$c_{ii}=\sum_{k=1}^{n}a_{ik}b_{ki}$，故
+
+$$\mathrm{tr}(AB)=\sum_{i=1}^{n}\sum_{k=1}^{n}a_{ik}b_{ki}=\sum_{k=1}^{n}\sum_{i=1}^{n}b_{ki}a_{ik}=\mathrm{tr}(BA).$$
+
+（3）由（2），把 $P^{-1}$ 与 $AP$ 看成两个 $n$ 阶方阵：$\mathrm{tr}(P^{-1}AP)=\mathrm{tr}(P^{-1}(AP))=\mathrm{tr}((AP)P^{-1})=\mathrm{tr} A$。
+
+（4）$A=E_{ij}$ 只有第 $i$ 行第 $j$ 列元素为 1，它在主对角线上当且仅当 $i=j$，故 $\mathrm{tr} E_{ij}=\begin{cases}1, & i=j,\\ 0, & i\neq j,\end{cases}$ 即 $\mathrm{tr} E_{ij}=\delta_{ij}$。
+
+答案 （1）（2）（3）已证；（4）$\mathrm{tr} E_{ij}=\delta_{ij}$（$i=j$ 时为 1，否则为 0）。
+
+**考点** 矩阵方程。
+
+**易错点** 逆矩阵不能随意跨过其他因子；只可在同侧作相应运算。
+
+<span id="answer-6"></span>
+
+### 7.（5 分） {#section-17}
+
+
+由 $A\alpha=\theta$ 且 $\alpha\neq\theta$ 知齐次方程组 $AX=\theta$ 有非零解，故 $|A|=0$，从而
+
+$$r(A)\le n-1.$$
+
+再证反向不等式。若 $r(A)\le n-2$，则 $A$ 的所有 $n-1$ 阶子式全为零，于是 $A^{*}=O$，此时对任意 $X$ 都有 $A^{*}X=\theta\neq\alpha$，与非齐次方程组 $A^{*}X=\alpha$ 有解矛盾。故 $r(A)\ge n-1$。
+
+结合两端即得 $r(A)=n-1$。
+
+注 关键是 “$r(A)<n-1\iff A^{*}=O$”：解的存在性把 $A^{*}\neq O$ 逼了出来，再配上 $r(A)\le n-1$ 夹逼。
+
+**考点** 伴随矩阵、线性方程组、秩与空间维数。
+
+**易错点** 先判断阶数与可逆性，不能把伴随矩阵当作转置。
+
+<span id="answer-7"></span>
+
+### 8.（5 分） {#section-18}
+
+
+先用矩阵行列式引理。对任意列向量 $u,v$，
+
+$$|E+uv^{\mathrm{T}}|=1+v^{\mathrm{T}}u,$$
+
+理由：若 $1+v^{\mathrm{T}}u=0$，则 $(E+uv^{\mathrm{T}})u=u+u(v^{\mathrm{T}}u)=0$ 且 $u\neq\theta$，两边同时为零，等式成立；若 $1+v^{\mathrm{T}}u\neq 0$，则 $(E+uv^{\mathrm{T}})\left(E-\frac{uv^{\mathrm{T}}}{1+v^{\mathrm{T}}u}\right)=E$，取行列式即得。
+
+由 $A$ 可逆，
+
+$$|A+\alpha\beta^{\mathrm{T}}|=|A|\cdot|E+A^{-1}\alpha\beta^{\mathrm{T}}|=|A|(1+\beta^{\mathrm{T}}A^{-1}\alpha)=|A|+\beta^{\mathrm{T}}(|A|A^{-1})\alpha.$$
+
+又 $|A|A^{-1}=A^{*}$，代入得
+
+$$|A+\alpha\beta^{\mathrm{T}}|=|A|+\beta^{\mathrm{T}}A^{*}\alpha.$$
+
+**考点** 伴随矩阵。
+
+**易错点** 先判断阶数与可逆性，不能把伴随矩阵当作转置。
+
+<span id="answer-8"></span>
+
+## 第三部分：知识点总结 {#summary}
+
+
+
+### 答案与考点 {#section-20}
+
+
+| 题号 | 答案要点 | 主要考点 |
+| --- | --- | --- |
+| [1](#answer-1) | （10）$n$ 阶行列式递推：按末行展开 + 归纳得 $D_n=(n+1)2^{n}$。 | 行列式 |
+| [2](#answer-2) | （10）秩 1 矩阵 $A=\boldsymbol\alpha\boldsymbol\alpha^{\mathrm{T}}$ 与伴随矩阵：$A^{*}=O$ 时值为 $2^{n+2}+8$。 | 伴随矩阵 |
+| [3](#answer-3) | （15）秩相等与 $AX=b$ 有解：$a=\frac53,\ b=5$。 | 线性方程组、矩阵方程、秩与空间维数 |
+| [4](#answer-4) | （20）含参方程组解的结构：$a\neq0,1$ 唯一解；$a=0$ 或 $1$ 无解（**无无穷多解情形**）。 | 线性方程组 |
+| [5](#answer-5) | （15）含参 4 阶矩阵的秩：$k\neq0,1\Rightarrow4$；$k=0\Rightarrow3$；$k=1\Rightarrow1$。 | 秩与空间维数 |
+| [6](#answer-6) | （20）迹 $\operatorname{tr}$ 的四条性质证明（含 $\operatorname{tr}E_{ij}=\delta_{ij}$）。 | 矩阵方程 |
+| [7](#answer-7) | （5）伴随矩阵与秩的夹逼：$r(A)=n-1$。 | 伴随矩阵、线性方程组、秩与空间维数 |
+| [8](#answer-8) | （5）矩阵行列式引理：$\|A+\boldsymbol\alpha\boldsymbol\beta^{\mathrm{T}}\|=\|A\|+\boldsymbol\beta^{\mathrm{T}}A^{*}\boldsymbol\alpha$。 | 伴随矩阵 |
+
+
+### 复习要点 {#section-21}
+
+
+- **行列式：**优先用行、列倍加制造零元；三对角型按首行展开建立递推，并核对初值。
+- **伴随矩阵：**$AA^*=A^*A=|A|E$；$|A^*|=|A|^{n-1}$；可逆时 $A^*=|A|A^{-1}$。
+- **线性方程组：**$r(A)<r(A\mid b)$ 时无解；两秩相等时有解，自由参数个数为 $n-r(A)$。
+- **矩阵方程：**$AX=B$ 左乘 $A^{-1}$，$XA=B$ 右乘 $A^{-1}$；先移项因式分解，再判断可逆性。
+- **秩与空间维数：**$r(XY)\le\min\{r(X),r(Y)\}$，$r(X+Y)\le r(X)+r(Y)$；可逆初等变换不改变秩。
+
+
+### 易错点清单 {#section-22}
+
+
+- 交换两行变号；倍乘一行才提取一个因子；余子式须带 $(-1)^{i+j}$。
+- 先判断阶数与可逆性，不能把伴随矩阵当作转置。
+- 含参消元在除以参数前先分情形；通解写成特解加齐次通解。
+- 逆矩阵不能随意跨过其他因子；只可在同侧作相应运算。
+- 秩是最大非零子式的阶数；区分零空间、列空间与行空间。
+
+---
+
+
+## ⚖️AI 协作与版权声明 {#section-23}
+
+
+
+### AI 协作说明 {#section-24}
+
+
+本文件由整理者提供资料并确定整理要求，使用 OpenAI Codex 辅助完成题目转写、LaTeX 公式录入、解题推导、知识点分析和 Markdown 排版。AI 辅助生成的解析属于学习参考内容，不代表命题教师、原资料作者或学校的官方解答；本声明不表示内容已经过人工逐题审核。使用时请结合教材与课程要求核验，发现问题可提出更正。
+
+
+### 来源与权利归属 {#section-25}
+
+
+原始试卷及参考解析来自本库保存的浙江大学《线性代数（甲）》历年期中题目卷与解析卷 PDF 合集。合集署名整理者为 macanine，项目地址为 [zju-linear-algebra-papers](https://github.com/macanine/zju-linear-algebra-papers)。原题、参考解析及其他第三方材料的权利归各自权利人所有，本文件的整理行为不改变其权利归属。来源标注用于说明出处，不表示已取得原资料的开放许可，也不表示原作者对本文件作出认可。
+
+
+### 开放许可与转载要求 {#section-26}
+
+
+在整理贡献者依法有权许可的范围内，本文件新增的转写编排、补充解析和知识点整理采用 **MIT License**，许可正文如下。该许可不涵盖原题、原始参考解析、截图或其他第三方材料；使用这些材料须遵守其原有许可，或另行取得必要授权。
+
+转载或修改适用 MIT 许可的内容时，应保留以下版权与许可声明。转载包含原题或引用资料的版本时，也请保留资料来源及本节 AI 协作说明；修改者应注明修改内容，避免将补充或修改的结论归于原资料作者。
+
+```text
+MIT License
+
+Copyright (c) 2026 easoncyy
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```

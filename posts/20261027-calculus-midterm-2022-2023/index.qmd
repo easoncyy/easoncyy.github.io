@@ -1,0 +1,603 @@
+---
+title: 2022-2023 学年《微积分（甲）Ⅰ》期中试卷归档
+description: 2022-2023 学年期中试卷：题目、详细解析与知识点总结。
+date: '2026-10-27'
+author: easoncyy（整理）
+category-path:
+- MATH
+- CALCULUS
+- 历年卷
+- 期中
+categories:
+- 历年卷
+- 期中
+- 真题
+execute:
+  enabled: false
+toc-depth: 3
+---
+
+来源：题目转录标注为《微积分甲期中卷.pdf》第 8 页。跨年度复习建议见 [期中复习指南](/posts/20261027-calculus-midterm-review-guide/)；返回 [微积分历年卷索引](/blog.html)。
+
+本卷共 15 题。考试时间和各题分值在现有转录中未标注。本档依据现有转录整理题目，并补充完整解析；不另行推定原卷未标明的信息。
+
+
+
+::: {.download-box}
+[在线阅读练习卷 PDF ↗](/assets/pdf/exams/practice/calculus-midterm-2022-2023-practice.pdf){target="_blank"} · [下载练习卷 PDF ↓](/assets/pdf/exams/practice/calculus-midterm-2022-2023-practice.pdf){download="calculus-midterm-2022-2023-practice.pdf"}
+
+根据归档题目整理的练习版，非原卷扫描件；仅含题目，并留有作答空间。
+:::
+
+## 第一部分：题目 {#questions}
+
+
+
+### 1. {#section-2}
+
+
+叙述数列极限 $\lim\limits_{n\to\infty}a_n=A\in\mathbb{R}$ 的“$\varepsilon-N$”定义，并利用“$\varepsilon-N$”语言证明：$\lim\limits_{n\to\infty}\dfrac{2n^2-n+1}{n^2+2}=2$.
+
+
+### 2. {#section-3}
+
+
+计算极限 $\lim\limits_{x\to 0}\left(e^{2x}-\arctan x\right)^{\csc x}$.
+
+
+### 3. {#section-4}
+
+
+计算极限 $\lim\limits_{x\to\frac{2}{3}\pi}\dfrac{1+2\cos x}{3x-2\pi}$.
+
+
+### 4. {#section-5}
+
+
+计算极限 $\lim\limits_{x\to-\infty}x\left(\sqrt{x^2+6x-1}+x+3\right)$.
+
+
+### 5. {#section-6}
+
+
+计算极限 $\lim\limits_{n\to\infty}\left(\dfrac{1^2}{\sqrt{n^6+1+1}}+\dfrac{2^2}{\sqrt{n^6+2+\frac{1}{2}}}+\dots+\dfrac{n^2}{\sqrt{n^6+n+\frac{1}{n}}}\right)$.
+
+
+### 6. {#section-7}
+
+
+已知 $f(x)=\lim\limits_{n\to\infty}\dfrac{2xe^{n(x-1)}+ax^2+b}{e^{n(x-1)}+1}$ 在 $\mathbb{R}$ 上可导，求常数 $a,b$ 的值.
+
+
+### 7. {#section-8}
+
+
+已知 $y=\dfrac{x}{2}\sqrt{a^2-x^2}+\dfrac{a^2}{2}\arcsin\dfrac{x}{a}$（$a>0$ 为实常数），求 $\dfrac{dy}{dx}$.
+
+
+### 8. {#section-9}
+
+
+设 $y=f(x)$ 是由方程 $e^{x+y}-2xy=e$ 所确定的隐函数.
+
+(1) 求 $f'(0)$；(2) 计算 $\lim\limits_{x\to 0}\dfrac{(y-1)\sin(ex)}{\sqrt{1+2x^2}-1}$.
+
+
+### 9. {#section-10}
+
+
+已知 $\begin{cases} x=\ln\left(t+\sqrt{1+t^2}\right), \\ y=\sqrt{1+t^2}, \end{cases}$ 求 $\dfrac{dy}{dx}$，$\dfrac{d^2y}{dx^2}$.
+
+
+### 10. {#section-11}
+
+
+曲线 $C$ 的极坐标方程为 $r=e^{\theta}+\theta$，求曲线 $C$ 在 $\theta=\dfrac{\pi}{2}$ 处的切线方程.
+
+
+### 11. {#section-12}
+
+
+已知 $f(x)=\arctan x$，求 $f^{(7)}(0)$.
+
+
+### 12. {#section-13}
+
+
+已知 $f(x)=\dfrac{1}{e^{\frac{\sin\pi x}{x-1}}-1}$（$-1<x<2$），试判断 $f(x)$ 的间断点并据理说明间断点的类型.
+
+
+### 13. {#section-14}
+
+
+叙述并证明 Rolle(罗尔)定理.
+
+
+### 14. {#section-15}
+
+
+设数列 $\{a_n\}$ 满足：$a_1=3$，$2a_{n+1}=a_n+\dfrac{6}{a_n+1}(n\ge 1)$，
+
+(1) 证明数列 $\{a_n\}$ 收敛；(2) 计算 $\lim\limits_{n\to\infty}a_n$.
+
+
+### 15. {#section-16}
+
+
+设 $f(x)$ 在 $[0,2]$ 上连续，在 $(0,2)$ 内可导，且 $f(0)=0$，$f(1)=3$，$f(2)=-1$. 证明：(1) $\exists\xi\in(0,2)$ 使得 $f'(\xi)=0$；(2) $\exists\eta\in(0,2)$ 使得 $f(\eta)+f'(\eta)=0$.
+
+
+## 第二部分：详细解析 {#solutions}
+
+
+
+### 解析 1：数列极限定义与证明 {#section-18}
+
+
+**题目**
+
+叙述数列极限 $\lim\limits_{n\to\infty}a_n=A\in\mathbb{R}$ 的“$\varepsilon-N$”定义，并利用“$\varepsilon-N$”语言证明：$\lim\limits_{n\to\infty}\dfrac{2n^2-n+1}{n^2+2}=2$.
+
+**答案** $\displaystyle\lim_{n\to\infty}\frac{2n^2-n+1}{n^2+2}=2$。
+
+**详细解析**
+
+数列 $a_n$ 收敛于 $A\in\mathbb R$ 的定义为：
+
+$$\forall\varepsilon>0,\quad\exists N\in\mathbb N_+,\quad\forall n>N,\quad|a_n-A|<\varepsilon.$$
+
+对题给数列，
+
+$$\left|\frac{2n^2-n+1}{n^2+2}-2\right|=\frac{n+3}{n^2+2}\le\frac1n+\frac3{n^2}\le\frac4n\quad(n\ge1).$$
+
+给定 $\varepsilon>0$，取 $N=\lceil4/\varepsilon\rceil$。当 $n>N$ 时，上式小于 $\varepsilon$，故按定义极限为 $2$。
+
+**知识点与易错点** 量词顺序是“任意误差—存在尾部起点—所有更后项”；给出明确的 N，并验证严格不等式。
+
+
+### 解析 2：幂指型极限 {#section-19}
+
+
+**题目**
+
+计算极限 $\lim\limits_{x\to 0}\left(e^{2x}-\arctan x\right)^{\csc x}$.
+
+**答案** $e$。
+
+**详细解析**
+
+令 $B(x)=e^{2x}-\arctan x$，则 $B(x)\to1$，在零点附近为正。又
+
+$$\frac{B(x)-1}{x}=\frac{e^{2x}-1}{x}-\frac{\arctan x}{x}\to2-1=1.$$
+
+取对数，
+
+$$\frac{\ln B(x)}{\sin x}=\frac{\ln B(x)}{B(x)-1}\frac{B(x)-1}{x}\frac{x}{\sin x}\to1.$$
+
+因此原式趋于 $e$。其中 $\arctan x$ 含一阶主项 $x$，与 $e^{2x}-1$ 相减后主项为 $x$。
+
+**知识点与易错点** 底数趋于 1 的幂指型先取对数；相减时必须同时保留各项的一阶系数。
+
+
+### 解析 3：非零点处的三角函数极限 {#section-20}
+
+
+**题目**
+
+计算极限 $\lim\limits_{x\to\frac{2}{3}\pi}\dfrac{1+2\cos x}{3x-2\pi}$.
+
+**答案** $-\sqrt3/3$。
+
+**详细解析**
+
+令 $a=2\pi/3$，则 $1+2\cos a=0$，分母 $3x-2\pi=3(x-a)$。按余弦函数在 $a$ 处的导数定义，
+
+$$\lim_{x\to a}\frac{1+2\cos x}{3x-2\pi}=\frac23\lim_{x\to a}\frac{\cos x-\cos a}{x-a}=-\frac23\sin a=-\frac{\sqrt3}{3}.$$
+
+也可令 $h=x-a$，用和差化积及 $\sin(h/2)/(h/2)\to1$ 得出同一结论。
+
+**知识点与易错点** 分子在趋近点为零时，识别导数定义；分母的常数倍不能遗漏。
+
+
+### 解析 4：负无穷处的根式差 {#section-21}
+
+
+**题目**
+
+计算极限 $\lim\limits_{x\to-\infty}x\left(\sqrt{x^2+6x-1}+x+3\right)$.
+
+**答案** $5$。
+
+**详细解析**
+
+将被开方数写成 $(x+3)^2-10$，有理化得
+
+$$x\left(\sqrt{x^2+6x-1}+x+3\right)=\frac{-10x}{\sqrt{x^2+6x-1}-(x+3)}.$$
+
+由于 $x\to-\infty$，$\sqrt{x^2}=|x|=-x$。把分子、分母都除以 $-x>0$：
+
+$$\frac{10}{\sqrt{1+6/x-1/x^2}+1+3/x}\to\frac{10}{2}=5.$$
+
+这样同时消去两个趋于无穷大的主项，不需要单独展开根式。
+
+**知识点与易错点** 负无穷方向提根号必须保留绝对值；根式差优先有理化。
+
+
+### 解析 5：带平方根分母的变项和 {#section-22}
+
+
+**题目**
+
+计算极限 $\lim\limits_{n\to\infty}\left(\dfrac{1^2}{\sqrt{n^6+1+1}}+\dfrac{2^2}{\sqrt{n^6+2+\frac{1}{2}}}+\dots+\dfrac{n^2}{\sqrt{n^6+n+\frac{1}{n}}}\right)$.
+
+**答案** $1/3$。
+
+**详细解析**
+
+记
+
+$$S_n=\sum_{k=1}^n\frac{k^2}{\sqrt{n^6+k+1/k}}.$$
+
+当 $1\le k\le n$ 时，$0<k+1/k\le n+1$，因此
+
+$$\frac{\sum_{k=1}^n k^2}{\sqrt{n^6+n+1}}\le S_n\le\frac{\sum_{k=1}^n k^2}{n^3}.$$
+
+而 $\sum_{k=1}^n k^2=n(n+1)(2n+1)/6$，上下界分别为
+
+$$\frac{n(n+1)(2n+1)}{6n^3\sqrt{1+(n+1)/n^6}},\qquad\frac{n(n+1)(2n+1)}{6n^3},$$
+
+都趋于 $1/3$。由夹逼定理，$S_n\to1/3$。
+
+**知识点与易错点** 先对所有求和项给出统一界，再求和；逐个固定项趋于零不决定总和极限。
+
+
+### 解析 6：极限函数的分段可导条件 {#section-23}
+
+
+**题目**
+
+已知 $f(x)=\lim\limits_{n\to\infty}\dfrac{2xe^{n(x-1)}+ax^2+b}{e^{n(x-1)}+1}$ 在 $\mathbb{R}$ 上可导，求常数 $a,b$ 的值.
+
+**答案** $a=1$，$b=1$。
+
+**详细解析**
+
+先固定 $x$ 求关于 $n$ 的极限。根据 $x-1$ 的符号，
+
+$$f(x)=\begin{cases}ax^2+b,&x<1,\\(2+a+b)/2,&x=1,\\2x,&x>1.\end{cases}$$
+
+在 $x=1$ 处连续要求 $a+b=2$，此时 $f(1)=2$。再比较左右差商：左导数为 $2a$，右导数为 $2$。可导要求 $2a=2$，故 $a=1,b=1$。
+
+反过来，此时两支都是多项式，且在 $1$ 处连续、左右导数相同，所以确实在整个 $\mathbb R$ 上可导。
+
+**知识点与易错点** 先求逐点极限函数，再按连续和左右导数相等两步确定参数。
+
+
+### 解析 7：反三角函数与根式求导 {#section-24}
+
+
+**题目**
+
+已知 $y=\dfrac{x}{2}\sqrt{a^2-x^2}+\dfrac{a^2}{2}\arcsin\dfrac{x}{a}$（$a>0$ 为实常数），求 $\dfrac{dy}{dx}$.
+
+**答案** $\displaystyle y'=\sqrt{a^2-x^2}$（$|x|<a$）。
+
+**详细解析**
+
+在 $|x|<a$ 时，分项求导：
+
+$$\left(\frac x2\sqrt{a^2-x^2}\right)'=\frac12\sqrt{a^2-x^2}-\frac{x^2}{2\sqrt{a^2-x^2}},$$
+
+$$\left(\frac{a^2}{2}\arcsin\frac xa\right)'=\frac{a^2}{2}\frac{1/a}{\sqrt{1-x^2/a^2}}=\frac{a^2}{2\sqrt{a^2-x^2}},$$
+
+这里用了 $a>0$。相加后，后两项合为 $\sqrt{a^2-x^2}/2$，所以 $y'=\sqrt{a^2-x^2}$。若讨论端点的单侧导数，可由该表达式取极限得到 $0$。
+
+**知识点与易错点** 链式法则中的 1/a 必须保留；先通分再利用抵消。
+
+
+### 解析 8：隐函数求导与导数型极限 {#section-25}
+
+
+**题目**
+
+设 $y=f(x)$ 是由方程 $e^{x+y}-2xy=e$ 所确定的隐函数.
+
+(1) 求 $f'(0)$；(2) 计算 $\lim\limits_{x\to 0}\dfrac{(y-1)\sin(ex)}{\sqrt{1+2x^2}-1}$.
+
+**答案** $f'(0)=(2-e)/e$；所求极限为 $2-e$。
+
+**详细解析**
+
+令 $x=0$，方程给出 $e^y=e$，故 $y=f(0)=1$。两边对 $x$ 求导：
+
+$$e^{x+y}(1+y')-2(y+xy')=0,$$
+
+$$y'=\frac{2y-e^{x+y}}{e^{x+y}-2x}.$$
+
+在 $(0,1)$ 处，$f'(0)=(2-e)/e$。
+
+再将极限拆成导数与重要极限的乘积：
+
+$$\frac{(y-1)\sin(ex)}{\sqrt{1+2x^2}-1}=\frac{f(x)-f(0)}x\frac{\sin(ex)}x\frac{x^2}{\sqrt{1+2x^2}-1}.$$
+
+三个因子分别趋于 $(2-e)/e$、$e$、$1$，所以极限为 $2-e$。最后一个因子可通过有理化写成 $(\sqrt{1+2x^2}+1)/2$。
+
+**知识点与易错点** 先由隐式方程确定基点；极限分解为导数定义时，核对每个 x 的次数。
+
+
+### 解析 9：参数方程的一阶和二阶导数 {#section-26}
+
+
+**题目**
+
+已知 $\begin{cases} x=\ln\left(t+\sqrt{1+t^2}\right), \\ y=\sqrt{1+t^2}, \end{cases}$ 求 $\dfrac{dy}{dx}$，$\dfrac{d^2y}{dx^2}$.
+
+**答案** $dy/dx=t$，$d^2y/dx^2=\sqrt{1+t^2}$。
+
+**详细解析**
+
+先对参数 $t$ 求导：
+
+$$x'(t)=\frac1{\sqrt{1+t^2}},\qquad y'(t)=\frac{t}{\sqrt{1+t^2}}.$$
+
+由于 $x'(t)>0$，可用 $t$ 局部表示 $x$ 的函数，从而
+
+$$\frac{dy}{dx}=\frac{y'(t)}{x'(t)}=t,$$
+
+$$\frac{d^2y}{dx^2}=\frac{d}{dt}\left(\frac{dy}{dx}\right)\frac1{x'(t)}=\sqrt{1+t^2}.$$
+
+二阶导数是对 $x$ 再求一次导数，不能误写成 $y''(t)/x''(t)$。
+
+**知识点与易错点** 参数二阶求导要再除以 dx/dt；区分参数导数与自变量导数。
+
+
+### 解析 10：极坐标曲线的切线 {#section-27}
+
+
+**题目**
+
+曲线 $C$ 的极坐标方程为 $r=e^{\theta}+\theta$，求曲线 $C$ 在 $\theta=\dfrac{\pi}{2}$ 处的切线方程.
+
+**答案** $\displaystyle y-\left(e^{\pi/2}+\pi/2\right)=-\frac{e^{\pi/2}+1}{e^{\pi/2}+\pi/2}x$。
+
+**详细解析**
+
+置 $R=e^{\pi/2}+\pi/2$，$R'=e^{\pi/2}+1$。极坐标转为
+
+$$x=r(\theta)\cos\theta,\qquad y=r(\theta)\sin\theta.$$
+
+在 $\theta=\pi/2$，切点为 $(0,R)$。参数导数为
+
+$$\frac{dx}{d\theta}=r'\cos\theta-r\sin\theta=-R,\qquad\frac{dy}{d\theta}=r'\sin\theta+r\cos\theta=R'.$$
+
+因此切线斜率为 $-R'/R$，代入点斜式即得答案。
+
+**知识点与易错点** 切点要转为直角坐标；先求参数导数再取比值，防止把极径误作斜率。
+
+
+### 解析 11：反正切的七阶导数 {#section-28}
+
+
+**题目**
+
+已知 $f(x)=\arctan x$，求 $f^{(7)}(0)$.
+
+**答案** $f^{(7)}(0)=-720$。
+
+**详细解析**
+
+由 $f(x)=\arctan x$，有 $(1+x^2)f'(x)=1$。对等式求 $n$ 阶导数并代入 $x=0$，当 $n\ge1$ 时得到
+
+$$f^{(n+1)}(0)+n(n-1)f^{(n-1)}(0)=0.$$
+
+利用 $f'(0)=1$，依次取 $n=2,4,6$，有
+
+$$f^{(3)}(0)=-2,\quad f^{(5)}(0)=-12f^{(3)}(0)=24,\quad f^{(7)}(0)=-30f^{(5)}(0)=-720.$$
+
+也可由 $\arctan x=x-x^3/3+x^5/5-x^7/7+o(x^7)$ 读取 $x^7$ 系数，再乘 $7!$。
+
+**知识点与易错点** 莱布尼茨公式可递推高阶导数；用泰勒系数时需乘对应阶乘。
+
+
+### 解析 12：复合指数分式的间断点 {#section-29}
+
+
+**题目**
+
+已知 $f(x)=\dfrac{1}{e^{\frac{\sin\pi x}{x-1}}-1}$（$-1<x<2$），试判断 $f(x)$ 的间断点并据理说明间断点的类型.
+
+**答案** $x=0$ 为第二类（无穷）间断点；$x=1$ 为可去间断点。
+
+**详细解析**
+
+自然定义域是 $(-1,2)\setminus\{0,1\}$。其中 $x=1$ 使内层分母为零；当 $x\ne1$ 时，外层分母为零等价于 $\sin\pi x=0$，区间内只余 $x=0$。
+
+在 $x=0$，
+
+$$u(x)=\frac{\sin\pi x}{x-1}\sim-\pi x,\qquad e^{u(x)}-1\sim u(x),\qquad f(x)\sim-\frac1{\pi x}.$$
+
+故 $f(0-)=+\infty$，$f(0+)=-\infty$，属于第二类。
+
+在 $x=1$，令 $h=x-1$，则 $\sin\pi x/(x-1)=-\sin(\pi h)/h\to-\pi$，所以
+
+$$\lim_{x\to1}f(x)=\frac1{e^{-\pi}-1},$$
+
+是有限值，补上该点值即可连续，故为可去间断点。端点 $-1,2$ 不在题给开区间内。
+
+**知识点与易错点** 先找所有自然定义域缺口，再分别求极限；内层无定义不一定导致外层无穷。
+
+
+### 解析 13：罗尔定理的叙述与证明 {#section-30}
+
+
+**题目**
+
+叙述并证明 Rolle(罗尔)定理.
+
+**答案** 存在 $\xi\in(a,b)$，使 $f'(\xi)=0$。
+
+**详细解析**
+
+**定理**：若 $a<b$，$f$ 在 $[a,b]$ 上连续，在 $(a,b)$ 内可导，且 $f(a)=f(b)$，则存在 $\xi\in(a,b)$，使 $f'(\xi)=0$。
+
+**证明**：由闭区间连续函数的最值定理，$f$ 在 $[a,b]$ 上取得最大值和最小值。若二者相等，则 $f$ 是常值函数，任取内点即成立。
+
+若二者不等，由端点值相等可知，至少一个最值在内点取得。记该点为 $\xi$。以取得极大值为例，充分小的 $h$ 满足 $f(\xi+h)-f(\xi)\le0$；故 $h>0$ 的差商不大于 $0$，$h<0$ 的差商不小于 $0$。由该点可导，两个单侧导数相等，只能等于 $0$。极小值情形同理。
+
+**知识点与易错点** 定理三项条件必须写全；证明结合最值定理与费马引理。
+
+
+### 解析 14：递推数列的单调有界性 {#section-31}
+
+
+**题目**
+
+设数列 $\{a_n\}$ 满足：$a_1=3$，$2a_{n+1}=a_n+\dfrac{6}{a_n+1}(n\ge 1)$，
+
+(1) 证明数列 $\{a_n\}$ 收敛；(2) 计算 $\lim\limits_{n\to\infty}a_n$.
+
+**答案** $a_n\downarrow2$。
+
+**详细解析**
+
+先用归纳法证明 $a_n>2$。初值 $a_1=3>2$。若 $a_n>2$，则
+
+$$a_{n+1}-2=\frac{a_n^2-3a_n+2}{2(a_n+1)}=\frac{(a_n-2)(a_n-1)}{2(a_n+1)}>0.$$
+
+同时
+
+$$a_{n+1}-a_n=-\frac{(a_n-2)(a_n+3)}{2(a_n+1)}<0.$$
+
+故数列递减且以下界 $2$ 有界，存在有限极限 $L\ge2$。对递推式取极限，得 $2L=L+6/(L+1)$，即 $(L-2)(L+3)=0$。由 $L\ge2$，只能 $L=2$。
+
+**知识点与易错点** 不动点方程只提供候选值，须先证明单调有界并用界排除不合适的根。
+
+
+### 解析 15：两次罗尔定理与指数辅助函数 {#section-32}
+
+
+**题目**
+
+设 $f(x)$ 在 $[0,2]$ 上连续，在 $(0,2)$ 内可导，且 $f(0)=0$，$f(1)=3$，$f(2)=-1$. 证明：(1) $\exists\xi\in(0,2)$ 使得 $f'(\xi)=0$；(2) $\exists\eta\in(0,2)$ 使得 $f(\eta)+f'(\eta)=0$.
+
+**答案** 两问均成立，可选中值点位于 $(0,c)$，其中 $c\in(1,2)$ 为零点。
+
+**详细解析**
+
+由 $f(1)=3>0>f(2)=-1$ 及连续性，存在 $c\in(1,2)$，使 $f(c)=0=f(0)$。
+
+（1）对 $f$ 在 $[0,c]$ 上应用罗尔定理，得到 $\xi\in(0,c)\subset(0,2)$，使 $f'(\xi)=0$。
+
+（2）构造 $F(x)=e^xf(x)$。它在 $[0,c]$ 连续、内点可导，且 $F(0)=F(c)=0$。再用罗尔定理，存在 $\eta\in(0,c)$ 满足
+
+$$F'(\eta)=e^\eta[f(\eta)+f'(\eta)]=0.$$
+
+由于 $e^\eta>0$，得 $f(\eta)+f'(\eta)=0$。
+
+**知识点与易错点** 先用介值定理找同值端点；目标 f+f′ 提示构造 eˣf。
+
+
+## 第三部分：知识点总结 {#summary}
+
+
+
+### 答案与考点索引 {#section-34}
+
+
+| 题号 | 答案或结论 | 主要考点 |
+| --- | --- | --- |
+| 1 | $\displaystyle\lim_{n\to\infty}\frac{2n^2-n+1}{n^2+2}=2$。 | 数列极限定义与证明 |
+| 2 | $e$。 | 幂指型极限 |
+| 3 | $-\sqrt3/3$。 | 非零点处的三角函数极限 |
+| 4 | $5$。 | 负无穷处的根式差 |
+| 5 | $1/3$。 | 带平方根分母的变项和 |
+| 6 | $a=1$，$b=1$。 | 极限函数的分段可导条件 |
+| 7 | $\displaystyle y'=\sqrt{a^2-x^2}$（$\|x\|<a$）。 | 反三角函数与根式求导 |
+| 8 | $f'(0)=(2-e)/e$；所求极限为 $2-e$。 | 隐函数求导与导数型极限 |
+| 9 | $dy/dx=t$，$d^2y/dx^2=\sqrt{1+t^2}$。 | 参数方程的一阶和二阶导数 |
+| 10 | $\displaystyle y-\left(e^{\pi/2}+\pi/2\right)=-\frac{e^{\pi/2}+1}{e^{\pi/2}+\pi/2}x$。 | 极坐标曲线的切线 |
+| 11 | $f^{(7)}(0)=-720$。 | 反正切的七阶导数 |
+| 12 | $x=0$ 为第二类（无穷）间断点；$x=1$ 为可去间断点。 | 复合指数分式的间断点 |
+| 13 | 存在 $\xi\in(a,b)$，使 $f'(\xi)=0$。 | 罗尔定理的叙述与证明 |
+| 14 | $a_n\downarrow2$。 | 递推数列的单调有界性 |
+| 15 | 两问均成立，可选中值点位于 $(0,c)$，其中 $c\in(1,2)$ 为零点。 | 两次罗尔定理与指数辅助函数 |
+
+
+### 题型分布与复习重点 {#section-35}
+
+
+- **极限与定义证明（1–5）**：明确 ε–N 量词；幂指型先取对数；负无穷根式保留绝对值；和式用统一夹逼。
+- **导数与微分（6–11）**：极限函数先分段；隐函数先定基点；参数二阶求导再除一次参数导数；极坐标切线转为直角坐标。
+- **连续与间断（12）**：自然定义域缺口、左右极限和可去补值分别检查。
+- **定理与综合证明（13–15）**：会完整叙述并证明罗尔定理；递推先证单调有界；指数辅助函数服务于目标 f+f′=0。
+
+
+
+### 通用解题检查清单 {#section-36}
+
+
+- **定义证明**：写出任意误差、明确选择尾部起点或邻域半径，并验证它对全部相关变量统一有效。
+- **极限计算**：先检查定义域与趋近方向；等价替换用于乘除，相减有抵消时先变形或保留足够阶数。
+- **连续与可导**：先检查函数值及左右极限，再比较左右差商；表达式化简不会自动恢复原来无定义的点。
+- **高阶或参数导数**：区分求导对象；每次参数二阶求导都要除以对应自变量的一阶参数导数。
+- **存在性证明**：先证明极限或根存在，再计算其候选值；应用介值或中值定理前逐项核对连续性、可导性和端值。
+
+
+### 常用公式 {#section-37}
+
+
+$$\sin t\sim t,\quad\tan t\sim t,\quad1-\cos t\sim\frac{t^2}{2},\quad\ln(1+t)\sim t,\quad e^t-1\sim t\qquad(t\to0).$$
+
+$$\frac{dy}{dx}=\frac{dy/dt}{dx/dt},\qquad\frac{d^2y}{dx^2}=\frac1{dx/dt}\frac{d}{dt}\left(\frac{dy}{dx}\right),\qquad dy=f'(x)\,dx.$$
+
+若目标含 $f'+\lambda f$，可考虑 $(e^{\lambda x}f)'=e^{\lambda x}(f'+\lambda f)$；若右边为常数，先适当平移函数。使用这些公式时仍需保留相应定义域和分母非零条件。
+
+---
+
+
+## ⚖️AI 协作与版权声明 {#section-38}
+
+
+
+### AI 协作说明 {#section-39}
+
+
+本文件由整理者提供资料并确定整理要求，使用 OpenAI Codex 辅助完成题目转写、LaTeX 公式录入、解题推导、知识点分析和 Markdown 排版。AI 辅助生成的解析属于学习参考内容，不代表命题教师、原资料作者或学校的官方解答；本声明不表示内容已经过人工逐题审核。使用时请结合教材与课程要求核验，发现问题可提出更正。
+
+
+### 来源与权利归属 {#section-40}
+
+
+本文件题目依据已合并收录的期中题目转录整理，转录标注来源为《微积分甲期中卷.pdf》。补充解析与知识点总结由本次整理提供。原题、原始参考解析、截图及其他引用材料的权利归各自权利人所有，本文件的整理行为不改变其权利归属。来源标注用于说明出处，不表示已取得原资料的开放许可，也不表示原作者对本文件作出认可。
+
+
+### 开放许可与转载要求 {#section-41}
+
+
+在整理贡献者依法有权许可的范围内，本文件新增的转写编排、补充解析和知识点整理采用 **MIT License**，许可正文如下。该许可不涵盖原题、原始参考解析、截图或其他第三方材料；使用这些材料须遵守其原有许可，或另行取得必要授权。
+
+转载或修改适用 MIT 许可的内容时，应保留以下版权与许可声明。转载包含原题或引用资料的版本时，也请保留资料来源及本节 AI 协作说明；修改者应注明修改内容，避免将补充或修改的结论归于原资料作者。
+
+```text
+MIT License
+
+Copyright (c) 2026 easoncyy
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```

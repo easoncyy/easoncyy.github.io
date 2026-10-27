@@ -1,0 +1,489 @@
+---
+title: 2017-2018 学年秋冬《线性代数（甲）》期中归档
+description: 2017-2018 学年期中试卷：题目、详细解析与知识点总结。
+date: '2026-10-27'
+author: easoncyy（整理）
+category-path:
+- MATH
+- LINEAR-ALGEBRA
+- 历年卷
+- 期中
+categories:
+- 历年卷
+- 期中
+- 真题
+execute:
+  enabled: false
+toc-depth: 3
+---
+
+共 7 道题，保留试卷题号和分值。先独立作答，再对照解析与考点索引。
+
+来源：[题目合集](/assets/pdf/exams/linear-algebra-midterm-questions.pdf)、[解析合集](/assets/pdf/exams/linear-algebra-midterm-solutions.pdf)。合集整理者：macanine。
+
+
+
+::: {.download-box}
+[在线阅读练习卷 PDF ↗](/assets/pdf/exams/practice/linear-algebra-midterm-2017-2018-practice.pdf){target="_blank"} · [下载练习卷 PDF ↓](/assets/pdf/exams/practice/linear-algebra-midterm-2017-2018-practice.pdf){download="linear-algebra-midterm-2017-2018-practice.pdf"}
+
+根据归档题目整理的练习版，非原卷扫描件；仅含题目，并留有作答空间。
+:::
+
+## 第一部分：题目 {#questions}
+
+
+
+### 1.（15 分） {#section-2}
+
+
+计算 $n$ 阶行列式
+
+$$
+\begin{vmatrix}
+x & y & y & \cdots & y \\
+z & x & y & \cdots & y \\
+z & z & x & \cdots & y \\
+\vdots & \vdots & \vdots & & \vdots \\
+z & z & z & \cdots & x
+\end{vmatrix},
+$$
+
+$x, y, z$ 为任意实常数。
+
+
+### 2.（20 分） {#section-3}
+
+
+设 $k$ 为实常数，当 $k$ 为何值时，下面线性方程组无解？唯一解？无穷多解？有解时，求解。
+
+$$
+\begin{cases}
+kx_1 + x_2 + x_3 = k - 3, \\
+x_1 + kx_2 + x_3 = -2, \\
+x_1 + x_2 + kx_3 = -2.
+\end{cases}
+$$
+
+
+### 3.（20 分） {#section-4}
+
+
+求矩阵方程
+
+$$
+X\begin{pmatrix}
+1 & 1 & 1 \\
+0 & 1 & 2 \\
+1 & 0 & 2
+\end{pmatrix}
+=
+\begin{pmatrix}
+1 & 1 & 1 \\
+0 & 0 & -6
+\end{pmatrix}.
+$$
+
+
+### 4.（15 分） {#section-5}
+
+
+设 $R(A_{m\times n}) = r$，证明存在 $B_{n\times n}$，且 $R(B) = n - r$，使得 $AB = 0$。
+
+
+### 5.（15 分） {#section-6}
+
+
+设 $R(A_{n\times n}) = 1$，$A_{n\times n} \in P^{n\times n}$，证明：
+
+（1）存在两组不全为零的实数 $a_1, \cdots, a_n$；$b_1, \cdots, b_n$，使得 $A = (a_1, \cdots, a_n)^{\mathrm{T}}(b_1, \cdots, b_n)$；
+
+（2）存在实数 $k$，使得 $A^2 = kA$。
+
+
+### 6.（8 分） {#section-7}
+
+
+设 $A_{m\times n}X_{n\times 1} = d_{m\times 1}$ 有解，$B_{m\times s}X_{s\times 1} = c_{m\times 1}$ 无解，令 $G = (A\ B\ d\ c)_{m\times (n+s+2)}$，证明：$R(G) \leq R(A) + R(B) + 1$。
+
+
+### 7.（10 分） {#section-8}
+
+
+设 $A, B, C, D \in R^{n\times n}$，证明：当 $AC = CA$ 时，有 $\begin{vmatrix} A & D \\ C & B \end{vmatrix} = |AB - CD|$。
+
+
+## 第二部分：详细解析 {#solutions}
+
+
+
+### 1.（15 分） {#section-10}
+
+
+记该 $n$ 阶行列式为 $D_n$：主对角线取 $x$，主对角线右上方取 $y$，左下方取 $z$。
+
+**第一步** 把每行化成只有两个非零元。自下而上作行变换 $R_i \leftarrow R_i - R_{i-1}$（$i = n, n-1, \cdots, 2$，减的是尚未改动的第 $i - 1$ 行）：第 $i$ 行只剩第 $i - 1$ 列的 $z - x$ 与第 $i$ 列的 $x - y$，行列式不变，得
+
+$$
+D_n =
+\begin{vmatrix}
+x & y & y & \cdots & y \\
+z - x & x - y & 0 & \cdots & 0 \\
+0 & z - x & x - y & \cdots & 0 \\
+\vdots & \ddots & \ddots & \ddots & \vdots \\
+0 & \cdots & 0 & z - x & x - y
+\end{vmatrix}
+=: \det B.
+$$
+
+**第二步** 按第一行展开。$B$ 的第 $i$ 行（$i \geq 2$）只在第 $i - 1$、$i$ 两列非零。删去第 1 行与第 $k$ 列后，余子式要非零，必须每行从自己的两个非零元中取一个、且所取列号两两不同。设第 $i$ 行取左元（第 $i - 1$ 列，值 $z - x$）的行组成集合 $S$：若有 $i \in S$、$i \geq 3$ 而 $i - 1 \notin S$，则第 $i - 1$ 行取右元仍落在第 $i - 1$ 列，与第 $i$ 行所取同列而重复，故 $S$ 必形如 $\{2, 3, \cdots, m\}$；此时所取列号的集合是 $\{1, \cdots, n\} \setminus \{m\}$，而可用列只有 $\{1, \cdots, n\} \setminus \{k\}$，两者相等给出 $m = k$，即唯一取法 $S = \{2, \cdots, k\}$。所取列号按行号 $2, 3, \cdots, n$ 依次为 $1, 2, \cdots, k - 1, k + 1, \cdots, n$，是递增的，故这一项的排列符号为 $+1$。连同展开式自身的 $(-1)^{1+k}$ 得
+
+$$
+\det B = x(x - y)^{n-1} + y\sum_{k=2}^{n} (-1)^{k+1}(z - x)^{k-1}(x - y)^{n-k},
+$$
+
+其中 $k = 1$ 的余子式是上三角阵、对角元全为 $x - y$，值为 $(x - y)^{n-1}$。
+
+**第三步** 求和化简。记 $u = x - y$、$v = z - x$，上式中的和 $S = \sum_{m=1}^{n-1} (-1)^m v^m u^{n-1-m}$，把它拆开：
+
+$$
+(u + v)S = \sum_{m=1}^{n-1}\left[(-1)^m v^m u^{n-m} + (-1)^m v^{m+1} u^{n-1-m}\right] = -vu^{n-1} + (-1)^{n+1}v^n,
+$$
+
+第 $m$ 项的后一半与第 $m + 1$ 项的前一半正负相消，只剩首尾。再由 $u + v = z - y$ 及 $x(z - y) - y(z - x) = z(x - y)$，
+
+$$
+\begin{aligned}
+(z - y)D_n &= x(z - y)u^{n-1} + y\left(-vu^{n-1} + (-1)^{n+1}v^n\right) \\
+&= \left[x(z - y) - y(z - x)\right]u^{n-1} + (-1)^{n+1}yv^n = z(x - y)^n + (-1)^{n+1}y(z - x)^n.
+\end{aligned}
+$$
+
+这是关于 $x, y, z$ 的多项式恒等式，只有在 $y = z$ 时不能直接除以 $z - y$。
+
+**情形一：** $y \neq z$。
+
+$$
+D_n = \frac{z(x - y)^n + (-1)^{n+1}y(z - x)^n}{z - y} = \frac{y(x - z)^n - z(x - y)^n}{y - z}
+$$
+
+（后一等式用了 $(z - x)^n = (-1)^n(x - z)^n$）。分母中只出现 $z - y$，所以 $x = y$ 或 $x = z$ 都不是退化，直接代入即可：$x = y$ 时 $D_n = (-1)^{n+1}y(z - y)^{n-1}$，$x = z$ 时 $D_n = z(z - y)^{n-1}$。
+
+**情形二：** $y = z$。此时所有非对角元都是 $y$，即 $D_n = \left|(x - y)E + yJ\right|$，$J$ 为全 1 阵。$J$ 的特征值为 $n$（一重）与 $0$（$n - 1$ 重），故
+
+$$
+D_n = (x - y)^{n-1}\left[(x - y) + ny\right] = (x - y)^{n-1}\left(x + (n - 1)y\right).
+$$
+
+**答案** $y \neq z$ 时 $D_n = \dfrac{z(x - y)^n + (-1)^{n+1}y(z - x)^n}{z - y}$（也等于 $\dfrac{y(x - z)^n - z(x - y)^n}{y - z}$）；$y = z$ 时 $D_n = (x - y)^{n-1}\left(x + (n - 1)y\right)$。
+
+**注** 退化只出在 $y = z$（分母为零），此时改用 $M = (x - y)E + yJ$ 的特征值来算；所得结果恰是通项公式在 $z \to y$ 处的极限，可用来验算。$x = y$、$x = z$ 不属于退化，代入通项即可。
+
+**考点** 行列式。
+
+**易错点** 交换两行变号；倍乘一行才提取一个因子；余子式须带 $(-1)^{i+j}$。
+
+<span id="answer-1"></span>
+
+### 2.（20 分） {#section-11}
+
+
+把第 $i$ 个方程写成 $(k - 1)x_i + (x_1 + x_2 + x_3) = b_i$，其中 $b_1 = k - 3$、$b_2 = b_3 = -2$，并记 $s = x_1 + x_2 + x_3$。三式相加：左端为 $(k - 1)s + 3s = (k + 2)s$，右端为 $(k - 3) - 2 - 2 = k - 7$，故
+
+$$
+(k + 2)s = k - 7.
+$$
+
+这是全题的关键：$k \neq -2$ 时它定出 $s$，$k = -2$ 时它自相矛盾。
+
+$k \neq 1, -2$：**唯一解**。系数矩阵是 $(k - 1)E + J$（$J$ 为全 1 阵），其特征值为 $k - 1$（$n - 1$ 重）与 $k + 2$，故 $|A| = (k - 1)^2(k + 2) \neq 0$，解唯一。由 $(k + 2)s = k - 7$ 得 $s = \dfrac{k - 7}{k + 2}$，再由 $(k - 1)x_i = b_i - s$ 得
+
+$$
+x_1 = \frac{1}{k - 1}\left[(k - 3) - \frac{k - 7}{k + 2}\right] = \frac{(k - 1)^2}{(k - 1)(k + 2)} = \frac{k - 1}{k + 2},
+$$
+$$
+x_2 = x_3 = \frac{1}{k - 1}\left[-2 - \frac{k - 7}{k + 2}\right] = \frac{-3(k - 1)}{(k - 1)(k + 2)} = \frac{-3}{k + 2}.
+$$
+
+把它们代回三个原方程即可验算。
+
+$k = -2$：**无解**。此时 $(k + 2)s = k - 7$ 变成 $0 \cdot s = -9$，矛盾；即 $R(A) = 2$ 而增广矩阵 $R(A \mid d) = 3$。
+
+$k = 1$：**无穷多解**。三个方程都化为 $x_1 + x_2 + x_3 = -2$，$R(A) = R(A \mid d) = 1 < 3$，通解为
+
+$$
+(x_1, x_2, x_3) = (-2 - c_1 - c_2,\ c_1,\ c_2), \qquad c_1, c_2 \text{ 为任意实数}.
+$$
+
+**答案** $k \neq 1$ 且 $k \neq -2$ 时有唯一解 $x = \left(\dfrac{k - 1}{k + 2},\ \dfrac{-3}{k + 2},\ \dfrac{-3}{k + 2}\right)^{\mathrm{T}}$；$k = -2$ 时无解；$k = 1$ 时有无穷多解，即 $x_1 + x_2 + x_3 = -2$。
+
+**考点** 线性方程组。
+
+**易错点** 含参消元在除以参数前先分情形；通解写成特解加齐次通解。
+
+<span id="answer-2"></span>
+
+### 3.（20 分） {#section-12}
+
+
+记 $A = \begin{pmatrix} 1 & 1 & 1 \\ 0 & 1 & 2 \\ 1 & 0 & 2 \end{pmatrix}$，$B = \begin{pmatrix} 1 & 1 & 1 \\ 0 & 0 & -6 \end{pmatrix}$，则 $X$ 是 $2 \times 3$ 矩阵。按第一列展开算 $|A|$：
+
+$$
+|A| = 1 \cdot \begin{vmatrix} 1 & 2 \\ 0 & 2 \end{vmatrix} + 1 \cdot \begin{vmatrix} 1 & 1 \\ 1 & 2 \end{vmatrix} = 2 + 1 = 3 \neq 0,
+$$
+
+故 $A$ 可逆，矩阵方程的解唯一，为 $X = BA^{-1}$。
+
+用高斯－若尔当消元求 $A^{-1}$：对 $(A \mid E)$ 作初等行变换化为 $(E \mid A^{-1})$，即
+
+$$
+\begin{pmatrix}
+1 & 1 & 1 & \big| & 1 & 0 & 0 \\
+0 & 1 & 2 & \big| & 0 & 1 & 0 \\
+1 & 0 & 2 & \big| & 0 & 0 & 1
+\end{pmatrix}
+\longrightarrow
+\begin{pmatrix}
+1 & 0 & 0 & \big| & \frac{2}{3} & -\frac{2}{3} & \frac{1}{3} \\[2pt]
+0 & 1 & 0 & \big| & \frac{2}{3} & \frac{1}{3} & -\frac{2}{3} \\[2pt]
+0 & 0 & 1 & \big| & -\frac{1}{3} & \frac{1}{3} & \frac{1}{3}
+\end{pmatrix},
+$$
+
+于是
+
+$$
+A^{-1} = \begin{pmatrix}
+\frac{2}{3} & -\frac{2}{3} & \frac{1}{3} \\[2pt]
+\frac{2}{3} & \frac{1}{3} & -\frac{2}{3} \\[2pt]
+-\frac{1}{3} & \frac{1}{3} & \frac{1}{3}
+\end{pmatrix},
+$$
+$$
+X = BA^{-1} = \begin{pmatrix} 1 & 1 & 1 \\ 0 & 0 & -6 \end{pmatrix} A^{-1} = \begin{pmatrix} 1 & 0 & 0 \\ 2 & -2 & -2 \end{pmatrix}.
+$$
+
+验算：$X$ 的第 1 行乘 $A$ 得 $(1, 1, 1)$，第 2 行乘 $A$ 得 $(0, 0, -6)$，正是 $B$ 的两行。
+
+**答案** $X = \begin{pmatrix} 1 & 0 & 0 \\ 2 & -2 & -2 \end{pmatrix}$。
+
+**考点** 矩阵方程。
+
+**易错点** 逆矩阵不能随意跨过其他因子；只可在同侧作相应运算。
+
+<span id="answer-3"></span>
+
+### 4.（15 分） {#section-13}
+
+
+思路：取齐次方程组 $Ax = \theta$ 的基础解系充当 $B$ 的列。
+
+由秩－零化度定理（对 $A$ 的 $n$ 列，$\dim \ker A + R(A) = n$），$Ax = \theta$ 的解空间维数为
+
+$$
+\dim \ker A = n - R(A) = n - r.
+$$
+
+取它的一组基 $\xi_1, \cdots, \xi_{n-r}$，令
+
+$$
+B = \left(\xi_1, \cdots, \xi_{n-r}, \theta, \cdots, \theta\right)_{n\times n},
+$$
+
+即前 $n - r$ 列是基础解系、其余 $r$ 列取零列。
+
+因 $A\xi_j = \theta$（$j = 1, \cdots, n-r$），$AB$ 的每一列都是零列，故 $AB = O$。又 $\xi_1, \cdots, \xi_{n-r}$ 线性无关，而 $B$ 的后 $r$ 列全为零，故这 $n-r$ 列构成 $B$ 的列向量组的一个极大无关组，$R(B) = n - r$。（$r = n$ 时 $n - r = 0$，取 $B = O$ 即可。）$\square$
+
+**考点** 矩阵方程、秩与空间维数。
+
+**易错点** 逆矩阵不能随意跨过其他因子；只可在同侧作相应运算。
+
+<span id="answer-4"></span>
+
+### 5.（15 分） {#section-14}
+
+
+（1）由 $R(A) = 1$ 知 $A \neq O$，故 $A$ 有非零行。取定其中一个非零行，记其为行向量 $a = (a_1, \cdots, a_n)$，则 $a \neq 0$。$R(A) = 1$ 意味着行空间是一维的，于是每一行都落在 $a$ 张成的直线上，即存在实数 $b_1, \cdots, b_n$ 使 $A$ 的第 $j$ 行为 $b_j a$。取定的那一行（设为第 $r$ 行）对应 $b_r = 1$，故 $b_1, \cdots, b_n$ 也不全为零。把各行写成一列即
+
+$$
+A = \begin{pmatrix} a_1 \\ a_2 \\ \vdots \\ a_n \end{pmatrix} (b_1, b_2, \cdots, b_n) = (a_1, \cdots, a_n)^{\mathrm{T}}(b_1, \cdots, b_n).
+$$
+
+（2）沿用（1）的记法 $A = a^{\mathrm{T}}b$，其中 $a, b$ 为上述行向量；$ba^{\mathrm{T}} = \sum_{i=1}^{n} a_i b_i$ 是一个实数，记为 $k$。把矩阵乘法的结合律用在中间的一对上：
+
+$$
+A^2 = (a^{\mathrm{T}}b)(a^{\mathrm{T}}b) = a^{\mathrm{T}}(ba^{\mathrm{T}})b = k\, a^{\mathrm{T}}b = kA.
+$$
+
+于是存在实数 $k$ 使 $A^2 = kA$。（顺便得到 $k = \sum_{i=1}^{n} a_i b_i = \operatorname{tr} A$。）$\square$
+
+**考点** 矩阵幂与多项式、秩与空间维数。
+
+**易错点** 二项式展开须保证参与的矩阵可交换；幂零与零矩阵不是同一概念。
+
+<span id="answer-5"></span>
+
+### 6.（8 分） {#section-15}
+
+
+把 $G$ 按列分块为 $G = (A\ B\ d\ c)$，用 $C(P)$ 表示矩阵 $P$ 的列空间，则 $\dim C(P) = R(P)$。
+
+$AX = d$ 有解，说明 $d$ 是 $A$ 的列向量组的线性组合，即 $d \in C(A)$。于是 $G$ 的列空间为
+
+$$
+C(G) = C(A) + C(B) + \operatorname{span}\{d\} + \operatorname{span}\{c\} = C(A) + C(B) + \operatorname{span}\{c\},
+$$
+
+即新增的两列中 $d$ 一列不带来新的维数。由此
+
+$$
+R(G) = \dim C(G) \leq \dim\left(C(A) + C(B)\right) + 1 \leq R(A) + R(B) + 1,
+$$
+
+最后一步用了 $\dim(U + V) \leq \dim U + \dim V$；这里 $C(A) + C(B)$ 恰是分块矩阵 $(A\ B)$ 的列空间，其维数为 $R(A\ B)$。
+
+顺带说明：证明只用到 $AX = d$ 有解。$BX = c$ 无解等价于 $c \notin C(B)$，即 $R(B\ c) = R(B) + 1$，这说明多出的那一维确由 $c$ 贡献、上界中的 1 一般不能更小：例如取 $A = O_{m\times n}$、$d = \theta$、$B = O_{m\times s}$、$c \neq \theta$（此时 $AX = d$ 有解、$BX = c$ 无解），有 $R(G) = 1 = R(A) + R(B) + 1$。$\square$
+
+**考点** 秩与空间维数。
+
+**易错点** 秩是最大非零子式的阶数；区分零空间、列空间与行空间。
+
+<span id="answer-6"></span>
+
+### 7.（10 分） {#section-16}
+
+
+记 $M = \begin{pmatrix} A & D \\ C & B \end{pmatrix}$。先对可逆的 $A$ 证，再用摄动法去掉可逆性。
+
+**第一步：$A$ 可逆时用分块消元。** 由 $AC = CA$ 可作如下分块行变换（左乘一个分块初等矩阵）：
+
+$$
+\begin{pmatrix} E & O \\ -C & A \end{pmatrix}
+\begin{pmatrix} A & D \\ C & B \end{pmatrix}
+=
+\begin{pmatrix} A & D \\ -CA + AC & -CD + AB \end{pmatrix}
+=
+\begin{pmatrix} A & D \\ O & AB - CD \end{pmatrix},
+$$
+
+左下角因 $AC = CA$ 而为零。左边第一个因子是分块三角阵，其行列式为 $|E| \cdot |A| = |A|$，对等式两边取行列式得
+
+$$
+|A| \cdot |M| = |A| \cdot |AB - CD|.
+$$
+
+$A$ 可逆时 $|A| \neq 0$，约去 $|A|$ 即得 $|M| = |AB - CD|$。
+
+**第二步：$A$ 不可逆时用摄动法。** 对参数 $t$ 令 $A(t) = A + tE$。由 $AC = CA$ 得
+
+$$
+A(t)C = AC + tC = CA + tC = CA(t),
+$$
+
+即 $A(t)$ 仍与 $C$ 可交换，故可对 $A(t)$ 套用第一步的结论。而 $|A(t)| = |A + tE|$ 是 $t$ 的 $n$ 次首一多项式，至多有 $n$ 个根，所以除有限多个 $t$ 外 $A(t)$ 都可逆。于是
+
+$$
+f(t) := \begin{vmatrix} A(t) & D \\ C & B \end{vmatrix} = |A(t)B - CD| =: g(t)
+$$
+
+对无穷多个 $t$ 成立。$f(t)$ 与 $g(t)$ 都是 $t$ 的多项式（行列式按定义展开即若干元素乘积之和），两个多项式在无穷多个点取值相同，故是同一个多项式；令 $t = 0$ 便得
+
+$$
+\begin{vmatrix} A & D \\ C & B \end{vmatrix} = |AB - CD|.
+$$
+
+$\square$
+
+**注**“可逆时消元、不可逆时摄动”是分块行列式恒等式的通用套路：恒等式两边都是矩阵元素的多项式，只要在可逆（稠密）的情形验证，就能自动延拓到奇异情形，不必对奇异矩阵单独另找消元方案。
+
+**考点** 行列式。
+
+**易错点** 交换两行变号；倍乘一行才提取一个因子；余子式须带 $(-1)^{i+j}$。
+
+<span id="answer-7"></span>
+
+## 第三部分：知识点总结 {#summary}
+
+
+
+### 答案与考点 {#section-18}
+
+
+| 题号 | 答案要点 | 主要考点 |
+| --- | --- | --- |
+| [1](#answer-1) | （15）$n$ 阶行列式（主对角 $x$、上 $y$ 下 $z$）：$D_n=\dfrac{z(x-y)^{n}+(-1)^{n+1}y(z-x)^{n}}{z-y}$；$y=z$ 时为 $(x-y)^{n-1}\big(x+(n-1)y\big)$。 | 行列式 |
+| [2](#answer-2) | （20）含参 $k$ 方程组：$k\neq1,-2$ 唯一解 $x=\big(\frac{k-1}{k+2},-\frac{3}{k+2},-\frac{3}{k+2}\big)^{\mathrm{T}}$；$k=-2$ 无解；$k=1$ 无穷多解（$x_1+x_2+x_3=-2$）。 | 线性方程组 |
+| [3](#answer-3) | （20）矩阵方程 $XA=B$：$X=BA^{-1}=\begin{pmatrix}1&0&0\\2&-2&-2\end{pmatrix}$。 | 矩阵方程 |
+| [4](#answer-4) | （15）秩与齐次解空间（$AB=O$）：取 $Ax=\theta$ 的基础解系 $\xi_1,\dots,\xi_{n-r}$ 充作 $B$ 的前 $n-r$ 列。 | 矩阵方程、秩与空间维数 |
+| [5](#answer-5) | （15）秩 1 矩阵的分解与幂等：$A=\boldsymbol a^{\mathrm{T}}\boldsymbol b$，$A^{2}=kA$，$k=\boldsymbol b\boldsymbol a^{\mathrm{T}}=\operatorname{tr}A$。 | 矩阵幂与多项式、秩与空间维数 |
+| [6](#answer-6) | （8）列空间维数不等式：$d\in C(A)$，$C(G)=C(A)+C(B)+\operatorname{span}\{c\}$，故 $R(G)\le R(A)+R(B)+1$。 | 秩与空间维数 |
+| [7](#answer-7) | （10）分块行列式恒等式：$\|M\|=\|AB-CD\|$（$A$ 可逆时消元，不可逆时用 $A(t)=A+tE$ 摄动）。 | 行列式 |
+
+
+### 复习要点 {#section-19}
+
+
+- **行列式：**优先用行、列倍加制造零元；三对角型按首行展开建立递推，并核对初值。
+- **线性方程组：**$r(A)<r(A\mid b)$ 时无解；两秩相等时有解，自由参数个数为 $n-r(A)$。
+- **矩阵方程：**$AX=B$ 左乘 $A^{-1}$，$XA=B$ 右乘 $A^{-1}$；先移项因式分解，再判断可逆性。
+- **秩与空间维数：**$r(XY)\le\min\{r(X),r(Y)\}$，$r(X+Y)\le r(X)+r(Y)$；可逆初等变换不改变秩。
+- **矩阵幂与多项式：**由已知的矩阵多项式关系降低幂次；秩一矩阵 $uv^{\mathsf T}$ 满足 $(uv^{\mathsf T})^m=(v^{\mathsf T}u)^{m-1}uv^{\mathsf T}$。
+
+
+### 易错点清单 {#section-20}
+
+
+- 交换两行变号；倍乘一行才提取一个因子；余子式须带 $(-1)^{i+j}$。
+- 含参消元在除以参数前先分情形；通解写成特解加齐次通解。
+- 逆矩阵不能随意跨过其他因子；只可在同侧作相应运算。
+- 秩是最大非零子式的阶数；区分零空间、列空间与行空间。
+- 二项式展开须保证参与的矩阵可交换；幂零与零矩阵不是同一概念。
+
+---
+
+
+## ⚖️AI 协作与版权声明 {#section-21}
+
+
+
+### AI 协作说明 {#section-22}
+
+
+本文件由整理者提供资料并确定整理要求，使用 OpenAI Codex 辅助完成题目转写、LaTeX 公式录入、解题推导、知识点分析和 Markdown 排版。AI 辅助生成的解析属于学习参考内容，不代表命题教师、原资料作者或学校的官方解答；本声明不表示内容已经过人工逐题审核。使用时请结合教材与课程要求核验，发现问题可提出更正。
+
+
+### 来源与权利归属 {#section-23}
+
+
+原始试卷及参考解析来自本库保存的浙江大学《线性代数（甲）》历年期中题目卷与解析卷 PDF 合集。合集署名整理者为 macanine，项目地址为 [zju-linear-algebra-papers](https://github.com/macanine/zju-linear-algebra-papers)。原题、参考解析及其他第三方材料的权利归各自权利人所有，本文件的整理行为不改变其权利归属。来源标注用于说明出处，不表示已取得原资料的开放许可，也不表示原作者对本文件作出认可。
+
+
+### 开放许可与转载要求 {#section-24}
+
+
+在整理贡献者依法有权许可的范围内，本文件新增的转写编排、补充解析和知识点整理采用 **MIT License**，许可正文如下。该许可不涵盖原题、原始参考解析、截图或其他第三方材料；使用这些材料须遵守其原有许可，或另行取得必要授权。
+
+转载或修改适用 MIT 许可的内容时，应保留以下版权与许可声明。转载包含原题或引用资料的版本时，也请保留资料来源及本节 AI 协作说明；修改者应注明修改内容，避免将补充或修改的结论归于原资料作者。
+
+```text
+MIT License
+
+Copyright (c) 2026 easoncyy
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```

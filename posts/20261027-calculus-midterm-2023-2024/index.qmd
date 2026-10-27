@@ -1,0 +1,582 @@
+---
+title: 2023-2024 学年《微积分（甲）Ⅰ》期中试卷归档
+description: 2023-2024 学年期中试卷：题目、详细解析与知识点总结。
+date: '2026-10-27'
+author: easoncyy（整理）
+category-path:
+- MATH
+- CALCULUS
+- 历年卷
+- 期中
+categories:
+- 历年卷
+- 期中
+- 真题
+execute:
+  enabled: false
+toc-depth: 3
+---
+
+来源：题目转录标注为《微积分甲期中卷.pdf》第 9–10 页。跨年度复习建议见 [期中复习指南](/posts/20261027-calculus-midterm-review-guide/)；返回 [微积分历年卷索引](/blog.html)。
+
+本卷共 14 题。考试时间和各题分值在现有转录中未标注。本档依据现有转录整理题目，并补充完整解析；不另行推定原卷未标明的信息。
+
+
+
+::: {.download-box}
+[在线阅读练习卷 PDF ↗](/assets/pdf/exams/practice/calculus-midterm-2023-2024-practice.pdf){target="_blank"} · [下载练习卷 PDF ↓](/assets/pdf/exams/practice/calculus-midterm-2023-2024-practice.pdf){download="calculus-midterm-2023-2024-practice.pdf"}
+
+根据归档题目整理的练习版，非原卷扫描件；仅含题目，并留有作答空间。
+:::
+
+## 第一部分：题目 {#questions}
+
+
+
+### 1. {#section-2}
+
+
+叙述函数极限 $\lim\limits_{x\to x_0}f(x)=A\in\mathbb{R}$ 的“$\varepsilon-\delta$”定义，并利用“$\varepsilon-\delta$”语言证明：$\lim\limits_{x\to 1}\dfrac{x+2}{2x+1}=1$.
+
+
+### 2. {#section-3}
+
+
+计算极限 $\lim\limits_{x\to 0}\left[\sqrt{\cos\ln(1-2x)}\right]^{\frac{1}{x^2}}$.
+
+
+### 3. {#section-4}
+
+
+计算极限 $\lim\limits_{x\to 0}\dfrac{\sqrt[3]{1+3x^3}-1+x^4\cos\frac{1}{x}}{\ln(1+2x)\cdot\tan^2 x}$.
+
+
+### 4. {#section-5}
+
+
+当 $x\to 1$ 时，$1-\dfrac{m}{1+x+x^2+\dots+x^{m-1}}$ 是 $(x-1)$ 的等价无穷小量（$m\in\mathbb{N}$），求常数 $m$ 的值.
+
+
+### 5. {#section-6}
+
+
+计算极限 $\lim\limits_{n\to\infty}\left(\dfrac{1}{n^2+1+\sin 1}+\dfrac{2}{n^2+1+\sin 2}+\dots+\dfrac{n}{n^2+1+\sin n}\right)$.
+
+
+### 6. {#section-7}
+
+
+设函数 $y=y(x)$ 是由方程 $x^2+y=\tan(x-y)$ 所确定，且 $y(0)=0$. 求 $y'(0)$ 和 $y''(0)$.
+
+
+### 7. {#section-8}
+
+
+已知 $y=x\ln\left(x+\sqrt{x^2+1}\right)-\sqrt{x^2+1}$，求 $\dfrac{dy}{dx}$，$\dfrac{d^2y}{dx^2}$.
+
+
+### 8. {#section-9}
+
+
+设 $y=\arctan\dfrac{x+1}{x-1}+\ln\sqrt{1+x^2}$，求 $dy$ 与 $dy\big|_{x=3}$.
+
+
+### 9. {#section-10}
+
+
+设 $f(x)=\begin{cases} x^2\sin\dfrac{1}{x}+e^{2x}, & (x<0) \\ ax+b. & (x\ge 0) \end{cases}$
+
+(1) 求常数 $a,b$ 的值使 $f(x)$ 在 $x=0$ 处可导； (2) 计算 $f'(x)$（$x\in\mathbb{R}$）.
+
+(3) 试问 $f''(0)$ 是否存在？为什么？
+
+
+### 10. {#section-11}
+
+
+已知 $f(x)=\dfrac{x}{\sqrt{1+x}}$，求 $f^{(6)}(0)$.
+
+
+### 11. {#section-12}
+
+
+设函数 $y=y(x)$ 由参数方程 $\begin{cases} x=t-\sin t, \\ y=1-\cos t \end{cases}$ 所确定.
+
+(1) 试求曲线 $y=y(x)$ 在 $t=\dfrac{\pi}{2}$ 处的切线方程； (2) 计算 $y''(x)$.
+
+
+### 12. {#section-13}
+
+
+设 $f(x)$ 在 $[0,1]$ 上连续，在 $(0,1)$ 内可导，且 $f(0)=0$，$f(1)=1$.
+
+证明：(1) $\exists c\in(0,1)$ 使得 $f(c)=\dfrac{3}{2023}$； (2) $\exists\xi\ne\eta\in(0,1)$ 使得 $\dfrac{3}{f'(\xi)}+\dfrac{2020}{f'(\eta)}=2023$.
+
+
+### 13. {#section-14}
+
+
+设函数 $f_n(x)=x^n+x^{n-1}+\dots+x-1$（$n\in\mathbb{N}^+$）.
+
+(1) 证明方程 $f_n(x)=0$ 有唯一正根 $x_n$； (2) 证明数列 $\{x_n\}$ 收敛并计算 $\lim\limits_{n\to+\infty}x_n$.
+
+
+### 14. {#section-15}
+
+
+(1) 结合自己的情况谈谈如何学好《微积分》课程.
+
+(2) 你对《微积分》任课教师上课与助教的习题课有什么要求？
+
+（要求：上面两个问题的回答均不少于100字.）
+
+
+## 第二部分：详细解析 {#solutions}
+
+
+
+### 解析 1：函数极限定义与证明 {#section-17}
+
+
+**题目**
+
+叙述函数极限 $\lim\limits_{x\to x_0}f(x)=A\in\mathbb{R}$ 的“$\varepsilon-\delta$”定义，并利用“$\varepsilon-\delta$”语言证明：$\lim\limits_{x\to 1}\dfrac{x+2}{2x+1}=1$.
+
+**答案** $\displaystyle\lim_{x\to1}\frac{x+2}{2x+1}=1$。
+
+**详细解析**
+
+函数极限 $\lim_{x\to x_0}f(x)=A$ 的定义是：对每个 $\varepsilon>0$，都存在 $\delta>0$，使定义域内所有满足 $0<|x-x_0|<\delta$ 的 $x$ 都有 $|f(x)-A|<\varepsilon$。
+
+本题先限制 $|x-1|<1/2$，则 $x>1/2$，$|2x+1|>2$。因此
+
+$$\left|\frac{x+2}{2x+1}-1\right|=\frac{|x-1|}{|2x+1|}<\frac12|x-1|.$$
+
+给定 $\varepsilon>0$，取 $\delta=\min\{1/2,2\varepsilon\}$。当 $0<|x-1|<\delta$ 时，上述误差小于 $\varepsilon$，所以极限为 $1$。
+
+**知识点与易错点** 先限制邻域使分母远离零，再确定依赖 ε 的 δ。
+
+
+### 解析 2：对数与三角复合的幂指极限 {#section-18}
+
+
+**题目**
+
+计算极限 $\lim\limits_{x\to 0}\left[\sqrt{\cos\ln(1-2x)}\right]^{\frac{1}{x^2}}$.
+
+**答案** $e^{-1}$。
+
+**详细解析**
+
+令 $u=\ln(1-2x)$，当 $x\to0$ 时 $u\sim-2x$，且 $\cos u>0$。原式的对数为
+
+$$\frac{\ln\cos u}{2x^2}.$$
+
+利用 $\ln(1+v)\sim v$ 和 $\cos u-1\sim-u^2/2$，有 $\ln\cos u\sim-u^2/2$。所以
+
+$$\frac{\ln\cos u}{2x^2}\to-\frac14\lim_{x\to0}\frac{u^2}{x^2}=-1.$$
+
+取指数即得 $e^{-1}$。平方根贡献了对数前的系数 $1/2$。
+
+**知识点与易错点** 复合等价需从最内层逐步替换；平方根变为对数系数后不能遗漏。
+
+
+### 解析 3：高阶小量与有界振荡 {#section-19}
+
+
+**题目**
+
+计算极限 $\lim\limits_{x\to 0}\dfrac{\sqrt[3]{1+3x^3}-1+x^4\cos\frac{1}{x}}{\ln(1+2x)\cdot\tan^2 x}$.
+
+**答案** $1/2$。
+
+**详细解析**
+
+令 $v=3x^3$，则 $(1+v)^{1/3}-1\sim v/3=x^3$。并且
+
+$$\left|\frac{x^4\cos(1/x)}{x^3}\right|\le|x|\to0.$$
+
+因此分子为 $x^3+o(x^3)$。分母满足 $\ln(1+2x)\sim2x$、$\tan^2x\sim x^2$，即 $2x^3+o(x^3)$。两者相除得极限 $1/2$。
+
+这里不需要 $\cos(1/x)$ 本身有极限，只需要它有界。
+
+**知识点与易错点** 振荡项是否可忽略取决于相对阶数；用绝对值给出可检验的误差估计。
+
+
+### 解析 4：等价无穷小确定整数参数 {#section-20}
+
+
+**题目**
+
+当 $x\to 1$ 时，$1-\dfrac{m}{1+x+x^2+\dots+x^{m-1}}$ 是 $(x-1)$ 的等价无穷小量（$m\in\mathbb{N}$），求常数 $m$ 的值.
+
+**答案** $m=3$。
+
+**详细解析**
+
+记 $S_m(x)=1+x+\cdots+x^{m-1}$，这里 $m\ge1$。有 $S_m(1)=m$，且
+
+$$\frac{1-m/S_m(x)}{x-1}=\frac{S_m(x)-S_m(1)}{x-1}\frac1{S_m(x)}\to\frac{S_m'(1)}m.$$
+
+由于 $S_m'(1)=1+2+\cdots+(m-1)=m(m-1)/2$，比值极限为 $(m-1)/2$。等价要求该极限为 $1$，故 $m=3$。若允许自然数含 $0$，$m=0$ 使题给和式及分式无意义，不属于可行参数。
+
+**知识点与易错点** 同阶只要求非零有限比值，等价必须要求比值为 1。
+
+
+### 解析 5：有界三角扰动的求和极限 {#section-21}
+
+
+**题目**
+
+计算极限 $\lim\limits_{n\to\infty}\left(\dfrac{1}{n^2+1+\sin 1}+\dfrac{2}{n^2+1+\sin 2}+\dots+\dfrac{n}{n^2+1+\sin n}\right)$.
+
+**答案** $1/2$。
+
+**详细解析**
+
+由 $-1\le\sin k\le1$，分母满足 $n^2\le n^2+1+\sin k\le n^2+2$。逐项放缩并求和，
+
+$$\frac{n(n+1)}{2(n^2+2)}\le\sum_{k=1}^n\frac{k}{n^2+1+\sin k}\le\frac{n(n+1)}{2n^2}.$$
+
+两端都趋于 $1/2$，由夹逼定理得结论。
+
+**知识点与易错点** 有界扰动相对于 n² 可统一控制；放缩后的分母应与求和下标无关。
+
+
+### 解析 6：隐函数的二阶导数 {#section-22}
+
+
+**题目**
+
+设函数 $y=y(x)$ 是由方程 $x^2+y=\tan(x-y)$ 所确定，且 $y(0)=0$. 求 $y'(0)$ 和 $y''(0)$.
+
+**答案** $y'(0)=1/2$，$y''(0)=-1$。
+
+**详细解析**
+
+记 $u=x-y(x)$，两边求导：
+
+$$2x+y'=\sec^2u(1-y').$$
+
+由 $y(0)=0$，代入得 $y'(0)=1-y'(0)$，所以 $y'(0)=1/2$。再次求导，
+
+$$2+y''=2\sec^2u\tan u(1-y')^2-\sec^2u\,y''.$$
+
+在 $x=0$，$u=0$，右端第一项为零，故 $2+y''(0)=-y''(0)$，得到 $y''(0)=-1$。
+
+**知识点与易错点** 隐函数反复求导时，内层 x−y 的导数为 1−y′；乘积与链式项都须保留。
+
+
+### 解析 7：对数根式函数的抵消 {#section-23}
+
+
+**题目**
+
+已知 $y=x\ln\left(x+\sqrt{x^2+1}\right)-\sqrt{x^2+1}$，求 $\dfrac{dy}{dx}$，$\dfrac{d^2y}{dx^2}$.
+
+**答案** $y'=\ln(x+\sqrt{x^2+1})$，$y''=1/\sqrt{x^2+1}$。
+
+**详细解析**
+
+设 $L(x)=\ln(x+\sqrt{x^2+1})$。对任意实数 $x$，对数真数为正，且
+
+$$L'(x)=\frac{1+x/\sqrt{x^2+1}}{x+\sqrt{x^2+1}}=\frac1{\sqrt{x^2+1}}.$$
+
+由乘积法则，
+
+$$y'=L(x)+\frac{x}{\sqrt{x^2+1}}-\frac{x}{\sqrt{x^2+1}}=L(x).$$
+
+再求一次导数得 $y''=1/\sqrt{x^2+1}$。
+
+**知识点与易错点** 先单独求常见内层函数的导数，识别乘积求导后两项抵消。
+
+
+### 解析 8：反正切复合函数的微分 {#section-24}
+
+
+**题目**
+
+设 $y=\arctan\dfrac{x+1}{x-1}+\ln\sqrt{1+x^2}$，求 $dy$ 与 $dy\big|_{x=3}$.
+
+**答案** $dy=\frac{x-1}{1+x^2}\,dx$（$x\ne1$）；$dy|_{x=3}=\frac15dx$。
+
+**详细解析**
+
+令 $u=(x+1)/(x-1)$，则 $u'=-2/(x-1)^2$，因此
+
+$$\left(\arctan\frac{x+1}{x-1}\right)'=\frac{-2/(x-1)^2}{1+(x+1)^2/(x-1)^2}=-\frac1{1+x^2}.$$
+
+又 $\ln\sqrt{1+x^2}=\frac12\ln(1+x^2)$，其导数为 $x/(1+x^2)$。相加得 $y'=(x-1)/(1+x^2)$，所以 $dy=y'\,dx$。代入 $x=3$ 得 $dy=dx/5$。
+
+化简导数的公式在 $x=1$ 有值，并不意味着原函数在该点有定义。
+
+**知识点与易错点** 微分答案要带 dx；化简不能擅自扩大原函数的定义域。
+
+
+### 解析 9：分段函数的一阶与二阶可导性 {#section-25}
+
+
+**题目**
+
+设 $f(x)=\begin{cases} x^2\sin\dfrac{1}{x}+e^{2x}, & (x<0) \\ ax+b. & (x\ge 0) \end{cases}$
+
+(1) 求常数 $a,b$ 的值使 $f(x)$ 在 $x=0$ 处可导； (2) 计算 $f'(x)$（$x\in\mathbb{R}$）.
+
+(3) 试问 $f''(0)$ 是否存在？为什么？
+
+**答案** $a=2,b=1$；$f''(0)$ 不存在。
+
+**详细解析**
+
+连续性先要求
+
+$$b=f(0)=\lim_{x\to0^-}\left[x^2\sin(1/x)+e^{2x}\right]=1.$$
+
+在 $b=1$ 下，左差商为
+
+$$\frac{f(x)-1}x=x\sin(1/x)+\frac{e^{2x}-1}x\to2.$$
+
+右导数是 $a$，所以可导要求 $a=2$。此时
+
+$$f'(x)=\begin{cases}2x\sin(1/x)-\cos(1/x)+2e^{2x},&x<0,\\2,&x\ge0.\end{cases}$$
+
+证明二阶导数不存在，可先检查 $f'$ 的连续性。沿 $x_k=-1/(2k\pi)$，左支 $f'(x_k)\to1$；沿 $z_k=-1/((2k+1)\pi)$，左支 $f'(z_k)\to3$。所以 $f'$ 在零点不连续；若 $f''(0)$ 存在，则 $f'$ 在零点可导，从而连续，矛盾。因此二阶导数不存在。
+
+**知识点与易错点** 可导不保证导函数连续；要否定二阶可导，可利用一阶导函数已经不连续。
+
+
+### 解析 10：广义二项式系数与高阶导数 {#section-26}
+
+
+**题目**
+
+已知 $f(x)=\dfrac{x}{\sqrt{1+x}}$，求 $f^{(6)}(0)$.
+
+**答案** $f^{(6)}(0)=-2835/16$。
+
+**详细解析**
+
+令 $g(x)=(1+x)^{-1/2}$。用乘积的六阶求导公式，因 $f(x)=xg(x)$，只有两项保留：
+
+$$f^{(6)}(x)=xg^{(6)}(x)+6g^{(5)}(x).$$
+
+所以
+
+$$f^{(6)}(0)=6\left(-\frac12\right)\left(-\frac32\right)\left(-\frac52\right)\left(-\frac72\right)\left(-\frac92\right)=-\frac{2835}{16}.$$
+
+也可用 $(1+x)^{-1/2}$ 的 $x^5$ 项系数 $-63/256$，乘前面的 $x$ 后成为 $f$ 的 $x^6$ 项，再乘 $6!$。
+
+**知识点与易错点** 前置的 x 会把系数下标平移一位；有限次乘积求导可避免展开整条级数。
+
+
+### 解析 11：摆线切线与参数二阶导数 {#section-27}
+
+
+**题目**
+
+设函数 $y=y(x)$ 由参数方程 $\begin{cases} x=t-\sin t, \\ y=1-\cos t \end{cases}$ 所确定.
+
+(1) 试求曲线 $y=y(x)$ 在 $t=\dfrac{\pi}{2}$ 处的切线方程； (2) 计算 $y''(x)$.
+
+**答案** 切线为 $y-1=x-(\pi/2-1)$；$y''=-1/(1-\cos t)^2$（$t\ne2k\pi$）。
+
+**详细解析**
+
+由参数方程，$x'=1-\cos t$、$y'=\sin t$。当 $x'\ne0$ 时，
+
+$$\frac{dy}{dx}=\frac{\sin t}{1-\cos t}.$$
+
+在 $t=\pi/2$，切点是 $(\pi/2-1,1)$，斜率为 $1$，因此切线为 $y-1=x-(\pi/2-1)$。
+
+再对 $t$ 求导并除以 $x'$：
+
+$$\frac{d^2y}{dx^2}=\frac1{1-\cos t}\frac{\cos t(1-\cos t)-\sin^2t}{(1-\cos t)^2}=-\frac1{(1-\cos t)^2}.$$
+
+公式的适用范围排除尖点参数 $t=2k\pi$。
+
+**知识点与易错点** 参数二阶导数须再除 x′；利用 sin²+cos²=1 化简商法则结果。
+
+
+### 解析 12：按函数增量分段应用中值定理 {#section-28}
+
+
+**题目**
+
+设 $f(x)$ 在 $[0,1]$ 上连续，在 $(0,1)$ 内可导，且 $f(0)=0$，$f(1)=1$.
+
+证明：(1) $\exists c\in(0,1)$ 使得 $f(c)=\dfrac{3}{2023}$； (2) $\exists\xi\ne\eta\in(0,1)$ 使得 $\dfrac{3}{f'(\xi)}+\dfrac{2020}{f'(\eta)}=2023$.
+
+**答案** 两问均成立；可选 $\xi\in(0,c)$、$\eta\in(c,1)$。
+
+**详细解析**
+
+（1）由于 $0<3/2023<1$，由介值定理存在 $c\in(0,1)$，使 $f(c)=3/2023$。
+
+（2）分别在 $[0,c]$ 与 $[c,1]$ 上应用拉格朗日中值定理，得到
+
+$$f'(\xi)=\frac{3}{2023c},\qquad f'(\eta)=\frac{2020}{2023(1-c)},$$
+
+其中 $\xi\in(0,c)$、$\eta\in(c,1)$，所以两点不同，且导数都非零。于是
+
+$$\frac3{f'(\xi)}+\frac{2020}{f'(\eta)}=2023c+2023(1-c)=2023.$$
+
+分割点 $c$ 由函数值而非坐标预先给定，不必也不能直接设 $c=3/2023$。
+
+**知识点与易错点** 按目标式常数比例选取函数增量，再在两段上分别应用中值定理。
+
+
+### 解析 13：多项式正根构成的数列 {#section-29}
+
+
+**题目**
+
+设函数 $f_n(x)=x^n+x^{n-1}+\dots+x-1$（$n\in\mathbb{N}^+$）.
+
+(1) 证明方程 $f_n(x)=0$ 有唯一正根 $x_n$； (2) 证明数列 $\{x_n\}$ 收敛并计算 $\lim\limits_{n\to+\infty}x_n$.
+
+**答案** 唯一正根 $x_n$ 存在，且 $x_n\downarrow1/2$。
+
+**详细解析**
+
+对每个 $n\ge1$，$f_n(x)=\sum_{k=1}^nx^k-1$ 在 $[0,+\infty)$ 连续，在正半轴严格递增，且 $f_n(0)=-1$、$f_n(1)=n-1\ge0$，故有唯一正根 $x_n\in(0,1]$（$x_1=1$）。
+
+又 $f_n(1/2)=\sum_{k=1}^n2^{-k}-1=-2^{-n}<0$，故 $x_n>1/2$。由于
+
+$$f_{n+1}(x_n)=f_n(x_n)+x_n^{n+1}=x_n^{n+1}>0,$$
+
+结合严格递增性得 $x_{n+1}<x_n$。所以数列有极限 $L\ge1/2$。
+
+由根方程乘以 $1-x_n$，得到 $2x_n-1=x_n^{n+1}$。当 $n\ge2$ 时，$x_n\le x_2=(\sqrt5-1)/2=\rho<1$，所以 $0\le x_n^{n+1}\le\rho^{n+1}\to0$。于是 $2L-1=0$，即 $L=1/2$。
+
+**知识点与易错点** 先证根存在且唯一，再利用相邻多项式比较根；变指数项须用统一小于 1 的上界控制。
+
+
+### 解析 14：课程学习反思与教学反馈 {#section-30}
+
+
+**题目**
+
+(1) 结合自己的情况谈谈如何学好《微积分》课程.
+
+(2) 你对《微积分》任课教师上课与助教的习题课有什么要求？
+
+（要求：上面两个问题的回答均不少于100字.）
+
+**答案** 开放题，无统一数值答案；两问分别不少于 100 字。
+
+**详细解析**
+
+这两问须结合答题者的真实经历和需求作答，不宜把通用范文当成个人事实。可按以下结构组织，每问写成独立段落并检查字数。
+
+（1）**如何学好课程**：先说明自己的一个具体薄弱点；再写课前、课中和课后的行动；最后说明如何检验改善。例如可从定义的量词、证明结构、计算细节或错题复盘中选择确实适合自己的方面。明确到“每周做什么、如何核对、何时复习”，比泛泛表示努力更有内容。
+
+（2）**对教师与助教的要求**：分别说明课堂讲解和习题课的需求。课堂可讨论定义动机、定理条件、反例与证明关键步；习题课可讨论题型选择、学生常见误区、答疑方式与反馈节奏。建议附上一项具体例子，并说明它如何帮助学习。
+
+完成后逐项检查：是否回应问题、是否符合自身情况、是否分别达到 100 字、建议是否具体且可执行。
+
+**知识点与易错点** 开放题保留个人表达空间；结构提示不能替代真实经历或自行作答。
+
+
+## 第三部分：知识点总结 {#summary}
+
+
+
+### 答案与考点索引 {#section-32}
+
+
+| 题号 | 答案或结论 | 主要考点 |
+| --- | --- | --- |
+| 1 | $\displaystyle\lim_{x\to1}\frac{x+2}{2x+1}=1$。 | 函数极限定义与证明 |
+| 2 | $e^{-1}$。 | 对数与三角复合的幂指极限 |
+| 3 | $1/2$。 | 高阶小量与有界振荡 |
+| 4 | $m=3$。 | 等价无穷小确定整数参数 |
+| 5 | $1/2$。 | 有界三角扰动的求和极限 |
+| 6 | $y'(0)=1/2$，$y''(0)=-1$。 | 隐函数的二阶导数 |
+| 7 | $y'=\ln(x+\sqrt{x^2+1})$，$y''=1/\sqrt{x^2+1}$。 | 对数根式函数的抵消 |
+| 8 | $dy=\frac{x-1}{1+x^2}\,dx$（$x\ne1$）；$dy\|_{x=3}=\frac15dx$。 | 反正切复合函数的微分 |
+| 9 | $a=2,b=1$；$f''(0)$ 不存在。 | 分段函数的一阶与二阶可导性 |
+| 10 | $f^{(6)}(0)=-2835/16$。 | 广义二项式系数与高阶导数 |
+| 11 | 切线为 $y-1=x-(\pi/2-1)$；$y''=-1/(1-\cos t)^2$（$t\ne2k\pi$）。 | 摆线切线与参数二阶导数 |
+| 12 | 两问均成立；可选 $\xi\in(0,c)$、$\eta\in(c,1)$。 | 按函数增量分段应用中值定理 |
+| 13 | 唯一正根 $x_n$ 存在，且 $x_n\downarrow1/2$。 | 多项式正根构成的数列 |
+| 14 | 开放题，无统一数值答案；两问分别不少于 100 字。 | 课程学习反思与教学反馈 |
+
+
+### 题型分布与复习重点 {#section-33}
+
+
+- **极限计算（1–5）**：定义证明先限制分母；复合幂指型逐层取主项；振荡误差与主项比较阶数。
+- **求导与正则性（6–11）**：区分导数、微分和参数二阶导数；高阶导数可用乘积公式；可导不保证导函数连续。
+- **中值定理与根数列（12–13）**：按函数值分割区间；根数列先比较单调性，再控制变指数项。
+- **开放反馈（14）**：按本人学习情况作答，两问分别满足字数要求，避免将结构建议当成个人经历。
+
+
+
+### 通用解题检查清单 {#section-34}
+
+
+- **定义证明**：写出任意误差、明确选择尾部起点或邻域半径，并验证它对全部相关变量统一有效。
+- **极限计算**：先检查定义域与趋近方向；等价替换用于乘除，相减有抵消时先变形或保留足够阶数。
+- **连续与可导**：先检查函数值及左右极限，再比较左右差商；表达式化简不会自动恢复原来无定义的点。
+- **高阶或参数导数**：区分求导对象；每次参数二阶求导都要除以对应自变量的一阶参数导数。
+- **存在性证明**：先证明极限或根存在，再计算其候选值；应用介值或中值定理前逐项核对连续性、可导性和端值。
+
+
+### 常用公式 {#section-35}
+
+
+$$\sin t\sim t,\quad\tan t\sim t,\quad1-\cos t\sim\frac{t^2}{2},\quad\ln(1+t)\sim t,\quad e^t-1\sim t\qquad(t\to0).$$
+
+$$\frac{dy}{dx}=\frac{dy/dt}{dx/dt},\qquad\frac{d^2y}{dx^2}=\frac1{dx/dt}\frac{d}{dt}\left(\frac{dy}{dx}\right),\qquad dy=f'(x)\,dx.$$
+
+若目标含 $f'+\lambda f$，可考虑 $(e^{\lambda x}f)'=e^{\lambda x}(f'+\lambda f)$；若右边为常数，先适当平移函数。使用这些公式时仍需保留相应定义域和分母非零条件。
+
+---
+
+
+## ⚖️AI 协作与版权声明 {#section-36}
+
+
+
+### AI 协作说明 {#section-37}
+
+
+本文件由整理者提供资料并确定整理要求，使用 OpenAI Codex 辅助完成题目转写、LaTeX 公式录入、解题推导、知识点分析和 Markdown 排版。AI 辅助生成的解析属于学习参考内容，不代表命题教师、原资料作者或学校的官方解答；本声明不表示内容已经过人工逐题审核。使用时请结合教材与课程要求核验，发现问题可提出更正。
+
+
+### 来源与权利归属 {#section-38}
+
+
+本文件题目依据已合并收录的期中题目转录整理，转录标注来源为《微积分甲期中卷.pdf》。补充解析与知识点总结由本次整理提供。原题、原始参考解析、截图及其他引用材料的权利归各自权利人所有，本文件的整理行为不改变其权利归属。来源标注用于说明出处，不表示已取得原资料的开放许可，也不表示原作者对本文件作出认可。
+
+
+### 开放许可与转载要求 {#section-39}
+
+
+在整理贡献者依法有权许可的范围内，本文件新增的转写编排、补充解析和知识点整理采用 **MIT License**，许可正文如下。该许可不涵盖原题、原始参考解析、截图或其他第三方材料；使用这些材料须遵守其原有许可，或另行取得必要授权。
+
+转载或修改适用 MIT 许可的内容时，应保留以下版权与许可声明。转载包含原题或引用资料的版本时，也请保留资料来源及本节 AI 协作说明；修改者应注明修改内容，避免将补充或修改的结论归于原资料作者。
+
+```text
+MIT License
+
+Copyright (c) 2026 easoncyy
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
