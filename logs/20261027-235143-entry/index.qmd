@@ -1,0 +1,15 @@
+---
+title: "。"
+date: "2026-10-27T23:51:43+08:00"
+entry-signature: "24d9ba03d149ece5bc35c9fc7b83b1d24a9a7cda0605e147e7f1ed44511a4840"
+---
+
+在这里写下你的记录。
+
+::: {.log-photo-grid}
+
+![1](/assets/log/20261027-235143-entry/photo-01.jpg)
+
+![2](/assets/log/20261027-235143-entry/photo-02.jpg)
+
+:::
