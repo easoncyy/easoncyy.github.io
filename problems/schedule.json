@@ -50,5 +50,8 @@
   "2026-10-26": [
     "demidovich-236-exponential-periodic-factor",
     "grokking-algorithms-hash-distribution"
+  ],
+  "2026-10-27": [
+    "c-fibonacci-last-four-digits-crt"
   ]
 }

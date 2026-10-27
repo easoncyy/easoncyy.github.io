@@ -1,3 +1,156 @@
+::: {.problem-day data-date="2026-10-27"}
+
+## 2026-10-27 {.problem-date-heading}
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;CS&quot;, &quot;ALGORITHMS&quot;, &quot;数论&quot;], &quot;tags&quot;: [&quot;C语言&quot;, &quot;同余&quot;, &quot;斐波那契数列&quot;], &quot;title&quot;: &quot;斐波那契数的后四位&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">CS / ALGORITHMS / 数论</div>
+
+<h3>01. 斐波那契数的后四位</h3>
+
+<div class="entry-tags">#C语言 · #同余 · #斐波那契数列</div>
+
+```
+
+斐波那契数列定义为
+
+$$F(0)=0,\qquad F(1)=1,\qquad F(n)=F(n-1)+F(n-2)\quad(n\ge2).$$
+
+给定 $n$，求 $F(n)\bmod10000$。
+
+**输入**
+
+输入包含多组数据，每行一个整数 $n$，$0\le n\le1000000000$。最后一行为 $-1$，表示输入结束，不需处理。
+
+**输出**
+
+对每组数据输出一行 $F(n)$ 对 $10000$ 取模的结果，不补前导零。
+
+**样例输入**
+
+```text
+0
+9
+999999999
+1000000000
+-1
+```
+
+**样例输出**
+
+```text
+0
+34
+626
+6875
+```
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+**中国剩余定理**
+
+因为 $10000=16\cdot625$，且 $\gcd(16,625)=1$，先分别求
+
+$$a=F(n)\bmod16,\qquad b=F(n)\bmod625.$$
+
+令 $x=b+625t$。由 $625\equiv1\pmod{16}$，
+
+$$t\equiv a-b\pmod{16}.$$
+
+取 $t$ 为 $a-b$ 除以 $16$ 的最小非负余数，则 $0\le b+625t<10000$，所以
+
+$$\boxed{F(n)\bmod10000=b+625\bigl((a-b)\bmod16\bigr).}$$
+
+**快速倍增**
+
+计算模 $m$ 的斐波那契数时，同时返回 $(F(k),F(k+1))$。利用
+
+$$\begin{aligned}
+F(2k)&=F(k)\bigl(2F(k+1)-F(k)\bigr),\\
+F(2k+1)&=F(k)^2+F(k+1)^2,
+\end{aligned}$$
+
+每次将下标减半即可。所有运算都在模 $m$ 下进行。
+
+```c
+#include <stdio.h>
+
+/* Return F(n) mod m and F(n + 1) mod m. */
+static void fib_pair(long long n, int m, int *fn, int *next)
+{
+    if (n == 0) {
+        *fn = 0;
+        *next = 1;
+        return;
+    }
+
+    int u, v;
+    fib_pair(n / 2, m, &u, &v);
+
+    int factor = (2 * v - u) % m;
+    if (factor < 0) factor += m;
+
+    int even = (int)((long long)u * factor % m);
+    int odd = (int)(((long long)u * u + (long long)v * v) % m);
+
+    if (n % 2 == 0) {
+        *fn = even;
+        *next = odd;
+    } else {
+        *fn = odd;
+        *next = (even + odd) % m;
+    }
+}
+
+int main(void)
+{
+    long long n;
+    while (scanf("%lld", &n) == 1 && n != -1) {
+        int a, b, unused;
+        fib_pair(n, 16, &a, &unused);
+        fib_pair(n, 625, &b, &unused);
+
+        int t = (a - b) % 16;
+        if (t < 0) t += 16;
+
+        printf("%d\n", b + 625 * t);
+    }
+    return 0;
+}
+```
+
+每组数据时间复杂度为 $O(\log(n+1))$，递归栈空间复杂度为 $O(\log(n+1))$。C 语言的余数可能为负，代码中对负余数作了归一化。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：用户提供题图 · 斐波那契数的后四位</p>
+
+```
+
+:::
+
+```{=html}
+
+<details id="discussion-2026-10-27" class="log-comments problem-discussion" data-comment-term="/problems/2026-10-27/" data-comment-date="2026-10-27" data-comment-title="每日好题 · 2026-10-27">
+
+<summary>discussion/ <span>2026-10-27 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
 ::: {.problem-day data-date="2026-10-26"}
 
 ## 2026-10-26 {.problem-date-heading}
@@ -2149,6 +2302,6 @@ $$
 
 ```{=html}
 
-<script id="problem-index" type="application/json">{"builtDate": "2026-10-27", "dates": {"2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
+<script id="problem-index" type="application/json">{"builtDate": "2026-10-28", "dates": {"2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
 
 ```
