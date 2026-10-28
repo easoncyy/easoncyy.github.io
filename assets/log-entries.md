@@ -1,5 +1,47 @@
 ::: {.log-stream}
 
+::: {#20261028-232429-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-10-28T23:24:29+08:00">2026-10-28 23:24:29 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title">不想期中考</p>
+
+```
+
+::: {.log-photo-grid}
+
+![好吃](/assets/log/20261028-232429-entry/photo-01.jpg)
+
+![基图真的好宏伟](/assets/log/20261028-232429-entry/photo-02.jpg)
+
+![秋天](/assets/log/20261028-232429-entry/photo-03.jpg)
+
+:::
+
+```{=html}
+
+<details id="comments-20261028-232429-entry" class="log-comments" data-comment-term="/logs/20261028-232429-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
 ::: {#20261027-235143-entry .log-entry}
 
 ```{=html}
@@ -15,8 +57,6 @@
 <p class="log-entry-title">。</p>
 
 ```
-
-在这里写下你的记录。
 
 ::: {.log-photo-grid}
 

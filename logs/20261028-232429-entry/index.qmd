@@ -1,0 +1,17 @@
+---
+title: "不想期中考"
+date: "2026-10-28T23:24:29+08:00"
+entry-signature: "8ed0778534c34bcaa9e6e3ae21d5db6b175cf6d8725ee2225abc415f4bf0eaf9"
+---
+
+
+
+::: {.log-photo-grid}
+
+![好吃](/assets/log/20261028-232429-entry/photo-01.jpg)
+
+![基图真的好宏伟](/assets/log/20261028-232429-entry/photo-02.jpg)
+
+![秋天](/assets/log/20261028-232429-entry/photo-03.jpg)
+
+:::

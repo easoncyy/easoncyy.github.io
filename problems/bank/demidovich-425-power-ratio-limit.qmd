@@ -1,0 +1,22 @@
+---
+title: "两个幂差之比的极限"
+category-path: ["MATH", "CALCULUS", "极限"]
+tags: ["因式分解", "等比数列"]
+source: "《吉米多维奇数学分析习题集》· 第425题"
+draft: false
+---
+
+设 $m,n$ 为正整数，计算
+
+$$\lim_{x\to1}\frac{x^m-1}{x^n-1}.$$
+
+<!-- answer -->
+
+分解并约去公因子 $x-1$，得
+
+$$\frac{x^m-1}{x^n-1}
+=\frac{1+x+\cdots+x^{m-1}}{1+x+\cdots+x^{n-1}}.$$
+
+分子、分母分别趋于 $m,n$，且 $n\ne0$，故
+
+$$\boxed{\lim_{x\to1}\frac{x^m-1}{x^n-1}=\frac mn.}$$

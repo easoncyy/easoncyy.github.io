@@ -1,3 +1,177 @@
+::: {.problem-day data-date="2026-10-28"}
+
+## 2026-10-28 {.problem-date-heading}
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;极限&quot;], &quot;tags&quot;: [&quot;因式分解&quot;, &quot;有限求和&quot;], &quot;title&quot;: &quot;幂和的差商极限&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / CALCULUS / 极限</div>
+
+<h3>01. 幂和的差商极限</h3>
+
+<div class="entry-tags">#因式分解 · #有限求和</div>
+
+```
+
+设 $n$ 为正整数，计算
+
+$$\lim_{x\to1}\frac{x+x^2+\cdots+x^n-n}{x-1}.$$
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+由 $x\ne1$ 时
+
+$$\frac{x^k-1}{x-1}=1+x+\cdots+x^{k-1},$$
+
+可得
+
+$$\begin{aligned}
+\lim_{x\to1}\frac{x+x^2+\cdots+x^n-n}{x-1}
+&=\sum_{k=1}^n\lim_{x\to1}\frac{x^k-1}{x-1}\\
+&=\sum_{k=1}^n k
+=\boxed{\frac{n(n+1)}2}.
+\end{aligned}$$
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：《吉米多维奇数学分析习题集》· 第424题(a)</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;极限&quot;], &quot;tags&quot;: [&quot;因式分解&quot;, &quot;等比数列&quot;], &quot;title&quot;: &quot;两个幂差之比的极限&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / CALCULUS / 极限</div>
+
+<h3>02. 两个幂差之比的极限</h3>
+
+<div class="entry-tags">#因式分解 · #等比数列</div>
+
+```
+
+设 $m,n$ 为正整数，计算
+
+$$\lim_{x\to1}\frac{x^m-1}{x^n-1}.$$
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+分解并约去公因子 $x-1$，得
+
+$$\frac{x^m-1}{x^n-1}
+=\frac{1+x+\cdots+x^{m-1}}{1+x+\cdots+x^{n-1}}.$$
+
+分子、分母分别趋于 $m,n$，且 $n\ne0$，故
+
+$$\boxed{\lim_{x\to1}\frac{x^m-1}{x^n-1}=\frac mn.}$$
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：《吉米多维奇数学分析习题集》· 第425题</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;矩阵&quot;], &quot;tags&quot;: [&quot;秩一矩阵&quot;, &quot;矩阵的幂&quot;, &quot;逆矩阵&quot;, &quot;行列式&quot;], &quot;title&quot;: &quot;秩一矩阵的幂、逆与行列式&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 矩阵</div>
+
+<h3>03. 秩一矩阵的幂、逆与行列式</h3>
+
+<div class="entry-tags">#秩一矩阵 · #矩阵的幂 · #逆矩阵 · #行列式</div>
+
+```
+
+设 $\alpha,\beta$ 均为 $n$ 维列向量，且 $\beta^{\mathsf T}\alpha=2$。令 $M=\alpha\beta^{\mathsf T}$，$E$ 为 $n$ 阶单位矩阵。对任意正整数 $m$，求
+
+$$M^m,\qquad(E+M)^{-1},\qquad\det(E+M).$$
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+**矩阵的幂**
+
+$$M^2=\alpha\beta^{\mathsf T}\alpha\beta^{\mathsf T}
+=\alpha(\beta^{\mathsf T}\alpha)\beta^{\mathsf T}=2M.$$
+
+递推得到
+
+$$\boxed{M^m=2^{m-1}M=2^{m-1}\alpha\beta^{\mathsf T}.}$$
+
+**逆矩阵**
+
+由 $M^2=2M$，
+
+$$(E+M)\left(E-\frac13M\right)
+=E+\frac23M-\frac13M^2=E,$$
+
+所以
+
+$$\boxed{(E+M)^{-1}=E-\frac13M.}$$
+
+**行列式**
+
+考虑加边矩阵
+
+$$B=\begin{pmatrix}1&-\beta^{\mathsf T}\\\alpha&E\end{pmatrix}.$$
+
+将第一行的 $-\alpha_i$ 倍加到第 $i+1$ 行，得到
+
+$$\det B=\det\begin{pmatrix}1&-\beta^{\mathsf T}\\0&E+\alpha\beta^{\mathsf T}\end{pmatrix}
+=\det(E+M).$$
+
+也可将后 $n$ 行分别乘以 $\beta_i$ 后加到第一行，得到
+
+$$\det B=\det\begin{pmatrix}1+\beta^{\mathsf T}\alpha&0\\\alpha&E\end{pmatrix}
+=1+\beta^{\mathsf T}\alpha=3.$$
+
+故 $\boxed{\det(E+M)=3}$。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：云峰学园模拟考 · 线性代数卷</p>
+
+```
+
+:::
+
+```{=html}
+
+<details id="discussion-2026-10-28" class="log-comments problem-discussion" data-comment-term="/problems/2026-10-28/" data-comment-date="2026-10-28" data-comment-title="每日好题 · 2026-10-28">
+
+<summary>discussion/ <span>2026-10-28 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
 ::: {.problem-day data-date="2026-10-27"}
 
 ## 2026-10-27 {.problem-date-heading}
@@ -2302,6 +2476,6 @@ $$
 
 ```{=html}
 
-<script id="problem-index" type="application/json">{"builtDate": "2026-10-28", "dates": {"2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
+<script id="problem-index" type="application/json">{"builtDate": "2026-10-28", "dates": {"2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
 
 ```

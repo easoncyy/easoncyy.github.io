@@ -53,5 +53,10 @@
   ],
   "2026-10-27": [
     "c-fibonacci-last-four-digits-crt"
+  ],
+  "2026-10-28": [
+    "demidovich-424-power-sum-limit",
+    "demidovich-425-power-ratio-limit",
+    "linear-algebra-rank-one-power-inverse-determinant"
   ]
 }

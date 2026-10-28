@@ -225,13 +225,14 @@ class Manager(tk.Tk):
 
     def make_publish(self):
         frame=self.publish_tab
-        ttk.Label(frame,text='发布会构建网页、提交并上传当前仓库的所有修改（包括新文件），随后触发 GitHub Pages 部署。').pack(anchor='w')
+        ttk.Label(frame,text='发布会先本地构建，提交并推送当前仓库的所有修改，再由 GitHub Actions 构建部署。').pack(anchor='w')
         self.message=tk.StringVar(value='Update personal website')
         ttk.Entry(frame,textvariable=self.message).pack(fill='x',pady=10)
         row=ttk.Frame(frame);row.pack(fill='x')
         ttk.Button(row,text='只构建本地网页',command=lambda:self.safely(lambda:self.run_powershell('build.ps1',['-SkipPdf'],'构建网页'))).pack(side='left')
         ttk.Button(row,text='打开本地预览',command=lambda:self.safely(self.preview)).pack(side='left',padx=8)
         ttk.Button(row,text='构建并发布网站',command=lambda:self.safely(self.publish)).pack(side='left')
+        ttk.Button(row,text='重试云端部署',command=lambda:self.safely(lambda:self.run_job([sys.executable,str(ROOT/'scripts/publish-github.py')],'提交云端部署'))).pack(side='left',padx=8)
         ttk.Button(row,text='查看线上网站',command=lambda:webbrowser.open('https://easoncyy.github.io/problems.html')).pack(side='left',padx=8)
         ttk.Button(row,text='查看部署状态',command=lambda:webbrowser.open('https://github.com/easoncyy/easoncyy.github.io/actions')).pack(side='left')
         ttk.Label(frame,text='每日 00:05 会重新构建 main 上的整个网站（含博客、日志和图书馆）。只在本地保存的改动不会自动上传。',wraplength=1000).pack(anchor='w',pady=10)
@@ -258,7 +259,17 @@ class Manager(tk.Tk):
                 env['PATH']=python_dir+os.pathsep+env.get('PATH','')
                 args[0]=str(Path(sys.executable).with_name('python.exe')) if args[0]==sys.executable and sys.executable.lower().endswith('pythonw.exe') else args[0]
                 process=subprocess.Popen(args,cwd=ROOT,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True,encoding='utf-8',errors='replace',env=env,creationflags=getattr(subprocess,'CREATE_NO_WINDOW',0))
-                for line in process.stdout:self.events.put(('line',line))
+                translation_notice = False
+                self.events.put(('line', '\n--- '+title+' ---\n'))
+                for line in process.stdout:
+                    if ('Could not load translations for zh-CN' in line
+                            or line.strip() == 'translations/zh.yaml:'
+                            or 'The term Abstract has no translation defined.' in line):
+                        if not translation_notice:
+                            self.events.put(('line', '[说明] Quarto 缺少部分中文翻译，不影响构建。重复提示已合并。\n'))
+                            translation_notice = True
+                        continue
+                    self.events.put(('line',line))
                 code=process.wait();self.events.put(('done',(code,title)))
             except Exception as error:self.events.put(('line',str(error)+'\n'));self.events.put(('done',(1,title)))
         threading.Thread(target=worker,daemon=True).start()

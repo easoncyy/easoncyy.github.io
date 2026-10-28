@@ -11,7 +11,7 @@ Quarto 构建的黑白极简个人网站：首页、博客归档、分类筛选�
 | 进入网站目录 | `cd D:\Personal\Homepage` | 先进入此目录 |
 | 只提交并推送源码 | `.\scripts\sync.ps1 -Message "修改自我介绍"` | 自动 commit、同步远端历史并 push 到 main；不构建、不部署网页 |
 | 一键发布并指定提交说明 | `.\scripts\deploy.ps1 -Message "更新博客"` | 构建 → commit → push → 部署网页 |
-| 一键构建并发布 | `.\scripts\deploy.ps1` | 日常更新用这条；自动合并日志、构建网页、上传源码和网页并触发 Pages 部署；复用已有 PDF |
+| 一键构建并发布 | `.\scripts\deploy.ps1` | 日常更新用这条；自动合并日志、本地构建、推送源码并触发云端构建部署；复用已有 PDF |
 | 一键发布并重建 PDF | `.\scripts\deploy.ps1 -RebuildPdf` | 修改了 `documents/math-notes.qmd` 时使用 |
 | 本地预览 | `.\scripts\preview.ps1` | 打开 `http://localhost:4200`；按 Ctrl+C 停止 |
 | 完整构建，不发布 | `.\scripts\build.ps1` | 生成 PDF 与网页到 `_site/` |
@@ -20,7 +20,7 @@ Quarto 构建的黑白极简个人网站：首页、博客归档、分类筛选�
 | 新建带照片、链接的日志 | `python scripts/new-log.py "散步" --text "正文" --photo "D:\Photos\sky.jpg" --url "https://quarto.org/"` | 照片与链接均可选，可同时使用 |
 | 查看新建日志参数 | `python scripts/new-log.py --help` | 查看所有选项 |
 | 只合并日志 | `python scripts/render-log.py` | 生成合并文件；构建和预览已自动执行，通常无需单独运行 |
-| 只上传已构建的网站 | `python scripts/publish-github.py` | 不构建；通常直接用 `deploy.ps1` |
+| 重试云端部署 | `python scripts/publish-github.py` | 从已推送的 main 重新构建部署；不上传本地 `_site`，适合源码上传成功但部署失败时使用 |
 | 登录 GitHub | `gh auth login` | 首次使用或登录失效时执行，账号需有网站仓库写入权限 |
 | 查看登录状态 | `gh auth status` | 检查 GitHub CLI 登录 |
 | 检查真实发布权限 | `python scripts/check-github.py` | 使用当前凭据连接仓库 API，区分网络超时、凭据失效与权限不足 |
@@ -225,8 +225,8 @@ python scripts/add-book.py "微积分教材" "D:\Books\calculus.pdf" --slug calc
 ## 发布到 GitHub Pages
 
 1. 创建公开仓库 `easoncyy.github.io`，把本目录源码上传到 `main` 分支（不上传 `.tools/` 与 `_site/`）。
-2. 当前发布方式：将生成的网站上传到 `gh-pages` 分支，Pages 使用该分支的根目录。
-3. 本地更新文章后运行 `.\scripts\deploy.ps1` 即可完成构建、Git commit、push 和网页发布。修改示例 PDF 源文件后使用 `.\scripts\deploy.ps1 -RebuildPdf`。需要 Git、Python、Quarto 与 GitHub CLI (`gh`) 登录且有仓库写入权限；源码通过 Git 推送到 main，生成的网页通过 GitHub API 更新 gh-pages。
+2. 当前发布方式：从 main 源码触发 GitHub Actions 构建，再通过 Pages artifact 部署。
+3. 本地更新文章后运行 `.\scripts\deploy.ps1` 即可完成构建、Git commit、push 和网页发布。修改示例 PDF 源文件后使用 `.\scripts\deploy.ps1 -RebuildPdf`。需要 Git、Python、Quarto 与 GitHub CLI (`gh`) 登录且有仓库写入权限；源码通过 Git（失败时使用 Git API）推送到 main，再触发 GitHub Actions 构建部署。
 4. 网站地址为 `https://easoncyy.github.io/`，已在 `_quarto.yml` 配置。
 5. 需要 RSS 时，在 `blog.qmd` 的 `listing` 下添加 `feed: true`。
 
@@ -361,7 +361,7 @@ draft: false
 
 ### 部署方式
 
-Pages 使用 GitHub Actions。本地发布仍将渲染文件上传到 `gh-pages`，随后明确触发部署工作流；定时任务从 `main` 重新构建当天页面并通过官方 Pages artifact 部署。不需要另外提供 PAT 或将凭据放到网页里。部署环境允许 `main` 分支运行；原分支规则保留。原有命令保持可用，`deploy.ps1` 完成表示已提交部署任务，最终状态以 Actions 为准。
+Pages 使用 GitHub Actions。本地发布推送源码后触发 main 的云端构建，不再通过 Git API 整批上传 `_site`；定时任务从 `main` 重新构建当天页面并通过官方 Pages artifact 部署。不需要另外提供 PAT 或将凭据放到网页里。部署环境允许 `main` 分支运行；原分支规则保留。原有命令保持可用，`deploy.ps1` 完成表示已提交部署任务，最终状态以 Actions 为准。
 
 ### 图书馆 GUI（独立栏目）
 

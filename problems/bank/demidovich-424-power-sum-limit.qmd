@@ -1,0 +1,26 @@
+---
+title: "幂和的差商极限"
+category-path: ["MATH", "CALCULUS", "极限"]
+tags: ["因式分解", "有限求和"]
+source: "《吉米多维奇数学分析习题集》· 第424题(a)"
+draft: false
+---
+
+设 $n$ 为正整数，计算
+
+$$\lim_{x\to1}\frac{x+x^2+\cdots+x^n-n}{x-1}.$$
+
+<!-- answer -->
+
+由 $x\ne1$ 时
+
+$$\frac{x^k-1}{x-1}=1+x+\cdots+x^{k-1},$$
+
+可得
+
+$$\begin{aligned}
+\lim_{x\to1}\frac{x+x^2+\cdots+x^n-n}{x-1}
+&=\sum_{k=1}^n\lim_{x\to1}\frac{x^k-1}{x-1}\\
+&=\sum_{k=1}^n k
+=\boxed{\frac{n(n+1)}2}.
+\end{aligned}$$
