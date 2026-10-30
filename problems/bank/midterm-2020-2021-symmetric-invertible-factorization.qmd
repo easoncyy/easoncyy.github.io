@@ -1,0 +1,27 @@
+---
+title: "矩阵的对称分解"
+category-path: ["MATH", "LINEAR-ALGEBRA", "矩阵"]
+tags: ["矩阵分解", "等价标准形"]
+source: "2020–2021 秋冬《线性代数（甲）》期中 · 第 8 题"
+draft: false
+---
+
+设 $A$ 为 $n$ 阶方阵，证明：存在对称矩阵 $S$ 和可逆矩阵 $P$，使得 $A=SP$。
+
+<!-- answer -->
+
+设 $r(A)=r$。由矩阵的等价标准形，存在可逆矩阵 $U,V$，使得
+$$
+UAV=D=\operatorname{diag}(I_r,0).
+$$
+于是
+$$
+A=U^{-1}DV^{-1}
+=\underbrace{U^{-1}DU^{-\mathrm T}}_{S}
+\underbrace{U^{\mathrm T}V^{-1}}_{P}.
+$$
+由 $D^{\mathrm T}=D$ 得
+$$
+S^{\mathrm T}=U^{-1}D^{\mathrm T}U^{-\mathrm T}=S,
+$$
+而 $P$ 是两个可逆矩阵的乘积，因而可逆。

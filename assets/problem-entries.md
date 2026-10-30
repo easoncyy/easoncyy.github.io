@@ -1,3 +1,120 @@
+::: {.problem-day data-date="2026-10-30"}
+
+## 2026-10-30 {.problem-date-heading}
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;矩阵&quot;], &quot;tags&quot;: [&quot;矩阵分解&quot;, &quot;等价标准形&quot;], &quot;title&quot;: &quot;矩阵的对称分解&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 矩阵</div>
+
+<h3>01. 矩阵的对称分解</h3>
+
+<div class="entry-tags">#矩阵分解 · #等价标准形</div>
+
+```
+
+设 $A$ 为 $n$ 阶方阵，证明：存在对称矩阵 $S$ 和可逆矩阵 $P$，使得 $A=SP$。
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+设 $r(A)=r$。由矩阵的等价标准形，存在可逆矩阵 $U,V$，使得
+$$
+UAV=D=\operatorname{diag}(I_r,0).
+$$
+于是
+$$
+A=U^{-1}DV^{-1}
+=\underbrace{U^{-1}DU^{-\mathrm T}}_{S}
+\underbrace{U^{\mathrm T}V^{-1}}_{P}.
+$$
+由 $D^{\mathrm T}=D$ 得
+$$
+S^{\mathrm T}=U^{-1}D^{\mathrm T}U^{-\mathrm T}=S,
+$$
+而 $P$ 是两个可逆矩阵的乘积，因而可逆。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：2020–2021 秋冬《线性代数（甲）》期中 · 第 8 题</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;矩阵&quot;], &quot;tags&quot;: [&quot;反对称矩阵&quot;, &quot;可逆性&quot;, &quot;二次型&quot;], &quot;title&quot;: &quot;反对称矩阵与可逆性&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 矩阵</div>
+
+<h3>02. 反对称矩阵与可逆性</h3>
+
+<div class="entry-tags">#反对称矩阵 · #可逆性 · #二次型</div>
+
+```
+
+设 $A$ 为 $4$ 阶实反对称矩阵，
+$$
+B=\begin{pmatrix}
+0&0&0&0\\
+0&0&0&0\\
+0&0&1&0\\
+0&0&0&2
+\end{pmatrix}.
+$$
+证明：$E+AB$ 可逆，其中 $E$ 为 $4$ 阶单位矩阵。
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+设 $(E+AB)x=0$，令 $y=Bx$，则 $x=-Ay$。由于 $A^{\mathrm T}=-A$，有
+$$
+y^{\mathrm T}Ay=(y^{\mathrm T}Ay)^{\mathrm T}
+=y^{\mathrm T}A^{\mathrm T}y=-y^{\mathrm T}Ay,
+$$
+故 $y^{\mathrm T}Ay=0$，从而
+$$
+0=-y^{\mathrm T}Ay=y^{\mathrm T}x
+=x^{\mathrm T}Bx=x_3^2+2x_4^2.
+$$
+由 $x_3,x_4\in\mathbb R$，得 $x_3=x_4=0$，即 $Bx=0$。再由 $x=-ABx$ 得 $x=0$。
+
+因此 $(E+AB)x=0$ 只有零解，$E+AB$ 可逆。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：2018–2019 秋冬《线性代数（甲）》期中 · 第 5 题</p>
+
+```
+
+:::
+
+```{=html}
+
+<details id="discussion-2026-10-30" class="log-comments problem-discussion" data-comment-term="/problems/2026-10-30/" data-comment-date="2026-10-30" data-comment-title="每日好题 · 2026-10-30">
+
+<summary>discussion/ <span>2026-10-30 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
 ::: {.problem-day data-date="2026-10-29"}
 
 ## 2026-10-29 {.problem-date-heading}
@@ -2629,6 +2746,6 @@ $$
 
 ```{=html}
 
-<script id="problem-index" type="application/json">{"builtDate": "2026-10-30", "dates": {"2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
+<script id="problem-index" type="application/json">{"builtDate": "2026-10-30", "dates": {"2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
 
 ```

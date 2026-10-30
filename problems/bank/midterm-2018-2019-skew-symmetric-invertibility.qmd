@@ -1,0 +1,34 @@
+---
+title: "反对称矩阵与可逆性"
+category-path: ["MATH", "LINEAR-ALGEBRA", "矩阵"]
+tags: ["反对称矩阵", "可逆性", "二次型"]
+source: "2018–2019 秋冬《线性代数（甲）》期中 · 第 5 题"
+draft: false
+---
+
+设 $A$ 为 $4$ 阶实反对称矩阵，
+$$
+B=\begin{pmatrix}
+0&0&0&0\\
+0&0&0&0\\
+0&0&1&0\\
+0&0&0&2
+\end{pmatrix}.
+$$
+证明：$E+AB$ 可逆，其中 $E$ 为 $4$ 阶单位矩阵。
+
+<!-- answer -->
+
+设 $(E+AB)x=0$，令 $y=Bx$，则 $x=-Ay$。由于 $A^{\mathrm T}=-A$，有
+$$
+y^{\mathrm T}Ay=(y^{\mathrm T}Ay)^{\mathrm T}
+=y^{\mathrm T}A^{\mathrm T}y=-y^{\mathrm T}Ay,
+$$
+故 $y^{\mathrm T}Ay=0$，从而
+$$
+0=-y^{\mathrm T}Ay=y^{\mathrm T}x
+=x^{\mathrm T}Bx=x_3^2+2x_4^2.
+$$
+由 $x_3,x_4\in\mathbb R$，得 $x_3=x_4=0$，即 $Bx=0$。再由 $x=-ABx$ 得 $x=0$。
+
+因此 $(E+AB)x=0$ 只有零解，$E+AB$ 可逆。
