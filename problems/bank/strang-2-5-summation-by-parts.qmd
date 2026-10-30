@@ -1,0 +1,39 @@
+---
+title: "中心差分的分部求和"
+category-path: ["MATH", "LINEAR-ALGEBRA", "差分矩阵"]
+tags: ["中心差分", "分部求和", "转置"]
+source: "Introduction to Linear Algebra · §2.5 · Problem 12"
+draft: false
+---
+
+验证中心差分的分部求和公式：
+
+$$\sum_{i=-\infty}^{\infty}f_i(g_{i+1}-g_{i-1})
+=-\sum_{i=-\infty}^{\infty}(f_{i+1}-f_{i-1})g_i.$$
+
+可先假设序列 $f,g$ 只有有限个非零项。说明该等式与中心差分矩阵的反对称性 $\Delta_0^{\mathsf T}=-\Delta_0$ 的关系。
+
+<!-- answer -->
+
+换求和下标，有
+
+$$\sum_i f_i g_{i+1}=\sum_i f_{i-1}g_i,\qquad
+\sum_i f_i g_{i-1}=\sum_i f_{i+1}g_i.$$
+
+两式相减即得
+
+$$\sum_i f_i(g_{i+1}-g_{i-1})
+=\sum_i(f_{i-1}-f_{i+1})g_i
+=-\sum_i(f_{i+1}-f_{i-1})g_i.$$
+
+若 $(\Delta_0g)_i=g_{i+1}-g_{i-1}$，则上述等式为
+
+$$f^{\mathsf T}\Delta_0g=-(\Delta_0f)^{\mathsf T}g
+=f^{\mathsf T}(-\Delta_0^{\mathsf T})g,$$
+
+故 $\boxed{\Delta_0^{\mathsf T}=-\Delta_0}$。它对应连续情形的分部积分公式
+
+$$\int_{-\infty}^{\infty}f(x)g'(x)\,dx
+=-\int_{-\infty}^{\infty}f'(x)g(x)\,dx,$$
+
+其中边界项须为零。对于非有限支撑序列，也须保证级数收敛及相应边界项消失。

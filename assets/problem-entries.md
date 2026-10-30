@@ -1,3 +1,156 @@
+::: {.problem-day data-date="2026-10-29"}
+
+## 2026-10-29 {.problem-date-heading}
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;差分矩阵&quot;], &quot;tags&quot;: [&quot;中心差分&quot;, &quot;分部求和&quot;, &quot;转置&quot;], &quot;title&quot;: &quot;中心差分的分部求和&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 差分矩阵</div>
+
+<h3>01. 中心差分的分部求和</h3>
+
+<div class="entry-tags">#中心差分 · #分部求和 · #转置</div>
+
+```
+
+验证中心差分的分部求和公式：
+
+$$\sum_{i=-\infty}^{\infty}f_i(g_{i+1}-g_{i-1})
+=-\sum_{i=-\infty}^{\infty}(f_{i+1}-f_{i-1})g_i.$$
+
+可先假设序列 $f,g$ 只有有限个非零项。说明该等式与中心差分矩阵的反对称性 $\Delta_0^{\mathsf T}=-\Delta_0$ 的关系。
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+换求和下标，有
+
+$$\sum_i f_i g_{i+1}=\sum_i f_{i-1}g_i,\qquad
+\sum_i f_i g_{i-1}=\sum_i f_{i+1}g_i.$$
+
+两式相减即得
+
+$$\sum_i f_i(g_{i+1}-g_{i-1})
+=\sum_i(f_{i-1}-f_{i+1})g_i
+=-\sum_i(f_{i+1}-f_{i-1})g_i.$$
+
+若 $(\Delta_0g)_i=g_{i+1}-g_{i-1}$，则上述等式为
+
+$$f^{\mathsf T}\Delta_0g=-(\Delta_0f)^{\mathsf T}g
+=f^{\mathsf T}(-\Delta_0^{\mathsf T})g,$$
+
+故 $\boxed{\Delta_0^{\mathsf T}=-\Delta_0}$。它对应连续情形的分部积分公式
+
+$$\int_{-\infty}^{\infty}f(x)g'(x)\,dx
+=-\int_{-\infty}^{\infty}f'(x)g(x)\,dx,$$
+
+其中边界项须为零。对于非有限支撑序列，也须保证级数收敛及相应边界项消失。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：Introduction to Linear Algebra · §2.5 · Problem 12</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;差分矩阵&quot;], &quot;tags&quot;: [&quot;边值问题&quot;, &quot;有限差分&quot;, &quot;线性方程组&quot;], &quot;title&quot;: &quot;固定边界下的微分方程与差分解&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 差分矩阵</div>
+
+<h3>02. 固定边界下的微分方程与差分解</h3>
+
+<div class="entry-tags">#边值问题 · #有限差分 · #线性方程组</div>
+
+```
+
+求解边值问题
+
+$$-u''(x)=\cos4\pi x,\qquad u(0)=u(1)=0.$$
+
+分别使用 $K_4$ 和 $K_8$ 计算内部网格点的近似解，并与连续解 $u(x)$ 画在同一张图中。其中 $h=1/(n+1)$，
+
+$$K_n=\begin{pmatrix}2&-1&&0\\-1&2&\ddots&\\&\ddots&\ddots&-1\\0&&-1&2\end{pmatrix}.$$
+
+题图中所列差分式的符号与 $-u''=\cos4\pi x$ 不一致；本题按该微分方程取 $-u_{i-1}+2u_i-u_{i+1}=h^2\cos4\pi ih$。
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+**连续解**
+
+由 $u''=-\cos4\pi x$，两次积分得
+
+$$u(x)=\frac{\cos4\pi x}{16\pi^2}+C_1x+C_2.$$
+
+代入 $u(0)=u(1)=0$，得到
+
+$$\boxed{u(x)=\frac{\cos4\pi x-1}{16\pi^2}.}$$
+
+**差分解**
+
+令 $h=1/(n+1)$，$x_i=ih$，则与 $-u''=\cos4\pi x$ 一致的差分方程为
+
+$$-u_{i-1}+2u_i-u_{i+1}=h^2\cos4\pi ih,\qquad u_0=u_{n+1}=0.$$
+
+即
+
+$$K_nU=h^2\begin{pmatrix}\cos4\pi h\\\cos8\pi h\\\vdots\\\cos4\pi nh\end{pmatrix},\qquad
+K_n=\begin{pmatrix}2&-1&&0\\-1&2&\ddots&\\&\ddots&\ddots&-1\\0&&-1&2\end{pmatrix}.$$
+
+利用
+
+$$2\cos4\pi ih-\cos4\pi(i-1)h-\cos4\pi(i+1)h
+=4\sin^2(2\pi h)\cos4\pi ih,$$
+
+可直接验证（$n=4,8$）
+
+$$\boxed{u_i=\frac{h^2}{4\sin^2(2\pi h)}\bigl(\cos4\pi ih-1\bigr).}$$
+
+| $n$ | $U=(u_1,\ldots,u_n)^{\mathsf T}$（按顺序列出，保留六位小数） |
+| --- | --- |
+| 4 | -0.020000, -0.007639, -0.007639, -0.020000 |
+| 8 | -0.006173, -0.014489, -0.011205, -0.001748, -0.001748, -0.011205, -0.014489, -0.006173 |
+
+![连续解与四点、八点差分解的比较](/assets/problems/strang-2-5/fixed-boundary.svg)
+
+当 $h\to0$ 时，$h^2/[4\sin^2(2\pi h)]\to1/(16\pi^2)$，差分解趋近连续解。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：Introduction to Linear Algebra · §2.5 · Problem 17</p>
+
+```
+
+:::
+
+```{=html}
+
+<details id="discussion-2026-10-29" class="log-comments problem-discussion" data-comment-term="/problems/2026-10-29/" data-comment-date="2026-10-29" data-comment-title="每日好题 · 2026-10-29">
+
+<summary>discussion/ <span>2026-10-29 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
 ::: {.problem-day data-date="2026-10-28"}
 
 ## 2026-10-28 {.problem-date-heading}
@@ -2476,6 +2629,6 @@ $$
 
 ```{=html}
 
-<script id="problem-index" type="application/json">{"builtDate": "2026-10-28", "dates": {"2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
+<script id="problem-index" type="application/json">{"builtDate": "2026-10-30", "dates": {"2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
 
 ```

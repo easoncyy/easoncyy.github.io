@@ -1,0 +1,58 @@
+---
+title: "固定边界下的微分方程与差分解"
+category-path: ["MATH", "LINEAR-ALGEBRA", "差分矩阵"]
+tags: ["边值问题", "有限差分", "线性方程组"]
+source: "Introduction to Linear Algebra · §2.5 · Problem 17"
+draft: false
+---
+
+求解边值问题
+
+$$-u''(x)=\cos4\pi x,\qquad u(0)=u(1)=0.$$
+
+分别使用 $K_4$ 和 $K_8$ 计算内部网格点的近似解，并与连续解 $u(x)$ 画在同一张图中。其中 $h=1/(n+1)$，
+
+$$K_n=\begin{pmatrix}2&-1&&0\\-1&2&\ddots&\\&\ddots&\ddots&-1\\0&&-1&2\end{pmatrix}.$$
+
+题图中所列差分式的符号与 $-u''=\cos4\pi x$ 不一致；本题按该微分方程取 $-u_{i-1}+2u_i-u_{i+1}=h^2\cos4\pi ih$。
+
+<!-- answer -->
+
+**连续解**
+
+由 $u''=-\cos4\pi x$，两次积分得
+
+$$u(x)=\frac{\cos4\pi x}{16\pi^2}+C_1x+C_2.$$
+
+代入 $u(0)=u(1)=0$，得到
+
+$$\boxed{u(x)=\frac{\cos4\pi x-1}{16\pi^2}.}$$
+
+**差分解**
+
+令 $h=1/(n+1)$，$x_i=ih$，则与 $-u''=\cos4\pi x$ 一致的差分方程为
+
+$$-u_{i-1}+2u_i-u_{i+1}=h^2\cos4\pi ih,\qquad u_0=u_{n+1}=0.$$
+
+即
+
+$$K_nU=h^2\begin{pmatrix}\cos4\pi h\\\cos8\pi h\\\vdots\\\cos4\pi nh\end{pmatrix},\qquad
+K_n=\begin{pmatrix}2&-1&&0\\-1&2&\ddots&\\&\ddots&\ddots&-1\\0&&-1&2\end{pmatrix}.$$
+
+利用
+
+$$2\cos4\pi ih-\cos4\pi(i-1)h-\cos4\pi(i+1)h
+=4\sin^2(2\pi h)\cos4\pi ih,$$
+
+可直接验证（$n=4,8$）
+
+$$\boxed{u_i=\frac{h^2}{4\sin^2(2\pi h)}\bigl(\cos4\pi ih-1\bigr).}$$
+
+| $n$ | $U=(u_1,\ldots,u_n)^{\mathsf T}$（按顺序列出，保留六位小数） |
+| --- | --- |
+| 4 | -0.020000, -0.007639, -0.007639, -0.020000 |
+| 8 | -0.006173, -0.014489, -0.011205, -0.001748, -0.001748, -0.011205, -0.014489, -0.006173 |
+
+![连续解与四点、八点差分解的比较](/assets/problems/strang-2-5/fixed-boundary.svg)
+
+当 $h\to0$ 时，$h^2/[4\sin^2(2\pi h)]\to1/(16\pi^2)$，差分解趋近连续解。
