@@ -1,3 +1,122 @@
+::: {.problem-day data-date="2026-10-31"}
+
+## 2026-10-31 {.problem-date-heading}
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;行列式&quot;], &quot;tags&quot;: [&quot;范德蒙德行列式&quot;, &quot;三角函数&quot;], &quot;title&quot;: &quot;余弦行列式&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 行列式</div>
+
+<h3>01. 余弦行列式</h3>
+
+<div class="entry-tags">#范德蒙德行列式 · #三角函数</div>
+
+```
+
+计算 $n$ 阶行列式
+$$
+D_n=\begin{vmatrix}
+1&1&\cdots&1\\
+\cos\theta_1&\cos\theta_2&\cdots&\cos\theta_n\\
+\cos2\theta_1&\cos2\theta_2&\cdots&\cos2\theta_n\\
+\vdots&\vdots&&\vdots\\
+\cos((n-1)\theta_1)&\cos((n-1)\theta_2)&\cdots&\cos((n-1)\theta_n)
+\end{vmatrix},\qquad \theta_1,\ldots,\theta_n\in\mathbb R.
+$$
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+令 $x_j=\cos\theta_j$。由
+$$
+\cos((k+1)\theta)=2\cos\theta\cos(k\theta)-\cos((k-1)\theta)
+$$
+可知 $\cos(k\theta)=T_k(\cos\theta)$，其中 $T_0(x)=1$，$T_1(x)=x$；对 $k\ge1$，$T_k$ 是首项系数为 $2^{k-1}$ 的 $k$ 次多项式。
+
+从最后一行起，依次用前面各行消去各行多项式的低次项，再提出首项系数，得
+$$
+D_n=\left(\prod_{k=1}^{n-1}2^{k-1}\right)
+\begin{vmatrix}
+1&\cdots&1\\
+x_1&\cdots&x_n\\
+\vdots&&\vdots\\
+x_1^{n-1}&\cdots&x_n^{n-1}
+\end{vmatrix}
+=\boxed{2^{(n-1)(n-2)/2}\prod_{1\le i<j\le n}(\cos\theta_j-\cos\theta_i)}.
+$$
+当 $n=1$ 时，空积取 $1$，结论仍成立。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：云峰线性代数专题课</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;微分中值定理&quot;], &quot;tags&quot;: [&quot;罗尔定理&quot;, &quot;介值定理&quot;, &quot;辅助函数&quot;], &quot;title&quot;: &quot;导数零点与辅助函数&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / CALCULUS / 微分中值定理</div>
+
+<h3>02. 导数零点与辅助函数</h3>
+
+<div class="entry-tags">#罗尔定理 · #介值定理 · #辅助函数</div>
+
+```
+
+设 $f(x)$ 在 $[0,2]$ 上连续，在 $(0,2)$ 内可导，且 $f(0)=0$，$f(1)=3$，$f(2)=-1$。证明：
+
+1. 存在 $\xi\in(0,2)$，使得 $f'(\xi)=0$；
+2. 存在 $\eta\in(0,2)$，使得 $f(\eta)+f'(\eta)=0$。
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+由 $f(1)=3>0$、$f(2)=-1<0$ 及介值定理，存在 $c\in(1,2)$，使得 $f(c)=0$。
+
+（1）在 $[0,c]$ 上，$f$ 连续、在内部可导，且 $f(0)=f(c)=0$。由罗尔定理，存在 $\xi\in(0,c)\subset(0,2)$，使得 $f'(\xi)=0$。
+
+（2）令 $g(x)=e^xf(x)$，则 $g$ 在 $[0,c]$ 上连续、在内部可导，且 $g(0)=g(c)=0$。由罗尔定理，存在 $\eta\in(0,c)\subset(0,2)$，使得
+$$
+0=g'(\eta)=e^\eta\bigl(f(\eta)+f'(\eta)\bigr).
+$$
+由于 $e^\eta>0$，故 $f(\eta)+f'(\eta)=0$。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：2022–2023 学年《微积分（甲）Ⅰ》期中 · 第 15 题</p>
+
+```
+
+:::
+
+```{=html}
+
+<details id="discussion-2026-10-31" class="log-comments problem-discussion" data-comment-term="/problems/2026-10-31/" data-comment-date="2026-10-31" data-comment-title="每日好题 · 2026-10-31">
+
+<summary>discussion/ <span>2026-10-31 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
 ::: {.problem-day data-date="2026-10-30"}
 
 ## 2026-10-30 {.problem-date-heading}
@@ -2746,6 +2865,6 @@ $$
 
 ```{=html}
 
-<script id="problem-index" type="application/json">{"builtDate": "2026-10-30", "dates": {"2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
+<script id="problem-index" type="application/json">{"builtDate": "2026-10-31", "dates": {"2026-10-31": 2, "2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
 
 ```

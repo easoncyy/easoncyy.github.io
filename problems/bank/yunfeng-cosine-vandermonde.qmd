@@ -1,0 +1,39 @@
+---
+title: "余弦行列式"
+category-path: ["MATH", "LINEAR-ALGEBRA", "行列式"]
+tags: ["范德蒙德行列式", "三角函数"]
+source: "云峰线性代数专题课"
+draft: false
+---
+
+计算 $n$ 阶行列式
+$$
+D_n=\begin{vmatrix}
+1&1&\cdots&1\\
+\cos\theta_1&\cos\theta_2&\cdots&\cos\theta_n\\
+\cos2\theta_1&\cos2\theta_2&\cdots&\cos2\theta_n\\
+\vdots&\vdots&&\vdots\\
+\cos((n-1)\theta_1)&\cos((n-1)\theta_2)&\cdots&\cos((n-1)\theta_n)
+\end{vmatrix},\qquad \theta_1,\ldots,\theta_n\in\mathbb R.
+$$
+
+<!-- answer -->
+
+令 $x_j=\cos\theta_j$。由
+$$
+\cos((k+1)\theta)=2\cos\theta\cos(k\theta)-\cos((k-1)\theta)
+$$
+可知 $\cos(k\theta)=T_k(\cos\theta)$，其中 $T_0(x)=1$，$T_1(x)=x$；对 $k\ge1$，$T_k$ 是首项系数为 $2^{k-1}$ 的 $k$ 次多项式。
+
+从最后一行起，依次用前面各行消去各行多项式的低次项，再提出首项系数，得
+$$
+D_n=\left(\prod_{k=1}^{n-1}2^{k-1}\right)
+\begin{vmatrix}
+1&\cdots&1\\
+x_1&\cdots&x_n\\
+\vdots&&\vdots\\
+x_1^{n-1}&\cdots&x_n^{n-1}
+\end{vmatrix}
+=\boxed{2^{(n-1)(n-2)/2}\prod_{1\le i<j\le n}(\cos\theta_j-\cos\theta_i)}.
+$$
+当 $n=1$ 时，空积取 $1$，结论仍成立。

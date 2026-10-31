@@ -1,0 +1,19 @@
+---
+title: "Happy Halloween"
+date: "2026-10-31T22:59:30+08:00"
+entry-signature: "0fb544fc3e9c3cd77a7405d11505feb3043f5e0b87e722ba8e9292f04323d0f2"
+---
+
+说起来每天都一应该在这里说两句的，没想到几天就退化成了只发图片。今天是被阳光晨跑的闹钟吵醒的一天，体能真的好弱TT。不过下午的吉他课和晚上的超算队例会&自修还是很开心的！
+
+::: {.log-photo-grid}
+
+![某种东方红](/assets/log/20261031-225930-entry/photo-01.jpg)
+
+![这里有1mol的跑步人](/assets/log/20261031-225930-entry/photo-04.jpg)
+
+![铁锈东四](/assets/log/20261031-225930-entry/photo-03.jpg)
+
+![我迟早在这里吃成🐖](/assets/log/20261031-225930-entry/photo-02.jpg)
+
+:::

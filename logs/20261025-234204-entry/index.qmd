@@ -4,7 +4,7 @@ date: "2026-10-25T23:42:04+08:00"
 entry-signature: "dfd11023eeedeb5f84728b639c957aa14154c2ceba2b7aad6e41c2961142271c"
 ---
 
-在这里写下你的记录。
+
 
 ::: {.log-photo-grid}
 
