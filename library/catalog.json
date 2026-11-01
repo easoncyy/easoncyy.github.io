@@ -127,5 +127,27 @@
     "path": "https://github.com/easoncyy/easoncyy.github.io/releases/download/library-2026-10-10/artificial-intelligence-modern-approach.pdf",
     "added": "2026-10-10",
     "download-only": true
+  },
+  {
+    "title": "美国创世记：埃利斯建国史系列",
+    "author": "约瑟夫·J.埃利斯",
+    "description": "讲述美国成为美国的历史。",
+    "category": "历史",
+    "subject": "",
+    "path": "/assets/library/j.pdf",
+    "format": "pdf",
+    "slug": "j",
+    "added": "2026-11-01"
+  },
+  {
+    "title": "奠基者：独立战争那一代",
+    "author": "约瑟夫·J.埃利斯",
+    "description": "讲述美国独立战争历史。",
+    "category": "历史",
+    "subject": "",
+    "path": "/assets/library/joseph-j-ellis.epub",
+    "format": "epub",
+    "slug": "joseph-j-ellis",
+    "added": "2026-11-01"
   }
 ]

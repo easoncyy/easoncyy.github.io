@@ -4,6 +4,7 @@ project:
   post-render:
     - python scripts/version-site-assets.py
   pre-render:
+    - python scripts/prepare-build-assets.py
     - python scripts/render-problems.py
     - python scripts/render-blog.py
     - python scripts/render-reading.py

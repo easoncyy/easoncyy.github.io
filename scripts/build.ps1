@@ -8,6 +8,8 @@ if (Test-Path -LiteralPath $portable) { $quartoCommand = $portable }
 elseif (Get-Command quarto -ErrorAction SilentlyContinue) { $quartoCommand = 'quarto' }
 else { throw 'Please install Quarto: https://quarto.org/docs/download/' }
 New-Item -ItemType Directory -Force assets/pdf | Out-Null
+python scripts/prepare-build-assets.py
+if ($LASTEXITCODE -ne 0) { throw 'Build resource preparation failed.' }
 if (-not $SkipPdf -or -not (Test-Path -LiteralPath assets/pdf/math-notes.pdf)) {
     & $quartoCommand render documents/math-notes.qmd --to typst
     if ($LASTEXITCODE -ne 0) { throw 'PDF render failed.' }

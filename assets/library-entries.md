@@ -3,7 +3,7 @@
 <button type="button" data-library-category="all" aria-pressed="true">全部</button>
 <button type="button" data-library-category="文学" aria-pressed="false">文学 <span class="library-filter-count">2</span></button>
 <button type="button" data-library-category="哲学" aria-pressed="false">哲学 <span class="library-filter-count">2</span></button>
-<button type="button" data-library-category="历史" aria-pressed="false">历史 <span class="library-filter-count">1</span></button>
+<button type="button" data-library-category="历史" aria-pressed="false">历史 <span class="library-filter-count">3</span></button>
 <button type="button" data-library-category="教材" aria-pressed="false">教材 <span class="library-filter-count">6</span></button>
 <button type="button" data-library-category="习题" aria-pressed="false">习题 <span class="library-filter-count">1</span></button>
 <button type="button" data-library-category="参考书" aria-pressed="false">参考书 <span class="library-filter-count">0</span></button>
@@ -12,6 +12,30 @@
 <div id="library-subjects" class="library-subjects" role="group" aria-label="学科" hidden></div>
 <p id="library-count" class="library-count" aria-live="polite"></p>
 ```
+::: {.library-entry data-category="历史" data-subject=""}
+
+```{=html}
+<div class="library-book-meta">历史 · PDF · 2026-11-01</div>
+<h2 class="library-book-title">美国创世记：埃利斯建国史系列</h2>
+<p class="library-author">约瑟夫·J.埃利斯</p>
+<p>讲述美国成为美国的历史。</p>
+<div class="library-actions"><a href="/assets/library/j.pdf" target="_blank" rel="noopener">read / 在线阅读 ↗</a><a href="/assets/library/j.pdf" download>download / 下载 ↓</a></div>
+```
+
+:::
+
+::: {.library-entry data-category="历史" data-subject=""}
+
+```{=html}
+<div class="library-book-meta">历史 · EPUB · 2026-11-01</div>
+<h2 class="library-book-title">奠基者：独立战争那一代</h2>
+<p class="library-author">约瑟夫·J.埃利斯</p>
+<p>讲述美国独立战争历史。</p>
+<div class="library-actions"><a href="/assets/library/joseph-j-ellis.epub" download>download / 下载 ↓</a><span class="library-author">EPUB · 下载后用电子书阅读器打开</span></div>
+```
+
+:::
+
 ::: {.library-entry data-category="教材" data-subject="数学"}
 
 ```{=html}

@@ -48,6 +48,18 @@
           "id": "artificial-intelligence-modern-approach",
           "book": "artificial-intelligence-modern-approach",
           "status": "planned"
+        },
+        {
+          "id": "j",
+          "book": "j",
+          "status": "reading",
+          "note": ""
+        },
+        {
+          "id": "joseph-j-ellis",
+          "book": "joseph-j-ellis",
+          "status": "planned",
+          "note": ""
         }
       ]
     }
