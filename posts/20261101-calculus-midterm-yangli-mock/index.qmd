@@ -1,0 +1,15 @@
+---
+title: "微积分（甲）Ⅰ期中模拟卷 · 杨立命题"
+date: "2026-11-01"
+category-path: ["MATH", "CALCULUS", "历年卷", "期中"]
+categories: ["模拟卷", "期中", "练习卷"]
+description: "杨立命题的微积分期中模拟卷，考试时间 120 分钟。"
+---
+
+::: {.download-box}
+[在线阅读 PDF ↗](/assets/pdf/exams/practice/calculus-midterm-yangli-2026-practice.pdf){target="_blank"} · [下载练习卷 PDF ↓](/assets/pdf/exams/practice/calculus-midterm-yangli-2026-practice.pdf){download="calculus-midterm-yangli-2026-practice.pdf"}
+:::
+
+```{=html}
+<iframe class="homework-pdf" src="/assets/pdf/exams/practice/calculus-midterm-yangli-2026-practice.pdf" title="微积分期中模拟练习卷" loading="lazy"></iframe>
+```
