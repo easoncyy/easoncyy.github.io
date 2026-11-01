@@ -81,3 +81,14 @@ listing:
 从文字开始，让记录生长。
 :::
 
+::: {.home-activity}
+## activity/ {.directory-heading}
+
+`$ git log --author=easoncyy --since=1.year`
+
+```{=html}
+<div class="activity-scroll"><object type="image/svg+xml" data="/assets/github-activity.svg" aria-label="GitHub 过去一年贡献日历"><a href="https://github.com/easoncyy">查看 GitHub 活跃记录</a></object></div>
+<p class="activity-caption"><a href="https://github.com/easoncyy" target="_blank" rel="noopener">github/easoncyy ↗</a><code>contributions</code></p>
+```
+:::
+

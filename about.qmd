@@ -29,7 +29,6 @@ toc: false
 ### currently/ {.directory-heading}
 
 - **正在学习**：CSAPP，Linux, C程序设计语言，基础课内课程
-- **正在做**：Kaggle-[RSNA 2026 Competition](https://github.com/Msmile-shiny/CVproject_RSNA-knee-detection)
 - **想尝试**：并行式计算，嵌入式/机器人相关项目
 
 ### contact/ {.directory-heading}

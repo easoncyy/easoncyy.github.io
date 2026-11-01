@@ -14,6 +14,7 @@ from tkinter import ttk, messagebox, filedialog
 from tkinter.scrolledtext import ScrolledText
 from problem_store import ROOT, BANK, SCHEDULE, today, load_bank, load_schedule, save_problem, write_json, valid_id, trash_problem, restore_problem, problem_status
 from library_panel import LibraryPanel
+from PIL import Image, ImageTk, ImageOps
 
 class Manager(tk.Tk):
     def __init__(self):
@@ -210,17 +211,61 @@ class Manager(tk.Tk):
         ttk.Button(row,text='选择照片（可多选）',command=self.choose_photos).pack(side='left')
         self.photo_label=ttk.Label(row,text='0 张');self.photo_label.pack(side='left',padx=10)
         ttk.Button(row,text='创建日志',command=lambda:self.safely(self.create_log)).pack(side='right')
+        gallery=ttk.LabelFrame(log,text='photos/ · 图片与说明',padding=8);gallery.pack(fill='both',expand=True,pady=8)
+        self.photo_list=tk.Listbox(gallery,width=28,exportselection=False)
+        self.photo_list.pack(side='left',fill='y')
+        self.photo_list.bind('<<ListboxSelect>>',self.show_photo)
+        editor=ttk.Frame(gallery);editor.pack(side='left',fill='both',expand=True,padx=12)
+        self.photo_preview=ttk.Label(editor,anchor='center');self.photo_preview.pack(fill='both',expand=True)
+        self.photo_caption=tk.StringVar()
+        ttk.Label(editor,text='图片描述（可留空）').pack(anchor='w')
+        ttk.Entry(editor,textvariable=self.photo_caption).pack(fill='x',pady=4)
+        self.photo_captions=[];self.selected_photo=None;self.preview_image=None
+        self.photo_caption.trace_add('write',self.update_photo_caption)
+        ttk.Button(editor,text='移除所选照片',command=self.remove_photo).pack(anchor='e')
         row=ttk.Frame(frame);row.pack(fill='x')
         ttk.Button(row,text='打开博客文件夹',command=lambda:os.startfile(ROOT/'posts')).pack(side='left')
         ttk.Button(row,text='打开日志文件夹',command=lambda:os.startfile(ROOT/'logs')).pack(side='left',padx=8)
         ttk.Button(row,text='打开网站目录',command=lambda:os.startfile(ROOT)).pack(side='left')
     def choose_photos(self):
-        self.photos=list(filedialog.askopenfilenames(parent=self,title='选择日志照片',filetypes=[('照片','*.jpg *.jpeg *.png *.webp *.gif *.avif')]))
+        chosen=list(filedialog.askopenfilenames(parent=self,title='选择日志照片',filetypes=[('照片','*.jpg *.jpeg *.png *.webp *.gif *.avif')]))
+        for path in chosen:
+            if path not in self.photos:
+                self.photos.append(path);self.photo_captions.append('')
+                self.photo_list.insert('end',Path(path).name)
         self.photo_label.config(text=f'{len(self.photos)} 张')
+        if self.photos:
+            self.photo_list.selection_clear(0,'end');self.photo_list.selection_set(len(self.photos)-1);self.show_photo()
+    def update_photo_caption(self,*_):
+        if self.selected_photo is not None:
+            self.photo_captions[self.selected_photo]=self.photo_caption.get()
+    def show_photo(self,event=None):
+        selected=self.photo_list.curselection()
+        if not selected:return
+        self.selected_photo=selected[0]
+        self.photo_caption.set(self.photo_captions[self.selected_photo])
+        try:
+            with Image.open(self.photos[self.selected_photo]) as original:
+                image=ImageOps.exif_transpose(original)
+                image.thumbnail((520,250))
+                self.preview_image=ImageTk.PhotoImage(image.copy())
+            self.photo_preview.config(image=self.preview_image,text='')
+        except Exception as error:
+            self.photo_preview.config(image='',text=f'无法预览：{error}')
+    def remove_photo(self):
+        selected=self.photo_list.curselection()
+        if not selected:return
+        i=selected[0];self.selected_photo=None
+        del self.photos[i];del self.photo_captions[i];self.photo_list.delete(i)
+        self.photo_caption.set('');self.photo_preview.config(image='',text='');self.preview_image=None
+        self.photo_label.config(text=f'{len(self.photos)} 张')
+        if self.photos:
+            self.photo_list.selection_set(min(i,len(self.photos)-1));self.show_photo()
     def create_log(self):
         self.guard()
         args=[sys.executable,str(ROOT/'scripts/new-log.py'),self.log_title.get(),'--text',self.log_text.get('1.0','end').strip()]
         if self.photos:args+=['--photo',*self.photos]
+        for caption in self.photo_captions:args+=['--photo-caption',caption]
         self.run_job(args,'创建日志')
 
     def make_publish(self):

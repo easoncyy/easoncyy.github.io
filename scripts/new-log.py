@@ -17,11 +17,14 @@ def main():
     parser.add_argument("--text", default="", help="完整正文")
     parser.add_argument("--url", help="要分享的 http/https 链接")
     parser.add_argument("--photo", nargs="+", type=Path, help="一张或多张本地照片路径")
+    parser.add_argument("--photo-caption", action="append", default=[], help="按照片顺序填写说明，可重复使用")
     parser.add_argument("--slug", help="可选目录名，只能含英文字母、数字与连字符")
     parser.add_argument("--allow-duplicate", action="store_true", help="明确允许创建相同内容的日志")
     args = parser.parse_args()
-    if not args.title.strip():
-        parser.error("标题不能为空")
+    if not args.title.strip() and not args.text.strip() and not args.photo and not args.url:
+        parser.error("请填写文字或选择照片")
+    if len(args.photo_caption) > len(args.photo or []):
+        parser.error("图片说明数量不能超过图片数量")
     if args.slug and not re.fullmatch(r"[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*", args.slug):
         parser.error("slug 只能含英文字母、数字与连字符")
     if args.url and (urlparse(args.url).scheme not in ("http", "https") or not urlparse(args.url).netloc):
@@ -29,11 +32,11 @@ def main():
     for photo in args.photo or []:
         if not photo.is_file() or photo.suffix.lower() not in (".jpg", ".jpeg", ".png", ".webp", ".gif", ".avif"):
             parser.error(f"照片不存在或格式不支持: {photo}")
-    body_text = args.text or "在这里写下你的记录。"
+    body_text = args.text
     if args.url:
         body_text += f"\n\n[打开分享的链接](<{args.url}>)"
     signature = hashlib.sha256(json.dumps([args.title, body_text,
-        [hashlib.sha256(photo.read_bytes()).hexdigest() for photo in args.photo or []]], ensure_ascii=False).encode('utf-8')).hexdigest()
+        [hashlib.sha256(photo.read_bytes()).hexdigest() for photo in args.photo or []], args.photo_caption], ensure_ascii=False).encode('utf-8')).hexdigest()
     if not args.allow_duplicate:
         for existing in (ROOT / "logs").rglob("*.qmd"):
             parts = existing.read_text(encoding="utf-8-sig").split("---", 2)
@@ -61,7 +64,7 @@ def main():
         parser.error(f"目录已存在，请稍后重试或更换 --slug: {folder}")
     folder.mkdir(parents=True)
     metadata = {"title": args.title, "date": now.isoformat(), "entry-signature": signature}
-    body = [args.text or "在这里写下你的记录。"]
+    body = [args.text] if args.text else []
     if args.url:
         body.append(f"[打开分享的链接](<{args.url}>)")
     photos = []
@@ -70,7 +73,9 @@ def main():
         media = ROOT / "assets/log" / slug
         media.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(photo, media / name)
-        photos.append(f"![照片 {index}，可修改这里的说明](/assets/log/{slug}/{name})")
+        caption = args.photo_caption[index-1] if index <= len(args.photo_caption) else ''
+        caption = caption.replace('\\', '\\\\').replace('[', '\\[').replace(']', '\\]').replace('\n', ' ')
+        photos.append(f"![{caption}](/assets/log/{slug}/{name})")
     if photos:
         gallery = "\n\n".join(photos)
         if len(photos) > 1:
