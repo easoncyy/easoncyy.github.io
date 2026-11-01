@@ -1,0 +1,29 @@
+---
+title: "压缩映射与不动点"
+category-path: ["MATH", "CALCULUS", "证明题"]
+tags: ["压缩映射", "不动点", "数列收敛"]
+source: "2026–2027 学年微积分（甲）Ⅰ期中模拟卷 · 杨立命题 · 第 12 题"
+draft: false
+---
+
+设函数 $f(x)$ 满足对于任意 $x\in[a,b]$，都有 $f(x)\in[a,b]$。且存在常数 $k\in(0,1)$，对于任意 $x_1,x_2\in[a,b]$，都有 $|f(x_2)-f(x_1)|\le k|x_2-x_1|$。证明：
+
+（1）存在唯一 $\xi\in[a,b]$ 使得 $f(\xi)=\xi$。
+
+（2）对于任意 $x_0\in[a,b]$，定义 $x_{n+1}=f(x_n)\ (n\in\mathbb N)$。证明 $\{x_n\}$ 收敛且 $\displaystyle\lim_{n\to\infty}x_n=\xi$。
+
+<!-- answer -->
+
+（1）由 Lipschitz 条件可知 $f$ 连续。令 $F(x)=f(x)-x$，则 $F(a)\ge0,F(b)\le0$。由介值定理（含端点为零的情形），存在 $\xi\in[a,b]$ 使得 $f(\xi)=\xi$。
+
+若另有 $f(\eta)=\eta$，则
+$$
+|\xi-\eta|=|f(\xi)-f(\eta)|\le k|\xi-\eta|.
+$$
+由 $k<1$，得 $\xi=\eta$，故不动点唯一。
+
+（2）由 $f([a,b])\subset[a,b]$，迭代始终有定义，且
+$$
+|x_n-\xi|\le k|x_{n-1}-\xi|\le\cdots\le k^n|x_0-\xi|\longrightarrow0.
+$$
+故 $x_n\to\xi$。

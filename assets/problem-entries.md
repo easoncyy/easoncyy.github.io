@@ -1,3 +1,109 @@
+::: {.problem-day data-date="2026-11-01"}
+
+## 2026-11-01 {.problem-date-heading}
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;证明题&quot;], &quot;tags&quot;: [&quot;压缩映射&quot;, &quot;不动点&quot;, &quot;数列收敛&quot;], &quot;title&quot;: &quot;压缩映射与不动点&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / CALCULUS / 证明题</div>
+
+<h3>01. 压缩映射与不动点</h3>
+
+<div class="entry-tags">#压缩映射 · #不动点 · #数列收敛</div>
+
+```
+
+设函数 $f(x)$ 满足对于任意 $x\in[a,b]$，都有 $f(x)\in[a,b]$。且存在常数 $k\in(0,1)$，对于任意 $x_1,x_2\in[a,b]$，都有 $|f(x_2)-f(x_1)|\le k|x_2-x_1|$。证明：
+
+（1）存在唯一 $\xi\in[a,b]$ 使得 $f(\xi)=\xi$。
+
+（2）对于任意 $x_0\in[a,b]$，定义 $x_{n+1}=f(x_n)\ (n\in\mathbb N)$。证明 $\{x_n\}$ 收敛且 $\displaystyle\lim_{n\to\infty}x_n=\xi$。
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+（1）由 Lipschitz 条件可知 $f$ 连续。令 $F(x)=f(x)-x$，则 $F(a)\ge0,F(b)\le0$。由介值定理（含端点为零的情形），存在 $\xi\in[a,b]$ 使得 $f(\xi)=\xi$。
+
+若另有 $f(\eta)=\eta$，则
+$$
+|\xi-\eta|=|f(\xi)-f(\eta)|\le k|\xi-\eta|.
+$$
+由 $k<1$，得 $\xi=\eta$，故不动点唯一。
+
+（2）由 $f([a,b])\subset[a,b]$，迭代始终有定义，且
+$$
+|x_n-\xi|\le k|x_{n-1}-\xi|\le\cdots\le k^n|x_0-\xi|\longrightarrow0.
+$$
+故 $x_n\to\xi$。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：2026–2027 学年微积分（甲）Ⅰ期中模拟卷 · 杨立命题 · 第 12 题</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;证明题&quot;], &quot;tags&quot;: [&quot;奇函数&quot;, &quot;罗尔定理&quot;, &quot;辅助函数&quot;], &quot;title&quot;: &quot;奇函数与中值定理&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / CALCULUS / 证明题</div>
+
+<h3>02. 奇函数与中值定理</h3>
+
+<div class="entry-tags">#奇函数 · #罗尔定理 · #辅助函数</div>
+
+```
+
+设奇函数 $f(x)$ 在 $[-1,1]$ 上二阶可导，证明：存在 $\xi\in(-1,1)$ 使得 $f''(\xi)-f'(\xi)+f(1)=0$。
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+由奇性，$f(0)=0,f(-1)=-f(1)$。分别在 $[0,1]$ 与 $[-1,0]$ 上用拉格朗日中值定理，得 $\theta_1\in(0,1)$、$\theta_2\in(-1,0)$，满足
+$$
+f'(\theta_1)=f'(\theta_2)=f(1).
+$$
+令 $F(x)=e^{-x}[f'(x)-f(1)]$，则 $F(\theta_1)=F(\theta_2)=0$。由罗尔定理，存在 $\xi\in(\theta_2,\theta_1)$，使得
+$$
+0=F'(\xi)=e^{-\xi}[f''(\xi)-f'(\xi)+f(1)].
+$$
+因此结论成立。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：2026–2027 学年微积分（甲）Ⅰ期中模拟卷 · 杨立命题 · 附加题</p>
+
+```
+
+:::
+
+```{=html}
+
+<details id="discussion-2026-11-01" class="log-comments problem-discussion" data-comment-term="/problems/2026-11-01/" data-comment-date="2026-11-01" data-comment-title="每日好题 · 2026-11-01">
+
+<summary>discussion/ <span>2026-11-01 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
 ::: {.problem-day data-date="2026-10-31"}
 
 ## 2026-10-31 {.problem-date-heading}
@@ -2865,6 +2971,6 @@ $$
 
 ```{=html}
 
-<script id="problem-index" type="application/json">{"builtDate": "2026-11-01", "dates": {"2026-10-31": 2, "2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
+<script id="problem-index" type="application/json">{"builtDate": "2026-11-01", "dates": {"2026-11-01": 2, "2026-10-31": 2, "2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
 
 ```

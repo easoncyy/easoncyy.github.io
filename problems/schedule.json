@@ -70,5 +70,9 @@
   "2026-10-31": [
     "yunfeng-cosine-vandermonde",
     "calculus-midterm-2022-2023-rolle-auxiliary"
+  ],
+  "2026-11-01": [
+    "yangli-mock-contraction-fixed-point",
+    "yangli-mock-odd-function-mean-value"
   ]
 }
