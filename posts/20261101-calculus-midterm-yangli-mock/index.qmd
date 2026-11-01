@@ -1,15 +1,299 @@
 ---
-title: "微积分（甲）Ⅰ期中模拟卷 · 杨立命题"
+title: "2026–2027 学年微积分（甲）Ⅰ期中模拟卷"
 date: "2026-11-01"
+author: "easoncyy（整理）"
 category-path: ["MATH", "CALCULUS", "历年卷", "期中"]
 categories: ["模拟卷", "期中", "练习卷"]
-description: "杨立命题的微积分期中模拟卷，考试时间 120 分钟。"
+description: "微积分期中模拟卷：题目、详细解析与知识点总结。"
+toc-depth: 3
+execute:
+  enabled: false
 ---
 
+来源：2026–2027 学年云峰学园第一党支部微积分（甲）Ⅰ期中模拟试题，杨立命题。考试时间 120 分钟，正题满分 100 分，附加题 5 分。
+
 ::: {.download-box}
-[在线阅读 PDF ↗](/assets/pdf/exams/practice/calculus-midterm-yangli-2026-practice.pdf){target="_blank"} · [下载练习卷 PDF ↓](/assets/pdf/exams/practice/calculus-midterm-yangli-2026-practice.pdf){download="calculus-midterm-yangli-2026-practice.pdf"}
+[下载练习卷 PDF ↓](/assets/pdf/exams/practice/calculus-midterm-yangli-2026-practice.pdf){download="calculus-midterm-yangli-2026-practice.pdf"}
 :::
 
-```{=html}
-<iframe class="homework-pdf" src="/assets/pdf/exams/practice/calculus-midterm-yangli-2026-practice.pdf" title="微积分期中模拟练习卷" loading="lazy"></iframe>
-```
+## 第一部分：题目 {#questions}
+
+### 1 .
+
+求极限：（12 分）
+
+$$\text{（1）}\ \lim_{x\to0}\frac{1}{x^3}\left[\left(\frac{2+\cos x}{3}\right)^x-1\right];
+\qquad
+\text{（2）}\ \lim_{x\to-\infty}\frac{x+1}{\sqrt{x^2-\sin x+1}+\sqrt{x^2+\sin x+1}}.$$
+
+### 2 .
+
+求极限：（12 分）
+
+$$\text{（1）}\ \lim_{n\to\infty}n\tan\!\left(\pi\sqrt{n^2+2026}\right);
+\qquad
+\text{（2）}\ \lim_{n\to\infty}\sum_{k=1}^n(n^k+1)^{-1/k}.$$
+
+### 3 .
+
+若极限 $\displaystyle\lim_{x\to+\infty}\frac{\sqrt{4x^3+ax^2+x}+bx^{3/2}}{\sqrt{cx+1}}$ 存在，求 $a,b,c$ 满足的条件并求该极限值。（10 分）
+
+### 4 .
+
+讨论 $\displaystyle f(x)=\frac{e+e^{1/x}}{e-e^{1/x}}\cdot\frac{x^2-1}{\sin(x+1)}$ 的所有间断点，并指出它们是第几类间断点。（10 分）
+
+### 5 .
+
+化简 $\displaystyle f(x)=\lim_{n\to\infty}\frac{x^2+x[x]e^{nx}}{1+e^{nx}}\ (x\in\mathbb R)$，分析 $f(x)$ 的连续性和可导性，其中 $[x]$ 表示对 $x$ 向下取整。（10 分）
+
+### 6 .
+
+设 $\begin{cases}x=t^2+t,\\e^{t+y}+ty-1=0\end{cases}$ 确定函数 $y=y(x)$，求 $\displaystyle\left.\frac{d^2x}{dy^2}\right|_{t=0}$。（10 分）
+
+### 7 .
+
+设 $f_n(x)=(x-\pi)^ne^{2x}\cos x$，求 $f_n^{(n)}(\pi)\ (n\in\mathbb N_+)$。（8 分）
+
+### 8 .
+
+已知心形线 $r=2(1+\cos\theta)\ (0\le\theta<2\pi)$，是否存在曲线上的一点，该点处的切线和极半径垂直。若存在，求出该点坐标和该点处切线的方程（均在直角坐标系下给出）；若不存在，请说明理由。（8 分）
+
+### 9 .
+
+设 $f(x)$ 在 $[a,b]$ 上连续，$x_1,x_2,\ldots,x_n$ 是 $[a,b]$ 上的一个点列，求 $\displaystyle\lim_{n\to\infty}\sqrt[n]{\frac1n\sum_{k=1}^ne^{f(x_k)}}$。（5 分）
+
+### 10 .
+
+从以下 A/B 两个问题中选择一个作答，如都作答则取高分计入总分。（5 分） **A.** 设 $f(x)$ 连续，$f'(0)$ 存在。对于任意 $x,y\in\mathbb R$，
+
+$$f(x+y)=\frac{f(x)+f(y)}{1-4f(x)f(y)}.$$ 证明 $f(x)$ 在 $\mathbb R$ 上可导。
+
+**B.** 设 $a_1,a_2,\ldots,a_n$ 为常数，记
+
+$$f(x)=\sum_{k=1}^na_k\sin kx,\qquad g(x)=\sum_{j=1}^na_{n-j+1}\sin jx.$$ 已知 $|f(x)|\le|\sin x|$，$|g(x)|\le|\sin x|$，求证
+
+$$\left|\sum_{k=1}^na_k\right|\le\frac{2}{n+1}.$$ 【提示：考虑 $f'(0),g'(0)$。】
+
+### 11 .
+
+已知数列 $\{x_n\}$ 满足 $x_n\in(0,\frac\pi2)$，$x_1=\frac\pi4$，$\sin x_n=x_n\cos x_{n+1}$。（5 分） （1）证明 $\displaystyle\lim_{n\to\infty}x_n$ 存在并求其值。
+
+（2）求 $\displaystyle\lim_{n\to\infty}(\cos x_{n+1})^{1/x_n^2}$。
+
+### 12 .
+
+设函数 $f(x)$ 满足对于任意 $x\in[a,b]$，都有 $f(x)\in[a,b]$。且存在常数 $k\in(0,1)$，对于任意 $x_1,x_2\in[a,b]$，都有 $|f(x_2)-f(x_1)|\le k|x_2-x_1|$。证明：（5 分） （1）存在唯一 $\xi\in[a,b]$ 使得 $f(\xi)=\xi$。
+
+（2）对于任意 $x_0\in[a,b]$，定义 $x_{n+1}=f(x_n)\ (n\in\mathbb N)$。证明 $\{x_n\}$ 收敛且 $\displaystyle\lim_{n\to\infty}x_n=\xi$。
+
+### 附加题 .
+
+ 设奇函数 $f(x)$ 在 $[-1,1]$ 上二阶可导，证明：存在 $\xi\in(-1,1)$ 使得 $f''(\xi)-f'(\xi)+f(1)=0$。（5 分）
+
+## 第二部分：详细解析 {#solutions}
+
+### 1. 极限计算 {#answer-1}
+
+（1）记 $u=x\ln\frac{2+\cos x}{3}$，则 $u\sim-x^3/6$。因此
+$$
+\lim_{x\to0}\frac{e^u-1}{x^3}
+=\lim_{x\to0}\frac{e^u-1}{u}\frac{u}{x^3}=-\frac16.
+$$
+（2）分子、分母同除以 $-x>0$，得
+$$
+\lim_{x\to-\infty}\frac{-1-1/x}{\sqrt{1-\sin x/x^2+1/x^2}+\sqrt{1+\sin x/x^2+1/x^2}}=-\frac12.
+$$
+
+### 2. 数列极限 {#answer-2}
+
+（1）利用正切函数的周期性和有理化，
+$$
+n\tan\!\left(\pi\sqrt{n^2+2026}\right)
+=n\tan\frac{2026\pi}{\sqrt{n^2+2026}+n}\longrightarrow1013\pi.
+$$
+（2）由 $n^k<n^k+1\le(n+1)^k$，有
+$$
+\frac1{n+1}\le(n^k+1)^{-1/k}<\frac1n.
+$$
+求和得 $\frac n{n+1}\le\sum_{k=1}^n(n^k+1)^{-1/k}<1$，由夹逼定理，极限为 $1$。
+
+### 3. 参数与有限极限 {#answer-3}
+
+为使根式在充分大的 $x$ 处有意义，须有 $c\ge0$。又
+$$
+\sqrt{4x^3+ax^2+x}=2x^{3/2}+\frac a4x^{1/2}+O(x^{-1/2}).
+$$
+若 $c>0$，分母为 $\sqrt c\,x^{1/2}(1+o(1))$，故有限极限存在当且仅当 $b=-2$，此时极限为 $a/(4\sqrt c)$，$a$ 任意。
+
+若 $c=0$，分母为 $1$，须先有 $b=-2$，再有 $a=0$。此时
+$$
+\sqrt{4x^3+x}-2x^{3/2}
+=\frac{x}{\sqrt{4x^3+x}+2x^{3/2}}\longrightarrow0.
+$$
+因此条件为 $b=-2,c>0,a\in\mathbb R$，或 $a=c=0,b=-2$；对应极限分别为 $a/(4\sqrt c)$ 和 $0$。
+
+### 4. 间断点分类 {#answer-4}
+
+可能的间断点为 $0,1,k\pi-1\ (k\in\mathbb Z)$。
+
+- 在 $x=0$，右极限为 $1/\sin1$，左极限为 $-1/\sin1$，是第一类跳跃间断点。
+- 在 $x=1$，由 $1-e^{1/x-1}\sim x-1$，得 $\lim_{x\to1}f(x)=4/\sin2$，是第一类可去间断点。
+- 在 $x=-1$，由 $(x+1)/\sin(x+1)\to1$，得极限 $-2(e+e^{-1})/(e-e^{-1})$，是第一类可去间断点。
+- 在 $x=k\pi-1\ (k\ne0)$，其余因子均有限且非零，而 $\sin(x+1)\to0$，故 $|f(x)|\to+\infty$，是第二类无穷间断点。
+
+### 5. 极限定义函数的连续性与可导性 {#answer-5}
+
+分别考虑 $x<0,x=0,x>0$，得
+$$
+f(x)=\begin{cases}x^2,&x\le0,\\x\lfloor x\rfloor,&x>0.\end{cases}
+$$
+在 $x=0$，左右极限均为 $0$，左右导数也均为 $0$。在 $0<x<1$ 上 $f(x)=0$；在 $(k,k+1)$ 上 $f(x)=kx$，其中 $k\in\mathbb N_+$。
+
+对正整数 $k$，左极限为 $k(k-1)$，右极限及函数值为 $k^2$，故是跳跃间断点，不可导。其余各点连续且可导，并且
+$$
+f'(x)=\begin{cases}2x,&x<0,\\0,&0\le x<1,\\k,&k<x<k+1,\ k\in\mathbb N_+.\end{cases}
+$$
+
+### 6. 参数二阶导数 {#answer-6}
+
+由 $t=0$ 得 $x=0,y=0$，且 $x'=2t+1,x''=2$。对 $e^{t+y}+ty-1=0$ 关于 $t$ 求导，
+$$
+e^{t+y}(1+y')+y+ty'=0,
+$$
+故 $y'(0)=-1$。再次求导，
+$$
+e^{t+y}(1+y')^2+e^{t+y}y''+2y'+ty''=0,
+$$
+得 $y''(0)=2$。于是
+$$
+\left.\frac{d^2x}{dy^2}\right|_{t=0}
+=\left.\frac{x''y'-x'y''}{(y')^3}\right|_{t=0}=4.
+$$
+
+### 7. 高阶导数 {#answer-7}
+
+由莱布尼茨公式，$n$ 阶求导后在 $x=\pi$ 处，只有 $(x-\pi)^n$ 被求导 $n$ 次的一项不为零。因此
+$$
+f_n^{(n)}(\pi)=n!e^{2\pi}\cos\pi=-n!e^{2\pi}.
+$$
+
+### 8. 心形线的切线 {#answer-8}
+
+令 $\boldsymbol r(\theta)=r(\theta)(\cos\theta,\sin\theta)$，则
+$$
+\boldsymbol r\cdot\boldsymbol r'=rr'.
+$$
+在非原点处，切线与极半径垂直等价于 $r'=0$。由 $r'=-2\sin\theta$，得 $\theta=0$ 或 $\pi$。当 $\theta=\pi$ 时 $r=0$，极半径无方向，舍去。
+
+当 $\theta=0$ 时，对应点 $(4,0)$，且
+$$
+x'(0)=0,\qquad y'(0)=4\ne0.
+$$
+故存在满足条件的点 $(4,0)$，其切线为 $x=4$。
+
+### 9. 有界性与夹逼定理 {#answer-9}
+
+由闭区间连续函数的有界性，存在 $m,M$，使得 $m\le f(x)\le M$。于是
+$$
+e^m\le\frac1n\sum_{k=1}^ne^{f(x_k)}\le e^M,
+\qquad
+e^{m/n}\le\sqrt[n]{\frac1n\sum_{k=1}^ne^{f(x_k)}}\le e^{M/n}.
+$$
+两端均趋于 $1$，故所求极限为 $1$。
+
+### 10. 函数方程与三角多项式 {#answer-10}
+
+**A.** 令 $x=y=0$，得 $f(0)[1+4f^2(0)]=0$，故 $f(0)=0$。任取 $x\in\mathbb R$，由函数方程得
+$$
+\frac{f(x+h)-f(x)}h
+=\frac{f(h)}h\cdot\frac{1+4f^2(x)}{1-4f(x)f(h)}.
+$$
+当 $h\to0$ 时，$f(h)\to0$，$f(h)/h\to f'(0)$，所以
+$$
+f'(x)=f'(0)[1+4f^2(x)].
+$$
+因此 $f$ 在 $\mathbb R$ 上可导。
+
+**B.** 由 $f(0)=g(0)=0$ 及题设不等式，得 $|f'(0)|\le1,|g'(0)|\le1$。又
+$$
+f'(0)=\sum_{k=1}^nka_k,\qquad
+g'(0)=\sum_{k=1}^n(n-k+1)a_k,
+$$
+故
+$$
+\left|\sum_{k=1}^na_k\right|
+=\frac{|f'(0)+g'(0)|}{n+1}\le\frac2{n+1}.
+$$
+
+### 11. 隐式递推数列 {#answer-11}
+
+（1）对 $0<x<\pi/2$，有 $\tan x>x$，所以
+$$
+\cos x_{n+1}=\frac{\sin x_n}{x_n}>\cos x_n.
+$$
+余弦函数在该区间严格递减，故 $x_{n+1}<x_n$。数列有下界 $0$，因而收敛。设极限为 $A\in[0,\pi/4]$，取极限得 $\sin A=A\cos A$。若 $A>0$，则与 $\tan A>A$ 矛盾，故 $A=0$。
+
+（2）由 $x_n\to0$，
+$$
+\ln\left[(\cos x_{n+1})^{1/x_n^2}\right]
+=\frac{\ln(\sin x_n/x_n)}{x_n^2}\longrightarrow-\frac16,
+$$
+故所求极限为 $e^{-1/6}$。
+
+### 12. 压缩映射与不动点 {#answer-12}
+
+（1）由 Lipschitz 条件可知 $f$ 连续。令 $F(x)=f(x)-x$，则 $F(a)\ge0,F(b)\le0$。由介值定理（含端点为零的情形），存在 $\xi\in[a,b]$ 使得 $f(\xi)=\xi$。
+
+若另有 $f(\eta)=\eta$，则
+$$
+|\xi-\eta|=|f(\xi)-f(\eta)|\le k|\xi-\eta|.
+$$
+由 $k<1$，得 $\xi=\eta$，故不动点唯一。
+
+（2）由 $f([a,b])\subset[a,b]$，迭代始终有定义，且
+$$
+|x_n-\xi|\le k|x_{n-1}-\xi|\le\cdots\le k^n|x_0-\xi|\longrightarrow0.
+$$
+故 $x_n\to\xi$。
+
+### 附加题. 中值定理与辅助函数 {#answer-extra}
+
+由奇性，$f(0)=0,f(-1)=-f(1)$。分别在 $[0,1]$ 与 $[-1,0]$ 上用拉格朗日中值定理，得 $\theta_1\in(0,1)$、$\theta_2\in(-1,0)$，满足
+$$
+f'(\theta_1)=f'(\theta_2)=f(1).
+$$
+令 $F(x)=e^{-x}[f'(x)-f(1)]$，则 $F(\theta_1)=F(\theta_2)=0$。由罗尔定理，存在 $\xi\in(\theta_2,\theta_1)$，使得
+$$
+0=F'(\xi)=e^{-\xi}[f''(\xi)-f'(\xi)+f(1)].
+$$
+因此结论成立。
+
+
+## 第三部分：知识点总结 {#summary}
+
+### 答案与考点
+
+| 题号 | 答案或结论 | 考点 |
+| --- | --- | --- |
+| [1](#answer-1) | $-1/6$；$-1/2$ | 等价无穷小、无穷远极限 |
+| [2](#answer-2) | $1013\pi$；$1$ | 周期性、有理化、夹逼 |
+| [3](#answer-3) | $b=-2,c>0$ 时为 $a/(4\sqrt c)$；$a=c=0,b=-2$ 时为 $0$ | 参数消项、有限极限 |
+| [4](#answer-4) | $0$ 跳跃；$\pm1$ 可去；$k\pi-1\ (k\ne0)$ 无穷 | 间断点分类 |
+| [5](#answer-5) | 正整数处不连续、不可导，其余点连续可导 | 取整函数、左右导数 |
+| [6](#answer-6) | $4$ | 参数与隐函数二阶求导 |
+| [7](#answer-7) | $-n!e^{2\pi}$ | 莱布尼茨公式 |
+| [8](#answer-8) | $(4,0)$；$x=4$ | 极坐标切线 |
+| [9](#answer-9) | $1$ | 连续函数有界性、夹逼 |
+| [10](#answer-10) | A：$f'(x)=f'(0)(1+4f^2(x))$；B：$2/(n+1)$ | 导数定义、系数求和 |
+| [11](#answer-11) | $0$；$e^{-1/6}$ | 单调有界、幂指极限 |
+| [12](#answer-12) | 唯一不动点，迭代收敛于该点 | 压缩映射 |
+| [附加题](#answer-extra) | 存在 $\xi\in(-1,1)$ 满足题设等式 | 中值定理、辅助函数 |
+
+### 复习要点
+
+- 幂指极限先取对数；出现相减消项时，保留足够阶数。
+- 间断点检查原表达式的全部无定义点，分别计算左右极限。
+- 参数二阶求导须区分 $d^2x/dy^2$ 与 $d^2y/dx^2$。
+- 极坐标切线同时检查竖直切线与原点处的退化情形。
+- 数列先证收敛，再对递推式取极限。
+- 出现 $f''-f'$ 时，可考虑 $e^{-x}(f'-C)$。
