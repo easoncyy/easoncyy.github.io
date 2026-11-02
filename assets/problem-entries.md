@@ -1,3 +1,277 @@
+::: {.problem-day data-date="2026-11-02"}
+
+## 2026-11-02 {.problem-date-heading}
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;高阶导数&quot;], &quot;tags&quot;: [&quot;莱布尼兹公式&quot;, &quot;递推关系&quot;], &quot;title&quot;: &quot;反正弦函数在原点的高阶导数&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / CALCULUS / 高阶导数</div>
+
+<h3>01. 反正弦函数在原点的高阶导数</h3>
+
+<div class="entry-tags">#莱布尼兹公式 · #递推关系</div>
+
+```
+
+利用莱布尼兹公式，求函数 $y=\arcsin x$ 的 $y^{(n)}(0)$，其中 $n\ge1$。
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+由 $(1-x^2)y''-xy'=0$，求 $r$ 阶导数并令 $x=0$，由莱布尼兹公式得
+$$
+y^{(r+2)}(0)=r^2y^{(r)}(0)\qquad(r\ge0).
+$$
+结合 $y(0)=0,y'(0)=1$，得
+$$
+\boxed{y^{(2m)}(0)=0\ (m\ge1),\qquad y^{(2m+1)}(0)=[(2m-1)!!]^2\ (m\ge0).}
+$$
+约定 $(-1)!!=1$。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：微积分习题课</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;高阶导数&quot;], &quot;tags&quot;: [&quot;莱布尼兹公式&quot;, &quot;递推关系&quot;], &quot;title&quot;: &quot;反正切函数在原点的高阶导数&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / CALCULUS / 高阶导数</div>
+
+<h3>02. 反正切函数在原点的高阶导数</h3>
+
+<div class="entry-tags">#莱布尼兹公式 · #递推关系</div>
+
+```
+
+利用莱布尼兹公式，求函数 $y=\arctan x$ 的 $y^{(n)}(0)$，其中 $n\ge1$。
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+由 $(1+x^2)y'=1$，求 $r$ 阶导数并令 $x=0$，得
+$$
+y^{(r+1)}(0)=-r(r-1)y^{(r-1)}(0)\qquad(r\ge2).
+$$
+又 $y'(0)=1,y''(0)=0$，故
+$$
+\boxed{y^{(2m)}(0)=0\ (m\ge1),\qquad y^{(2m+1)}(0)=(-1)^m(2m)!\ (m\ge0).}
+$$
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：微积分习题课</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;高阶导数&quot;], &quot;tags&quot;: [&quot;莱布尼兹公式&quot;, &quot;递推关系&quot;], &quot;title&quot;: &quot;根式函数在原点的高阶导数&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / CALCULUS / 高阶导数</div>
+
+<h3>03. 根式函数在原点的高阶导数</h3>
+
+<div class="entry-tags">#莱布尼兹公式 · #递推关系</div>
+
+```
+
+利用莱布尼兹公式，求函数 $y=\sqrt{1-x^2}$ 的 $y^{(n)}(0)$，其中 $n\ge1$。
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+由 $(1-x^2)y'+xy=0$，求 $r$ 阶导数并令 $x=0$，得
+$$
+y^{(r+1)}(0)=r(r-2)y^{(r-1)}(0)\qquad(r\ge1).
+$$
+又 $y(0)=1,y'(0)=0$，故
+$$
+\boxed{y^{(2m+1)}(0)=0\ (m\ge0),\qquad y^{(2m)}(0)=-(2m-1)!!(2m-3)!!\ (m\ge1).}
+$$
+约定 $(-1)!!=1$。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：微积分习题课</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;高阶导数&quot;], &quot;tags&quot;: [&quot;莱布尼兹公式&quot;, &quot;递推关系&quot;], &quot;title&quot;: &quot;对数函数在原点的高阶导数&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / CALCULUS / 高阶导数</div>
+
+<h3>04. 对数函数在原点的高阶导数</h3>
+
+<div class="entry-tags">#莱布尼兹公式 · #递推关系</div>
+
+```
+
+利用莱布尼兹公式，求函数 $y=\ln(1+x^2)$ 的 $y^{(n)}(0)$，其中 $n\ge1$。
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+由 $(1+x^2)y'=2x$，求 $r$ 阶导数并令 $x=0$，当 $r\ge2$ 时有
+$$
+y^{(r+1)}(0)=-r(r-1)y^{(r-1)}(0).
+$$
+又 $y'(0)=0,y''(0)=2$，故
+$$
+\boxed{y^{(2m+1)}(0)=0\ (m\ge0),\qquad y^{(2m)}(0)=2(-1)^{m-1}(2m-1)!\ (m\ge1).}
+$$
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：微积分习题课</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;高阶导数&quot;], &quot;tags&quot;: [&quot;分段函数&quot;, &quot;导数定义&quot;, &quot;振荡函数&quot;], &quot;title&quot;: &quot;振荡函数的高阶可导性&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / CALCULUS / 高阶导数</div>
+
+<h3>05. 振荡函数的高阶可导性</h3>
+
+<div class="entry-tags">#分段函数 · #导数定义 · #振荡函数</div>
+
+```
+
+设 $n$ 为正整数，证明函数
+$$
+f(x)=\begin{cases}x^{2n}\sin\frac1x,&x\ne0,\\0,&x=0\end{cases}
+$$
+在 $x=0$ 处有一直到 $n$ 阶的导数，但不存在 $n+1$ 阶导数。
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+对 $x\ne0$ 反复求导，$f^{(k)}(x)$ 是若干项 $x^p\sin(1/x)$ 或 $x^p\cos(1/x)$ 的线性组合，其中最低幂次为 $2n-2k$。因而对 $0\le k\le n-1$，
+$$
+f^{(k)}(x)=O(x^{2n-2k}).
+$$
+从 $f(0)=0$ 出发，逐次用导数定义，因 $2n-2k-1\ge1$，得 $f^{(k+1)}(0)=0$，所以 $f^{(n)}(0)=0$。
+
+第 $n$ 次求导的最低次项来自每次都对三角因子求导，故
+$$
+f^{(n)}(x)=(-1)^n\sin\left(\frac1x+\frac{n\pi}{2}\right)+O(x).
+$$
+它在零点不连续，而 $f^{(n)}(0)=0$；因此 $f^{(n)}$ 在零点不可导，即 $f^{(n+1)}(0)$ 不存在。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：吉米多维奇《数学分析习题集》第 1224 题（用户提供照片，第 87 页）</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;高阶导数&quot;], &quot;tags&quot;: [&quot;莱布尼兹公式&quot;, &quot;勒让德多项式&quot;, &quot;微分方程&quot;], &quot;title&quot;: &quot;勒让德多项式的微分方程&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / CALCULUS / 高阶导数</div>
+
+<h3>06. 勒让德多项式的微分方程</h3>
+
+<div class="entry-tags">#莱布尼兹公式 · #勒让德多项式 · #微分方程</div>
+
+```
+
+证明：勒让德多项式
+$$
+P_m(x)=\frac{1}{2^m m!}\frac{d^m}{dx^m}(x^2-1)^m\qquad(m=0,1,2,\ldots)
+$$
+满足方程
+$$
+(1-x^2)P_m''(x)-2xP_m'(x)+m(m+1)P_m(x)=0.
+$$
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+令 $u=(x^2-1)^m$，则
+$$
+(x^2-1)u'=2mxu.
+$$
+两边求 $m+1$ 阶导数，利用莱布尼兹公式得
+$$
+(x^2-1)u^{(m+2)}+2(m+1)xu^{(m+1)}+m(m+1)u^{(m)}
+=2m\bigl[xu^{(m+1)}+(m+1)u^{(m)}\bigr].
+$$
+移项，得
+$$
+(x^2-1)u^{(m+2)}+2xu^{(m+1)}-m(m+1)u^{(m)}=0.
+$$
+代入 $u^{(m)}=2^m m!P_m$，即得所证。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：吉米多维奇《数学分析习题集》第 1227 题（用户提供照片，第 87 页）</p>
+
+```
+
+:::
+
+```{=html}
+
+<details id="discussion-2026-11-02" class="log-comments problem-discussion" data-comment-term="/problems/2026-11-02/" data-comment-date="2026-11-02" data-comment-title="每日好题 · 2026-11-02">
+
+<summary>discussion/ <span>2026-11-02 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
 ::: {.problem-day data-date="2026-11-01"}
 
 ## 2026-11-01 {.problem-date-heading}
@@ -2971,6 +3245,6 @@ $$
 
 ```{=html}
 
-<script id="problem-index" type="application/json">{"builtDate": "2026-11-01", "dates": {"2026-11-01": 2, "2026-10-31": 2, "2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
+<script id="problem-index" type="application/json">{"builtDate": "2026-11-02", "dates": {"2026-11-02": 6, "2026-11-01": 2, "2026-10-31": 2, "2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
 
 ```

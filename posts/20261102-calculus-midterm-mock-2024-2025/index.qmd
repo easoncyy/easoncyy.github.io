@@ -1,0 +1,87 @@
+---
+title: "2024-2025 学年微积分（甲）Ⅰ期中模拟卷"
+date: "2026-11-02"
+author: "easoncyy（整理）"
+category-path: ["MATH", "CALCULUS", "历年卷", "期中"]
+categories: ["模拟卷", "期中", "练习卷"]
+description: "2024-2025 学年微积分期中模拟卷：题目、详细解析与知识点总结。"
+toc-depth: 3
+---
+
+来源：云峰学园第一党支部微积分（甲）Ⅰ期中模拟试卷及答案汇编，杨立命题。考试时间 120 分钟，满分 100 分。本卷共 13 道正题。
+
+::: {.download-box}
+[下载原始试卷 PDF ↓](/assets/pdf/exams/original/calculus-midterm-mock-2024-2025-original.pdf){download="calculus-midterm-mock-2024-2025-original.pdf"}
+:::
+
+## 第一部分：题目 {#questions}
+
+### 题目 · 第 1 页
+
+![](/assets/exams/yunfeng-2024-2025/questions-01.webp){fig-alt="2024-2025 微积分期中模拟卷题目第 1 页" width="100%" loading="lazy"}
+
+### 题目 · 第 2 页
+
+![](/assets/exams/yunfeng-2024-2025/questions-02.webp){fig-alt="2024-2025 微积分期中模拟卷题目第 2 页" width="100%" loading="lazy"}
+
+### 题目 · 第 3 页
+
+![](/assets/exams/yunfeng-2024-2025/questions-03.webp){fig-alt="2024-2025 微积分期中模拟卷题目第 3 页" width="100%" loading="lazy"}
+
+### 题目 · 第 4 页
+
+![](/assets/exams/yunfeng-2024-2025/questions-04.webp){fig-alt="2024-2025 微积分期中模拟卷题目第 4 页" width="100%" loading="lazy"}
+
+## 第二部分：详细解析 {#solutions}
+
+### 解析 · 第 1 页
+
+![](/assets/exams/yunfeng-2024-2025/solutions-01.webp){fig-alt="2024-2025 微积分期中模拟卷详细解析第 1 页" width="100%" loading="lazy"}
+
+### 解析 · 第 2 页
+
+![](/assets/exams/yunfeng-2024-2025/solutions-02.webp){fig-alt="2024-2025 微积分期中模拟卷详细解析第 2 页" width="100%" loading="lazy"}
+
+### 解析 · 第 3 页
+
+![](/assets/exams/yunfeng-2024-2025/solutions-03.webp){fig-alt="2024-2025 微积分期中模拟卷详细解析第 3 页" width="100%" loading="lazy"}
+
+### 解析 · 第 4 页
+
+![](/assets/exams/yunfeng-2024-2025/solutions-04.webp){fig-alt="2024-2025 微积分期中模拟卷详细解析第 4 页" width="100%" loading="lazy"}
+
+### 解析 · 第 5 页
+
+![](/assets/exams/yunfeng-2024-2025/solutions-05.webp){fig-alt="2024-2025 微积分期中模拟卷详细解析第 5 页" width="100%" loading="lazy"}
+
+## 第三部分：知识点总结 {#summary}
+
+### 考点梳理
+
+- 根式与幂指极限。
+
+- 间断点参数讨论。
+
+- 隐函数和复合函数求导。
+
+- 分段函数在拼接点的连续与可导。
+
+- 参数曲线公切线。
+
+- 有理函数高阶导数。
+
+- 函数方程。
+
+- 介值定理。
+
+- 递推不等式。
+
+- 二阶导数零点。
+
+### 解题检查
+
+- 极限计算先确认定义域、趋近方向与所需展开阶数。
+- 分段函数先检查连续性，再比较左右导数。
+- 参数二阶导数注意求导对象，并保留分母非零条件。
+- 数列先证明收敛，再对递推关系取极限。
+- 使用介值定理和中值定理前，核对区间及连续、可导条件。
