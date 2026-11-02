@@ -48,8 +48,19 @@ def main():
             if kind != 'blob':
                 raise RuntimeError('Git API fallback does not support submodules.')
             if blob_sha not in known:
-                blob = api('POST', f'{REPO}/git/blobs', {'encoding': 'base64',
-                    'content': base64.b64encode(git('cat-file', 'blob', blob_sha)).decode('ascii')})
+                content = base64.b64encode(git('cat-file', 'blob', blob_sha)).decode('ascii')
+                for attempt in range(3):
+                    try:
+                        blob = api('POST', f'{REPO}/git/blobs', {'encoding': 'base64', 'content': content})
+                        break
+                    except RuntimeError as error:
+                        # GitHub occasionally rejects a valid blob request transiently.
+                        # Recreating a content-addressed blob cannot change the branch.
+                        transient = 'HTTP 400' in str(error) and 'malformed request' in str(error)
+                        if not transient or attempt == 2:
+                            raise RuntimeError(f'Blob upload failed: {name.decode("utf-8")} ({blob_sha}). {error}') from error
+                        print('GitHub temporarily rejected blob upload; retrying.', flush=True)
+                        time.sleep(2 ** (attempt + 1))
                 if blob['sha'] != blob_sha:
                     raise RuntimeError('Uploaded blob hash differs from local object.')
                 known.add(blob_sha)
