@@ -1,0 +1,12 @@
+---
+title: ""
+date: "2026-11-03T23:43:04+08:00"
+---
+
+::: {.log-photo-grid}
+
+![](/assets/log/20261103-234304-entry/photo-01.jpg)
+
+![](/assets/log/20261103-234304-entry/photo-02.jpg)
+
+:::
