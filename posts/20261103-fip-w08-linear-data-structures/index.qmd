@@ -1,0 +1,215 @@
+---
+title: "FIP W08 · 简单线性数据结构"
+description: "数组、链表、栈、队列与 deque 的基础操作和复杂度。"
+date: "2026-11-03T13:13:47+08:00"
+source-created: "2026-11-03T13:13:47+08:00"
+category-path: ["AI", "FIP", "学习笔记"]
+categories: ["学习笔记", "数据结构"]
+execute: {"enabled": false}
+toc-depth: 3
+---
+
+## 理论课内容
+
+
+课程材料：26FIP8 简单线性数据结构.pdf
+
+### 数组与链表
+
+
+**数据结构**是组织和存取数据的方式。选择结构时，先看需要频繁执行什么操作：按下标访问、在中间插删，还是按一定顺序取出。
+
+传统数组通常存放同类型元素，长度固定；Python的`list`长度可变、可以混合类型。Python列表内部连续存放的是**对象引用**，对象本身不一定连续。
+
+链表的每个结点保存数据和指向下一个结点的引用，结点不必连续存放。它不必移动后面的元素，但按位置查找时需要从头沿引用查找。
+
+| 操作 | 数组 / Python `list` | 单向链表 |
+|---|---|---|
+| 按下标访问 | $O(1)$ | $O(n)$ |
+| 头部插入 | $O(n)$，后续元素移动 | $O(1)$ |
+| 已知位置插入、删除 | 最坏$O(n)$ | 改链接$O(1)$ |
+
+链表删除需要已经持有**待删结点的前驱结点**；若先按值或下标寻找位置，查找仍需$O(n)$。链表结点分散，也可能不如连续存储有利于缓存。
+
+Python有`array`等专门的数组工具；日常通用序列通常使用`list`。
+
+### 栈：后进先出
+
+
+栈（Stack）遵循**LIFO (Last in First Out)**：最后入栈的元素最先出栈。主要操作是`push`入栈、`pop`出栈、`peek`查看栈顶。撤销操作和函数调用栈都符合这一顺序。
+
+```python
+strokes = []
+strokes.append("圆形")
+strokes.append("直线")
+strokes.append("矩形")
+strokes.pop()          # "矩形"
+strokes[-1]            # "直线"，查看但不删除
+```
+
+
+用`list`尾部`append`和`pop()`实现栈，两者均摊$O(1)$；空列表执行`pop()`或`stack[-1]`会抛出`IndexError`。
+
+#### 括号匹配
+
+
+右括号必须与**最近一个尚未匹配的左括号**配对，所以使用栈。下面约定输入只含六种括号：
+
+```python
+def is_valid(s):
+	stack = []
+	pairs = {')': '(', ']': '[', '}': '{'}
+	for ch in s:
+		if ch in '([{':
+			stack.append(ch)
+		else:
+			if not stack or stack[-1] != pairs[ch]:
+				return False
+			stack.pop()
+	return not stack
+```
+
+
+`{[()]}`依次压左括号入栈，再依次匹配出栈，最后栈空，返回`True`。要检查三种错误：右括号到来时栈空、栈顶类型不匹配、读完后栈里仍有左括号。`not stack or ...`利用逻辑短路，先避免访问空栈。
+
+每个字符最多入栈和出栈一次，时间$O(n)$；最坏情况下栈保存$n$个左括号，空间$O(n)$。
+
+### 队列：先进先出
+
+
+队列（Queue）遵循**FIFO (First in First Out)**：队尾入队，队首出队。打印任务、餐厅订单和广度优先搜索(BFS)都要求先来先处理。
+
+```python
+from collections import deque
+
+orders = deque()
+orders.append("A")         # 队尾入队
+orders.append("B")
+first = orders.popleft()  # 队头出队，得到 "A"
+```
+
+
+`list.pop(0)`虽然也能取队头，但删除后其余引用要前移，单次$O(n)$；连续取空$n$个元素总共需要$O(n^2)$。`deque.popleft()`从左端取出，单次$O(1)$，连续取空为$O(n)$。
+
+| 需求 | Python写法 | 顺序 |
+|---|---|---|
+| 栈 | `list.append()` / `list.pop()` | LIFO |
+| 队列 | `deque.append()` / `deque.popleft()` | FIFO |
+| 两端进出 | `deque`的左右端方法 | 按需求决定 |
+
+## 阅读材料补充
+
+
+课程材料：8 简单线性数据结构阅读材料.pdf
+
+### `deque`常用操作
+
+
+`deque`是双端队列，从`collections`导入。两端追加与弹出通常都是$O(1)$；它适合队列，但中间位置的随机访问是$O(n)$，不能代替列表频繁按下标访问。
+
+| 写法 | 作用 | 返回值 / 注意 |
+|---|---|---|
+| `deque(iterable)` | 用可迭代对象初始化 | 新`deque` |
+| `append(x)` / `appendleft(x)` | 右端 / 左端加入 | `None` |
+| `pop()` / `popleft()` | 右端 / 左端移除并返回 | 空队列抛`IndexError` |
+| `extend(xs)` / `extendleft(xs)` | 逐个加入右端 / 左端 | `extendleft`会使加入部分的顺序反转 |
+| `rotate(k)` | 循环移动 | 正数向右、负数向左；原地修改 |
+| `clear()` | 清空 | `None` |
+| `d[0]` / `d[-1]` | 查看两端 | 不删除；空队列不能取下标 |
+
+```python
+from collections import deque
+
+d = deque([1, 2, 3])
+d.extendleft([4, 5])  # deque([5, 4, 1, 2, 3])
+d.rotate(1)           # deque([3, 5, 4, 1, 2])
+
+recent = deque(maxlen=3)
+recent.extend([1, 2, 3, 4])  # deque([2, 3, 4])
+```
+
+
+设置`maxlen`后，`append`或`appendleft`在已满时会从另一端丢掉元素；这是有界缓存的行为，使用前要确认是否允许丢失旧数据。
+
+### 栈与队列的检查
+
+
+| 情况 | 要检查什么 |
+|---|---|
+| 右括号先出现 | 取栈顶前先判空 |
+| 读完还有左括号 | 最后返回`not stack`，不能直接返回`True` |
+| 空队列出队 | 先用`if d:`判断，或处理`IndexError` |
+| 用`list.pop(0)`做长队列 | 改用`deque.popleft()` |
+| 保存回溯路径 | 需要快照时用`path[:]`；直接保存`path`会共享同一列表 |
+
+## 研讨课内容
+
+
+课程材料：8 简单线性数据结构-研讨课.pdf
+
+### Git与GitHub
+
+
+Git是本地版本控制工具；GitHub可以托管远程Git仓库。一次`commit`记录暂存区的快照，`push`把本地提交上传到远程。
+
+```text
+工作区 ── git add ──> 暂存区 ── git commit ──> 本地仓库 ── git push ──> 远程仓库
+```
+
+
+| 命令 | 作用 |
+|---|---|
+| `git init` | 在当前目录初始化仓库 |
+| `git status` | 查看工作区和暂存区状态 |
+| `git add README.md` | 把文件当前内容加入暂存区 |
+| `git commit -m "说明"` | 提交暂存区快照 |
+| `git log --oneline` | 简要查看提交历史 |
+| `git remote -v` | 查看远程地址 |
+| `git push -u origin main` | 推送分支并设置上游 |
+
+### 第一次提交与推送
+
+
+在项目目录中写好`README.md`，记录组号、成员和日期：
+
+```bash
+git init
+git status
+git add README.md
+git commit -m "W8 研讨：第一次提交"
+git log --oneline
+```
+
+
+GitHub上新建空仓库后，将示例地址替换成自己的HTTPS地址：
+
+```bash
+git remote add origin https://github.com/用户名/仓库名.git
+git branch -M main
+git push -u origin main
+```
+
+
+若本地已有`README.md`，新建远程仓库时不预先创建同名文件，可减少首次推送时的历史冲突。推送完成后检查远程页面是否显示文件。
+
+### `.gitignore`与常见问题
+
+
+在仓库根目录创建`.gitignore`，例如：
+
+```gitignore
+__pycache__/
+*.pyc
+.vscode/
+.DS_Store
+```
+
+
+`.gitignore`只影响尚未被跟踪的文件；已跟踪的缓存需要先从Git索引中移除，规则才会生效。提交前用`git status`检查，避免加入缓存、密钥和密码。
+
+| 现象 | 检查 |
+|---|---|
+| `nothing to commit` | 用`git status`确认是否有改动、是否已经`add` |
+| `remote origin already exists` | 用`git remote -v`查看已有地址 |
+| `push`认证失败 | 检查远程地址与GitHub认证方式 |
+| `.gitignore`不起作用 | 检查文件是否已经被跟踪 |

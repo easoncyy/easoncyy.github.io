@@ -1,0 +1,3097 @@
+---
+title: "FIP · 期中复习笔记"
+description: "W1–W8 知识梳理、复杂度对照与考前练习。"
+date: "2026-11-03T13:50:28+08:00"
+source-created: "2026-11-03T13:50:28+08:00"
+category-path: ["AI", "FIP", "学习笔记"]
+categories: ["学习笔记", "期中复习"]
+execute: {"enabled": false}
+toc-depth: 3
+---
+
+> 范围：W1–W8理论课、阅读材料与研讨课。45分钟，纸质闭卷。选择20题40分，程序填空4题40分，程序输出4题20分。
+
+## 怎样使用这份笔记
+
+
+先复习语法、对象与边界，再逐段手推核心代码。选择题重点辨认返回值、前提与复杂度；填空题重点记住循环范围、状态更新、递归出口与合并；输出题必须追踪对象共享、调用顺序和输出格式。建议分配：选择12分钟、填空20分钟、输出9分钟、检查4分钟。
+
+上次月考考查了倒序循环、枚举GCD、函数参数与切片；本次提高练习加入了缓存、别名、递归返回与合并计数。
+
+## 覆盖地图
+
+
+| 主线 | 周次 | 核心 |
+|---|---|---|
+| 输入、表达式、分支与循环 | W1–W2 | 类型转换、短路、range、循环else、同步赋值 |
+| 函数与数值计算 | W2–W3 | 二分求根、牛顿、弦截、随机模拟、逐位加法 |
+| 序列与查找 | W3–W4 | 字符串、list、tuple、切片、参数、二分 |
+| 哈希与数据组织 | W5 | dict/set、冲突、计数、作用域、文件与异常 |
+| 递归与分治 | W6–W7 | 调用树、记忆化、归并、逆序对、快排、最大子段 |
+| 线性结构与工程工具 | W8及研讨 | 栈、队列、deque、Markdown、终端、Git、SDD |
+
+
+## 考前速查
+
+
+| 模式 | 第一检查点 | 第二检查点 |
+|---|---|---|
+| 哨兵统计 | 初始化在循环外 | 哨兵在累加前排除 |
+| 素数枚举 | $n<2$直接排除 | 平方根本身也要检查 |
+| 实数迭代 | 残差、步长、区间宽度分清 | 分母、最大次数、初值 |
+| 二分 | 排序前提与区间约定 | 单元素与空表 |
+| 哈希计数 | 首次get默认值 | 重复键是否要保留多位置 |
+| 递归 | Base Case与推进 | 返回值、重复状态 |
+| 归并 | 两半都递归 | merge剩余段 |
+| 逆序对 | 取右才加左边剩余 | 段内与跨段都计入 |
+| 快排 | pivot排除、相等值保留 | 已排序与全相等输入 |
+| 括号栈 | 右括号前判空 | 最后检查栈空 |
+| 队列 | FIFO两端操作 | 用deque避免头删搬移 |
+
+### 复杂度集中对照
+
+
+在基本数值操作视作常数成本的模型下：
+
+| 算法或操作            | 时间                        | 额外空间                 |
+| ---------------- | ------------------------- | -------------------- |
+| 线性查找 / 最值        | $O(n)$                    | $O(1)$               |
+| 下标二分（循环 / 递归）    | $O(\log n)$               | $O(1)$ / $O(\log n)$ |
+| 字典查找             | 平均$O(1)$，极端$O(n)$         | 建表$O(n)$             |
+| 朴素fib            | $O(2^n)$                  | 栈$O(n)$              |
+| 记忆化fib           | $O(n)$                    | 缓存与栈$O(n)$           |
+| 汉诺塔              | $O(2^n)$，移动$2^n-1$次       | 栈$O(n)$              |
+| 归并 / 逆序对         | $O(n\log n)$              | $O(n)$               |
+| 分治最大子段和          | $O(n\log n)$              | 下标版栈$O(\log n)$      |
+| Kadane / 维护最小前缀  | $O(n)$                    | $O(1)$               |
+| 首元素基准快排          | 平均$O(n\log n)$、最坏$O(n^2)$ | 新列表版不可当原地$O(1)$      |
+| list反复pop(0)取空   | $O(n^2)$                  | 原列表之外可为$O(1)$        |
+| deque反复popleft取空 | $O(n)$                    | 原队列之外$O(1)$          |
+
+折半不必然是$O(\log n)$：二分只走一边且本层常数工作；归并两边都走且每层线性合并。循环嵌套也应按实际边界求和，不能机械相乘。
+
+
+
+## W1 计算与程序基础
+
+
+课程材料：1 计算.pdf
+
+### 预备知识
+
+
+> **命令式编程语言** 
+> 命令是一行一行的，按照书写顺序依次执行
+
+Python程序保存在后缀为`.py`的文件中，可以被Python解释器执行。
+
+### IPO环节
+
+
+IPO=输入（input），处理（process），输出（output）
+这是一般的程序具备的三个基本环节。
+
+### 输出
+
+
+#### 函数`print()`
+
+
+- `print`函数将字符串参数打印在终端中作为输出
+- 多个字符串参数使用逗号连接，默认使用空格连接
+- 可选参数`end`缺省为`'\n'`即换行符，也即`print()`函数每次打印完内容会自动换行，可以通过设置`end=' '`或者其他字符来改变末尾的输出
+
+### 输入
+
+
+#### 函数`input()`
+
+
+- 读入用户在终端中输入的一行作为函数的返回结果
+- 用户的键盘输入在按下[Enter]之后才会被函数读取
+- `input()`函数的返回值是一个字符串，即使输入的是数字
+- 可以向`input()`函数传递一个字符串参数作为终端中输入的提示词
+
+```python
+number = int(input("Enter your favorite number:"))
+# 终端中显示效果如下
+# Enter your favorite number:
+```
+
+
+### 变量
+
+
+变量是值的名字，在Python中使用`=`进行赋值。先算右边，再让左边的名字指向这个值；赋值不是数学上的相等关系。
+
+#### 变量命名规则
+
+
+- 必须以字母、下划线开头，后面可以跟任意数量的字母，数字，下划线
+- 变量名**区分**大小写
+- 变量名**不能**含有空格
+- 变量名**不能**以数字开头
+- 变量名**不能**与Python中的关键字（keywords）重复
+- 变量名**不要**与内置函数名重复；语法上允许，但会覆盖原来的名字，如`sum = 0`后不能直接调用`sum()`
+
+### 数据类型
+
+
+Python中数据类型有很多，之后会进行介绍，这里先讨论基本的三类
+
+#### 函数`type()`
+
+
+- 将一个变量作为参数传递给`type()`函数，会返回变量储存值的数据类型，基本的有：
+	- `int`：整型
+	- `float`：浮点型
+	- `str`：字符串
+	数据类型间的差异之后再进行介绍
+
+#### 数据类型转换函数
+
+
+- `int()`函数：把可以转变的字符串，或浮点型转换为整型，对于浮点数来说，这进行的是**向零取整**，即砍掉小数部分
+- `float()`函数：把可以转变的字符串，或整型转换为浮点型
+- `str()`函数：把浮点型，整型转换为一个字符串
+
+### 计算
+
+
+#### 表达式(expression)
+
+
+表达式是由运算数(oprand)和运算符(operator)组成的用于计算的式字
+
+#### 运算数
+
+
+Python是动态类型语言，同一个变量可以先后指向不同类型的值。不同类型能否运算要看具体规则，如`1 + 2.0`可以，`'1' + 2`会报错。
+
+#### 数字运算符
+
+
+Python中数字的运算符主要有如下类型
+
+| 符号   | 计算  | 结合   |
+| ---- | --- | ---- |
+| `+`  | 加法  | 自左向右 |
+| `-`  | 减法  | 自左向右 |
+| `*`  | 乘法  | 自左向右 |
+| `/`  | 除法  | 自左向右 |
+| `//` | 向下取整的除法 | 自左向右 |
+| `%`  | 取余  | 自左向右 |
+| `**` | 乘方  | 自右向左 |
+> 乘方自右向左扫描的含义是`2 ** 3 ** 2 == 2 ** (3 ** 2)`
+
+### 赋值
+
+
+- 赋值语句把一个值和一个变量绑定在一起，我们说“把一个值赋给一个变量”，这是一个动态的操作，而不是一种静态的关系
+
+#### 自增/自减
+
+
+Python中如下的写法是很常见的，含义就是一种快速的计算+赋值写法。
+
+```python
+total = total + item
+total += item
+total -= item
+total /= item
+...
+```
+
+
+### 关系运算符
+
+
+Python中关系运算符主要有如下类型
+
+| 运算符  | 描述     |
+| ---- | ------ |
+| `==` | 判断等于   |
+| `!=` | 判断不等于  |
+| `>`  | 判断大于   |
+| `<`  | 判断小于   |
+| `>=` | 判断大于等于 |
+| `<=` | 判断小于等于 |
+关系表达式的结果属于一种数据类型，称为**布尔型**(`bool`)。
+布尔型只包含两个值`True`和`False`一般来说也可以用1和0代之。
+
+### 运算符的优先级
+
+
+- 算术运算符优先级高于关系运算符
+- 关系运算符优先级高于赋值运算符
+- 括号可以改变运算优先级
+
+### 循环语句
+
+
+#### `while`循环
+
+
+Python中`while`循环是一种基于条件的循环，当`while`关键字后面的表达式值为`True`时，就重复运行循环体中的代码
+
+#### `break`关键字
+
+
+`break`关键字可以跳出**当前循环体所在的循环**，注意，在有嵌套的情况下，`break`跳出的也只有一层循环。
+
+### 典型计算
+
+
+#### 时间差
+
+
+先统一成分钟，再用`//`和`%`拆回小时、分钟。若题目允许跨过午夜，负差值加一天。
+
+```python
+diff = h2 * 60 + m2 - (h1 * 60 + m1)
+if diff < 0:
+    diff += 24 * 60
+print(diff // 60, diff % 60)
+```
+
+
+#### 哨兵与平均数
+
+
+```python
+total, count = 0, 0
+while True:
+    x = int(input())
+    if x == -1:
+        break
+    total += x
+    count += 1
+if count > 0:
+    print(total / count)
+```
+
+- 初始化放在循环外；哨兵不参与计算，先判断再累加
+- 没有有效数据时不能直接除以`count`
+
+
+### 一行读入多个数
+
+
+```python
+h, m = map(int, input().split())
+```
+
+- `input()`读一整行，`split()`按空白拆开，`map(int, ...)`逐项转为整数
+- 左边变量个数要与输入段数一致，浮点数用`map(float, ...)`
+
+### 格式化输出
+
+
+```python
+print(1, 2, sep='-', end='!')  # 1-2!，不换行
+print(f'{3.5:.2f}')           # 3.50
+```
+
+- `sep`控制参数之间的分隔，默认空格；`end`控制末尾，默认换行
+- `:.2f`保留两位小数，格式化字符串前要加`f`
+- `print()`负责输出，返回值是`None`
+
+### 运算注意
+
+
+- `/`得到浮点商，`//`向下取整；`int()`是向零截断，两者对负数可能不同
+- `int('3.5')`报错；`int(float('3.5'))`得到`3`
+- `2 ** 3 ** 2`是`2 ** (3 ** 2)`；`-2 ** 2`是`-(2 ** 2)`
+- `'1' + '2'`得到`'12'`；`'2' * 3`得到`'222'`
+
+### 文件与终端
+
+
+- `.py`是Python源文件；改代码后先保存再运行
+- 相对路径从当前工作目录出发，绝对路径从磁盘或根目录出发
+- `cd`切换目录，`dir`或`ls`查看文件，`python 文件名.py`运行程序
+
+### PTA W1 · 1D02《跑步配速》
+
+
+输入一行距离（千米，浮点数）和用时（分钟），输出平均每公里用时，保留两位小数；距离为$0$时输出`0.00`。例如输入`5 25`，输出`5.00`。
+
+```python
+distance, minutes = map(float, input().split())
+pace = minutes / distance if distance != 0 else 0.0
+print(f'{pace:.2f}')
+```
+
+
+
+## W2 枚举与减治
+
+
+课程材料：26FIP2 枚举与减治.pdf
+
+### 分支
+
+
+```python
+if condition:
+    ...
+else:
+    ...
+```
+
+- 条件成立执行`if`，否则执行`else`，两者只走一个
+- `else`与对应的`if`对齐；多个独立`if`则可能都执行
+
+### 逻辑运算
+
+
+| 运算符 | 含义 | 短路规则 |
+| ---- | ---- | ---- |
+| `and` | 都成立 | 左边为假，不算右边 |
+| `or` | 至少一个成立 | 左边为真，不算右边 |
+| `not` | 取反 | 优先级高于`and`和`or` |
+
+`0`、空字符串、空容器、`None`为假。`and`、`or`返回选中的操作数，不一定是布尔值，如`0 or 7`得到`7`。
+
+### `for`与`range`
+
+
+```python
+for i in range(2, 6):
+    print(i)  # 依次输出2、3、4、5
+```
+
+
+| 写法                | 产生的整数   |
+| ----------------- | ------- |
+| `range(4)`        | 0、1、2、3 |
+| `range(2, 5)`     | 2、3、4   |
+| `range(5, 0, -2)` | 5、3、1   |
+
+- **左闭右开**，不包含终点；步长不能为0，参数须为整数
+- `range(5, 2)`为空，不执行循环体
+- 次数已知用`for`，直到条件满足或读到哨兵用`while`
+
+#### `break`、`continue`与循环`else`
+
+
+- `break`退出当前循环；`continue`跳过本轮剩余语句，进入下一轮
+- 循环正常结束时执行`else`；通过`break`退出则不执行
+- 空循环也会执行`else`；`continue`不会取消`else`
+
+### 枚举(Enumeration)
+
+
+逐一检查有限的候选解，不遗漏、不重复。最坏情况要考虑全部候选。
+
+#### 素数判断
+
+
+若$n$有非平凡因子，至少一个不大于$\sqrt n$，所以只需检查到平方根。
+
+```python
+def is_prime(n):
+    if n < 2:
+        return False
+    for d in range(2, int(n ** 0.5) + 1):
+        if n % d == 0:
+            return False
+    return True
+```
+
+- `0`、`1`不是素数；`2`是素数
+- 平方根边界要包含，如`49`须检查到`7`
+- 朴素检查到$n-1$为$O(n)$，平方根界为$O(\sqrt n)$
+
+### 减治(Decrease and Conquer)
+
+
+每一步缩小问题规模，直到能直接求解。
+
+#### 辗转相除法
+
+
+$$
+\gcd(a,b)=\gcd(b,a\bmod b)
+$$
+
+```python
+while b != 0:
+    a, b = b, a % b
+print(a)
+```
+
+- **同步赋值**先计算右边所有旧值，再赋给左边
+- 不能改成`a = b`后再`b = a % b`，后一句的`a`已经变了
+- 例如`(48, 18) → (18, 12) → (12, 6) → (6, 0)`，最大公约数为`6`
+- 若求最小公倍数，先保存原来的乘积，再除以最大公约数（此处考虑正整数）
+
+#### 二分法求根
+
+
+连续函数在端点异号的区间内至少有一个根。每次取中点，保留仍包围根的一半。
+
+```python
+# 已知f连续，f(left) < 0 < f(right)
+while right - left > eps:
+    mid = (left + right) / 2
+    if f(mid) < 0:
+        left = mid
+    else:
+        right = mid
+root = (left + right) / 2
+```
+
+- 实数中点用`/`；每次区间宽度减半
+- 端点同号只表示不能用异号条件保证有根，**不能断言无根**
+- 区间宽度、残差`abs(f(x))`、相邻估计值差是不同的终止标准，看题目要求
+- 中点误差不超过最终区间宽度的一半；浮点数一般不用`==`判断近似相等
+
+
+### `math`模块
+
+
+```python
+import math
+math.sqrt(9)   # 3.0
+math.sin(math.pi / 2)  # 三角函数参数用弧度
+```
+
+`sqrt()`返回浮点数，作为`range`上界时要转为整数并检查右开边界。`eval()`把字符串当表达式执行，不适合直接处理不可信输入；函数公式优先用`def`或`lambda`。
+
+### PTA W2 · 2D02《零钱店铺》
+
+
+给定金额$x$（分），用$1$分、$2$分、$5$分硬币凑出，输出所有方案的三种硬币数量。数量允许为$0$，按$1$分枚数最外层、$5$分枚数最内层的循环顺序输出。例如$x=5$时，依次输出`0 0 1`、`1 2 0`、`3 1 0`、`5 0 0`。
+
+```python
+def coin_plans(x):
+    plans = []
+    for a in range(x + 1):
+        for b in range(x // 2 + 1):
+            for c in range(x // 5 + 1):
+                if a + 2 * b + 5 * c == x:
+                    plans.append((a, b, c))
+    return plans
+```
+
+
+这是按题面范围枚举的函数版，调用方逐行打印方案。可缩小范围提高效率，但不能改变要求的输出次序。
+
+
+## W3 迭代、模拟与函数
+
+
+课程材料：26FIP3 迭代与模拟.pdf
+
+### 迭代
+
+
+反复执行同一个规则，前一步的结果作为下一步的输入，逐渐得到足够好的近似解。
+
+#### 牛顿迭代法(Newton-Raphson Method)
+
+
+用当前点的切线与横轴交点作为下一次估计。
+
+$$
+x_{k+1}=x_k-\frac{f(x_k)}{f'(x_k)}
+$$
+
+求$a$的平方根，令$f(x)=x^2-a$，得到：
+
+$$
+x_{k+1}=\frac{x_k+a/x_k}{2}
+$$
+
+```python
+def root(a, eps):
+    if a == 0:
+        return 0.0
+    x = max(1.0, a)
+    while abs(x * x - a) >= eps:
+        x = (x + a / x) / 2
+    return x
+```
+
+- 此函数假设`a >= 0`、`eps > 0`；`a=0`单独处理
+- 牛顿法需要导数，单根附近二阶收敛，但初值不合适可能不收敛
+- 分母不能为0；`a / x`不能写成`a // x`
+
+#### 弦截法(Secant Method)
+
+
+用最近两个点的割线代替切线，不需要导数。
+
+$$
+x_{k+1}=x_k-f(x_k)\frac{x_k-x_{k-1}}{f(x_k)-f(x_{k-1})}
+$$
+
+```python
+def secant(f, prev, curr, eps):
+    for _ in range(100):
+        fp, fc = f(prev), f(curr)
+        if abs(fc) < eps:
+            return curr
+        if abs(fc - fp) < 1e-12:
+            return None
+        nxt = curr - fc * (curr - prev) / (fc - fp)
+        prev, curr = curr, nxt
+    return None
+```
+
+- 需要两个初值，不要求端点异号；也可能不收敛
+- 先检查当前点是否已满足精度，再检查分母
+- `f`是可调用的函数，取值写`f(x)`，不能写`eval(x)`
+- 对$f(x)=x^2-2$，初值`1、2`，下一点为$4/3$
+
+### 蒙特卡洛方法
+
+
+在单位正方形随机取$n$个点，其中$m$个在四分之一单位圆内，估算$\pi\approx4m/n$。
+
+```python
+import random
+random.seed(42)
+hits = 0
+for _ in range(n):
+    x, y = random.random(), random.random()
+    if x * x + y * y <= 1:
+        hits += 1
+print(4 * hits / n)
+```
+
+- `random.random()`范围是`[0, 1)`；`seed`用于复现，不保证结果更准确
+- `n`须大于0；样本更多通常统计误差更小，不保证每一次结果都更准
+- 典型误差量级为$O(1/\sqrt n)$，误差缩小10倍通常需约100倍样本
+- 布丰投针在针长$L\le d$时，相交概率$P=2L/(\pi d)$
+
+### 大数加法
+
+
+字符串逐位模拟竖式，从个位算起：本位为`total % 10`，进位为`total // 10`。
+
+```python
+def big_add(a, b):
+    result, carry, i = '', 0, 1
+    while i <= max(len(a), len(b)) or carry:
+        da = int(a[-i]) if i <= len(a) else 0
+        db = int(b[-i]) if i <= len(b) else 0
+        total = da + db + carry
+        result = str(total % 10) + result
+        carry = total // 10
+        i += 1
+    return result
+```
+
+- 假设输入为非空的非负整数字符串，短数缺位补0
+- 有最高位进位时须多算一轮；新数位放在结果左边
+- Python的`int`本身支持任意精度，逐位模拟是为了学习算法
+- 字符串不可变；`x ** 2`并非用泰勒展开实现，不能据此判断效率
+
+### 多分支`if-elif-else`
+
+语句示例
+
+```python
+if condition1:
+	statement1
+elif condition2:
+	statement2
+else:
+	statement_default
+```
+
+作为一整个语句块，执行的顺序是**从上到下**，在**第一个为真的分支**执行过后**跳过后续所有分支**。
+需要注意多分支语句与多个`if`语句判断的区别，多个独立的`if`语句会执行多次判断，而非互斥的分档。
+条件顺序也是优先级，分档时一般从严到宽，如先判断`>= 90`，再判断`>= 60`，否则高分会提前落入低档。
+
+### 条件表达式
+
+形式为
+
+```text
+<条件为真时的值> if <条件> else <条件为假时的值>
+```
+
+经典示例就是刚才写过的大数字符串加法缺位补零。
+**先判断条件，只计算选中的一侧**；先访问越界下标，再用条件选择结果，仍会报错。
+
+### `lambda`函数
+
+`lambda`函数是一种用一个语句就能定义的简单函数，形式为
+
+```text
+lambda <自变量>: <表达式>
+```
+
+表达式也可以是条件表达式，此外还可以经常和`map()`函数嵌套使用
+
+```python
+double = list(map(lambda x: x * 2, lst))
+```
+
+- 表达式的值自动作为返回值，不能写普通赋值或多条语句
+- 可以没有参数，也可以有多个参数：`lambda: 0`、`lambda x, y: x + y`
+- 逻辑较长或需要多分支时用`def`
+
+### 函数的参数
+
+#### 位置参数(positional argument)
+
+按照顺序对应的参数。
+
+#### 关键字参数(keyword argument)
+
+调用时将实参赋值给对应的形参。**位置参数要写在关键字参数前面**
+
+#### 默认参数
+
+省略实参时使用默认值；普通参数列表中，有默认值的形参放在无默认值的形参后面。
+
+```python
+def add(a, b=1):
+    return a + b
+
+add(3)       # 4
+add(3, b=2)  # 5
+```
+
+默认值在执行`def`时只求值一次，默认列表会被多次调用共享。需要每次新建时用`None`：
+
+```python
+def put(x, bag=None):
+    if bag is None:
+        bag = []
+    bag.append(x)
+    return bag
+```
+
+#### 可变数量参数
+
+定义处将多余实参**打包**，调用处才用`*`、`**`解包：
+
+```python
+def f(*args):        # args是元组，收集多余位置实参
+	...
+
+def g(**kwargs):     # kwargs是字典，收集多余关键字实参
+	...
+```
+
+
+### 返回值与函数对象
+
+
+- `return 值`返回结果并立即结束函数，后面的语句不执行
+- 单独`return`或执行到函数末尾，返回`None`
+- `return a, b`返回元组`(a, b)`；打印结果不能代替返回结果
+- 传函数写`f`，调用函数写`f(x)`；公式字符串不是可调用的函数
+
+### 类型注解与文档字符串
+
+
+```python
+def square(x: float) -> float:
+    """返回x的平方，如square(2.0)得到4.0。"""
+    return x * x
+```
+
+- `x: float`说明参数类型，`-> float`说明返回类型，默认不强制检查
+- 函数体第一条字符串是文档字符串（docstring），可用`help(square)`查看
+- 文档写清做什么、边界和样例；`assert 条件`可检查约定，条件为假时抛出`AssertionError`（了解）
+
+### 作用域简介
+
+- 函数体内部的变量名是**局部**的，函数体外无法调用
+- 函数**可以读取**函数外的全局变量，但是要在函数内给全局名赋值，需要使用`global`关键字
+- 形参也是局部名
+- 局部名字不影响外部同名变量，但若传入列表后原地修改，外面也能看到变化
+
+### `eval`函数
+
+`eval(表达式字符串)`允许把字符串当Python表达式进行上下文求值，但是注意只能是表达式，不能是语句。
+不建议使用的原因有
+- 字符串输入不安全容易被注入
+- 公式和变量储存在字符串里容易类型或计算出错
+- 报错不如正常函数清晰不易于调试
+
+### `random`模块
+
+伪随机数模块，使用蒙特卡洛方法时需要调用。要注意设置种子保证环境一致。
+
+#### 常用函数
+
+##### `random.seed(a=None, version=2)`
+
+初始化伪随机数生成器，相同的种子和后续调用序列可以获得同一串伪随机数。
+需要注意的是一般种子在程序开头设置一次即可，在循环里反复设置会导致随机性丢失。
+
+##### `random.random() -> float`
+
+获得$[0.0, 1.0)$上**均匀**分布的浮点数
+
+##### `random.uniform(a, b) -> float`
+
+获得a与b之间**均匀**分布的浮点数，是否包含端点是实现定义的。
+端点顺序可以颠倒，另一端是否取到与浮点舍入有关。
+
+##### `random.randint(a, b) -> int`
+
+返回**闭区间**上的随机整数。
+
+##### `random.randrange(stop)/ random.randrange(start, stop[, step]) -> int`
+
+等价于`choice(range(...))`开闭规则和`range`一致。
+
+##### `random.choice(seq)`
+
+从非空序列中随机获取一个元素。
+空序列会引发`IndexError`。
+
+##### `random.shuffle(seq)`
+
+**原地**随机打乱**可变**序列。
+返回`None`，不要写`lst = random.shuffle(lst)`。
+
+##### `random.sample(population, k) -> list`
+
+无放回随机抽样$k$个，返回抽中元素组成的新列表。
+`0 <= k <= len(population)`，不改变原序列；总体有重复值时，抽出的值仍可能重复。
+
+#### 其他函数（了解）
+
+
+- `random.choices(seq, k=n)`：有放回抽样，返回列表
+- `random.gauss(mu, sigma)`、`random.normalvariate(mu, sigma)`：正态分布
+- `random.getrandbits(k)`：返回由`k`个随机比特构成的非负整数
+- `import random`后调用`random.random()`；只有`from random import random`后才能直接调用`random()`
+
+### 字符串补充
+
+
+#### 字面量与转义
+
+
+- 单引号、双引号都可表示字符串，三引号可以跨行
+- `\n`换行，`\t`制表，`\\`反斜杠；原始字符串如`r'C:\new'`不把`\n`当换行
+- 字符串遍历得到的是长度为1的字符串，计算数字前要转换，如`int(ch)`
+- `s += t`得到新字符串再重新绑定名字，原字符串不变
+
+#### 内置函数
+
+
+| 写法 | 返回结果 |
+| ---- | ---- |
+| `min(s)` / `max(s)` | 按码位最小 / 最大的字符；空串报错 |
+| `sorted(s)` | 排序后的字符**列表**，拼回字符串用`''.join(sorted(s))` |
+| `reversed(s)` | 反向迭代器，拼回用`''.join(reversed(s))` |
+| `ord('A')` / `chr(65)` | 字符转码位 / 码位转字符 |
+| `repr(s)` | 显示引号、转义等表示，便于看清内容（了解） |
+
+#### 查找与计数
+
+
+| 方法 | 含义 |
+| ---- | ---- |
+| `find(sub)` / `rfind(sub)` | 首次 / 末次出现的下标，找不到返回`-1` |
+| `index(sub)` / `rindex(sub)` | 同上，但找不到抛出`ValueError` |
+| `count(sub)` | **不重叠**的出现次数，如`'aaa'.count('aa')`为`1` |
+| `startswith(prefix)` / `endswith(suffix)` | 判断前缀 / 后缀，返回布尔值 |
+
+#### 分割、拼接与去除
+
+
+- `split()`按空白分割，连续空白合并；`split(',')`按指定分隔符分割，可能留下空串
+- `rsplit(sep, maxsplit)`从右分割，`splitlines()`按行分割
+- `partition(sep)`返回`(前, 分隔符, 后)`三元组，找不到时返回`(原串, '', '')`
+- `replace(old, new, count)`至多替换`count`次，省略则全部替换
+- `join()`的元素必须是字符串，`''.join([1, 2])`会报错
+- `strip(chars)`删除两端属于指定**字符集合**的字符，不是删除固定子串；删固定前后缀用`removeprefix()`、`removesuffix()`
+
+#### 其他方法（了解）
+
+
+- `capitalize()`首字符大写，其余小写；`title()`单词首字母大写；`swapcase()`交换大小写；`casefold()`用于忽略大小写比较
+- `ljust()`、`rjust()`、`center()`对齐填充；`zfill(width)`左侧补零；`expandtabs()`展开制表符
+- `isalpha()`、`isalnum()`、`isspace()`等返回布尔值；`isdigit()`为真不一定能转成`int`，如`'²'`，大数题通常限定`'0'`到`'9'`
+- `encode()`把字符串转成字节串，`decode()`把字节串转回字符串
+- `format(3.14159, '.2f')`得到`'3.14'`；字符串也有`.format()`、`.format_map()`，日常优先用f-string
+
+### 迭代终止与数值测例
+
+
+- `abs(f(x)) < eps`检查**残差**；`abs(x_new - x_old) < eps`检查**变化量**，不能随意替换
+- `eps`太大可能停得早，太小可能因浮点误差停不下来；可加最大迭代次数
+- 更新前检查危险分母：牛顿法的`f'(x)`，弦截法的`f(curr) - f(prev)`
+- 比较结果时统一公式、初值、`eps`；随机模拟还要统一`seed`和调用顺序
+- 手算一步、检查已知根和边界；大数加法注意`'999' + '1'`及不等长输入
+- `1e-3`表示$10^{-3}$，不要写成`1^-3`
+
+### PTA W3 · 3B02《账本余额合并》
+
+
+输入两行非负整数的数字字符串，用竖式相加，输出数字字符串结果。样例`7234`和`5678`相加得到`12912`。不等长时短数缺位补$0$，最高位进位不能丢。完整`big_add`代码见本周“大数加法”，这里关注填空的类型：
+
+
+本位和为`digit_a + digit_b + carry`，当前位必须写`str(total % 10)`才能拼接字符串；进位为`total // 10`。盲盒抽检先设一次`seed`，再统计`random.random() < p`的次数并除以模拟次数。
+
+### PTA W3 · 3D02《盲盒抽检》
+
+
+给定正整数模拟次数`n`、随机种子`seed`和隐藏款概率`p`（$0<p<1$），每次生成$[0,1)$随机数，小于`p`即算命中，返回命中比例。要求先设种子再模拟。样例`n=100000, seed=42, p=0.08`，裁判保留三位小数输出`0.080`。
+
+```python
+def estimate_rate(n, seed, p):
+    import random
+    random.seed(seed)
+    hits = 0
+    for _ in range(n):
+        if random.random() < p:
+            hits += 1
+    return hits / n
+```
+
+
+## W4 序列与查找
+
+
+课程材料：26FIP4 序列与查找.pdf
+
+### 列表与元组
+
+
+- 列表`[1, 2]`是可变序列，字符串、元组是不可变序列
+- “序列有序”表示有先后位置，不表示已经按值排序
+- 单元素元组必须有逗号：`(1,)`；`(1)`只是整数
+
+#### 别名与浅拷贝
+
+
+```python
+a = [1, 2]
+b = a        # 同一对象
+c = a[:]     # 新列表
+b[0] = 9
+print(a, c)  # [9, 2] [1, 2]
+```
+
+- `a[:]`、`a.copy()`、`list(a)`都是浅拷贝，内层可变对象仍共享
+- ``[0]` * 3`的三个内层列表是同一对象；独立列表用`[[0] for _ in range(3)]`
+- 元组槽位不能替换，但其中引用的列表仍可修改
+
+#### 基本操作
+
+
+| 写法 | 含义 / 返回值 |
+| ---- | ---- |
+| `append(x)` | 末尾追加一个元素，返回`None` |
+| `extend(xs)` | 把多个元素逐项追加，返回`None` |
+| `pop()` | 删除并返回末尾元素 |
+| `remove(x)` | 删除第一个相等元素；不存在报错 |
+| `index(x)` | 首次出现的下标；不存在报错 |
+| `count(x)` | 出现次数 |
+| `sort()` / `reverse()` | 原地排序 / 反转，返回`None` |
+| `sorted(xs)` | 返回排序后的新列表 |
+
+- 列表的`+`、`*`产生新列表；`+=`对列表通常原地扩展
+- `in`查列表中的单个元素，`[1, 2] in [1, 2, 3]`为`False`
+- 序列按字典序比较，共同前缀相同时短序列更小，不补零
+- 字符串比较按Unicode码位，不是按汉字笔画
+
+### 最值查找
+
+
+先用第一个值作初值，再逐个比较更新；不要随意用0作最大值初值，否则全为负数时出错。
+
+```python
+def max_index(lst):
+    if not lst:
+        return -1
+    idx = 0
+    for i in range(1, len(lst)):
+        if lst[i] > lst[idx]:
+            idx = i
+    return idx
+```
+
+`>`保留第一次最大值位置，`>=`保留最后一次。`min`、`max`只返回值；空序列没有默认值时会报错。
+
+### 线性查找
+
+
+```python
+def linear_search(lst, target):
+    for i in range(len(lst)):
+        if lst[i] == target:
+            return i
+    return -1
+```
+
+- 无序表也能查，返回第一次匹配的位置
+- 最坏比较$n$次，时间$O(n)$；额外空间$O(1)$
+- `-1`表示没找到，不能直接拿它索引列表，否则会读到最后一项
+
+### 二分查找
+
+
+```python
+def binary_search(lst, target):
+    left, right = 0, len(lst) - 1
+    while left <= right:
+        mid = left + (right - left) // 2
+        if lst[mid] == target:
+            return mid
+        elif lst[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return -1
+```
+
+- 前提是按查找所用的规则**升序排列**；按时间排列不代表按温度值升序
+- 闭区间`[left, right]`，相等时还有一个候选，所以用`<=`
+- 每次排除中点，用`mid + 1`或`mid - 1`；空表直接返回`-1`
+- 定长整数中`left + right`可能溢出，改用区间差算中点；Python整数通常无此问题
+- 重复值返回某一次匹配，不保证首次；要首次则记录答案后继续向左查
+
+#### 手推边界
+
+
+对`[2, 5]`查`5`：先`left=0, right=1, mid=0`，再`left=1, right=1, mid=1`，返回`1`。若用`left < right`，会漏掉最后一步。
+
+### 复杂度
+
+
+| 操作 | 时间复杂度 |
+| ---- | ---- |
+| 列表按下标读写 | $O(1)$ |
+| 列表末尾`append`、`pop()` | 均摊$O(1)$ |
+| 列表头删、中间插入、按值查找 | $O(n)$ |
+| 找最值、线性查找（最坏） | $O(n)$ |
+| 二分查找（最坏） | $O(\log n)$ |
+| 一般排序 | $O(n\log n)$ |
+
+- 大$O$表示规模增大时的增长趋势，不是具体秒数
+- 忽略常数和低阶项，如$3n+2$为$O(n)$；循环每次折半为$O(\log n)$
+- 无序数据只查一次，通常直接线性查找；多次查找才考虑先排序
+- 排序后返回的是新顺序的下标，不自动对应原下标
+
+
+### 遍历与函数参数
+
+
+```python
+for i, x in enumerate([10, 20]):
+    print(i, x)
+```
+
+#### `enumerate`：同时取得编号和元素
+
+
+`enumerate(iterable, start=0)`依次产生`(编号, 元素)`，循环中用两个变量拆开。默认从$0$编号；`start`只改变编号的起点，**不会跳过元素或改变原序列的下标**。
+
+```python
+names = ['甲', '乙', '丙']
+print(list(enumerate(names)))           # [(0, '甲'), (1, '乙'), (2, '丙')]
+print(list(enumerate(names, start=1)))  # [(1, '甲'), (2, '乙'), (3, '丙')]
+```
+
+
+只需要值时用`for x in names`；同时需要位置和值时用`for i, x in enumerate(names)`。若使用`start=1`，得到的是从$1$开始的编号，不能直接拿它当原列表下标。
+
+#### `zip`：把多个序列按位置配对
+
+
+`zip(a, b, ...)`依次取各序列的第一个、第二个……元素，组成元组。默认任何一边耗尽就结束，所以结果长度等于最短输入的长度；它不会补齐较短的一边。
+
+```python
+names = ['甲', '乙', '丙']
+scores = [90, 85]
+print(list(zip(names, scores)))  # [('甲', 90), ('乙', 85)]
+for name, score in zip(names, scores):
+    print(name, score)
+```
+
+
+`enumerate`与`zip`返回的都是迭代器，按需产生结果；直接`print(zip(...))`不会打印配对内容，要看完整结果可先转成`list`。同一个迭代器被取完后，再遍历不会从头开始，需要重新创建。
+
+#### `any`与`all`：检查一组条件
+
+
+两者接收可迭代对象，按每个元素的**真值**判断，不要求元素本身是`True`或`False`。数值$0$、空字符串、空容器和`None`为假，其余常见非空值为真。
+
+| 函数 | 返回`True`的条件 | 短路时机 | 空输入 |
+|---|---|---|---|
+| `any(xs)` | 至少一个元素为真 | 遇到第一个真值就停止 | `False` |
+| `all(xs)` | 所有元素都为真 | 遇到第一个假值就停止 | `True` |
+
+```python
+print(any([0, '', 3]))             # True
+print(all([1, 'x', []]))           # False
+print(any(x < 0 for x in [2, -1])) # True，是否存在负数
+print(all(x >= 0 for x in [2, 0])) # True，是否全部非负
+print(any([]), all([]))           # False True
+```
+
+
+空输入里找不到一个真值，所以`any([])`为`False`；也找不到违反“全部为真”的反例，所以`all([])`为`True`。如果题目要求“列表非空且所有元素满足条件”，要写`bool(xs) and all(条件 for x in xs)`。
+
+短路只停止继续取元素：`any(f(x) for x in xs)`会按需调用`f`；若写成`any([f(x) for x in xs])`，列表中的函数调用在进入`any`前就已全部完成。
+
+#### 参数打包与解包
+
+
+- 定义处`*args`收集额外位置参数为元组，`**kwargs`收集关键字参数为字典
+- 调用处`*xs`拆开序列，`**d`拆开关键字参数；`max(xs)`和`max(*xs)`调用形式不同
+- `key=`接收单参数函数，如`sorted(xs, key=abs)`；不能写`sorted(xs, abs)`
+
+### PTA W4 · 4D02《全频捕获》
+
+
+给定无序整数频率表，返回目标频率出现的全部原下标，按从左到右排列；不存在返回空列表。接口为`all_hits(freqs, target)`，函数不打印。例：`[10,20,10,30,10]`中查`10`，返回`[0,2,4]`；裁判遇到空列表时打印`-1`。
+
+```python
+def all_hits(freqs, target):
+    hits = []
+    for i, value in enumerate(freqs):
+        if value == target:
+            hits.append(i)
+    return hits
+```
+
+
+
+## W5 哈希、字典与集合
+
+
+课程材料：26FIP5 哈希.pdf
+
+### 回顾查找算法
+
+#### 遍历查找
+
+如果每次遍历查找，时间复杂度是$O(n)$。
+
+#### 二分查找
+
+在排序基础上每次二分查找时间复杂度是$O(\log n)$。
+
+**有没有更快的方法？** 如果能通过键算出槽位，就可以先定位，再检查该槽位的键。
+
+### 哈希的核心思想
+
+**哈希**把“键”输入哈希函数，得到槽位索引，再检查该槽位是否对应目标键。
+
+```text
+哈希的工作流程
+键 -> 哈希函数 -> 槽位 -> 检查键 -> 取值
+```
+
+哈希先算槽位，再检查冲突位置上的键。查找平均$O(1)$；极端冲突时可能退化为$O(n)$，计算哈希值本身也有成本。
+
+### 哈希的设计方法
+
+
+#### 大小选择
+
+教学中的取模哈希常选**素数**作为表长，减少某些规律性输入的聚集，但不保证没有冲突。Python的`dict`不要求表长为素数。
+
+#### 实际案例
+
+假设我们有传感器ID：
+
+```text
+S-042, S-117, S-205, S-333, S-055
+```
+
+设计一个大小为**13**的哈希表，函数规则为提取数字部分再对表的大小取模
+
+```python
+def hash_func(key, table_size):
+	num = int(key.split("-")[1])
+	return num % table_size
+```
+
+但是`S-042`和`S-055`会算出同一个值，这就是**哈希冲突**。
+**冲突是不可避免的**，根据Pigeonhole Principle，键的空间比表的空间大的时候冲突必然会发生。所以关键在于**处理冲突**，而**非避免冲突**。
+
+### 冲突处理
+
+#### 开链法 Separate Chaining
+
+相当于每一个槽位储存的是一个列表，而不是单一的值，**冲突发生**后，就把新元素加到对应位置的链表里，然后在查找时，再在小的列表里做遍历查找。
+
+##### 初始化哈希表
+
+```python
+# 遍历添加
+hash_table = []
+for _ in range(table_size):
+	hash_table.append([])
+# 列表推导式
+hash_table = [[] for _ in range(table_size)]
+```
+
+上述两种方法都为每个槽位新建列表。下面的重复操作会使所有槽位指向**同一个**内层列表：
+
+```python
+table = [[]] * table_size  # 不适合开链法
+```
+
+##### 构建表
+
+```python
+table_size = 13
+hash_table = [[] for _ in range(table_size)]
+collision_count = 0
+
+def insert(key, value):
+	global collision_count
+	idx = hash_func(key, table_size)
+	for i, (old_key, _) in enumerate(hash_table[idx]):
+		if old_key == key:
+			hash_table[idx][i] = (key, value)  # 同键更新
+			return
+	if hash_table[idx]:
+		collision_count += 1
+	hash_table[idx].append((key, value))
+```
+
+> 这里用`global`展示作用域；日常函数更适合把表作为参数传入，计数通过返回值传出。
+
+##### 查找流程
+
+```python
+def hash_lookup(hash_table, key, table_size):
+	idx = hash_func(key, table_size)
+	slot = hash_table[idx]
+	for k, v in slot:
+		if k == key:
+			return v
+	return None
+```
+
+**关键分析**：
+- 理想状态下（无冲突），查找只需要$O(1)$
+- 冲突的时候需要进行线性查找，但是如果哈希函数设计的好，表的大小合适，每个槽位的列表都很短，仍然近似于$O(1)$
+- 极端情况（所有键都冲突）哈希表退化为链表，查找退化为$O(n)$
+
+#### 线性探测 Linear Probing
+
+线性探测的思路就是如果当前槽位冲突了，就往后找到下一个空槽位储存。
+
+```python
+def insert_probe(hash_table, key, value, table_size):
+	idx = hash_func(key, table_size)
+	for _ in range(table_size):
+		if hash_table[idx] is None:
+			hash_table[idx] = (key, value)
+			return
+		if hash_table[idx][0] == key:
+			hash_table[idx] = (key, value)
+			return
+		idx = (idx + 1) % table_size
+	raise ValueError('哈希表已满')
+```
+
+
+本例须先用`[None] * table_size`建表。同键更新不会无限探测；表满时明确报错。查找也必须沿同样路径探测。删除时直接设为`None`会截断后续键的查找，需要删除标记。
+
+#### 冲突处理策略的比较
+
+
+| 维度          | **开链法**     | **线性探测**            |
+| ----------- | ----------- | ------------------- |
+| 储存结构        | 每个槽位是列表     | 每个槽位是元素或空           |
+| 冲突处理        | 追加到列表       | 向后找空位               |
+| 空间利用        | 需要额外储存链表/列表 | 紧凑，无需额外指针           |
+| 删除难度        | 容易          | 困难                  |
+| Python dict | 不采用此法 | 采用更复杂的开放寻址策略 |
+Python中`dict`类型采用更复杂的开放寻址策略（Open Addressing）。
+
+### 局部变量与全局变量
+
+#### `global`关键字
+
+在函数内需要**重新绑定**全局变量名时才用`global`；只读全局变量或修改全局列表、字典的内容不需要。
+
+#### 全局变量vs局部变量
+
+- Python不需要声明变量，第一次赋值就声明了变量
+- 在函数内
+	- 对一个变量赋值，如果之前没有`global`声明，就产生一个局部变量
+	- 只读未在函数内赋值的名字时，会查找全局名字
+	- 若函数内给同名变量赋值，Python把它视为局部变量；赋值前先读会得到`UnboundLocalError`
+- 确需重新绑定全局名时，在函数体开头写`global 名字`
+- 建议：**不是万不得已不要使用全局变量**
+
+### 字符串哈希
+
+
+`ord(ch)`取得字符的Unicode码位，`chr(n)`做反向转换。简单相加再取模容易让换位词冲突；可让字符顺序参与计算：
+
+```python
+def string_hash(key, table_size):
+	h = 0
+	for ch in key:
+		h = (h * 31 + ord(ch)) % table_size
+	return h
+```
+
+
+这仍可能冲突，也不是Python内置`hash()`的具体实现。内置`hash()`对字符串的结果在不同进程中可能不同，不适合保存跨运行的固定槽位。
+
+### Python字典
+
+
+字典（`dict`）存**键→值**的映射，键唯一；同键再次赋值会覆盖旧值。查找、插入、删除平均$O(1)$，建含$n$项的字典需要$O(n)$时间和空间。
+
+#### 创建与访问
+
+
+```python
+sensor = {'S-042': 28.1, 'S-117': 24.2}
+print(sensor['S-042'])               # 28.1
+print(sensor.get('S-999', '未找到'))  # 未找到
+print('S-042' in sensor)              # True
+sensor['S-042'] = 29.0                # 修改
+sensor['S-333'] = 27.8                # 新增
+```
+
+
+- `sensor[key]`读不到键会抛`KeyError`；`get(key, default)`返回默认值，**不会**插入键
+- `key in sensor`检查**键**；查值要用`value in sensor.values()`，通常需逐项扫描
+- `del sensor[key]`删不存在的键也会抛`KeyError`；`len(sensor)`给出键值对个数
+- `{}`是空字典；空集合要写`set()`
+
+#### 键必须可哈希
+
+
+键需要稳定的哈希值。`int`、`str`、以及**元素也都可哈希**的元组可以作键；`list`、`dict`、`set`不能作键。只说“不可变”还不够：`([1],)`虽然是元组，但内层列表不可哈希。
+
+#### 其他常用方法
+
+
+- `setdefault(k, v)`：键不存在时插入`v`，返回该键的值；`get`不会插入
+- `update(...)`批量写入，同键覆盖，返回`None`；`pop(k[, default])`删除并返回值；`clear()`清空
+- `copy()`是浅拷贝，若值是列表，内层列表仍共享
+
+### 字典应用
+
+
+#### `get()`与`[]`
+
+
+```python
+score = {'张三': 78, '李四': 92}
+print(score.get('王五'))      # None
+print(score.get('王五', 0))   # 0
+print('王五' in score)       # False，get不会插入键
+# score['王五']              # KeyError
+```
+
+
+`d[k]`适合**确定键存在**时取值；`d.get(k, default)`适合键可能缺失时给出默认值。`get(k)`缺省返回`None`；若字典本来就存`None`，要区分“缺键”与“值为None”，请用`k in d`。`d.setdefault(k, default)`在缺键时**插入**默认值，与`get`不同。
+
+#### 词频统计与查重
+
+
+```python
+words = 'the quick fox and the dog'.split()
+count = {}
+for word in words:
+	count[word] = count.get(word, 0) + 1
+print(count['the'])  # 2
+```
+
+
+第一次出现时`get(word, 0)`提供初值0，之后每次加1；直接`count[word] += 1`会在第一次出现时抛`KeyError`。如果只问“是否见过”，用集合存元素即可，不必存次数。
+
+```python
+def has_duplicate(lst):
+	seen = set()
+	for item in lst:
+		if item in seen:
+			return True
+		seen.add(item)
+	return False
+```
+
+
+#### 从文件读词
+
+
+```python
+count = {}
+f = open('fox.txt')
+for line in f:
+	for word in line.split():
+		count[word] = count.get(word, 0) + 1
+f.close()
+```
+
+
+`for line in f`按行读文件，再对每行`split()`；文件对象没有`split()`方法。路径从当前工作目录查找，用完关闭。文件不存在会抛`FileNotFoundError`。
+
+#### 遍历字典
+
+
+```python
+for key in count:                 # 默认取键
+	print(key, count[key])
+for key, value in count.items(): # 同时取键和值
+	print(key, value)
+```
+
+
+`keys()`、`values()`、`items()`返回随字典变化的视图。Python 3.7+按插入顺序遍历，但字典没有列表那样的整数下标。
+
+#### 寻找单身汉
+
+
+```python
+def find_single(lst):
+	count = {}
+	for item in lst:
+		count[item] = count.get(item, 0) + 1
+	for item, times in count.items():
+		if times == 1:
+			return item
+	return None
+```
+
+
+`find_single([1, 2, 2, 3, 3, 1, 4])`返回`4`。若有两个单身汉，就把第二轮中`times == 1`的元素追加到结果列表。建表加遍历总时间$O(n)$，额外空间$O(n)$；元素须可作键。
+
+#### 众数
+
+
+求众数：先用字典计数，再找最大出现次数；如有多个众数，将它们排序输出。分数若题设固定两位小数，可保留输入的字符串作键，排序时按`float`值排序，避免把显示格式交给浮点数处理。
+
+```python
+def modes(scores):
+	count = {}
+	for score in scores:
+		count[score] = count.get(score, 0) + 1
+	if not count:
+		return []
+	most = max(count.values())
+	return sorted((s for s, n in count.items() if n == most), key=float)
+```
+
+
+#### 两数之和
+
+
+两数之和可边遍历边存已见过的值及其下标。先查补数，再存当前数，避免同一个位置使用两次：
+
+```python
+def two_sum(nums, target):
+	seen = {}
+	for i, x in enumerate(nums):
+		if target - x in seen:
+			return seen[target - x], i
+		seen[x] = i
+	return None
+
+print(two_sum([2, 11, 7, 15], 9))  # (0, 2)
+```
+
+
+平均时间$O(n)$、额外空间$O(n)$。课件把“需要的补数”存成键，上面改为存“已经见过的数”，两种写法都要保证先查后存。
+
+### Python集合
+
+
+集合（`set`）只记录**元素在不在**，不存关联值。元素唯一、无下标、遍历顺序不应依赖；元素也必须可哈希。`in`、`add`、`discard`平均$O(1)$。
+
+```python
+s = set()                   # 空集合；{}是空字典
+s.add(2)
+s.add(2)                   # 重复值不再加入
+print(2 in s)              # True
+print(len(set([1, 1, 2]))) # 2
+```
+
+
+#### 集合运算
+
+
+对于`a = {1, 2, 3}`、`b = {3, 4}`：
+
+| 运算 | 写法 | 结果 |
+| ---- | ---- | ---- |
+| 并集 | `a \| b` | `{1, 2, 3, 4}` |
+| 交集 | `a & b` | `{3}` |
+| 差集 | `a - b` | `{1, 2}` |
+| 对称差 | `a ^ b` | `{1, 2, 4}` |
+
+- `a <= b`判断子集，`a < b`判断真子集；`isdisjoint(b)`判断是否无交集
+- `add(x)`原地加入；`remove(x)`在元素不存在时抛`KeyError`，`discard(x)`则不报错
+- `pop()`删除并返回**任意**元素；`clear()`清空，`copy()`浅拷贝
+- `len(lst) != len(set(lst))`可判断列表中是否有重复，前提是元素可哈希
+- 遍历同一集合时不要同时增删它；集合运算符的两侧应为集合
+
+
+课程材料：5 哈希阅读材料.pdf
+
+### 字典与集合方法补充
+
+
+- `dict.pop(k[, default])`删键并返回值；`popitem()`删并返回最后插入的键值对（空字典报错）
+- `set.remove(x)`在元素不存在时报`KeyError`；`discard(x)`则不报错
+- `set.union()`、`intersection()`、`difference()`对应并、交、差，返回新集合；同名`_update`方法原地修改
+- `dict.copy()`和`set.copy()`都是浅拷贝；遍历同一字典或集合时避免改变其大小
+
+### 异常
+
+
+键不存在：`KeyError`；文件不存在：`FileNotFoundError`。先看报错最后一行的异常类型和信息，再回头看代码中的出错行。
+
+```python
+try:
+	value = sensor['S-999']
+except KeyError:
+	value = '未找到'
+
+def safe_div(a, b):
+	if b == 0:
+		raise ValueError('分母为零')
+	return a / b
+```
+
+
+`try/except`只捕获预期会发生且有明确处理办法的异常；`raise`主动报告违反函数规格的情况。词频缺键优先用`get`，不要写`except: pass`把错误吞掉。
+
+### 推导式与查找策略
+
+
+`[[] for _ in range(n)]`每轮新建一个内层列表；`[[]] * n`让$n$个槽共享同一内层列表。开链法只能用前者。列表推导式本周会认即可。
+
+| 方法 | 前提 | 单次查找 | 准备成本 | 下标含义 |
+| ---- | ---- | ---- | ---- | ---- |
+| 线性查找 | 无序即可 | $O(n)$ | 无 | 原列表下标 |
+| 二分查找 | 已排序 | $O(\log n)$ | 未排序时先排序，通常$O(n\log n)$ | 排序后下标 |
+| 字典查找 | 键可哈希 | 平均$O(1)$ | 建表$O(n)$时间和空间 | 建表时保存的值 |
+
+只查一次通常直接扫描；数据已排序且多次查可用二分；按键反复查则考虑先建字典。字典按键快，遍历整个字典仍需$O(n)$。
+
+
+课程材料：5 哈希-研讨课.pdf
+
+### 温度映射到原下标
+
+
+```python
+temps = [29.5, 28.1, 29.5, 26.8]
+index = {}
+for i, t in enumerate(temps):
+	index[t] = i
+print(index[29.5])  # 2，重复键覆盖了原下标0
+```
+
+
+要保留所有位置，就让值为列表：
+
+```python
+positions = {}
+for i, t in enumerate(temps):
+	positions.setdefault(t, []).append(i)
+print(positions[29.5])  # [0, 2]
+```
+
+
+### PTA W5 · 5D02《地下乐队点歌榜》
+
+
+给定一晚点歌的整数ID列表，返回出现次数最多的所有ID，按ID升序排列。接口`top_songs(song_ids)`返回列表，裁判把每个ID单独打印一行。例：`[3,1,3,2,1,3,4,2]`返回`[3]`；`[2,1,2,1]`返回`[1,2]`。
+
+```python
+def top_songs(song_ids):
+    counts = {}
+    for song in song_ids:
+        counts[song] = counts.get(song, 0) + 1
+    if not counts:
+        return []
+    most = max(counts.values())
+    return sorted(song for song, n in counts.items() if n == most)
+```
+
+
+
+点歌榜先用`get`计频次，再求`max(count.values())`并收集所有并列键，最后升序排序；`max(count)`只比较键，不是最大频次。
+
+## W6 递归与记忆化
+
+
+课程材料：26FIP6 递归.pdf
+
+### 递归
+
+
+函数调用自身，把原问题化为更小的同类问题。写法：**明确出口 → 缩小规模 → 组合子问题结果**。
+
+| 四原则 | 要点 |
+|---|---|
+| Base Case | 最小规模直接返回 |
+| Make Progress | 每次调用都向出口推进 |
+| Always Believe | 假设子问题正确，只考虑当前层 |
+| Compound Interest | 避免重复计算同一状态，必要时记忆化 |
+
+#### 汉诺塔
+
+
+将$n$个盘从`source`移到`target`，借助`aux`；每次移动一个盘，大盘不能放在小盘上。
+
+1. 将上面$n-1$个盘从`source`移到`aux`。
+2. 将最大盘从`source`移到`target`。
+3. 将$n-1$个盘从`aux`移到`target`。
+4. $n=0$时直接返回。
+
+```python
+def hanoi(n, source, target, aux):
+	if n == 0:
+		return
+	hanoi(n - 1, source, aux, target)
+	print(f"Move disk {n} from {source} to {target}")
+	hanoi(n - 1, aux, target, source)
+```
+
+
+当$n=3$时，调用树如下：
+
+```text
+hanoi(3, A, C, B) 
+├── hanoi(2, A, B, C) 
+│   ├── hanoi(1, A, C, B) 
+│   │    ├── hanoi(0, A, B, C) → 返回 
+│   │    ├── move 1 from A to C 
+│   │    └── hanoi(0, B, A, C) → 返回 
+│   ├── move 2 from A to B 
+│   └── hanoi(1, C, B, A) ... 
+├── move 3 from A to C 
+└── hanoi(2, B, C, A) ... 
+```
+
+#### 递进、回归与调用栈
+
+
+- **递进**：不断调用更小的子问题，直到Base Case。
+- **回归**：子调用返回，当前层继续执行并返回结果。
+- 调用栈遵循LIFO：后调用的先返回；各层保留自己的参数、局部变量和执行位置。
+- 没有出口，或无法到达出口，会不断增加调用深度，最终触发`RecursionError`。
+
+### 阶乘：线性递归
+
+$$
+n!=\begin{cases}
+1, & n=0\\
+n\times(n-1)!, & n>0
+\end{cases}
+$$
+
+```python
+def factorial(n):
+	if n == 0:
+		return 1
+	return n * factorial(n - 1)
+```
+
+`factorial(4)`先逐层调用到`factorial(0)`，再依次算出`1!`、`2!`、`3!`、`4!`。每层只产生一个子调用：时间$O(n)$，调用栈$O(n)$。汉诺塔则每层产生两次规模为$n-1$的调用，移动次数满足$T(n)=2T(n-1)+1=2^n-1$，调用栈深度为$O(n)$。
+
+### 斐波那契数列问题：合成效益法则的重要性
+
+考虑最经典的斐波那契数列问题
+
+#### 递归定义斐波那契数列
+
+$$
+f(n)=\begin{cases}
+n, & n=0\text{ 或 }1\\
+f(n-1)+f(n-2), & n>1
+\end{cases}
+$$
+
+#### 代码实现
+
+```python
+def fib(n):
+	if n == 0 or n == 1:
+		return n
+	return fib(n -1) + fib(n - 2)
+```
+
+#### 调用树
+
+```text
+fib(5)
+├── fib(4) 
+│   ├── fib(3) 
+│   │   ├── fib(2) 
+│   │   │   ├── fib(1) 
+│   │   │   └── fib(0)
+│   │   └── fib(1)
+│   └── fib(2)
+│       ├── fib(1)
+│       └── fib(0)
+└── fib(3)
+    ├── fib(2) 
+    │   ├── fib(1)
+    │   └── fib(0) 
+    └── fib(1)
+```
+
+这是一个树状递归，算法的效率事实上**远低于**一般的迭代算法。**为什么？** 因为这个算法违反了之前所说的**合成效益法则**：`fib(2)`被计算了**3次**，`fib(1)`被计算了**5次**，也就是说我们**重复计算了多次同一个子问题** ，这样会导致算法的效率极其低下。
+
+#### 复杂度分析
+
+- 每次调用产生2个子调用，递归树深度为$n$
+- 时间复杂度为$O(2^n)$
+- 调用栈深度为$O(n)$
+
+### 斐波那契数列的记忆化优化递归算法
+
+既然重复计算会导致算法效率极大下降，那我们不妨**记录已经算出过的调用值**，因为我们几乎肯定在数据规模增大时，前面算出的数值一定会被后续调用层调用，减少重复计算的收益远高于储存计算结果的开销。
+
+```python
+def fib_memo(n, memo=None):
+	if memo is None:
+		memo = {}
+	if n in memo:
+		return memo[n]
+	if n == 0 or n == 1:
+		result = n
+	else:
+		result = fib_memo(n - 1, memo) + fib_memo(n - 2, memo)
+	memo[n] = result
+	return result
+```
+
+通过记忆化，每个不同的$n$只计算一次，时间和缓存空间都是$O(n)$；递归调用栈仍是$O(n)$。
+
+**`memo=None`与`memo={}`的区别**：默认参数只在函数定义时求值一次。写成`memo=None`，每次不传`memo`的顶层调用都会新建字典；递归时显式传入`memo`，同一次计算仍共用缓存。写成`memo={}`也能正确计算斐波那契数，但多次不传`memo`的顶层调用会共用同一个字典，缓存会一直保留。需要每次独立计算时用`None`；有意跨调用复用缓存时才考虑`{}`。
+
+### `@lru_cache`：函数进、函数出
+
+手写的`memo`可以换成库：
+
+```python
+from functools import lru_cache
+
+@lru_cache(maxsize=None)
+def fib(n):
+	if n == 0 or n == 1:
+		return n
+	return fib(n - 1) + fib(n - 2)
+```
+
+> `@`是装饰器：输入一个函数，返回一个**增强后的函数**（带有cache）。内部是函数进、函数出，也即**高阶函数**。缓存的键来自函数参数，参数必须可哈希；`maxsize=None`表示不限制缓存条目数。`fib.cache_info()`可查看命中情况，需要重新统计或清空缓存时调用`fib.cache_clear()`
+
+### Euclid算法
+
+辗转相除法也可以写成递归函数的形式，这里直接给出代码形式：
+
+```python
+def gcd(x, y):
+	if y == 0:
+		return x
+	return gcd(y, x % y)
+```
+
+### 尾递归(tail recursion)
+
+- 当递进结束时，不对递进调用返回的值再做任何计算就直接返回的是尾递归：
+	- `return gcd(y, x % y)`
+- 尾调用返回后没有待完成的计算，但在Python中它仍然会占用调用栈；Python不会自动把它优化成循环
+
+#### 尾递归和循环的转化
+
+```python
+def gcd(x, y):
+	while y != 0:
+		x, y = y, x % y
+	return x
+```
+
+#### 一般递归与循环的转化（递归变迭代）
+
+```python
+# 引入结果变量p，改造为尾递归
+def f(n, p=1):
+	if n == 0 or n == 1:
+		return p
+	else:
+		return f(n - 1, p * n)
+
+# 把尾递归改写为循环	
+def f(n, p=1):
+	while n != 0 and n != 1:
+		n, p = n - 1, n * p
+	return p
+```
+
+把（线性）递归往往可以改写为循环，而这往往可以提高程序运行的性能。换言之，递归可以作为算法思考的方法，具体的实现方法可以通过改写为循环实现。
+
+### Quick Check 3
+
+已知`first(xs)`返回第一个元素，`butfirst(xs)`返回去掉首元素后的剩余列表，`isempty(xs)`判断列表是否为空。不使用循环，实现`count`、`reverse`、`find`、`iterate`和讲义中的`accumarate`（累计）。以下默认`xs`支持构造空列表、单元素列表以及列表拼接。
+
+```python
+def count(xs):
+	if isempty(xs):
+		return 0
+	return 1 + count(butfirst(xs))
+
+def reverse(xs):
+	if isempty(xs):
+		return []
+	return reverse(butfirst(xs)) + [first(xs)]
+
+def find(xs, element):
+	if isempty(xs):
+		return False
+	return first(xs) == element or find(butfirst(xs), element)
+
+def iterate(xs, f):
+	if isempty(xs):
+		return
+	f(first(xs))
+	iterate(butfirst(xs), f)
+
+def accumarate(xs, f, value):
+	if isempty(xs):
+		return value
+	return accumarate(butfirst(xs), f, f(first(xs), value))
+```
+
+
+五题的**Base Case**都是空列表：数量为`0`、逆序为空列表、查找为`False`、遍历直接结束、累计则返回当前`value`；**Progress**都是递归处理`butfirst(xs)`。`reverse`必须把当前首元素放在剩余列表逆序结果的末尾；`find`借助`or`短路，找到后不再继续查；`iterate`先调用`f`再递归，保持原有顺序；`accumarate`先算`f(first(xs), value)`，再把新值交给下一层，所以`f`的两个参数顺序不能颠倒。
+
+
+课程材料：6 递归阅读材料.pdf
+
+### 递归四基础
+
+
+| 基础 | 含义 | 缺了会怎样 |
+|---|---|---|
+| Base Case | 最小规模直接返回，不再递归 | 无限递归，最终`RecursionError` |
+| Make Progress | 每次调用都向Base Case靠近 | 规模不变或变大，同样无法结束 |
+| Always Believe | 相信子调用能正确解决更小的问题，只考虑当前层如何组合 | 总想展开完整调用树，难以写清递推关系 |
+| Compound Interest | 同一子问题不要反复计算 | 树状递归可能出现指数级重复计算 |
+
+思考时通常**先想Progress，再找Base Case**。例如汉诺塔先假设会移动上面`n-1`个盘，于是当前层只需“移走上层 → 移最大盘 → 移回上层”；顺着规模不断缩小，才得到`n=0`时什么也不做。阶乘则是先相信`factorial(n-1)`已算好，再乘`n`。
+
+| 常见问题 | 应如何检查 |
+|---|---|
+| 忘记Base Case | 手推`n=0`或`n=1`，确认直接返回 |
+| 有出口却到不了 | 看每次参数是否严格缩小；`n<0`时一直做`n-1`就到不了`0` |
+| 汉诺塔柱子传错 | 每次递归重新辨认`source`、`target`、`aux`的角色 |
+| 试图手推所有步骤 | 只手推小规模，写代码时相信子问题的返回结果 |
+
+### 多维状态与缓存键
+
+
+缓存键必须包含**全部决定答案的状态**。格子版杨辉三角`pascal(n, k)`由行`n`、列`k`共同决定，仅以`n`为键会把同一行的不同格子混在一起。
+
+```python
+def pascal_cell(n, k, memo=None):
+	if memo is None:
+		memo = {}
+	if k == 0 or k == n:
+		return 1
+	key = (n, k)
+	if key not in memo:
+		memo[key] = (pascal_cell(n - 1, k - 1, memo)
+		             + pascal_cell(n - 1, k, memo))
+	return memo[key]
+```
+
+
+| 键的写法 | 结果 |
+|---|---|
+| `n` | 漏掉`k`，不同格子可能共用错误答案 |
+| `[n, k]` | 列表不可哈希，不能作字典键 |
+| `(n, k)` | 元组可哈希，能完整表示状态 |
+
+这里的格子版只用于理解缓存键；研讨课实现的是返回**整行**的`pascal(n)`。
+
+### `functools.lru_cache`
+
+
+`@lru_cache`把缓存放进装饰器，适合“相同参数总得到相同结果”的计算函数。本周会使用、能认出`@`即可，不要求手写装饰器。
+
+| 项目 | 用法 |
+|---|---|
+| `@lru_cache(maxsize=None)` | 缓存条目数不设上限 |
+| `@lru_cache(maxsize=128)` | 最多保留128项，按最近使用情况淘汰旧项 |
+| `typed=False` | 默认值，不保证区分不同参数类型 |
+| `typed=True` | 按参数类型区分缓存键 |
+| `cache_info()` | 返回`hits`、`misses`、`maxsize`、`currsize` |
+| `cache_clear()` | 清空缓存，返回`None` |
+
+```python
+from functools import lru_cache
+
+@lru_cache(maxsize=None)
+def fib_cached(n):
+	if n <= 1:
+		return n
+	return fib_cached(n - 1) + fib_cached(n - 2)
+
+fib_cached(10)
+print(fib_cached.cache_info())
+fib_cached.cache_clear()
+```
+
+
+多参数函数会自动把参数组成缓存键，不必自己写`(n, k)`；但**参数须可哈希**，列表、字典、集合不能直接作参数。返回列表可以，不过不应改动已缓存的返回值。带输入输出、副作用或依赖可变外部状态的函数不适合缓存，因为命中缓存时不会执行函数体。
+
+| 对比 | 手写字典`memo` | `@lru_cache` |
+|---|---|---|
+| 缓存键 | 自行设计 | 自动根据参数生成 |
+| 容量 | 自己管理 | `maxsize`控制 |
+| 统计 | 需自己实现 | `cache_info()` |
+| 适用 | 需要自定义状态或缓存行为 | 参数可哈希的纯计算函数 |
+
+### 类型注解与递归审查
+
+
+| 写法 | 读法 |
+|---|---|
+| `list[int]` | 元素预期为`int`的列表 |
+| `int \| None` | 值可能是整数，也可能是`None` |
+
+类型注解是给读代码的人和静态工具看的，Python运行时不会自动据此检查实参类型。
+
+| 检查项 | 具体看什么 |
+|---|---|
+| Base Case | 小规模输入能否直接返回；非法输入是否会无限递归 |
+| Progress | 参数是否严格向出口靠近 |
+| 合并结果 | 阶乘是否乘回`n`；杨辉三角是否正确拼接 |
+| 记忆化键 | 是否包含所有维度；键能否哈希 |
+| 缓存使用 | 参数是否可哈希，函数是否有副作用，是否需要清空缓存 |
+| 类型注解 | 是否把标注误当作运行时检查 |
+
+要求生成递归代码时，要先写清输入输出、Base Case、Progress和返回值的组合方式；得到代码后仍用小规模轨迹逐项核对。
+
+
+课程材料：6 递归-研讨课.pdf
+
+### 任务一：先读`fib(4)`调用树
+
+
+不运行代码，先画出完整调用树：
+
+```text
+fib(4)
+├── fib(3)
+│   ├── fib(2)
+│   │   ├── fib(1)
+│   │   └── fib(0)
+│   └── fib(1)
+└── fib(2)
+    ├── fib(1)
+    └── fib(0)
+```
+
+
+| 问题 | 结果 |
+|---|---|
+| 包含`fib(4)`自身，共调用几次？ | 9次 |
+| `fib(2)`调用几次？ | 2次 |
+| 重复从哪里来？ | 两条分支都重新计算同一个`fib(2)` |
+
+这正是后面杨辉三角“上一行不要算两遍”的引子。
+
+### 任务二：整行杨辉三角的递推关系
+
+
+本节的`pascal(n)`返回**第`n`行整个列表**，从第0行计数；返回单个格子的`pascal(n, k)`留到后续课程。
+
+| 行号 | 返回值 |
+|---|---|
+| 0 | `[1]` |
+| 1 | `[1, 1]` |
+| 2 | `[1, 2, 1]` |
+| 3 | `[1, 3, 3, 1]` |
+| 4 | `[1, 4, 6, 4, 1]` |
+
+| 部分 | 规则 |
+|---|---|
+| Base Case | `pascal(0)`返回`[1]` |
+| Progress | 先得到上一整行`prev = pascal(n-1)` |
+| 当前行两端 | 都是`1` |
+| 当前行中间 | `prev[i] + prev[i+1]` |
+| 结果长度 | 第`n`行有`n+1`个元素 |
+
+上一行长度为`n`，有`n-1`对相邻元素。想清楚函数返回的是“整行”，才不会把整行问题写成逐个格子重复求值。
+
+### 坏写法：上一行在循环中反复计算
+
+
+```python
+def pascal_bad(n):
+	if n == 0:
+		return [1]
+	row = [1]
+	for i in range(n - 1):
+		row.append(pascal_bad(n - 1)[i] + pascal_bad(n - 1)[i + 1])
+	row.append(1)
+	return row
+```
+
+
+`pascal_bad(3)`有两个中间元素，每个元素两次调用`pascal_bad(2)`，因此仅顶层就调用上一行**4次**；这些调用又会继续重复计算更小的行。结果虽对，计算却会迅速膨胀。
+
+| 现象 | 原因 |
+|---|---|
+| `pascal_bad(16)`可能明显变慢 | 同一上一行在循环内反复递归生成 |
+| `pascal_bad(1)`没有中间元素 | 仍须在末尾补`1`，结果才是`[1, 1]` |
+| 加了记忆化后可能变快 | 重复调用命中缓存，但没有解决写法上不必要的重复请求 |
+
+### 好写法：上一行只求一次
+
+
+```python
+def pascal(n):
+	if n == 0:
+		return [1]
+	prev = pascal(n - 1)
+	row = [1]
+	for i in range(len(prev) - 1):
+		row.append(prev[i] + prev[i + 1])
+	row.append(1)
+	return row
+```
+
+
+| `pascal(3)`的阶段 | 结果 |
+|---|---|
+| 递进 | `3 → 2 → 1 → 0` |
+| Base Case | `pascal(0) → [1]` |
+| 回归一层 | `pascal(1) → [1, 1]` |
+| 再回归 | `pascal(2) → [1, 2, 1]` |
+| 最后回归 | `pascal(3) → [1, 3, 3, 1]` |
+
+每层只调用一次上一行，调用关系是一条链。第`k`行拼接花`O(k)`，从第0行到第`n`行总时间为`O(n^2)`；调用栈深`O(n)`，各层保留的行可能使峰值空间达到`O(n^2)`。
+
+也可以用列表推导式拼当前行，但**上一行仍须先存进变量**：
+
+```python
+def pascal(n):
+	if n == 0:
+		return [1]
+	prev = pascal(n - 1)
+	return [1] + [prev[i] + prev[i + 1]
+	              for i in range(len(prev) - 1)] + [1]
+```
+
+
+若加`@lru_cache`，键`n`是可哈希的整数；返回列表本身不妨碍缓存，但不要修改缓存返回的列表。
+
+### 任务三：迭代实现
+
+
+递归版是从第`n`行问到第0行，再逐层回归；迭代版从第0行出发，一行一行生成到第`n`行。
+
+```python
+def pascal_iter(n):
+	row = [1]
+	for _ in range(n):
+		new_row = [1]
+		for i in range(len(row) - 1):
+			new_row.append(row[i] + row[i + 1])
+		new_row.append(1)
+		row = new_row
+	return row
+```
+
+
+`pascal_iter(4)`返回`[1, 4, 6, 4, 1]`。它与好写法都构造前面各行，时间同为`O(n^2)`；迭代版只保留当前行和新行，额外空间`O(n)`，且没有递归调用栈。
+
+| 实现 | 上一行的处理 | 时间 | 空间 | 使用时的判断 |
+|---|---|---|---|---|
+| 坏写法 | 每拼一个中间项就重新递归 | 重复计算严重 | 调用数膨胀 | 避免 |
+| 好写法 | 递归一次，存入`prev` | `O(n^2)` | 最坏`O(n^2)` | 便于理解递推 |
+| 迭代 | 从第0行逐行更新`row` | `O(n^2)` | `O(n)` | 大规模时更稳妥 |
+
+### 易错点与代码审查
+
+
+| 错误 | 现象 | 修正 |
+|---|---|---|
+| `pascal(0)`返回`[]`或`1` | 类型或长度不对 | 返回列表`[1]` |
+| 忘记行末`append(1)` | 每行少一个`1` | 中间元素拼完后补末尾 |
+| 循环到`len(prev)`仍取`prev[i+1]` | `IndexError` | 使用`range(len(prev)-1)` |
+| 在循环中调用`pascal(n-1)` | 同一行反复计算 | 先保存`prev` |
+| 缓存键用列表 | `TypeError` | 整行版以整数`n`作键 |
+
+对照代码时，先手推`pascal(0)`到`pascal(3)`，再检查Base Case、`n-1`是否真正缩小问题、上一行是否只算一次、行末是否补`1`。汉诺塔可用`n=3`的移动序列核对柱子顺序。若把文件引用给工具审查，仍应明确写出这些检查条件；文件引用只提供上下文，不会代替规格。
+
+### 全排列：选择、递归、撤销
+
+
+**PTA W6 · 6D01《密码全排列》**。给定一个无重复小写字母字符串，长度为$1$到$8$，用递归生成所有排列，按字典序输出。
+
+- 接口：`list_permutations(s)`；输入字符串，返回按字典序排列的字符串列表，函数内不打印。
+- 样例：输入`cab`，返回`['abc','acb','bac','bca','cab','cba']`；裁判把每个字符串单独打印一行。
+- 每个字符在一种排列中恰好用一次，不能遗漏或重复使用。
+
+输入字符互不重复；先排序，按这个顺序尝试每个尚未使用的字符，输出自然为字典序。
+
+```python
+def list_permutations(s):
+    chars = sorted(s)
+    used = [False] * len(chars)
+    result = []
+
+    def build(path):
+        if len(path) == len(chars):
+            result.append(''.join(path))
+            return
+        for i, ch in enumerate(chars):
+            if used[i]:
+                continue
+            used[i] = True
+            path.append(ch)
+            build(path)
+            path.pop()
+            used[i] = False
+
+    build([])
+    return result
+```
+
+
+一次分支结束必须撤销`path`和`used`，否则后续分支受污染。保存字符串快照不会与路径共享；若结果需要存列表，应保存`path[:]`。共有$n!$个结果，生成并保存它们至少需要$O(n\cdot n!)$时间与结果空间。
+
+### 嵌套列表深度
+
+
+**PTA W6 · 6D02《货箱层深》**。用嵌套列表表示货箱，元素只有整数或子列表，递归求最大嵌套层数。
+
+- 接口：`max_depth(xs)`，返回整数深度。
+- 定义：整数深度为$0$，空列表深度为$1$，列表深度为最深子项深度加$1$。
+- 样例：`[1,[2,3],[[4],5]]`返回`3`；`[]`返回`1`，`[1,2]`返回`1`。
+
+非列表深度为$0$；空列表深度为$1$；非空列表比最深子项多一层。注意`[[]]`深度为$2$，不是$1$。
+
+```python
+def max_depth(xs):
+    if not isinstance(xs, list):
+        return 0
+    deepest = 0
+    for item in xs:
+        deepest = max(deepest, max_depth(item))
+    return 1 + deepest
+```
+
+
+
+
+## W7 分治算法
+
+
+课程材料：26FIP7 分治算法.pdf
+
+### 减治与分治
+
+
+递归是思考和实现子问题的方式；**减治**与**分治**描述的是子问题怎样产生、怎样得到原问题的答案。
+
+| 方法 | 子问题 | 例子 |
+|---|---|---|
+| 减治 | 只做缩小后的一个问题 | 二分查找比较中点后舍弃另一半 |
+| 分治 | 多个子问题都要做，再处理它们之间的关系 | 归并排序分别排好两半，再合并 |
+
+
+### 递归二分查找
+
+
+二分查找前提是**列表已排序**。
+
+```python
+def binary_search_rec(lst, target, left=0, right=None):
+	if right is None:
+		right = len(lst) - 1
+	if left > right:
+		return -1
+	mid = left + (right - left) // 2
+	if lst[mid] == target:
+		return mid
+	if lst[mid] < target:
+		return binary_search_rec(lst, target, mid + 1, right)
+	return binary_search_rec(lst, target, left, mid - 1)
+```
+
+
+e.g. 在`[1,3,5,7,9]`中找`7`：先看下标`2`的`5`，缩到右半区间`[3,4]`；再看下标`3`，返回`3`。每次减半，时间为$O(\log n)$。递归调用后的结果直接返回，所以这是**尾递归**；递归栈为$O(\log n)$。
+
+**不要为了“切一半”反复写列表切片**：`lst[:mid]`会创建并复制新列表，还要重新换算原列表下标；保留原列表、只改边界更直接。若每层切片，全部复制成本可达$O(n)$。
+
+### 归并排序：先分，再合
+
+
+只排好左半，整表还不一定有序。归并排序先把列表拆到长度至多为`1`，回归时相信左右两半都已排好，再用两个指针合并：
+
+```python
+def merge(left, right):
+	result = []
+	i = j = 0
+	while i < len(left) and j < len(right):
+		if left[i] <= right[j]:
+			result.append(left[i])
+			i += 1
+		else:
+			result.append(right[j])
+			j += 1
+	result.extend(left[i:])
+	result.extend(right[j:])
+	return result
+
+def merge_sort(arr):
+	if len(arr) <= 1:
+		return arr
+	mid = len(arr) // 2
+	left = merge_sort(arr[:mid])
+	right = merge_sort(arr[mid:])
+	return merge(left, right)
+```
+
+
+`merge([1,3,5],[2,4,6])`依次取`1,2,3,4,5`，左边耗尽后还须追加右边剩余的`[6]`。**漏掉`extend`会丢元素**。相等时用`<=`先取左边，这样相等元素的原有顺序不变，归并是稳定排序。
+
+递归树深度约为$\log_2 n$；每层总共合并$n$个元素，所以时间$O(n\log n)$。结果缓冲需要$O(n)$额外空间；这里的`arr[:mid]`、`arr[mid:]`也会复制。下标区间版可省去分割切片，但合并仍需要缓冲。
+
+#### 自底向上的纯循环版
+
+
+对于归并这种非线性递归，其转化为循环的方式有一点不一样。
+可以从长度为$1$的有序段开始，两两合并成长度约为$2,4,8,\ldots$的有序段。每轮用上面的`merge`，没有递归调用：
+
+```python
+def merge_sort_iter(arr):
+	result = arr[:]
+	width = 1
+	while width < len(result):
+		merged = []
+		for start in range(0, len(result), 2 * width):
+			left = result[start:start + width]
+			right = result[start + width:start + 2 * width]
+			merged.extend(merge(left, right))
+		result = merged
+		width *= 2
+	return result
+```
+
+
+两版时间都是$O(n\log n)$；这个循环版仍通过切片和`merged`构造新列表，额外空间为$O(n)$，只是省掉了递归调用栈。
+
+### 最大子串和
+
+
+连续子串的最大和可能**完全在左边、完全在右边，或跨过中点**。前两类由递归给出；第三类必须在当前层计算：从`mid-1`向左找最大后缀，从`mid`向右找最大前缀，两者相加。
+
+```python
+def max_crossing(arr, lo, mid, hi):
+	total = best_left = arr[mid - 1]
+	for i in range(mid - 2, lo - 1, -1):
+		total += arr[i]
+		best_left = max(best_left, total)
+	total = best_right = arr[mid]
+	for j in range(mid + 1, hi):
+		total += arr[j]
+		best_right = max(best_right, total)
+	return best_left + best_right
+
+def max_subarray(arr, lo=0, hi=None):
+	if hi is None:
+		hi = len(arr)
+	if hi <= lo:
+		raise ValueError("需要非空区间")
+	if hi - lo == 1:
+		return arr[lo]
+	mid = (lo + hi) // 2
+	return max(
+		max_subarray(arr, lo, mid),
+		max_subarray(arr, mid, hi),
+		max_crossing(arr, lo, mid, hi),
+	)
+```
+
+
+例如`[-2,3,-1,4]`切成`[-2,3] | [-1,4]`，左、右各自最优是$3$和$4$；跨中点为左后缀$3$加右前缀$-1+4=3$，得到$6$。这一写法求**非空**子串，单元素就是Base Case；空列表要另行约定。每层扫描合计$O(n)$，时间$O(n\log n)$。
+
+#### Kadane算法
+
+
+如果不必用分治，也可以从左到右扫描。到元素$a_i$时，以它结尾的最大子段和要么**从$a_i$重新开始**，要么**接在前一个最优后缀后面**：
+
+$$
+E_i=\max(a_i,E_{i-1}+a_i),\qquad M_i=\max(M_{i-1},E_i)
+$$
+
+
+其中$E_i$是以$i$结尾的最大子串和，$M_i$是前$i$个位置中出现过的最大值。
+
+```python
+def max_subarray_linear(arr):
+	current = best = arr[0]
+	for i in range(1, len(arr)):
+		current = max(arr[i], current + arr[i])
+		best = max(best, current)
+	return best
+```
+
+
+对`[-2,3,-1,4]`，`current`依次为$-2,3,2,6$，最终返回$6$。用首元素初始化，而非初始化为$0$，才能正确处理全负数列表。只扫描一次，时间$O(n)$，额外空间$O(1)$。
+
+#### 前缀和思路
+
+
+设$P_0=0$，$P_j$是前$j$个元素的和。以第$j$个元素结尾的子串和为$P_j-P_i$（$i<j$）；要让它最大，就减去**此前最小**的$P_i$。
+
+```python
+def max_sum(lst):
+	min_prefix = 0
+	prefix = 0
+	best = lst[0]
+	for x in lst:
+		prefix += x
+		best = max(best, prefix - min_prefix)
+		min_prefix = min(min_prefix, prefix)
+	return best
+```
+
+
+`min_prefix`初值为$P_0=0$，所以子串可以从第一个元素开始。**先用旧的`min_prefix`更新答案，再纳入当前前缀**，才能保证$i<j$、子段非空；如果反过来，当前前缀可以减去自己，得到空子段的和$0$，全负数时就会出错。这与Kadane是同一个$O(n)$问题的两种视角，额外空间都是$O(1)$。
+
+### 逆序对：合并同时计数
+
+
+若下标$i<j$且$a_i>a_j$，就有一对逆序。递归分别统计左右内部的`c1,c2`；合并时若当前右元素小于左元素，左边**尚未取走的元素**都与它构成逆序，一次增加`len(left)-i`。
+
+```python
+def merge_count(left, right):
+	result = []
+	i = j = count = 0
+	while i < len(left) and j < len(right):
+		if left[i] <= right[j]:
+			result.append(left[i])
+			i += 1
+		else:
+			result.append(right[j])
+			count += len(left) - i
+			j += 1
+	result.extend(left[i:])
+	result.extend(right[j:])
+	return result, count
+
+def inversions(arr):
+	if len(arr) <= 1:
+		return arr, 0
+	mid = len(arr) // 2
+	left, c1 = inversions(arr[:mid])
+	right, c2 = inversions(arr[mid:])
+	merged, c3 = merge_count(left, right)
+	return merged, c1 + c2 + c3
+```
+
+
+`[3,1,4,2]`有$(3,1)$、$(4,2)$和$(3,2)$，共$3$对。相等时取左边，不计逆序；只返回跨半的$c_3$则会漏掉左右内部的$c_1+c_2$。时间仍是$O(n\log n)$。`return result, count`实际返回元组，调用处可拆成两个变量。
+
+### `key`、`lambda`与高阶函数
+
+
+`key`接收一个函数，先把每个元素映射成比较用的值；它不改变结果里保存的原元素。
+
+```python
+max([-7, 4, 2], key=abs)            # -7，按绝对值比较
+sorted(nodes, key=lambda x: x.freq) # 按 freq 排序
+```
+
+
+已有函数可直接传函数名；只用一次的短规则可用`lambda`；规则复杂就先用`def`定义。把函数作为参数传入，属于高阶函数的用法。
+
+### 杨辉三角：两个递归调用也未必是分治
+
+
+W6的`pascal(n)`返回整行；这里的`pascal(n,k)`只求第$n$行第$k$个数。两侧为`1`，中间等于上一行相邻两项之和：
+
+```python
+def pascal(n, k, memo=None):
+	if not 0 <= k <= n:
+		raise ValueError("需要 0 <= k <= n")
+	if memo is None:
+		memo = {}
+	if k == 0 or k == n:
+		return 1
+	key = (n, k)
+	if key not in memo:
+		memo[key] = pascal(n - 1, k - 1, memo) + pascal(n - 1, k, memo)
+	return memo[key]
+```
+
+
+$\operatorname{pascal}(4,2)=6$。左右分支会重复遇到同一状态，如`pascal(2,1)`，所以用元组`(n,k)`作缓存键。这里不是折半处理两段，而是规模每次减$1$的**重叠子问题**；不能因为有两次递归调用就把它当成归并式分治。
+
+### 递归总结
+
+
+| 问题 | 缩小方式 | 当前层还要做什么 | 时间 |
+|---|---|---|---|
+| 二分查找 | 只走一半 | 比较中点 | $O(\log n)$ |
+| 归并排序 | 两半都做 | 合并有序列表 | $O(n\log n)$ |
+| 最大子段和 | 两半都做 | 扫描跨中点情况 | $O(n\log n)$ |
+| 逆序对 | 两半都做 | 合并时计跨半逆序 | $O(n\log n)$ |
+| 格子版杨辉三角 | 两个重叠状态，各减`1` | 两值相加、记忆化 | 不是折半分治 |
+
+
+课程材料：7 分治算法阅读材料.pdf
+
+### 递归二分的边界
+
+
+W4循环版与这里的递归版查的是同一个区间：循环用`while left <= right`继续，递归用`left > right`退出。即使只剩一个元素（`left == right`），也必须再比较一次，不能直接判定“没找到”。
+
+| 写法                                  | 问题                          |
+| ----------------------------------- | --------------------------- |
+| `if left == right: return -1`       | 漏查最后一个元素；空区间才表示失败           |
+| `return 1 + binary_search_rec(...)` | 回归时还要加$1$，不再是尾递归，也会把原列表下标算错 |
+| 无序列表上做二分                            | 无法根据中点比较结果排除一半，递归和循环版都会错    |
+
+这里用默认参数处理首次调用；如果另写包装函数，也要从`left=0, right=len(lst)-1`开始。
+
+### 切片、别名与合并
+
+
+`b = a`只是让两个名字指向同一列表；`b = a[:mid]`会创建新列表，改`b`的顶层元素不会改`a`。切片是**浅拷贝**，内层若还有可变对象，仍可能共享。归并教学版用切片分左右两半，代码清楚，但每层都会增加复制开销；下标区间版可以省去分割时的拷贝，合并结果仍需要缓冲。
+
+`merge`的两个输入已经各自有序。循环条件是“两边都还有元素”，因此循环结束后通常**还剩一边没取完**；`result.extend(left[i:])`与`result.extend(right[j:])`两句都要写，空切片追加后没有影响。用`merge([1], [2,3])`就能查出漏收尾的错误。
+
+### 多返回值与拆包
+
+
+逆序对版本的`merge_count`既要给回有序列表，也要给回跨段计数。`return result, count`实际上返回一个元组，调用方可以拆开：
+
+```python
+ordered, total = inversions([3, 1, 4, 2])  # [1, 2, 3, 4], 3
+_, count = inversions([3, 1, 2])           # 只关心计数，count == 2
+```
+
+
+总数一定是**左半内部＋右半内部＋跨半**，即$c_1+c_2+c_3$。取右元素时才加`len(left)-i`，因为只剩这些左元素尚未取走且比当前右元素大；取左或两元素相等时不加。
+
+### 把函数作为参数
+
+
+高阶函数的关键不是`lambda`这个写法，而是**函数本身也能作为值传递**：
+
+```python
+def apply_twice(f, x):
+	return f(f(x))
+
+def square(x):
+	return x * x
+
+apply_twice(square, 3)        # 81
+max([-2, 5, -7], key=abs)   # -7，按绝对值比较
+```
+
+
+`square`与`abs`后面都没有括号：这里传的是函数，不是先调用函数得到的值。W3求根函数如果接受可调用的`f`，就可以传`lambda x: x**2 - 2`表示方程左边，而不必把公式写死；传字符串`"x**2 - 2"`则不是可调用对象。
+
+| 用法 | 适合什么时候 |
+|---|---|
+| `key=abs` | 已有合适的函数，直接传名字 |
+| `key=lambda x: x.freq` | 只用一次、规则能写成一个短表达式 |
+| 先`def`再传函数名 | 规则较长，需要多句处理 |
+
+`lambda 参数: 表达式`只能写**一个表达式**，但表达式中可以用条件形式，例如`lambda x: 1 if x >= 0 else -1`。`sorted(xs, key=abs)`中的`key=`不能省掉；`sorted(xs, abs)`会把`abs`放到错误的参数位置。
+
+### 分区与递归规模的检查
+
+
+简洁版快排必须先取出基准，再用`arr[1:]`分区；若把基准也放回某个子列表，规模可能根本没有缩小。右边用`>= pivot`保留相等元素。首元素作基准遇到已排序列表时，每轮只减少一个元素，最坏时间$O(n^2)$、递归深度$O(n)$；随机选基准能减少固定输入造成的退化风险，但不保证每次都平衡。重复元素很多时，用`<`、`==`、`>`三路分区，让相等项不再参与递归。
+
+检查本周几种代码，可以分别拿最小反例手推：二分查单元素列表，归并合`[1]`与`[2,3]`，逆序对算`[3,1,2]`，快排试已排序列表和重复元素。比只看正常样例，更容易发现边界和漏算。
+
+
+课程材料：7 分治算法-研讨课.pdf
+
+### 归并与快排：工作在不同阶段
+
+
+手推`merge([1,3],[2,4])`：依次取`1,2,3`后，左边已空；必须追加剩余的`4`。归并是**先排好两半，再合并**；快排则是**先按基准分区，再递归排两侧**。
+
+| | 归并排序 | 快速排序 |
+|---|---|---|
+| 当前层重点 | 合并两个已排序的列表 | 选`pivot`，把小于它的放左边，其余放右边 |
+| 递归后 | 做`merge` | 直接拼接两侧和基准 |
+| 容易出错 | 忘记追加剩余段 | 基准又进入子问题，或漏掉相等元素 |
+
+### 简洁快速排序
+
+
+以首元素为`pivot`。`arr[1:]`排除基准；左边取`< pivot`，右边取`>= pivot`，相等元素才不会丢：
+
+```python
+def quick_sort(arr):
+	if len(arr) <= 1:
+		return arr
+	pivot = arr[0]
+	left = [x for x in arr[1:] if x < pivot]
+	right = [x for x in arr[1:] if x >= pivot]
+	return quick_sort(left) + [pivot] + quick_sort(right)
+```
+
+
+`[3,1,4,1,5,9,2,6]`以`3`为基准时，左边是`[1,1,2]`，右边是`[4,5,9,6]`；右边仍需递归排序。验证结果时除了看是否有序，还要确认元素和出现次数都没有变化。
+
+### 首元素基准的退化与三路分区
+
+
+对已排序的$[1,2,\ldots,n]$，首元素每次都是最小值：左边为空，右边只少一个元素。于是递归深度从平均的$O(\log n)$变成$O(n)$，时间最坏$O(n^2)$，Python中还可能触及递归深度限制。随机选基准能降低固定坏输入的影响，但不能保证次次平衡。
+
+重复值很多时，把`== pivot`单独放在中间，**相等项无需再递归**：
+
+```python
+def quick_sort_3way(arr):
+	if len(arr) <= 1:
+		return arr
+	pivot = arr[0]
+	less = [x for x in arr if x < pivot]
+	equal = [x for x in arr if x == pivot]
+	greater = [x for x in arr if x > pivot]
+	return quick_sort_3way(less) + equal + quick_sort_3way(greater)
+```
+
+
+例如`[8,3,5,1,7,2,9,4]`以`5`为基准，分为`[3,1,2,4] | 5 | [8,7,9]`。简洁版快排的列表推导式和拼接会创建新列表；它只是为了把分区思路写清楚，不等同于常见的原地快排。归并时间稳定在$O(n\log n)$；快排平均$O(n\log n)$、最坏$O(n^2)$。
+
+> 检查分治代码，重点看三处：Base Case能否结束；子问题是否真的缩小；当前层有没有漏掉必须处理的部分——归并的剩余段、最大子段和的跨中点情况、快排的相等元素与基准排除。
+
+### PTA W7 · 7D01/7D02《废土归并》《废土快排》
+
+
+两题都给出乱序整数物资ID列表，要求升序返回一个新列表。例：`[3,1,4,1,5,9,2,6]`返回`[1,1,2,3,4,5,6,9]`。裁判用`print(*result)`输出一行，函数自身只返回列表。
+
+- 归并题接口`merge_sort(arr)`：自行实现归并，不得用`sorted`或`list.sort`；完整代码见本周“归并排序”，重点是合并剩余段。
+- 快排题接口`quick_sort(arr)`：使用首元素基准，按`arr[1:]`分区后递归；完整代码见本周“简洁快速排序”，重点是排除基准并保留相等元素。
+- 空列表返回`[]`；要严格返回新对象时，基本情形写`return arr[:]`。
+
+### 两次递归二分计频次
+
+
+**PTA W7 · 7C01《频段重复次数》**。给定允许重复的升序整数列表和目标值，用两次递归二分求目标值出现次数；不存在则返回$0$。
+
+- 接口：`count_freq(arr, target)`，返回次数，不是下标。
+- 样例：`count_freq([1,2,2,2,3,4], 2)`返回`3`；目标为`5`时返回`0`。
+- 题目要求分别找左右边界，不能找到一次后直接返回，也不能用线性`count`代替。
+
+统一使用半开区间`[lo,hi)`。第一次找首个不小于目标的位置，第二次找首个大于目标的位置，二者之差就是出现次数；不存在时两个边界相同。
+
+```python
+def count_freq(arr, target):
+    def bound(lo, hi, upper):
+        if lo >= hi:
+            return lo
+        mid = (lo + hi) // 2
+        if arr[mid] < target or (upper and arr[mid] == target):
+            return bound(mid + 1, hi, upper)
+        return bound(lo, mid, upper)
+    return bound(0, len(arr), True) - bound(0, len(arr), False)
+```
+
+
+两次二分仍为$O(\log n)$。闭区间与半开区间都可以，不能混用`right=len(arr)-1`、`lo>=hi`等来自不同模板的边界。
+
+### 逆序对与排序返回值不同
+
+
+**PTA W7 · 7C02《逆序雷达》**。对整数列表统计满足$i<j$且$a_i>a_j$的下标对数量，要求用归并分治实现。
+
+- 接口：`count_inversions(arr)`，只返回整数计数。
+- 样例：`[3,1,2]`返回`2`，对应数值对`(3,1)`、`(3,2)`；相等元素不构成逆序。
+- 下面的包装函数调用本周前文完整实现的`inversions`；其中合并阶段负责跨段计数，左右递归负责段内计数。
+
+正文`inversions`返回`(有序列表,计数)`；PTA的`count_inversions`只返回计数，接口必须再拆一次：
+
+```python
+def count_inversions(arr):
+    _, count = inversions(arr)
+    return count
+```
+
+
+归并、快排题要求返回新列表时，最小规模也可用`return arr[:]`确保对象独立；`return arr`虽能给出正确排序值，却与输入共享对象。编程题能通过已有样例不等于满足全部接口语义。
+
+### 通用弦截法：残差与变化量不能混用
+
+
+**PTA W7 · 7D03《通用弦截法》**。调用方给出一元可调用函数`f`、两个初始近似值`x0,x1`和精度`eps`，用弦截法求$f(x)=0$的近似根，按$|f(x)|<\varepsilon$停止。
+
+- 题目接口：`secant(f, x0, x1, eps)`，返回浮点数；`f`是函数对象，不能传公式字符串。
+- 样例：`f=lambda x: x**2-2`、初值`1.0,2.0`、精度`1e-6`，返回约$1.41421356$，裁判保留三位小数输出`1.414`。
+- 下方`secant_checked`是增加失败检查的复习版；按PTA接口使用时将函数名改为`secant`即可。
+
+题面要求$|f(x)|<\varepsilon$。下面按此规格停止；导数差接近零或迭代失败应显式报告，不能假装返回了根。
+
+```python
+def secant_checked(f, x0, x1, eps, max_iter=1000):
+    f0, f1 = f(x0), f(x1)
+    for _ in range(max_iter):
+        if abs(f1) < eps:
+            return x1
+        if abs(f1 - f0) < 1e-15:
+            raise ValueError("弦截法分母过小")
+        x2 = x1 - f1 * (x1 - x0) / (f1 - f0)
+        x0, x1 = x1, x2
+        f0, f1 = f1, f(x1)
+    raise ValueError("迭代未收敛")
+```
+
+
+
+
+## W8 简单线性结构与Git
+
+
+课程材料：26FIP8 简单线性数据结构.pdf
+
+### 数组与链表
+
+
+**数据结构**是组织和存取数据的方式。选择结构时，先看需要频繁执行什么操作：按下标访问、在中间插删，还是按一定顺序取出。
+
+传统数组通常存放同类型元素，长度固定；Python的`list`长度可变、可以混合类型。Python列表内部连续存放的是**对象引用**，对象本身不一定连续。
+
+链表的每个结点保存数据和指向下一个结点的引用，结点不必连续存放。它不必移动后面的元素，但按位置查找时需要从头沿引用查找。
+
+| 操作 | 数组 / Python `list` | 单向链表 |
+|---|---|---|
+| 按下标访问 | $O(1)$ | $O(n)$ |
+| 头部插入 | $O(n)$，后续元素移动 | $O(1)$ |
+| 已知位置插入、删除 | 最坏$O(n)$ | 改链接$O(1)$ |
+
+链表删除需要已经持有**待删结点的前驱结点**；若先按值或下标寻找位置，查找仍需$O(n)$。链表结点分散，也可能不如连续存储有利于缓存。
+
+Python有`array`等专门的数组工具；日常通用序列通常使用`list`。
+
+### 栈：后进先出
+
+
+栈（Stack）遵循**LIFO (Last in First Out)**：最后入栈的元素最先出栈。主要操作是`push`入栈、`pop`出栈、`peek`查看栈顶。撤销操作和函数调用栈都符合这一顺序。
+
+```python
+strokes = []
+strokes.append("圆形")
+strokes.append("直线")
+strokes.append("矩形")
+strokes.pop()          # "矩形"
+strokes[-1]            # "直线"，查看但不删除
+```
+
+
+用`list`尾部`append`和`pop()`实现栈，两者均摊$O(1)$；空列表执行`pop()`或`stack[-1]`会抛出`IndexError`。
+
+#### 括号匹配
+
+
+右括号必须与**最近一个尚未匹配的左括号**配对，所以使用栈。下面约定输入只含六种括号：
+
+```python
+def is_valid(s):
+	stack = []
+	pairs = {')': '(', ']': '[', '}': '{'}
+	for ch in s:
+		if ch in '([{':
+			stack.append(ch)
+		else:
+			if not stack or stack[-1] != pairs[ch]:
+				return False
+			stack.pop()
+	return not stack
+```
+
+
+`{[()]}`依次压左括号入栈，再依次匹配出栈，最后栈空，返回`True`。要检查三种错误：右括号到来时栈空、栈顶类型不匹配、读完后栈里仍有左括号。`not stack or ...`利用逻辑短路，先避免访问空栈。
+
+每个字符最多入栈和出栈一次，时间$O(n)$；最坏情况下栈保存$n$个左括号，空间$O(n)$。
+
+### 队列：先进先出
+
+
+队列（Queue）遵循**FIFO (First in First Out)**：队尾入队，队首出队。打印任务、餐厅订单和广度优先搜索(BFS)都要求先来先处理。
+
+```python
+from collections import deque
+
+orders = deque()
+orders.append("A")         # 队尾入队
+orders.append("B")
+first = orders.popleft()  # 队头出队，得到 "A"
+```
+
+
+`list.pop(0)`虽然也能取队头，但删除后其余引用要前移，单次$O(n)$；连续取空$n$个元素总共需要$O(n^2)$。`deque.popleft()`从左端取出，单次$O(1)$，连续取空为$O(n)$。
+
+| 需求 | Python写法 | 顺序 |
+|---|---|---|
+| 栈 | `list.append()` / `list.pop()` | LIFO |
+| 队列 | `deque.append()` / `deque.popleft()` | FIFO |
+| 两端进出 | `deque`的左右端方法 | 按需求决定 |
+
+
+课程材料：8 简单线性数据结构阅读材料.pdf
+
+### `deque`常用操作
+
+
+`deque`是双端队列，从`collections`导入。两端追加与弹出通常都是$O(1)$；它适合队列，但中间位置的随机访问是$O(n)$，不能代替列表频繁按下标访问。
+
+| 写法 | 作用 | 返回值 / 注意 |
+|---|---|---|
+| `deque(iterable)` | 用可迭代对象初始化 | 新`deque` |
+| `append(x)` / `appendleft(x)` | 右端 / 左端加入 | `None` |
+| `pop()` / `popleft()` | 右端 / 左端移除并返回 | 空队列抛`IndexError` |
+| `extend(xs)` / `extendleft(xs)` | 逐个加入右端 / 左端 | `extendleft`会使加入部分的顺序反转 |
+| `rotate(k)` | 循环移动 | 正数向右、负数向左；原地修改 |
+| `clear()` | 清空 | `None` |
+| `d[0]` / `d[-1]` | 查看两端 | 不删除；空队列不能取下标 |
+
+```python
+from collections import deque
+
+d = deque([1, 2, 3])
+d.extendleft([4, 5])  # deque([5, 4, 1, 2, 3])
+d.rotate(1)           # deque([3, 5, 4, 1, 2])
+
+recent = deque(maxlen=3)
+recent.extend([1, 2, 3, 4])  # deque([2, 3, 4])
+```
+
+
+设置`maxlen`后，`append`或`appendleft`在已满时会从另一端丢掉元素；这是有界缓存的行为，使用前要确认是否允许丢失旧数据。
+
+### 栈与队列的检查
+
+
+| 情况 | 要检查什么 |
+|---|---|
+| 右括号先出现 | 取栈顶前先判空 |
+| 读完还有左括号 | 最后返回`not stack`，不能直接返回`True` |
+| 空队列出队 | 先用`if d:`判断，或处理`IndexError` |
+| 用`list.pop(0)`做长队列 | 改用`deque.popleft()` |
+| 保存回溯路径 | 需要快照时用`path[:]`；直接保存`path`会共享同一列表 |
+
+
+课程材料：8 简单线性数据结构-研讨课.pdf
+
+### Git与GitHub
+
+
+Git是本地版本控制工具；GitHub可以托管远程Git仓库。一次`commit`记录暂存区的快照，`push`把本地提交上传到远程。
+
+```text
+工作区 ── git add ──> 暂存区 ── git commit ──> 本地仓库 ── git push ──> 远程仓库
+```
+
+
+| 命令 | 作用 |
+|---|---|
+| `git init` | 在当前目录初始化仓库 |
+| `git status` | 查看工作区和暂存区状态 |
+| `git add README.md` | 把文件当前内容加入暂存区 |
+| `git commit -m "说明"` | 提交暂存区快照 |
+| `git log --oneline` | 简要查看提交历史 |
+| `git remote -v` | 查看远程地址 |
+| `git push -u origin main` | 推送分支并设置上游 |
+
+### 第一次提交与推送
+
+
+在项目目录中写好`README.md`，记录组号、成员和日期：
+
+```bash
+git init
+git status
+git add README.md
+git commit -m "W8 研讨：第一次提交"
+git log --oneline
+```
+
+
+GitHub上新建空仓库后，将示例地址替换成自己的HTTPS地址：
+
+```bash
+git remote add origin https://github.com/用户名/仓库名.git
+git branch -M main
+git push -u origin main
+```
+
+
+若本地已有`README.md`，新建远程仓库时不预先创建同名文件，可减少首次推送时的历史冲突。推送完成后检查远程页面是否显示文件。
+
+### `.gitignore`与常见问题
+
+
+在仓库根目录创建`.gitignore`，例如：
+
+```gitignore
+__pycache__/
+*.pyc
+.vscode/
+.DS_Store
+```
+
+
+`.gitignore`只影响尚未被跟踪的文件；已跟踪的缓存需要先从Git索引中移除，规则才会生效。提交前用`git status`检查，避免加入缓存、密钥和密码。
+
+| 现象 | 检查 |
+|---|---|
+| `nothing to commit` | 用`git status`确认是否有改动、是否已经`add` |
+| `remote origin already exists` | 用`git remote -v`查看已有地址 |
+| `push`认证失败 | 检查远程地址与GitHub认证方式 |
+| `.gitignore`不起作用 | 检查文件是否已经被跟踪 |
+
+## PTA核对索引
+
+
+PTA按周已只读核对。
+
+| 周次 | 核对题目 | 应掌握 |
+|---|---|---|
+| W1 | 1D02 跑步配速 | 距离为零先处理，格式化两位小数 |
+| W2 | 2D02 零钱店铺 | 非负枚举、循环顺序、金额约束 |
+| W3 | 3B02 账本余额合并、3D02 盲盒抽检 | 字符转换与进位；seed只设一次 |
+| W4 | 4D02 全频捕获 | 返回全部原下标，不是第一个值 |
+| W5 | 5D02 地下乐队点歌榜 | get计数、并列众数、升序 |
+| W6 | 6D01 密码全排列、6D02 货箱层深 | 递归出口、回溯撤销、空列表深度 |
+| W7 | 7C01 频段重复次数、7C02 逆序雷达 | 两次边界二分；接口只返回逆序对数 |
+| W7 | 7D01/02 废土归并/快排、7D03 通用弦截法 | 禁用内置排序时手写；函数对象与终止标准 |
+
+
+
+## 45分钟提高模拟
+
+
+**选择20题，每题2分；填空4题，每题10分；输出4题，每题5分。** Python 3，各题独立。先独立手推，再看答案。
+
+### 一、选择题（单选）
+
+
+1. `print(-7 // 2, -7 % 2)`的输出？
+
+   - A. `-3 -1`
+   - B. `-4 1`
+   - C. `-3 1`
+   - D. `-4 -1`
+
+2. `2 ** 3 ** 2`等于？
+
+   - A. 64
+   - B. 512
+   - C. 256
+   - D. 36
+
+3. `0 or [] or 'x'`得到？
+
+   - A. True
+   - B. False
+   - C. `'x'`
+   - D. `[]`
+
+4. 哪种退出会跳过循环`else`？
+
+   - A. continue
+   - B. 迭代耗尽
+   - C. break
+   - D. 空range
+
+5. `list(range(6,0,-2))`为？
+
+   - A. `[6,4,2]`
+   - B. `[6,4,2,0]`
+   - C. `[]`
+   - D. `[0,2,4]`
+
+6. `int('3.5')`会？
+
+   - A. 3
+   - B. 4
+   - C. 3.5
+   - D. ValueError
+
+7. 给函数参数标注`x:int`意味着？
+
+   - A. 自动转int
+   - B. 自动拒绝str
+   - C. 默认不强制检查
+   - D. 只能传整数
+
+8. `random.seed(42)`主要用于？
+
+   - A. 结果更准
+   - B. 重现随机序列
+   - C. 消除误差
+   - D. 增加样本
+
+9. 牛顿法更新需要检查？
+
+   - A. 导数为零
+   - B. 列表有序
+   - C. 随机种子
+   - D. 哈希冲突
+
+10. `sorted(['10','2'], key=int)`得到？
+
+   - A. `[2,10]`
+   - B. `['2','10']`
+   - C. `['10','2']`
+   - D. None
+
+11. `d.get('x',0)`在缺键时？
+
+   - A. 插入x
+   - B. KeyError
+   - C. 返回0但不插入
+   - D. 删除x
+
+12. 可用作字典键的是？
+
+   - A. `[1,2]`
+   - B. `{1,2}`
+   - C. `(1,[2])`
+   - D. `(1,2)`
+
+13. `a=[[]]*2; a[0].append(1)`后？
+
+   - A. `[[1],[]]`
+   - B. `[[1],[1]]`
+   - C. `[[],[]]`
+   - D. 报错
+
+14. 闭区间二分循环条件应为？
+
+   - A. `left < right`
+   - B. `left <= right`
+   - C. `left == right`
+   - D. `left > right`
+
+15. `fib(4)`朴素递归含自身共调用？
+
+   - A. 5
+   - B. 7
+   - C. 9
+   - D. 15
+
+16. 哪个是尾递归返回？
+
+   - A. `n*f(n-1)`
+   - B. `f(n-1)+f(n-2)`
+   - C. `gcd(y,x%y)`
+   - D. `1+f(n-1)`
+
+17. 归并逆序对取右元素时加？
+
+   - A. `len(left)`
+   - B. `i`
+   - C. `len(left)-i`
+   - D. 1
+
+18. 首元素基准快排遇到升序输入最坏时间？
+
+   - A. $O(1)$
+   - B. $O(\log n)$
+   - C. $O(n\log n)$
+   - D. $O(n^2)$
+
+19. FIFO高效出队用？
+
+   - A. `list.pop()`
+   - B. `list.pop(0)`
+   - C. `deque.popleft()`
+   - D. `deque.pop()`
+
+20. 把改动放进暂存区的命令？
+
+   - A. `git push`
+   - B. `git add`
+   - C. `git log`
+   - D. `git commit`
+
+### 二、程序填空
+
+
+**1. 统计闭区间素数和（每空2分）**
+
+```python
+def prime_sum(lo, hi):
+    total = 0
+    for n in range(max(2, lo), __1__):
+        for d in range(2, __2__):
+            if __3__:
+                __4__
+        else:
+            total += __5__
+    return total
+```
+
+
+**2. 整行杨辉三角（每空2分）**
+
+```python
+def pascal_row(n):
+    if n == 0:
+        return __1__
+    prev = __2__
+    row = [1]
+    for i in range(__3__):
+        row.append(__4__)
+    row.append(__5__)
+    return row
+```
+
+
+**3. 合并并计逆序（每空2分）**
+
+```python
+def merge_inv(left, right):
+    out = []
+    i = j = inv = 0
+    while __1__:
+        if left[i] <= right[j]:
+            out.append(left[i])
+            i += 1
+        else:
+            out.append(right[j])
+            inv += __2__
+            j += 1
+    out.extend(__3__)
+    out.extend(__4__)
+    return __5__
+```
+
+
+**4. 括号匹配（输入只含括号，每空2分）**
+
+```python
+def valid(s):
+    st = []
+    pairs = {')':'(', ']':'[', '}':'{'}
+    for ch in s:
+        if ch in '([{':
+            __1__
+        else:
+            if __2__ or __3__:
+                return False
+            __4__
+    return __5__
+```
+
+
+### 三、程序输出
+
+
+**1. 别名、浅拷贝与返回值**
+
+```python
+a = [[1], [2]]
+b = a[:]
+b[0].append(3)
+b[1] = [9]
+print(a)
+print(b)
+print(a.reverse())
+print(a)
+```
+
+
+**2. 字典方法**
+
+```python
+d = {}
+for x in ['b','a','b']:
+    d[x] = d.get(x,0) + 1
+print(d.get('c',0), 'c' in d)
+print(d.setdefault('c',4))
+print(list(d.items()))
+```
+
+
+**3. 递进与回归**
+
+```python
+def walk(n):
+    if n == 0:
+        return
+    print(n, end=' ')
+    walk(n-1)
+    print(n, end=' ')
+walk(3)
+print()
+```
+
+
+**4. deque与短路**
+
+```python
+from collections import deque
+d = deque([1,2,3])
+d.extendleft([4,5])
+print(d.popleft(), d.pop())
+d.rotate(1)
+print(list(d))
+st = []
+print(not st or st[-1] == '(')
+```
+
+
+### 参考答案与关键理由
+
+
+选择：**1B 2B 3C 4C 5A 6D 7C 8B 9A 10B 11C 12D 13B 14B 15C 16C 17C 18D 19C 20B**。
+
+填空1：`hi+1`；`int(n**0.5)+1`；`n%d==0`；`break`；`n`。
+填空2：`[1]`；`pascal_row(n-1)`；`len(prev)-1`；`prev[i]+prev[i+1]`；`1`。
+填空3：`i<len(left) and j<len(right)`；`len(left)-i`；`left[i:]`；`right[j:]`；`out, inv`。
+填空4：`st.append(ch)`；`not st`；`st[-1] != pairs[ch]`；`st.pop()`；`not st`。
+
+输出1：
+
+```text
+[[1, 3], [2]]
+[[1, 3], [9]]
+None
+[[2], [1, 3]]
+```
+
+
+输出2：
+
+```text
+0 False
+4
+[('b', 2), ('a', 1), ('c', 4)]
+```
+
+
+输出3：`3 2 1 1 2 3`，同一行，最后一个3后还有空格，再换行。
+输出4：
+
+```text
+5 3
+[2, 4, 1]
+True
+```
+
+
+## 原始材料索引与范围说明
+
+
+本地资料：W1课程介绍、计算讲义/阅读/研讨，W2枚举与减治讲义/阅读，W3迭代与模拟讲义/阅读，W4序列与查找讲义/阅读及月考归档，W5哈希讲义/阅读/研讨，W6递归讲义/阅读/研讨，W7分治讲义/阅读/研讨与时间复杂度分享，W8简单线性结构讲义/阅读/研讨。另纳入AI协作规范与各周笔记。
+
+当前文件夹未提供W2、W3、W4独立研讨PDF；相关研讨内容以现有笔记、月考归档和协作规范交叉补充。PTA W8尚未能读取题目详情；待开放后可再核对题型与边界。循环队列、滑动窗口、heapq与class的系统实现属于W9，不作为W8核心要求；阅读材料出现的封装类仅作扩展识读。
