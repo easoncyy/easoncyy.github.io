@@ -1,3 +1,241 @@
+::: {.problem-day data-date="2026-11-04"}
+
+## 2026-11-04 {.problem-date-heading}
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;导数&quot;], &quot;tags&quot;: [&quot;三角多项式&quot;, &quot;系数估计&quot;], &quot;title&quot;: &quot;三角多项式的系数和估计&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / CALCULUS / 导数</div>
+
+<h3>01. 三角多项式的系数和估计</h3>
+
+<div class="entry-tags">#三角多项式 · #系数估计</div>
+
+```
+
+设 $a_1,a_2,\ldots,a_n$ 为常数，记
+
+$$
+f(x)=\sum_{k=1}^n a_k\sin kx,\qquad
+g(x)=\sum_{j=1}^n a_{n-j+1}\sin jx.
+$$
+
+已知 $|f(x)|\le|\sin x|$，$|g(x)|\le|\sin x|$，求证
+
+$$
+\left|\sum_{k=1}^n a_k\right|\le\frac{2}{n+1}.
+$$
+
+提示：考虑 $f'(0),g'(0)$。
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+由 $f(0)=g(0)=0$ 及题设不等式，得 $|f'(0)|\le1$，$|g'(0)|\le1$。又
+
+$$
+f'(0)=\sum_{k=1}^n ka_k,\qquad
+g'(0)=\sum_{k=1}^n(n-k+1)a_k.
+$$
+
+故
+
+$$
+\left|\sum_{k=1}^n a_k\right|
+=\frac{|f'(0)+g'(0)|}{n+1}
+\le\frac{2}{n+1}.
+$$
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：2026–2027 学年微积分（甲）Ⅰ期中模拟卷 · 第 10 题 B</p>
+
+```
+
+:::
+
+```{=html}
+
+<details id="discussion-2026-11-04" class="log-comments problem-discussion" data-comment-term="/problems/2026-11-04/" data-comment-date="2026-11-04" data-comment-title="每日好题 · 2026-11-04">
+
+<summary>discussion/ <span>2026-11-04 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+::: {.problem-day data-date="2026-11-03"}
+
+## 2026-11-03 {.problem-date-heading}
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;AI&quot;, &quot;FIP&quot;, &quot;期中复习&quot;], &quot;tags&quot;: [&quot;列表&quot;, &quot;别名&quot;], &quot;title&quot;: &quot;别名、浅拷贝与返回值&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">AI / FIP / 期中复习</div>
+
+<h3>01. 别名、浅拷贝与返回值</h3>
+
+<div class="entry-tags">#列表 · #别名</div>
+
+```
+
+写出程序的完整输出：
+
+```python
+a = [[1], [2]]
+b = a[:]
+b[0].append(3)
+b[1] = [9]
+print(a)
+print(b)
+print(a.reverse())
+print(a)
+```
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+```text
+[[1, 3], [2]]
+[[1, 3], [9]]
+None
+[[2], [1, 3]]
+```
+
+切片创建外层新列表，内层列表仍共享。`reverse()`原地修改并返回`None`。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：FIP W1–W8 期中复习笔记 · 程序输出</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;AI&quot;, &quot;FIP&quot;, &quot;期中复习&quot;], &quot;tags&quot;: [&quot;字典&quot;, &quot;程序输出&quot;], &quot;title&quot;: &quot;字典方法与插入顺序&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">AI / FIP / 期中复习</div>
+
+<h3>02. 字典方法与插入顺序</h3>
+
+<div class="entry-tags">#字典 · #程序输出</div>
+
+```
+
+写出程序的完整输出：
+
+```python
+d = {}
+for x in ['b','a','b']:
+    d[x] = d.get(x,0) + 1
+print(d.get('c',0), 'c' in d)
+print(d.setdefault('c',4))
+print(list(d.items()))
+```
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+```text
+0 False
+4
+[('b', 2), ('a', 1), ('c', 4)]
+```
+
+`get`不插入键；`setdefault`在缺键时插入。字典保留键首次插入的顺序。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：FIP W1–W8 期中复习笔记 · 程序输出</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;AI&quot;, &quot;FIP&quot;, &quot;期中复习&quot;], &quot;tags&quot;: [&quot;递归&quot;, &quot;程序输出&quot;], &quot;title&quot;: &quot;递归的递进与回归&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">AI / FIP / 期中复习</div>
+
+<h3>03. 递归的递进与回归</h3>
+
+<div class="entry-tags">#递归 · #程序输出</div>
+
+```
+
+写出程序的完整输出，注意空格：
+
+```python
+def walk(n):
+    if n == 0:
+        return
+    print(n, end=' ')
+    walk(n-1)
+    print(n, end=' ')
+walk(3)
+print()
+```
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+```text
+3 2 1 1 2 3 
+```
+
+递归前依次输出`3 2 1`，返回时依次输出`1 2 3`。最后一个`3`后仍有一个空格，然后换行。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：FIP W1–W8 期中复习笔记 · 程序输出</p>
+
+```
+
+:::
+
+```{=html}
+
+<details id="discussion-2026-11-03" class="log-comments problem-discussion" data-comment-term="/problems/2026-11-03/" data-comment-date="2026-11-03" data-comment-title="每日好题 · 2026-11-03">
+
+<summary>discussion/ <span>2026-11-03 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
 ::: {.problem-day data-date="2026-11-02"}
 
 ## 2026-11-02 {.problem-date-heading}
@@ -3245,6 +3483,6 @@ $$
 
 ```{=html}
 
-<script id="problem-index" type="application/json">{"builtDate": "2026-11-02", "dates": {"2026-11-02": 6, "2026-11-01": 2, "2026-10-31": 2, "2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
+<script id="problem-index" type="application/json">{"builtDate": "2026-11-04", "dates": {"2026-11-04": 1, "2026-11-03": 3, "2026-11-02": 6, "2026-11-01": 2, "2026-10-31": 2, "2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
 
 ```

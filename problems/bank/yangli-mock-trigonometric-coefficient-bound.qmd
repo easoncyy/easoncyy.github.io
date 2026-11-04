@@ -1,0 +1,39 @@
+---
+title: "三角多项式的系数和估计"
+category-path: ["MATH", "CALCULUS", "导数"]
+tags: ["三角多项式", "系数估计"]
+source: "2026–2027 学年微积分（甲）Ⅰ期中模拟卷 · 第 10 题 B"
+draft: false
+---
+
+设 $a_1,a_2,\ldots,a_n$ 为常数，记
+
+$$
+f(x)=\sum_{k=1}^n a_k\sin kx,\qquad
+g(x)=\sum_{j=1}^n a_{n-j+1}\sin jx.
+$$
+
+已知 $|f(x)|\le|\sin x|$，$|g(x)|\le|\sin x|$，求证
+
+$$
+\left|\sum_{k=1}^n a_k\right|\le\frac{2}{n+1}.
+$$
+
+提示：考虑 $f'(0),g'(0)$。
+
+<!-- answer -->
+
+由 $f(0)=g(0)=0$ 及题设不等式，得 $|f'(0)|\le1$，$|g'(0)|\le1$。又
+
+$$
+f'(0)=\sum_{k=1}^n ka_k,\qquad
+g'(0)=\sum_{k=1}^n(n-k+1)a_k.
+$$
+
+故
+
+$$
+\left|\sum_{k=1}^n a_k\right|
+=\frac{|f'(0)+g'(0)|}{n+1}
+\le\frac{2}{n+1}.
+$$

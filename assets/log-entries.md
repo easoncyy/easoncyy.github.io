@@ -1,5 +1,89 @@
 ::: {.log-stream}
 
+::: {#20261104-230731-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-11-04T23:07:31+08:00">2026-11-04 23:07:31 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title">我能体谅你有雨天</p>
+
+```
+
+深入骨髓的冷吧。昨天晚上苹果天气预报出了点问题，显示下周五的温度为零下32摄氏度，今天早上就被一场不知道是秋雨还是冬雨的雨淋得无比清醒。明明今天没有什么课，明天开始就有一堆考试，但是还是效率很低下地自习。idk, 有人能体谅我有雨天吗。
+
+::: {.log-photo-grid}
+
+![一个下雨的早晨](/assets/log/20261104-230731-entry/photo-01.jpg)
+
+![Rusty](/assets/log/20261104-230731-entry/photo-02.jpg)
+
+![我有时也不知怎么走下去，抱歉让没有人担了心](/assets/log/20261104-230731-entry/photo-03.png)
+
+:::
+
+```{=html}
+
+<details id="comments-20261104-230731-entry" class="log-comments" data-comment-term="/logs/20261104-230731-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
+::: {#20261103-234304-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-11-03T23:43:04+08:00">2026-11-03 23:43:04 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title"></p>
+
+```
+
+::: {.log-photo-grid}
+
+![](/assets/log/20261103-234304-entry/photo-01.jpg)
+
+![](/assets/log/20261103-234304-entry/photo-02.jpg)
+
+:::
+
+```{=html}
+
+<details id="comments-20261103-234304-entry" class="log-comments" data-comment-term="/logs/20261103-234304-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
 ::: {#20261103-001131-entry .log-entry}
 
 ```{=html}
