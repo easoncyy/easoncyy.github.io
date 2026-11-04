@@ -1,0 +1,31 @@
+---
+title: "别名、浅拷贝与返回值"
+category-path: ["AI", "FIP", "期中复习"]
+tags: ["列表", "别名"]
+source: "FIP W1–W8 期中复习笔记 · 程序输出"
+draft: false
+---
+
+写出程序的完整输出：
+
+```python
+a = [[1], [2]]
+b = a[:]
+b[0].append(3)
+b[1] = [9]
+print(a)
+print(b)
+print(a.reverse())
+print(a)
+```
+
+<!-- answer -->
+
+```text
+[[1, 3], [2]]
+[[1, 3], [9]]
+None
+[[2], [1, 3]]
+```
+
+切片创建外层新列表，内层列表仍共享。`reverse()`原地修改并返回`None`。

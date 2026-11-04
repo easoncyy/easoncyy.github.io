@@ -82,5 +82,10 @@
     "calculus-leibniz-origin-log",
     "demidovich-1224-oscillatory-differentiability",
     "demidovich-1227-legendre-equation"
+  ],
+  "2026-11-03": [
+    "fip-midterm-alias-shallow-copy",
+    "fip-midterm-dict-methods",
+    "fip-midterm-recursion-output"
   ]
 }

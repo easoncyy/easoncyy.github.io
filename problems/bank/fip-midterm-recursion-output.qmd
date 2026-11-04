@@ -1,0 +1,28 @@
+---
+title: "递归的递进与回归"
+category-path: ["AI", "FIP", "期中复习"]
+tags: ["递归", "程序输出"]
+source: "FIP W1–W8 期中复习笔记 · 程序输出"
+draft: false
+---
+
+写出程序的完整输出，注意空格：
+
+```python
+def walk(n):
+    if n == 0:
+        return
+    print(n, end=' ')
+    walk(n-1)
+    print(n, end=' ')
+walk(3)
+print()
+```
+
+<!-- answer -->
+
+```text
+3 2 1 1 2 3 
+```
+
+递归前依次输出`3 2 1`，返回时依次输出`1 2 3`。最后一个`3`后仍有一个空格，然后换行。

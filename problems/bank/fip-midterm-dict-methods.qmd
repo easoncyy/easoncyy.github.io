@@ -1,0 +1,28 @@
+---
+title: "字典方法与插入顺序"
+category-path: ["AI", "FIP", "期中复习"]
+tags: ["字典", "程序输出"]
+source: "FIP W1–W8 期中复习笔记 · 程序输出"
+draft: false
+---
+
+写出程序的完整输出：
+
+```python
+d = {}
+for x in ['b','a','b']:
+    d[x] = d.get(x,0) + 1
+print(d.get('c',0), 'c' in d)
+print(d.setdefault('c',4))
+print(list(d.items()))
+```
+
+<!-- answer -->
+
+```text
+0 False
+4
+[('b', 2), ('a', 1), ('c', 4)]
+```
+
+`get`不插入键；`setdefault`在缺键时插入。字典保留键首次插入的顺序。
