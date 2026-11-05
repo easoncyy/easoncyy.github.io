@@ -1,0 +1,380 @@
+---
+title: "FIP 期中考试归档"
+description: "智能程序设计基础 W1–W8 期中考试题目与参考答案。"
+date: "2026-11-05T14:28:41+08:00"
+category-path: ["AI", "FIP", "考试"]
+categories: ["真题", "期中考试"]
+execute: {"enabled": false}
+toc-depth: 3
+---
+
+**考试时间：** 45 分钟　　**满分：** 100 分　　**形式：** 纸质闭卷
+
+**考查范围：** 第 1 周至第 8 周（计算、枚举与减治、迭代与模拟、序列与查找、哈希、递归、分治、简单线性数据结构），含这些周阅读材料里已经出现的写法。
+
+**分值：** 选择题 20 题，每题 2 分，共 40 分；程序填空 4 题，每题 10 分，共 40 分；程序输出 4 题，每题 5 分，共 20 分。
+
+**作答：** 一律写在答卷上，不要写在本卷。选择题只写字母。填空按空位编号书写，写入能放进空位的 Python 表达式或语句。写输出按程序实际打印的行作答，不要改写程序。
+
+## 一、选择题（每题 2 分，共 40 分）
+
+### 1. 表达式 `7 // 2` 和 `7 % 2` 的值依次是
+
+- A. 3.5 和 1
+- B. 3 和 1
+- C. 3 和 0
+- D. 4 和 1
+
+### 2. 下面程序打印什么？
+
+```python
+n = 3
+while True:
+    n = n - 1
+    if n == 0:
+        break
+print(n)
+```
+
+- A. 3
+- B. 1
+- C. 0
+- D. 程序死循环，没有输出
+
+### 3. `range(2, 6)` 依次给出的整数是
+
+- A. 2, 3, 4, 5, 6
+- B. 2, 3, 4, 5
+- C. 3, 4, 5, 6
+- D. 2, 3, 4
+
+### 4. `for` 或 `while` 后面的 `else`，其中的语句何时执行？
+
+- A. 每一轮循环都执行
+- B. 循环因为 `break` 结束时执行
+- C. 循环正常结束、没有遇到 `break` 时执行
+- D. `else` 不能写在循环后面
+
+### 5. 下面双重循环结束后，`n` 是多少？
+
+```python
+n = 0
+for i in range(3):
+    for j in range(2):
+        n = n + 1
+```
+
+- A. 5
+- B. 6
+- C. 3
+- D. 2
+
+### 6. 条件表达式 `a if c else b` 的结果何时是 `a`？
+
+- A. `c` 为真时
+- B. `c` 为假时
+- C. `a` 为真时
+- D. 总是
+
+### 7. 下面的 `print` 会看到什么？
+
+```python
+def f(n):
+    n = n + 1
+print(f(2))
+```
+
+- A. 3
+- B. 2
+- C. `None`
+- D. 语法错误
+
+### 8. `t = [10, 20, 30]`，`t[-1]` 的值是
+
+- A. 10
+- B. 20
+- C. 30
+- D. 下标不能为负，报错
+
+### 9. 二分查找每次比较后能丢掉一半范围，前提是
+
+- A. 序列已经按查找键排好序
+- B. 元素必须都是整数
+- C. 长度必须是 2 的幂
+- D. 序列里不能有重复元素
+
+### 10. 有序列表 `[2, 5, 8, 11, 14, 17, 20, 23]`，下标闭区间从 0 到 7，中点下标取 `(left + right) // 2`，查找 14 时，第一次比较的元素是
+
+- A. 2
+- B. 11
+- C. 14
+- D. 17
+
+### 11. `d = {"a": 1}`，执行 `d["b"]` 会
+
+- A. 得到 `None`
+- B. 得到 0
+- C. 抛出 `KeyError`
+- D. 自动加入键 `"b"`
+
+### 12. `d = {"a": 1}`，`d.get("b", 0)` 的结果是
+
+- A. 0
+- B. `None`
+- C. 抛出 `KeyError`
+- D. 1
+
+### 13. 递归调用的规模一直不减小、碰不到 base case，通常会
+
+- A. 自动改写成循环
+- B. 返回 0
+- C. 抛出 `RecursionError`
+- D. 返回 `None`
+
+### 14. 不用记忆化的斐波那契递归很慢，主要因为
+
+- A. 同一次计算里，相同的子问题被反复计算
+- B. Python 不能写递归
+- C. 列表按下标访问是 $O(n)$
+- D. 字典查找是 $O(n)$
+
+### 15. 执行下面代码后，`arr[0]` 是多少？
+
+```python
+arr = [1, 2, 3]
+b = arr[:2]
+b[0] = 9
+```
+
+- A. 9
+- B. 1
+- C. 2
+- D. 报错
+
+### 16. 归并排序的时间复杂度是
+
+- A. $O(n)$
+- B. $O(n\log n)$
+- C. $O(n^2)$
+- D. $O(\log n)$
+
+### 17. 对一个很长的 `list` 反复调用 `pop(0)` 会很慢，原因是
+
+- A. 每次都要把后面的元素前移，单次是 $O(n)$
+- B. 在尾部删除一个元素是 $O(n)$
+- C. `list` 的元素在内存里不连续
+- D. `pop(0)` 只能删除数字
+
+### 18. 按下标读写一个元素，理想数组和链表的时间分别是
+
+- A. 都是 $O(1)$
+- B. 数组 $O(1)$，链表 $O(n)$
+- C. 数组 $O(n)$，链表 $O(1)$
+- D. 都是 $O(n)$
+
+### 19. 编辑器的「撤销」要丢掉最近的一步。更合适的做法是
+
+- A. 用队列：先记下的先撤销
+- B. 用栈：后记下的先撤销
+- C. 用集合：按大小自动排序后再撤销
+- D. 用字典：按键的字典序撤销
+
+### 20. 食堂窗口按取号顺序叫号。新来的人和被叫到的人，应该怎样进出？
+
+- A. 新来的排到队尾，叫号从队头离开
+- B. 新来的插到队头，叫号从队尾离开
+- C. 新来的和叫号都在同一端
+- D. 先来后到无所谓，从哪一端离开都可以
+
+## 二、程序填空（每题 10 分，共 40 分）
+
+### 21. 下面函数判断括号串是否合法：每个右括号必须配上最近的未匹配左括号。合法返回 `True`，否则返回 `False`。例如 `{[()]}` 为 `True`，`]` 为 `False`。
+
+```python
+def is_valid(s):
+    stack = []
+    pairs = {')': '(', ']': '[', '}': '{'}
+    for ch in s:
+        if ch in '([{':
+            stack.append(ch)
+        else:
+            if ____①____ or stack[-1] != pairs[ch]:
+                return False
+            ____②____
+    return ____③____
+```
+
+### 22. `sum_even(nums)` 返回列表里所有偶数之和。`sum_even([1, 2, 3, 4])` 为 6。
+
+```python
+def sum_even(nums: list) -> int:
+    s = ____①____
+    for x in nums:
+        if x % 2 == 0:
+            s = ____②____
+    return s
+```
+
+### 23. `cpu_sum(nums, n)` 用递归求列表中整数的和。`n` 是 CPU 个数，且为 2 的幂。CPU 多于 1 个时，列表从中点切成左右两段，CPU 也平分。只剩 1 个 CPU 时不再切开，用循环把这一段全部加起来。所以一共停在 `n` 个分支上，而不是每个整数一次调用。`cpu_sum([1, 2, 3, 4, 5, 6, 7, 8], 4)` 为 36。
+
+```python
+def cpu_sum(nums: list, n: int) -> int:
+    if ____①____:
+        s = 0
+        for x in nums:
+            s = s + x
+        return s
+    mid = len(nums) // 2
+    half = n // 2
+    return cpu_sum(nums[:mid], half) + cpu_sum(____②____, half)
+```
+
+### 24. `most_common_count(nums)` 返回出现次数最多的那个数的次数。`most_common_count([1, 2, 1, 3, 1])` 为 3。
+
+```python
+def most_common_count(nums):
+    d = {}
+    for x in nums:
+        d[x] = ____①____
+    best = 0
+    for k in d:
+        if d[k] > best:
+            best = ____②____
+    return best
+```
+
+## 三、程序输出（每题 5 分，共 20 分）
+
+写出程序的全部输出。多行则按行书写。
+
+### 25.
+
+```python
+a = [1, 2, 3]
+b = a
+b[0] = 99
+print(a)
+```
+
+### 26.
+
+```python
+def weigh(a: list, lo: int, hi: int) -> int:
+    if lo == hi:
+        return a[lo]
+    mid = (lo + hi) // 2
+    left = weigh(a, lo, mid)
+    right = weigh(a, mid + 1, hi)
+    if left >= right:
+        chosen = left
+    else:
+        chosen = right
+    print(chosen)
+    return chosen
+
+nums = [3, 8, 2, 6]
+print(weigh(nums, 0, 3))
+```
+
+### 27.
+
+```python
+tokens: list = [2, 3, 1, 0, 4, 0, 0, 5]
+stack: list = []
+out: int = 0
+i: int = 0
+while i < len(tokens):
+    x = tokens[i]
+    if x > 0:
+        stack.append(x)
+    else:
+        a = stack.pop()
+        b = stack.pop()
+        out = a + b
+        stack.append(out)
+    i = i + 1
+print(out)
+print(stack[0])
+print(len(stack))
+```
+
+### 28.
+
+```python
+reads = [1, 4, 1, 2, 4, 4, 3]
+count = {}
+for x in reads:
+    if x in count:
+        count[x] = count[x] + 1
+    else:
+        count[x] = 1
+best_key = reads[0]
+best_n = count[best_key]
+for x in reads:
+    if count[x] > best_n:
+        best_key = x
+        best_n = count[x]
+second = 0
+for x in reads:
+    if x != best_key and count[x] > second:
+        second = count[x]
+print(best_key)
+print(best_n)
+print(second)
+print(len(count))
+```
+
+## 参考答案
+
+### 一、选择题
+
+| 题号 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 答案 | B | C | B | C | B | A | C | C | A | B |
+
+| 题号 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 答案 | C | A | C | A | B | B | A | B | B | A |
+
+### 二、程序填空
+
+| 题号 | ① | ② | ③ |
+| --- | --- | --- | --- |
+| 21 | `not stack` | `stack.pop()` | `not stack` |
+| 22 | `0` | `s + x` | |
+| 23 | `n == 1` | `nums[mid:]` | |
+| 24 | `d.get(x, 0) + 1` | `d[k]` | |
+
+### 三、程序输出
+
+25.
+
+```text
+[99, 2, 3]
+```
+
+26.
+
+```text
+8
+6
+8
+8
+```
+
+27.
+
+```text
+10
+10
+2
+```
+
+28.
+
+```text
+4
+3
+2
+4
+```
