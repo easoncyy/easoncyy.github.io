@@ -1,3 +1,70 @@
+::: {.problem-day data-date="2026-11-05"}
+
+## 2026-11-05 {.problem-date-heading}
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;AI&quot;, &quot;FIP&quot;, &quot;函数&quot;], &quot;tags&quot;: [&quot;Python&quot;, &quot;返回值&quot;], &quot;title&quot;: &quot;函数的返回值&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">AI / FIP / 函数</div>
+
+<h3>01. 函数的返回值</h3>
+
+<div class="entry-tags">#Python · #返回值</div>
+
+```
+
+下面的 `print` 会看到什么？
+
+```python
+def f(n):
+    n = n + 1
+print(f(2))
+```
+
+- A. 3
+- B. 2
+- C. `None`
+- D. 语法错误
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+**答案：C。**
+
+函数没有执行 `return` 语句时，返回值为 `None`。`n = n + 1` 只修改函数内的局部变量，因此 `print(f(2))` 输出：
+
+```text
+None
+```
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：FIP 期中考试 · 第 7 题</p>
+
+```
+
+:::
+
+```{=html}
+
+<details id="discussion-2026-11-05" class="log-comments problem-discussion" data-comment-term="/problems/2026-11-05/" data-comment-date="2026-11-05" data-comment-title="每日好题 · 2026-11-05">
+
+<summary>discussion/ <span>2026-11-05 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
 ::: {.problem-day data-date="2026-11-04"}
 
 ## 2026-11-04 {.problem-date-heading}
@@ -3483,6 +3550,6 @@ $$
 
 ```{=html}
 
-<script id="problem-index" type="application/json">{"builtDate": "2026-11-04", "dates": {"2026-11-04": 1, "2026-11-03": 3, "2026-11-02": 6, "2026-11-01": 2, "2026-10-31": 2, "2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
+<script id="problem-index" type="application/json">{"builtDate": "2026-11-05", "dates": {"2026-11-05": 1, "2026-11-04": 1, "2026-11-03": 3, "2026-11-02": 6, "2026-11-01": 2, "2026-10-31": 2, "2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
 
 ```

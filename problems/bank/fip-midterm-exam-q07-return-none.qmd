@@ -1,0 +1,30 @@
+---
+title: "函数的返回值"
+category-path: ["AI", "FIP", "函数"]
+tags: ["Python", "返回值"]
+source: "FIP 期中考试 · 第 7 题"
+draft: false
+---
+
+下面的 `print` 会看到什么？
+
+```python
+def f(n):
+    n = n + 1
+print(f(2))
+```
+
+- A. 3
+- B. 2
+- C. `None`
+- D. 语法错误
+
+<!-- answer -->
+
+**答案：C。**
+
+函数没有执行 `return` 语句时，返回值为 `None`。`n = n + 1` 只修改函数内的局部变量，因此 `print(f(2))` 输出：
+
+```text
+None
+```
