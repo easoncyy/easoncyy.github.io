@@ -1,0 +1,22 @@
+---
+title: "参数方程中对 y 的二阶导数"
+category-path: ["MATH", "CALCULUS", "导数"]
+tags: ["参数方程", "二阶导数"]
+source: "错题自编"
+draft: false
+---
+
+设 $x=t^2+t$，$y=t^3+t$，求
+$$
+\left.\frac{d^2x}{dy^2}\right|_{t=0}.
+$$
+
+<!-- answer -->
+
+因 $dy/dt=3t^2+1>0$，
+$$
+\frac{dx}{dy}=\frac{2t+1}{3t^2+1},\qquad
+\frac{d^2x}{dy^2}=\frac1{3t^2+1}\frac d{dt}\left(\frac{2t+1}{3t^2+1}\right)
+=\frac{2(3t^2+1)-6t(2t+1)}{(3t^2+1)^3}.
+$$
+代入 $t=0$，得 $\boxed{2}$。

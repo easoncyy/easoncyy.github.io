@@ -1,3 +1,281 @@
+::: {.problem-day data-date="2026-11-06"}
+
+## 2026-11-06 {.problem-date-heading}
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;极限&quot;], &quot;tags&quot;: [&quot;有理化&quot;, &quot;二阶无穷小&quot;], &quot;title&quot;: &quot;根式差的二阶极限&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / CALCULUS / 极限</div>
+
+<h3>01. 根式差的二阶极限</h3>
+
+<div class="entry-tags">#有理化 · #二阶无穷小</div>
+
+```
+
+求极限
+$$
+\lim_{x\to0}\frac{\sqrt{1+2x+3x^2}-1-x}{x^2}.
+$$
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+分子有理化，得
+$$
+\frac{\sqrt{1+2x+3x^2}-1-x}{x^2}
+=\frac{2}{\sqrt{1+2x+3x^2}+1+x}\longrightarrow\boxed{1}.
+$$
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：错题自编</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;不等式&quot;], &quot;tags&quot;: [&quot;二项式定理&quot;, &quot;严格不等式&quot;], &quot;title&quot;: &quot;二项式幂的严格估计&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / CALCULUS / 不等式</div>
+
+<h3>02. 二项式幂的严格估计</h3>
+
+<div class="entry-tags">#二项式定理 · #严格不等式</div>
+
+```
+
+证明：
+$$
+2<\left(1+\frac1{100}\right)^{100}<3.
+$$
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+由二项式定理，
+$$
+\left(1+\frac1{100}\right)^{100}
+=2+\sum_{k=2}^{100}\binom{100}{k}\frac1{100^k}>2.
+$$
+对 $2\le k\le100$，有
+$$
+\binom{100}{k}\frac1{100^k}
+=\frac1{k!}\prod_{j=0}^{k-1}\left(1-\frac j{100}\right)<\frac1{k!}\le\frac1{2^{k-1}}.
+$$
+故
+$$
+\left(1+\frac1{100}\right)^{100}
+<2+\sum_{k=2}^{100}\frac1{2^{k-1}}<3.
+$$
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：错题自编</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;导数&quot;], &quot;tags&quot;: [&quot;参数方程&quot;, &quot;二阶导数&quot;], &quot;title&quot;: &quot;参数方程中对 y 的二阶导数&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / CALCULUS / 导数</div>
+
+<h3>03. 参数方程中对 y 的二阶导数</h3>
+
+<div class="entry-tags">#参数方程 · #二阶导数</div>
+
+```
+
+设 $x=t^2+t$，$y=t^3+t$，求
+$$
+\left.\frac{d^2x}{dy^2}\right|_{t=0}.
+$$
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+因 $dy/dt=3t^2+1>0$，
+$$
+\frac{dx}{dy}=\frac{2t+1}{3t^2+1},\qquad
+\frac{d^2x}{dy^2}=\frac1{3t^2+1}\frac d{dt}\left(\frac{2t+1}{3t^2+1}\right)
+=\frac{2(3t^2+1)-6t(2t+1)}{(3t^2+1)^3}.
+$$
+代入 $t=0$，得 $\boxed{2}$。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：错题自编</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;高阶导数&quot;], &quot;tags&quot;: [&quot;莱布尼兹公式&quot;, &quot;调和数&quot;], &quot;title&quot;: &quot;幂函数与对数乘积的 n 阶导数&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / CALCULUS / 高阶导数</div>
+
+<h3>04. 幂函数与对数乘积的 n 阶导数</h3>
+
+<div class="entry-tags">#莱布尼兹公式 · #调和数</div>
+
+```
+
+设 $n$ 为正整数，$x>0$，求
+$$
+\frac{d^n}{dx^n}(x^n\ln x).
+$$
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+记 $H_n=\sum_{k=1}^n1/k$。由莱布尼兹公式及
+$$
+(\ln x)^{(k)}=(-1)^{k-1}(k-1)!x^{-k}\qquad(k\ge1),
+$$
+得
+$$
+\frac{d^n}{dx^n}(x^n\ln x)
+=n!\left[\ln x+\sum_{k=1}^n(-1)^{k-1}\binom nk\frac1k\right].
+$$
+其中
+$$
+\sum_{k=1}^n(-1)^{k-1}\binom nk\frac1k
+=\int_0^1\frac{1-(1-t)^n}{t}\,dt
+=\int_0^1\sum_{j=0}^{n-1}(1-t)^j\,dt=H_n.
+$$
+因此结果为 $\boxed{n!(\ln x+H_n)}$。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：错题自编</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列&quot;], &quot;tags&quot;: [&quot;单调有界&quot;, &quot;递推数列&quot;], &quot;title&quot;: &quot;对数递推数列的收敛性&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / CALCULUS / 数列</div>
+
+<h3>05. 对数递推数列的收敛性</h3>
+
+<div class="entry-tags">#单调有界 · #递推数列</div>
+
+```
+
+设 $a_1=1$，$a_{n+1}=\ln(1+a_n)$。证明数列 $\{a_n\}$ 收敛，并求其极限。
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+对任意 $u>0$，有 $0<\ln(1+u)<u$。由归纳法，
+$$
+0<a_{n+1}<a_n\le1.
+$$
+故数列单调递减且有下界，存在极限 $L\ge0$。由连续性，$L=\ln(1+L)$。若 $L>0$，则 $\ln(1+L)<L$，矛盾。因此 $\boxed{L=0}$。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：错题自编</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列&quot;], &quot;tags&quot;: [&quot;Cesàro 平均&quot;, &quot;数列极限&quot;], &quot;title&quot;: &quot;收敛数列的算术平均&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / CALCULUS / 数列</div>
+
+<h3>06. 收敛数列的算术平均</h3>
+
+<div class="entry-tags">#Cesàro 平均 · #数列极限</div>
+
+```
+
+设 $a_n\to A$，证明
+$$
+\frac1n\sum_{k=1}^n a_k\longrightarrow A.
+$$
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+任给 $\varepsilon>0$，取 $N$，使 $k>N$ 时 $|a_k-A|<\varepsilon/2$。令
+$$
+C=\sum_{k=1}^N|a_k-A|.
+$$
+当 $n>N$ 且 $n>2C/\varepsilon$ 时，
+$$
+\left|\frac1n\sum_{k=1}^n a_k-A\right|
+\le\frac Cn+\frac1n\sum_{k=N+1}^n|a_k-A|
+<\frac\varepsilon2+\frac\varepsilon2=\varepsilon.
+$$
+故结论成立。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：错题自编</p>
+
+```
+
+:::
+
+```{=html}
+
+<details id="discussion-2026-11-06" class="log-comments problem-discussion" data-comment-term="/problems/2026-11-06/" data-comment-date="2026-11-06" data-comment-title="每日好题 · 2026-11-06">
+
+<summary>discussion/ <span>2026-11-06 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
 ::: {.problem-day data-date="2026-11-05"}
 
 ## 2026-11-05 {.problem-date-heading}
@@ -3550,6 +3828,6 @@ $$
 
 ```{=html}
 
-<script id="problem-index" type="application/json">{"builtDate": "2026-11-05", "dates": {"2026-11-05": 1, "2026-11-04": 1, "2026-11-03": 3, "2026-11-02": 6, "2026-11-01": 2, "2026-10-31": 2, "2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
+<script id="problem-index" type="application/json">{"builtDate": "2026-11-06", "dates": {"2026-11-06": 6, "2026-11-05": 1, "2026-11-04": 1, "2026-11-03": 3, "2026-11-02": 6, "2026-11-01": 2, "2026-10-31": 2, "2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
 
 ```

@@ -1,0 +1,20 @@
+---
+title: "根式差的二阶极限"
+category-path: ["MATH", "CALCULUS", "极限"]
+tags: ["有理化", "二阶无穷小"]
+source: "错题自编"
+draft: false
+---
+
+求极限
+$$
+\lim_{x\to0}\frac{\sqrt{1+2x+3x^2}-1-x}{x^2}.
+$$
+
+<!-- answer -->
+
+分子有理化，得
+$$
+\frac{\sqrt{1+2x+3x^2}-1-x}{x^2}
+=\frac{2}{\sqrt{1+2x+3x^2}+1+x}\longrightarrow\boxed{1}.
+$$

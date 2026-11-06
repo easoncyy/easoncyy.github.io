@@ -1,0 +1,30 @@
+---
+title: "二项式幂的严格估计"
+category-path: ["MATH", "CALCULUS", "不等式"]
+tags: ["二项式定理", "严格不等式"]
+source: "错题自编"
+draft: false
+---
+
+证明：
+$$
+2<\left(1+\frac1{100}\right)^{100}<3.
+$$
+
+<!-- answer -->
+
+由二项式定理，
+$$
+\left(1+\frac1{100}\right)^{100}
+=2+\sum_{k=2}^{100}\binom{100}{k}\frac1{100^k}>2.
+$$
+对 $2\le k\le100$，有
+$$
+\binom{100}{k}\frac1{100^k}
+=\frac1{k!}\prod_{j=0}^{k-1}\left(1-\frac j{100}\right)<\frac1{k!}\le\frac1{2^{k-1}}.
+$$
+故
+$$
+\left(1+\frac1{100}\right)^{100}
+<2+\sum_{k=2}^{100}\frac1{2^{k-1}}<3.
+$$

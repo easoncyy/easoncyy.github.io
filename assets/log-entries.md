@@ -1,5 +1,53 @@
 ::: {.log-stream}
 
+::: {#20261106-225651-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-11-06T22:56:51+08:00">2026-11-06 22:56:51 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title">怎么获得内心的宁静...</p>
+
+```
+
+::: {.log-photo-grid}
+
+![东教的斜坡](/assets/log/20261106-225651-entry/photo-01.jpg)
+
+![害怕手机会掉下去](/assets/log/20261106-225651-entry/photo-02.jpg)
+
+![怎么获得内心的宁静？](/assets/log/20261106-225651-entry/photo-03.jpg)
+
+![恐高panic](/assets/log/20261106-225651-entry/photo-04.jpg)
+
+![走廊](/assets/log/20261106-225651-entry/photo-05.jpg)
+
+![高楼](/assets/log/20261106-225651-entry/photo-06.jpg)
+
+:::
+
+```{=html}
+
+<details id="comments-20261106-225651-entry" class="log-comments" data-comment-term="/logs/20261106-225651-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
 ::: {#20261105-235423-entry .log-entry}
 
 ```{=html}

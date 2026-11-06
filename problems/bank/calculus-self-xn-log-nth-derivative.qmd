@@ -1,0 +1,31 @@
+---
+title: "幂函数与对数乘积的 n 阶导数"
+category-path: ["MATH", "CALCULUS", "高阶导数"]
+tags: ["莱布尼兹公式", "调和数"]
+source: "错题自编"
+draft: false
+---
+
+设 $n$ 为正整数，$x>0$，求
+$$
+\frac{d^n}{dx^n}(x^n\ln x).
+$$
+
+<!-- answer -->
+
+记 $H_n=\sum_{k=1}^n1/k$。由莱布尼兹公式及
+$$
+(\ln x)^{(k)}=(-1)^{k-1}(k-1)!x^{-k}\qquad(k\ge1),
+$$
+得
+$$
+\frac{d^n}{dx^n}(x^n\ln x)
+=n!\left[\ln x+\sum_{k=1}^n(-1)^{k-1}\binom nk\frac1k\right].
+$$
+其中
+$$
+\sum_{k=1}^n(-1)^{k-1}\binom nk\frac1k
+=\int_0^1\frac{1-(1-t)^n}{t}\,dt
+=\int_0^1\sum_{j=0}^{n-1}(1-t)^j\,dt=H_n.
+$$
+因此结果为 $\boxed{n!(\ln x+H_n)}$。

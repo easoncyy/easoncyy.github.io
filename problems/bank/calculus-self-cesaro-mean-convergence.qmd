@@ -1,0 +1,26 @@
+---
+title: "收敛数列的算术平均"
+category-path: ["MATH", "CALCULUS", "数列"]
+tags: ["Cesàro 平均", "数列极限"]
+source: "错题自编"
+draft: false
+---
+
+设 $a_n\to A$，证明
+$$
+\frac1n\sum_{k=1}^n a_k\longrightarrow A.
+$$
+
+<!-- answer -->
+
+任给 $\varepsilon>0$，取 $N$，使 $k>N$ 时 $|a_k-A|<\varepsilon/2$。令
+$$
+C=\sum_{k=1}^N|a_k-A|.
+$$
+当 $n>N$ 且 $n>2C/\varepsilon$ 时，
+$$
+\left|\frac1n\sum_{k=1}^n a_k-A\right|
+\le\frac Cn+\frac1n\sum_{k=N+1}^n|a_k-A|
+<\frac\varepsilon2+\frac\varepsilon2=\varepsilon.
+$$
+故结论成立。
