@@ -1,0 +1,39 @@
+---
+title: "加权幂和方程的根与极限"
+category-path: ["MATH", "CALCULUS", "证明题"]
+tags: ["数列极限", "介值定理", "单调有界"]
+source: "2026–2027 学年微积分（甲）Ⅰ期中考试（2026-11-07，用户提供题目手记）"
+draft: false
+---
+
+设 $n$ 为正整数，
+$$
+r_n(x)=x+2x^2+\cdots+nx^n.
+$$
+（1）证明：存在唯一的 $x_n\in(0,1)$，使得 $r_n(x_n)=\frac12$。
+
+（2）求 $\displaystyle\lim_{n\to\infty}x_n$。
+
+<!-- answer -->
+
+（1）$r_n$ 在 $[0,1]$ 上连续，且
+$$
+r_n(0)=0<\frac12<r_n(1)=\frac{n(n+1)}2.
+$$
+由介值定理，根 $x_n\in(0,1)$ 存在。又
+$$
+r_n'(x)=1+2^2x+\cdots+n^2x^{n-1}>0\qquad(0<x<1),
+$$
+故根唯一。
+
+（2）由 $r_{n+1}(x_n)=\frac12+(n+1)x_n^{n+1}>\frac12$，得 $x_{n+1}<x_n$。又 $x_1=\frac12$，所以 $0<x_n\le\frac12$，数列收敛，记极限为 $L\in[0,\frac12]$。
+
+将有限等比和求导，得
+$$
+r_n(x)=\frac{x-(n+1)x^{n+1}+nx^{n+2}}{(1-x)^2}.
+$$
+代入 $x=x_n$。因 $0<x_n\le\frac12$，含 $nx_n^{n+1}$ 的项趋于零，令 $n\to\infty$，得
+$$
+\frac{L}{(1-L)^2}=\frac12,\qquad L^2-4L+1=0.
+$$
+由 $L\in[0,\frac12]$，得 $\boxed{L=2-\sqrt3}$。

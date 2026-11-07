@@ -1,0 +1,28 @@
+---
+title: "达布定理：导数的介值性"
+category-path: ["MATH", "CALCULUS", "证明题"]
+tags: ["达布定理", "导数介值性", "辅助函数"]
+source: "达布定理（用户指定）"
+draft: false
+---
+
+证明达布定理：设 $f$ 在区间 $I$ 上可导，$a,b\in I$，$a<b$。若 $\lambda$ 严格介于 $f'(a)$ 与 $f'(b)$ 之间，则存在 $\xi\in(a,b)$，使得
+$$
+f'(\xi)=\lambda.
+$$
+
+<!-- answer -->
+
+先设 $f'(a)<\lambda<f'(b)$，令 $g(x)=f(x)-\lambda x$。则 $g$ 在 $[a,b]$ 上连续，且
+$$
+g'(a)<0,\qquad g'(b)>0.
+$$
+由导数定义，对充分小的 $h>0$，有
+$$
+g(a+h)<g(a),\qquad g(b-h)<g(b).
+$$
+所以 $a,b$ 均不是 $g$ 在 $[a,b]$ 上的最小值点。由最值定理，$g$ 在某个 $\xi\in(a,b)$ 处取得最小值。由费马定理，
+$$
+g'(\xi)=0,\qquad f'(\xi)=\lambda.
+$$
+若 $f'(a)>\lambda>f'(b)$，对 $-f$ 与 $-\lambda$ 应用上述结论即可。

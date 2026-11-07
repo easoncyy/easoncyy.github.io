@@ -101,5 +101,9 @@
     "calculus-self-xn-log-nth-derivative",
     "calculus-self-log-iteration-convergence",
     "calculus-self-cesaro-mean-convergence"
+  ],
+  "2026-11-07": [
+    "calculus-midterm-2026-weighted-polynomial-root",
+    "calculus-darboux-derivative-intermediate-value"
   ]
 }

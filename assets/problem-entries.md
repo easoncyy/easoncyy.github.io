@@ -1,3 +1,126 @@
+::: {.problem-day data-date="2026-11-07"}
+
+## 2026-11-07 {.problem-date-heading}
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;证明题&quot;], &quot;tags&quot;: [&quot;数列极限&quot;, &quot;介值定理&quot;, &quot;单调有界&quot;], &quot;title&quot;: &quot;加权幂和方程的根与极限&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / CALCULUS / 证明题</div>
+
+<h3>01. 加权幂和方程的根与极限</h3>
+
+<div class="entry-tags">#数列极限 · #介值定理 · #单调有界</div>
+
+```
+
+设 $n$ 为正整数，
+$$
+r_n(x)=x+2x^2+\cdots+nx^n.
+$$
+（1）证明：存在唯一的 $x_n\in(0,1)$，使得 $r_n(x_n)=\frac12$。
+
+（2）求 $\displaystyle\lim_{n\to\infty}x_n$。
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+（1）$r_n$ 在 $[0,1]$ 上连续，且
+$$
+r_n(0)=0<\frac12<r_n(1)=\frac{n(n+1)}2.
+$$
+由介值定理，根 $x_n\in(0,1)$ 存在。又
+$$
+r_n'(x)=1+2^2x+\cdots+n^2x^{n-1}>0\qquad(0<x<1),
+$$
+故根唯一。
+
+（2）由 $r_{n+1}(x_n)=\frac12+(n+1)x_n^{n+1}>\frac12$，得 $x_{n+1}<x_n$。又 $x_1=\frac12$，所以 $0<x_n\le\frac12$，数列收敛，记极限为 $L\in[0,\frac12]$。
+
+将有限等比和求导，得
+$$
+r_n(x)=\frac{x-(n+1)x^{n+1}+nx^{n+2}}{(1-x)^2}.
+$$
+代入 $x=x_n$。因 $0<x_n\le\frac12$，含 $nx_n^{n+1}$ 的项趋于零，令 $n\to\infty$，得
+$$
+\frac{L}{(1-L)^2}=\frac12,\qquad L^2-4L+1=0.
+$$
+由 $L\in[0,\frac12]$，得 $\boxed{L=2-\sqrt3}$。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：2026–2027 学年微积分（甲）Ⅰ期中考试（2026-11-07，用户提供题目手记）</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;证明题&quot;], &quot;tags&quot;: [&quot;达布定理&quot;, &quot;导数介值性&quot;, &quot;辅助函数&quot;], &quot;title&quot;: &quot;达布定理：导数的介值性&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / CALCULUS / 证明题</div>
+
+<h3>02. 达布定理：导数的介值性</h3>
+
+<div class="entry-tags">#达布定理 · #导数介值性 · #辅助函数</div>
+
+```
+
+证明达布定理：设 $f$ 在区间 $I$ 上可导，$a,b\in I$，$a<b$。若 $\lambda$ 严格介于 $f'(a)$ 与 $f'(b)$ 之间，则存在 $\xi\in(a,b)$，使得
+$$
+f'(\xi)=\lambda.
+$$
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+先设 $f'(a)<\lambda<f'(b)$，令 $g(x)=f(x)-\lambda x$。则 $g$ 在 $[a,b]$ 上连续，且
+$$
+g'(a)<0,\qquad g'(b)>0.
+$$
+由导数定义，对充分小的 $h>0$，有
+$$
+g(a+h)<g(a),\qquad g(b-h)<g(b).
+$$
+所以 $a,b$ 均不是 $g$ 在 $[a,b]$ 上的最小值点。由最值定理，$g$ 在某个 $\xi\in(a,b)$ 处取得最小值。由费马定理，
+$$
+g'(\xi)=0,\qquad f'(\xi)=\lambda.
+$$
+若 $f'(a)>\lambda>f'(b)$，对 $-f$ 与 $-\lambda$ 应用上述结论即可。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：达布定理（用户指定）</p>
+
+```
+
+:::
+
+```{=html}
+
+<details id="discussion-2026-11-07" class="log-comments problem-discussion" data-comment-term="/problems/2026-11-07/" data-comment-date="2026-11-07" data-comment-title="每日好题 · 2026-11-07">
+
+<summary>discussion/ <span>2026-11-07 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
 ::: {.problem-day data-date="2026-11-06"}
 
 ## 2026-11-06 {.problem-date-heading}
@@ -3828,6 +3951,6 @@ $$
 
 ```{=html}
 
-<script id="problem-index" type="application/json">{"builtDate": "2026-11-06", "dates": {"2026-11-06": 6, "2026-11-05": 1, "2026-11-04": 1, "2026-11-03": 3, "2026-11-02": 6, "2026-11-01": 2, "2026-10-31": 2, "2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
+<script id="problem-index" type="application/json">{"builtDate": "2026-11-07", "dates": {"2026-11-07": 2, "2026-11-06": 6, "2026-11-05": 1, "2026-11-04": 1, "2026-11-03": 3, "2026-11-02": 6, "2026-11-01": 2, "2026-10-31": 2, "2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
 
 ```

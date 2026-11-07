@@ -1,0 +1,15 @@
+---
+title: "Damn day"
+date: "2026-11-07T22:55:29+08:00"
+entry-signature: "8f0e19ce1308b84a422406a7c9908c3655d039b42f432b01dc3416318dc81034"
+---
+
+calculus :(
+
+::: {.log-photo-grid}
+
+![PIZZA DAY](/assets/log/20261107-225529-entry/photo-01.jpg)
+
+![考完微积分世界都是阴郁的](/assets/log/20261107-225529-entry/photo-02.jpg)
+
+:::
