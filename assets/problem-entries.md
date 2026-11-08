@@ -1,3 +1,126 @@
+::: {.problem-day data-date="2026-11-08"}
+
+## 2026-11-08 {.problem-date-heading}
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;矩阵的秩&quot;], &quot;tags&quot;: [&quot;矩阵等价&quot;, &quot;等价标准形&quot;], &quot;title&quot;: &quot;矩阵等价与秩&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 矩阵的秩</div>
+
+<h3>01. 矩阵等价与秩</h3>
+
+<div class="entry-tags">#矩阵等价 · #等价标准形</div>
+
+```
+
+设 $A,B$ 为 $m\times n$ 矩阵，证明：$A,B$ 等价的充要条件是 $r(A)=r(B)$。
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+必要性：若 $A,B$ 等价，则存在可逆矩阵 $P,Q$，使 $PAQ=B$。所以
+$$
+r(A)=r(PAQ)=r(B).
+$$
+充分性：设 $r(A)=r(B)=r$。由矩阵的等价标准形，存在可逆矩阵 $P_1,Q_1,P_2,Q_2$，使
+$$
+P_1AQ_1=P_2BQ_2=
+\begin{pmatrix}
+E_r&0\\
+0&0
+\end{pmatrix}_{m\times n}.
+$$
+从而
+$$
+B=(P_2^{-1}P_1)A(Q_1Q_2^{-1}).
+$$
+左右两侧的乘子均可逆，故 $A,B$ 等价。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：《线性代数习题精选精解》第 4.19 题</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;矩阵的秩&quot;], &quot;tags&quot;: [&quot;幂等矩阵&quot;, &quot;矩阵的秩&quot;, &quot;可逆矩阵&quot;], &quot;title&quot;: &quot;两个幂等矩阵的秩相等&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 矩阵的秩</div>
+
+<h3>02. 两个幂等矩阵的秩相等</h3>
+
+<div class="entry-tags">#幂等矩阵 · #矩阵的秩 · #可逆矩阵</div>
+
+```
+
+设 $n$ 阶方阵 $A,B$ 满足 $A^2=A$、$B^2=B$，且 $E-A-B$ 可逆，其中 $E$ 为 $n$ 阶单位矩阵。证明：
+$$
+r(A)=r(B).
+$$
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+证法一：由 $E-A-B$ 可逆，
+$$
+n=r(E-A-B)\le r(E-A)+r(B),
+$$
+所以 $r(B)\ge n-r(E-A)$。又由 $A^2=A$，得 $A(E-A)=0$，于是
+$$
+r(A)+r(E-A)\le n.
+$$
+从而
+$$
+r(B)\ge n-r(E-A)\ge r(A).
+$$
+交换 $A,B$，同理得 $r(A)\ge r(B)$，故 $r(A)=r(B)$。
+
+证法二：由
+$$
+A(E-A-B)=A-A^2-AB=-AB,
+$$
+且 $E-A-B$ 可逆，得 $r(A)=r(AB)$。又
+$$
+(E-A-B)B=B-AB-B^2=-AB,
+$$
+故 $r(B)=r(AB)$。因此 $r(A)=r(B)$。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：《线性代数习题精选精解》第 4.20 题</p>
+
+```
+
+:::
+
+```{=html}
+
+<details id="discussion-2026-11-08" class="log-comments problem-discussion" data-comment-term="/problems/2026-11-08/" data-comment-date="2026-11-08" data-comment-title="每日好题 · 2026-11-08">
+
+<summary>discussion/ <span>2026-11-08 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
 ::: {.problem-day data-date="2026-11-07"}
 
 ## 2026-11-07 {.problem-date-heading}
@@ -3951,6 +4074,6 @@ $$
 
 ```{=html}
 
-<script id="problem-index" type="application/json">{"builtDate": "2026-11-07", "dates": {"2026-11-07": 2, "2026-11-06": 6, "2026-11-05": 1, "2026-11-04": 1, "2026-11-03": 3, "2026-11-02": 6, "2026-11-01": 2, "2026-10-31": 2, "2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
+<script id="problem-index" type="application/json">{"builtDate": "2026-11-08", "dates": {"2026-11-08": 2, "2026-11-07": 2, "2026-11-06": 6, "2026-11-05": 1, "2026-11-04": 1, "2026-11-03": 3, "2026-11-02": 6, "2026-11-01": 2, "2026-10-31": 2, "2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
 
 ```

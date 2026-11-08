@@ -1,0 +1,29 @@
+---
+title: "矩阵等价与秩"
+category-path: ["MATH", "LINEAR-ALGEBRA", "矩阵的秩"]
+tags: ["矩阵等价", "等价标准形"]
+source: "《线性代数习题精选精解》第 4.19 题"
+draft: false
+---
+
+设 $A,B$ 为 $m\times n$ 矩阵，证明：$A,B$ 等价的充要条件是 $r(A)=r(B)$。
+
+<!-- answer -->
+
+必要性：若 $A,B$ 等价，则存在可逆矩阵 $P,Q$，使 $PAQ=B$。所以
+$$
+r(A)=r(PAQ)=r(B).
+$$
+充分性：设 $r(A)=r(B)=r$。由矩阵的等价标准形，存在可逆矩阵 $P_1,Q_1,P_2,Q_2$，使
+$$
+P_1AQ_1=P_2BQ_2=
+\begin{pmatrix}
+E_r&0\\
+0&0
+\end{pmatrix}_{m\times n}.
+$$
+从而
+$$
+B=(P_2^{-1}P_1)A(Q_1Q_2^{-1}).
+$$
+左右两侧的乘子均可逆，故 $A,B$ 等价。

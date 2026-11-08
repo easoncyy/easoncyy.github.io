@@ -1,5 +1,39 @@
 ::: {.log-stream}
 
+::: {#20261108-232906-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-11-08T23:29:06+08:00">2026-11-08 23:29:06 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title">Dizzy</p>
+
+```
+
+Damn. Hate this world.
+
+```{=html}
+
+<details id="comments-20261108-232906-entry" class="log-comments" data-comment-term="/logs/20261108-232906-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
 ::: {#20261107-225529-entry .log-entry}
 
 ```{=html}

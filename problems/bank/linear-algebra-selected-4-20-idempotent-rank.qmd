@@ -1,0 +1,38 @@
+---
+title: "两个幂等矩阵的秩相等"
+category-path: ["MATH", "LINEAR-ALGEBRA", "矩阵的秩"]
+tags: ["幂等矩阵", "矩阵的秩", "可逆矩阵"]
+source: "《线性代数习题精选精解》第 4.20 题"
+draft: false
+---
+
+设 $n$ 阶方阵 $A,B$ 满足 $A^2=A$、$B^2=B$，且 $E-A-B$ 可逆，其中 $E$ 为 $n$ 阶单位矩阵。证明：
+$$
+r(A)=r(B).
+$$
+
+<!-- answer -->
+
+证法一：由 $E-A-B$ 可逆，
+$$
+n=r(E-A-B)\le r(E-A)+r(B),
+$$
+所以 $r(B)\ge n-r(E-A)$。又由 $A^2=A$，得 $A(E-A)=0$，于是
+$$
+r(A)+r(E-A)\le n.
+$$
+从而
+$$
+r(B)\ge n-r(E-A)\ge r(A).
+$$
+交换 $A,B$，同理得 $r(A)\ge r(B)$，故 $r(A)=r(B)$。
+
+证法二：由
+$$
+A(E-A-B)=A-A^2-AB=-AB,
+$$
+且 $E-A-B$ 可逆，得 $r(A)=r(AB)$。又
+$$
+(E-A-B)B=B-AB-B^2=-AB,
+$$
+故 $r(B)=r(AB)$。因此 $r(A)=r(B)$。
