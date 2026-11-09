@@ -1,5 +1,45 @@
 ::: {.log-stream}
 
+::: {#20261109-230939-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-11-09T23:09:39+08:00">2026-11-09 23:09:39 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title">冬天是最好的安眠药</p>
+
+```
+
+::: {.log-photo-grid}
+
+![](/assets/log/20261109-230939-entry/photo-01.jpg)
+
+![](/assets/log/20261109-230939-entry/photo-02.jpg)
+
+:::
+
+```{=html}
+
+<details id="comments-20261109-230939-entry" class="log-comments" data-comment-term="/logs/20261109-230939-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
 ::: {#20261108-232906-entry .log-entry}
 
 ```{=html}

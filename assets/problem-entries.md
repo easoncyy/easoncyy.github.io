@@ -1,3 +1,168 @@
+::: {.problem-day data-date="2026-11-09"}
+
+## 2026-11-09 {.problem-date-heading}
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;矩阵运算&quot;], &quot;tags&quot;: [&quot;矩阵乘法&quot;, &quot;逆矩阵&quot;], &quot;title&quot;: &quot;互为逆矩阵条件下的平方和&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 矩阵运算</div>
+
+<h3>01. 互为逆矩阵条件下的平方和</h3>
+
+<div class="entry-tags">#矩阵乘法 · #逆矩阵</div>
+
+```
+
+设 $A,B,C$ 均为 $n$ 阶方阵，且 $AB=BC=CA=E$，其中 $E$ 为单位矩阵，则 $A^2+B^2+C^2=$（　）。
+
+（A）$3E$　（B）$2E$　（C）$E$　（D）$0$
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+由矩阵乘法的结合律，
+$$
+\begin{aligned}
+A^2&=A(BC)A=(AB)(CA)=E,\\
+B^2&=B(CA)B=(BC)(AB)=E,\\
+C^2&=C(AB)C=(CA)(BC)=E.
+\end{aligned}
+$$
+所以 $A^2+B^2+C^2=3E$，选（A）。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：《线性代数习题精选精解》第 1.4 题</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;矩阵运算&quot;], &quot;tags&quot;: [&quot;矩阵乘法&quot;, &quot;转置&quot;, &quot;行列式&quot;], &quot;title&quot;: &quot;矩阵运算恒等式的辨析&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 矩阵运算</div>
+
+<h3>02. 矩阵运算恒等式的辨析</h3>
+
+<div class="entry-tags">#矩阵乘法 · #转置 · #行列式</div>
+
+```
+
+已知 $A,B$ 均为 $n$ 阶方阵，$E$ 为单位矩阵，则下列结论中必然成立的是（　）。
+
+（A）$(A+B)^2=A^2+2AB+B^2$。
+
+（B）$(AB)^{\mathrm T}=A^{\mathrm T}B^{\mathrm T}$。
+
+（C）$AB=0$ 时，$A=0$ 或 $B=0$。
+
+（D）$\det(A+AB)=0\iff\det A=0$ 或 $\det(E+B)=0$。
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+选（D）。因为
+$$
+\det(A+AB)=\det\bigl(A(E+B)\bigr)=\det A\cdot\det(E+B),
+$$
+乘积为零当且仅当至少一个因子为零。
+
+（A）的正确展开式为 $(A+B)^2=A^2+AB+BA+B^2$；（B）的正确公式为 $(AB)^{\mathrm T}=B^{\mathrm T}A^{\mathrm T}$。例如取
+$$
+A=\begin{pmatrix}1&0\\0&0\end{pmatrix},\qquad
+B=\begin{pmatrix}0&1\\0&0\end{pmatrix},
+$$
+则 $AB=B$、$BA=0$，可同时否定（A）、（B）。
+
+对（C），取
+$$
+A=\begin{pmatrix}1&0\\0&0\end{pmatrix},\qquad
+B=\begin{pmatrix}0&0\\0&1\end{pmatrix},
+$$
+则 $A,B$ 均非零，但 $AB=0$。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：《线性代数习题精选精解》第 1.5 题</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;矩阵的幂&quot;], &quot;tags&quot;: [&quot;相似矩阵&quot;, &quot;分块矩阵&quot;, &quot;周期性&quot;], &quot;title&quot;: &quot;相似矩阵的高次幂&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 矩阵的幂</div>
+
+<h3>03. 相似矩阵的高次幂</h3>
+
+<div class="entry-tags">#相似矩阵 · #分块矩阵 · #周期性</div>
+
+```
+
+设
+$$
+A=\begin{pmatrix}0&-1&0\\1&0&0\\0&0&-1\end{pmatrix},\qquad B=P^{-1}AP,
+$$
+其中 $P$ 为三阶可逆矩阵，求 $B^{2004}-2A^2$。
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+直接计算得
+$$
+A^2=\begin{pmatrix}-1&0&0\\0&-1&0\\0&0&1\end{pmatrix},\qquad A^4=E.
+$$
+所以 $A^{2004}=(A^4)^{501}=E$。由相似关系，
+$$
+B^{2004}=P^{-1}A^{2004}P=E.
+$$
+因此
+$$
+\boxed{B^{2004}-2A^2=\begin{pmatrix}3&0&0\\0&3&0\\0&0&-1\end{pmatrix}.}
+$$
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：《线性代数习题精选精解》第 1.13 题</p>
+
+```
+
+:::
+
+```{=html}
+
+<details id="discussion-2026-11-09" class="log-comments problem-discussion" data-comment-term="/problems/2026-11-09/" data-comment-date="2026-11-09" data-comment-title="每日好题 · 2026-11-09">
+
+<summary>discussion/ <span>2026-11-09 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
 ::: {.problem-day data-date="2026-11-08"}
 
 ## 2026-11-08 {.problem-date-heading}
@@ -4074,6 +4239,6 @@ $$
 
 ```{=html}
 
-<script id="problem-index" type="application/json">{"builtDate": "2026-11-08", "dates": {"2026-11-08": 2, "2026-11-07": 2, "2026-11-06": 6, "2026-11-05": 1, "2026-11-04": 1, "2026-11-03": 3, "2026-11-02": 6, "2026-11-01": 2, "2026-10-31": 2, "2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
+<script id="problem-index" type="application/json">{"builtDate": "2026-11-09", "dates": {"2026-11-09": 3, "2026-11-08": 2, "2026-11-07": 2, "2026-11-06": 6, "2026-11-05": 1, "2026-11-04": 1, "2026-11-03": 3, "2026-11-02": 6, "2026-11-01": 2, "2026-10-31": 2, "2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
 
 ```

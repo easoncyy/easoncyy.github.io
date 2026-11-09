@@ -1,0 +1,39 @@
+---
+title: "矩阵运算恒等式的辨析"
+category-path: ["MATH", "LINEAR-ALGEBRA", "矩阵运算"]
+tags: ["矩阵乘法", "转置", "行列式"]
+source: "《线性代数习题精选精解》第 1.5 题"
+draft: false
+---
+
+已知 $A,B$ 均为 $n$ 阶方阵，$E$ 为单位矩阵，则下列结论中必然成立的是（　）。
+
+（A）$(A+B)^2=A^2+2AB+B^2$。
+
+（B）$(AB)^{\mathrm T}=A^{\mathrm T}B^{\mathrm T}$。
+
+（C）$AB=0$ 时，$A=0$ 或 $B=0$。
+
+（D）$\det(A+AB)=0\iff\det A=0$ 或 $\det(E+B)=0$。
+
+<!-- answer -->
+
+选（D）。因为
+$$
+\det(A+AB)=\det\bigl(A(E+B)\bigr)=\det A\cdot\det(E+B),
+$$
+乘积为零当且仅当至少一个因子为零。
+
+（A）的正确展开式为 $(A+B)^2=A^2+AB+BA+B^2$；（B）的正确公式为 $(AB)^{\mathrm T}=B^{\mathrm T}A^{\mathrm T}$。例如取
+$$
+A=\begin{pmatrix}1&0\\0&0\end{pmatrix},\qquad
+B=\begin{pmatrix}0&1\\0&0\end{pmatrix},
+$$
+则 $AB=B$、$BA=0$，可同时否定（A）、（B）。
+
+对（C），取
+$$
+A=\begin{pmatrix}1&0\\0&0\end{pmatrix},\qquad
+B=\begin{pmatrix}0&0\\0&1\end{pmatrix},
+$$
+则 $A,B$ 均非零，但 $AB=0$。

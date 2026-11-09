@@ -1,0 +1,23 @@
+---
+title: "互为逆矩阵条件下的平方和"
+category-path: ["MATH", "LINEAR-ALGEBRA", "矩阵运算"]
+tags: ["矩阵乘法", "逆矩阵"]
+source: "《线性代数习题精选精解》第 1.4 题"
+draft: false
+---
+
+设 $A,B,C$ 均为 $n$ 阶方阵，且 $AB=BC=CA=E$，其中 $E$ 为单位矩阵，则 $A^2+B^2+C^2=$（　）。
+
+（A）$3E$　（B）$2E$　（C）$E$　（D）$0$
+
+<!-- answer -->
+
+由矩阵乘法的结合律，
+$$
+\begin{aligned}
+A^2&=A(BC)A=(AB)(CA)=E,\\
+B^2&=B(CA)B=(BC)(AB)=E,\\
+C^2&=C(AB)C=(CA)(BC)=E.
+\end{aligned}
+$$
+所以 $A^2+B^2+C^2=3E$，选（A）。

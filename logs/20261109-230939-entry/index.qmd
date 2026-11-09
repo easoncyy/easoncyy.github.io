@@ -1,0 +1,13 @@
+---
+title: "冬天是最好的安眠药"
+date: "2026-11-09T23:09:39+08:00"
+entry-signature: "8574dcb42a34be46c50121bf069d6978bf00efa682f3d25818975a2f790cdbae"
+---
+
+::: {.log-photo-grid}
+
+![](/assets/log/20261109-230939-entry/photo-01.jpg)
+
+![](/assets/log/20261109-230939-entry/photo-02.jpg)
+
+:::

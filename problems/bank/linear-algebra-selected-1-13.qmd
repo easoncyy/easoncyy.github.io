@@ -1,0 +1,28 @@
+---
+title: "相似矩阵的高次幂"
+category-path: ["MATH", "LINEAR-ALGEBRA", "矩阵的幂"]
+tags: ["相似矩阵", "分块矩阵", "周期性"]
+source: "《线性代数习题精选精解》第 1.13 题"
+draft: false
+---
+
+设
+$$
+A=\begin{pmatrix}0&-1&0\\1&0&0\\0&0&-1\end{pmatrix},\qquad B=P^{-1}AP,
+$$
+其中 $P$ 为三阶可逆矩阵，求 $B^{2004}-2A^2$。
+
+<!-- answer -->
+
+直接计算得
+$$
+A^2=\begin{pmatrix}-1&0&0\\0&-1&0\\0&0&1\end{pmatrix},\qquad A^4=E.
+$$
+所以 $A^{2004}=(A^4)^{501}=E$。由相似关系，
+$$
+B^{2004}=P^{-1}A^{2004}P=E.
+$$
+因此
+$$
+\boxed{B^{2004}-2A^2=\begin{pmatrix}3&0&0\\0&3&0\\0&0&-1\end{pmatrix}.}
+$$
