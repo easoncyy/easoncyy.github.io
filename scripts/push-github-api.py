@@ -72,9 +72,12 @@ def main():
                 tree = api('POST', f'{REPO}/git/trees', {'tree': entries})
                 break
             except RuntimeError as error:
-                if 'HTTP 422' not in str(error) or attempt == 2:
+                detail = str(error)
+                transient = ('HTTP 422' in detail or
+                             ('HTTP 400' in detail and 'malformed request' in detail))
+                if not transient or attempt == 2:
                     raise
-                print('GitHub tree validation returned 422; retrying shortly.', flush=True)
+                print('GitHub temporarily rejected tree creation; retrying shortly.', flush=True)
                 time.sleep(2 ** (attempt + 1))
         header, message = git('cat-file', 'commit', sha).decode('utf-8').split('\n\n', 1)
         payload = {'parents': [], 'message': message}
