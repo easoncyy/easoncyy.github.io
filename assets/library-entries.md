@@ -6,12 +6,24 @@
 <button type="button" data-library-category="历史" aria-pressed="false">历史 <span class="library-filter-count">3</span></button>
 <button type="button" data-library-category="教材" aria-pressed="false">教材 <span class="library-filter-count">6</span></button>
 <button type="button" data-library-category="习题" aria-pressed="false">习题 <span class="library-filter-count">1</span></button>
-<button type="button" data-library-category="参考书" aria-pressed="false">参考书 <span class="library-filter-count">0</span></button>
+<button type="button" data-library-category="参考书" aria-pressed="false">参考书 <span class="library-filter-count">1</span></button>
 <button type="button" data-library-category="其他" aria-pressed="false">其他 <span class="library-filter-count">0</span></button>
 </div>
 <div id="library-subjects" class="library-subjects" role="group" aria-label="学科" hidden></div>
 <p id="library-count" class="library-count" aria-live="polite"></p>
 ```
+::: {.library-entry data-category="参考书" data-subject="计算机"}
+
+```{=html}
+<div class="library-book-meta">参考书 / 计算机 · PDF · 2026-11-10</div>
+<h2 class="library-book-title">父与子的编程之旅：与小卡特一起学Python（第3版）</h2>
+<p class="library-author">Waren Sande, Carter Sande</p>
+<p></p>
+<div class="library-actions"><a href="/assets/library/python-3.pdf" target="_blank" rel="noopener">read / 在线阅读 ↗</a><a href="/assets/library/python-3.pdf" download>download / 下载 ↓</a></div>
+```
+
+:::
+
 ::: {.library-entry data-category="历史" data-subject=""}
 
 ```{=html}

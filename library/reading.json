@@ -60,6 +60,12 @@
           "book": "joseph-j-ellis",
           "status": "planned",
           "note": ""
+        },
+        {
+          "id": "python-3",
+          "book": "python-3",
+          "status": "completed",
+          "note": "简单清晰，但仍值得学习"
         }
       ]
     }
