@@ -1,0 +1,368 @@
+---
+title: "FIP W09 · 复杂线性数据结构"
+description: "循环队列、单调双端队列、优先队列与多路归并。"
+date: "2026-11-10T13:25:20+08:00"
+source-created: "2026-11-10T13:25:20+08:00"
+category-path: ["AI", "FIP", "学习笔记"]
+categories: ["学习笔记", "数据结构"]
+execute: {"enabled": false}
+toc-depth: 3
+---
+
+## 理论课内容
+
+
+课程材料：26FIP9 复杂线性数据结构.pdf
+
+### `deque`的问题
+
+`deque`两端操作$O(1)$，并且长度可以无限增长，但是由于`deque`本质由双向链表实现，所以具备以下缺点:
+
+- 链表指针带来额外内存开销（仇载payload）
+- 频繁申请/丢弃带来的内存碎片，影响性能
+- 对`cache`访问不友好
+
+因此我们需要**使用定长数组当队列**，因而我们引入双指针模拟双端队列。
+
+
+### 定长数组队列：双指针
+
+
+用固定长度数组保存数据，`read` 指向下一个出队位置，`write` 指向下一个入队位置。未绕回时，有效数据在半开区间 `[read, write)` 中。
+
+```python
+capacity = 5
+buf = [None] * capacity
+read = write = 0
+```
+
+
+| 操作 / 状态 | 线性队列 |
+|---|---|
+| 入队 | 写入 `buf[write]`，再 `write += 1` |
+| 出队 | 读取 `buf[read]`，再 `read += 1` |
+| 空 | `read == write` |
+| 无法继续入队 | `write == capacity` |
+
+**假溢出**：出队后前面已有空位，但写指针到达数组末尾，仍无法入队。解决办法是让两个指针都取模绕回，复用已消费的位置。
+
+### 循环队列：取模绕回
+
+
+数组物理上仍是连续的一段，逻辑上首尾相接：
+
+```python
+write = (write + 1) % capacity
+read = (read + 1) % capacity
+```
+
+
+绕回后，`read == write` 可能表示空，也可能表示满，不能仅靠两个下标区分。
+
+| 方法 | 判空 | 判满 | 实际可存元素数 |
+|---|---|---|---|
+| 牺牲一个空位 | `read == write` | `(write + 1) % capacity == read` | `capacity - 1` |
+| 记录 `count` | `count == 0` | `count == capacity` | `capacity` |
+| 记录满标志 | 下标相同且未满 | 下标相同且满 | `capacity` |
+
+使用 `count` 时，入队加一、出队减一；满标志法则在写入后检查是否追上读指针，成功出队后清除满标志。
+
+#### `class`、`self` 与实现
+
+
+`class` 是创建对象的模板，`__init__` 在创建对象时初始化状态。`self` 表示当前对象，`self.front` 是该队列自己的读指针。不同对象各自保存状态。
+
+```python
+class CircularQueue:
+    def __init__(self, capacity=5):
+        self.items = [None] * capacity
+        self.capacity = capacity
+        self.front = self.rear = 0
+        self.count = 0
+
+    def enqueue(self, x):
+        if self.count == self.capacity:
+            return
+        self.items[self.rear] = x
+        self.rear = (self.rear + 1) % self.capacity
+        self.count += 1
+
+    def dequeue(self):
+        if self.count == 0:
+            return None
+        x = self.items[self.front]
+        self.front = (self.front + 1) % self.capacity
+        self.count -= 1
+        return x
+```
+
+
+约定容量为正整数。`q = CircularQueue(5)` 创建队列，`q.enqueue(1)` 调用入队方法。出队后旧值可以仍留在数组里，是否有效由指针和 `count` 决定，不能靠格子是不是 `None` 判断空满。若用 `None` 表示出队失败，存入的数据应避免使用 `None`，判断失败写 `x is None`。
+
+入队、出队都是 $O(1)$，数组空间为 $O(C)$，其中 $C$ 是容量。音频缓冲中，网络负责入队，播放负责出队；缓冲空则等待数据，缓冲满则暂停写入。
+
+#### 约瑟夫环
+
+
+$n$ 人编号为 $1$ 到 $n$，从第一个人开始报数，每数到 $k$ 的人出圈，下一位重新从 $1$ 开始。固定数组中的空位跳过不数，下标仍按原长度取模。
+
+```python
+def josephus(n, k):
+    ring = list(range(1, n + 1))
+    i, left = 0, n
+    while left > 1:
+        count = 0
+        while count < k:
+            if ring[i] is not None:
+                count += 1
+            if count == k:
+                ring[i] = None
+                left -= 1
+            i = (i + 1) % n
+    for x in ring:
+        if x is not None:
+            return x
+```
+
+
+约定 $n,k$ 为正整数。`josephus(5, 3)` 的出圈顺序是 `3, 1, 5, 2`，留下 `4`。数组长度始终为 $n$，不能对剩余人数 `left` 取模。
+
+#### Quick check VI
+
+
+1. `capacity=5`，入队 `1,2,3,4,5`，出队两次，再入队 `6`：按 `count` 方案，`read=2`、`write=1`、`count=4`，队列内容为 `3,4,5,6`。
+2. 不用 `count`：牺牲一个空位，或增加满标志。
+3. 5 人数到 3：第一个出圈的是 `3`；下标 `4` 的下一格是 `0`；留下 `4`。
+
+### 单调双端队列：滑动窗口最值
+
+
+长度为 $n$ 的序列，每个长度为 $k$ 的窗口都求最大值。逐个窗口扫描需要 $O(nk)$；单调队列只保留仍可能成为最大值的元素。
+
+队列存 **下标**，从队头到队尾，下标递增、对应数值严格递减。两端分别淘汰：
+
+- 队头：下标已离开当前窗口，即 `dq[0] <= i - k`。
+- 队尾：数值不大于新元素。新元素更大或相等，而且更晚过期，旧元素不再需要。
+
+```python
+from collections import deque
+
+def max_sliding_window(nums, k):
+    dq = deque()
+    result = []
+    for i, x in enumerate(nums):
+        if dq and dq[0] <= i - k:
+            dq.popleft()
+        while dq and nums[dq[-1]] <= x:
+            dq.pop()
+        dq.append(i)
+        if i >= k - 1:
+            result.append(nums[dq[0]])
+    return result
+```
+
+
+约定 `1 <= k <= len(nums)`。窗口为 `[i-k+1, i]`，到 `i == k-1` 时才形成第一个完整窗口。存下标才能判断是否过期；答案是 `nums[dq[0]]`，不是 `dq[0]`。
+
+每个下标最多入队一次、出队一次，虽然有嵌套循环，总时间仍是 $O(n)$。队列辅助空间为 $O(k)$，另需保存输出。
+
+#### 温度案例
+
+
+`nums = [32, 27, 29, 25, 28]`，`k=3`：
+
+| 下标 | 新温度 | 淘汰 | 队列对应温度 | 窗口最大值 |
+|---|---|---|---|---|
+| 0 | 32 | — | 32 | — |
+| 1 | 27 | — | 32, 27 | — |
+| 2 | 29 | 队尾的 27 | 32, 29 | 32 |
+| 3 | 25 | 队头过期的 32 | 29, 25 | 29 |
+| 4 | 28 | 队尾的 25 | 29, 28 | 29 |
+
+普通队列只能保证队头最早到达，不能保证它最大；栈也无法直接删除底部过期元素，因此需要双端队列。
+
+#### Quick check VII
+
+
+1. `append`、`pop` 操作右端，`appendleft`、`popleft` 操作左端。
+2. 读到 `29`，从队尾删 `27`；读到 `25`，从队头删 `32`，此时最大值为 `29`。
+3. 求最小值时，维护数值递增队列，把队尾删除条件改为 `nums[dq[-1]] >= x`。
+
+### 优先队列与 `heapq`
+
+
+普通队列按到达顺序出队，优先队列按优先级出队。`heapq` 默认是 **小根堆**，每次取出当前最小元素。
+
+| 操作 | 写法 | 时间复杂度 |
+|---|---|---|
+| 插入 | `heapq.heappush(heap, x)` | $O(\log n)$ |
+| 取出最小值 | `heapq.heappop(heap)` | $O(\log n)$ |
+| 查看最小值 | `heap[0]` | $O(1)$ |
+
+堆只保证最小值在堆顶，内部列表并非整体有序。插入或弹出后需要沿树高调整，因此不是 $O(1)$；空堆弹出或访问堆顶会报 `IndexError`。
+
+#### 同优先级按到达顺序处理
+
+
+元组按字段从左到右比较，使用 `(priority, sequence, task)`：先比优先级，再比唯一的到达序号，也能避免直接比较不可排序的任务对象。
+
+```python
+import heapq
+
+def triage_order(priorities):
+    heap = []
+    for i, p in enumerate(priorities):
+        heapq.heappush(heap, (p, i, i + 1))
+    result = []
+    while heap:
+        _, _, pid = heapq.heappop(heap)
+        result.append(pid)
+    return result
+```
+
+
+优先级 `[3, 1, 4, 1, 5]`，数字越小越紧急，编号从 `1` 开始，处理顺序为 `[2, 4, 1, 3, 5]`。相同优先级的 2 号先于 4 号。全部插入并取出的时间为 $O(n\log n)$。
+
+#### 最大值先出：存负数
+
+
+```python
+heap = []
+heapq.heappush(heap, -5)
+heapq.heappush(heap, -1)
+print(-heapq.heappop(heap))  # 5
+```
+
+
+若数值越大越优先，元组首项改存 `-priority`；到达序号仍保持原值，才能保留同优先级的先来先处理。
+
+### 多路归并与调用处解包
+
+
+`heapq.merge` 合并多个 **已经有序** 的可迭代对象，返回迭代器，不会先替每一路排序。
+
+```python
+import heapq
+
+runs = [[1, 4, 7], [2, 5, 8], [3, 6, 9]]
+merged = list(heapq.merge(*runs))
+# [1, 2, 3, 4, 5, 6, 7, 8, 9]
+```
+
+
+调用处 `*runs` 把外层列表拆成三个位置实参，等价于 `heapq.merge(runs[0], runs[1], runs[2])`。定义处 `*args` 则是收集多个位置实参。若共有 $m$ 路、总元素数为 $N$，多路归并通常需要 $O(N\log m)$ 时间，维护堆的辅助空间为 $O(m)$，转成列表还需 $O(N)$ 空间。
+
+#### Quick check VIII
+
+
+1. `heapq` 默认取最小值。
+2. 优先级 `[3,1,4,1,5]` 按编号处理为 `2,4,1,3,5`；若按到达顺序则先叫 1 号。
+3. `heapq.merge(*runs)` 的 `*` 在调用处，示例拆成三个实参。
+4. 堆需要沿高度为 $O(\log n)$ 的树调整，而非直接删除后不作处理。
+
+## 研讨课内容
+
+
+课程材料：9 复杂线性数据结构-研讨课.pdf
+
+### SSH 密钥与 GitHub
+
+
+SSH 用本机私钥证明身份，GitHub 保存对应公钥。每人使用自己的密钥对。
+
+| 项目 | HTTPS | SSH |
+|---|---|---|
+| 远程地址 | `https://github.com/用户/仓库.git` | `git@github.com:用户/仓库.git` |
+| 认证 | 账号 / Token | 本机私钥与服务器公钥配对 |
+
+| 默认文件 | 作用 | 是否可上传 |
+|---|---|---|
+| `id_ed25519` | 私钥，多行，以 `BEGIN OPENSSH PRIVATE KEY` 标识 | 不可公开 |
+| `id_ed25519.pub` | 公钥，通常一整行，以 `ssh-ed25519` 开头 | 上传到 GitHub |
+
+密钥默认放在 `~/.ssh/`；Windows 对应用户目录下的 `.ssh`。
+
+#### 配置步骤
+
+
+```bash
+ssh-keygen -t ed25519 -C "你的邮箱@example.com"
+```
+
+
+路径可使用默认值；若已有同名密钥，应先确认用途，避免覆盖。`passphrase` 是保护私钥的口令，可设置；配置后是否再次询问口令也取决于 SSH agent。
+
+复制 `.pub` 的完整一行，添加到 GitHub 的 `Settings → SSH and GPG keys → New SSH key`，再测试：
+
+```bash
+ssh -T git@github.com
+```
+
+
+首次连接需核对主机身份，再确认连接。出现 `Hi 用户名! You've successfully authenticated...` 表示认证成功。
+
+```bash
+git remote -v
+git remote set-url origin git@github.com:你的用户名/仓库名.git
+git remote -v
+git push
+```
+
+
+| 问题 | 检查方法 |
+|---|---|
+| `Permission denied (publickey)` | 是否添加完整公钥、客户端是否使用对应私钥，再用 `ssh -T` 测试 |
+| 仍要求 HTTPS 登录 | `git remote -v` 检查是否已改成 SSH 地址 |
+| 误公开私钥 | 删除对应授权，重新生成密钥并上传新公钥 |
+| Linux/macOS 私钥权限过宽 | `chmod 600 ~/.ssh/id_ed25519` |
+
+提交检查：公钥已生成、SSH 认证成功、仓库已使用 SSH remote 且能 push。截图和作业中不得包含私钥。
+
+### 项目 A：循环队列状态追踪
+
+
+按理论课的 `count` 实现，`capacity=4`：
+
+| 操作后 | `front` | `rear` | `count` | 逻辑队列 |
+|---|---|---|---|---|
+| 初始 | 0 | 0 | 0 | 空 |
+| `enqueue(1)` | 0 | 1 | 1 | 1 |
+| `enqueue(2)` | 0 | 2 | 2 | 1, 2 |
+| `dequeue()`，返回 1 | 1 | 2 | 1 | 2 |
+| `enqueue(3)` | 1 | 3 | 2 | 2, 3 |
+| `enqueue(4)` | 1 | 0 | 3 | 2, 3, 4 |
+| `enqueue(5)` | 1 | 1 | 4 | 2, 3, 4, 5 |
+
+课件此处写“最后一个应失败”，但按给定 `count` 实现，出队释放了一个位置，最后一次入队应成功；若采用牺牲一个空位的方案才会失败。两种方案的判满条件和容量不能混用。
+
+`count` 方案用满全部格子，但每次需更新计数；留空位方案只需维护两个指针，代价是少存一个元素。
+
+### 项目 B：滑动窗口与优先级调度
+
+
+`nums=[5,3,4,1,2]`，`k=3`，使用理论课的单调队列代码：
+
+| `i` | `x` | `dq`（下标） | `result` |
+|---|---|---|---|
+| 0 | 5 | `[0]` | `[]` |
+| 1 | 3 | `[0,1]` | `[]` |
+| 2 | 4 | `[0,2]` | `[5]` |
+| 3 | 1 | `[2,3]` | `[5,4]` |
+| 4 | 2 | `[2,4]` | `[5,4,4]` |
+
+最后一步，`2` 淘汰队尾对应的 `1`，因此队列为 `[2,4]`。
+
+任务调度使用 `(priority, sequence, task)`。若任务从 0 编号，优先级 `[3,1,4,1,5]` 的处理顺序是任务 `1,3,0,2,4`；与理论课从 1 编号的结果相差 1。
+
+小组任选循环队列，或滑动窗口加优先队列项目；提交代码、项目选择说明及简短反思，通过本周配置的 SSH 推送。
+
+### 结构选型与易错点
+
+
+| 需求 | 结构 | 关键检查 |
+|---|---|---|
+| 先来先处理 | 普通队列 `deque` | `append` / `popleft` |
+| 固定容量反复利用 | 循环队列 | 读写指针均取模，空满判断一致 |
+| 滑动窗口最值 | 单调双端队列 | 队头去过期，队尾去劣势，存下标 |
+| 优先级处理 | `heapq` | 默认最小先出，同级增加到达序号 |
+| 多路有序合并 | `heapq.merge(*runs)` | 每一路先有序，调用处 `*` 解包 |
