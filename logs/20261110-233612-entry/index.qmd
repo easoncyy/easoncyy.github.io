@@ -1,0 +1,17 @@
+---
+title: "Winter"
+date: "2026-11-10T23:36:12+08:00"
+entry-signature: "b6e728998269b61add6acd9b324662a914e907c2bc6d6c4b602bc599ae2cc1b2"
+---
+
+::: {.log-photo-grid}
+
+![](/assets/log/20261110-233612-entry/photo-01.jpg)
+
+![](/assets/log/20261110-233612-entry/photo-02.jpg)
+
+![](/assets/log/20261110-233612-entry/photo-03.jpg)
+
+![](/assets/log/20261110-233612-entry/photo-04.jpg)
+
+:::

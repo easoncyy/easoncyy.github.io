@@ -1,4 +1,4 @@
-param([switch]$SkipPdf)
+param([switch]$SkipPdf, [switch]$Full)
 
 $ErrorActionPreference = 'Stop'
 $projectRoot = Split-Path -Parent $PSScriptRoot
@@ -26,6 +26,8 @@ python scripts/render-log.py
 if ($LASTEXITCODE -ne 0) { throw 'Log generation failed.' }
 python scripts/render-library.py
 if ($LASTEXITCODE -ne 0) { throw 'Library generation failed.' }
-& $quartoCommand render
+$renderArgs = @('scripts/render-incremental.py', $quartoCommand)
+if ($Full -or $env:GITHUB_ACTIONS -eq 'true') { $renderArgs += '--full' }
+python @renderArgs
 if ($LASTEXITCODE -ne 0) { throw 'Website render failed.' }
 

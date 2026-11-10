@@ -1,3 +1,118 @@
+::: {.problem-day data-date="2026-11-10"}
+
+## 2026-11-10 {.problem-date-heading}
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;矩阵的秩&quot;], &quot;tags&quot;: [&quot;等价标准形&quot;, &quot;矩阵构造&quot;], &quot;title&quot;: &quot;构造指定秩的零乘积矩阵&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 矩阵的秩</div>
+
+<h3>01. 构造指定秩的零乘积矩阵</h3>
+
+<div class="entry-tags">#等价标准形 · #矩阵构造</div>
+
+```
+
+设 $A$ 为 $m\times n$ 矩阵，$r(A)=r$。证明：存在 $n\times n$ 矩阵 $B$，满足 $r(B)=n-r$，且 $AB=0$。
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+由矩阵的等价标准形，存在可逆矩阵 $P,Q$，使
+$$
+PAQ=J=\begin{pmatrix}E_r&0\\0&0\end{pmatrix}_{m\times n}.
+$$
+令
+$$
+D=\operatorname{diag}(\underbrace{0,\ldots,0}_{r},\underbrace{1,\ldots,1}_{n-r}),\qquad B=QD.
+$$
+因为 $JD=0$，所以
+$$
+AB=AQD=P^{-1}JD=0.
+$$
+又 $Q$ 可逆，故 $r(B)=r(QD)=r(D)=n-r$。此构造也适用于 $r=0$ 或 $r=n$。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：2017–2018 学年秋冬《线性代数（甲）》期中考试 · 第 4 题（历年卷合集整理：macanine）</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;行列式&quot;], &quot;tags&quot;: [&quot;分块行列式&quot;, &quot;可交换矩阵&quot;, &quot;多项式恒等式&quot;], &quot;title&quot;: &quot;可交换条件下的分块行列式&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 行列式</div>
+
+<h3>02. 可交换条件下的分块行列式</h3>
+
+<div class="entry-tags">#分块行列式 · #可交换矩阵 · #多项式恒等式</div>
+
+```
+
+设 $A,B,C,D$ 均为 $n$ 阶实矩阵，且 $AC=CA$。证明：
+$$
+\begin{vmatrix}A&D\\C&B\end{vmatrix}=\det(AB-CD).
+$$
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+先设 $A$ 可逆。由 $AC=CA$，
+$$
+\begin{pmatrix}E&0\\-C&A\end{pmatrix}
+\begin{pmatrix}A&D\\C&B\end{pmatrix}
+=\begin{pmatrix}A&D\\0&AB-CD\end{pmatrix}.
+$$
+两边取行列式，得
+$$
+\det A\cdot\begin{vmatrix}A&D\\C&B\end{vmatrix}
+=\det A\cdot\det(AB-CD).
+$$
+约去非零的 $\det A$，即得结论。
+
+对一般的 $A$，令 $A_t=A+tE$，仍有 $A_tC=CA_t$。因为 $\det(A+tE)$ 是关于 $t$ 的 $n$ 次首一多项式，除有限多个实数 $t$ 外，$A_t$ 都可逆。由已证情形，
+$$
+\begin{vmatrix}A+tE&D\\C&B\end{vmatrix}
+=\det\bigl((A+tE)B-CD\bigr)
+$$
+对无穷多个实数 $t$ 成立。两边都是关于 $t$ 的多项式，故恒等。令 $t=0$，即得所证。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：2017–2018 学年秋冬《线性代数（甲）》期中考试 · 第 7 题（历年卷合集整理：macanine）</p>
+
+```
+
+:::
+
+```{=html}
+
+<details id="discussion-2026-11-10" class="log-comments problem-discussion" data-comment-term="/problems/2026-11-10/" data-comment-date="2026-11-10" data-comment-title="每日好题 · 2026-11-10">
+
+<summary>discussion/ <span>2026-11-10 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
 ::: {.problem-day data-date="2026-11-09"}
 
 ## 2026-11-09 {.problem-date-heading}
@@ -4239,6 +4354,6 @@ $$
 
 ```{=html}
 
-<script id="problem-index" type="application/json">{"builtDate": "2026-11-10", "dates": {"2026-11-09": 3, "2026-11-08": 2, "2026-11-07": 2, "2026-11-06": 6, "2026-11-05": 1, "2026-11-04": 1, "2026-11-03": 3, "2026-11-02": 6, "2026-11-01": 2, "2026-10-31": 2, "2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
+<script id="problem-index" type="application/json">{"builtDate": "2026-11-10", "dates": {"2026-11-10": 2, "2026-11-09": 3, "2026-11-08": 2, "2026-11-07": 2, "2026-11-06": 6, "2026-11-05": 1, "2026-11-04": 1, "2026-11-03": 3, "2026-11-02": 6, "2026-11-01": 2, "2026-10-31": 2, "2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
 
 ```

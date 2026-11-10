@@ -1,0 +1,25 @@
+---
+title: "构造指定秩的零乘积矩阵"
+category-path: ["MATH", "LINEAR-ALGEBRA", "矩阵的秩"]
+tags: ["等价标准形", "矩阵构造"]
+source: "2017–2018 学年秋冬《线性代数（甲）》期中考试 · 第 4 题（历年卷合集整理：macanine）"
+draft: false
+---
+
+设 $A$ 为 $m\times n$ 矩阵，$r(A)=r$。证明：存在 $n\times n$ 矩阵 $B$，满足 $r(B)=n-r$，且 $AB=0$。
+
+<!-- answer -->
+
+由矩阵的等价标准形，存在可逆矩阵 $P,Q$，使
+$$
+PAQ=J=\begin{pmatrix}E_r&0\\0&0\end{pmatrix}_{m\times n}.
+$$
+令
+$$
+D=\operatorname{diag}(\underbrace{0,\ldots,0}_{r},\underbrace{1,\ldots,1}_{n-r}),\qquad B=QD.
+$$
+因为 $JD=0$，所以
+$$
+AB=AQD=P^{-1}JD=0.
+$$
+又 $Q$ 可逆，故 $r(B)=r(QD)=r(D)=n-r$。此构造也适用于 $r=0$ 或 $r=n$。

@@ -1,0 +1,34 @@
+---
+title: "可交换条件下的分块行列式"
+category-path: ["MATH", "LINEAR-ALGEBRA", "行列式"]
+tags: ["分块行列式", "可交换矩阵", "多项式恒等式"]
+source: "2017–2018 学年秋冬《线性代数（甲）》期中考试 · 第 7 题（历年卷合集整理：macanine）"
+draft: false
+---
+
+设 $A,B,C,D$ 均为 $n$ 阶实矩阵，且 $AC=CA$。证明：
+$$
+\begin{vmatrix}A&D\\C&B\end{vmatrix}=\det(AB-CD).
+$$
+
+<!-- answer -->
+
+先设 $A$ 可逆。由 $AC=CA$，
+$$
+\begin{pmatrix}E&0\\-C&A\end{pmatrix}
+\begin{pmatrix}A&D\\C&B\end{pmatrix}
+=\begin{pmatrix}A&D\\0&AB-CD\end{pmatrix}.
+$$
+两边取行列式，得
+$$
+\det A\cdot\begin{vmatrix}A&D\\C&B\end{vmatrix}
+=\det A\cdot\det(AB-CD).
+$$
+约去非零的 $\det A$，即得结论。
+
+对一般的 $A$，令 $A_t=A+tE$，仍有 $A_tC=CA_t$。因为 $\det(A+tE)$ 是关于 $t$ 的 $n$ 次首一多项式，除有限多个实数 $t$ 外，$A_t$ 都可逆。由已证情形，
+$$
+\begin{vmatrix}A+tE&D\\C&B\end{vmatrix}
+=\det\bigl((A+tE)B-CD\bigr)
+$$
+对无穷多个实数 $t$ 成立。两边都是关于 $t$ 的多项式，故恒等。令 $t=0$，即得所证。

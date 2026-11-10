@@ -14,8 +14,10 @@ Quarto 构建的黑白极简个人网站：首页、博客归档、分类筛选�
 | 一键构建并发布 | `.\scripts\deploy.ps1` | 日常更新用这条；自动合并日志、本地构建、推送源码并触发云端构建部署；复用已有 PDF |
 | 一键发布并重建 PDF | `.\scripts\deploy.ps1 -RebuildPdf` | 修改了 `documents/math-notes.qmd` 时使用 |
 | 本地预览 | `.\scripts\preview.ps1` | 打开 `http://localhost:4200`；按 Ctrl+C 停止 |
-| 完整构建，不发布 | `.\scripts\build.ps1` | 生成 PDF 与网页到 `_site/` |
-| 只构建网页 | `.\scripts\build.ps1 -SkipPdf` | 已有 PDF 时跳过 PDF 编译；缺少 PDF 时仍会补建 |
+| 本地增量构建，不发布 | `.\scripts\build.ps1 -SkipPdf` | 重建改动的文章与栏目页，复用未修改的文章；首次运行自动全量构建 |
+| 强制完整构建，不发布 | `.\scripts\build.ps1 -Full` | 重新生成 PDF 与全部网页到 `_site/` |
+| 强制完整构建并发布 | `.\scripts\deploy.ps1 -Full` | 全量重建本地网页，推送并部署 |
+| 构建网页并重建 PDF | `.\scripts\build.ps1` | 网页默认增量构建，同时重建示例 PDF |
 | 新建文字日志 | `python scripts/new-log.py "今天的记录" --text "正文"` | 自动生成时间戳与日志源文件 |
 | 新建带照片、链接的日志 | `python scripts/new-log.py "散步" --text "正文" --photo "D:\Photos\sky.jpg" --url "https://quarto.org/"` | 照片与链接均可选，可同时使用 |
 | 查看新建日志参数 | `python scripts/new-log.py --help` | 查看所有选项 |
