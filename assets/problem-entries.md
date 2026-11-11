@@ -1,3 +1,122 @@
+::: {.problem-day data-date="2026-11-11"}
+
+## 2026-11-11 {.problem-date-heading}
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;行列式&quot;], &quot;tags&quot;: [&quot;正交矩阵&quot;, &quot;转置&quot;, &quot;行列式乘法&quot;], &quot;title&quot;: &quot;正交矩阵之和的行列式&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 行列式</div>
+
+<h3>01. 正交矩阵之和的行列式</h3>
+
+<div class="entry-tags">#正交矩阵 · #转置 · #行列式乘法</div>
+
+```
+
+设 $A,B$ 为 $n$ 阶实矩阵，满足 $AA^{\mathrm T}=E$、$BB^{\mathrm T}=E$，且 $\det A+\det B=0$。求 $\det(A+B)$。
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+由 $AA^{\mathrm T}=E$、$BB^{\mathrm T}=E$，知 $A,B$ 可逆，且 $A^{\mathrm T}A=B^{\mathrm T}B=E$。于是
+$$
+A+B=AB^{\mathrm T}B+AA^{\mathrm T}B
+=A(B^{\mathrm T}+A^{\mathrm T})B=A(A+B)^{\mathrm T}B.
+$$
+两边取行列式，得
+$$
+\det(A+B)=\det A\cdot\det(A+B)\cdot\det B.
+$$
+又 $(\det A)^2=(\det B)^2=1$，且 $\det B=-\det A$，所以 $\det A\det B=-1$。故
+$$
+2\det(A+B)=0,\qquad\boxed{\det(A+B)=0}.
+$$
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：《线性代数习题精选精解》第 1.22 题</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;矩阵的秩&quot;], &quot;tags&quot;: [&quot;分块矩阵&quot;, &quot;初等变换&quot;], &quot;title&quot;: &quot;对称分块矩阵的秩&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 矩阵的秩</div>
+
+<h3>02. 对称分块矩阵的秩</h3>
+
+<div class="entry-tags">#分块矩阵 · #初等变换</div>
+
+```
+
+设 $A,B$ 为数域 $P$ 上的 $n$ 阶矩阵，
+$$
+M=\begin{pmatrix}A&B\\B&A\end{pmatrix}.
+$$
+证明：
+$$
+r(M)\ge r(A+B)+r(A-B).
+$$
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+先将第一块行加上第二块行，再将第二块列减去第一块列，最后将第二块行加上第一块行的 $-\frac12$ 倍，得
+$$
+\begin{aligned}
+\begin{pmatrix}A&B\\B&A\end{pmatrix}
+&\longrightarrow\begin{pmatrix}A+B&A+B\\B&A\end{pmatrix}\\
+&\longrightarrow\begin{pmatrix}A+B&0\\B&A-B\end{pmatrix}\\
+&\longrightarrow\begin{pmatrix}A+B&0\\-\frac12(A-B)&A-B\end{pmatrix}.
+\end{aligned}
+$$
+再将第一块列加上第二块列的 $\frac12$ 倍，得
+$$
+\begin{pmatrix}A+B&0\\0&A-B\end{pmatrix}.
+$$
+上述操作均为初等行、列变换，不改变秩。因此
+$$
+r(M)=r\begin{pmatrix}A+B&0\\0&A-B\end{pmatrix}
+=r(A+B)+r(A-B),
+$$
+从而原不等式成立。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：2018–2019 学年秋冬《线性代数（甲）》期中考试 · 第 7 题</p>
+
+```
+
+:::
+
+```{=html}
+
+<details id="discussion-2026-11-11" class="log-comments problem-discussion" data-comment-term="/problems/2026-11-11/" data-comment-date="2026-11-11" data-comment-title="每日好题 · 2026-11-11">
+
+<summary>discussion/ <span>2026-11-11 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
 ::: {.problem-day data-date="2026-11-10"}
 
 ## 2026-11-10 {.problem-date-heading}
@@ -4354,6 +4473,6 @@ $$
 
 ```{=html}
 
-<script id="problem-index" type="application/json">{"builtDate": "2026-11-10", "dates": {"2026-11-10": 2, "2026-11-09": 3, "2026-11-08": 2, "2026-11-07": 2, "2026-11-06": 6, "2026-11-05": 1, "2026-11-04": 1, "2026-11-03": 3, "2026-11-02": 6, "2026-11-01": 2, "2026-10-31": 2, "2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
+<script id="problem-index" type="application/json">{"builtDate": "2026-11-11", "dates": {"2026-11-11": 2, "2026-11-10": 2, "2026-11-09": 3, "2026-11-08": 2, "2026-11-07": 2, "2026-11-06": 6, "2026-11-05": 1, "2026-11-04": 1, "2026-11-03": 3, "2026-11-02": 6, "2026-11-01": 2, "2026-10-31": 2, "2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
 
 ```

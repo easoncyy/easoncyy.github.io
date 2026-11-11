@@ -1,5 +1,39 @@
 ::: {.log-stream}
 
+::: {#20261111-231323-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-11-11T23:13:23+08:00">2026-11-11 23:13:23 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title">Day</p>
+
+```
+
+![](/assets/log/20261111-231323-entry/photo-01.jpg)
+
+```{=html}
+
+<details id="comments-20261111-231323-entry" class="log-comments" data-comment-term="/logs/20261111-231323-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
 ::: {#20261110-233612-entry .log-entry}
 
 ```{=html}

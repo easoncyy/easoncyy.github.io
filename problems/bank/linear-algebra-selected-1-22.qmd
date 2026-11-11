@@ -1,0 +1,25 @@
+---
+title: "正交矩阵之和的行列式"
+category-path: ["MATH", "LINEAR-ALGEBRA", "行列式"]
+tags: ["正交矩阵", "转置", "行列式乘法"]
+source: "《线性代数习题精选精解》第 1.22 题"
+draft: false
+---
+
+设 $A,B$ 为 $n$ 阶实矩阵，满足 $AA^{\mathrm T}=E$、$BB^{\mathrm T}=E$，且 $\det A+\det B=0$。求 $\det(A+B)$。
+
+<!-- answer -->
+
+由 $AA^{\mathrm T}=E$、$BB^{\mathrm T}=E$，知 $A,B$ 可逆，且 $A^{\mathrm T}A=B^{\mathrm T}B=E$。于是
+$$
+A+B=AB^{\mathrm T}B+AA^{\mathrm T}B
+=A(B^{\mathrm T}+A^{\mathrm T})B=A(A+B)^{\mathrm T}B.
+$$
+两边取行列式，得
+$$
+\det(A+B)=\det A\cdot\det(A+B)\cdot\det B.
+$$
+又 $(\det A)^2=(\det B)^2=1$，且 $\det B=-\det A$，所以 $\det A\det B=-1$。故
+$$
+2\det(A+B)=0,\qquad\boxed{\det(A+B)=0}.
+$$

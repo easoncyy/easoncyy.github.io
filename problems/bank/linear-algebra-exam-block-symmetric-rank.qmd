@@ -1,0 +1,38 @@
+---
+title: "对称分块矩阵的秩"
+category-path: ["MATH", "LINEAR-ALGEBRA", "矩阵的秩"]
+tags: ["分块矩阵", "初等变换"]
+source: "2018–2019 学年秋冬《线性代数（甲）》期中考试 · 第 7 题"
+draft: false
+---
+
+设 $A,B$ 为数域 $P$ 上的 $n$ 阶矩阵，
+$$
+M=\begin{pmatrix}A&B\\B&A\end{pmatrix}.
+$$
+证明：
+$$
+r(M)\ge r(A+B)+r(A-B).
+$$
+
+<!-- answer -->
+
+先将第一块行加上第二块行，再将第二块列减去第一块列，最后将第二块行加上第一块行的 $-\frac12$ 倍，得
+$$
+\begin{aligned}
+\begin{pmatrix}A&B\\B&A\end{pmatrix}
+&\longrightarrow\begin{pmatrix}A+B&A+B\\B&A\end{pmatrix}\\
+&\longrightarrow\begin{pmatrix}A+B&0\\B&A-B\end{pmatrix}\\
+&\longrightarrow\begin{pmatrix}A+B&0\\-\frac12(A-B)&A-B\end{pmatrix}.
+\end{aligned}
+$$
+再将第一块列加上第二块列的 $\frac12$ 倍，得
+$$
+\begin{pmatrix}A+B&0\\0&A-B\end{pmatrix}.
+$$
+上述操作均为初等行、列变换，不改变秩。因此
+$$
+r(M)=r\begin{pmatrix}A+B&0\\0&A-B\end{pmatrix}
+=r(A+B)+r(A-B),
+$$
+从而原不等式成立。
