@@ -1,3 +1,63 @@
+::: {.problem-day data-date="2026-11-12"}
+
+## 2026-11-12 {.problem-date-heading}
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;矩阵的秩&quot;], &quot;tags&quot;: [&quot;证明&quot;, &quot;列空间&quot;], &quot;title&quot;: &quot;矩阵秩与右因子分解&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 矩阵的秩</div>
+
+<h3>01. 矩阵秩与右因子分解</h3>
+
+<div class="entry-tags">#证明 · #列空间</div>
+
+```
+
+设 $A,B$ 是两个 $n$ 阶实方阵，证明：$r(A)=r(AB)$ 当且仅当存在 $n$ 阶实方阵 $C$ 使得 $A=ABC$。
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+若 $A=ABC$，则
+$$
+r(A)=r(ABC)\le r(AB)\le r(A),
+$$
+故 $r(A)=r(AB)$。
+
+反之，$AB$ 的每一列都是 $A$ 的列向量的线性组合，故
+$$
+\operatorname{Col}(AB)\subseteq\operatorname{Col}(A).
+$$
+由两者维数相同，得列空间相等。记 $A=(a_1,\ldots,a_n)$，对每个 $j$，存在列向量 $c_j$ 使得 $a_j=ABc_j$。取 $C=(c_1,\ldots,c_n)$，即得 $A=ABC$。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：2020–2021 学年秋冬《线性代数（甲）》期中考试 · 第 7 题</p>
+
+```
+
+:::
+
+```{=html}
+
+<details id="discussion-2026-11-12" class="log-comments problem-discussion" data-comment-term="/problems/2026-11-12/" data-comment-date="2026-11-12" data-comment-title="每日好题 · 2026-11-12">
+
+<summary>discussion/ <span>2026-11-12 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
 ::: {.problem-day data-date="2026-11-11"}
 
 ## 2026-11-11 {.problem-date-heading}
@@ -4473,6 +4533,6 @@ $$
 
 ```{=html}
 
-<script id="problem-index" type="application/json">{"builtDate": "2026-11-11", "dates": {"2026-11-11": 2, "2026-11-10": 2, "2026-11-09": 3, "2026-11-08": 2, "2026-11-07": 2, "2026-11-06": 6, "2026-11-05": 1, "2026-11-04": 1, "2026-11-03": 3, "2026-11-02": 6, "2026-11-01": 2, "2026-10-31": 2, "2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
+<script id="problem-index" type="application/json">{"builtDate": "2026-11-13", "dates": {"2026-11-12": 1, "2026-11-11": 2, "2026-11-10": 2, "2026-11-09": 3, "2026-11-08": 2, "2026-11-07": 2, "2026-11-06": 6, "2026-11-05": 1, "2026-11-04": 1, "2026-11-03": 3, "2026-11-02": 6, "2026-11-01": 2, "2026-10-31": 2, "2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
 
 ```

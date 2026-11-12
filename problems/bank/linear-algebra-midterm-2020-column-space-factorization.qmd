@@ -1,0 +1,23 @@
+---
+title: "矩阵秩与右因子分解"
+category-path: ["MATH", "LINEAR-ALGEBRA", "矩阵的秩"]
+tags: ["证明", "列空间"]
+source: "2020–2021 学年秋冬《线性代数（甲）》期中考试 · 第 7 题"
+draft: false
+---
+
+设 $A,B$ 是两个 $n$ 阶实方阵，证明：$r(A)=r(AB)$ 当且仅当存在 $n$ 阶实方阵 $C$ 使得 $A=ABC$。
+
+<!-- answer -->
+
+若 $A=ABC$，则
+$$
+r(A)=r(ABC)\le r(AB)\le r(A),
+$$
+故 $r(A)=r(AB)$。
+
+反之，$AB$ 的每一列都是 $A$ 的列向量的线性组合，故
+$$
+\operatorname{Col}(AB)\subseteq\operatorname{Col}(A).
+$$
+由两者维数相同，得列空间相等。记 $A=(a_1,\ldots,a_n)$，对每个 $j$，存在列向量 $c_j$ 使得 $a_j=ABc_j$。取 $C=(c_1,\ldots,c_n)$，即得 $A=ABC$。
