@@ -1,3 +1,115 @@
+::: {.problem-day data-date="2026-11-13"}
+
+## 2026-11-13 {.problem-date-heading}
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;行列式&quot;], &quot;tags&quot;: [&quot;证明&quot;, &quot;矩阵运算&quot;], &quot;title&quot;: &quot;矩阵方程与行列式&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 行列式</div>
+
+<h3>01. 矩阵方程与行列式</h3>
+
+<div class="entry-tags">#证明 · #矩阵运算</div>
+
+```
+
+设 $A,B,C$ 为三阶实矩阵，$B$ 可逆，$C=\operatorname{diag}(1,2,-1)$，且 $2BA+CB=O$。求 $|A+3E|$。
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+由题设，
+$$
+B(2A+6E)=(6E-C)B.
+$$
+取行列式并约去 $|B|\ne0$，得
+$$
+8|A+3E|=|6E-C|=5\cdot4\cdot7=140.
+$$
+故 $|A+3E|=\dfrac{35}{2}$。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：2020–2021 学年秋冬《线性代数（甲）》期中第 2 题（等价整理）</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;行列式&quot;], &quot;tags&quot;: [&quot;证明&quot;, &quot;矩阵运算&quot;], &quot;title&quot;: &quot;秩一更新的行列式&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 行列式</div>
+
+<h3>02. 秩一更新的行列式</h3>
+
+<div class="entry-tags">#证明 · #矩阵运算</div>
+
+```
+
+设 $A$ 为 $n$ 阶可逆矩阵，$\alpha,\beta$ 为两个 $n$ 维列向量，证明：
+$$
+|A+\alpha\beta^{\mathsf T}|=|A|+\beta^{\mathsf T}A^*\alpha.
+$$
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+令
+$$
+M=\begin{pmatrix}A&\alpha\\-\beta^{\mathsf T}&1\end{pmatrix}.
+$$
+分别作分块消元，得
+$$
+M\begin{pmatrix}E&O\\\beta^{\mathsf T}&1\end{pmatrix}
+=\begin{pmatrix}A+\alpha\beta^{\mathsf T}&\alpha\\O&1\end{pmatrix},
+$$
+以及
+$$
+\begin{pmatrix}E&O\\\beta^{\mathsf T}A^{-1}&1\end{pmatrix}M
+=\begin{pmatrix}A&\alpha\\O&1+\beta^{\mathsf T}A^{-1}\alpha\end{pmatrix}.
+$$
+两个消元矩阵的行列式均为 $1$，故
+$$
+|A+\alpha\beta^{\mathsf T}|=|M|
+=|A|(1+\beta^{\mathsf T}A^{-1}\alpha)
+=|A|+\beta^{\mathsf T}A^*\alpha.
+$$
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：2019–2020 学年秋冬《线性代数（甲）》期中第 8 题</p>
+
+```
+
+:::
+
+```{=html}
+
+<details id="discussion-2026-11-13" class="log-comments problem-discussion" data-comment-term="/problems/2026-11-13/" data-comment-date="2026-11-13" data-comment-title="每日好题 · 2026-11-13">
+
+<summary>discussion/ <span>2026-11-13 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
 ::: {.problem-day data-date="2026-11-12"}
 
 ## 2026-11-12 {.problem-date-heading}
@@ -4533,6 +4645,6 @@ $$
 
 ```{=html}
 
-<script id="problem-index" type="application/json">{"builtDate": "2026-11-13", "dates": {"2026-11-12": 1, "2026-11-11": 2, "2026-11-10": 2, "2026-11-09": 3, "2026-11-08": 2, "2026-11-07": 2, "2026-11-06": 6, "2026-11-05": 1, "2026-11-04": 1, "2026-11-03": 3, "2026-11-02": 6, "2026-11-01": 2, "2026-10-31": 2, "2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
+<script id="problem-index" type="application/json">{"builtDate": "2026-11-14", "dates": {"2026-11-13": 2, "2026-11-12": 1, "2026-11-11": 2, "2026-11-10": 2, "2026-11-09": 3, "2026-11-08": 2, "2026-11-07": 2, "2026-11-06": 6, "2026-11-05": 1, "2026-11-04": 1, "2026-11-03": 3, "2026-11-02": 6, "2026-11-01": 2, "2026-10-31": 2, "2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
 
 ```

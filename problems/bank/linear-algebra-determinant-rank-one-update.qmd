@@ -1,0 +1,35 @@
+---
+title: "秩一更新的行列式"
+category-path: ["MATH", "LINEAR-ALGEBRA", "行列式"]
+tags: ["证明", "矩阵运算"]
+source: "2019–2020 学年秋冬《线性代数（甲）》期中第 8 题"
+draft: false
+---
+
+设 $A$ 为 $n$ 阶可逆矩阵，$\alpha,\beta$ 为两个 $n$ 维列向量，证明：
+$$
+|A+\alpha\beta^{\mathsf T}|=|A|+\beta^{\mathsf T}A^*\alpha.
+$$
+
+<!-- answer -->
+
+令
+$$
+M=\begin{pmatrix}A&\alpha\\-\beta^{\mathsf T}&1\end{pmatrix}.
+$$
+分别作分块消元，得
+$$
+M\begin{pmatrix}E&O\\\beta^{\mathsf T}&1\end{pmatrix}
+=\begin{pmatrix}A+\alpha\beta^{\mathsf T}&\alpha\\O&1\end{pmatrix},
+$$
+以及
+$$
+\begin{pmatrix}E&O\\\beta^{\mathsf T}A^{-1}&1\end{pmatrix}M
+=\begin{pmatrix}A&\alpha\\O&1+\beta^{\mathsf T}A^{-1}\alpha\end{pmatrix}.
+$$
+两个消元矩阵的行列式均为 $1$，故
+$$
+|A+\alpha\beta^{\mathsf T}|=|M|
+=|A|(1+\beta^{\mathsf T}A^{-1}\alpha)
+=|A|+\beta^{\mathsf T}A^*\alpha.
+$$

@@ -1,0 +1,21 @@
+---
+title: "矩阵方程与行列式"
+category-path: ["MATH", "LINEAR-ALGEBRA", "行列式"]
+tags: ["证明", "矩阵运算"]
+source: "2020–2021 学年秋冬《线性代数（甲）》期中第 2 题（等价整理）"
+draft: false
+---
+
+设 $A,B,C$ 为三阶实矩阵，$B$ 可逆，$C=\operatorname{diag}(1,2,-1)$，且 $2BA+CB=O$。求 $|A+3E|$。
+
+<!-- answer -->
+
+由题设，
+$$
+B(2A+6E)=(6E-C)B.
+$$
+取行列式并约去 $|B|\ne0$，得
+$$
+8|A+3E|=|6E-C|=5\cdot4\cdot7=140.
+$$
+故 $|A+3E|=\dfrac{35}{2}$。
