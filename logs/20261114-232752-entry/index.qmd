@@ -1,0 +1,19 @@
+---
+title: "线性代数坏"
+date: "2026-11-14T23:27:52+08:00"
+entry-signature: "bf5e1135fcf881ede74efb4225b234117e2f1f43e3a20cb8daee2460a0904fa8"
+---
+
+::: {.log-photo-grid}
+
+![Night](/assets/log/20261114-232752-entry/photo-01.jpg)
+
+![早安](/assets/log/20261114-232752-entry/photo-02.jpg)
+
+![Foggy](/assets/log/20261114-232752-entry/photo-03.jpg)
+
+![蜜桃四季春](/assets/log/20261114-232752-entry/photo-04.jpg)
+
+![Rusty](/assets/log/20261114-232752-entry/photo-05.jpg)
+
+:::

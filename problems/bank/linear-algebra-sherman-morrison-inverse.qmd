@@ -1,0 +1,30 @@
+---
+title: "秩一更新的逆矩阵"
+category-path: ["MATH", "LINEAR-ALGEBRA", "逆矩阵"]
+tags: ["矩阵运算", "秩一更新"]
+source: "线性代数复习 · 特殊矩阵求逆与 Sherman–Morrison 公式"
+draft: false
+---
+
+设 $A$ 为可逆实矩阵，$u,v$ 为相应维数的列向量。证明 $A+uv^{\mathsf T}$ 可逆当且仅当 $1+v^{\mathsf T}A^{-1}u\ne0$，并求其逆矩阵。
+
+<!-- answer -->
+
+记 $s=v^{\mathsf T}A^{-1}u$。若 $1+s\ne0$，令
+$$
+X=A^{-1}-\frac{A^{-1}uv^{\mathsf T}A^{-1}}{1+s}.
+$$
+直接相乘：
+$$
+(A+uv^{\mathsf T})X
+=E+\left(1-\frac1{1+s}-\frac{s}{1+s}\right)uv^{\mathsf T}A^{-1}=E.
+$$
+因此
+$$
+(A+uv^{\mathsf T})^{-1}=A^{-1}-\frac{A^{-1}uv^{\mathsf T}A^{-1}}{1+v^{\mathsf T}A^{-1}u}.
+$$
+若 $1+s=0$，则 $u\ne0$，从而 $A^{-1}u\ne0$，而
+$$
+(A+uv^{\mathsf T})A^{-1}u=(1+s)u=0.
+$$
+故矩阵不可逆。

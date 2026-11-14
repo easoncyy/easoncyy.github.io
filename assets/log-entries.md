@@ -1,5 +1,51 @@
 ::: {.log-stream}
 
+::: {#20261114-232752-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-11-14T23:27:52+08:00">2026-11-14 23:27:52 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title">线性代数坏</p>
+
+```
+
+::: {.log-photo-grid}
+
+![Night](/assets/log/20261114-232752-entry/photo-01.jpg)
+
+![早安](/assets/log/20261114-232752-entry/photo-02.jpg)
+
+![Foggy](/assets/log/20261114-232752-entry/photo-03.jpg)
+
+![蜜桃四季春](/assets/log/20261114-232752-entry/photo-04.jpg)
+
+![Rusty](/assets/log/20261114-232752-entry/photo-05.jpg)
+
+:::
+
+```{=html}
+
+<details id="comments-20261114-232752-entry" class="log-comments" data-comment-term="/logs/20261114-232752-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
 ::: {#20261113-231121-entry .log-entry}
 
 ```{=html}

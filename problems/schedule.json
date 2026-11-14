@@ -129,5 +129,9 @@
   "2026-11-13": [
     "linear-algebra-matrix-equation-determinant",
     "linear-algebra-determinant-rank-one-update"
+  ],
+  "2026-11-14": [
+    "linear-algebra-sherman-morrison-inverse",
+    "linear-algebra-diagonal-plus-ones-inverse"
   ]
 }

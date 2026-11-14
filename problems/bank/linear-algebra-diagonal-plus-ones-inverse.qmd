@@ -1,0 +1,29 @@
+---
+title: "对角矩阵加全一矩阵"
+category-path: ["MATH", "LINEAR-ALGEBRA", "逆矩阵"]
+tags: ["矩阵运算", "秩一更新"]
+source: "线性代数复习 · 特殊矩阵求逆与 Sherman–Morrison 公式"
+draft: false
+---
+
+求矩阵的逆：
+$$
+M=\begin{pmatrix}2&1&1\\1&3&1\\1&1&4\end{pmatrix}.
+$$
+
+<!-- answer -->
+
+写成 $M=D+ee^{\mathsf T}$，其中
+$$
+D=\operatorname{diag}(1,2,3),\qquad e=(1,1,1)^{\mathsf T}.
+$$
+有
+$$
+D^{-1}=\operatorname{diag}(1,\tfrac12,\tfrac13),\qquad
+1+e^{\mathsf T}D^{-1}e=\frac{17}{6}.
+$$
+由秩一更新公式，
+$$
+M^{-1}=D^{-1}-\frac6{17}(D^{-1}e)(D^{-1}e)^{\mathsf T}
+=\frac1{17}\begin{pmatrix}11&-3&-2\\-3&7&-1\\-2&-1&5\end{pmatrix}.
+$$

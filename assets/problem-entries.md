@@ -1,3 +1,118 @@
+::: {.problem-day data-date="2026-11-14"}
+
+## 2026-11-14 {.problem-date-heading}
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;逆矩阵&quot;], &quot;tags&quot;: [&quot;矩阵运算&quot;, &quot;秩一更新&quot;], &quot;title&quot;: &quot;秩一更新的逆矩阵&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 逆矩阵</div>
+
+<h3>01. 秩一更新的逆矩阵</h3>
+
+<div class="entry-tags">#矩阵运算 · #秩一更新</div>
+
+```
+
+设 $A$ 为可逆实矩阵，$u,v$ 为相应维数的列向量。证明 $A+uv^{\mathsf T}$ 可逆当且仅当 $1+v^{\mathsf T}A^{-1}u\ne0$，并求其逆矩阵。
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+记 $s=v^{\mathsf T}A^{-1}u$。若 $1+s\ne0$，令
+$$
+X=A^{-1}-\frac{A^{-1}uv^{\mathsf T}A^{-1}}{1+s}.
+$$
+直接相乘：
+$$
+(A+uv^{\mathsf T})X
+=E+\left(1-\frac1{1+s}-\frac{s}{1+s}\right)uv^{\mathsf T}A^{-1}=E.
+$$
+因此
+$$
+(A+uv^{\mathsf T})^{-1}=A^{-1}-\frac{A^{-1}uv^{\mathsf T}A^{-1}}{1+v^{\mathsf T}A^{-1}u}.
+$$
+若 $1+s=0$，则 $u\ne0$，从而 $A^{-1}u\ne0$，而
+$$
+(A+uv^{\mathsf T})A^{-1}u=(1+s)u=0.
+$$
+故矩阵不可逆。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：线性代数复习 · 特殊矩阵求逆与 Sherman–Morrison 公式</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;逆矩阵&quot;], &quot;tags&quot;: [&quot;矩阵运算&quot;, &quot;秩一更新&quot;], &quot;title&quot;: &quot;对角矩阵加全一矩阵&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 逆矩阵</div>
+
+<h3>02. 对角矩阵加全一矩阵</h3>
+
+<div class="entry-tags">#矩阵运算 · #秩一更新</div>
+
+```
+
+求矩阵的逆：
+$$
+M=\begin{pmatrix}2&1&1\\1&3&1\\1&1&4\end{pmatrix}.
+$$
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+写成 $M=D+ee^{\mathsf T}$，其中
+$$
+D=\operatorname{diag}(1,2,3),\qquad e=(1,1,1)^{\mathsf T}.
+$$
+有
+$$
+D^{-1}=\operatorname{diag}(1,\tfrac12,\tfrac13),\qquad
+1+e^{\mathsf T}D^{-1}e=\frac{17}{6}.
+$$
+由秩一更新公式，
+$$
+M^{-1}=D^{-1}-\frac6{17}(D^{-1}e)(D^{-1}e)^{\mathsf T}
+=\frac1{17}\begin{pmatrix}11&-3&-2\\-3&7&-1\\-2&-1&5\end{pmatrix}.
+$$
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：线性代数复习 · 特殊矩阵求逆与 Sherman–Morrison 公式</p>
+
+```
+
+:::
+
+```{=html}
+
+<details id="discussion-2026-11-14" class="log-comments problem-discussion" data-comment-term="/problems/2026-11-14/" data-comment-date="2026-11-14" data-comment-title="每日好题 · 2026-11-14">
+
+<summary>discussion/ <span>2026-11-14 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
 ::: {.problem-day data-date="2026-11-13"}
 
 ## 2026-11-13 {.problem-date-heading}
@@ -4645,6 +4760,6 @@ $$
 
 ```{=html}
 
-<script id="problem-index" type="application/json">{"builtDate": "2026-11-14", "dates": {"2026-11-13": 2, "2026-11-12": 1, "2026-11-11": 2, "2026-11-10": 2, "2026-11-09": 3, "2026-11-08": 2, "2026-11-07": 2, "2026-11-06": 6, "2026-11-05": 1, "2026-11-04": 1, "2026-11-03": 3, "2026-11-02": 6, "2026-11-01": 2, "2026-10-31": 2, "2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
+<script id="problem-index" type="application/json">{"builtDate": "2026-11-14", "dates": {"2026-11-14": 2, "2026-11-13": 2, "2026-11-12": 1, "2026-11-11": 2, "2026-11-10": 2, "2026-11-09": 3, "2026-11-08": 2, "2026-11-07": 2, "2026-11-06": 6, "2026-11-05": 1, "2026-11-04": 1, "2026-11-03": 3, "2026-11-02": 6, "2026-11-01": 2, "2026-10-31": 2, "2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
 
 ```
