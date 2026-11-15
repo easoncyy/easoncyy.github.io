@@ -1,0 +1,25 @@
+---
+title: "非零矩阵解的存在性"
+category-path: ["MATH", "LINEAR-ALGEBRA", "矩阵"]
+tags: ["证明", "初等变换"]
+source: "2025–2026 学年秋冬《线性代数（甲）》期中考试 · 第 9 题"
+draft: false
+---
+
+设 $A,B,C$ 为 $n$ 阶方阵，满足 $r(A)<r(C)\le n$，且 $BC=O$。证明存在非零矩阵 $X$，使得 $AX=BX$。
+
+<!-- answer -->
+
+由秩不等式，
+$$
+0=r(BC)\ge r(B)+r(C)-n,
+$$
+所以 $r(B)\le n-r(C)$。因此
+$$
+r(A-B)\le r(A)+r(B)\le r(A)+n-r(C)<n.
+$$
+齐次方程组 $(A-B)z=0$ 有非零列向量解 $z$。令
+$$
+X=(z,0,\ldots,0),
+$$
+则 $X\ne O$ 且 $(A-B)X=O$，即 $AX=BX$。

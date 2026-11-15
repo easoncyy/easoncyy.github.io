@@ -1,3 +1,101 @@
+::: {.problem-day data-date="2026-11-15"}
+
+## 2026-11-15 {.problem-date-heading}
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;矩阵&quot;], &quot;tags&quot;: [&quot;证明&quot;, &quot;初等变换&quot;], &quot;title&quot;: &quot;置换矩阵的正交性&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 矩阵</div>
+
+<h3>01. 置换矩阵的正交性</h3>
+
+<div class="entry-tags">#证明 · #初等变换</div>
+
+```
+
+矩阵 $A$ 由 $n$ 阶单位矩阵 $E$ 经过若干次行、列互换得到。求 $A^{\mathsf T}A$，并证明结论。
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+答案为 $E$。行、列互换保持每行、每列恰有一个 $1$、其余元素全为 $0$ 的性质。设 $A=(a_{ij})$，则
+$$
+(A^{\mathsf T}A)_{ij}=\sum_{k=1}^n a_{ki}a_{kj}.
+$$
+当 $i=j$ 时，该和为 $1$；当 $i\ne j$ 时，每行的两个元素不能同时为 $1$，该和为 $0$。故 $A^{\mathsf T}A=E$。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：2025–2026 学年秋冬《线性代数（甲）》期中考试 · 第 7 题</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;矩阵&quot;], &quot;tags&quot;: [&quot;证明&quot;, &quot;初等变换&quot;], &quot;title&quot;: &quot;非零矩阵解的存在性&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 矩阵</div>
+
+<h3>02. 非零矩阵解的存在性</h3>
+
+<div class="entry-tags">#证明 · #初等变换</div>
+
+```
+
+设 $A,B,C$ 为 $n$ 阶方阵，满足 $r(A)<r(C)\le n$，且 $BC=O$。证明存在非零矩阵 $X$，使得 $AX=BX$。
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+由秩不等式，
+$$
+0=r(BC)\ge r(B)+r(C)-n,
+$$
+所以 $r(B)\le n-r(C)$。因此
+$$
+r(A-B)\le r(A)+r(B)\le r(A)+n-r(C)<n.
+$$
+齐次方程组 $(A-B)z=0$ 有非零列向量解 $z$。令
+$$
+X=(z,0,\ldots,0),
+$$
+则 $X\ne O$ 且 $(A-B)X=O$，即 $AX=BX$。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：2025–2026 学年秋冬《线性代数（甲）》期中考试 · 第 9 题</p>
+
+```
+
+:::
+
+```{=html}
+
+<details id="discussion-2026-11-15" class="log-comments problem-discussion" data-comment-term="/problems/2026-11-15/" data-comment-date="2026-11-15" data-comment-title="每日好题 · 2026-11-15">
+
+<summary>discussion/ <span>2026-11-15 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
 ::: {.problem-day data-date="2026-11-14"}
 
 ## 2026-11-14 {.problem-date-heading}
@@ -4760,6 +4858,6 @@ $$
 
 ```{=html}
 
-<script id="problem-index" type="application/json">{"builtDate": "2026-11-14", "dates": {"2026-11-14": 2, "2026-11-13": 2, "2026-11-12": 1, "2026-11-11": 2, "2026-11-10": 2, "2026-11-09": 3, "2026-11-08": 2, "2026-11-07": 2, "2026-11-06": 6, "2026-11-05": 1, "2026-11-04": 1, "2026-11-03": 3, "2026-11-02": 6, "2026-11-01": 2, "2026-10-31": 2, "2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
+<script id="problem-index" type="application/json">{"builtDate": "2026-11-15", "dates": {"2026-11-15": 2, "2026-11-14": 2, "2026-11-13": 2, "2026-11-12": 1, "2026-11-11": 2, "2026-11-10": 2, "2026-11-09": 3, "2026-11-08": 2, "2026-11-07": 2, "2026-11-06": 6, "2026-11-05": 1, "2026-11-04": 1, "2026-11-03": 3, "2026-11-02": 6, "2026-11-01": 2, "2026-10-31": 2, "2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
 
 ```
