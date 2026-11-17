@@ -1,0 +1,35 @@
+---
+title: "按行中心化与广播"
+category-path: ["CS", "PYTHON", "NUMPY", "数组运算"]
+tags: ["NumPy", "广播", "axis"]
+source: "《程序设计与算法基础》W10 向量与矩阵课程笔记（2026-11-17），据笔记改编"
+draft: false
+---
+
+给定：
+
+```python
+import numpy as np
+A = np.array([[1., 2., 3.], [4., 5., 9.]])
+```
+
+（1）执行 `A - A.mean(axis=1)` 会发生什么？
+
+（2）不使用循环，令每行减去该行的均值，写出代码与结果。
+
+<!-- answer -->
+
+（1）`A.mean(axis=1)` 为 `[2., 6.]`，形状是 `(2,)`。与 `A` 的 `(2, 3)` 从末尾维度对齐时，`2` 与 `3` 不兼容，因此抛出 `ValueError`。
+
+（2）保留被聚合的轴：
+
+```python
+centered = A - A.mean(axis=1, keepdims=True)
+```
+
+均值形状为 `(2, 1)`，沿列广播，结果为：
+
+```text
+[[-1.  0.  1.]
+ [-2. -1.  3.]]
+```

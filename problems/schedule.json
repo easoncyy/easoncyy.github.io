@@ -141,5 +141,10 @@
   "2026-11-16": [
     "demidovich-1382-exponential-quotient-expansion",
     "demidovich-1393-taylor-remainder-point"
+  ],
+  "2026-11-17": [
+    "numpy-slice-and-boolean-copy",
+    "numpy-row-centering-broadcast",
+    "numpy-batch-affine-matrix"
   ]
 }

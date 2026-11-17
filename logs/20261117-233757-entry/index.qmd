@@ -1,0 +1,17 @@
+---
+title: "Ordinary day"
+date: "2026-11-17T23:37:57+08:00"
+entry-signature: "df15e533d59e20576cc25c7172826eb84d65f77b79647c982bb58bb74acb79a5"
+---
+
+今天过的其实挺开心的呀！
+
+::: {.log-photo-grid}
+
+![喜欢北教的自修空间](/assets/log/20261117-233757-entry/photo-01.jpg)
+
+![一天上了六节线性代数lol](/assets/log/20261117-233757-entry/photo-02.jpg)
+
+![无尽东教](/assets/log/20261117-233757-entry/photo-03.jpg)
+
+:::

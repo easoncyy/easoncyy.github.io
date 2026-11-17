@@ -1,3 +1,181 @@
+::: {.problem-day data-date="2026-11-17"}
+
+## 2026-11-17 {.problem-date-heading}
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;CS&quot;, &quot;PYTHON&quot;, &quot;NUMPY&quot;, &quot;数组索引&quot;], &quot;tags&quot;: [&quot;NumPy&quot;, &quot;视图与副本&quot;], &quot;title&quot;: &quot;基本切片与布尔索引&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">CS / PYTHON / NUMPY / 数组索引</div>
+
+<h3>01. 基本切片与布尔索引</h3>
+
+<div class="entry-tags">#NumPy · #视图与副本</div>
+
+```
+
+写出下面程序运行后 `a`、`b`、`c` 的值，并说明原因。
+
+```python
+import numpy as np
+
+a = np.array([1, 2, 3, 4])
+b = a[1:3]
+c = a[a % 2 == 0]
+b[0] = 20
+c[0] = -1
+```
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+结果为：
+
+```text
+a: [ 1 20  3  4]
+b: [20  3]
+c: [-1  4]
+```
+
+基本切片 `a[1:3]` 返回视图，`b[0]` 与 `a[1]` 共用数据，所以修改 `b[0]` 会改变 `a`。
+
+布尔索引返回副本。创建 `c` 时得到 `[2, 4]`，此后修改 `a` 或 `c` 都不会影响另一方。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：《程序设计与算法基础》W10 向量与矩阵课程笔记（2026-11-17），据笔记改编</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;CS&quot;, &quot;PYTHON&quot;, &quot;NUMPY&quot;, &quot;数组运算&quot;], &quot;tags&quot;: [&quot;NumPy&quot;, &quot;广播&quot;, &quot;axis&quot;], &quot;title&quot;: &quot;按行中心化与广播&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">CS / PYTHON / NUMPY / 数组运算</div>
+
+<h3>02. 按行中心化与广播</h3>
+
+<div class="entry-tags">#NumPy · #广播 · #axis</div>
+
+```
+
+给定：
+
+```python
+import numpy as np
+A = np.array([[1., 2., 3.], [4., 5., 9.]])
+```
+
+（1）执行 `A - A.mean(axis=1)` 会发生什么？
+
+（2）不使用循环，令每行减去该行的均值，写出代码与结果。
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+（1）`A.mean(axis=1)` 为 `[2., 6.]`，形状是 `(2,)`。与 `A` 的 `(2, 3)` 从末尾维度对齐时，`2` 与 `3` 不兼容，因此抛出 `ValueError`。
+
+（2）保留被聚合的轴：
+
+```python
+centered = A - A.mean(axis=1, keepdims=True)
+```
+
+均值形状为 `(2, 1)`，沿列广播，结果为：
+
+```text
+[[-1.  0.  1.]
+ [-2. -1.  3.]]
+```
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：《程序设计与算法基础》W10 向量与矩阵课程笔记（2026-11-17），据笔记改编</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;CS&quot;, &quot;PYTHON&quot;, &quot;NUMPY&quot;, &quot;矩阵运算&quot;], &quot;tags&quot;: [&quot;NumPy&quot;, &quot;矩阵乘法&quot;, &quot;广播&quot;], &quot;title&quot;: &quot;批量仿射变换的矩阵写法&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">CS / PYTHON / NUMPY / 矩阵运算</div>
+
+<h3>03. 批量仿射变换的矩阵写法</h3>
+
+<div class="entry-tags">#NumPy · #矩阵乘法 · #广播</div>
+
+```
+
+给定：
+
+```python
+import numpy as np
+X = np.array([[1, 2, 3], [0, 1, 0]])
+W = np.array([[1, 0, -1], [2, 1, 0]])
+b = np.array([1, -2])
+```
+
+`X` 每行是一个样本，单个样本的列向量形式满足 $y=Wx+b$。不使用循环，求全部样本的输出矩阵 `Y`，并写出其形状和值。能否用 `X * W + b` 代替？
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+每个样本按行存放，应右乘 `W.T`：
+
+```python
+Y = X @ W.T + b
+```
+
+`X`、`W.T` 的形状分别为 `(2, 3)`、`(3, 2)`，乘积形状为 `(2, 2)`。`b` 的形状为 `(2,)`，向每一行广播，得到：
+
+```text
+[[-1  2]
+ [ 1 -1]]
+```
+
+`X * W` 是逐元素乘法，未对输入分量求和，而且本例所得 `(2, 3)` 数组与 `(2,)` 的 `b` 无法广播。因此 `X * W + b` 不能代替上述计算。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：《程序设计与算法基础》W10 向量与矩阵课程笔记（2026-11-17），据笔记改编</p>
+
+```
+
+:::
+
+```{=html}
+
+<details id="discussion-2026-11-17" class="log-comments problem-discussion" data-comment-term="/problems/2026-11-17/" data-comment-date="2026-11-17" data-comment-title="每日好题 · 2026-11-17">
+
+<summary>discussion/ <span>2026-11-17 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
 ::: {.problem-day data-date="2026-11-16"}
 
 ## 2026-11-16 {.problem-date-heading}
@@ -4999,6 +5177,6 @@ $$
 
 ```{=html}
 
-<script id="problem-index" type="application/json">{"builtDate": "2026-11-17", "dates": {"2026-11-16": 2, "2026-11-15": 2, "2026-11-14": 2, "2026-11-13": 2, "2026-11-12": 1, "2026-11-11": 2, "2026-11-10": 2, "2026-11-09": 3, "2026-11-08": 2, "2026-11-07": 2, "2026-11-06": 6, "2026-11-05": 1, "2026-11-04": 1, "2026-11-03": 3, "2026-11-02": 6, "2026-11-01": 2, "2026-10-31": 2, "2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
+<script id="problem-index" type="application/json">{"builtDate": "2026-11-17", "dates": {"2026-11-17": 3, "2026-11-16": 2, "2026-11-15": 2, "2026-11-14": 2, "2026-11-13": 2, "2026-11-12": 1, "2026-11-11": 2, "2026-11-10": 2, "2026-11-09": 3, "2026-11-08": 2, "2026-11-07": 2, "2026-11-06": 6, "2026-11-05": 1, "2026-11-04": 1, "2026-11-03": 3, "2026-11-02": 6, "2026-11-01": 2, "2026-10-31": 2, "2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
 
 ```

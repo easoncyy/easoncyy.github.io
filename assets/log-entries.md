@@ -1,5 +1,49 @@
 ::: {.log-stream}
 
+::: {#20261117-233757-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-11-17T23:37:57+08:00">2026-11-17 23:37:57 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title">Ordinary day</p>
+
+```
+
+今天过的其实挺开心的呀！
+
+::: {.log-photo-grid}
+
+![喜欢北教的自修空间](/assets/log/20261117-233757-entry/photo-01.jpg)
+
+![一天上了六节线性代数lol](/assets/log/20261117-233757-entry/photo-02.jpg)
+
+![无尽东教](/assets/log/20261117-233757-entry/photo-03.jpg)
+
+:::
+
+```{=html}
+
+<details id="comments-20261117-233757-entry" class="log-comments" data-comment-term="/logs/20261117-233757-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
 ::: {#20261116-232822-entry .log-entry}
 
 ```{=html}
