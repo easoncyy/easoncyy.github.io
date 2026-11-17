@@ -1,3 +1,144 @@
+::: {.problem-day data-date="2026-11-16"}
+
+## 2026-11-16 {.problem-date-heading}
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;Taylor 公式&quot;], &quot;tags&quot;: [&quot;Taylor 公式&quot;, &quot;待定系数法&quot;], &quot;title&quot;: &quot;指数函数商的 Taylor 展开&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / CALCULUS / Taylor 公式</div>
+
+<h3>01. 指数函数商的 Taylor 展开</h3>
+
+<div class="entry-tags">#Taylor 公式 · #待定系数法</div>
+
+```
+
+将
+$$
+F(x)=\frac{x}{e^x-1}
+$$
+按 $x$ 的非负整数次幂展开，写到 $x^4$，余项用 $o(x^4)$ 表示。在 $x=0$ 处补定义 $F(0)=1$。
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+令
+$$
+G(x)=\begin{cases}(e^x-1)/x,&x\ne0,\\1,&x=0.\end{cases}
+$$
+它在零点附近光滑且非零，因此 $F=1/G$ 也光滑，可以作有限阶 Taylor 展开。设
+$$
+F(x)=c_0+c_1x+c_2x^2+c_3x^3+c_4x^4+o(x^4).
+$$
+由 $(e^x-1)F(x)=x$，为了比较到决定 $c_4$ 的 $x^5$ 项，写出
+$$
+e^x-1=x+\frac{x^2}{2}+\frac{x^3}{6}+\frac{x^4}{24}+\frac{x^5}{120}+o(x^5).
+$$
+因为 $e^x-1=O(x)$，乘积中的余项为 $o(x^5)$。逐次比较系数，得
+$$
+\begin{aligned}
+c_0&=1,\\
+c_1+c_0/2&=0,\\
+c_2+c_1/2+c_0/6&=0,\\
+c_3+c_2/2+c_1/6+c_0/24&=0,\\
+c_4+c_3/2+c_2/6+c_1/24+c_0/120&=0.
+\end{aligned}
+$$
+所以 $c_1=-1/2$、$c_2=1/12$、$c_3=0$、$c_4=-1/720$，即
+$$
+\boxed{\frac{x}{e^x-1}=1-\frac x2+\frac{x^2}{12}-\frac{x^4}{720}+o(x^4).}
+$$
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：吉米多维奇《数学分析习题集》第 1382 题（据用户笔记整理）</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;Taylor 公式&quot;], &quot;tags&quot;: [&quot;Taylor 公式&quot;, &quot;Peano 余项&quot;, &quot;拉格朗日余项&quot;], &quot;title&quot;: &quot;Taylor 余项中值点的极限&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / CALCULUS / Taylor 公式</div>
+
+<h3>02. Taylor 余项中值点的极限</h3>
+
+<div class="entry-tags">#Taylor 公式 · #Peano 余项 · #拉格朗日余项</div>
+
+```
+
+设 $n\ge1$，$f$ 在固定点 $x$ 的邻域内属于 $C^{n+1}$，且 $f^{(n+1)}(x)\ne0$。对每个充分小的非零 $h$，取某个 $\theta(h)\in(0,1)$，使
+$$
+f(x+h)=\sum_{k=0}^{n-1}\frac{f^{(k)}(x)}{k!}h^k+\frac{h^n}{n!}f^{(n)}(x+\theta(h)h).
+$$
+证明：
+$$
+\lim_{h\to0}\theta(h)=\frac1{n+1}.
+$$
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+在固定点 $x$，由 Peano 公式，
+$$
+f(x+h)=\sum_{k=0}^{n}\frac{f^{(k)}(x)}{k!}h^k+\frac{f^{(n+1)}(x)}{(n+1)!}h^{n+1}+o(h^{n+1}).
+$$
+与题给等式比较，消去低阶多项式，并除以 $h^n/n!$，得
+$$
+f^{(n)}(x+\theta h)-f^{(n)}(x)=\frac{h}{n+1}f^{(n+1)}(x)+o(h).\tag{1}
+$$
+令 $u=\theta(h)h$。因为 $0<\theta<1$，有 $u\to0$，所以
+$$
+f^{(n)}(x+u)-f^{(n)}(x)=f^{(n+1)}(x)u+o(u).
+$$
+若 $o(u)=u\varepsilon(u)$，其中 $\varepsilon(u)\to0$，则 $o(u)/h=\theta\varepsilon(u)\to0$，故
+$$
+f^{(n)}(x+\theta h)-f^{(n)}(x)=\theta h f^{(n+1)}(x)+o(h).\tag{2}
+$$
+比较（1）、（2），除以非零的 $hf^{(n+1)}(x)$，得
+$$
+\theta(h)=\frac1{n+1}+o(1).
+$$
+因此
+$$
+\boxed{\lim_{h\to0}\theta(h)=\frac1{n+1}.}
+$$
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：吉米多维奇《数学分析习题集》第 1393 题（据用户笔记整理）</p>
+
+```
+
+:::
+
+```{=html}
+
+<details id="discussion-2026-11-16" class="log-comments problem-discussion" data-comment-term="/problems/2026-11-16/" data-comment-date="2026-11-16" data-comment-title="每日好题 · 2026-11-16">
+
+<summary>discussion/ <span>2026-11-16 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
 ::: {.problem-day data-date="2026-11-15"}
 
 ## 2026-11-15 {.problem-date-heading}
@@ -4858,6 +4999,6 @@ $$
 
 ```{=html}
 
-<script id="problem-index" type="application/json">{"builtDate": "2026-11-15", "dates": {"2026-11-15": 2, "2026-11-14": 2, "2026-11-13": 2, "2026-11-12": 1, "2026-11-11": 2, "2026-11-10": 2, "2026-11-09": 3, "2026-11-08": 2, "2026-11-07": 2, "2026-11-06": 6, "2026-11-05": 1, "2026-11-04": 1, "2026-11-03": 3, "2026-11-02": 6, "2026-11-01": 2, "2026-10-31": 2, "2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
+<script id="problem-index" type="application/json">{"builtDate": "2026-11-17", "dates": {"2026-11-16": 2, "2026-11-15": 2, "2026-11-14": 2, "2026-11-13": 2, "2026-11-12": 1, "2026-11-11": 2, "2026-11-10": 2, "2026-11-09": 3, "2026-11-08": 2, "2026-11-07": 2, "2026-11-06": 6, "2026-11-05": 1, "2026-11-04": 1, "2026-11-03": 3, "2026-11-02": 6, "2026-11-01": 2, "2026-10-31": 2, "2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
 
 ```

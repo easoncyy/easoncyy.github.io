@@ -1,0 +1,43 @@
+---
+title: "Taylor 余项中值点的极限"
+category-path: ["MATH", "CALCULUS", "Taylor 公式"]
+tags: ["Taylor 公式", "Peano 余项", "拉格朗日余项"]
+source: "吉米多维奇《数学分析习题集》第 1393 题（据用户笔记整理）"
+draft: false
+---
+
+设 $n\ge1$，$f$ 在固定点 $x$ 的邻域内属于 $C^{n+1}$，且 $f^{(n+1)}(x)\ne0$。对每个充分小的非零 $h$，取某个 $\theta(h)\in(0,1)$，使
+$$
+f(x+h)=\sum_{k=0}^{n-1}\frac{f^{(k)}(x)}{k!}h^k+\frac{h^n}{n!}f^{(n)}(x+\theta(h)h).
+$$
+证明：
+$$
+\lim_{h\to0}\theta(h)=\frac1{n+1}.
+$$
+
+<!-- answer -->
+
+在固定点 $x$，由 Peano 公式，
+$$
+f(x+h)=\sum_{k=0}^{n}\frac{f^{(k)}(x)}{k!}h^k+\frac{f^{(n+1)}(x)}{(n+1)!}h^{n+1}+o(h^{n+1}).
+$$
+与题给等式比较，消去低阶多项式，并除以 $h^n/n!$，得
+$$
+f^{(n)}(x+\theta h)-f^{(n)}(x)=\frac{h}{n+1}f^{(n+1)}(x)+o(h).\tag{1}
+$$
+令 $u=\theta(h)h$。因为 $0<\theta<1$，有 $u\to0$，所以
+$$
+f^{(n)}(x+u)-f^{(n)}(x)=f^{(n+1)}(x)u+o(u).
+$$
+若 $o(u)=u\varepsilon(u)$，其中 $\varepsilon(u)\to0$，则 $o(u)/h=\theta\varepsilon(u)\to0$，故
+$$
+f^{(n)}(x+\theta h)-f^{(n)}(x)=\theta h f^{(n+1)}(x)+o(h).\tag{2}
+$$
+比较（1）、（2），除以非零的 $hf^{(n+1)}(x)$，得
+$$
+\theta(h)=\frac1{n+1}+o(1).
+$$
+因此
+$$
+\boxed{\lim_{h\to0}\theta(h)=\frac1{n+1}.}
+$$

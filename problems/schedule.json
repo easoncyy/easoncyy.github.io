@@ -137,5 +137,9 @@
   "2026-11-15": [
     "linear-algebra-permutation-orthogonality",
     "linear-algebra-rank-nonzero-matrix-solution"
+  ],
+  "2026-11-16": [
+    "demidovich-1382-exponential-quotient-expansion",
+    "demidovich-1393-taylor-remainder-point"
   ]
 }
