@@ -1,0 +1,29 @@
+---
+title: "指数函数商的对数极限"
+category-path: ["MATH", "CALCULUS", "极限"]
+tags: ["Taylor 公式", "复合函数", "二阶无穷小"]
+source: "自编（结合近期 Taylor 展开题）"
+draft: false
+---
+
+求极限
+$$
+\lim_{x\to0}\frac{\displaystyle\ln\frac{e^x-1}{x}-\frac x2}{x^2}.
+$$
+
+<!-- answer -->
+
+当 $x\ne0$ 时，$(e^x-1)/x>0$，对数有定义。由 Taylor 公式，
+$$
+\frac{e^x-1}{x}=1+\frac x2+\frac{x^2}{6}+o(x^2).
+$$
+令 $u=\frac x2+\frac{x^2}{6}+o(x^2)$，则 $u^2=\frac{x^2}{4}+o(x^2)$。因此
+$$
+\begin{aligned}
+\ln\frac{e^x-1}{x}
+&=u-\frac{u^2}{2}+o(u^2)\\
+&=\frac x2+\left(\frac16-\frac18\right)x^2+o(x^2)\\
+&=\frac x2+\frac{x^2}{24}+o(x^2).
+\end{aligned}
+$$
+故所求极限为 $\boxed{\frac1{24}}$。

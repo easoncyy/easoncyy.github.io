@@ -1,5 +1,63 @@
 ::: {.log-stream}
 
+::: {#20261118-233028-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-11-18T23:30:28+08:00">2026-11-18 23:30:28 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title">玉泉</p>
+
+```
+
+很久没有坐89路公交车了，上次有印象时还是初中做89路回家。乘坐公交车的体验总是很有趣，在你等到最不耐烦的时候，车就终于到了。在夜幕降临时分，公交车的颠簸和双层玻璃的折射光晕总会让我轻松入睡，真是温暖的感觉。
+
+::: {.log-photo-grid}
+
+![玉泉的建筑很有趣](/assets/log/20261118-233028-entry/photo-01.jpg)
+
+![MySweet](/assets/log/20261118-233028-entry/photo-02.jpg)
+
+![哪里都有工地](/assets/log/20261118-233028-entry/photo-03.jpg)
+
+![路过](/assets/log/20261118-233028-entry/photo-04.jpg)
+
+![Mao](/assets/log/20261118-233028-entry/photo-05.jpg)
+
+![最喜欢的氛围](/assets/log/20261118-233028-entry/photo-06.jpg)
+
+![清晨](/assets/log/20261118-233028-entry/photo-07.jpg)
+
+![喜欢玉泉旁边的建筑](/assets/log/20261118-233028-entry/photo-08.jpg)
+
+![还有多久](/assets/log/20261118-233028-entry/photo-09.jpg)
+
+![喜欢这样的天气](/assets/log/20261118-233028-entry/photo-10.jpg)
+
+:::
+
+```{=html}
+
+<details id="comments-20261118-233028-entry" class="log-comments" data-comment-term="/logs/20261118-233028-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
 ::: {#20261117-233757-entry .log-entry}
 
 ```{=html}

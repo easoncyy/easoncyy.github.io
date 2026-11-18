@@ -1,3 +1,121 @@
+::: {.problem-day data-date="2026-11-18"}
+
+## 2026-11-18 {.problem-date-heading}
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;极限&quot;], &quot;tags&quot;: [&quot;Taylor 公式&quot;, &quot;复合函数&quot;, &quot;二阶无穷小&quot;], &quot;title&quot;: &quot;指数函数商的对数极限&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / CALCULUS / 极限</div>
+
+<h3>01. 指数函数商的对数极限</h3>
+
+<div class="entry-tags">#Taylor 公式 · #复合函数 · #二阶无穷小</div>
+
+```
+
+求极限
+$$
+\lim_{x\to0}\frac{\displaystyle\ln\frac{e^x-1}{x}-\frac x2}{x^2}.
+$$
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+当 $x\ne0$ 时，$(e^x-1)/x>0$，对数有定义。由 Taylor 公式，
+$$
+\frac{e^x-1}{x}=1+\frac x2+\frac{x^2}{6}+o(x^2).
+$$
+令 $u=\frac x2+\frac{x^2}{6}+o(x^2)$，则 $u^2=\frac{x^2}{4}+o(x^2)$。因此
+$$
+\begin{aligned}
+\ln\frac{e^x-1}{x}
+&=u-\frac{u^2}{2}+o(u^2)\\
+&=\frac x2+\left(\frac16-\frac18\right)x^2+o(x^2)\\
+&=\frac x2+\frac{x^2}{24}+o(x^2).
+\end{aligned}
+$$
+故所求极限为 $\boxed{\frac1{24}}$。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：自编（结合近期 Taylor 展开题）</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;矩阵的秩&quot;], &quot;tags&quot;: [&quot;矩阵乘法&quot;, &quot;幂等矩阵&quot;, &quot;数据中心化&quot;], &quot;title&quot;: &quot;按行中心化的矩阵表示&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 矩阵的秩</div>
+
+<h3>02. 按行中心化的矩阵表示</h3>
+
+<div class="entry-tags">#矩阵乘法 · #幂等矩阵 · #数据中心化</div>
+
+```
+
+设 $n\ge2$，$E$ 为 $n$ 阶单位矩阵，$J$ 为 $n$ 阶全 $1$ 矩阵，令
+$$
+H=E-\frac1nJ.
+$$
+（1）证明 $H^2=H$，并求 $r(H)$。
+
+（2）设 $X=(x_{ij})$ 为 $m\times n$ 实矩阵，证明 $XH$ 的每个元素等于原元素减去所在行的均值，并求 $XH=X$ 的充要条件。
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+（1）由 $J^2=nJ$，得
+$$
+H^2=E-\frac2nJ+\frac1{n^2}J^2=E-\frac1nJ=H.
+$$
+$H$ 每行的元素之和为零，所以各列之和为零，$r(H)\le n-1$。又由 $E=H+J/n$ 及 $r(J)=1$，
+$$
+n=r(E)\le r(H)+r(J/n)=r(H)+1.
+$$
+所以 $\boxed{r(H)=n-1}$。
+
+（2）$XJ$ 的第 $(i,j)$ 个元素为 $\sum_{k=1}^n x_{ik}$，故
+$$
+(XH)_{ij}=x_{ij}-\frac1n\sum_{k=1}^n x_{ik}.
+$$
+这正是每行减去自己的均值。因此 $XH=X$ 当且仅当 $X$ 每行的元素之和均为零。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：自编（结合近期矩阵运算与 NumPy 按行中心化问题）</p>
+
+```
+
+:::
+
+```{=html}
+
+<details id="discussion-2026-11-18" class="log-comments problem-discussion" data-comment-term="/problems/2026-11-18/" data-comment-date="2026-11-18" data-comment-title="每日好题 · 2026-11-18">
+
+<summary>discussion/ <span>2026-11-18 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
 ::: {.problem-day data-date="2026-11-17"}
 
 ## 2026-11-17 {.problem-date-heading}
@@ -5177,6 +5295,6 @@ $$
 
 ```{=html}
 
-<script id="problem-index" type="application/json">{"builtDate": "2026-11-17", "dates": {"2026-11-17": 3, "2026-11-16": 2, "2026-11-15": 2, "2026-11-14": 2, "2026-11-13": 2, "2026-11-12": 1, "2026-11-11": 2, "2026-11-10": 2, "2026-11-09": 3, "2026-11-08": 2, "2026-11-07": 2, "2026-11-06": 6, "2026-11-05": 1, "2026-11-04": 1, "2026-11-03": 3, "2026-11-02": 6, "2026-11-01": 2, "2026-10-31": 2, "2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
+<script id="problem-index" type="application/json">{"builtDate": "2026-11-18", "dates": {"2026-11-18": 2, "2026-11-17": 3, "2026-11-16": 2, "2026-11-15": 2, "2026-11-14": 2, "2026-11-13": 2, "2026-11-12": 1, "2026-11-11": 2, "2026-11-10": 2, "2026-11-09": 3, "2026-11-08": 2, "2026-11-07": 2, "2026-11-06": 6, "2026-11-05": 1, "2026-11-04": 1, "2026-11-03": 3, "2026-11-02": 6, "2026-11-01": 2, "2026-10-31": 2, "2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
 
 ```
