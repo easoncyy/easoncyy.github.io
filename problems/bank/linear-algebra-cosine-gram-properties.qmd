@@ -1,0 +1,27 @@
+---
+title: "余弦相似度矩阵"
+category-path: ["MATH", "LINEAR-ALGEBRA", "矩阵"]
+tags: ["矩阵运算", "复习"]
+source: "自编 · FIP W10 向量与矩阵复习"
+draft: false
+---
+
+设 $U$ 为 $m\times d$ 实矩阵，每行都是长度为 $1$ 的向量，令 $S=UU^{\mathsf T}$。
+
+（1）证明 $S$ 对称、对角元均为 $1$，且每个元素属于 $[-1,1]$。
+
+（2）证明对任意实列向量 $z$，$z^{\mathsf T}Sz\ge0$。当 $m>d$ 时，$S$ 是否可能可逆？
+
+<!-- answer -->
+
+（1）$S^{\mathsf T}=(UU^{\mathsf T})^{\mathsf T}=UU^{\mathsf T}=S$。记第 $i$ 行对应向量为 $u_i$，则
+$$
+S_{ij}=u_i\cdot u_j,\qquad S_{ii}=\|u_i\|^2=1.
+$$
+由 Cauchy–Schwarz 不等式，$|S_{ij}|\le\|u_i\|\|u_j\|=1$。
+
+（2）
+$$
+z^{\mathsf T}Sz=(U^{\mathsf T}z)^{\mathsf T}(U^{\mathsf T}z)=\|U^{\mathsf T}z\|^2\ge0.
+$$
+又 $r(S)\le r(U)\le d$，当 $m>d$ 时，$r(S)<m$，因此 $S$ 不可逆。

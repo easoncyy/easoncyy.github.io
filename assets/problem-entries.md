@@ -1,3 +1,115 @@
+::: {.problem-day data-date="2026-11-19"}
+
+## 2026-11-19 {.problem-date-heading}
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;CS&quot;, &quot;PYTHON&quot;, &quot;NUMPY&quot;], &quot;tags&quot;: [&quot;矩阵运算&quot;, &quot;复习&quot;], &quot;title&quot;: &quot;布尔筛选与广播&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">CS / PYTHON / NUMPY</div>
+
+<h3>01. 布尔筛选与广播</h3>
+
+<div class="entry-tags">#矩阵运算 · #复习</div>
+
+```
+
+给定数组：
+
+```python
+import numpy as np
+A = np.array([[2, 5, 1], [6, 3, 9], [4, 7, 8]])
+```
+
+不使用循环，选出第二列大于 $4$ 的整行，再将选出各行减去各自的行均值。写出代码、结果及结果形状。该操作是否改变 `A`？
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+```python
+B = A[A[:, 1] > 4]
+C = B - B.mean(axis=1, keepdims=True)
+```
+
+`B` 为 `[[2, 5, 1], [4, 7, 8]]`，形状为 `(2, 3)`。行均值的形状为 `(2, 1)`，可以广播到各行，故
+$$
+C=\begin{pmatrix}-2/3&7/3&-5/3\\-7/3&2/3&5/3\end{pmatrix}.
+$$
+结果形状为 `(2, 3)`。布尔索引产生副本，减法也产生新数组，因此 `A` 不变。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：自编 · FIP W10 向量与矩阵复习</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;矩阵&quot;], &quot;tags&quot;: [&quot;矩阵运算&quot;, &quot;复习&quot;], &quot;title&quot;: &quot;余弦相似度矩阵&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 矩阵</div>
+
+<h3>02. 余弦相似度矩阵</h3>
+
+<div class="entry-tags">#矩阵运算 · #复习</div>
+
+```
+
+设 $U$ 为 $m\times d$ 实矩阵，每行都是长度为 $1$ 的向量，令 $S=UU^{\mathsf T}$。
+
+（1）证明 $S$ 对称、对角元均为 $1$，且每个元素属于 $[-1,1]$。
+
+（2）证明对任意实列向量 $z$，$z^{\mathsf T}Sz\ge0$。当 $m>d$ 时，$S$ 是否可能可逆？
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+（1）$S^{\mathsf T}=(UU^{\mathsf T})^{\mathsf T}=UU^{\mathsf T}=S$。记第 $i$ 行对应向量为 $u_i$，则
+$$
+S_{ij}=u_i\cdot u_j,\qquad S_{ii}=\|u_i\|^2=1.
+$$
+由 Cauchy–Schwarz 不等式，$|S_{ij}|\le\|u_i\|\|u_j\|=1$。
+
+（2）
+$$
+z^{\mathsf T}Sz=(U^{\mathsf T}z)^{\mathsf T}(U^{\mathsf T}z)=\|U^{\mathsf T}z\|^2\ge0.
+$$
+又 $r(S)\le r(U)\le d$，当 $m>d$ 时，$r(S)<m$，因此 $S$ 不可逆。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：自编 · FIP W10 向量与矩阵复习</p>
+
+```
+
+:::
+
+```{=html}
+
+<details id="discussion-2026-11-19" class="log-comments problem-discussion" data-comment-term="/problems/2026-11-19/" data-comment-date="2026-11-19" data-comment-title="每日好题 · 2026-11-19">
+
+<summary>discussion/ <span>2026-11-19 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
 ::: {.problem-day data-date="2026-11-18"}
 
 ## 2026-11-18 {.problem-date-heading}
@@ -5295,6 +5407,6 @@ $$
 
 ```{=html}
 
-<script id="problem-index" type="application/json">{"builtDate": "2026-11-18", "dates": {"2026-11-18": 2, "2026-11-17": 3, "2026-11-16": 2, "2026-11-15": 2, "2026-11-14": 2, "2026-11-13": 2, "2026-11-12": 1, "2026-11-11": 2, "2026-11-10": 2, "2026-11-09": 3, "2026-11-08": 2, "2026-11-07": 2, "2026-11-06": 6, "2026-11-05": 1, "2026-11-04": 1, "2026-11-03": 3, "2026-11-02": 6, "2026-11-01": 2, "2026-10-31": 2, "2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
+<script id="problem-index" type="application/json">{"builtDate": "2026-11-20", "dates": {"2026-11-19": 2, "2026-11-18": 2, "2026-11-17": 3, "2026-11-16": 2, "2026-11-15": 2, "2026-11-14": 2, "2026-11-13": 2, "2026-11-12": 1, "2026-11-11": 2, "2026-11-10": 2, "2026-11-09": 3, "2026-11-08": 2, "2026-11-07": 2, "2026-11-06": 6, "2026-11-05": 1, "2026-11-04": 1, "2026-11-03": 3, "2026-11-02": 6, "2026-11-01": 2, "2026-10-31": 2, "2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
 
 ```

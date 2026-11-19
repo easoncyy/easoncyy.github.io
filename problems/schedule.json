@@ -150,5 +150,9 @@
   "2026-11-18": [
     "calculus-self-log-exponential-quotient-limit",
     "linear-algebra-self-row-centering-matrix"
+  ],
+  "2026-11-19": [
+    "numpy-boolean-selection-broadcast-review",
+    "linear-algebra-cosine-gram-properties"
   ]
 }
