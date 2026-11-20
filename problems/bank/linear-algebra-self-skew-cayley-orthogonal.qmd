@@ -1,0 +1,40 @@
+---
+title: "实反对称矩阵构造正交矩阵"
+category-path: ["MATH", "LINEAR-ALGEBRA", "矩阵运算"]
+tags: ["反对称矩阵", "可逆矩阵", "正交矩阵"]
+source: "自编（结合近期反对称矩阵、逆矩阵与正交矩阵问题）"
+draft: false
+---
+
+设 $A$ 为 $n$ 阶实矩阵，满足 $A^{\mathrm T}=-A$，$E$ 为单位矩阵。
+
+（1）证明 $E+A$ 与 $E-A$ 均可逆。
+
+（2）令 $Q=(E-A)(E+A)^{-1}$，证明 $Q$ 为正交矩阵。
+
+<!-- answer -->
+
+（1）对任意实列向量 $x$，标量 $x^{\mathrm T}Ax$ 满足
+$$
+x^{\mathrm T}Ax=(x^{\mathrm T}Ax)^{\mathrm T}
+=x^{\mathrm T}A^{\mathrm T}x=-x^{\mathrm T}Ax,
+$$
+故 $x^{\mathrm T}Ax=0$。若 $(E+A)x=0$，左乘 $x^{\mathrm T}$，得
+$$
+x^{\mathrm T}x+x^{\mathrm T}Ax=x^{\mathrm T}x=0.
+$$
+所以 $x=0$，齐次方程组仅有零解，故 $E+A$ 可逆。对 $E-A$ 同理。
+
+（2）由转置与逆矩阵的性质，
+$$
+Q^{\mathrm T}=(E-A)^{-1}(E+A).
+$$
+又 $(E+A)(E-A)=(E-A)(E+A)=E-A^2$，故
+$$
+\begin{aligned}
+Q^{\mathrm T}Q
+&=(E-A)^{-1}(E+A)(E-A)(E+A)^{-1}\\
+&=(E-A)^{-1}(E-A)(E+A)(E+A)^{-1}=E.
+\end{aligned}
+$$
+因此 $Q$ 为正交矩阵。

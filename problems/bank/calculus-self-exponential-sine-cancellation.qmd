@@ -1,0 +1,29 @@
+---
+title: "指数差与正弦的三阶抵消"
+category-path: ["MATH", "CALCULUS", "极限"]
+tags: ["Taylor 公式", "奇函数", "高阶无穷小"]
+source: "自编（结合近期 Taylor 展开与高阶抵消问题）"
+draft: false
+---
+
+求极限
+$$
+\lim_{x\to0}\frac{e^x-e^{-x}-2\sin x}{x^3}.
+$$
+
+<!-- answer -->
+
+由 Taylor 公式，
+$$
+\begin{aligned}
+e^x&=1+x+\frac{x^2}{2}+\frac{x^3}{6}+o(x^3),\\
+e^{-x}&=1-x+\frac{x^2}{2}-\frac{x^3}{6}+o(x^3),\\
+2\sin x&=2x-\frac{x^3}{3}+o(x^3).
+\end{aligned}
+$$
+所以
+$$
+e^x-e^{-x}-2\sin x
+=\frac{2}{3}x^3+o(x^3).
+$$
+故所求极限为 $\boxed{\frac23}$。

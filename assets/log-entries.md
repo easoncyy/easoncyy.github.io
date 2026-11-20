@@ -1,5 +1,51 @@
 ::: {.log-stream}
 
+::: {#20261120-222212-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-11-20T22:22:12+08:00">2026-11-20 22:22:12 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title"></p>
+
+```
+
+::: {.log-photo-grid}
+
+![](/assets/log/20261120-222212-entry/photo-01.jpg)
+
+![](/assets/log/20261120-222212-entry/photo-02.jpg)
+
+![](/assets/log/20261120-222212-entry/photo-03.jpg)
+
+![](/assets/log/20261120-222212-entry/photo-04.jpg)
+
+![](/assets/log/20261120-222212-entry/photo-05.jpg)
+
+:::
+
+```{=html}
+
+<details id="comments-20261120-222212-entry" class="log-comments" data-comment-term="/logs/20261120-222212-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
 ::: {#20261119-231121-entry .log-entry}
 
 ```{=html}

@@ -1,3 +1,128 @@
+::: {.problem-day data-date="2026-11-20"}
+
+## 2026-11-20 {.problem-date-heading}
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;极限&quot;], &quot;tags&quot;: [&quot;Taylor 公式&quot;, &quot;奇函数&quot;, &quot;高阶无穷小&quot;], &quot;title&quot;: &quot;指数差与正弦的三阶抵消&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / CALCULUS / 极限</div>
+
+<h3>01. 指数差与正弦的三阶抵消</h3>
+
+<div class="entry-tags">#Taylor 公式 · #奇函数 · #高阶无穷小</div>
+
+```
+
+求极限
+$$
+\lim_{x\to0}\frac{e^x-e^{-x}-2\sin x}{x^3}.
+$$
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+由 Taylor 公式，
+$$
+\begin{aligned}
+e^x&=1+x+\frac{x^2}{2}+\frac{x^3}{6}+o(x^3),\\
+e^{-x}&=1-x+\frac{x^2}{2}-\frac{x^3}{6}+o(x^3),\\
+2\sin x&=2x-\frac{x^3}{3}+o(x^3).
+\end{aligned}
+$$
+所以
+$$
+e^x-e^{-x}-2\sin x
+=\frac{2}{3}x^3+o(x^3).
+$$
+故所求极限为 $\boxed{\frac23}$。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：自编（结合近期 Taylor 展开与高阶抵消问题）</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;矩阵运算&quot;], &quot;tags&quot;: [&quot;反对称矩阵&quot;, &quot;可逆矩阵&quot;, &quot;正交矩阵&quot;], &quot;title&quot;: &quot;实反对称矩阵构造正交矩阵&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 矩阵运算</div>
+
+<h3>02. 实反对称矩阵构造正交矩阵</h3>
+
+<div class="entry-tags">#反对称矩阵 · #可逆矩阵 · #正交矩阵</div>
+
+```
+
+设 $A$ 为 $n$ 阶实矩阵，满足 $A^{\mathrm T}=-A$，$E$ 为单位矩阵。
+
+（1）证明 $E+A$ 与 $E-A$ 均可逆。
+
+（2）令 $Q=(E-A)(E+A)^{-1}$，证明 $Q$ 为正交矩阵。
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+（1）对任意实列向量 $x$，标量 $x^{\mathrm T}Ax$ 满足
+$$
+x^{\mathrm T}Ax=(x^{\mathrm T}Ax)^{\mathrm T}
+=x^{\mathrm T}A^{\mathrm T}x=-x^{\mathrm T}Ax,
+$$
+故 $x^{\mathrm T}Ax=0$。若 $(E+A)x=0$，左乘 $x^{\mathrm T}$，得
+$$
+x^{\mathrm T}x+x^{\mathrm T}Ax=x^{\mathrm T}x=0.
+$$
+所以 $x=0$，齐次方程组仅有零解，故 $E+A$ 可逆。对 $E-A$ 同理。
+
+（2）由转置与逆矩阵的性质，
+$$
+Q^{\mathrm T}=(E-A)^{-1}(E+A).
+$$
+又 $(E+A)(E-A)=(E-A)(E+A)=E-A^2$，故
+$$
+\begin{aligned}
+Q^{\mathrm T}Q
+&=(E-A)^{-1}(E+A)(E-A)(E+A)^{-1}\\
+&=(E-A)^{-1}(E-A)(E+A)(E+A)^{-1}=E.
+\end{aligned}
+$$
+因此 $Q$ 为正交矩阵。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：自编（结合近期反对称矩阵、逆矩阵与正交矩阵问题）</p>
+
+```
+
+:::
+
+```{=html}
+
+<details id="discussion-2026-11-20" class="log-comments problem-discussion" data-comment-term="/problems/2026-11-20/" data-comment-date="2026-11-20" data-comment-title="每日好题 · 2026-11-20">
+
+<summary>discussion/ <span>2026-11-20 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
 ::: {.problem-day data-date="2026-11-19"}
 
 ## 2026-11-19 {.problem-date-heading}
@@ -5407,6 +5532,6 @@ $$
 
 ```{=html}
 
-<script id="problem-index" type="application/json">{"builtDate": "2026-11-20", "dates": {"2026-11-19": 2, "2026-11-18": 2, "2026-11-17": 3, "2026-11-16": 2, "2026-11-15": 2, "2026-11-14": 2, "2026-11-13": 2, "2026-11-12": 1, "2026-11-11": 2, "2026-11-10": 2, "2026-11-09": 3, "2026-11-08": 2, "2026-11-07": 2, "2026-11-06": 6, "2026-11-05": 1, "2026-11-04": 1, "2026-11-03": 3, "2026-11-02": 6, "2026-11-01": 2, "2026-10-31": 2, "2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
+<script id="problem-index" type="application/json">{"builtDate": "2026-11-20", "dates": {"2026-11-20": 2, "2026-11-19": 2, "2026-11-18": 2, "2026-11-17": 3, "2026-11-16": 2, "2026-11-15": 2, "2026-11-14": 2, "2026-11-13": 2, "2026-11-12": 1, "2026-11-11": 2, "2026-11-10": 2, "2026-11-09": 3, "2026-11-08": 2, "2026-11-07": 2, "2026-11-06": 6, "2026-11-05": 1, "2026-11-04": 1, "2026-11-03": 3, "2026-11-02": 6, "2026-11-01": 2, "2026-10-31": 2, "2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
 
 ```
