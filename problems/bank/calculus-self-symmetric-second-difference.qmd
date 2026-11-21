@@ -1,0 +1,47 @@
+---
+title: "对称差分与二阶导数"
+category-path: ["MATH", "CALCULUS", "导数"]
+tags: ["Taylor 公式", "罗尔定理", "二阶导数"]
+source: "自编（结合近期 Taylor 展开与中值定理问题）"
+draft: false
+---
+
+设 $f$ 在 $a$ 的某邻域内二阶连续可导。
+
+（1）求
+$$
+\lim_{h\to0}\frac{f(a+h)-2f(a)+f(a-h)}{h^2}.
+$$
+（2）证明：对每个充分小的 $h>0$，存在 $\xi_h\in(a-h,a+h)$，使
+$$
+f(a+h)-2f(a)+f(a-h)=h^2f''(\xi_h).
+$$
+
+<!-- answer -->
+
+（1）在 $a$ 处作二阶 Taylor 展开：
+$$
+f(a\pm h)=f(a)\pm hf'(a)+\frac{h^2}{2}f''(a)+o(h^2).
+$$
+相加并减去 $2f(a)$，得
+$$
+f(a+h)-2f(a)+f(a-h)=h^2f''(a)+o(h^2).
+$$
+故极限为 $\boxed{f''(a)}$。
+
+（2）记
+$$
+K=\frac{f(a+h)-2f(a)+f(a-h)}{h^2},\qquad
+L=\frac{f(a+h)-f(a-h)}{2h},
+$$
+令
+$$
+g(t)=f(t)-f(a)-L(t-a)-\frac K2(t-a)^2.
+$$
+直接代入可得 $g(a-h)=g(a)=g(a+h)=0$。分别在 $[a-h,a]$、$[a,a+h]$ 上应用罗尔定理，得 $u\in(a-h,a)$、$v\in(a,a+h)$，满足 $g'(u)=g'(v)=0$。
+
+再对 $g'$ 在 $[u,v]$ 上应用罗尔定理，存在 $\xi_h\in(u,v)$，使
+$$
+0=g''(\xi_h)=f''(\xi_h)-K.
+$$
+代入 $K$ 的定义即得结论。

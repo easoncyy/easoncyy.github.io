@@ -1,5 +1,59 @@
 ::: {.log-stream}
 
+::: {#20261121-225723-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-11-21T22:57:23+08:00">2026-11-21 22:57:23 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title">Busy Busy Busy</p>
+
+```
+
+最喜欢的还是今天的天气和晚上的聚餐，感觉和大佬们吃饭收获良多，也意识到了提问的能力有多重要。
+
+::: {.log-photo-grid}
+
+![Red Boat](/assets/log/20261121-225723-entry/photo-01.jpg)
+
+![课本上的红船](/assets/log/20261121-225723-entry/photo-02.jpg)
+
+![开动脑筋](/assets/log/20261121-225723-entry/photo-03.jpg)
+
+![喜欢天气](/assets/log/20261121-225723-entry/photo-04.jpg)
+
+![巴黎公社墙](/assets/log/20261121-225723-entry/photo-05.jpg)
+
+![！](/assets/log/20261121-225723-entry/photo-06.jpg)
+
+![庄严](/assets/log/20261121-225723-entry/photo-07.jpg)
+
+![共产党宣言](/assets/log/20261121-225723-entry/photo-08.jpg)
+
+:::
+
+```{=html}
+
+<details id="comments-20261121-225723-entry" class="log-comments" data-comment-term="/logs/20261121-225723-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
 ::: {#20261120-222212-entry .log-entry}
 
 ```{=html}

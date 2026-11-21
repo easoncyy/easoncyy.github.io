@@ -1,3 +1,148 @@
+::: {.problem-day data-date="2026-11-21"}
+
+## 2026-11-21 {.problem-date-heading}
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;导数&quot;], &quot;tags&quot;: [&quot;Taylor 公式&quot;, &quot;罗尔定理&quot;, &quot;二阶导数&quot;], &quot;title&quot;: &quot;对称差分与二阶导数&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / CALCULUS / 导数</div>
+
+<h3>01. 对称差分与二阶导数</h3>
+
+<div class="entry-tags">#Taylor 公式 · #罗尔定理 · #二阶导数</div>
+
+```
+
+设 $f$ 在 $a$ 的某邻域内二阶连续可导。
+
+（1）求
+$$
+\lim_{h\to0}\frac{f(a+h)-2f(a)+f(a-h)}{h^2}.
+$$
+（2）证明：对每个充分小的 $h>0$，存在 $\xi_h\in(a-h,a+h)$，使
+$$
+f(a+h)-2f(a)+f(a-h)=h^2f''(\xi_h).
+$$
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+（1）在 $a$ 处作二阶 Taylor 展开：
+$$
+f(a\pm h)=f(a)\pm hf'(a)+\frac{h^2}{2}f''(a)+o(h^2).
+$$
+相加并减去 $2f(a)$，得
+$$
+f(a+h)-2f(a)+f(a-h)=h^2f''(a)+o(h^2).
+$$
+故极限为 $\boxed{f''(a)}$。
+
+（2）记
+$$
+K=\frac{f(a+h)-2f(a)+f(a-h)}{h^2},\qquad
+L=\frac{f(a+h)-f(a-h)}{2h},
+$$
+令
+$$
+g(t)=f(t)-f(a)-L(t-a)-\frac K2(t-a)^2.
+$$
+直接代入可得 $g(a-h)=g(a)=g(a+h)=0$。分别在 $[a-h,a]$、$[a,a+h]$ 上应用罗尔定理，得 $u\in(a-h,a)$、$v\in(a,a+h)$，满足 $g'(u)=g'(v)=0$。
+
+再对 $g'$ 在 $[u,v]$ 上应用罗尔定理，存在 $\xi_h\in(u,v)$，使
+$$
+0=g''(\xi_h)=f''(\xi_h)-K.
+$$
+代入 $K$ 的定义即得结论。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：自编（结合近期 Taylor 展开与中值定理问题）</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;矩阵运算&quot;], &quot;tags&quot;: [&quot;正交矩阵&quot;, &quot;反对称矩阵&quot;, &quot;逆矩阵&quot;], &quot;title&quot;: &quot;由正交矩阵构造反对称矩阵&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 矩阵运算</div>
+
+<h3>02. 由正交矩阵构造反对称矩阵</h3>
+
+<div class="entry-tags">#正交矩阵 · #反对称矩阵 · #逆矩阵</div>
+
+```
+
+设 $Q$ 为 $n$ 阶实正交矩阵，且 $E+Q$ 可逆，其中 $E$ 为单位矩阵。令
+$$
+A=(E-Q)(E+Q)^{-1}.
+$$
+（1）证明 $A^{\mathrm T}=-A$。
+
+（2）证明 $E+A$ 可逆，并用 $A$ 表示 $Q$。
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+（1）由 $Q^{\mathrm T}=Q^{-1}$，
+$$
+\begin{aligned}
+A^{\mathrm T}
+&=(E+Q^{\mathrm T})^{-1}(E-Q^{\mathrm T})\\
+&=(E+Q^{-1})^{-1}(E-Q^{-1})\\
+&=(E+Q)^{-1}Q\,Q^{-1}(Q-E)\\
+&=-(E+Q)^{-1}(E-Q).
+\end{aligned}
+$$
+又 $E-Q$ 与 $E+Q$ 可交换，因此也与 $(E+Q)^{-1}$ 可交换，故 $A^{\mathrm T}=-A$。
+
+（2）由定义，
+$$
+E+A=\bigl[(E+Q)+(E-Q)\bigr](E+Q)^{-1}=2(E+Q)^{-1},
+$$
+所以 $E+A$ 可逆。同理，
+$$
+E-A=2Q(E+Q)^{-1}.
+$$
+因此
+$$
+\boxed{Q=(E-A)(E+A)^{-1}}.
+$$
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：自编（接续实反对称矩阵构造正交矩阵问题）</p>
+
+```
+
+:::
+
+```{=html}
+
+<details id="discussion-2026-11-21" class="log-comments problem-discussion" data-comment-term="/problems/2026-11-21/" data-comment-date="2026-11-21" data-comment-title="每日好题 · 2026-11-21">
+
+<summary>discussion/ <span>2026-11-21 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
 ::: {.problem-day data-date="2026-11-20"}
 
 ## 2026-11-20 {.problem-date-heading}
@@ -5532,6 +5677,6 @@ $$
 
 ```{=html}
 
-<script id="problem-index" type="application/json">{"builtDate": "2026-11-20", "dates": {"2026-11-20": 2, "2026-11-19": 2, "2026-11-18": 2, "2026-11-17": 3, "2026-11-16": 2, "2026-11-15": 2, "2026-11-14": 2, "2026-11-13": 2, "2026-11-12": 1, "2026-11-11": 2, "2026-11-10": 2, "2026-11-09": 3, "2026-11-08": 2, "2026-11-07": 2, "2026-11-06": 6, "2026-11-05": 1, "2026-11-04": 1, "2026-11-03": 3, "2026-11-02": 6, "2026-11-01": 2, "2026-10-31": 2, "2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
+<script id="problem-index" type="application/json">{"builtDate": "2026-11-21", "dates": {"2026-11-21": 2, "2026-11-20": 2, "2026-11-19": 2, "2026-11-18": 2, "2026-11-17": 3, "2026-11-16": 2, "2026-11-15": 2, "2026-11-14": 2, "2026-11-13": 2, "2026-11-12": 1, "2026-11-11": 2, "2026-11-10": 2, "2026-11-09": 3, "2026-11-08": 2, "2026-11-07": 2, "2026-11-06": 6, "2026-11-05": 1, "2026-11-04": 1, "2026-11-03": 3, "2026-11-02": 6, "2026-11-01": 2, "2026-10-31": 2, "2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
 
 ```
