@@ -1,5 +1,55 @@
 ::: {.log-stream}
 
+::: {#20261122-231556-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-11-22T23:15:56+08:00">2026-11-22 23:15:56 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title">Bad Good Terrible Good</p>
+
+```
+
+::: {.log-photo-grid}
+
+![](/assets/log/20261122-231556-entry/photo-01.jpg)
+
+![](/assets/log/20261122-231556-entry/photo-02.jpg)
+
+![](/assets/log/20261122-231556-entry/photo-03.jpg)
+
+![](/assets/log/20261122-231556-entry/photo-04.jpg)
+
+![](/assets/log/20261122-231556-entry/photo-05.jpg)
+
+![](/assets/log/20261122-231556-entry/photo-06.jpg)
+
+![](/assets/log/20261122-231556-entry/photo-07.jpg)
+
+:::
+
+```{=html}
+
+<details id="comments-20261122-231556-entry" class="log-comments" data-comment-term="/logs/20261122-231556-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
 ::: {#20261121-225723-entry .log-entry}
 
 ```{=html}

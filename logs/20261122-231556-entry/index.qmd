@@ -1,0 +1,23 @@
+---
+title: "Bad Good Terrible Good"
+date: "2026-11-22T23:15:56+08:00"
+entry-signature: "d63a1cf931ded3a56417f4415e1172a6b1c46542c1a17507d626d012bd585b37"
+---
+
+::: {.log-photo-grid}
+
+![](/assets/log/20261122-231556-entry/photo-01.jpg)
+
+![](/assets/log/20261122-231556-entry/photo-02.jpg)
+
+![](/assets/log/20261122-231556-entry/photo-03.jpg)
+
+![](/assets/log/20261122-231556-entry/photo-04.jpg)
+
+![](/assets/log/20261122-231556-entry/photo-05.jpg)
+
+![](/assets/log/20261122-231556-entry/photo-06.jpg)
+
+![](/assets/log/20261122-231556-entry/photo-07.jpg)
+
+:::

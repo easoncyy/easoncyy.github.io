@@ -1,3 +1,127 @@
+::: {.problem-day data-date="2026-11-22"}
+
+## 2026-11-22 {.problem-date-heading}
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;极限&quot;], &quot;tags&quot;: [&quot;Taylor 公式&quot;, &quot;高阶导数&quot;, &quot;差分&quot;], &quot;title&quot;: &quot;对称差分提取四阶导数&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / CALCULUS / 极限</div>
+
+<h3>01. 对称差分提取四阶导数</h3>
+
+<div class="entry-tags">#Taylor 公式 · #高阶导数 · #差分</div>
+
+```
+
+设 $f$ 在 $a$ 的某邻域内四阶连续可导，求
+$$
+\lim_{h\to0}\frac{f(a+2h)-4f(a+h)+6f(a)-4f(a-h)+f(a-2h)}{h^4}.
+$$
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+由四阶 Taylor 展开，
+$$
+f(a+t)+f(a-t)=2f(a)+t^2f''(a)+\frac{t^4}{12}f^{(4)}(a)+o(t^4).
+$$
+分别令 $t=2h$、$t=h$，得到
+$$
+\begin{aligned}
+f(a+2h)+f(a-2h)&=2f(a)+4h^2f''(a)+\frac43h^4f^{(4)}(a)+o(h^4),\\
+4f(a+h)+4f(a-h)&=8f(a)+4h^2f''(a)+\frac13h^4f^{(4)}(a)+o(h^4).
+\end{aligned}
+$$
+两式相减再加 $6f(a)$，分子为 $h^4f^{(4)}(a)+o(h^4)$。故极限为
+$$
+\boxed{f^{(4)}(a)}.
+$$
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：自编（接续对称差分与二阶导数问题）</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;矩阵运算&quot;], &quot;tags&quot;: [&quot;幂等矩阵&quot;, &quot;正交矩阵&quot;, &quot;矩阵的秩&quot;], &quot;title&quot;: &quot;由对称幂等矩阵构造正交矩阵&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 矩阵运算</div>
+
+<h3>02. 由对称幂等矩阵构造正交矩阵</h3>
+
+<div class="entry-tags">#幂等矩阵 · #正交矩阵 · #矩阵的秩</div>
+
+```
+
+设 $P$ 为 $n$ 阶实矩阵，满足 $P^2=P$、$P^{\mathrm T}=P$。记 $r(P)=r$，令 $Q=E-2P$，其中 $E$ 为单位矩阵。
+
+（1）证明 $Q$ 为正交矩阵，且 $Q^{-1}=Q$。
+
+（2）求 $r(E-Q)$ 与 $r(E+Q)$。
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+（1）由 $P^{\mathrm T}=P$，有 $Q^{\mathrm T}=Q$。又
+$$
+Q^2=(E-2P)^2=E-4P+4P^2=E.
+$$
+故 $Q^{-1}=Q$，且 $Q^{\mathrm T}Q=Q^2=E$，所以 $Q$ 为正交矩阵。
+
+（2）由 $E-Q=2P$，得
+$$
+\boxed{r(E-Q)=r}.
+$$
+由 $P(E-P)=0$ 及乘积的秩不等式，
+$$
+r(P)+r(E-P)\le n.
+$$
+又 $E=P+(E-P)$，所以
+$$
+n\le r(P)+r(E-P).
+$$
+故 $r(E-P)=n-r$。由 $E+Q=2(E-P)$，得
+$$
+\boxed{r(E+Q)=n-r}.
+$$
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：自编（结合近期幂等矩阵、中心化矩阵与正交矩阵问题）</p>
+
+```
+
+:::
+
+```{=html}
+
+<details id="discussion-2026-11-22" class="log-comments problem-discussion" data-comment-term="/problems/2026-11-22/" data-comment-date="2026-11-22" data-comment-title="每日好题 · 2026-11-22">
+
+<summary>discussion/ <span>2026-11-22 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
 ::: {.problem-day data-date="2026-11-21"}
 
 ## 2026-11-21 {.problem-date-heading}
@@ -5677,6 +5801,6 @@ $$
 
 ```{=html}
 
-<script id="problem-index" type="application/json">{"builtDate": "2026-11-21", "dates": {"2026-11-21": 2, "2026-11-20": 2, "2026-11-19": 2, "2026-11-18": 2, "2026-11-17": 3, "2026-11-16": 2, "2026-11-15": 2, "2026-11-14": 2, "2026-11-13": 2, "2026-11-12": 1, "2026-11-11": 2, "2026-11-10": 2, "2026-11-09": 3, "2026-11-08": 2, "2026-11-07": 2, "2026-11-06": 6, "2026-11-05": 1, "2026-11-04": 1, "2026-11-03": 3, "2026-11-02": 6, "2026-11-01": 2, "2026-10-31": 2, "2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
+<script id="problem-index" type="application/json">{"builtDate": "2026-11-22", "dates": {"2026-11-22": 2, "2026-11-21": 2, "2026-11-20": 2, "2026-11-19": 2, "2026-11-18": 2, "2026-11-17": 3, "2026-11-16": 2, "2026-11-15": 2, "2026-11-14": 2, "2026-11-13": 2, "2026-11-12": 1, "2026-11-11": 2, "2026-11-10": 2, "2026-11-09": 3, "2026-11-08": 2, "2026-11-07": 2, "2026-11-06": 6, "2026-11-05": 1, "2026-11-04": 1, "2026-11-03": 3, "2026-11-02": 6, "2026-11-01": 2, "2026-10-31": 2, "2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
 
 ```

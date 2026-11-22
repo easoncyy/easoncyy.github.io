@@ -162,5 +162,9 @@
   "2026-11-21": [
     "calculus-self-symmetric-second-difference",
     "linear-algebra-self-orthogonal-to-skew"
+  ],
+  "2026-11-22": [
+    "calculus-self-fourth-symmetric-difference",
+    "linear-algebra-self-idempotent-reflection"
   ]
 }

@@ -1,0 +1,30 @@
+---
+title: "对称差分提取四阶导数"
+category-path: ["MATH", "CALCULUS", "极限"]
+tags: ["Taylor 公式", "高阶导数", "差分"]
+source: "自编（接续对称差分与二阶导数问题）"
+draft: false
+---
+
+设 $f$ 在 $a$ 的某邻域内四阶连续可导，求
+$$
+\lim_{h\to0}\frac{f(a+2h)-4f(a+h)+6f(a)-4f(a-h)+f(a-2h)}{h^4}.
+$$
+
+<!-- answer -->
+
+由四阶 Taylor 展开，
+$$
+f(a+t)+f(a-t)=2f(a)+t^2f''(a)+\frac{t^4}{12}f^{(4)}(a)+o(t^4).
+$$
+分别令 $t=2h$、$t=h$，得到
+$$
+\begin{aligned}
+f(a+2h)+f(a-2h)&=2f(a)+4h^2f''(a)+\frac43h^4f^{(4)}(a)+o(h^4),\\
+4f(a+h)+4f(a-h)&=8f(a)+4h^2f''(a)+\frac13h^4f^{(4)}(a)+o(h^4).
+\end{aligned}
+$$
+两式相减再加 $6f(a)$，分子为 $h^4f^{(4)}(a)+o(h^4)$。故极限为
+$$
+\boxed{f^{(4)}(a)}.
+$$

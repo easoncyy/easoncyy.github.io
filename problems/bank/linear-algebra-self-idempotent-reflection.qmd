@@ -1,0 +1,38 @@
+---
+title: "由对称幂等矩阵构造正交矩阵"
+category-path: ["MATH", "LINEAR-ALGEBRA", "矩阵运算"]
+tags: ["幂等矩阵", "正交矩阵", "矩阵的秩"]
+source: "自编（结合近期幂等矩阵、中心化矩阵与正交矩阵问题）"
+draft: false
+---
+
+设 $P$ 为 $n$ 阶实矩阵，满足 $P^2=P$、$P^{\mathrm T}=P$。记 $r(P)=r$，令 $Q=E-2P$，其中 $E$ 为单位矩阵。
+
+（1）证明 $Q$ 为正交矩阵，且 $Q^{-1}=Q$。
+
+（2）求 $r(E-Q)$ 与 $r(E+Q)$。
+
+<!-- answer -->
+
+（1）由 $P^{\mathrm T}=P$，有 $Q^{\mathrm T}=Q$。又
+$$
+Q^2=(E-2P)^2=E-4P+4P^2=E.
+$$
+故 $Q^{-1}=Q$，且 $Q^{\mathrm T}Q=Q^2=E$，所以 $Q$ 为正交矩阵。
+
+（2）由 $E-Q=2P$，得
+$$
+\boxed{r(E-Q)=r}.
+$$
+由 $P(E-P)=0$ 及乘积的秩不等式，
+$$
+r(P)+r(E-P)\le n.
+$$
+又 $E=P+(E-P)$，所以
+$$
+n\le r(P)+r(E-P).
+$$
+故 $r(E-P)=n-r$。由 $E+Q=2(E-P)$，得
+$$
+\boxed{r(E+Q)=n-r}.
+$$
