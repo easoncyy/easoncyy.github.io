@@ -1,4 +1,4 @@
-param([string]$Message = 'Update personal website')
+param([string]$Message = 'Update personal website', [ValidateSet('Api', 'Git')][string]$Transport = 'Api')
 
 $ErrorActionPreference = 'Stop'
 $projectRoot = Split-Path -Parent $PSScriptRoot
@@ -19,6 +19,14 @@ try {
     }
     elseif ($changeStatus -ne 0) { throw 'Unable to inspect staged changes.' }
     else { Write-Host 'No new changes to commit.' }
+    # The REST endpoint is the reliable route on this network. Avoid waiting for
+    # github.com Git HTTPS to time out on every normal publication.
+    if ($Transport -eq 'Api') {
+        python (Join-Path $PSScriptRoot 'push-github-api.py')
+        if ($LASTEXITCODE -ne 0) { throw 'API sync failed. Local commits are preserved; see the specific error above.' }
+        Write-Host 'Source committed and pushed through GitHub API.'
+        return
+    }
     git pull --rebase origin main
     if ($LASTEXITCODE -ne 0) {
         $rebaseMerge = git rev-parse --git-path rebase-merge
