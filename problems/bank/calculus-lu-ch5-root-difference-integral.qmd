@@ -1,0 +1,38 @@
+---
+title: "平方差根式的不定积分"
+category-path: ["MATH", "CALCULUS", "不定积分"]
+tags: ["三角换元", "定义区间"]
+source: "《微积分》（浙江大学卢兴江等主编）第五章 · 手稿第（5）题（平方差根式）"
+draft: false
+---
+
+求不定积分
+$$
+\int\frac{dx}{\sqrt{x^2-a^2}}\qquad(a>0,\ |x|>a).
+$$
+
+<!-- answer -->
+
+当 $x>a$ 时，设 $x=a\sec t$，$0<t<\frac\pi2$，则
+$$
+\begin{aligned}
+\int\frac{dx}{\sqrt{x^2-a^2}}
+&=\int\frac{a\sec t\tan t}{a\tan t}\,dt
+=\int\sec t\,dt\\
+&=\ln|\sec t+\tan t|+C_1\\
+&=\ln\left|x+\sqrt{x^2-a^2}\right|+C_2.
+\end{aligned}
+$$
+当 $x<-a$ 时，令 $t=-x>a$，得
+$$
+\begin{aligned}
+\int\frac{dx}{\sqrt{x^2-a^2}}
+&=-\ln\left(t+\sqrt{t^2-a^2}\right)+C_3\\
+&=\ln\left(t-\sqrt{t^2-a^2}\right)+C_4\\
+&=\ln\left|x+\sqrt{x^2-a^2}\right|+C_4.
+\end{aligned}
+$$
+其中用了 $(t+\sqrt{t^2-a^2})(t-\sqrt{t^2-a^2})=a^2$。故在定义域的各区间上，
+$$
+\boxed{\int\frac{dx}{\sqrt{x^2-a^2}}=\ln\left|x+\sqrt{x^2-a^2}\right|+C}.
+$$

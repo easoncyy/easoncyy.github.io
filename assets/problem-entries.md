@@ -1,3 +1,359 @@
+::: {.problem-day data-date="2026-11-23"}
+
+## 2026-11-23 {.problem-date-heading}
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;不定积分&quot;], &quot;tags&quot;: [&quot;凑微分&quot;, &quot;三角函数&quot;], &quot;title&quot;: &quot;三角函数线性组合的积分&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / CALCULUS / 不定积分</div>
+
+<h3>01. 三角函数线性组合的积分</h3>
+
+<div class="entry-tags">#凑微分 · #三角函数</div>
+
+```
+
+求不定积分
+$$
+\int\frac{\sin x}{a\cos x+b\sin x}\,dx\qquad(a,b\in\mathbb R,\ a^2+b^2\ne0).
+$$
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+令 $u=a\cos x+b\sin x$，则
+$$
+bu-au'=b(a\cos x+b\sin x)-a(-a\sin x+b\cos x)=(a^2+b^2)\sin x.
+$$
+所以在分母不为零的区间上，
+$$
+\begin{aligned}
+\int\frac{\sin x}{a\cos x+b\sin x}\,dx
+&=\frac1{a^2+b^2}\left(\int b\,dx-a\int\frac{du}{u}\right)\\
+&=\boxed{\frac{bx-a\ln|a\cos x+b\sin x|}{a^2+b^2}+C}.
+\end{aligned}
+$$
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：《微积分》（浙江大学卢兴江等主编）第五章 · 手稿第（4）题</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;不定积分&quot;], &quot;tags&quot;: [&quot;换元积分&quot;, &quot;半角公式&quot;], &quot;title&quot;: &quot;余割函数的不定积分&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / CALCULUS / 不定积分</div>
+
+<h3>02. 余割函数的不定积分</h3>
+
+<div class="entry-tags">#换元积分 · #半角公式</div>
+
+```
+
+求不定积分
+$$
+\int\csc x\,dx.
+$$
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+由半角公式，
+$$
+\begin{aligned}
+\int\csc x\,dx
+&=\int\frac{dx}{2\sin\frac x2\cos\frac x2}\\
+&=\int\frac1{\tan\frac x2}\,d\left(\tan\frac x2\right)\\
+&=\boxed{\ln\left|\tan\frac x2\right|+C}
+=\ln|\csc x-\cot x|+C.
+\end{aligned}
+$$
+结果在 $\sin x\ne0$ 的各区间上成立。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：《微积分》（浙江大学卢兴江等主编）第五章 · 手稿第（5）题（余割）</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;不定积分&quot;], &quot;tags&quot;: [&quot;换元积分&quot;, &quot;三角函数&quot;], &quot;title&quot;: &quot;正割函数的不定积分&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / CALCULUS / 不定积分</div>
+
+<h3>03. 正割函数的不定积分</h3>
+
+<div class="entry-tags">#换元积分 · #三角函数</div>
+
+```
+
+求不定积分
+$$
+\int\sec x\,dx.
+$$
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+利用 $\sec x=\csc(x+\frac\pi2)$，得
+$$
+\begin{aligned}
+\int\sec x\,dx
+&=\int\csc\left(x+\frac\pi2\right)\,d\left(x+\frac\pi2\right)\\
+&=\ln\left|\tan\left(\frac x2+\frac\pi4\right)\right|+C\\
+&=\boxed{\ln|\sec x+\tan x|+C}.
+\end{aligned}
+$$
+结果在 $\cos x\ne0$ 的各区间上成立。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：《微积分》（浙江大学卢兴江等主编）第五章 · 手稿第（6）题</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;不定积分&quot;], &quot;tags&quot;: [&quot;三角换元&quot;, &quot;定义区间&quot;], &quot;title&quot;: &quot;平方差根式的不定积分&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / CALCULUS / 不定积分</div>
+
+<h3>04. 平方差根式的不定积分</h3>
+
+<div class="entry-tags">#三角换元 · #定义区间</div>
+
+```
+
+求不定积分
+$$
+\int\frac{dx}{\sqrt{x^2-a^2}}\qquad(a>0,\ |x|>a).
+$$
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+当 $x>a$ 时，设 $x=a\sec t$，$0<t<\frac\pi2$，则
+$$
+\begin{aligned}
+\int\frac{dx}{\sqrt{x^2-a^2}}
+&=\int\frac{a\sec t\tan t}{a\tan t}\,dt
+=\int\sec t\,dt\\
+&=\ln|\sec t+\tan t|+C_1\\
+&=\ln\left|x+\sqrt{x^2-a^2}\right|+C_2.
+\end{aligned}
+$$
+当 $x<-a$ 时，令 $t=-x>a$，得
+$$
+\begin{aligned}
+\int\frac{dx}{\sqrt{x^2-a^2}}
+&=-\ln\left(t+\sqrt{t^2-a^2}\right)+C_3\\
+&=\ln\left(t-\sqrt{t^2-a^2}\right)+C_4\\
+&=\ln\left|x+\sqrt{x^2-a^2}\right|+C_4.
+\end{aligned}
+$$
+其中用了 $(t+\sqrt{t^2-a^2})(t-\sqrt{t^2-a^2})=a^2$。故在定义域的各区间上，
+$$
+\boxed{\int\frac{dx}{\sqrt{x^2-a^2}}=\ln\left|x+\sqrt{x^2-a^2}\right|+C}.
+$$
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：《微积分》（浙江大学卢兴江等主编）第五章 · 手稿第（5）题（平方差根式）</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;不定积分&quot;], &quot;tags&quot;: [&quot;三角恒等变形&quot;, &quot;定义区间&quot;], &quot;title&quot;: &quot;含一加正弦的积分&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / CALCULUS / 不定积分</div>
+
+<h3>05. 含一加正弦的积分</h3>
+
+<div class="entry-tags">#三角恒等变形 · #定义区间</div>
+
+```
+
+求不定积分
+$$
+\int\frac{dx}{1+\sin x}.
+$$
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+在 $\cos x\ne0$ 时，
+$$
+\begin{aligned}
+\int\frac{dx}{1+\sin x}
+&=\int\frac{1-\sin x}{\cos^2x}\,dx\\
+&=\int(\sec^2x-\tan x\sec x)\,dx\\
+&=\tan x-\sec x+C.
+\end{aligned}
+$$
+将结果写成
+$$
+\boxed{-\frac{\cos x}{1+\sin x}+C},
+$$
+即可覆盖原被积函数的完整定义区间 $1+\sin x\ne0$。事实上，
+$$
+\left(-\frac{\cos x}{1+\sin x}\right)'=\frac{\sin x(1+\sin x)+\cos^2x}{(1+\sin x)^2}=\frac1{1+\sin x}.
+$$
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：吉米多维奇《数学分析习题集》第 1670 题</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;不定积分&quot;], &quot;tags&quot;: [&quot;三角换元&quot;], &quot;title&quot;: &quot;平方和的二分之三次根式积分&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / CALCULUS / 不定积分</div>
+
+<h3>06. 平方和的二分之三次根式积分</h3>
+
+<div class="entry-tags">#三角换元</div>
+
+```
+
+求不定积分
+$$
+\int\frac{dx}{(x^2+1)^{3/2}}.
+$$
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+令 $x=\tan\theta$，$-\frac\pi2<\theta<\frac\pi2$，则 $\sec\theta>0$，所以
+$$
+\begin{aligned}
+\int\frac{dx}{(x^2+1)^{3/2}}
+&=\int\frac{\sec^2\theta}{\sec^3\theta}\,d\theta\\
+&=\int\cos\theta\,d\theta
+=\sin\theta+C\\
+&=\boxed{\frac{x}{\sqrt{x^2+1}}+C}.
+\end{aligned}
+$$
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：吉米多维奇《数学分析习题集》第 1684 题</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;不定积分&quot;], &quot;tags&quot;: [&quot;凑微分&quot;, &quot;参数分类&quot;], &quot;title&quot;: &quot;三角平方和根式的积分&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / CALCULUS / 不定积分</div>
+
+<h3>07. 三角平方和根式的积分</h3>
+
+<div class="entry-tags">#凑微分 · #参数分类</div>
+
+```
+
+求不定积分
+$$
+\int\frac{\sin x\cos x}{\sqrt{a^2\sin^2x+b^2\cos^2x}}\,dx\qquad(a,b\in\mathbb R,\ a^2+b^2>0).
+$$
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+若 $a^2\ne b^2$，由
+$$
+d(a^2\sin^2x+b^2\cos^2x)=2(a^2-b^2)\sin x\cos x\,dx,
+$$
+得
+$$
+\begin{aligned}
+\int\frac{\sin x\cos x}{\sqrt{a^2\sin^2x+b^2\cos^2x}}\,dx
+&=\frac1{2(a^2-b^2)}\int\frac{d(a^2\sin^2x+b^2\cos^2x)}{\sqrt{a^2\sin^2x+b^2\cos^2x}}\\
+&=\boxed{\frac{\sqrt{a^2\sin^2x+b^2\cos^2x}}{a^2-b^2}+C}.
+\end{aligned}
+$$
+若 $a^2=b^2\ne0$，则分母为 $|a|$，所以
+$$
+\boxed{\int\frac{\sin x\cos x}{|a|}\,dx=\frac{\sin^2x}{2|a|}+C}.
+$$
+结果均在根式分母不为零的各区间上成立。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：吉米多维奇《数学分析习题集》第 1700（a）题</p>
+
+```
+
+:::
+
+```{=html}
+
+<details id="discussion-2026-11-23" class="log-comments problem-discussion" data-comment-term="/problems/2026-11-23/" data-comment-date="2026-11-23" data-comment-title="每日好题 · 2026-11-23">
+
+<summary>discussion/ <span>2026-11-23 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
 ::: {.problem-day data-date="2026-11-22"}
 
 ## 2026-11-22 {.problem-date-heading}
@@ -5801,6 +6157,6 @@ $$
 
 ```{=html}
 
-<script id="problem-index" type="application/json">{"builtDate": "2026-11-22", "dates": {"2026-11-22": 2, "2026-11-21": 2, "2026-11-20": 2, "2026-11-19": 2, "2026-11-18": 2, "2026-11-17": 3, "2026-11-16": 2, "2026-11-15": 2, "2026-11-14": 2, "2026-11-13": 2, "2026-11-12": 1, "2026-11-11": 2, "2026-11-10": 2, "2026-11-09": 3, "2026-11-08": 2, "2026-11-07": 2, "2026-11-06": 6, "2026-11-05": 1, "2026-11-04": 1, "2026-11-03": 3, "2026-11-02": 6, "2026-11-01": 2, "2026-10-31": 2, "2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
+<script id="problem-index" type="application/json">{"builtDate": "2026-11-23", "dates": {"2026-11-23": 7, "2026-11-22": 2, "2026-11-21": 2, "2026-11-20": 2, "2026-11-19": 2, "2026-11-18": 2, "2026-11-17": 3, "2026-11-16": 2, "2026-11-15": 2, "2026-11-14": 2, "2026-11-13": 2, "2026-11-12": 1, "2026-11-11": 2, "2026-11-10": 2, "2026-11-09": 3, "2026-11-08": 2, "2026-11-07": 2, "2026-11-06": 6, "2026-11-05": 1, "2026-11-04": 1, "2026-11-03": 3, "2026-11-02": 6, "2026-11-01": 2, "2026-10-31": 2, "2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
 
 ```

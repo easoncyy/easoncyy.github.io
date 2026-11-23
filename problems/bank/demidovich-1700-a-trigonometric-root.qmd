@@ -1,0 +1,32 @@
+---
+title: "三角平方和根式的积分"
+category-path: ["MATH", "CALCULUS", "不定积分"]
+tags: ["凑微分", "参数分类"]
+source: "吉米多维奇《数学分析习题集》第 1700（a）题"
+draft: false
+---
+
+求不定积分
+$$
+\int\frac{\sin x\cos x}{\sqrt{a^2\sin^2x+b^2\cos^2x}}\,dx\qquad(a,b\in\mathbb R,\ a^2+b^2>0).
+$$
+
+<!-- answer -->
+
+若 $a^2\ne b^2$，由
+$$
+d(a^2\sin^2x+b^2\cos^2x)=2(a^2-b^2)\sin x\cos x\,dx,
+$$
+得
+$$
+\begin{aligned}
+\int\frac{\sin x\cos x}{\sqrt{a^2\sin^2x+b^2\cos^2x}}\,dx
+&=\frac1{2(a^2-b^2)}\int\frac{d(a^2\sin^2x+b^2\cos^2x)}{\sqrt{a^2\sin^2x+b^2\cos^2x}}\\
+&=\boxed{\frac{\sqrt{a^2\sin^2x+b^2\cos^2x}}{a^2-b^2}+C}.
+\end{aligned}
+$$
+若 $a^2=b^2\ne0$，则分母为 $|a|$，所以
+$$
+\boxed{\int\frac{\sin x\cos x}{|a|}\,dx=\frac{\sin^2x}{2|a|}+C}.
+$$
+结果均在根式分母不为零的各区间上成立。

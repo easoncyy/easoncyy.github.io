@@ -1,5 +1,39 @@
 ::: {.log-stream}
 
+::: {#20261123-231709-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-11-23T23:17:09+08:00">2026-11-23 23:17:09 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title">Nothing to say</p>
+
+```
+
+![紫云胖猫](/assets/log/20261123-231709-entry/photo-01.jpg)
+
+```{=html}
+
+<details id="comments-20261123-231709-entry" class="log-comments" data-comment-term="/logs/20261123-231709-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
 ::: {#20261122-231556-entry .log-entry}
 
 ```{=html}

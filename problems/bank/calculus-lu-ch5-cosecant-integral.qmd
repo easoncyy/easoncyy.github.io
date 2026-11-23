@@ -1,0 +1,26 @@
+---
+title: "余割函数的不定积分"
+category-path: ["MATH", "CALCULUS", "不定积分"]
+tags: ["换元积分", "半角公式"]
+source: "《微积分》（浙江大学卢兴江等主编）第五章 · 手稿第（5）题（余割）"
+draft: false
+---
+
+求不定积分
+$$
+\int\csc x\,dx.
+$$
+
+<!-- answer -->
+
+由半角公式，
+$$
+\begin{aligned}
+\int\csc x\,dx
+&=\int\frac{dx}{2\sin\frac x2\cos\frac x2}\\
+&=\int\frac1{\tan\frac x2}\,d\left(\tan\frac x2\right)\\
+&=\boxed{\ln\left|\tan\frac x2\right|+C}
+=\ln|\csc x-\cot x|+C.
+\end{aligned}
+$$
+结果在 $\sin x\ne0$ 的各区间上成立。

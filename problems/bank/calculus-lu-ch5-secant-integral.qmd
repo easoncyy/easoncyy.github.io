@@ -1,0 +1,25 @@
+---
+title: "正割函数的不定积分"
+category-path: ["MATH", "CALCULUS", "不定积分"]
+tags: ["换元积分", "三角函数"]
+source: "《微积分》（浙江大学卢兴江等主编）第五章 · 手稿第（6）题"
+draft: false
+---
+
+求不定积分
+$$
+\int\sec x\,dx.
+$$
+
+<!-- answer -->
+
+利用 $\sec x=\csc(x+\frac\pi2)$，得
+$$
+\begin{aligned}
+\int\sec x\,dx
+&=\int\csc\left(x+\frac\pi2\right)\,d\left(x+\frac\pi2\right)\\
+&=\ln\left|\tan\left(\frac x2+\frac\pi4\right)\right|+C\\
+&=\boxed{\ln|\sec x+\tan x|+C}.
+\end{aligned}
+$$
+结果在 $\cos x\ne0$ 的各区间上成立。

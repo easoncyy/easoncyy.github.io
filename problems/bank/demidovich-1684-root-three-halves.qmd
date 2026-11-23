@@ -1,0 +1,25 @@
+---
+title: "平方和的二分之三次根式积分"
+category-path: ["MATH", "CALCULUS", "不定积分"]
+tags: ["三角换元"]
+source: "吉米多维奇《数学分析习题集》第 1684 题"
+draft: false
+---
+
+求不定积分
+$$
+\int\frac{dx}{(x^2+1)^{3/2}}.
+$$
+
+<!-- answer -->
+
+令 $x=\tan\theta$，$-\frac\pi2<\theta<\frac\pi2$，则 $\sec\theta>0$，所以
+$$
+\begin{aligned}
+\int\frac{dx}{(x^2+1)^{3/2}}
+&=\int\frac{\sec^2\theta}{\sec^3\theta}\,d\theta\\
+&=\int\cos\theta\,d\theta
+=\sin\theta+C\\
+&=\boxed{\frac{x}{\sqrt{x^2+1}}+C}.
+\end{aligned}
+$$

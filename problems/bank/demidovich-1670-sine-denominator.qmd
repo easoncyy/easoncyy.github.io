@@ -1,0 +1,32 @@
+---
+title: "含一加正弦的积分"
+category-path: ["MATH", "CALCULUS", "不定积分"]
+tags: ["三角恒等变形", "定义区间"]
+source: "吉米多维奇《数学分析习题集》第 1670 题"
+draft: false
+---
+
+求不定积分
+$$
+\int\frac{dx}{1+\sin x}.
+$$
+
+<!-- answer -->
+
+在 $\cos x\ne0$ 时，
+$$
+\begin{aligned}
+\int\frac{dx}{1+\sin x}
+&=\int\frac{1-\sin x}{\cos^2x}\,dx\\
+&=\int(\sec^2x-\tan x\sec x)\,dx\\
+&=\tan x-\sec x+C.
+\end{aligned}
+$$
+将结果写成
+$$
+\boxed{-\frac{\cos x}{1+\sin x}+C},
+$$
+即可覆盖原被积函数的完整定义区间 $1+\sin x\ne0$。事实上，
+$$
+\left(-\frac{\cos x}{1+\sin x}\right)'=\frac{\sin x(1+\sin x)+\cos^2x}{(1+\sin x)^2}=\frac1{1+\sin x}.
+$$

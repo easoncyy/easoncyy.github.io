@@ -1,0 +1,27 @@
+---
+title: "三角函数线性组合的积分"
+category-path: ["MATH", "CALCULUS", "不定积分"]
+tags: ["凑微分", "三角函数"]
+source: "《微积分》（浙江大学卢兴江等主编）第五章 · 手稿第（4）题"
+draft: false
+---
+
+求不定积分
+$$
+\int\frac{\sin x}{a\cos x+b\sin x}\,dx\qquad(a,b\in\mathbb R,\ a^2+b^2\ne0).
+$$
+
+<!-- answer -->
+
+令 $u=a\cos x+b\sin x$，则
+$$
+bu-au'=b(a\cos x+b\sin x)-a(-a\sin x+b\cos x)=(a^2+b^2)\sin x.
+$$
+所以在分母不为零的区间上，
+$$
+\begin{aligned}
+\int\frac{\sin x}{a\cos x+b\sin x}\,dx
+&=\frac1{a^2+b^2}\left(\int b\,dx-a\int\frac{du}{u}\right)\\
+&=\boxed{\frac{bx-a\ln|a\cos x+b\sin x|}{a^2+b^2}+C}.
+\end{aligned}
+$$
