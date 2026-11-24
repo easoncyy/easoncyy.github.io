@@ -1,0 +1,31 @@
+---
+title: "由线性无关向量构造齐次方程组"
+category-path: ["MATH", "LINEAR-ALGEBRA", "线性方程组"]
+tags: ["基础解系", "线性无关", "矩阵构造"]
+source: "《高等代数习题解》（杨子胥编）第 438 题"
+draft: false
+---
+
+设 $\alpha_1,\ldots,\alpha_s$ 为数域 $P$ 上 $s$ 个线性无关的 $n$ 维列向量，其中 $1\le s\le n$。证明：存在一个含 $n$ 个未知量的齐次线性方程组，以 $\alpha_1,\ldots,\alpha_s$ 为基础解系。
+
+<!-- answer -->
+
+将这些向量转置后作为行，组成矩阵
+$$
+A=\begin{pmatrix}\alpha_1^{\mathrm T}\\\vdots\\\alpha_s^{\mathrm T}\end{pmatrix}.
+$$
+由线性无关性，$r(A)=s$。
+
+先设 $s<n$。取齐次方程组 $Ay=0$ 的一组基础解系 $\beta_1,\ldots,\beta_{n-s}$，并令
+$$
+B=\begin{pmatrix}\beta_1^{\mathrm T}\\\vdots\\\beta_{n-s}^{\mathrm T}\end{pmatrix}.
+$$
+这些行线性无关，所以 $r(B)=n-s$，方程组 $Bx=0$ 的基础解系含 $s$ 个向量。
+
+又由 $A\beta_j=0$，对所有 $i,j$ 均有
+$$
+\alpha_i^{\mathrm T}\beta_j=0.
+$$
+转置后得 $\beta_j^{\mathrm T}\alpha_i=0$，所以 $B\alpha_i=0$。因此 $\alpha_1,\ldots,\alpha_s$ 是 $Bx=0$ 的 $s$ 个线性无关解，恰构成其基础解系。
+
+若 $s=n$，取零矩阵 $B=0_{n\times n}$。此时任意 $n$ 个线性无关的 $n$ 维向量均构成 $Bx=0$ 的基础解系。

@@ -1,3 +1,168 @@
+::: {.problem-day data-date="2026-11-24"}
+
+## 2026-11-24 {.problem-date-heading}
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;矩阵运算&quot;], &quot;tags&quot;: [&quot;逆矩阵&quot;, &quot;矩阵乘法&quot;], &quot;title&quot;: &quot;逆矩阵的各行元素和&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 矩阵运算</div>
+
+<h3>01. 逆矩阵的各行元素和</h3>
+
+<div class="entry-tags">#逆矩阵 · #矩阵乘法</div>
+
+```
+
+设 $n$ 阶非奇异矩阵 $A$ 的每一行元素之和均为 $c$。证明：$c\ne0$，且 $A^{-1}$ 的每一行元素之和均为 $c^{-1}$。
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+令 $e=(1,1,\ldots,1)^{\mathrm T}$，则
+$$
+Ae=ce.
+$$
+若 $c=0$，则 $Ae=0$ 有非零解 $e$，与 $A$ 非奇异矛盾，故 $c\ne0$。
+
+左乘 $A^{-1}$，得 $e=cA^{-1}e$，即
+$$
+A^{-1}e=c^{-1}e.
+$$
+左端各分量正是 $A^{-1}$ 各行元素之和，故结论成立。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：《高等代数习题解》（杨子胥编）第 530 题</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;伴随矩阵&quot;], &quot;tags&quot;: [&quot;伴随矩阵&quot;, &quot;矩阵乘法&quot;, &quot;多项式恒等式&quot;], &quot;title&quot;: &quot;乘积矩阵的伴随矩阵&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 伴随矩阵</div>
+
+<h3>02. 乘积矩阵的伴随矩阵</h3>
+
+<div class="entry-tags">#伴随矩阵 · #矩阵乘法 · #多项式恒等式</div>
+
+```
+
+设 $A,B$ 为数域 $P$ 上任意两个 $n$ 阶矩阵，$A^*$ 表示 $A$ 的伴随矩阵。证明：
+$$
+(AB)^*=B^*A^*.
+$$
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+由伴随矩阵的基本性质，
+$$
+AA^*=A^*A=(\det A)E.
+$$
+于是
+$$
+\begin{aligned}
+(\det A)(\det B)B^*A^*
+&=(AB)^*AB(B^*A^*)\\
+&=(AB)^*A(BB^*)A^*\\
+&=(\det B)(AB)^*AA^*\\
+&=(\det A)(\det B)(AB)^*.
+\end{aligned}
+$$
+当 $\det A\det B\ne0$ 时，约去该非零标量，即得结论。
+
+对一般的 $A,B$，令 $A_t=A+tE$、$B_t=B+tE$。$\det(A+tE)$、$\det(B+tE)$ 都是关于 $t$ 的首一多项式，因此除有限多个 $t\in P$ 外，$A_t,B_t$ 均可逆。由已证情形，
+$$
+(A_tB_t)^*=B_t^*A_t^*
+$$
+对无穷多个 $t$ 成立。两边每个元素都是关于 $t$ 的多项式，故恒等。令 $t=0$，得 $(AB)^*=B^*A^*$。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：《高等代数习题解》（杨子胥编）第 538 题</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;线性方程组&quot;], &quot;tags&quot;: [&quot;基础解系&quot;, &quot;线性无关&quot;, &quot;矩阵构造&quot;], &quot;title&quot;: &quot;由线性无关向量构造齐次方程组&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 线性方程组</div>
+
+<h3>03. 由线性无关向量构造齐次方程组</h3>
+
+<div class="entry-tags">#基础解系 · #线性无关 · #矩阵构造</div>
+
+```
+
+设 $\alpha_1,\ldots,\alpha_s$ 为数域 $P$ 上 $s$ 个线性无关的 $n$ 维列向量，其中 $1\le s\le n$。证明：存在一个含 $n$ 个未知量的齐次线性方程组，以 $\alpha_1,\ldots,\alpha_s$ 为基础解系。
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+将这些向量转置后作为行，组成矩阵
+$$
+A=\begin{pmatrix}\alpha_1^{\mathrm T}\\\vdots\\\alpha_s^{\mathrm T}\end{pmatrix}.
+$$
+由线性无关性，$r(A)=s$。
+
+先设 $s<n$。取齐次方程组 $Ay=0$ 的一组基础解系 $\beta_1,\ldots,\beta_{n-s}$，并令
+$$
+B=\begin{pmatrix}\beta_1^{\mathrm T}\\\vdots\\\beta_{n-s}^{\mathrm T}\end{pmatrix}.
+$$
+这些行线性无关，所以 $r(B)=n-s$，方程组 $Bx=0$ 的基础解系含 $s$ 个向量。
+
+又由 $A\beta_j=0$，对所有 $i,j$ 均有
+$$
+\alpha_i^{\mathrm T}\beta_j=0.
+$$
+转置后得 $\beta_j^{\mathrm T}\alpha_i=0$，所以 $B\alpha_i=0$。因此 $\alpha_1,\ldots,\alpha_s$ 是 $Bx=0$ 的 $s$ 个线性无关解，恰构成其基础解系。
+
+若 $s=n$，取零矩阵 $B=0_{n\times n}$。此时任意 $n$ 个线性无关的 $n$ 维向量均构成 $Bx=0$ 的基础解系。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：《高等代数习题解》（杨子胥编）第 438 题</p>
+
+```
+
+:::
+
+```{=html}
+
+<details id="discussion-2026-11-24" class="log-comments problem-discussion" data-comment-term="/problems/2026-11-24/" data-comment-date="2026-11-24" data-comment-title="每日好题 · 2026-11-24">
+
+<summary>discussion/ <span>2026-11-24 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
 ::: {.problem-day data-date="2026-11-23"}
 
 ## 2026-11-23 {.problem-date-heading}
@@ -6157,6 +6322,6 @@ $$
 
 ```{=html}
 
-<script id="problem-index" type="application/json">{"builtDate": "2026-11-23", "dates": {"2026-11-23": 7, "2026-11-22": 2, "2026-11-21": 2, "2026-11-20": 2, "2026-11-19": 2, "2026-11-18": 2, "2026-11-17": 3, "2026-11-16": 2, "2026-11-15": 2, "2026-11-14": 2, "2026-11-13": 2, "2026-11-12": 1, "2026-11-11": 2, "2026-11-10": 2, "2026-11-09": 3, "2026-11-08": 2, "2026-11-07": 2, "2026-11-06": 6, "2026-11-05": 1, "2026-11-04": 1, "2026-11-03": 3, "2026-11-02": 6, "2026-11-01": 2, "2026-10-31": 2, "2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
+<script id="problem-index" type="application/json">{"builtDate": "2026-11-24", "dates": {"2026-11-24": 3, "2026-11-23": 7, "2026-11-22": 2, "2026-11-21": 2, "2026-11-20": 2, "2026-11-19": 2, "2026-11-18": 2, "2026-11-17": 3, "2026-11-16": 2, "2026-11-15": 2, "2026-11-14": 2, "2026-11-13": 2, "2026-11-12": 1, "2026-11-11": 2, "2026-11-10": 2, "2026-11-09": 3, "2026-11-08": 2, "2026-11-07": 2, "2026-11-06": 6, "2026-11-05": 1, "2026-11-04": 1, "2026-11-03": 3, "2026-11-02": 6, "2026-11-01": 2, "2026-10-31": 2, "2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
 
 ```
