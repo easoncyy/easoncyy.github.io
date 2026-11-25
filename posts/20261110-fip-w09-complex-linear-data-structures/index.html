@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="个人笔记">
+<meta name="description" content="循环队列、单调双端队列、优先队列与多路归并。">
+
+<title>FIP W09 · 复杂线性数据结构 – 个人笔记</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/favicon.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-a7952132dd87ce33f437addd0578540c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-dc090d8f6625c822698d9a6ee9cd1ac5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "没有结果",
+    "search-matching-documents-text": "匹配的文档",
+    "search-copy-link-title": "复制搜索链接",
+    "search-hide-matches-text": "隐藏其它匹配结果",
+    "search-more-match-text": "更多匹配结果",
+    "search-more-matches-text": "更多匹配结果",
+    "search-clear-button-title": "清除",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "取消",
+    "search-submit-button-title": "提交",
+    "search-label": "搜索"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script defer="" src="../../assets/directory.js?v=05751f758f0b"></script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="../../assets/vendor/mathjax/tex-svg-full.js?v=a4354ff94fd8" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css?v=83131ce44c97">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/logo.svg" alt="Ce · easoncyy" class="navbar-logo light-content">
+    <img src="../../assets/logo.svg" alt="Ce · easoncyy" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">~/notes</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="搜索"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="展开或折叠导航栏" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html"> 
+<span class="menu-text"><span class="nav-path">blog/</span><span class="nav-caption">博客</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../problems.html"> 
+<span class="menu-text"><span class="nav-path">problems/</span><span class="nav-caption">每日好题</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../projects.html"> 
+<span class="menu-text"><span class="nav-path">projects/</span><span class="nav-caption">项目</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../log.html"> 
+<span class="menu-text"><span class="nav-path">log/</span><span class="nav-caption">日志</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../links.html"> 
+<span class="menu-text"><span class="nav-path">links/</span><span class="nav-caption">友链</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../library.html"> 
+<span class="menu-text"><span class="nav-path">library/</span><span class="nav-caption">图书馆</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text"><span class="nav-path">about/</span><span class="nav-caption">关于</span></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">本页目录</h2>
+   
+  <ul>
+  <li><a href="#理论课内容" id="toc-理论课内容" class="nav-link active" data-scroll-target="#理论课内容">理论课内容</a>
+  <ul class="collapse">
+  <li><a href="#deque的问题" id="toc-deque的问题" class="nav-link" data-scroll-target="#deque的问题"><code>deque</code>的问题</a></li>
+  <li><a href="#定长数组队列双指针" id="toc-定长数组队列双指针" class="nav-link" data-scroll-target="#定长数组队列双指针">定长数组队列：双指针</a></li>
+  <li><a href="#循环队列取模绕回" id="toc-循环队列取模绕回" class="nav-link" data-scroll-target="#循环队列取模绕回">循环队列：取模绕回</a></li>
+  <li><a href="#单调双端队列滑动窗口最值" id="toc-单调双端队列滑动窗口最值" class="nav-link" data-scroll-target="#单调双端队列滑动窗口最值">单调双端队列：滑动窗口最值</a></li>
+  <li><a href="#优先队列与-heapq" id="toc-优先队列与-heapq" class="nav-link" data-scroll-target="#优先队列与-heapq">优先队列与 <code>heapq</code></a></li>
+  <li><a href="#多路归并与调用处解包" id="toc-多路归并与调用处解包" class="nav-link" data-scroll-target="#多路归并与调用处解包">多路归并与调用处解包</a></li>
+  </ul></li>
+  <li><a href="#研讨课内容" id="toc-研讨课内容" class="nav-link" data-scroll-target="#研讨课内容">研讨课内容</a>
+  <ul class="collapse">
+  <li><a href="#ssh-密钥与-github" id="toc-ssh-密钥与-github" class="nav-link" data-scroll-target="#ssh-密钥与-github">SSH 密钥与 GitHub</a></li>
+  <li><a href="#项目-a循环队列状态追踪" id="toc-项目-a循环队列状态追踪" class="nav-link" data-scroll-target="#项目-a循环队列状态追踪">项目 A：循环队列状态追踪</a></li>
+  <li><a href="#项目-b滑动窗口与优先级调度" id="toc-项目-b滑动窗口与优先级调度" class="nav-link" data-scroll-target="#项目-b滑动窗口与优先级调度">项目 B：滑动窗口与优先级调度</a></li>
+  <li><a href="#结构选型与易错点" id="toc-结构选型与易错点" class="nav-link" data-scroll-target="#结构选型与易错点">结构选型与易错点</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">FIP W09 · 复杂线性数据结构</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">学习笔记</div>
+    <div class="quarto-category">数据结构</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    循环队列、单调双端队列、优先队列与多路归并。
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">作者</div>
+    <div class="quarto-title-meta-contents">
+             <p>个人笔记 </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">发布于</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2026年11月10日</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="理论课内容" class="level2">
+<h2 class="anchored" data-anchor-id="理论课内容">理论课内容</h2>
+<p>课程材料：26FIP9 复杂线性数据结构.pdf</p>
+<section id="deque的问题" class="level3">
+<h3 class="anchored" data-anchor-id="deque的问题"><code>deque</code>的问题</h3>
+<p><code>deque</code>两端操作<span class="math inline">\(O(1)\)</span>，并且长度可以无限增长，但是由于<code>deque</code>本质由双向链表实现，所以具备以下缺点:</p>
+<ul>
+<li>链表指针带来额外内存开销（仇载payload）</li>
+<li>频繁申请/丢弃带来的内存碎片，影响性能</li>
+<li>对<code>cache</code>访问不友好</li>
+</ul>
+<p>因此我们需要<strong>使用定长数组当队列</strong>，因而我们引入双指针模拟双端队列。</p>
+</section>
+<section id="定长数组队列双指针" class="level3">
+<h3 class="anchored" data-anchor-id="定长数组队列双指针">定长数组队列：双指针</h3>
+<p>用固定长度数组保存数据，<code>read</code> 指向下一个出队位置，<code>write</code> 指向下一个入队位置。未绕回时，有效数据在半开区间 <code>[read, write)</code> 中。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>capacity <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>buf <span class="op">=</span> [<span class="va">None</span>] <span class="op">*</span> capacity</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>read <span class="op">=</span> write <span class="op">=</span> <span class="dv">0</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>操作 / 状态</th>
+<th>线性队列</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>入队</td>
+<td>写入 <code>buf[write]</code>，再 <code>write += 1</code></td>
+</tr>
+<tr class="even">
+<td>出队</td>
+<td>读取 <code>buf[read]</code>，再 <code>read += 1</code></td>
+</tr>
+<tr class="odd">
+<td>空</td>
+<td><code>read == write</code></td>
+</tr>
+<tr class="even">
+<td>无法继续入队</td>
+<td><code>write == capacity</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>假溢出</strong>：出队后前面已有空位，但写指针到达数组末尾，仍无法入队。解决办法是让两个指针都取模绕回，复用已消费的位置。</p>
+</section>
+<section id="循环队列取模绕回" class="level3">
+<h3 class="anchored" data-anchor-id="循环队列取模绕回">循环队列：取模绕回</h3>
+<p>数组物理上仍是连续的一段，逻辑上首尾相接：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>write <span class="op">=</span> (write <span class="op">+</span> <span class="dv">1</span>) <span class="op">%</span> capacity</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>read <span class="op">=</span> (read <span class="op">+</span> <span class="dv">1</span>) <span class="op">%</span> capacity</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>绕回后，<code>read == write</code> 可能表示空，也可能表示满，不能仅靠两个下标区分。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>方法</th>
+<th>判空</th>
+<th>判满</th>
+<th>实际可存元素数</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>牺牲一个空位</td>
+<td><code>read == write</code></td>
+<td><code>(write + 1) % capacity == read</code></td>
+<td><code>capacity - 1</code></td>
+</tr>
+<tr class="even">
+<td>记录 <code>count</code></td>
+<td><code>count == 0</code></td>
+<td><code>count == capacity</code></td>
+<td><code>capacity</code></td>
+</tr>
+<tr class="odd">
+<td>记录满标志</td>
+<td>下标相同且未满</td>
+<td>下标相同且满</td>
+<td><code>capacity</code></td>
+</tr>
+</tbody>
+</table>
+<p>使用 <code>count</code> 时，入队加一、出队减一；满标志法则在写入后检查是否追上读指针，成功出队后清除满标志。</p>
+<section id="classself-与实现" class="level4">
+<h4 class="anchored" data-anchor-id="classself-与实现"><code>class</code>、<code>self</code> 与实现</h4>
+<p><code>class</code> 是创建对象的模板，<code>__init__</code> 在创建对象时初始化状态。<code>self</code> 表示当前对象，<code>self.front</code> 是该队列自己的读指针。不同对象各自保存状态。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> CircularQueue:</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, capacity<span class="op">=</span><span class="dv">5</span>):</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.items <span class="op">=</span> [<span class="va">None</span>] <span class="op">*</span> capacity</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.capacity <span class="op">=</span> capacity</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.front <span class="op">=</span> <span class="va">self</span>.rear <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.count <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> enqueue(<span class="va">self</span>, x):</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.count <span class="op">==</span> <span class="va">self</span>.capacity:</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.items[<span class="va">self</span>.rear] <span class="op">=</span> x</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.rear <span class="op">=</span> (<span class="va">self</span>.rear <span class="op">+</span> <span class="dv">1</span>) <span class="op">%</span> <span class="va">self</span>.capacity</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.count <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> dequeue(<span class="va">self</span>):</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.count <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> <span class="va">self</span>.items[<span class="va">self</span>.front]</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.front <span class="op">=</span> (<span class="va">self</span>.front <span class="op">+</span> <span class="dv">1</span>) <span class="op">%</span> <span class="va">self</span>.capacity</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.count <span class="op">-=</span> <span class="dv">1</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> x</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>约定容量为正整数。<code>q = CircularQueue(5)</code> 创建队列，<code>q.enqueue(1)</code> 调用入队方法。出队后旧值可以仍留在数组里，是否有效由指针和 <code>count</code> 决定，不能靠格子是不是 <code>None</code> 判断空满。若用 <code>None</code> 表示出队失败，存入的数据应避免使用 <code>None</code>，判断失败写 <code>x is None</code>。</p>
+<p>入队、出队都是 <span class="math inline">\(O(1)\)</span>，数组空间为 <span class="math inline">\(O(C)\)</span>，其中 <span class="math inline">\(C\)</span> 是容量。音频缓冲中，网络负责入队，播放负责出队；缓冲空则等待数据，缓冲满则暂停写入。</p>
+</section>
+<section id="约瑟夫环" class="level4">
+<h4 class="anchored" data-anchor-id="约瑟夫环">约瑟夫环</h4>
+<p><span class="math inline">\(n\)</span> 人编号为 <span class="math inline">\(1\)</span> 到 <span class="math inline">\(n\)</span>，从第一个人开始报数，每数到 <span class="math inline">\(k\)</span> 的人出圈，下一位重新从 <span class="math inline">\(1\)</span> 开始。固定数组中的空位跳过不数，下标仍按原长度取模。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> josephus(n, k):</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    ring <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1</span>, n <span class="op">+</span> <span class="dv">1</span>))</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    i, left <span class="op">=</span> <span class="dv">0</span>, n</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> left <span class="op">&gt;</span> <span class="dv">1</span>:</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        count <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> count <span class="op">&lt;</span> k:</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> ring[i] <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>                count <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> count <span class="op">==</span> k:</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>                ring[i] <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>                left <span class="op">-=</span> <span class="dv">1</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>            i <span class="op">=</span> (i <span class="op">+</span> <span class="dv">1</span>) <span class="op">%</span> n</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> x <span class="kw">in</span> ring:</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> x <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> x</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>约定 <span class="math inline">\(n,k\)</span> 为正整数。<code>josephus(5, 3)</code> 的出圈顺序是 <code>3, 1, 5, 2</code>，留下 <code>4</code>。数组长度始终为 <span class="math inline">\(n\)</span>，不能对剩余人数 <code>left</code> 取模。</p>
+</section>
+<section id="quick-check-vi" class="level4">
+<h4 class="anchored" data-anchor-id="quick-check-vi">Quick check VI</h4>
+<ol type="1">
+<li><code>capacity=5</code>，入队 <code>1,2,3,4,5</code>，出队两次，再入队 <code>6</code>：按 <code>count</code> 方案，<code>read=2</code>、<code>write=1</code>、<code>count=4</code>，队列内容为 <code>3,4,5,6</code>。</li>
+<li>不用 <code>count</code>：牺牲一个空位，或增加满标志。</li>
+<li>5 人数到 3：第一个出圈的是 <code>3</code>；下标 <code>4</code> 的下一格是 <code>0</code>；留下 <code>4</code>。</li>
+</ol>
+</section>
+</section>
+<section id="单调双端队列滑动窗口最值" class="level3">
+<h3 class="anchored" data-anchor-id="单调双端队列滑动窗口最值">单调双端队列：滑动窗口最值</h3>
+<p>长度为 <span class="math inline">\(n\)</span> 的序列，每个长度为 <span class="math inline">\(k\)</span> 的窗口都求最大值。逐个窗口扫描需要 <span class="math inline">\(O(nk)\)</span>；单调队列只保留仍可能成为最大值的元素。</p>
+<p>队列存 <strong>下标</strong>，从队头到队尾，下标递增、对应数值严格递减。两端分别淘汰：</p>
+<ul>
+<li>队头：下标已离开当前窗口，即 <code>dq[0] &lt;= i - k</code>。</li>
+<li>队尾：数值不大于新元素。新元素更大或相等，而且更晚过期，旧元素不再需要。</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> deque</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> max_sliding_window(nums, k):</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    dq <span class="op">=</span> deque()</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> []</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i, x <span class="kw">in</span> <span class="bu">enumerate</span>(nums):</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> dq <span class="kw">and</span> dq[<span class="dv">0</span>] <span class="op">&lt;=</span> i <span class="op">-</span> k:</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>            dq.popleft()</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> dq <span class="kw">and</span> nums[dq[<span class="op">-</span><span class="dv">1</span>]] <span class="op">&lt;=</span> x:</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>            dq.pop()</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>        dq.append(i)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> i <span class="op">&gt;=</span> k <span class="op">-</span> <span class="dv">1</span>:</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>            result.append(nums[dq[<span class="dv">0</span>]])</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>约定 <code>1 &lt;= k &lt;= len(nums)</code>。窗口为 <code>[i-k+1, i]</code>，到 <code>i == k-1</code> 时才形成第一个完整窗口。存下标才能判断是否过期；答案是 <code>nums[dq[0]]</code>，不是 <code>dq[0]</code>。</p>
+<p>每个下标最多入队一次、出队一次，虽然有嵌套循环，总时间仍是 <span class="math inline">\(O(n)\)</span>。队列辅助空间为 <span class="math inline">\(O(k)\)</span>，另需保存输出。</p>
+<section id="温度案例" class="level4">
+<h4 class="anchored" data-anchor-id="温度案例">温度案例</h4>
+<p><code>nums = [32, 27, 29, 25, 28]</code>，<code>k=3</code>：</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>下标</th>
+<th>新温度</th>
+<th>淘汰</th>
+<th>队列对应温度</th>
+<th>窗口最大值</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>32</td>
+<td>—</td>
+<td>32</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>27</td>
+<td>—</td>
+<td>32, 27</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>29</td>
+<td>队尾的 27</td>
+<td>32, 29</td>
+<td>32</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>25</td>
+<td>队头过期的 32</td>
+<td>29, 25</td>
+<td>29</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>28</td>
+<td>队尾的 25</td>
+<td>29, 28</td>
+<td>29</td>
+</tr>
+</tbody>
+</table>
+<p>普通队列只能保证队头最早到达，不能保证它最大；栈也无法直接删除底部过期元素，因此需要双端队列。</p>
+</section>
+<section id="quick-check-vii" class="level4">
+<h4 class="anchored" data-anchor-id="quick-check-vii">Quick check VII</h4>
+<ol type="1">
+<li><code>append</code>、<code>pop</code> 操作右端，<code>appendleft</code>、<code>popleft</code> 操作左端。</li>
+<li>读到 <code>29</code>，从队尾删 <code>27</code>；读到 <code>25</code>，从队头删 <code>32</code>，此时最大值为 <code>29</code>。</li>
+<li>求最小值时，维护数值递增队列，把队尾删除条件改为 <code>nums[dq[-1]] &gt;= x</code>。</li>
+</ol>
+</section>
+</section>
+<section id="优先队列与-heapq" class="level3">
+<h3 class="anchored" data-anchor-id="优先队列与-heapq">优先队列与 <code>heapq</code></h3>
+<p>普通队列按到达顺序出队，优先队列按优先级出队。<code>heapq</code> 默认是 <strong>小根堆</strong>，每次取出当前最小元素。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>操作</th>
+<th>写法</th>
+<th>时间复杂度</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>插入</td>
+<td><code>heapq.heappush(heap, x)</code></td>
+<td><span class="math inline">\(O(\log n)\)</span></td>
+</tr>
+<tr class="even">
+<td>取出最小值</td>
+<td><code>heapq.heappop(heap)</code></td>
+<td><span class="math inline">\(O(\log n)\)</span></td>
+</tr>
+<tr class="odd">
+<td>查看最小值</td>
+<td><code>heap[0]</code></td>
+<td><span class="math inline">\(O(1)\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>堆只保证最小值在堆顶，内部列表并非整体有序。插入或弹出后需要沿树高调整，因此不是 <span class="math inline">\(O(1)\)</span>；空堆弹出或访问堆顶会报 <code>IndexError</code>。</p>
+<section id="同优先级按到达顺序处理" class="level4">
+<h4 class="anchored" data-anchor-id="同优先级按到达顺序处理">同优先级按到达顺序处理</h4>
+<p>元组按字段从左到右比较，使用 <code>(priority, sequence, task)</code>：先比优先级，再比唯一的到达序号，也能避免直接比较不可排序的任务对象。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> heapq</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> triage_order(priorities):</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    heap <span class="op">=</span> []</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i, p <span class="kw">in</span> <span class="bu">enumerate</span>(priorities):</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        heapq.heappush(heap, (p, i, i <span class="op">+</span> <span class="dv">1</span>))</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> []</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> heap:</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        _, _, pid <span class="op">=</span> heapq.heappop(heap)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>        result.append(pid)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>优先级 <code>[3, 1, 4, 1, 5]</code>，数字越小越紧急，编号从 <code>1</code> 开始，处理顺序为 <code>[2, 4, 1, 3, 5]</code>。相同优先级的 2 号先于 4 号。全部插入并取出的时间为 <span class="math inline">\(O(n\log n)\)</span>。</p>
+</section>
+<section id="最大值先出存负数" class="level4">
+<h4 class="anchored" data-anchor-id="最大值先出存负数">最大值先出：存负数</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>heap <span class="op">=</span> []</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>heapq.heappush(heap, <span class="op">-</span><span class="dv">5</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>heapq.heappush(heap, <span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="op">-</span>heapq.heappop(heap))  <span class="co"># 5</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>若数值越大越优先，元组首项改存 <code>-priority</code>；到达序号仍保持原值，才能保留同优先级的先来先处理。</p>
+</section>
+</section>
+<section id="多路归并与调用处解包" class="level3">
+<h3 class="anchored" data-anchor-id="多路归并与调用处解包">多路归并与调用处解包</h3>
+<p><code>heapq.merge</code> 合并多个 <strong>已经有序</strong> 的可迭代对象，返回迭代器，不会先替每一路排序。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> heapq</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>runs <span class="op">=</span> [[<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">7</span>], [<span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">8</span>], [<span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">9</span>]]</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>merged <span class="op">=</span> <span class="bu">list</span>(heapq.merge(<span class="op">*</span>runs))</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># [1, 2, 3, 4, 5, 6, 7, 8, 9]</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>调用处 <code>*runs</code> 把外层列表拆成三个位置实参，等价于 <code>heapq.merge(runs[0], runs[1], runs[2])</code>。定义处 <code>*args</code> 则是收集多个位置实参。若共有 <span class="math inline">\(m\)</span> 路、总元素数为 <span class="math inline">\(N\)</span>，多路归并通常需要 <span class="math inline">\(O(N\log m)\)</span> 时间，维护堆的辅助空间为 <span class="math inline">\(O(m)\)</span>，转成列表还需 <span class="math inline">\(O(N)\)</span> 空间。</p>
+<section id="quick-check-viii" class="level4">
+<h4 class="anchored" data-anchor-id="quick-check-viii">Quick check VIII</h4>
+<ol type="1">
+<li><code>heapq</code> 默认取最小值。</li>
+<li>优先级 <code>[3,1,4,1,5]</code> 按编号处理为 <code>2,4,1,3,5</code>；若按到达顺序则先叫 1 号。</li>
+<li><code>heapq.merge(*runs)</code> 的 <code>*</code> 在调用处，示例拆成三个实参。</li>
+<li>堆需要沿高度为 <span class="math inline">\(O(\log n)\)</span> 的树调整，而非直接删除后不作处理。</li>
+</ol>
+</section>
+</section>
+</section>
+<section id="研讨课内容" class="level2">
+<h2 class="anchored" data-anchor-id="研讨课内容">研讨课内容</h2>
+<p>课程材料：9 复杂线性数据结构-研讨课.pdf</p>
+<section id="ssh-密钥与-github" class="level3">
+<h3 class="anchored" data-anchor-id="ssh-密钥与-github">SSH 密钥与 GitHub</h3>
+<p>SSH 用本机私钥证明身份，GitHub 保存对应公钥。每人使用自己的密钥对。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>项目</th>
+<th>HTTPS</th>
+<th>SSH</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>远程地址</td>
+<td><code>https://github.com/用户/仓库.git</code></td>
+<td><code>git@github.com:用户/仓库.git</code></td>
+</tr>
+<tr class="even">
+<td>认证</td>
+<td>账号 / Token</td>
+<td>本机私钥与服务器公钥配对</td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>默认文件</th>
+<th>作用</th>
+<th>是否可上传</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>id_ed25519</code></td>
+<td>私钥，多行，以 <code>BEGIN OPENSSH PRIVATE KEY</code> 标识</td>
+<td>不可公开</td>
+</tr>
+<tr class="even">
+<td><code>id_ed25519.pub</code></td>
+<td>公钥，通常一整行，以 <code>ssh-ed25519</code> 开头</td>
+<td>上传到 GitHub</td>
+</tr>
+</tbody>
+</table>
+<p>密钥默认放在 <code>~/.ssh/</code>；Windows 对应用户目录下的 <code>.ssh</code>。</p>
+<section id="配置步骤" class="level4">
+<h4 class="anchored" data-anchor-id="配置步骤">配置步骤</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-t</span> ed25519 <span class="at">-C</span> <span class="st">"你的邮箱@example.com"</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>路径可使用默认值；若已有同名密钥，应先确认用途，避免覆盖。<code>passphrase</code> 是保护私钥的口令，可设置；配置后是否再次询问口令也取决于 SSH agent。</p>
+<p>复制 <code>.pub</code> 的完整一行，添加到 GitHub 的 <code>Settings → SSH and GPG keys → New SSH key</code>，再测试：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-T</span> git@github.com</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>首次连接需核对主机身份，再确认连接。出现 <code>Hi 用户名! You've successfully authenticated...</code> 表示认证成功。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote <span class="at">-v</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote set-url origin git@github.com:你的用户名/仓库名.git</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote <span class="at">-v</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>问题</th>
+<th>检查方法</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Permission denied (publickey)</code></td>
+<td>是否添加完整公钥、客户端是否使用对应私钥，再用 <code>ssh -T</code> 测试</td>
+</tr>
+<tr class="even">
+<td>仍要求 HTTPS 登录</td>
+<td><code>git remote -v</code> 检查是否已改成 SSH 地址</td>
+</tr>
+<tr class="odd">
+<td>误公开私钥</td>
+<td>删除对应授权，重新生成密钥并上传新公钥</td>
+</tr>
+<tr class="even">
+<td>Linux/macOS 私钥权限过宽</td>
+<td><code>chmod 600 ~/.ssh/id_ed25519</code></td>
+</tr>
+</tbody>
+</table>
+<p>提交检查：公钥已生成、SSH 认证成功、仓库已使用 SSH remote 且能 push。截图和作业中不得包含私钥。</p>
+</section>
+</section>
+<section id="项目-a循环队列状态追踪" class="level3">
+<h3 class="anchored" data-anchor-id="项目-a循环队列状态追踪">项目 A：循环队列状态追踪</h3>
+<p>按理论课的 <code>count</code> 实现，<code>capacity=4</code>：</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>操作后</th>
+<th><code>front</code></th>
+<th><code>rear</code></th>
+<th><code>count</code></th>
+<th>逻辑队列</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>初始</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>空</td>
+</tr>
+<tr class="even">
+<td><code>enqueue(1)</code></td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td><code>enqueue(2)</code></td>
+<td>0</td>
+<td>2</td>
+<td>2</td>
+<td>1, 2</td>
+</tr>
+<tr class="even">
+<td><code>dequeue()</code>，返回 1</td>
+<td>1</td>
+<td>2</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td><code>enqueue(3)</code></td>
+<td>1</td>
+<td>3</td>
+<td>2</td>
+<td>2, 3</td>
+</tr>
+<tr class="even">
+<td><code>enqueue(4)</code></td>
+<td>1</td>
+<td>0</td>
+<td>3</td>
+<td>2, 3, 4</td>
+</tr>
+<tr class="odd">
+<td><code>enqueue(5)</code></td>
+<td>1</td>
+<td>1</td>
+<td>4</td>
+<td>2, 3, 4, 5</td>
+</tr>
+</tbody>
+</table>
+<p>课件此处写“最后一个应失败”，但按给定 <code>count</code> 实现，出队释放了一个位置，最后一次入队应成功；若采用牺牲一个空位的方案才会失败。两种方案的判满条件和容量不能混用。</p>
+<p><code>count</code> 方案用满全部格子，但每次需更新计数；留空位方案只需维护两个指针，代价是少存一个元素。</p>
+</section>
+<section id="项目-b滑动窗口与优先级调度" class="level3">
+<h3 class="anchored" data-anchor-id="项目-b滑动窗口与优先级调度">项目 B：滑动窗口与优先级调度</h3>
+<p><code>nums=[5,3,4,1,2]</code>，<code>k=3</code>，使用理论课的单调队列代码：</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th><code>i</code></th>
+<th><code>x</code></th>
+<th><code>dq</code>（下标）</th>
+<th><code>result</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>5</td>
+<td><code>[0]</code></td>
+<td><code>[]</code></td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>3</td>
+<td><code>[0,1]</code></td>
+<td><code>[]</code></td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>4</td>
+<td><code>[0,2]</code></td>
+<td><code>[5]</code></td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>1</td>
+<td><code>[2,3]</code></td>
+<td><code>[5,4]</code></td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>2</td>
+<td><code>[2,4]</code></td>
+<td><code>[5,4,4]</code></td>
+</tr>
+</tbody>
+</table>
+<p>最后一步，<code>2</code> 淘汰队尾对应的 <code>1</code>，因此队列为 <code>[2,4]</code>。</p>
+<p>任务调度使用 <code>(priority, sequence, task)</code>。若任务从 0 编号，优先级 <code>[3,1,4,1,5]</code> 的处理顺序是任务 <code>1,3,0,2,4</code>；与理论课从 1 编号的结果相差 1。</p>
+<p>小组任选循环队列，或滑动窗口加优先队列项目；提交代码、项目选择说明及简短反思，通过本周配置的 SSH 推送。</p>
+</section>
+<section id="结构选型与易错点" class="level3">
+<h3 class="anchored" data-anchor-id="结构选型与易错点">结构选型与易错点</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>需求</th>
+<th>结构</th>
+<th>关键检查</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>先来先处理</td>
+<td>普通队列 <code>deque</code></td>
+<td><code>append</code> / <code>popleft</code></td>
+</tr>
+<tr class="even">
+<td>固定容量反复利用</td>
+<td>循环队列</td>
+<td>读写指针均取模，空满判断一致</td>
+</tr>
+<tr class="odd">
+<td>滑动窗口最值</td>
+<td>单调双端队列</td>
+<td>队头去过期，队尾去劣势，存下标</td>
+</tr>
+<tr class="even">
+<td>优先级处理</td>
+<td><code>heapq</code></td>
+<td>默认最小先出，同级增加到达序号</td>
+</tr>
+<tr class="odd">
+<td>多路有序合并</td>
+<td><code>heapq.merge(*runs)</code></td>
+<td>每一路先有序，调用处 <code>*</code> 解包</td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<section id="comments" class="comments-section" aria-labelledby="comments-heading">
+  <h2 id="comments-heading">评论</h2>
+  <p id="comments-status">评论暂未开放。</p>
+  <div class="giscus"></div>
+</section>
+<script src="../../assets/comments-config.js?v=0740342d2f79"></script>
+<script src="../../assets/comments.js?v=efc269bc7855"></script>
+
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "已复制");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "已复制");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/easoncyy\.github\.io");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p><a href="../../posts/20261110-fip-w09-complex-linear-data-structures/index.html">~/notes</a> · 记录与探索</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p><a class="footer-repository" href="https://github.com/easoncyy/easoncyy.github.io" target="_blank" rel="noopener noreferrer" aria-label="查看本站 GitHub 仓库"><i class="bi bi-github" aria-hidden="true"></i><span>source/</span></a><span class="footer-builder">Built with Quarto</span></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

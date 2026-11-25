@@ -1,0 +1,76 @@
+\documentclass[11pt,a4paper]{ctexart}
+\usepackage[margin=20mm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{7pt}
+\pagestyle{plain}
+\newcommand{\question}[2]{\textbf{#1.}\ #2\par}
+\begin{document}
+\begin{center}
+{\Large\bfseries 微积分（甲）I期中模拟试卷}\\[8pt]
+考试时间：120 分钟
+\end{center}
+\question{1}{求极限：（12 分）}
+\[
+\text{（1）}\ \lim_{x\to0}\frac{1}{x^3}\left[\left(\frac{2+\cos x}{3}\right)^x-1\right];
+\qquad
+\text{（2）}\ \lim_{x\to-\infty}\frac{x+1}{\sqrt{x^2-\sin x+1}+\sqrt{x^2+\sin x+1}}.
+\]
+\vfill
+\question{2}{求极限：（12 分）}
+\[
+\text{（1）}\ \lim_{n\to\infty}n\tan\!\left(\pi\sqrt{n^2+2026}\right);
+\qquad
+\text{（2）}\ \lim_{n\to\infty}\sum_{k=1}^n(n^k+1)^{-1/k}.
+\]
+\vfill
+\question{3}{若极限 $\displaystyle\lim_{x\to+\infty}\frac{\sqrt{4x^3+ax^2+x}+bx^{3/2}}{\sqrt{cx+1}}$ 存在，求 $a,b,c$ 满足的条件并求该极限值。（10 分）}
+\vfill
+\newpage
+\question{4}{讨论 $\displaystyle f(x)=\frac{e+e^{1/x}}{e-e^{1/x}}\cdot\frac{x^2-1}{\sin(x+1)}$ 的所有间断点，并指出它们是第几类间断点。（10 分）}
+\vfill
+\question{5}{化简 $\displaystyle f(x)=\lim_{n\to\infty}\frac{x^2+x[x]e^{nx}}{1+e^{nx}}\ (x\in\mathbb R)$，分析 $f(x)$ 的连续性和可导性，其中 $[x]$ 表示对 $x$ 向下取整。（10 分）}
+\vfill
+\question{6}{设 $\begin{cases}x=t^2+t,\\e^{t+y}+ty-1=0\end{cases}$ 确定函数 $y=y(x)$，求 $\displaystyle\left.\frac{d^2x}{dy^2}\right|_{t=0}$。（10 分）}
+\vfill
+\newpage
+\question{7}{设 $f_n(x)=(x-\pi)^ne^{2x}\cos x$，求 $f_n^{(n)}(\pi)\ (n\in\mathbb N_+)$。（8 分）}
+\vfill
+\question{8}{已知心形线 $r=2(1+\cos\theta)\ (0\le\theta<2\pi)$，是否存在曲线上的一点，该点处的切线和极半径垂直。若存在，求出该点坐标和该点处切线的方程（均在直角坐标系下给出）；若不存在，请说明理由。（8 分）}
+\vfill
+\question{9}{设 $f(x)$ 在 $[a,b]$ 上连续，$x_1,x_2,\ldots,x_n$ 是 $[a,b]$ 上的一个点列，求 $\displaystyle\lim_{n\to\infty}\sqrt[n]{\frac1n\sum_{k=1}^ne^{f(x_k)}}$。（5 分）}
+\vfill
+\newpage
+\question{10}{从以下 A/B 两个问题中选择一个作答，如都作答则取高分计入总分。（5 分）}
+\textbf{A.}\ 设 $f(x)$ 连续，$f'(0)$ 存在。对于任意 $x,y\in\mathbb R$，
+\[
+f(x+y)=\frac{f(x)+f(y)}{1-4f(x)f(y)}.
+\]
+证明 $f(x)$ 在 $\mathbb R$ 上可导。
+
+\textbf{B.}\ 设 $a_1,a_2,\ldots,a_n$ 为常数，记
+\[
+f(x)=\sum_{k=1}^na_k\sin kx,\qquad g(x)=\sum_{j=1}^na_{n-j+1}\sin jx.
+\]
+已知 $|f(x)|\le|\sin x|$，$|g(x)|\le|\sin x|$，求证
+\[
+\left|\sum_{k=1}^na_k\right|\le\frac{2}{n+1}.
+\]
+【提示：考虑 $f'(0),g'(0)$。】
+\vfill
+\question{11}{已知数列 $\{x_n\}$ 满足 $x_n\in(0,\frac\pi2)$，$x_1=\frac\pi4$，$\sin x_n=x_n\cos x_{n+1}$。（5 分）}
+（1）证明 $\displaystyle\lim_{n\to\infty}x_n$ 存在并求其值。
+
+（2）求 $\displaystyle\lim_{n\to\infty}(\cos x_{n+1})^{1/x_n^2}$。
+\vfill
+\newpage
+\question{12}{设函数 $f(x)$ 满足对于任意 $x\in[a,b]$，都有 $f(x)\in[a,b]$。且存在常数 $k\in(0,1)$，对于任意 $x_1,x_2\in[a,b]$，都有 $|f(x_2)-f(x_1)|\le k|x_2-x_1|$。证明：（5 分）}
+（1）存在唯一 $\xi\in[a,b]$ 使得 $f(\xi)=\xi$。
+
+（2）对于任意 $x_0\in[a,b]$，定义 $x_{n+1}=f(x_n)\ (n\in\mathbb N)$。证明 $\{x_n\}$ 收敛且 $\displaystyle\lim_{n\to\infty}x_n=\xi$。
+\vfill
+\textbf{附加题.}\ 设奇函数 $f(x)$ 在 $[-1,1]$ 上二阶可导，证明：存在 $\xi\in(-1,1)$ 使得 $f''(\xi)-f'(\xi)+f(1)=0$。（5 分）
+\vfill
+\end{document}
+

@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="个人笔记">
+<meta name="description" content="智能程序设计基础 W1–W8 期中考试题目与参考答案。">
+
+<title>FIP 期中考试归档 – 个人笔记</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/favicon.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-a7952132dd87ce33f437addd0578540c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-dc090d8f6625c822698d9a6ee9cd1ac5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "没有结果",
+    "search-matching-documents-text": "匹配的文档",
+    "search-copy-link-title": "复制搜索链接",
+    "search-hide-matches-text": "隐藏其它匹配结果",
+    "search-more-match-text": "更多匹配结果",
+    "search-more-matches-text": "更多匹配结果",
+    "search-clear-button-title": "清除",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "取消",
+    "search-submit-button-title": "提交",
+    "search-label": "搜索"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script defer="" src="../../assets/directory.js?v=05751f758f0b"></script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="../../assets/vendor/mathjax/tex-svg-full.js?v=a4354ff94fd8" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css?v=83131ce44c97">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/logo.svg" alt="Ce · easoncyy" class="navbar-logo light-content">
+    <img src="../../assets/logo.svg" alt="Ce · easoncyy" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">~/notes</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="搜索"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="展开或折叠导航栏" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html"> 
+<span class="menu-text"><span class="nav-path">blog/</span><span class="nav-caption">博客</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../problems.html"> 
+<span class="menu-text"><span class="nav-path">problems/</span><span class="nav-caption">每日好题</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../projects.html"> 
+<span class="menu-text"><span class="nav-path">projects/</span><span class="nav-caption">项目</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../log.html"> 
+<span class="menu-text"><span class="nav-path">log/</span><span class="nav-caption">日志</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../links.html"> 
+<span class="menu-text"><span class="nav-path">links/</span><span class="nav-caption">友链</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../library.html"> 
+<span class="menu-text"><span class="nav-path">library/</span><span class="nav-caption">图书馆</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text"><span class="nav-path">about/</span><span class="nav-caption">关于</span></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">本页目录</h2>
+   
+  <ul>
+  <li><a href="#一选择题每题-2-分共-40-分" id="toc-一选择题每题-2-分共-40-分" class="nav-link active" data-scroll-target="#一选择题每题-2-分共-40-分">一、选择题（每题 2 分，共 40 分）</a>
+  <ul class="collapse">
+  <li><a href="#表达式-7-2-和-7-2-的值依次是" id="toc-表达式-7-2-和-7-2-的值依次是" class="nav-link" data-scroll-target="#表达式-7-2-和-7-2-的值依次是">1. 表达式 <code>7 // 2</code> 和 <code>7 % 2</code> 的值依次是</a></li>
+  <li><a href="#下面程序打印什么" id="toc-下面程序打印什么" class="nav-link" data-scroll-target="#下面程序打印什么">2. 下面程序打印什么？</a></li>
+  <li><a href="#range2-6-依次给出的整数是" id="toc-range2-6-依次给出的整数是" class="nav-link" data-scroll-target="#range2-6-依次给出的整数是">3. <code>range(2, 6)</code> 依次给出的整数是</a></li>
+  <li><a href="#for-或-while-后面的-else其中的语句何时执行" id="toc-for-或-while-后面的-else其中的语句何时执行" class="nav-link" data-scroll-target="#for-或-while-后面的-else其中的语句何时执行">4. <code>for</code> 或 <code>while</code> 后面的 <code>else</code>，其中的语句何时执行？</a></li>
+  <li><a href="#下面双重循环结束后n-是多少" id="toc-下面双重循环结束后n-是多少" class="nav-link" data-scroll-target="#下面双重循环结束后n-是多少">5. 下面双重循环结束后，<code>n</code> 是多少？</a></li>
+  <li><a href="#条件表达式-a-if-c-else-b-的结果何时是-a" id="toc-条件表达式-a-if-c-else-b-的结果何时是-a" class="nav-link" data-scroll-target="#条件表达式-a-if-c-else-b-的结果何时是-a">6. 条件表达式 <code>a if c else b</code> 的结果何时是 <code>a</code>？</a></li>
+  <li><a href="#下面的-print-会看到什么" id="toc-下面的-print-会看到什么" class="nav-link" data-scroll-target="#下面的-print-会看到什么">7. 下面的 <code>print</code> 会看到什么？</a></li>
+  <li><a href="#t-10-20-30t-1-的值是" id="toc-t-10-20-30t-1-的值是" class="nav-link" data-scroll-target="#t-10-20-30t-1-的值是">8. <code>t = [10, 20, 30]</code>，<code>t[-1]</code> 的值是</a></li>
+  <li><a href="#二分查找每次比较后能丢掉一半范围前提是" id="toc-二分查找每次比较后能丢掉一半范围前提是" class="nav-link" data-scroll-target="#二分查找每次比较后能丢掉一半范围前提是">9. 二分查找每次比较后能丢掉一半范围，前提是</a></li>
+  <li><a href="#有序列表-2-5-8-11-14-17-20-23下标闭区间从-0-到-7中点下标取-left-right-2查找-14-时第一次比较的元素是" id="toc-有序列表-2-5-8-11-14-17-20-23下标闭区间从-0-到-7中点下标取-left-right-2查找-14-时第一次比较的元素是" class="nav-link" data-scroll-target="#有序列表-2-5-8-11-14-17-20-23下标闭区间从-0-到-7中点下标取-left-right-2查找-14-时第一次比较的元素是">10. 有序列表 <code>[2, 5, 8, 11, 14, 17, 20, 23]</code>，下标闭区间从 0 到 7，中点下标取 <code>(left + right) // 2</code>，查找 14 时，第一次比较的元素是</a></li>
+  <li><a href="#d-a-1执行-db-会" id="toc-d-a-1执行-db-会" class="nav-link" data-scroll-target="#d-a-1执行-db-会">11. <code>d = {"a": 1}</code>，执行 <code>d["b"]</code> 会</a></li>
+  <li><a href="#d-a-1d.getb-0-的结果是" id="toc-d-a-1d.getb-0-的结果是" class="nav-link" data-scroll-target="#d-a-1d.getb-0-的结果是">12. <code>d = {"a": 1}</code>，<code>d.get("b", 0)</code> 的结果是</a></li>
+  <li><a href="#递归调用的规模一直不减小碰不到-base-case通常会" id="toc-递归调用的规模一直不减小碰不到-base-case通常会" class="nav-link" data-scroll-target="#递归调用的规模一直不减小碰不到-base-case通常会">13. 递归调用的规模一直不减小、碰不到 base case，通常会</a></li>
+  <li><a href="#不用记忆化的斐波那契递归很慢主要因为" id="toc-不用记忆化的斐波那契递归很慢主要因为" class="nav-link" data-scroll-target="#不用记忆化的斐波那契递归很慢主要因为">14. 不用记忆化的斐波那契递归很慢，主要因为</a></li>
+  <li><a href="#执行下面代码后arr0-是多少" id="toc-执行下面代码后arr0-是多少" class="nav-link" data-scroll-target="#执行下面代码后arr0-是多少">15. 执行下面代码后，<code>arr[0]</code> 是多少？</a></li>
+  <li><a href="#归并排序的时间复杂度是" id="toc-归并排序的时间复杂度是" class="nav-link" data-scroll-target="#归并排序的时间复杂度是">16. 归并排序的时间复杂度是</a></li>
+  <li><a href="#对一个很长的-list-反复调用-pop0-会很慢原因是" id="toc-对一个很长的-list-反复调用-pop0-会很慢原因是" class="nav-link" data-scroll-target="#对一个很长的-list-反复调用-pop0-会很慢原因是">17. 对一个很长的 <code>list</code> 反复调用 <code>pop(0)</code> 会很慢，原因是</a></li>
+  <li><a href="#按下标读写一个元素理想数组和链表的时间分别是" id="toc-按下标读写一个元素理想数组和链表的时间分别是" class="nav-link" data-scroll-target="#按下标读写一个元素理想数组和链表的时间分别是">18. 按下标读写一个元素，理想数组和链表的时间分别是</a></li>
+  <li><a href="#编辑器的撤销要丢掉最近的一步更合适的做法是" id="toc-编辑器的撤销要丢掉最近的一步更合适的做法是" class="nav-link" data-scroll-target="#编辑器的撤销要丢掉最近的一步更合适的做法是">19. 编辑器的「撤销」要丢掉最近的一步。更合适的做法是</a></li>
+  <li><a href="#食堂窗口按取号顺序叫号新来的人和被叫到的人应该怎样进出" id="toc-食堂窗口按取号顺序叫号新来的人和被叫到的人应该怎样进出" class="nav-link" data-scroll-target="#食堂窗口按取号顺序叫号新来的人和被叫到的人应该怎样进出">20. 食堂窗口按取号顺序叫号。新来的人和被叫到的人，应该怎样进出？</a></li>
+  </ul></li>
+  <li><a href="#二程序填空每题-10-分共-40-分" id="toc-二程序填空每题-10-分共-40-分" class="nav-link" data-scroll-target="#二程序填空每题-10-分共-40-分">二、程序填空（每题 10 分，共 40 分）</a>
+  <ul class="collapse">
+  <li><a href="#下面函数判断括号串是否合法每个右括号必须配上最近的未匹配左括号合法返回-true否则返回-false例如-为-true-为-false" id="toc-下面函数判断括号串是否合法每个右括号必须配上最近的未匹配左括号合法返回-true否则返回-false例如-为-true-为-false" class="nav-link" data-scroll-target="#下面函数判断括号串是否合法每个右括号必须配上最近的未匹配左括号合法返回-true否则返回-false例如-为-true-为-false">21. 下面函数判断括号串是否合法：每个右括号必须配上最近的未匹配左括号。合法返回 <code>True</code>，否则返回 <code>False</code>。例如 <code>{[()]}</code> 为 <code>True</code>，<code>]</code> 为 <code>False</code>。</a></li>
+  <li><a href="#sum_evennums-返回列表里所有偶数之和sum_even1-2-3-4-为-6" id="toc-sum_evennums-返回列表里所有偶数之和sum_even1-2-3-4-为-6" class="nav-link" data-scroll-target="#sum_evennums-返回列表里所有偶数之和sum_even1-2-3-4-为-6">22. <code>sum_even(nums)</code> 返回列表里所有偶数之和。<code>sum_even([1, 2, 3, 4])</code> 为 6。</a></li>
+  <li><a href="#cpu_sumnums-n-用递归求列表中整数的和n-是-cpu-个数且为-2-的幂cpu-多于-1-个时列表从中点切成左右两段cpu-也平分只剩-1-个-cpu-时不再切开用循环把这一段全部加起来所以一共停在-n-个分支上而不是每个整数一次调用cpu_sum1-2-3-4-5-6-7-8-4-为-36" id="toc-cpu_sumnums-n-用递归求列表中整数的和n-是-cpu-个数且为-2-的幂cpu-多于-1-个时列表从中点切成左右两段cpu-也平分只剩-1-个-cpu-时不再切开用循环把这一段全部加起来所以一共停在-n-个分支上而不是每个整数一次调用cpu_sum1-2-3-4-5-6-7-8-4-为-36" class="nav-link" data-scroll-target="#cpu_sumnums-n-用递归求列表中整数的和n-是-cpu-个数且为-2-的幂cpu-多于-1-个时列表从中点切成左右两段cpu-也平分只剩-1-个-cpu-时不再切开用循环把这一段全部加起来所以一共停在-n-个分支上而不是每个整数一次调用cpu_sum1-2-3-4-5-6-7-8-4-为-36">23. <code>cpu_sum(nums, n)</code> 用递归求列表中整数的和。<code>n</code> 是 CPU 个数，且为 2 的幂。CPU 多于 1 个时，列表从中点切成左右两段，CPU 也平分。只剩 1 个 CPU 时不再切开，用循环把这一段全部加起来。所以一共停在 <code>n</code> 个分支上，而不是每个整数一次调用。<code>cpu_sum([1, 2, 3, 4, 5, 6, 7, 8], 4)</code> 为 36。</a></li>
+  <li><a href="#most_common_countnums-返回出现次数最多的那个数的次数most_common_count1-2-1-3-1-为-3" id="toc-most_common_countnums-返回出现次数最多的那个数的次数most_common_count1-2-1-3-1-为-3" class="nav-link" data-scroll-target="#most_common_countnums-返回出现次数最多的那个数的次数most_common_count1-2-1-3-1-为-3">24. <code>most_common_count(nums)</code> 返回出现次数最多的那个数的次数。<code>most_common_count([1, 2, 1, 3, 1])</code> 为 3。</a></li>
+  </ul></li>
+  <li><a href="#三程序输出每题-5-分共-20-分" id="toc-三程序输出每题-5-分共-20-分" class="nav-link" data-scroll-target="#三程序输出每题-5-分共-20-分">三、程序输出（每题 5 分，共 20 分）</a>
+  <ul class="collapse">
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">25.</a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">26.</a></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">27.</a></li>
+  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3">28.</a></li>
+  </ul></li>
+  <li><a href="#参考答案" id="toc-参考答案" class="nav-link" data-scroll-target="#参考答案">参考答案</a>
+  <ul class="collapse">
+  <li><a href="#一选择题" id="toc-一选择题" class="nav-link" data-scroll-target="#一选择题">一、选择题</a></li>
+  <li><a href="#二程序填空" id="toc-二程序填空" class="nav-link" data-scroll-target="#二程序填空">二、程序填空</a></li>
+  <li><a href="#三程序输出" id="toc-三程序输出" class="nav-link" data-scroll-target="#三程序输出">三、程序输出</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">FIP 期中考试归档</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">真题</div>
+    <div class="quarto-category">期中考试</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    智能程序设计基础 W1–W8 期中考试题目与参考答案。
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">作者</div>
+    <div class="quarto-title-meta-contents">
+             <p>个人笔记 </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">发布于</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2026年11月5日</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><strong>考试时间：</strong> 45 分钟　　<strong>满分：</strong> 100 分　　<strong>形式：</strong> 纸质闭卷</p>
+<p><strong>考查范围：</strong> 第 1 周至第 8 周（计算、枚举与减治、迭代与模拟、序列与查找、哈希、递归、分治、简单线性数据结构），含这些周阅读材料里已经出现的写法。</p>
+<p><strong>分值：</strong> 选择题 20 题，每题 2 分，共 40 分；程序填空 4 题，每题 10 分，共 40 分；程序输出 4 题，每题 5 分，共 20 分。</p>
+<p><strong>作答：</strong> 一律写在答卷上，不要写在本卷。选择题只写字母。填空按空位编号书写，写入能放进空位的 Python 表达式或语句。写输出按程序实际打印的行作答，不要改写程序。</p>
+<section id="一选择题每题-2-分共-40-分" class="level2">
+<h2 class="anchored" data-anchor-id="一选择题每题-2-分共-40-分">一、选择题（每题 2 分，共 40 分）</h2>
+<section id="表达式-7-2-和-7-2-的值依次是" class="level3">
+<h3 class="anchored" data-anchor-id="表达式-7-2-和-7-2-的值依次是">1. 表达式 <code>7 // 2</code> 和 <code>7 % 2</code> 的值依次是</h3>
+<ul>
+<li>A. 3.5 和 1</li>
+<li>B. 3 和 1</li>
+<li>C. 3 和 0</li>
+<li>D. 4 和 1</li>
+</ul>
+</section>
+<section id="下面程序打印什么" class="level3">
+<h3 class="anchored" data-anchor-id="下面程序打印什么">2. 下面程序打印什么？</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="va">True</span>:</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> n <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(n)</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>A. 3</li>
+<li>B. 1</li>
+<li>C. 0</li>
+<li>D. 程序死循环，没有输出</li>
+</ul>
+</section>
+<section id="range2-6-依次给出的整数是" class="level3">
+<h3 class="anchored" data-anchor-id="range2-6-依次给出的整数是">3. <code>range(2, 6)</code> 依次给出的整数是</h3>
+<ul>
+<li>A. 2, 3, 4, 5, 6</li>
+<li>B. 2, 3, 4, 5</li>
+<li>C. 3, 4, 5, 6</li>
+<li>D. 2, 3, 4</li>
+</ul>
+</section>
+<section id="for-或-while-后面的-else其中的语句何时执行" class="level3">
+<h3 class="anchored" data-anchor-id="for-或-while-后面的-else其中的语句何时执行">4. <code>for</code> 或 <code>while</code> 后面的 <code>else</code>，其中的语句何时执行？</h3>
+<ul>
+<li>A. 每一轮循环都执行</li>
+<li>B. 循环因为 <code>break</code> 结束时执行</li>
+<li>C. 循环正常结束、没有遇到 <code>break</code> 时执行</li>
+<li>D. <code>else</code> 不能写在循环后面</li>
+</ul>
+</section>
+<section id="下面双重循环结束后n-是多少" class="level3">
+<h3 class="anchored" data-anchor-id="下面双重循环结束后n-是多少">5. 下面双重循环结束后，<code>n</code> 是多少？</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>):</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        n <span class="op">=</span> n <span class="op">+</span> <span class="dv">1</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>A. 5</li>
+<li>B. 6</li>
+<li>C. 3</li>
+<li>D. 2</li>
+</ul>
+</section>
+<section id="条件表达式-a-if-c-else-b-的结果何时是-a" class="level3">
+<h3 class="anchored" data-anchor-id="条件表达式-a-if-c-else-b-的结果何时是-a">6. 条件表达式 <code>a if c else b</code> 的结果何时是 <code>a</code>？</h3>
+<ul>
+<li>A. <code>c</code> 为真时</li>
+<li>B. <code>c</code> 为假时</li>
+<li>C. <code>a</code> 为真时</li>
+<li>D. 总是</li>
+</ul>
+</section>
+<section id="下面的-print-会看到什么" class="level3">
+<h3 class="anchored" data-anchor-id="下面的-print-会看到什么">7. 下面的 <code>print</code> 会看到什么？</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(n):</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> n <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(f(<span class="dv">2</span>))</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>A. 3</li>
+<li>B. 2</li>
+<li>C. <code>None</code></li>
+<li>D. 语法错误</li>
+</ul>
+</section>
+<section id="t-10-20-30t-1-的值是" class="level3">
+<h3 class="anchored" data-anchor-id="t-10-20-30t-1-的值是">8. <code>t = [10, 20, 30]</code>，<code>t[-1]</code> 的值是</h3>
+<ul>
+<li>A. 10</li>
+<li>B. 20</li>
+<li>C. 30</li>
+<li>D. 下标不能为负，报错</li>
+</ul>
+</section>
+<section id="二分查找每次比较后能丢掉一半范围前提是" class="level3">
+<h3 class="anchored" data-anchor-id="二分查找每次比较后能丢掉一半范围前提是">9. 二分查找每次比较后能丢掉一半范围，前提是</h3>
+<ul>
+<li>A. 序列已经按查找键排好序</li>
+<li>B. 元素必须都是整数</li>
+<li>C. 长度必须是 2 的幂</li>
+<li>D. 序列里不能有重复元素</li>
+</ul>
+</section>
+<section id="有序列表-2-5-8-11-14-17-20-23下标闭区间从-0-到-7中点下标取-left-right-2查找-14-时第一次比较的元素是" class="level3">
+<h3 class="anchored" data-anchor-id="有序列表-2-5-8-11-14-17-20-23下标闭区间从-0-到-7中点下标取-left-right-2查找-14-时第一次比较的元素是">10. 有序列表 <code>[2, 5, 8, 11, 14, 17, 20, 23]</code>，下标闭区间从 0 到 7，中点下标取 <code>(left + right) // 2</code>，查找 14 时，第一次比较的元素是</h3>
+<ul>
+<li>A. 2</li>
+<li>B. 11</li>
+<li>C. 14</li>
+<li>D. 17</li>
+</ul>
+</section>
+<section id="d-a-1执行-db-会" class="level3">
+<h3 class="anchored" data-anchor-id="d-a-1执行-db-会">11. <code>d = {"a": 1}</code>，执行 <code>d["b"]</code> 会</h3>
+<ul>
+<li>A. 得到 <code>None</code></li>
+<li>B. 得到 0</li>
+<li>C. 抛出 <code>KeyError</code></li>
+<li>D. 自动加入键 <code>"b"</code></li>
+</ul>
+</section>
+<section id="d-a-1d.getb-0-的结果是" class="level3">
+<h3 class="anchored" data-anchor-id="d-a-1d.getb-0-的结果是">12. <code>d = {"a": 1}</code>，<code>d.get("b", 0)</code> 的结果是</h3>
+<ul>
+<li>A. 0</li>
+<li>B. <code>None</code></li>
+<li>C. 抛出 <code>KeyError</code></li>
+<li>D. 1</li>
+</ul>
+</section>
+<section id="递归调用的规模一直不减小碰不到-base-case通常会" class="level3">
+<h3 class="anchored" data-anchor-id="递归调用的规模一直不减小碰不到-base-case通常会">13. 递归调用的规模一直不减小、碰不到 base case，通常会</h3>
+<ul>
+<li>A. 自动改写成循环</li>
+<li>B. 返回 0</li>
+<li>C. 抛出 <code>RecursionError</code></li>
+<li>D. 返回 <code>None</code></li>
+</ul>
+</section>
+<section id="不用记忆化的斐波那契递归很慢主要因为" class="level3">
+<h3 class="anchored" data-anchor-id="不用记忆化的斐波那契递归很慢主要因为">14. 不用记忆化的斐波那契递归很慢，主要因为</h3>
+<ul>
+<li>A. 同一次计算里，相同的子问题被反复计算</li>
+<li>B. Python 不能写递归</li>
+<li>C. 列表按下标访问是 <span class="math inline">\(O(n)\)</span></li>
+<li>D. 字典查找是 <span class="math inline">\(O(n)\)</span></li>
+</ul>
+</section>
+<section id="执行下面代码后arr0-是多少" class="level3">
+<h3 class="anchored" data-anchor-id="执行下面代码后arr0-是多少">15. 执行下面代码后，<code>arr[0]</code> 是多少？</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>arr <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> arr[:<span class="dv">2</span>]</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>b[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">9</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>A. 9</li>
+<li>B. 1</li>
+<li>C. 2</li>
+<li>D. 报错</li>
+</ul>
+</section>
+<section id="归并排序的时间复杂度是" class="level3">
+<h3 class="anchored" data-anchor-id="归并排序的时间复杂度是">16. 归并排序的时间复杂度是</h3>
+<ul>
+<li>A. <span class="math inline">\(O(n)\)</span></li>
+<li>B. <span class="math inline">\(O(n\log n)\)</span></li>
+<li>C. <span class="math inline">\(O(n^2)\)</span></li>
+<li>D. <span class="math inline">\(O(\log n)\)</span></li>
+</ul>
+</section>
+<section id="对一个很长的-list-反复调用-pop0-会很慢原因是" class="level3">
+<h3 class="anchored" data-anchor-id="对一个很长的-list-反复调用-pop0-会很慢原因是">17. 对一个很长的 <code>list</code> 反复调用 <code>pop(0)</code> 会很慢，原因是</h3>
+<ul>
+<li>A. 每次都要把后面的元素前移，单次是 <span class="math inline">\(O(n)\)</span></li>
+<li>B. 在尾部删除一个元素是 <span class="math inline">\(O(n)\)</span></li>
+<li>C. <code>list</code> 的元素在内存里不连续</li>
+<li>D. <code>pop(0)</code> 只能删除数字</li>
+</ul>
+</section>
+<section id="按下标读写一个元素理想数组和链表的时间分别是" class="level3">
+<h3 class="anchored" data-anchor-id="按下标读写一个元素理想数组和链表的时间分别是">18. 按下标读写一个元素，理想数组和链表的时间分别是</h3>
+<ul>
+<li>A. 都是 <span class="math inline">\(O(1)\)</span></li>
+<li>B. 数组 <span class="math inline">\(O(1)\)</span>，链表 <span class="math inline">\(O(n)\)</span></li>
+<li>C. 数组 <span class="math inline">\(O(n)\)</span>，链表 <span class="math inline">\(O(1)\)</span></li>
+<li>D. 都是 <span class="math inline">\(O(n)\)</span></li>
+</ul>
+</section>
+<section id="编辑器的撤销要丢掉最近的一步更合适的做法是" class="level3">
+<h3 class="anchored" data-anchor-id="编辑器的撤销要丢掉最近的一步更合适的做法是">19. 编辑器的「撤销」要丢掉最近的一步。更合适的做法是</h3>
+<ul>
+<li>A. 用队列：先记下的先撤销</li>
+<li>B. 用栈：后记下的先撤销</li>
+<li>C. 用集合：按大小自动排序后再撤销</li>
+<li>D. 用字典：按键的字典序撤销</li>
+</ul>
+</section>
+<section id="食堂窗口按取号顺序叫号新来的人和被叫到的人应该怎样进出" class="level3">
+<h3 class="anchored" data-anchor-id="食堂窗口按取号顺序叫号新来的人和被叫到的人应该怎样进出">20. 食堂窗口按取号顺序叫号。新来的人和被叫到的人，应该怎样进出？</h3>
+<ul>
+<li>A. 新来的排到队尾，叫号从队头离开</li>
+<li>B. 新来的插到队头，叫号从队尾离开</li>
+<li>C. 新来的和叫号都在同一端</li>
+<li>D. 先来后到无所谓，从哪一端离开都可以</li>
+</ul>
+</section>
+</section>
+<section id="二程序填空每题-10-分共-40-分" class="level2">
+<h2 class="anchored" data-anchor-id="二程序填空每题-10-分共-40-分">二、程序填空（每题 10 分，共 40 分）</h2>
+<section id="下面函数判断括号串是否合法每个右括号必须配上最近的未匹配左括号合法返回-true否则返回-false例如-为-true-为-false" class="level3">
+<h3 class="anchored" data-anchor-id="下面函数判断括号串是否合法每个右括号必须配上最近的未匹配左括号合法返回-true否则返回-false例如-为-true-为-false">21. 下面函数判断括号串是否合法：每个右括号必须配上最近的未匹配左括号。合法返回 <code>True</code>，否则返回 <code>False</code>。例如 <code>{[()]}</code> 为 <code>True</code>，<code>]</code> 为 <code>False</code>。</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> is_valid(s):</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    stack <span class="op">=</span> []</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    pairs <span class="op">=</span> {<span class="st">')'</span>: <span class="st">'('</span>, <span class="st">']'</span>: <span class="st">'['</span>, <span class="st">'}'</span>: <span class="st">'{'</span>}</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> ch <span class="kw">in</span> s:</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> ch <span class="kw">in</span> <span class="st">'([{'</span>:</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>            stack.append(ch)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> ____①____ <span class="kw">or</span> stack[<span class="op">-</span><span class="dv">1</span>] <span class="op">!=</span> pairs[ch]:</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>            ____②____</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ____③____</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="sum_evennums-返回列表里所有偶数之和sum_even1-2-3-4-为-6" class="level3">
+<h3 class="anchored" data-anchor-id="sum_evennums-返回列表里所有偶数之和sum_even1-2-3-4-为-6">22. <code>sum_even(nums)</code> 返回列表里所有偶数之和。<code>sum_even([1, 2, 3, 4])</code> 为 6。</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sum_even(nums: <span class="bu">list</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    s <span class="op">=</span> ____①____</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> x <span class="kw">in</span> nums:</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> x <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>            s <span class="op">=</span> ____②____</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> s</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="cpu_sumnums-n-用递归求列表中整数的和n-是-cpu-个数且为-2-的幂cpu-多于-1-个时列表从中点切成左右两段cpu-也平分只剩-1-个-cpu-时不再切开用循环把这一段全部加起来所以一共停在-n-个分支上而不是每个整数一次调用cpu_sum1-2-3-4-5-6-7-8-4-为-36" class="level3">
+<h3 class="anchored" data-anchor-id="cpu_sumnums-n-用递归求列表中整数的和n-是-cpu-个数且为-2-的幂cpu-多于-1-个时列表从中点切成左右两段cpu-也平分只剩-1-个-cpu-时不再切开用循环把这一段全部加起来所以一共停在-n-个分支上而不是每个整数一次调用cpu_sum1-2-3-4-5-6-7-8-4-为-36">23. <code>cpu_sum(nums, n)</code> 用递归求列表中整数的和。<code>n</code> 是 CPU 个数，且为 2 的幂。CPU 多于 1 个时，列表从中点切成左右两段，CPU 也平分。只剩 1 个 CPU 时不再切开，用循环把这一段全部加起来。所以一共停在 <code>n</code> 个分支上，而不是每个整数一次调用。<code>cpu_sum([1, 2, 3, 4, 5, 6, 7, 8], 4)</code> 为 36。</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> cpu_sum(nums: <span class="bu">list</span>, n: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> ____①____:</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>        s <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> x <span class="kw">in</span> nums:</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>            s <span class="op">=</span> s <span class="op">+</span> x</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> s</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    mid <span class="op">=</span> <span class="bu">len</span>(nums) <span class="op">//</span> <span class="dv">2</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    half <span class="op">=</span> n <span class="op">//</span> <span class="dv">2</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> cpu_sum(nums[:mid], half) <span class="op">+</span> cpu_sum(____②____, half)</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="most_common_countnums-返回出现次数最多的那个数的次数most_common_count1-2-1-3-1-为-3" class="level3">
+<h3 class="anchored" data-anchor-id="most_common_countnums-返回出现次数最多的那个数的次数most_common_count1-2-1-3-1-为-3">24. <code>most_common_count(nums)</code> 返回出现次数最多的那个数的次数。<code>most_common_count([1, 2, 1, 3, 1])</code> 为 3。</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> most_common_count(nums):</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    d <span class="op">=</span> {}</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> x <span class="kw">in</span> nums:</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>        d[x] <span class="op">=</span> ____①____</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    best <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> k <span class="kw">in</span> d:</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> d[k] <span class="op">&gt;</span> best:</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>            best <span class="op">=</span> ____②____</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> best</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="三程序输出每题-5-分共-20-分" class="level2">
+<h2 class="anchored" data-anchor-id="三程序输出每题-5-分共-20-分">三、程序输出（每题 5 分，共 20 分）</h2>
+<p>写出程序的全部输出。多行则按行书写。</p>
+<section id="section" class="level3">
+<h3 class="anchored" data-anchor-id="section">25.</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> a</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>b[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">99</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a)</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="section-1" class="level3">
+<h3 class="anchored" data-anchor-id="section-1">26.</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> weigh(a: <span class="bu">list</span>, lo: <span class="bu">int</span>, hi: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> lo <span class="op">==</span> hi:</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> a[lo]</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    mid <span class="op">=</span> (lo <span class="op">+</span> hi) <span class="op">//</span> <span class="dv">2</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    left <span class="op">=</span> weigh(a, lo, mid)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    right <span class="op">=</span> weigh(a, mid <span class="op">+</span> <span class="dv">1</span>, hi)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> left <span class="op">&gt;=</span> right:</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>        chosen <span class="op">=</span> left</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>        chosen <span class="op">=</span> right</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(chosen)</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> chosen</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>nums <span class="op">=</span> [<span class="dv">3</span>, <span class="dv">8</span>, <span class="dv">2</span>, <span class="dv">6</span>]</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(weigh(nums, <span class="dv">0</span>, <span class="dv">3</span>))</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="section-2" class="level3">
+<h3 class="anchored" data-anchor-id="section-2">27.</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>tokens: <span class="bu">list</span> <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">5</span>]</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>stack: <span class="bu">list</span> <span class="op">=</span> []</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>out: <span class="bu">int</span> <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>i: <span class="bu">int</span> <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> i <span class="op">&lt;</span> <span class="bu">len</span>(tokens):</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> tokens[i]</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>        stack.append(x)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>        a <span class="op">=</span> stack.pop()</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>        b <span class="op">=</span> stack.pop()</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>        out <span class="op">=</span> a <span class="op">+</span> b</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>        stack.append(out)</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    i <span class="op">=</span> i <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(out)</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(stack[<span class="dv">0</span>])</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(stack))</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="section-3" class="level3">
+<h3 class="anchored" data-anchor-id="section-3">28.</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>reads <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">3</span>]</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>count <span class="op">=</span> {}</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x <span class="kw">in</span> reads:</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> x <span class="kw">in</span> count:</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>        count[x] <span class="op">=</span> count[x] <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>        count[x] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>best_key <span class="op">=</span> reads[<span class="dv">0</span>]</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>best_n <span class="op">=</span> count[best_key]</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x <span class="kw">in</span> reads:</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> count[x] <span class="op">&gt;</span> best_n:</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>        best_key <span class="op">=</span> x</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>        best_n <span class="op">=</span> count[x]</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>second <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x <span class="kw">in</span> reads:</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> x <span class="op">!=</span> best_key <span class="kw">and</span> count[x] <span class="op">&gt;</span> second:</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>        second <span class="op">=</span> count[x]</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(best_key)</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(best_n)</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(second)</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(count))</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="参考答案" class="level2">
+<h2 class="anchored" data-anchor-id="参考答案">参考答案</h2>
+<section id="一选择题" class="level3">
+<h3 class="anchored" data-anchor-id="一选择题">一、选择题</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>题号</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>答案</td>
+<td>B</td>
+<td>C</td>
+<td>B</td>
+<td>C</td>
+<td>B</td>
+<td>A</td>
+<td>C</td>
+<td>C</td>
+<td>A</td>
+<td>B</td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>题号</th>
+<th>11</th>
+<th>12</th>
+<th>13</th>
+<th>14</th>
+<th>15</th>
+<th>16</th>
+<th>17</th>
+<th>18</th>
+<th>19</th>
+<th>20</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>答案</td>
+<td>C</td>
+<td>A</td>
+<td>C</td>
+<td>A</td>
+<td>B</td>
+<td>B</td>
+<td>A</td>
+<td>B</td>
+<td>B</td>
+<td>A</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="二程序填空" class="level3">
+<h3 class="anchored" data-anchor-id="二程序填空">二、程序填空</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>题号</th>
+<th>①</th>
+<th>②</th>
+<th>③</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>21</td>
+<td><code>not stack</code></td>
+<td><code>stack.pop()</code></td>
+<td><code>not stack</code></td>
+</tr>
+<tr class="even">
+<td>22</td>
+<td><code>0</code></td>
+<td><code>s + x</code></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>23</td>
+<td><code>n == 1</code></td>
+<td><code>nums[mid:]</code></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>24</td>
+<td><code>d.get(x, 0) + 1</code></td>
+<td><code>d[k]</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="三程序输出" class="level3">
+<h3 class="anchored" data-anchor-id="三程序输出">三、程序输出</h3>
+<ol start="25" type="1">
+<li></li>
+</ol>
+<pre class="text"><code>[99, 2, 3]</code></pre>
+<ol start="26" type="1">
+<li></li>
+</ol>
+<pre class="text"><code>8
+6
+8
+8</code></pre>
+<ol start="27" type="1">
+<li></li>
+</ol>
+<pre class="text"><code>10
+10
+2</code></pre>
+<ol start="28" type="1">
+<li></li>
+</ol>
+<pre class="text"><code>4
+3
+2
+4</code></pre>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<section id="comments" class="comments-section" aria-labelledby="comments-heading">
+  <h2 id="comments-heading">评论</h2>
+  <p id="comments-status">评论暂未开放。</p>
+  <div class="giscus"></div>
+</section>
+<script src="../../assets/comments-config.js?v=0740342d2f79"></script>
+<script src="../../assets/comments.js?v=efc269bc7855"></script>
+
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "已复制");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "已复制");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/easoncyy\.github\.io");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p><a href="../../posts/20261105-fip-midterm-exam/index.html">~/notes</a> · 记录与探索</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p><a class="footer-repository" href="https://github.com/easoncyy/easoncyy.github.io" target="_blank" rel="noopener noreferrer" aria-label="查看本站 GitHub 仓库"><i class="bi bi-github" aria-hidden="true"></i><span>source/</span></a><span class="footer-builder">Built with Quarto</span></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

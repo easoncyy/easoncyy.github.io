@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="easoncyy（整理）">
+<meta name="description" content="2022-2023 学年期中试卷：题目、详细解析与知识点总结。">
+
+<title>2022-2023 学年秋冬《线性代数（甲）》期中归档 – 个人笔记</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/favicon.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-a7952132dd87ce33f437addd0578540c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-dc090d8f6625c822698d9a6ee9cd1ac5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "没有结果",
+    "search-matching-documents-text": "匹配的文档",
+    "search-copy-link-title": "复制搜索链接",
+    "search-hide-matches-text": "隐藏其它匹配结果",
+    "search-more-match-text": "更多匹配结果",
+    "search-more-matches-text": "更多匹配结果",
+    "search-clear-button-title": "清除",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "取消",
+    "search-submit-button-title": "提交",
+    "search-label": "搜索"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script defer="" src="../../assets/directory.js?v=05751f758f0b"></script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="../../assets/vendor/mathjax/tex-svg-full.js?v=a4354ff94fd8" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css?v=83131ce44c97">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/logo.svg" alt="Ce · easoncyy" class="navbar-logo light-content">
+    <img src="../../assets/logo.svg" alt="Ce · easoncyy" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">~/notes</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="搜索"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="展开或折叠导航栏" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html"> 
+<span class="menu-text"><span class="nav-path">blog/</span><span class="nav-caption">博客</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../problems.html"> 
+<span class="menu-text"><span class="nav-path">problems/</span><span class="nav-caption">每日好题</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../projects.html"> 
+<span class="menu-text"><span class="nav-path">projects/</span><span class="nav-caption">项目</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../log.html"> 
+<span class="menu-text"><span class="nav-path">log/</span><span class="nav-caption">日志</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../links.html"> 
+<span class="menu-text"><span class="nav-path">links/</span><span class="nav-caption">友链</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../library.html"> 
+<span class="menu-text"><span class="nav-path">library/</span><span class="nav-caption">图书馆</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text"><span class="nav-path">about/</span><span class="nav-caption">关于</span></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">本页目录</h2>
+   
+  <ul>
+  <li><a href="#questions" id="toc-questions" class="nav-link active" data-scroll-target="#questions">第一部分：题目</a>
+  <ul class="collapse">
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">1.</a></li>
+  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3">2.</a></li>
+  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4">3.</a></li>
+  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5">4.</a></li>
+  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6">5.</a></li>
+  <li><a href="#section-7" id="toc-section-7" class="nav-link" data-scroll-target="#section-7">6.</a></li>
+  <li><a href="#section-8" id="toc-section-8" class="nav-link" data-scroll-target="#section-8">7.</a></li>
+  <li><a href="#section-9" id="toc-section-9" class="nav-link" data-scroll-target="#section-9">8.</a></li>
+  </ul></li>
+  <li><a href="#solutions" id="toc-solutions" class="nav-link" data-scroll-target="#solutions">第二部分：详细解析</a>
+  <ul class="collapse">
+  <li><a href="#section-11" id="toc-section-11" class="nav-link" data-scroll-target="#section-11">1.</a></li>
+  <li><a href="#section-12" id="toc-section-12" class="nav-link" data-scroll-target="#section-12">2.</a></li>
+  <li><a href="#section-13" id="toc-section-13" class="nav-link" data-scroll-target="#section-13">3.</a></li>
+  <li><a href="#section-14" id="toc-section-14" class="nav-link" data-scroll-target="#section-14">4.</a></li>
+  <li><a href="#section-15" id="toc-section-15" class="nav-link" data-scroll-target="#section-15">5.</a></li>
+  <li><a href="#section-16" id="toc-section-16" class="nav-link" data-scroll-target="#section-16">6.</a></li>
+  <li><a href="#section-17" id="toc-section-17" class="nav-link" data-scroll-target="#section-17">7.</a></li>
+  <li><a href="#section-18" id="toc-section-18" class="nav-link" data-scroll-target="#section-18">8.</a></li>
+  </ul></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">第三部分：知识点总结</a>
+  <ul class="collapse">
+  <li><a href="#section-20" id="toc-section-20" class="nav-link" data-scroll-target="#section-20">答案与考点</a></li>
+  <li><a href="#section-21" id="toc-section-21" class="nav-link" data-scroll-target="#section-21">复习要点</a></li>
+  <li><a href="#section-22" id="toc-section-22" class="nav-link" data-scroll-target="#section-22">易错点清单</a></li>
+  </ul></li>
+  <li><a href="#section-23" id="toc-section-23" class="nav-link" data-scroll-target="#section-23">⚖️AI 协作与版权声明</a>
+  <ul class="collapse">
+  <li><a href="#section-24" id="toc-section-24" class="nav-link" data-scroll-target="#section-24">AI 协作说明</a></li>
+  <li><a href="#section-25" id="toc-section-25" class="nav-link" data-scroll-target="#section-25">来源与权利归属</a></li>
+  <li><a href="#section-26" id="toc-section-26" class="nav-link" data-scroll-target="#section-26">开放许可与转载要求</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">2022-2023 学年秋冬《线性代数（甲）》期中归档</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">历年卷</div>
+    <div class="quarto-category">期中</div>
+    <div class="quarto-category">真题</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    2022-2023 学年期中试卷：题目、详细解析与知识点总结。
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">作者</div>
+    <div class="quarto-title-meta-contents">
+             <p>easoncyy（整理） </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">发布于</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2026年10月27日</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>共 8 道题，保留试卷题号和分值。先独立作答，再对照解析与考点索引。</p>
+<p>来源：<a href="../../assets/pdf/exams/linear-algebra-midterm-questions.pdf">题目合集</a>、<a href="../../assets/pdf/exams/linear-algebra-midterm-solutions.pdf">解析合集</a>。合集整理者：macanine。</p>
+<div class="download-box">
+<p><a href="../../assets/pdf/exams/practice/linear-algebra-midterm-2022-2023-practice.pdf" target="_blank">在线阅读练习卷 PDF ↗</a> · <a href="../../assets/pdf/exams/practice/linear-algebra-midterm-2022-2023-practice.pdf" download="linear-algebra-midterm-2022-2023-practice.pdf">下载练习卷 PDF ↓</a></p>
+<p>根据归档题目整理的练习版，非原卷扫描件；仅含题目，并留有作答空间。</p>
+</div>
+<section id="questions" class="level2">
+<h2 class="anchored" data-anchor-id="questions">第一部分：题目</h2>
+<section id="section-2" class="level3">
+<h3 class="anchored" data-anchor-id="section-2">1.</h3>
+<p>计算行列式</p>
+<p><span class="math display">\[D_1 = \begin{vmatrix} 2 &amp; 4 &amp; 6 &amp; 8 \\ 4 &amp; 6 &amp; 8 &amp; 2 \\ 6 &amp; 8 &amp; 2 &amp; 4 \\ 8 &amp; 2 &amp; 4 &amp; 6 \end{vmatrix}。\]</span></p>
+</section>
+<section id="section-3" class="level3">
+<h3 class="anchored" data-anchor-id="section-3">2.</h3>
+<p>已知 <span class="math inline">\(n + 1\)</span> 阶行列式</p>
+<p><span class="math display">\[D = \begin{vmatrix} -1 &amp; x_1 &amp; x_2 &amp; \cdots &amp; x_n \\ 1 &amp; 2 &amp; 0 &amp; \cdots &amp; 0 \\ 1 &amp; 0 &amp; 3 &amp; \cdots &amp; 0 \\ \vdots &amp; \vdots &amp; \vdots &amp; &amp; \vdots \\ 1 &amp; 0 &amp; 0 &amp; \cdots &amp; n + 1 \end{vmatrix},\]</span></p>
+<p><span class="math inline">\(x_1, x_2, \cdots, x_n\)</span> 为任意常数，求</p>
+<p><span class="math display">\[4A_1 + 9A_2 + \cdots + (n + 1)^2A_n,\]</span></p>
+<p>其中 <span class="math inline">\(A_1, A_2, \cdots, A_n\)</span> 分别为 <span class="math inline">\(x_1, x_2, \cdots, x_n\)</span> 的代数余子式。</p>
+</section>
+<section id="section-4" class="level3">
+<h3 class="anchored" data-anchor-id="section-4">3.</h3>
+<p>求解线性方程组</p>
+<p><span class="math display">\[\begin{cases} \lambda x_1 + x_2 + x_3 + x_4 = 1, \\ x_1 + \lambda x_2 + x_3 + x_4 = \lambda, \\ x_1 + x_2 + \lambda x_3 + x_4 = \lambda^2. \end{cases}\]</span></p>
+</section>
+<section id="section-5" class="level3">
+<h3 class="anchored" data-anchor-id="section-5">4.</h3>
+<p>用初等行变换将矩阵</p>
+<p><span class="math display">\[A = \begin{pmatrix} 1 &amp; 2 &amp; 5 &amp; -1 &amp; -1 \\ 1 &amp; 2 &amp; 3 &amp; 1 &amp; 3 \\ 3 &amp; 6 &amp; 13 &amp; -1 &amp; 1 \\ 5 &amp; 10 &amp; 21 &amp; -1 &amp; 3 \end{pmatrix}\]</span></p>
+<p>化简成行阶梯形矩阵 <span class="math inline">\(B\)</span>，使 <span class="math inline">\(B\)</span> 的阶梯头为 1。</p>
+</section>
+<section id="section-6" class="level3">
+<h3 class="anchored" data-anchor-id="section-6">5.</h3>
+<p>设 <span class="math inline">\(r\)</span> 为自然数。</p>
+<p>（1）叙述秩的定义；</p>
+<p>（2）证明：<span class="math inline">\(r(A) \leq r\)</span> 当且仅当 <span class="math inline">\(A\)</span> 中 <span class="math inline">\(r + 1\)</span> 阶子式（若有）均为 0；</p>
+<p>（3）设 <span class="math inline">\(A\)</span> 通过一次行倍加得到 <span class="math inline">\(B\)</span>，求证：<span class="math inline">\(r(B) = r(A)\)</span>。</p>
+</section>
+<section id="section-7" class="level3">
+<h3 class="anchored" data-anchor-id="section-7">6.</h3>
+<p>设有 <span class="math inline">\(n\ (\geq 2)\)</span> 阶方阵 <span class="math inline">\(A\)</span>，<span class="math inline">\(A^{*}\)</span> 为 <span class="math inline">\(A\)</span> 的伴随矩阵，证明：</p>
+<p>（1）<span class="math inline">\(r(A^{*}) = \begin{cases} n, &amp; r(A) = n, \\ 1, &amp; r(A) = n - 1, \\ 0, &amp; r(A) &lt; n - 1; \end{cases}\)</span></p>
+<p>（2）<span class="math inline">\((A^{*})^{*} = |A|^{n-2}A\)</span>；</p>
+<p>（3）若 <span class="math inline">\(r(A) &gt; 0\)</span>，则 <span class="math inline">\((A^{*})^{*} = A\)</span> 当且仅当 <span class="math inline">\(|A|^{n-2} = 1\)</span>。</p>
+</section>
+<section id="section-8" class="level3">
+<h3 class="anchored" data-anchor-id="section-8">7.</h3>
+<p>设 <span class="math inline">\(A, C, D\)</span> 均为 <span class="math inline">\(m \times n\)</span> 阶矩阵，<span class="math inline">\(B, D\)</span> 均为 <span class="math inline">\(n \times s\)</span> 阶矩阵，证明：<span class="math inline">\(r(AB - CD) \leq r(A - C) + r(B - D)\)</span>。</p>
+</section>
+<section id="section-9" class="level3">
+<h3 class="anchored" data-anchor-id="section-9">8.</h3>
+<p>设 <span class="math inline">\(A\)</span> 为 <span class="math inline">\(2022^{2022}\)</span> 阶方阵，用数学归纳法证明：</p>
+<p><span class="math display">\[\forall n \in Z^{+},\ \forall m \in Z^{+},\quad (n + 1)r(A^2) \leq r(A^{n+2}) + mr(A).\]</span></p>
+</section>
+</section>
+<section id="solutions" class="level2">
+<h2 class="anchored" data-anchor-id="solutions">第二部分：详细解析</h2>
+<section id="section-11" class="level3">
+<h3 class="anchored" data-anchor-id="section-11">1.</h3>
+<p>各行的四个数之和都是 <span class="math inline">\(2 + 4 + 6 + 8 = 20\)</span>，故把第 2, 3, 4 列统统加到第 1 列，第 1 列的元素全变成 20，提出公因子 20：</p>
+<p><span class="math display">\[D_1 = 20\begin{vmatrix} 1 &amp; 4 &amp; 6 &amp; 8 \\ 1 &amp; 6 &amp; 8 &amp; 2 \\ 1 &amp; 8 &amp; 2 &amp; 4 \\ 1 &amp; 2 &amp; 4 &amp; 6 \end{vmatrix}.\]</span></p>
+<p>再用行倍加 <span class="math inline">\(R_i \leftarrow R_i - R_1\)</span>（<span class="math inline">\(i = 2, 3, 4\)</span>）把第 1 列的后三个元素消成零，并按第 1 列展开：</p>
+<p><span class="math display">\[D_1 = 20\begin{vmatrix} 1 &amp; 4 &amp; 6 &amp; 8 \\ 0 &amp; 2 &amp; 2 &amp; -6 \\ 0 &amp; 4 &amp; -4 &amp; -4 \\ 0 &amp; -2 &amp; -2 &amp; -2 \end{vmatrix} = 20\begin{vmatrix} 2 &amp; 2 &amp; -6 \\ 4 &amp; -4 &amp; -4 \\ -2 &amp; -2 &amp; -2 \end{vmatrix}.\]</span></p>
+<p>右边三阶行列式按第一行展开，两个二阶余子式分别是 <span class="math inline">\(\begin{vmatrix} -4 &amp; -4 \\ -2 &amp; -2 \end{vmatrix} = 0\)</span> 与 <span class="math inline">\(\begin{vmatrix} 4 &amp; -4 \\ -2 &amp; -2 \end{vmatrix} = -16\)</span>，于是</p>
+<p><span class="math display">\[D_1 = 20\left(2 \cdot 0 - 2 \cdot (-16) + (-6) \cdot (-16)\right) = 20 \cdot 128 = 2560.\]</span></p>
+<p><strong>答案</strong> <span class="math inline">\(D_1 = 2560\)</span>。</p>
+<p><strong>考点</strong> 行列式。</p>
+<p><strong>易错点</strong> 交换两行变号；倍乘一行才提取一个因子；余子式须带 <span class="math inline">\((-1)^{i+j}\)</span>。</p>
+<p><span id="answer-1"></span></p>
+</section>
+<section id="section-12" class="level3">
+<h3 class="anchored" data-anchor-id="section-12">2.</h3>
+<p>构造新行列式。记 <span class="math inline">\(D'\)</span> 为把 <span class="math inline">\(D\)</span> 的第一行换成 <span class="math inline">\((0, 2^2, 3^2, \cdots, (n + 1)^2)\)</span>（即第 <span class="math inline">\(i + 1\)</span> 列放 <span class="math inline">\((i + 1)^2\)</span>）、其余各行不动所得到的行列式。<span class="math inline">\(D\)</span> 与 <span class="math inline">\(D'\)</span> 只在第一行不同，而代数余子式只依赖于划去该行该列后剩下的子式，所以 <span class="math inline">\(D\)</span> 中 <span class="math inline">\(x_i\)</span> 所在位置（第一行第 <span class="math inline">\(i + 1\)</span> 列）的代数余子式在 <span class="math inline">\(D'\)</span> 中仍然是 <span class="math inline">\(A_i\)</span>。把 <span class="math inline">\(D'\)</span> 按第一行展开，第一列的元素是 0，于是</p>
+<p><span class="math display">\[D' = 0 \cdot A_0 + 2^2A_1 + 3^2A_2 + \cdots + (n + 1)^2A_n = \sum_{i=1}^{n}(i + 1)^2A_i,\]</span></p>
+<p>（<span class="math inline">\(A_0\)</span> 是第一行第一列元素的代数余子式，它乘 0，不影响结果。）这说明所求的组合恰好就是 <span class="math inline">\(D'\)</span> 的值。</p>
+<p>计算 <span class="math inline">\(D'\)</span>。<span class="math inline">\(D'\)</span> 的第一列是 <span class="math inline">\((0, 1, 1, \cdots, 1)^{\mathrm{T}}\)</span>，按第一列展开得</p>
+<p><span class="math display">\[D' = \sum_{j=2}^{n+1}(-1)^{j+1}M_{j1},\]</span></p>
+<p><span class="math inline">\(M_{j1}\)</span> 是划去 <span class="math inline">\(D'\)</span> 的第 <span class="math inline">\(j\)</span> 行与第 1 列后余下的 <span class="math inline">\(n\)</span> 阶子式。划去后，原第一行剩下 <span class="math inline">\((2^2, 3^2, \cdots, (n+1)^2)\)</span>，而原来的第 <span class="math inline">\(\ell\)</span> 行（<span class="math inline">\(\ell = 2, \cdots, n + 1\)</span>，<span class="math inline">\(\ell \neq j\)</span>）只剩下一个非零元：数值为 <span class="math inline">\(\ell\)</span>、位于第 <span class="math inline">\(\ell\)</span> 列。把 <span class="math inline">\((2^2, 3^2, \cdots, (n+1)^2)\)</span> 这一行逐次与相邻行交换、下移到第 <span class="math inline">\(j - 1\)</span> 行（共 <span class="math inline">\(j - 2\)</span> 次交换，代价符号 <span class="math inline">\((-1)^{j-2}\)</span>）。此时前 <span class="math inline">\(j - 2\)</span> 行各只有一个非零元 <span class="math inline">\(2, 3, \cdots, j - 1\)</span>，沿它们依次展开后余下的子块为上三角阵，其对角元依次为 <span class="math inline">\(j, j + 1, \cdots, n + 1\)</span>，于是</p>
+<p><span class="math display">\[M_{j1} = (-1)^{j-2} \cdot j^2 \cdot \prod_{\substack{\ell=2 \\ \ell \neq j}}^{n+1}\ell = (-1)^{j-2}j^2 \cdot \frac{(n + 1)!}{j} = (-1)^{j-2}j\,(n + 1)!,\]</span></p>
+<p>最后一步用了 <span class="math inline">\(\prod_{\ell=2}^{n+1}\ell = (n + 1)!\)</span>。代入 <span class="math inline">\((-1)^{j+1}(-1)^{j-2} = (-1)^{2j-1} = -1\)</span>，得</p>
+<p><span class="math display">\[D' = -(n + 1)!\sum_{j=2}^{n+1}j = -(n + 1)! \cdot \frac{(n + 1)(n + 2) - 2}{2} = -\frac{n(n + 3)}{2}(n + 1)!.\]</span></p>
+<p><strong>答案</strong> <span class="math inline">\(4A_1 + 9A_2 + \cdots + (n + 1)^2A_n = -\dfrac{n(n + 3)}{2}(n + 1)!\)</span>。</p>
+<p><strong>验算</strong>：取 <span class="math inline">\(n = 2\)</span> 时 <span class="math inline">\(D\)</span> 为三阶行列式，直接算得 <span class="math inline">\(A_1 = -3\)</span>，<span class="math inline">\(A_2 = -2\)</span>，所求为 <span class="math inline">\(4 \times (-3) + 9 \times (-2) = -30\)</span>，与公式 <span class="math inline">\(-\dfrac{2 \times 5}{2} \cdot 3! = -30\)</span> 一致。</p>
+<p><strong>考点</strong> 行列式。</p>
+<p><strong>易错点</strong> 交换两行变号；倍乘一行才提取一个因子；余子式须带 <span class="math inline">\((-1)^{i+j}\)</span>。</p>
+<p><span id="answer-2"></span></p>
+</section>
+<section id="section-13" class="level3">
+<h3 class="anchored" data-anchor-id="section-13">3.</h3>
+<p>对增广矩阵作初等行变换：先交换第 1, 3 行，再作行倍加 <span class="math inline">\(R_2 - R_1\)</span> 与 <span class="math inline">\(R_3 - \lambda R_1\)</span>，得</p>
+<p><span class="math display">\[\begin{pmatrix} 1 &amp; 1 &amp; \lambda &amp; 1 &amp; \Big|\ \lambda^2 \\ 0 &amp; \lambda - 1 &amp; 1 - \lambda &amp; 0 &amp; \Big|\ \lambda - \lambda^2 \\ 0 &amp; 1 - \lambda &amp; 1 - \lambda^2 &amp; 1 - \lambda &amp; \Big|\ 1 - \lambda^3 \end{pmatrix}.\]</span></p>
+<p>先设 <span class="math inline">\(\lambda \neq 1\)</span>，此时可把后两行分别除以 <span class="math inline">\(\lambda - 1\)</span> 与 <span class="math inline">\(1 - \lambda\)</span>（用 <span class="math inline">\(1 - \lambda^3 = (1 - \lambda)(1 + \lambda + \lambda^2)\)</span>），再作 <span class="math inline">\(R_3 - R_2\)</span>：</p>
+<p><span class="math display">\[\begin{pmatrix} 1 &amp; 1 &amp; \lambda &amp; 1 &amp; \Big|\ \lambda^2 \\ 0 &amp; 1 &amp; -1 &amp; 0 &amp; \Big|\ -\lambda \\ 0 &amp; 0 &amp; \lambda + 2 &amp; 1 &amp; \Big|\ (\lambda + 1)^2 \end{pmatrix}.\]</span></p>
+<p>当 <span class="math inline">\(\lambda \neq -2\)</span> 时系数矩阵的秩为 3，取 <span class="math inline">\(x_4 = t\)</span> 为自由未知量，回代得</p>
+<p><span class="math display">\[x_3 = \frac{(\lambda + 1)^2 - t}{\lambda + 2},\quad x_2 = x_3 - \lambda = \frac{1 - t}{\lambda + 2},\quad x_1 = \lambda^2 - x_2 - \lambda x_3 - x_4 = -\frac{\lambda + 1 + t}{\lambda + 2},\]</span></p>
+<p>即通解</p>
+<p><span class="math display">\[(x_1, x_2, x_3, x_4)^{\mathrm{T}} = \frac{1}{\lambda + 2}\left(-(\lambda + 1), 1, (\lambda + 1)^2, 0\right)^{\mathrm{T}} + t \cdot \frac{1}{\lambda + 2}\left(-1, -1, -1, \lambda + 2\right)^{\mathrm{T}} \quad (t \in \mathbb{R}).\]</span></p>
+<p>当 <span class="math inline">\(\lambda = -2\)</span> 时第三行变成 <span class="math inline">\(x_4 = (\lambda + 1)^2 = 1\)</span>，系数矩阵的秩仍为 3，取 <span class="math inline">\(x_3 = t\)</span>，由 <span class="math inline">\(x_2 - x_3 = -\lambda = 2\)</span> 得</p>
+<p><span class="math display">\[(x_1, x_2, x_3, x_4)^{\mathrm{T}} = (1, 2, 0, 1)^{\mathrm{T}} + t\,(1, 1, 1, 0)^{\mathrm{T}} \quad (t \in \mathbb{R}).\]</span></p>
+<p>再设 <span class="math inline">\(\lambda = 1\)</span>，三个方程都成为 <span class="math inline">\(x_1 + x_2 + x_3 + x_4 = 1\)</span>，系数矩阵的秩为 1，解集是一个三维平面：</p>
+<p><span class="math display">\[x_1 = 1 - t_1 - t_2 - t_3,\quad x_2 = t_1,\quad x_3 = t_2,\quad x_4 = t_3 \quad (t_1, t_2, t_3 \in \mathbb{R}).\]</span></p>
+<p><strong>答案</strong> 方程组总有无穷多解：<span class="math inline">\(\lambda \neq 1, -2\)</span> 时通解为 <span class="math inline">\(\left(-(\lambda + 1), 1, (\lambda + 1)^2, 0\right)^{\mathrm{T}}/(\lambda + 2) + t\left(-1, -1, -1, \lambda + 2\right)^{\mathrm{T}}/(\lambda + 2)\)</span>；<span class="math inline">\(\lambda = -2\)</span> 时通解为 <span class="math inline">\((1, 2, 0, 1)^{\mathrm{T}} + t(1, 1, 1, 0)^{\mathrm{T}}\)</span>；<span class="math inline">\(\lambda = 1\)</span> 时解集为 <span class="math inline">\(x_1 + x_2 + x_3 + x_4 = 1\)</span>。</p>
+<p><strong>考点</strong> 线性方程组。</p>
+<p><strong>易错点</strong> 含参消元在除以参数前先分情形；通解写成特解加齐次通解。</p>
+<p><span id="answer-3"></span></p>
+</section>
+<section id="section-14" class="level3">
+<h3 class="anchored" data-anchor-id="section-14">4.</h3>
+<p>把第 2, 3, 4 行分别减去第 1 行的 1, 3, 5 倍：</p>
+<p><span class="math display">\[A \to \begin{pmatrix} 1 &amp; 2 &amp; 5 &amp; -1 &amp; -1 \\ 0 &amp; 0 &amp; -2 &amp; 2 &amp; 4 \\ 0 &amp; 0 &amp; -2 &amp; 2 &amp; 4 \\ 0 &amp; 0 &amp; -4 &amp; 4 &amp; 8 \end{pmatrix}.\]</span></p>
+<p>此时第 3 行与第 2 行相同，第 4 行是第 2 行的 2 倍，故再作 <span class="math inline">\(R_3 - R_2\)</span>、<span class="math inline">\(R_4 - 2R_2\)</span> 得</p>
+<p><span class="math display">\[\to \begin{pmatrix} 1 &amp; 2 &amp; 5 &amp; -1 &amp; -1 \\ 0 &amp; 0 &amp; -2 &amp; 2 &amp; 4 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \end{pmatrix} \to \begin{pmatrix} 1 &amp; 2 &amp; 5 &amp; -1 &amp; -1 \\ 0 &amp; 0 &amp; 1 &amp; -1 &amp; -2 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \end{pmatrix} = B,\]</span></p>
+<p>最后一步是把第 2 行乘以 <span class="math inline">\(-\dfrac{1}{2}\)</span>。<span class="math inline">\(B\)</span> 的阶梯头（每行第一个非零元）分别为第 1, 3 列的 1，已是所要求的行阶梯形，且 <span class="math inline">\(r(A) = r(B) = 2\)</span>。若继续把第 1 行减去 5 倍的第 2 行，可得行最简形</p>
+<p><span class="math display">\[\begin{pmatrix} 1 &amp; 2 &amp; 0 &amp; 4 &amp; 9 \\ 0 &amp; 0 &amp; 1 &amp; -1 &amp; -2 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \end{pmatrix}.\]</span></p>
+<p><strong>答案</strong> <span class="math inline">\(B = \begin{pmatrix} 1 &amp; 2 &amp; 5 &amp; -1 &amp; -1 \\ 0 &amp; 0 &amp; 1 &amp; -1 &amp; -2 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \end{pmatrix}\)</span>（阶梯头在第 1, 3 列，<span class="math inline">\(r(A) = r(B) = 2\)</span>）。</p>
+<p><strong>考点</strong> 初等变换。</p>
+<p><strong>易错点</strong> 行、列操作混用时要区分作用侧；同侧变换的先后次序不能随意交换。</p>
+<p><span id="answer-4"></span></p>
+</section>
+<section id="section-15" class="level3">
+<h3 class="anchored" data-anchor-id="section-15">5.</h3>
+<p>（1）秩的定义。设 <span class="math inline">\(A\)</span> 是 <span class="math inline">\(m \times n\)</span> 矩阵。如果在 <span class="math inline">\(A\)</span> 中有一个 <span class="math inline">\(r\)</span> 阶子式不为零，而所有 <span class="math inline">\(r + 1\)</span> 阶子式（如果存在的话）全为零，就称 <span class="math inline">\(A\)</span> 的秩为 <span class="math inline">\(r\)</span>，记作 <span class="math inline">\(r(A)\)</span>；即 <span class="math inline">\(r(A)\)</span> 就是 <span class="math inline">\(A\)</span> 中非零子式的最高阶数。零矩阵没有非零子式，规定 <span class="math inline">\(r(O) = 0\)</span>。（由此 <span class="math inline">\(0 \leq r(A) \leq \min\{m, n\}\)</span>。）</p>
+<p>（2）必要性（<span class="math inline">\(r(A) \leq r \Rightarrow\)</span> 所有 <span class="math inline">\(r + 1\)</span> 阶子式为零）：若 <span class="math inline">\(A\)</span> 有一个非零的 <span class="math inline">\(r + 1\)</span> 阶子式，则 <span class="math inline">\(A\)</span> 中非零子式的最高阶数至少为 <span class="math inline">\(r + 1\)</span>，即 <span class="math inline">\(r(A) \geq r + 1\)</span>，矛盾。</p>
+<p>充分性（所有 <span class="math inline">\(r + 1\)</span> 阶子式为零 <span class="math inline">\(\Rightarrow r(A) \leq r\)</span>）：先用一个事实——若非零的 <span class="math inline">\(s\)</span> 阶子式 <span class="math inline">\(D\)</span> 存在，则 <span class="math inline">\(D\)</span> 中必有一行不全为零，把 <span class="math inline">\(D\)</span> 按这一行展开，<span class="math inline">\(D\)</span> 等于该行各元素与其代数余子式乘积之和；既然 <span class="math inline">\(D \neq 0\)</span>，至少有一个 <span class="math inline">\(s - 1\)</span> 阶余子式不为零，即 <span class="math inline">\(A\)</span> 中存在非零的 <span class="math inline">\(s - 1\)</span> 阶子式。假若 <span class="math inline">\(r(A) = s &gt; r\)</span>，取一个非零的 <span class="math inline">\(s\)</span> 阶子式，反复使用上述事实，便从非零的 <span class="math inline">\(s\)</span> 阶子式依次得到非零的 <span class="math inline">\(s - 1\)</span> 阶、<span class="math inline">\(s - 2\)</span> 阶、<span class="math inline">\(\cdots\)</span>、<span class="math inline">\(r + 1\)</span> 阶子式，与“所有 <span class="math inline">\(r + 1\)</span> 阶子式为零”矛盾，故 <span class="math inline">\(r(A) \leq r\)</span>。（当 <span class="math inline">\(r + 1 &gt; \min\{m, n\}\)</span> 时 <span class="math inline">\(A\)</span> 没有 <span class="math inline">\(r + 1\)</span> 阶子式，条件空真，而此时 <span class="math inline">\(r(A) \leq \min\{m, n\} \leq r\)</span>，结论同样成立。）</p>
+<p>（3）设 <span class="math inline">\(B\)</span> 由 <span class="math inline">\(A\)</span> 经一次行倍加得到，即 <span class="math inline">\(B\)</span> 的第 <span class="math inline">\(j\)</span> 行等于 <span class="math inline">\(A\)</span> 的第 <span class="math inline">\(j\)</span> 行加上第 <span class="math inline">\(i\)</span> 行的 <span class="math inline">\(k\)</span> 倍（<span class="math inline">\(i \neq j\)</span>），其余各行与 <span class="math inline">\(A\)</span> 的对应行相同。</p>
+<p>考察 <span class="math inline">\(B\)</span> 的任一 <span class="math inline">\(s\)</span> 阶子式，设它的行取自 <span class="math inline">\(B\)</span> 的第 <span class="math inline">\(r_1 &lt; \cdots &lt; r_s\)</span> 行。若行标中不含 <span class="math inline">\(j\)</span>，该子式就是 <span class="math inline">\(A\)</span> 的同一个 <span class="math inline">\(s\)</span> 阶子式；若含 <span class="math inline">\(j\)</span>，则由行列式对行的线性性，该子式的行列式等于 <span class="math inline">\(D_1 + kD_2\)</span>，其中 <span class="math inline">\(D_1\)</span> 是把这一行换回 <span class="math inline">\(A\)</span> 的第 <span class="math inline">\(j\)</span> 行所得的行列式，<span class="math inline">\(D_2\)</span> 是把这一行换成 <span class="math inline">\(A\)</span> 的第 <span class="math inline">\(i\)</span> 行所得的行列式：<span class="math inline">\(D_1\)</span> 是 <span class="math inline">\(A\)</span> 的 <span class="math inline">\(s\)</span> 阶子式；<span class="math inline">\(D_2\)</span> 当 <span class="math inline">\(i\)</span> 也在行标中时因两行相同而为 0，否则也是 <span class="math inline">\(A\)</span> 的 <span class="math inline">\(s\)</span> 阶子式。总之，<span class="math inline">\(B\)</span> 的每个 <span class="math inline">\(s\)</span> 阶子式都是 <span class="math inline">\(A\)</span> 的 <span class="math inline">\(s\)</span> 阶子式的线性组合。</p>
+<p>取 <span class="math inline">\(s = r(A) + 1\)</span>：由（2），<span class="math inline">\(A\)</span> 的 <span class="math inline">\(r(A) + 1\)</span> 阶子式全为零，故 <span class="math inline">\(B\)</span> 的 <span class="math inline">\(r(A) + 1\)</span> 阶子式也全为零，再由（2）得 <span class="math inline">\(r(B) \leq r(A)\)</span>。反过来，<span class="math inline">\(A\)</span> 也可由 <span class="math inline">\(B\)</span> 经一次行倍加得到（第 <span class="math inline">\(j\)</span> 行加上第 <span class="math inline">\(i\)</span> 行的 <span class="math inline">\(-k\)</span> 倍），同理 <span class="math inline">\(r(A) \leq r(B)\)</span>。故 <span class="math inline">\(r(B) = r(A)\)</span>。</p>
+<p><strong>考点</strong> 秩与空间维数。</p>
+<p><strong>易错点</strong> 秩是最大非零子式的阶数；区分零空间、列空间与行空间。</p>
+<p><span id="answer-5"></span></p>
+</section>
+<section id="section-16" class="level3">
+<h3 class="anchored" data-anchor-id="section-16">6.</h3>
+<p>（1）分三种情形。若 <span class="math inline">\(r(A) = n\)</span>：<span class="math inline">\(A\)</span> 可逆，由 <span class="math inline">\(A^{*} = |A|A^{-1}\)</span> 知 <span class="math inline">\(A^{*}\)</span> 也可逆，故 <span class="math inline">\(r(A^{*}) = n\)</span>。若 <span class="math inline">\(r(A) = n - 1\)</span>：<span class="math inline">\(A\)</span> 有非零的 <span class="math inline">\(n - 1\)</span> 阶子式，而 <span class="math inline">\(A^{*}\)</span> 的每个元素都是 <span class="math inline">\(A\)</span> 的 <span class="math inline">\(n - 1\)</span> 阶代数余子式，故 <span class="math inline">\(A^{*} \neq O\)</span>，<span class="math inline">\(r(A^{*}) \geq 1\)</span>。另一方面 <span class="math inline">\(|A| = 0\)</span>，由基本等式 <span class="math inline">\(AA^{*} = |A|E\)</span> 得 <span class="math inline">\(AA^{*} = O\)</span>，即 <span class="math inline">\(A^{*}\)</span> 的每一列 <span class="math inline">\(X\)</span> 都满足 <span class="math inline">\(AX = \theta\)</span>，于是</p>
+<p><span class="math display">\[\mathrm{Col}(A^{*}) \subseteq \ker A.\]</span></p>
+<p>由秩－零化度定理（并把秩看作列空间的维数）得 <span class="math inline">\(\dim \ker A = n - r(A) = 1\)</span>；又 <span class="math inline">\(r(A^{*}) = \dim \mathrm{Col}(A^{*})\)</span>，故 <span class="math inline">\(r(A^{*}) \leq 1\)</span>。两端合起来得 <span class="math inline">\(r(A^{*}) = 1\)</span>。若 <span class="math inline">\(r(A) &lt; n - 1\)</span>：<span class="math inline">\(A\)</span> 的所有 <span class="math inline">\(n - 1\)</span> 阶子式全为零，故 <span class="math inline">\(A^{*} = O\)</span>，<span class="math inline">\(r(A^{*}) = 0\)</span>。</p>
+<p>（2）当 <span class="math inline">\(|A| \neq 0\)</span> 时 <span class="math inline">\(A^{*} = |A|A^{-1}\)</span>。对 <span class="math inline">\(A^{*}A = |A|E\)</span> 两边取行列式：<span class="math inline">\(|A^{*}| \cdot |A| = |A|^{n}\)</span>，故 <span class="math inline">\(|A^{*}| = |A|^{n-1}\)</span>，于是</p>
+<p><span class="math display">\[(A^{*})^{*} = |A^{*}|(A^{*})^{-1} = |A|^{n-1} \cdot \frac{A}{|A|} = |A|^{n-2}A.\]</span></p>
+<p>当 <span class="math inline">\(|A| = 0\)</span> 时 <span class="math inline">\(r(A) \leq n - 1\)</span>，由（1）知 <span class="math inline">\(r(A^{*}) \leq 1\)</span>。若 <span class="math inline">\(n \geq 3\)</span>，则 <span class="math inline">\(r(A^{*}) \leq 1 \leq n - 2 &lt; n - 1\)</span>，把（1）用于 <span class="math inline">\(n\)</span> 阶矩阵 <span class="math inline">\(A^{*}\)</span> 得 <span class="math inline">\((A^{*})^{*} = O\)</span>；又此时 <span class="math inline">\(n - 2 \geq 1\)</span>，<span class="math inline">\(|A|^{n-2} = 0\)</span>，故仍成立 <span class="math inline">\((A^{*})^{*} = |A|^{n-2}A\)</span>。若 <span class="math inline">\(n = 2\)</span>，规定 <span class="math inline">\(|A|^{0} = 1\)</span>，直接验证（<span class="math inline">\(A = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}\)</span>，<span class="math inline">\(A^{*} = \begin{pmatrix} d &amp; -b \\ -c &amp; a \end{pmatrix}\)</span>）得 <span class="math inline">\((A^{*})^{*} = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix} = A = |A|^{0}A\)</span>。故对一切 <span class="math inline">\(n \geq 2\)</span> 有 <span class="math inline">\((A^{*})^{*} = |A|^{n-2}A\)</span>。</p>
+<p>（3）由（2），<span class="math inline">\((A^{*})^{*} = |A|^{n-2}A\)</span>，于是</p>
+<p><span class="math display">\[(A^{*})^{*} = A \iff |A|^{n-2}A = A \iff \left(|A|^{n-2} - 1\right)A = O.\]</span></p>
+<p>若 <span class="math inline">\(|A|^{n-2} = 1\)</span>，显然右边的等式成立，即 <span class="math inline">\((A^{*})^{*} = A\)</span>。反之设 <span class="math inline">\(\left(|A|^{n-2} - 1\right)A = O\)</span>：条件 <span class="math inline">\(r(A) &gt; 0\)</span> 等价于 <span class="math inline">\(A \neq O\)</span>，取 <span class="math inline">\(A\)</span> 的一个非零元素 <span class="math inline">\(a_{pq}\)</span>，比较矩阵等式两边的 <span class="math inline">\((p, q)\)</span> 元得 <span class="math inline">\(\left(|A|^{n-2} - 1\right)a_{pq} = 0\)</span>，故 <span class="math inline">\(|A|^{n-2} = 1\)</span>。因此当 <span class="math inline">\(r(A) &gt; 0\)</span> 时 <span class="math inline">\((A^{*})^{*} = A\)</span> 当且仅当 <span class="math inline">\(|A|^{n-2} = 1\)</span>。</p>
+<p><strong>考点</strong> 伴随矩阵、线性方程组、秩与空间维数。</p>
+<p><strong>易错点</strong> 先判断阶数与可逆性，不能把伴随矩阵当作转置。</p>
+<p><span id="answer-6"></span></p>
+</section>
+<section id="section-17" class="level3">
+<h3 class="anchored" data-anchor-id="section-17">7.</h3>
+<p>矩阵尺寸须满足：<span class="math inline">\(A,C\)</span> 为 <span class="math inline">\(m\times n\)</span> 矩阵，<span class="math inline">\(B,D\)</span> 为 <span class="math inline">\(n\times s\)</span> 矩阵。</p>
+<p>插入中间项 <span class="math inline">\(CB\)</span>，可得</p>
+<p><span class="math display">\[AB-CD=(A-C)B+C(B-D).\]</span></p>
+<p>由秩的和、积不等式，</p>
+<p><span class="math display">\[\begin{aligned}
+r(AB-CD)&amp;\le r((A-C)B)+r(C(B-D))\\
+&amp;\le r(A-C)+r(B-D).
+\end{aligned}\]</span></p>
+<p>其中乘积 <span class="math inline">\(XY\)</span> 的每一列都是 <span class="math inline">\(X\)</span> 的列向量的线性组合，故 <span class="math inline">\(\operatorname{Col}(XY)\subseteq\operatorname{Col}(X)\)</span>，从而 <span class="math inline">\(r(XY)\le r(X)\)</span>；转置后同理得 <span class="math inline">\(r(XY)\le r(Y)\)</span>。</p>
+<p><strong>考点</strong> 秩与空间维数。</p>
+<p><strong>易错点</strong> 秩是最大非零子式的阶数；区分零空间、列空间与行空间。</p>
+<p><span id="answer-7"></span></p>
+</section>
+<section id="section-18" class="level3">
+<h3 class="anchored" data-anchor-id="section-18">8.</h3>
+<p><strong>结论</strong> 对任意正整数 <span class="math inline">\(n,m\)</span> 的命题不成立。取 <span class="math inline">\(A=E_N\)</span>，<span class="math inline">\(N=2022^{2022}\)</span>，不等式变为 <span class="math inline">\((n+1)N\le(m+1)N\)</span>，在 <span class="math inline">\(m&lt;n\)</span> 时不成立。</p>
+<p>正确且更强的结论是</p>
+<p><span class="math display">\[\boxed{(n+1)r(A^2)\le r(A^{n+2})+n\,r(A).}\]</span></p>
+<p>它进一步保证题中不等式对所有 <span class="math inline">\(m\ge n\)</span> 成立。下面用归纳法证明。</p>
+<p>由 Frobenius 秩不等式，对 <span class="math inline">\(k\ge1\)</span> 有</p>
+<p><span class="math display">\[2r(A^{k+1})\le r(A^k)+r(A^{k+2}).\]</span></p>
+<p>因此 <span class="math inline">\(d_k=r(A^k)-r(A^{k+1})\)</span> 随 <span class="math inline">\(k\)</span> 单调不增，特别地</p>
+<p><span class="math display">\[r(A^{n+2})+r(A^2)\le r(A^{n+3})+r(A).\]</span></p>
+<p>当 <span class="math inline">\(n=1\)</span> 时，所证不等式正是 <span class="math inline">\(2r(A^2)\le r(A^3)+r(A)\)</span>。假设对 <span class="math inline">\(n\)</span> 成立，则</p>
+<p><span class="math display">\[\begin{aligned}
+(n+2)r(A^2)&amp;\le r(A^{n+2})+r(A^2)+n\,r(A)\\
+&amp;\le r(A^{n+3})+(n+1)r(A).
+\end{aligned}\]</span></p>
+<p>故结论对 <span class="math inline">\(n+1\)</span> 也成立。最后由 <span class="math inline">\(m\ge n\)</span> 和 <span class="math inline">\(r(A)\ge0\)</span>，得 <span class="math inline">\(nr(A)\le mr(A)\)</span>，即得题中对应的有效情形。</p>
+<p><strong>考点</strong> 矩阵幂与多项式、秩与空间维数。</p>
+<p><strong>易错点</strong> 二项式展开须保证参与的矩阵可交换；幂零与零矩阵不是同一概念。</p>
+<p><span id="answer-8"></span></p>
+</section>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">第三部分：知识点总结</h2>
+<section id="section-20" class="level3">
+<h3 class="anchored" data-anchor-id="section-20">答案与考点</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>题号</th>
+<th>答案要点</th>
+<th>主要考点</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="#answer-1">1</a></td>
+<td>行列式计算：<span class="math inline">\(D_1=2560\)</span>。</td>
+<td>行列式</td>
+</tr>
+<tr class="even">
+<td><a href="#answer-2">2</a></td>
+<td>代数余子式的线性组合：<span class="math inline">\(4A_1+\cdots+(n+1)^{2}A_n=-\frac{n(n+3)}{2}(n+1)!\)</span>。</td>
+<td>行列式</td>
+</tr>
+<tr class="odd">
+<td><a href="#answer-3">3</a></td>
+<td>含参方程组：<span class="math inline">\(\lambda\neq1,-2\)</span> 时唯一解；<span class="math inline">\(\lambda=-2\)</span> 时有无穷多解（含特解）；<span class="math inline">\(\lambda=1\)</span> 时解为平面 <span class="math inline">\(x_1+x_2+x_3+x_4=1\)</span>。</td>
+<td>线性方程组</td>
+</tr>
+<tr class="even">
+<td><a href="#answer-4">4</a></td>
+<td>初等行变换化行阶梯形：阶梯头在第 1、3 列，<span class="math inline">\(r(A)=r(B)=2\)</span>。</td>
+<td>初等变换</td>
+</tr>
+<tr class="odd">
+<td><a href="#answer-5">5</a></td>
+<td>秩的定义与子式刻画（三小问）：<span class="math inline">\(r+1\)</span> 阶子式全为零 <span class="math inline">\(\iff r(A)\le r\)</span>；行倍加不改变秩。</td>
+<td>秩与空间维数</td>
+</tr>
+<tr class="even">
+<td><a href="#answer-6">6</a></td>
+<td>伴随矩阵：(1) <span class="math inline">\(r(A^{*})=n/1/0\)</span> 分情形；(2) <span class="math inline">\((A^{*})^{*}=\|A\|^{n-2}A\)</span>；(3) 由 <span class="math inline">\(a_{pq}\neq0\)</span> 得充要条件。</td>
+<td>伴随矩阵、线性方程组、秩与空间维数</td>
+</tr>
+<tr class="odd">
+<td><a href="#answer-7">7</a></td>
+<td><span class="math inline">\(AB-CD=(A-C)B+C(B-D)\)</span>，再用秩不等式。</td>
+<td>秩与空间维数</td>
+</tr>
+<tr class="even">
+<td><a href="#answer-8">8</a></td>
+<td>任意 <span class="math inline">\(n,m\)</span> 的命题不成立；<span class="math inline">\(m\ge n\)</span> 时成立。</td>
+<td>矩阵幂与多项式、秩与空间维数</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="section-21" class="level3">
+<h3 class="anchored" data-anchor-id="section-21">复习要点</h3>
+<ul>
+<li><strong>行列式：</strong>优先用行、列倍加制造零元；三对角型按首行展开建立递推，并核对初值。</li>
+<li><strong>线性方程组：</strong><span class="math inline">\(r(A)&lt;r(A\mid b)\)</span> 时无解；两秩相等时有解，自由参数个数为 <span class="math inline">\(n-r(A)\)</span>。</li>
+<li><strong>初等变换：</strong>行变换对应左乘初等矩阵，列变换对应右乘初等矩阵，连续操作按实际次序组合。</li>
+<li><strong>秩与空间维数：</strong><span class="math inline">\(r(XY)\le\min\{r(X),r(Y)\}\)</span>，<span class="math inline">\(r(X+Y)\le r(X)+r(Y)\)</span>；可逆初等变换不改变秩。</li>
+<li><strong>伴随矩阵：</strong><span class="math inline">\(AA^*=A^*A=|A|E\)</span>；<span class="math inline">\(|A^*|=|A|^{n-1}\)</span>；可逆时 <span class="math inline">\(A^*=|A|A^{-1}\)</span>。</li>
+<li><strong>矩阵幂与多项式：</strong>由已知的矩阵多项式关系降低幂次；秩一矩阵 <span class="math inline">\(uv^{\mathsf T}\)</span> 满足 <span class="math inline">\((uv^{\mathsf T})^m=(v^{\mathsf T}u)^{m-1}uv^{\mathsf T}\)</span>。</li>
+</ul>
+</section>
+<section id="section-22" class="level3">
+<h3 class="anchored" data-anchor-id="section-22">易错点清单</h3>
+<ul>
+<li>交换两行变号；倍乘一行才提取一个因子；余子式须带 <span class="math inline">\((-1)^{i+j}\)</span>。</li>
+<li>含参消元在除以参数前先分情形；通解写成特解加齐次通解。</li>
+<li>行、列操作混用时要区分作用侧；同侧变换的先后次序不能随意交换。</li>
+<li>秩是最大非零子式的阶数；区分零空间、列空间与行空间。</li>
+<li>先判断阶数与可逆性，不能把伴随矩阵当作转置。</li>
+<li>二项式展开须保证参与的矩阵可交换；幂零与零矩阵不是同一概念。</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="section-23" class="level2">
+<h2 class="anchored" data-anchor-id="section-23">⚖️AI 协作与版权声明</h2>
+<section id="section-24" class="level3">
+<h3 class="anchored" data-anchor-id="section-24">AI 协作说明</h3>
+<p>本文件由整理者提供资料并确定整理要求，使用 OpenAI Codex 辅助完成题目转写、LaTeX 公式录入、解题推导、知识点分析和 Markdown 排版。AI 辅助生成的解析属于学习参考内容，不代表命题教师、原资料作者或学校的官方解答；本声明不表示内容已经过人工逐题审核。使用时请结合教材与课程要求核验，发现问题可提出更正。</p>
+</section>
+<section id="section-25" class="level3">
+<h3 class="anchored" data-anchor-id="section-25">来源与权利归属</h3>
+<p>原始试卷及参考解析来自本库保存的浙江大学《线性代数（甲）》历年期中题目卷与解析卷 PDF 合集。合集署名整理者为 macanine，项目地址为 <a href="https://github.com/macanine/zju-linear-algebra-papers">zju-linear-algebra-papers</a>。原题、参考解析及其他第三方材料的权利归各自权利人所有，本文件的整理行为不改变其权利归属。来源标注用于说明出处，不表示已取得原资料的开放许可，也不表示原作者对本文件作出认可。</p>
+</section>
+<section id="section-26" class="level3">
+<h3 class="anchored" data-anchor-id="section-26">开放许可与转载要求</h3>
+<p>在整理贡献者依法有权许可的范围内，本文件新增的转写编排、补充解析和知识点整理采用 <strong>MIT License</strong>，许可正文如下。该许可不涵盖原题、原始参考解析、截图或其他第三方材料；使用这些材料须遵守其原有许可，或另行取得必要授权。</p>
+<p>转载或修改适用 MIT 许可的内容时，应保留以下版权与许可声明。转载包含原题或引用资料的版本时，也请保留资料来源及本节 AI 协作说明；修改者应注明修改内容，避免将补充或修改的结论归于原资料作者。</p>
+<pre class="text"><code>MIT License
+
+Copyright (c) 2026 easoncyy
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</code></pre>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<section id="comments" class="comments-section" aria-labelledby="comments-heading">
+  <h2 id="comments-heading">评论</h2>
+  <p id="comments-status">评论暂未开放。</p>
+  <div class="giscus"></div>
+</section>
+<script src="../../assets/comments-config.js?v=0740342d2f79"></script>
+<script src="../../assets/comments.js?v=efc269bc7855"></script>
+
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "已复制");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "已复制");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/easoncyy\.github\.io");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p><a href="../../posts/20261027-linear-algebra-midterm-2022-2023/index.html">~/notes</a> · 记录与探索</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p><a class="footer-repository" href="https://github.com/easoncyy/easoncyy.github.io" target="_blank" rel="noopener noreferrer" aria-label="查看本站 GitHub 仓库"><i class="bi bi-github" aria-hidden="true"></i><span>source/</span></a><span class="footer-builder">Built with Quarto</span></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

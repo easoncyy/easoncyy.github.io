@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="easoncyy（整理）">
+<meta name="description" content="2023-2024 学年期中试卷：题目、详细解析与知识点总结。">
+
+<title>2023-2024 学年《微积分（甲）Ⅰ》期中试卷归档 – 个人笔记</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/favicon.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-a7952132dd87ce33f437addd0578540c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-dc090d8f6625c822698d9a6ee9cd1ac5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "没有结果",
+    "search-matching-documents-text": "匹配的文档",
+    "search-copy-link-title": "复制搜索链接",
+    "search-hide-matches-text": "隐藏其它匹配结果",
+    "search-more-match-text": "更多匹配结果",
+    "search-more-matches-text": "更多匹配结果",
+    "search-clear-button-title": "清除",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "取消",
+    "search-submit-button-title": "提交",
+    "search-label": "搜索"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script defer="" src="../../assets/directory.js?v=05751f758f0b"></script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="../../assets/vendor/mathjax/tex-svg-full.js?v=a4354ff94fd8" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css?v=83131ce44c97">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/logo.svg" alt="Ce · easoncyy" class="navbar-logo light-content">
+    <img src="../../assets/logo.svg" alt="Ce · easoncyy" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">~/notes</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="搜索"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="展开或折叠导航栏" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html"> 
+<span class="menu-text"><span class="nav-path">blog/</span><span class="nav-caption">博客</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../problems.html"> 
+<span class="menu-text"><span class="nav-path">problems/</span><span class="nav-caption">每日好题</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../projects.html"> 
+<span class="menu-text"><span class="nav-path">projects/</span><span class="nav-caption">项目</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../log.html"> 
+<span class="menu-text"><span class="nav-path">log/</span><span class="nav-caption">日志</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../links.html"> 
+<span class="menu-text"><span class="nav-path">links/</span><span class="nav-caption">友链</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../library.html"> 
+<span class="menu-text"><span class="nav-path">library/</span><span class="nav-caption">图书馆</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text"><span class="nav-path">about/</span><span class="nav-caption">关于</span></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">本页目录</h2>
+   
+  <ul>
+  <li><a href="#questions" id="toc-questions" class="nav-link active" data-scroll-target="#questions">第一部分：题目</a>
+  <ul class="collapse">
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">1.</a></li>
+  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3">2.</a></li>
+  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4">3.</a></li>
+  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5">4.</a></li>
+  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6">5.</a></li>
+  <li><a href="#section-7" id="toc-section-7" class="nav-link" data-scroll-target="#section-7">6.</a></li>
+  <li><a href="#section-8" id="toc-section-8" class="nav-link" data-scroll-target="#section-8">7.</a></li>
+  <li><a href="#section-9" id="toc-section-9" class="nav-link" data-scroll-target="#section-9">8.</a></li>
+  <li><a href="#section-10" id="toc-section-10" class="nav-link" data-scroll-target="#section-10">9.</a></li>
+  <li><a href="#section-11" id="toc-section-11" class="nav-link" data-scroll-target="#section-11">10.</a></li>
+  <li><a href="#section-12" id="toc-section-12" class="nav-link" data-scroll-target="#section-12">11.</a></li>
+  <li><a href="#section-13" id="toc-section-13" class="nav-link" data-scroll-target="#section-13">12.</a></li>
+  <li><a href="#section-14" id="toc-section-14" class="nav-link" data-scroll-target="#section-14">13.</a></li>
+  <li><a href="#section-15" id="toc-section-15" class="nav-link" data-scroll-target="#section-15">14.</a></li>
+  </ul></li>
+  <li><a href="#solutions" id="toc-solutions" class="nav-link" data-scroll-target="#solutions">第二部分：详细解析</a>
+  <ul class="collapse">
+  <li><a href="#section-17" id="toc-section-17" class="nav-link" data-scroll-target="#section-17">解析 1：函数极限定义与证明</a></li>
+  <li><a href="#section-18" id="toc-section-18" class="nav-link" data-scroll-target="#section-18">解析 2：对数与三角复合的幂指极限</a></li>
+  <li><a href="#section-19" id="toc-section-19" class="nav-link" data-scroll-target="#section-19">解析 3：高阶小量与有界振荡</a></li>
+  <li><a href="#section-20" id="toc-section-20" class="nav-link" data-scroll-target="#section-20">解析 4：等价无穷小确定整数参数</a></li>
+  <li><a href="#section-21" id="toc-section-21" class="nav-link" data-scroll-target="#section-21">解析 5：有界三角扰动的求和极限</a></li>
+  <li><a href="#section-22" id="toc-section-22" class="nav-link" data-scroll-target="#section-22">解析 6：隐函数的二阶导数</a></li>
+  <li><a href="#section-23" id="toc-section-23" class="nav-link" data-scroll-target="#section-23">解析 7：对数根式函数的抵消</a></li>
+  <li><a href="#section-24" id="toc-section-24" class="nav-link" data-scroll-target="#section-24">解析 8：反正切复合函数的微分</a></li>
+  <li><a href="#section-25" id="toc-section-25" class="nav-link" data-scroll-target="#section-25">解析 9：分段函数的一阶与二阶可导性</a></li>
+  <li><a href="#section-26" id="toc-section-26" class="nav-link" data-scroll-target="#section-26">解析 10：广义二项式系数与高阶导数</a></li>
+  <li><a href="#section-27" id="toc-section-27" class="nav-link" data-scroll-target="#section-27">解析 11：摆线切线与参数二阶导数</a></li>
+  <li><a href="#section-28" id="toc-section-28" class="nav-link" data-scroll-target="#section-28">解析 12：按函数增量分段应用中值定理</a></li>
+  <li><a href="#section-29" id="toc-section-29" class="nav-link" data-scroll-target="#section-29">解析 13：多项式正根构成的数列</a></li>
+  <li><a href="#section-30" id="toc-section-30" class="nav-link" data-scroll-target="#section-30">解析 14：课程学习反思与教学反馈</a></li>
+  </ul></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">第三部分：知识点总结</a>
+  <ul class="collapse">
+  <li><a href="#section-32" id="toc-section-32" class="nav-link" data-scroll-target="#section-32">答案与考点索引</a></li>
+  <li><a href="#section-33" id="toc-section-33" class="nav-link" data-scroll-target="#section-33">题型分布与复习重点</a></li>
+  <li><a href="#section-34" id="toc-section-34" class="nav-link" data-scroll-target="#section-34">通用解题检查清单</a></li>
+  <li><a href="#section-35" id="toc-section-35" class="nav-link" data-scroll-target="#section-35">常用公式</a></li>
+  </ul></li>
+  <li><a href="#section-36" id="toc-section-36" class="nav-link" data-scroll-target="#section-36">⚖️AI 协作与版权声明</a>
+  <ul class="collapse">
+  <li><a href="#section-37" id="toc-section-37" class="nav-link" data-scroll-target="#section-37">AI 协作说明</a></li>
+  <li><a href="#section-38" id="toc-section-38" class="nav-link" data-scroll-target="#section-38">来源与权利归属</a></li>
+  <li><a href="#section-39" id="toc-section-39" class="nav-link" data-scroll-target="#section-39">开放许可与转载要求</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">2023-2024 学年《微积分（甲）Ⅰ》期中试卷归档</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">历年卷</div>
+    <div class="quarto-category">期中</div>
+    <div class="quarto-category">真题</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    2023-2024 学年期中试卷：题目、详细解析与知识点总结。
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">作者</div>
+    <div class="quarto-title-meta-contents">
+             <p>easoncyy（整理） </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">发布于</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2026年10月27日</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>来源：题目转录标注为《微积分甲期中卷.pdf》第 9–10 页。跨年度复习建议见 <a href="../../posts/20261027-calculus-midterm-review-guide/">期中复习指南</a>；返回 <a href="../../blog.html">微积分历年卷索引</a>。</p>
+<p>本卷共 14 题。考试时间和各题分值在现有转录中未标注。本档依据现有转录整理题目，并补充完整解析；不另行推定原卷未标明的信息。</p>
+<div class="download-box">
+<p><a href="../../assets/pdf/exams/practice/calculus-midterm-2023-2024-practice.pdf" target="_blank">在线阅读练习卷 PDF ↗</a> · <a href="../../assets/pdf/exams/practice/calculus-midterm-2023-2024-practice.pdf" download="calculus-midterm-2023-2024-practice.pdf">下载练习卷 PDF ↓</a></p>
+<p>根据归档题目整理的练习版，非原卷扫描件；仅含题目，并留有作答空间。</p>
+</div>
+<section id="questions" class="level2">
+<h2 class="anchored" data-anchor-id="questions">第一部分：题目</h2>
+<section id="section-2" class="level3">
+<h3 class="anchored" data-anchor-id="section-2">1.</h3>
+<p>叙述函数极限 <span class="math inline">\(\lim\limits_{x\to x_0}f(x)=A\in\mathbb{R}\)</span> 的“<span class="math inline">\(\varepsilon-\delta\)</span>”定义，并利用“<span class="math inline">\(\varepsilon-\delta\)</span>”语言证明：<span class="math inline">\(\lim\limits_{x\to 1}\dfrac{x+2}{2x+1}=1\)</span>.</p>
+</section>
+<section id="section-3" class="level3">
+<h3 class="anchored" data-anchor-id="section-3">2.</h3>
+<p>计算极限 <span class="math inline">\(\lim\limits_{x\to 0}\left[\sqrt{\cos\ln(1-2x)}\right]^{\frac{1}{x^2}}\)</span>.</p>
+</section>
+<section id="section-4" class="level3">
+<h3 class="anchored" data-anchor-id="section-4">3.</h3>
+<p>计算极限 <span class="math inline">\(\lim\limits_{x\to 0}\dfrac{\sqrt[3]{1+3x^3}-1+x^4\cos\frac{1}{x}}{\ln(1+2x)\cdot\tan^2 x}\)</span>.</p>
+</section>
+<section id="section-5" class="level3">
+<h3 class="anchored" data-anchor-id="section-5">4.</h3>
+<p>当 <span class="math inline">\(x\to 1\)</span> 时，<span class="math inline">\(1-\dfrac{m}{1+x+x^2+\dots+x^{m-1}}\)</span> 是 <span class="math inline">\((x-1)\)</span> 的等价无穷小量（<span class="math inline">\(m\in\mathbb{N}\)</span>），求常数 <span class="math inline">\(m\)</span> 的值.</p>
+</section>
+<section id="section-6" class="level3">
+<h3 class="anchored" data-anchor-id="section-6">5.</h3>
+<p>计算极限 <span class="math inline">\(\lim\limits_{n\to\infty}\left(\dfrac{1}{n^2+1+\sin 1}+\dfrac{2}{n^2+1+\sin 2}+\dots+\dfrac{n}{n^2+1+\sin n}\right)\)</span>.</p>
+</section>
+<section id="section-7" class="level3">
+<h3 class="anchored" data-anchor-id="section-7">6.</h3>
+<p>设函数 <span class="math inline">\(y=y(x)\)</span> 是由方程 <span class="math inline">\(x^2+y=\tan(x-y)\)</span> 所确定，且 <span class="math inline">\(y(0)=0\)</span>. 求 <span class="math inline">\(y'(0)\)</span> 和 <span class="math inline">\(y''(0)\)</span>.</p>
+</section>
+<section id="section-8" class="level3">
+<h3 class="anchored" data-anchor-id="section-8">7.</h3>
+<p>已知 <span class="math inline">\(y=x\ln\left(x+\sqrt{x^2+1}\right)-\sqrt{x^2+1}\)</span>，求 <span class="math inline">\(\dfrac{dy}{dx}\)</span>，<span class="math inline">\(\dfrac{d^2y}{dx^2}\)</span>.</p>
+</section>
+<section id="section-9" class="level3">
+<h3 class="anchored" data-anchor-id="section-9">8.</h3>
+<p>设 <span class="math inline">\(y=\arctan\dfrac{x+1}{x-1}+\ln\sqrt{1+x^2}\)</span>，求 <span class="math inline">\(dy\)</span> 与 <span class="math inline">\(dy\big|_{x=3}\)</span>.</p>
+</section>
+<section id="section-10" class="level3">
+<h3 class="anchored" data-anchor-id="section-10">9.</h3>
+<p>设 <span class="math inline">\(f(x)=\begin{cases} x^2\sin\dfrac{1}{x}+e^{2x}, &amp; (x&lt;0) \\ ax+b. &amp; (x\ge 0) \end{cases}\)</span></p>
+<ol type="1">
+<li><p>求常数 <span class="math inline">\(a,b\)</span> 的值使 <span class="math inline">\(f(x)\)</span> 在 <span class="math inline">\(x=0\)</span> 处可导； (2) 计算 <span class="math inline">\(f'(x)\)</span>（<span class="math inline">\(x\in\mathbb{R}\)</span>）.</p></li>
+<li><p>试问 <span class="math inline">\(f''(0)\)</span> 是否存在？为什么？</p></li>
+</ol>
+</section>
+<section id="section-11" class="level3">
+<h3 class="anchored" data-anchor-id="section-11">10.</h3>
+<p>已知 <span class="math inline">\(f(x)=\dfrac{x}{\sqrt{1+x}}\)</span>，求 <span class="math inline">\(f^{(6)}(0)\)</span>.</p>
+</section>
+<section id="section-12" class="level3">
+<h3 class="anchored" data-anchor-id="section-12">11.</h3>
+<p>设函数 <span class="math inline">\(y=y(x)\)</span> 由参数方程 <span class="math inline">\(\begin{cases} x=t-\sin t, \\ y=1-\cos t \end{cases}\)</span> 所确定.</p>
+<ol type="1">
+<li>试求曲线 <span class="math inline">\(y=y(x)\)</span> 在 <span class="math inline">\(t=\dfrac{\pi}{2}\)</span> 处的切线方程； (2) 计算 <span class="math inline">\(y''(x)\)</span>.</li>
+</ol>
+</section>
+<section id="section-13" class="level3">
+<h3 class="anchored" data-anchor-id="section-13">12.</h3>
+<p>设 <span class="math inline">\(f(x)\)</span> 在 <span class="math inline">\([0,1]\)</span> 上连续，在 <span class="math inline">\((0,1)\)</span> 内可导，且 <span class="math inline">\(f(0)=0\)</span>，<span class="math inline">\(f(1)=1\)</span>.</p>
+<p>证明：(1) <span class="math inline">\(\exists c\in(0,1)\)</span> 使得 <span class="math inline">\(f(c)=\dfrac{3}{2023}\)</span>； (2) <span class="math inline">\(\exists\xi\ne\eta\in(0,1)\)</span> 使得 <span class="math inline">\(\dfrac{3}{f'(\xi)}+\dfrac{2020}{f'(\eta)}=2023\)</span>.</p>
+</section>
+<section id="section-14" class="level3">
+<h3 class="anchored" data-anchor-id="section-14">13.</h3>
+<p>设函数 <span class="math inline">\(f_n(x)=x^n+x^{n-1}+\dots+x-1\)</span>（<span class="math inline">\(n\in\mathbb{N}^+\)</span>）.</p>
+<ol type="1">
+<li>证明方程 <span class="math inline">\(f_n(x)=0\)</span> 有唯一正根 <span class="math inline">\(x_n\)</span>； (2) 证明数列 <span class="math inline">\(\{x_n\}\)</span> 收敛并计算 <span class="math inline">\(\lim\limits_{n\to+\infty}x_n\)</span>.</li>
+</ol>
+</section>
+<section id="section-15" class="level3">
+<h3 class="anchored" data-anchor-id="section-15">14.</h3>
+<ol type="1">
+<li><p>结合自己的情况谈谈如何学好《微积分》课程.</p></li>
+<li><p>你对《微积分》任课教师上课与助教的习题课有什么要求？</p></li>
+</ol>
+<p>（要求：上面两个问题的回答均不少于100字.）</p>
+</section>
+</section>
+<section id="solutions" class="level2">
+<h2 class="anchored" data-anchor-id="solutions">第二部分：详细解析</h2>
+<section id="section-17" class="level3">
+<h3 class="anchored" data-anchor-id="section-17">解析 1：函数极限定义与证明</h3>
+<p><strong>题目</strong></p>
+<p>叙述函数极限 <span class="math inline">\(\lim\limits_{x\to x_0}f(x)=A\in\mathbb{R}\)</span> 的“<span class="math inline">\(\varepsilon-\delta\)</span>”定义，并利用“<span class="math inline">\(\varepsilon-\delta\)</span>”语言证明：<span class="math inline">\(\lim\limits_{x\to 1}\dfrac{x+2}{2x+1}=1\)</span>.</p>
+<p><strong>答案</strong> <span class="math inline">\(\displaystyle\lim_{x\to1}\frac{x+2}{2x+1}=1\)</span>。</p>
+<p><strong>详细解析</strong></p>
+<p>函数极限 <span class="math inline">\(\lim_{x\to x_0}f(x)=A\)</span> 的定义是：对每个 <span class="math inline">\(\varepsilon&gt;0\)</span>，都存在 <span class="math inline">\(\delta&gt;0\)</span>，使定义域内所有满足 <span class="math inline">\(0&lt;|x-x_0|&lt;\delta\)</span> 的 <span class="math inline">\(x\)</span> 都有 <span class="math inline">\(|f(x)-A|&lt;\varepsilon\)</span>。</p>
+<p>本题先限制 <span class="math inline">\(|x-1|&lt;1/2\)</span>，则 <span class="math inline">\(x&gt;1/2\)</span>，<span class="math inline">\(|2x+1|&gt;2\)</span>。因此</p>
+<p><span class="math display">\[\left|\frac{x+2}{2x+1}-1\right|=\frac{|x-1|}{|2x+1|}&lt;\frac12|x-1|.\]</span></p>
+<p>给定 <span class="math inline">\(\varepsilon&gt;0\)</span>，取 <span class="math inline">\(\delta=\min\{1/2,2\varepsilon\}\)</span>。当 <span class="math inline">\(0&lt;|x-1|&lt;\delta\)</span> 时，上述误差小于 <span class="math inline">\(\varepsilon\)</span>，所以极限为 <span class="math inline">\(1\)</span>。</p>
+<p><strong>知识点与易错点</strong> 先限制邻域使分母远离零，再确定依赖 ε 的 δ。</p>
+</section>
+<section id="section-18" class="level3">
+<h3 class="anchored" data-anchor-id="section-18">解析 2：对数与三角复合的幂指极限</h3>
+<p><strong>题目</strong></p>
+<p>计算极限 <span class="math inline">\(\lim\limits_{x\to 0}\left[\sqrt{\cos\ln(1-2x)}\right]^{\frac{1}{x^2}}\)</span>.</p>
+<p><strong>答案</strong> <span class="math inline">\(e^{-1}\)</span>。</p>
+<p><strong>详细解析</strong></p>
+<p>令 <span class="math inline">\(u=\ln(1-2x)\)</span>，当 <span class="math inline">\(x\to0\)</span> 时 <span class="math inline">\(u\sim-2x\)</span>，且 <span class="math inline">\(\cos u&gt;0\)</span>。原式的对数为</p>
+<p><span class="math display">\[\frac{\ln\cos u}{2x^2}.\]</span></p>
+<p>利用 <span class="math inline">\(\ln(1+v)\sim v\)</span> 和 <span class="math inline">\(\cos u-1\sim-u^2/2\)</span>，有 <span class="math inline">\(\ln\cos u\sim-u^2/2\)</span>。所以</p>
+<p><span class="math display">\[\frac{\ln\cos u}{2x^2}\to-\frac14\lim_{x\to0}\frac{u^2}{x^2}=-1.\]</span></p>
+<p>取指数即得 <span class="math inline">\(e^{-1}\)</span>。平方根贡献了对数前的系数 <span class="math inline">\(1/2\)</span>。</p>
+<p><strong>知识点与易错点</strong> 复合等价需从最内层逐步替换；平方根变为对数系数后不能遗漏。</p>
+</section>
+<section id="section-19" class="level3">
+<h3 class="anchored" data-anchor-id="section-19">解析 3：高阶小量与有界振荡</h3>
+<p><strong>题目</strong></p>
+<p>计算极限 <span class="math inline">\(\lim\limits_{x\to 0}\dfrac{\sqrt[3]{1+3x^3}-1+x^4\cos\frac{1}{x}}{\ln(1+2x)\cdot\tan^2 x}\)</span>.</p>
+<p><strong>答案</strong> <span class="math inline">\(1/2\)</span>。</p>
+<p><strong>详细解析</strong></p>
+<p>令 <span class="math inline">\(v=3x^3\)</span>，则 <span class="math inline">\((1+v)^{1/3}-1\sim v/3=x^3\)</span>。并且</p>
+<p><span class="math display">\[\left|\frac{x^4\cos(1/x)}{x^3}\right|\le|x|\to0.\]</span></p>
+<p>因此分子为 <span class="math inline">\(x^3+o(x^3)\)</span>。分母满足 <span class="math inline">\(\ln(1+2x)\sim2x\)</span>、<span class="math inline">\(\tan^2x\sim x^2\)</span>，即 <span class="math inline">\(2x^3+o(x^3)\)</span>。两者相除得极限 <span class="math inline">\(1/2\)</span>。</p>
+<p>这里不需要 <span class="math inline">\(\cos(1/x)\)</span> 本身有极限，只需要它有界。</p>
+<p><strong>知识点与易错点</strong> 振荡项是否可忽略取决于相对阶数；用绝对值给出可检验的误差估计。</p>
+</section>
+<section id="section-20" class="level3">
+<h3 class="anchored" data-anchor-id="section-20">解析 4：等价无穷小确定整数参数</h3>
+<p><strong>题目</strong></p>
+<p>当 <span class="math inline">\(x\to 1\)</span> 时，<span class="math inline">\(1-\dfrac{m}{1+x+x^2+\dots+x^{m-1}}\)</span> 是 <span class="math inline">\((x-1)\)</span> 的等价无穷小量（<span class="math inline">\(m\in\mathbb{N}\)</span>），求常数 <span class="math inline">\(m\)</span> 的值.</p>
+<p><strong>答案</strong> <span class="math inline">\(m=3\)</span>。</p>
+<p><strong>详细解析</strong></p>
+<p>记 <span class="math inline">\(S_m(x)=1+x+\cdots+x^{m-1}\)</span>，这里 <span class="math inline">\(m\ge1\)</span>。有 <span class="math inline">\(S_m(1)=m\)</span>，且</p>
+<p><span class="math display">\[\frac{1-m/S_m(x)}{x-1}=\frac{S_m(x)-S_m(1)}{x-1}\frac1{S_m(x)}\to\frac{S_m'(1)}m.\]</span></p>
+<p>由于 <span class="math inline">\(S_m'(1)=1+2+\cdots+(m-1)=m(m-1)/2\)</span>，比值极限为 <span class="math inline">\((m-1)/2\)</span>。等价要求该极限为 <span class="math inline">\(1\)</span>，故 <span class="math inline">\(m=3\)</span>。若允许自然数含 <span class="math inline">\(0\)</span>，<span class="math inline">\(m=0\)</span> 使题给和式及分式无意义，不属于可行参数。</p>
+<p><strong>知识点与易错点</strong> 同阶只要求非零有限比值，等价必须要求比值为 1。</p>
+</section>
+<section id="section-21" class="level3">
+<h3 class="anchored" data-anchor-id="section-21">解析 5：有界三角扰动的求和极限</h3>
+<p><strong>题目</strong></p>
+<p>计算极限 <span class="math inline">\(\lim\limits_{n\to\infty}\left(\dfrac{1}{n^2+1+\sin 1}+\dfrac{2}{n^2+1+\sin 2}+\dots+\dfrac{n}{n^2+1+\sin n}\right)\)</span>.</p>
+<p><strong>答案</strong> <span class="math inline">\(1/2\)</span>。</p>
+<p><strong>详细解析</strong></p>
+<p>由 <span class="math inline">\(-1\le\sin k\le1\)</span>，分母满足 <span class="math inline">\(n^2\le n^2+1+\sin k\le n^2+2\)</span>。逐项放缩并求和，</p>
+<p><span class="math display">\[\frac{n(n+1)}{2(n^2+2)}\le\sum_{k=1}^n\frac{k}{n^2+1+\sin k}\le\frac{n(n+1)}{2n^2}.\]</span></p>
+<p>两端都趋于 <span class="math inline">\(1/2\)</span>，由夹逼定理得结论。</p>
+<p><strong>知识点与易错点</strong> 有界扰动相对于 n² 可统一控制；放缩后的分母应与求和下标无关。</p>
+</section>
+<section id="section-22" class="level3">
+<h3 class="anchored" data-anchor-id="section-22">解析 6：隐函数的二阶导数</h3>
+<p><strong>题目</strong></p>
+<p>设函数 <span class="math inline">\(y=y(x)\)</span> 是由方程 <span class="math inline">\(x^2+y=\tan(x-y)\)</span> 所确定，且 <span class="math inline">\(y(0)=0\)</span>. 求 <span class="math inline">\(y'(0)\)</span> 和 <span class="math inline">\(y''(0)\)</span>.</p>
+<p><strong>答案</strong> <span class="math inline">\(y'(0)=1/2\)</span>，<span class="math inline">\(y''(0)=-1\)</span>。</p>
+<p><strong>详细解析</strong></p>
+<p>记 <span class="math inline">\(u=x-y(x)\)</span>，两边求导：</p>
+<p><span class="math display">\[2x+y'=\sec^2u(1-y').\]</span></p>
+<p>由 <span class="math inline">\(y(0)=0\)</span>，代入得 <span class="math inline">\(y'(0)=1-y'(0)\)</span>，所以 <span class="math inline">\(y'(0)=1/2\)</span>。再次求导，</p>
+<p><span class="math display">\[2+y''=2\sec^2u\tan u(1-y')^2-\sec^2u\,y''.\]</span></p>
+<p>在 <span class="math inline">\(x=0\)</span>，<span class="math inline">\(u=0\)</span>，右端第一项为零，故 <span class="math inline">\(2+y''(0)=-y''(0)\)</span>，得到 <span class="math inline">\(y''(0)=-1\)</span>。</p>
+<p><strong>知识点与易错点</strong> 隐函数反复求导时，内层 x−y 的导数为 1−y′；乘积与链式项都须保留。</p>
+</section>
+<section id="section-23" class="level3">
+<h3 class="anchored" data-anchor-id="section-23">解析 7：对数根式函数的抵消</h3>
+<p><strong>题目</strong></p>
+<p>已知 <span class="math inline">\(y=x\ln\left(x+\sqrt{x^2+1}\right)-\sqrt{x^2+1}\)</span>，求 <span class="math inline">\(\dfrac{dy}{dx}\)</span>，<span class="math inline">\(\dfrac{d^2y}{dx^2}\)</span>.</p>
+<p><strong>答案</strong> <span class="math inline">\(y'=\ln(x+\sqrt{x^2+1})\)</span>，<span class="math inline">\(y''=1/\sqrt{x^2+1}\)</span>。</p>
+<p><strong>详细解析</strong></p>
+<p>设 <span class="math inline">\(L(x)=\ln(x+\sqrt{x^2+1})\)</span>。对任意实数 <span class="math inline">\(x\)</span>，对数真数为正，且</p>
+<p><span class="math display">\[L'(x)=\frac{1+x/\sqrt{x^2+1}}{x+\sqrt{x^2+1}}=\frac1{\sqrt{x^2+1}}.\]</span></p>
+<p>由乘积法则，</p>
+<p><span class="math display">\[y'=L(x)+\frac{x}{\sqrt{x^2+1}}-\frac{x}{\sqrt{x^2+1}}=L(x).\]</span></p>
+<p>再求一次导数得 <span class="math inline">\(y''=1/\sqrt{x^2+1}\)</span>。</p>
+<p><strong>知识点与易错点</strong> 先单独求常见内层函数的导数，识别乘积求导后两项抵消。</p>
+</section>
+<section id="section-24" class="level3">
+<h3 class="anchored" data-anchor-id="section-24">解析 8：反正切复合函数的微分</h3>
+<p><strong>题目</strong></p>
+<p>设 <span class="math inline">\(y=\arctan\dfrac{x+1}{x-1}+\ln\sqrt{1+x^2}\)</span>，求 <span class="math inline">\(dy\)</span> 与 <span class="math inline">\(dy\big|_{x=3}\)</span>.</p>
+<p><strong>答案</strong> <span class="math inline">\(dy=\frac{x-1}{1+x^2}\,dx\)</span>（<span class="math inline">\(x\ne1\)</span>）；<span class="math inline">\(dy|_{x=3}=\frac15dx\)</span>。</p>
+<p><strong>详细解析</strong></p>
+<p>令 <span class="math inline">\(u=(x+1)/(x-1)\)</span>，则 <span class="math inline">\(u'=-2/(x-1)^2\)</span>，因此</p>
+<p><span class="math display">\[\left(\arctan\frac{x+1}{x-1}\right)'=\frac{-2/(x-1)^2}{1+(x+1)^2/(x-1)^2}=-\frac1{1+x^2}.\]</span></p>
+<p>又 <span class="math inline">\(\ln\sqrt{1+x^2}=\frac12\ln(1+x^2)\)</span>，其导数为 <span class="math inline">\(x/(1+x^2)\)</span>。相加得 <span class="math inline">\(y'=(x-1)/(1+x^2)\)</span>，所以 <span class="math inline">\(dy=y'\,dx\)</span>。代入 <span class="math inline">\(x=3\)</span> 得 <span class="math inline">\(dy=dx/5\)</span>。</p>
+<p>化简导数的公式在 <span class="math inline">\(x=1\)</span> 有值，并不意味着原函数在该点有定义。</p>
+<p><strong>知识点与易错点</strong> 微分答案要带 dx；化简不能擅自扩大原函数的定义域。</p>
+</section>
+<section id="section-25" class="level3">
+<h3 class="anchored" data-anchor-id="section-25">解析 9：分段函数的一阶与二阶可导性</h3>
+<p><strong>题目</strong></p>
+<p>设 <span class="math inline">\(f(x)=\begin{cases} x^2\sin\dfrac{1}{x}+e^{2x}, &amp; (x&lt;0) \\ ax+b. &amp; (x\ge 0) \end{cases}\)</span></p>
+<ol type="1">
+<li><p>求常数 <span class="math inline">\(a,b\)</span> 的值使 <span class="math inline">\(f(x)\)</span> 在 <span class="math inline">\(x=0\)</span> 处可导； (2) 计算 <span class="math inline">\(f'(x)\)</span>（<span class="math inline">\(x\in\mathbb{R}\)</span>）.</p></li>
+<li><p>试问 <span class="math inline">\(f''(0)\)</span> 是否存在？为什么？</p></li>
+</ol>
+<p><strong>答案</strong> <span class="math inline">\(a=2,b=1\)</span>；<span class="math inline">\(f''(0)\)</span> 不存在。</p>
+<p><strong>详细解析</strong></p>
+<p>连续性先要求</p>
+<p><span class="math display">\[b=f(0)=\lim_{x\to0^-}\left[x^2\sin(1/x)+e^{2x}\right]=1.\]</span></p>
+<p>在 <span class="math inline">\(b=1\)</span> 下，左差商为</p>
+<p><span class="math display">\[\frac{f(x)-1}x=x\sin(1/x)+\frac{e^{2x}-1}x\to2.\]</span></p>
+<p>右导数是 <span class="math inline">\(a\)</span>，所以可导要求 <span class="math inline">\(a=2\)</span>。此时</p>
+<p><span class="math display">\[f'(x)=\begin{cases}2x\sin(1/x)-\cos(1/x)+2e^{2x},&amp;x&lt;0,\\2,&amp;x\ge0.\end{cases}\]</span></p>
+<p>证明二阶导数不存在，可先检查 <span class="math inline">\(f'\)</span> 的连续性。沿 <span class="math inline">\(x_k=-1/(2k\pi)\)</span>，左支 <span class="math inline">\(f'(x_k)\to1\)</span>；沿 <span class="math inline">\(z_k=-1/((2k+1)\pi)\)</span>，左支 <span class="math inline">\(f'(z_k)\to3\)</span>。所以 <span class="math inline">\(f'\)</span> 在零点不连续；若 <span class="math inline">\(f''(0)\)</span> 存在，则 <span class="math inline">\(f'\)</span> 在零点可导，从而连续，矛盾。因此二阶导数不存在。</p>
+<p><strong>知识点与易错点</strong> 可导不保证导函数连续；要否定二阶可导，可利用一阶导函数已经不连续。</p>
+</section>
+<section id="section-26" class="level3">
+<h3 class="anchored" data-anchor-id="section-26">解析 10：广义二项式系数与高阶导数</h3>
+<p><strong>题目</strong></p>
+<p>已知 <span class="math inline">\(f(x)=\dfrac{x}{\sqrt{1+x}}\)</span>，求 <span class="math inline">\(f^{(6)}(0)\)</span>.</p>
+<p><strong>答案</strong> <span class="math inline">\(f^{(6)}(0)=-2835/16\)</span>。</p>
+<p><strong>详细解析</strong></p>
+<p>令 <span class="math inline">\(g(x)=(1+x)^{-1/2}\)</span>。用乘积的六阶求导公式，因 <span class="math inline">\(f(x)=xg(x)\)</span>，只有两项保留：</p>
+<p><span class="math display">\[f^{(6)}(x)=xg^{(6)}(x)+6g^{(5)}(x).\]</span></p>
+<p>所以</p>
+<p><span class="math display">\[f^{(6)}(0)=6\left(-\frac12\right)\left(-\frac32\right)\left(-\frac52\right)\left(-\frac72\right)\left(-\frac92\right)=-\frac{2835}{16}.\]</span></p>
+<p>也可用 <span class="math inline">\((1+x)^{-1/2}\)</span> 的 <span class="math inline">\(x^5\)</span> 项系数 <span class="math inline">\(-63/256\)</span>，乘前面的 <span class="math inline">\(x\)</span> 后成为 <span class="math inline">\(f\)</span> 的 <span class="math inline">\(x^6\)</span> 项，再乘 <span class="math inline">\(6!\)</span>。</p>
+<p><strong>知识点与易错点</strong> 前置的 x 会把系数下标平移一位；有限次乘积求导可避免展开整条级数。</p>
+</section>
+<section id="section-27" class="level3">
+<h3 class="anchored" data-anchor-id="section-27">解析 11：摆线切线与参数二阶导数</h3>
+<p><strong>题目</strong></p>
+<p>设函数 <span class="math inline">\(y=y(x)\)</span> 由参数方程 <span class="math inline">\(\begin{cases} x=t-\sin t, \\ y=1-\cos t \end{cases}\)</span> 所确定.</p>
+<ol type="1">
+<li>试求曲线 <span class="math inline">\(y=y(x)\)</span> 在 <span class="math inline">\(t=\dfrac{\pi}{2}\)</span> 处的切线方程； (2) 计算 <span class="math inline">\(y''(x)\)</span>.</li>
+</ol>
+<p><strong>答案</strong> 切线为 <span class="math inline">\(y-1=x-(\pi/2-1)\)</span>；<span class="math inline">\(y''=-1/(1-\cos t)^2\)</span>（<span class="math inline">\(t\ne2k\pi\)</span>）。</p>
+<p><strong>详细解析</strong></p>
+<p>由参数方程，<span class="math inline">\(x'=1-\cos t\)</span>、<span class="math inline">\(y'=\sin t\)</span>。当 <span class="math inline">\(x'\ne0\)</span> 时，</p>
+<p><span class="math display">\[\frac{dy}{dx}=\frac{\sin t}{1-\cos t}.\]</span></p>
+<p>在 <span class="math inline">\(t=\pi/2\)</span>，切点是 <span class="math inline">\((\pi/2-1,1)\)</span>，斜率为 <span class="math inline">\(1\)</span>，因此切线为 <span class="math inline">\(y-1=x-(\pi/2-1)\)</span>。</p>
+<p>再对 <span class="math inline">\(t\)</span> 求导并除以 <span class="math inline">\(x'\)</span>：</p>
+<p><span class="math display">\[\frac{d^2y}{dx^2}=\frac1{1-\cos t}\frac{\cos t(1-\cos t)-\sin^2t}{(1-\cos t)^2}=-\frac1{(1-\cos t)^2}.\]</span></p>
+<p>公式的适用范围排除尖点参数 <span class="math inline">\(t=2k\pi\)</span>。</p>
+<p><strong>知识点与易错点</strong> 参数二阶导数须再除 x′；利用 sin²+cos²=1 化简商法则结果。</p>
+</section>
+<section id="section-28" class="level3">
+<h3 class="anchored" data-anchor-id="section-28">解析 12：按函数增量分段应用中值定理</h3>
+<p><strong>题目</strong></p>
+<p>设 <span class="math inline">\(f(x)\)</span> 在 <span class="math inline">\([0,1]\)</span> 上连续，在 <span class="math inline">\((0,1)\)</span> 内可导，且 <span class="math inline">\(f(0)=0\)</span>，<span class="math inline">\(f(1)=1\)</span>.</p>
+<p>证明：(1) <span class="math inline">\(\exists c\in(0,1)\)</span> 使得 <span class="math inline">\(f(c)=\dfrac{3}{2023}\)</span>； (2) <span class="math inline">\(\exists\xi\ne\eta\in(0,1)\)</span> 使得 <span class="math inline">\(\dfrac{3}{f'(\xi)}+\dfrac{2020}{f'(\eta)}=2023\)</span>.</p>
+<p><strong>答案</strong> 两问均成立；可选 <span class="math inline">\(\xi\in(0,c)\)</span>、<span class="math inline">\(\eta\in(c,1)\)</span>。</p>
+<p><strong>详细解析</strong></p>
+<p>（1）由于 <span class="math inline">\(0&lt;3/2023&lt;1\)</span>，由介值定理存在 <span class="math inline">\(c\in(0,1)\)</span>，使 <span class="math inline">\(f(c)=3/2023\)</span>。</p>
+<p>（2）分别在 <span class="math inline">\([0,c]\)</span> 与 <span class="math inline">\([c,1]\)</span> 上应用拉格朗日中值定理，得到</p>
+<p><span class="math display">\[f'(\xi)=\frac{3}{2023c},\qquad f'(\eta)=\frac{2020}{2023(1-c)},\]</span></p>
+<p>其中 <span class="math inline">\(\xi\in(0,c)\)</span>、<span class="math inline">\(\eta\in(c,1)\)</span>，所以两点不同，且导数都非零。于是</p>
+<p><span class="math display">\[\frac3{f'(\xi)}+\frac{2020}{f'(\eta)}=2023c+2023(1-c)=2023.\]</span></p>
+<p>分割点 <span class="math inline">\(c\)</span> 由函数值而非坐标预先给定，不必也不能直接设 <span class="math inline">\(c=3/2023\)</span>。</p>
+<p><strong>知识点与易错点</strong> 按目标式常数比例选取函数增量，再在两段上分别应用中值定理。</p>
+</section>
+<section id="section-29" class="level3">
+<h3 class="anchored" data-anchor-id="section-29">解析 13：多项式正根构成的数列</h3>
+<p><strong>题目</strong></p>
+<p>设函数 <span class="math inline">\(f_n(x)=x^n+x^{n-1}+\dots+x-1\)</span>（<span class="math inline">\(n\in\mathbb{N}^+\)</span>）.</p>
+<ol type="1">
+<li>证明方程 <span class="math inline">\(f_n(x)=0\)</span> 有唯一正根 <span class="math inline">\(x_n\)</span>； (2) 证明数列 <span class="math inline">\(\{x_n\}\)</span> 收敛并计算 <span class="math inline">\(\lim\limits_{n\to+\infty}x_n\)</span>.</li>
+</ol>
+<p><strong>答案</strong> 唯一正根 <span class="math inline">\(x_n\)</span> 存在，且 <span class="math inline">\(x_n\downarrow1/2\)</span>。</p>
+<p><strong>详细解析</strong></p>
+<p>对每个 <span class="math inline">\(n\ge1\)</span>，<span class="math inline">\(f_n(x)=\sum_{k=1}^nx^k-1\)</span> 在 <span class="math inline">\([0,+\infty)\)</span> 连续，在正半轴严格递增，且 <span class="math inline">\(f_n(0)=-1\)</span>、<span class="math inline">\(f_n(1)=n-1\ge0\)</span>，故有唯一正根 <span class="math inline">\(x_n\in(0,1]\)</span>（<span class="math inline">\(x_1=1\)</span>）。</p>
+<p>又 <span class="math inline">\(f_n(1/2)=\sum_{k=1}^n2^{-k}-1=-2^{-n}&lt;0\)</span>，故 <span class="math inline">\(x_n&gt;1/2\)</span>。由于</p>
+<p><span class="math display">\[f_{n+1}(x_n)=f_n(x_n)+x_n^{n+1}=x_n^{n+1}&gt;0,\]</span></p>
+<p>结合严格递增性得 <span class="math inline">\(x_{n+1}&lt;x_n\)</span>。所以数列有极限 <span class="math inline">\(L\ge1/2\)</span>。</p>
+<p>由根方程乘以 <span class="math inline">\(1-x_n\)</span>，得到 <span class="math inline">\(2x_n-1=x_n^{n+1}\)</span>。当 <span class="math inline">\(n\ge2\)</span> 时，<span class="math inline">\(x_n\le x_2=(\sqrt5-1)/2=\rho&lt;1\)</span>，所以 <span class="math inline">\(0\le x_n^{n+1}\le\rho^{n+1}\to0\)</span>。于是 <span class="math inline">\(2L-1=0\)</span>，即 <span class="math inline">\(L=1/2\)</span>。</p>
+<p><strong>知识点与易错点</strong> 先证根存在且唯一，再利用相邻多项式比较根；变指数项须用统一小于 1 的上界控制。</p>
+</section>
+<section id="section-30" class="level3">
+<h3 class="anchored" data-anchor-id="section-30">解析 14：课程学习反思与教学反馈</h3>
+<p><strong>题目</strong></p>
+<ol type="1">
+<li><p>结合自己的情况谈谈如何学好《微积分》课程.</p></li>
+<li><p>你对《微积分》任课教师上课与助教的习题课有什么要求？</p></li>
+</ol>
+<p>（要求：上面两个问题的回答均不少于100字.）</p>
+<p><strong>答案</strong> 开放题，无统一数值答案；两问分别不少于 100 字。</p>
+<p><strong>详细解析</strong></p>
+<p>这两问须结合答题者的真实经历和需求作答，不宜把通用范文当成个人事实。可按以下结构组织，每问写成独立段落并检查字数。</p>
+<p>（1）<strong>如何学好课程</strong>：先说明自己的一个具体薄弱点；再写课前、课中和课后的行动；最后说明如何检验改善。例如可从定义的量词、证明结构、计算细节或错题复盘中选择确实适合自己的方面。明确到“每周做什么、如何核对、何时复习”，比泛泛表示努力更有内容。</p>
+<p>（2）<strong>对教师与助教的要求</strong>：分别说明课堂讲解和习题课的需求。课堂可讨论定义动机、定理条件、反例与证明关键步；习题课可讨论题型选择、学生常见误区、答疑方式与反馈节奏。建议附上一项具体例子，并说明它如何帮助学习。</p>
+<p>完成后逐项检查：是否回应问题、是否符合自身情况、是否分别达到 100 字、建议是否具体且可执行。</p>
+<p><strong>知识点与易错点</strong> 开放题保留个人表达空间；结构提示不能替代真实经历或自行作答。</p>
+</section>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">第三部分：知识点总结</h2>
+<section id="section-32" class="level3">
+<h3 class="anchored" data-anchor-id="section-32">答案与考点索引</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>题号</th>
+<th>答案或结论</th>
+<th>主要考点</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td><span class="math inline">\(\displaystyle\lim_{x\to1}\frac{x+2}{2x+1}=1\)</span>。</td>
+<td>函数极限定义与证明</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td><span class="math inline">\(e^{-1}\)</span>。</td>
+<td>对数与三角复合的幂指极限</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td><span class="math inline">\(1/2\)</span>。</td>
+<td>高阶小量与有界振荡</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td><span class="math inline">\(m=3\)</span>。</td>
+<td>等价无穷小确定整数参数</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td><span class="math inline">\(1/2\)</span>。</td>
+<td>有界三角扰动的求和极限</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td><span class="math inline">\(y'(0)=1/2\)</span>，<span class="math inline">\(y''(0)=-1\)</span>。</td>
+<td>隐函数的二阶导数</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td><span class="math inline">\(y'=\ln(x+\sqrt{x^2+1})\)</span>，<span class="math inline">\(y''=1/\sqrt{x^2+1}\)</span>。</td>
+<td>对数根式函数的抵消</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td><span class="math inline">\(dy=\frac{x-1}{1+x^2}\,dx\)</span>（<span class="math inline">\(x\ne1\)</span>）；<span class="math inline">\(dy\|_{x=3}=\frac15dx\)</span>。</td>
+<td>反正切复合函数的微分</td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td><span class="math inline">\(a=2,b=1\)</span>；<span class="math inline">\(f''(0)\)</span> 不存在。</td>
+<td>分段函数的一阶与二阶可导性</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td><span class="math inline">\(f^{(6)}(0)=-2835/16\)</span>。</td>
+<td>广义二项式系数与高阶导数</td>
+</tr>
+<tr class="odd">
+<td>11</td>
+<td>切线为 <span class="math inline">\(y-1=x-(\pi/2-1)\)</span>；<span class="math inline">\(y''=-1/(1-\cos t)^2\)</span>（<span class="math inline">\(t\ne2k\pi\)</span>）。</td>
+<td>摆线切线与参数二阶导数</td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td>两问均成立；可选 <span class="math inline">\(\xi\in(0,c)\)</span>、<span class="math inline">\(\eta\in(c,1)\)</span>。</td>
+<td>按函数增量分段应用中值定理</td>
+</tr>
+<tr class="odd">
+<td>13</td>
+<td>唯一正根 <span class="math inline">\(x_n\)</span> 存在，且 <span class="math inline">\(x_n\downarrow1/2\)</span>。</td>
+<td>多项式正根构成的数列</td>
+</tr>
+<tr class="even">
+<td>14</td>
+<td>开放题，无统一数值答案；两问分别不少于 100 字。</td>
+<td>课程学习反思与教学反馈</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="section-33" class="level3">
+<h3 class="anchored" data-anchor-id="section-33">题型分布与复习重点</h3>
+<ul>
+<li><strong>极限计算（1–5）</strong>：定义证明先限制分母；复合幂指型逐层取主项；振荡误差与主项比较阶数。</li>
+<li><strong>求导与正则性（6–11）</strong>：区分导数、微分和参数二阶导数；高阶导数可用乘积公式；可导不保证导函数连续。</li>
+<li><strong>中值定理与根数列（12–13）</strong>：按函数值分割区间；根数列先比较单调性，再控制变指数项。</li>
+<li><strong>开放反馈（14）</strong>：按本人学习情况作答，两问分别满足字数要求，避免将结构建议当成个人经历。</li>
+</ul>
+</section>
+<section id="section-34" class="level3">
+<h3 class="anchored" data-anchor-id="section-34">通用解题检查清单</h3>
+<ul>
+<li><strong>定义证明</strong>：写出任意误差、明确选择尾部起点或邻域半径，并验证它对全部相关变量统一有效。</li>
+<li><strong>极限计算</strong>：先检查定义域与趋近方向；等价替换用于乘除，相减有抵消时先变形或保留足够阶数。</li>
+<li><strong>连续与可导</strong>：先检查函数值及左右极限，再比较左右差商；表达式化简不会自动恢复原来无定义的点。</li>
+<li><strong>高阶或参数导数</strong>：区分求导对象；每次参数二阶求导都要除以对应自变量的一阶参数导数。</li>
+<li><strong>存在性证明</strong>：先证明极限或根存在，再计算其候选值；应用介值或中值定理前逐项核对连续性、可导性和端值。</li>
+</ul>
+</section>
+<section id="section-35" class="level3">
+<h3 class="anchored" data-anchor-id="section-35">常用公式</h3>
+<p><span class="math display">\[\sin t\sim t,\quad\tan t\sim t,\quad1-\cos t\sim\frac{t^2}{2},\quad\ln(1+t)\sim t,\quad e^t-1\sim t\qquad(t\to0).\]</span></p>
+<p><span class="math display">\[\frac{dy}{dx}=\frac{dy/dt}{dx/dt},\qquad\frac{d^2y}{dx^2}=\frac1{dx/dt}\frac{d}{dt}\left(\frac{dy}{dx}\right),\qquad dy=f'(x)\,dx.\]</span></p>
+<p>若目标含 <span class="math inline">\(f'+\lambda f\)</span>，可考虑 <span class="math inline">\((e^{\lambda x}f)'=e^{\lambda x}(f'+\lambda f)\)</span>；若右边为常数，先适当平移函数。使用这些公式时仍需保留相应定义域和分母非零条件。</p>
+<hr>
+</section>
+</section>
+<section id="section-36" class="level2">
+<h2 class="anchored" data-anchor-id="section-36">⚖️AI 协作与版权声明</h2>
+<section id="section-37" class="level3">
+<h3 class="anchored" data-anchor-id="section-37">AI 协作说明</h3>
+<p>本文件由整理者提供资料并确定整理要求，使用 OpenAI Codex 辅助完成题目转写、LaTeX 公式录入、解题推导、知识点分析和 Markdown 排版。AI 辅助生成的解析属于学习参考内容，不代表命题教师、原资料作者或学校的官方解答；本声明不表示内容已经过人工逐题审核。使用时请结合教材与课程要求核验，发现问题可提出更正。</p>
+</section>
+<section id="section-38" class="level3">
+<h3 class="anchored" data-anchor-id="section-38">来源与权利归属</h3>
+<p>本文件题目依据已合并收录的期中题目转录整理，转录标注来源为《微积分甲期中卷.pdf》。补充解析与知识点总结由本次整理提供。原题、原始参考解析、截图及其他引用材料的权利归各自权利人所有，本文件的整理行为不改变其权利归属。来源标注用于说明出处，不表示已取得原资料的开放许可，也不表示原作者对本文件作出认可。</p>
+</section>
+<section id="section-39" class="level3">
+<h3 class="anchored" data-anchor-id="section-39">开放许可与转载要求</h3>
+<p>在整理贡献者依法有权许可的范围内，本文件新增的转写编排、补充解析和知识点整理采用 <strong>MIT License</strong>，许可正文如下。该许可不涵盖原题、原始参考解析、截图或其他第三方材料；使用这些材料须遵守其原有许可，或另行取得必要授权。</p>
+<p>转载或修改适用 MIT 许可的内容时，应保留以下版权与许可声明。转载包含原题或引用资料的版本时，也请保留资料来源及本节 AI 协作说明；修改者应注明修改内容，避免将补充或修改的结论归于原资料作者。</p>
+<pre class="text"><code>MIT License
+
+Copyright (c) 2026 easoncyy
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</code></pre>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<section id="comments" class="comments-section" aria-labelledby="comments-heading">
+  <h2 id="comments-heading">评论</h2>
+  <p id="comments-status">评论暂未开放。</p>
+  <div class="giscus"></div>
+</section>
+<script src="../../assets/comments-config.js?v=0740342d2f79"></script>
+<script src="../../assets/comments.js?v=efc269bc7855"></script>
+
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "已复制");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "已复制");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/easoncyy\.github\.io");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p><a href="../../posts/20261027-calculus-midterm-2023-2024/index.html">~/notes</a> · 记录与探索</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p><a class="footer-repository" href="https://github.com/easoncyy/easoncyy.github.io" target="_blank" rel="noopener noreferrer" aria-label="查看本站 GitHub 仓库"><i class="bi bi-github" aria-hidden="true"></i><span>source/</span></a><span class="footer-builder">Built with Quarto</span></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

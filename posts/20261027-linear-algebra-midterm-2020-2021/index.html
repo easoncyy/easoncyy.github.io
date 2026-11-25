@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="easoncyy（整理）">
+<meta name="description" content="2020-2021 学年期中试卷：题目、详细解析与知识点总结。">
+
+<title>2020-2021 学年秋冬《线性代数（甲）》期中归档 – 个人笔记</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/favicon.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-a7952132dd87ce33f437addd0578540c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-dc090d8f6625c822698d9a6ee9cd1ac5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "没有结果",
+    "search-matching-documents-text": "匹配的文档",
+    "search-copy-link-title": "复制搜索链接",
+    "search-hide-matches-text": "隐藏其它匹配结果",
+    "search-more-match-text": "更多匹配结果",
+    "search-more-matches-text": "更多匹配结果",
+    "search-clear-button-title": "清除",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "取消",
+    "search-submit-button-title": "提交",
+    "search-label": "搜索"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script defer="" src="../../assets/directory.js?v=05751f758f0b"></script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="../../assets/vendor/mathjax/tex-svg-full.js?v=a4354ff94fd8" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css?v=83131ce44c97">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/logo.svg" alt="Ce · easoncyy" class="navbar-logo light-content">
+    <img src="../../assets/logo.svg" alt="Ce · easoncyy" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">~/notes</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="搜索"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="展开或折叠导航栏" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html"> 
+<span class="menu-text"><span class="nav-path">blog/</span><span class="nav-caption">博客</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../problems.html"> 
+<span class="menu-text"><span class="nav-path">problems/</span><span class="nav-caption">每日好题</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../projects.html"> 
+<span class="menu-text"><span class="nav-path">projects/</span><span class="nav-caption">项目</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../log.html"> 
+<span class="menu-text"><span class="nav-path">log/</span><span class="nav-caption">日志</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../links.html"> 
+<span class="menu-text"><span class="nav-path">links/</span><span class="nav-caption">友链</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../library.html"> 
+<span class="menu-text"><span class="nav-path">library/</span><span class="nav-caption">图书馆</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text"><span class="nav-path">about/</span><span class="nav-caption">关于</span></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">本页目录</h2>
+   
+  <ul>
+  <li><a href="#questions" id="toc-questions" class="nav-link active" data-scroll-target="#questions">第一部分：题目</a>
+  <ul class="collapse">
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">1.（10 分）</a></li>
+  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3">2.（10 分）</a></li>
+  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4">3.（15 分）</a></li>
+  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5">4.（15 分）</a></li>
+  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6">5.（15 分）</a></li>
+  <li><a href="#section-7" id="toc-section-7" class="nav-link" data-scroll-target="#section-7">6.（20 分）</a></li>
+  <li><a href="#section-8" id="toc-section-8" class="nav-link" data-scroll-target="#section-8">7.（8 分）</a></li>
+  <li><a href="#section-9" id="toc-section-9" class="nav-link" data-scroll-target="#section-9">8.（7 分）</a></li>
+  </ul></li>
+  <li><a href="#solutions" id="toc-solutions" class="nav-link" data-scroll-target="#solutions">第二部分：详细解析</a>
+  <ul class="collapse">
+  <li><a href="#section-11" id="toc-section-11" class="nav-link" data-scroll-target="#section-11">1.（10 分）</a></li>
+  <li><a href="#section-12" id="toc-section-12" class="nav-link" data-scroll-target="#section-12">2.（10 分）</a></li>
+  <li><a href="#section-13" id="toc-section-13" class="nav-link" data-scroll-target="#section-13">3.（15 分）</a></li>
+  <li><a href="#section-14" id="toc-section-14" class="nav-link" data-scroll-target="#section-14">4.（15 分）</a></li>
+  <li><a href="#section-15" id="toc-section-15" class="nav-link" data-scroll-target="#section-15">5.（15 分）</a></li>
+  <li><a href="#section-16" id="toc-section-16" class="nav-link" data-scroll-target="#section-16">6.（20 分）</a></li>
+  <li><a href="#section-17" id="toc-section-17" class="nav-link" data-scroll-target="#section-17">7.（8 分）</a></li>
+  <li><a href="#section-18" id="toc-section-18" class="nav-link" data-scroll-target="#section-18">8.（7 分）</a></li>
+  </ul></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">第三部分：知识点总结</a>
+  <ul class="collapse">
+  <li><a href="#section-20" id="toc-section-20" class="nav-link" data-scroll-target="#section-20">答案与考点</a></li>
+  <li><a href="#section-21" id="toc-section-21" class="nav-link" data-scroll-target="#section-21">复习要点</a></li>
+  <li><a href="#section-22" id="toc-section-22" class="nav-link" data-scroll-target="#section-22">易错点清单</a></li>
+  </ul></li>
+  <li><a href="#section-23" id="toc-section-23" class="nav-link" data-scroll-target="#section-23">⚖️AI 协作与版权声明</a>
+  <ul class="collapse">
+  <li><a href="#section-24" id="toc-section-24" class="nav-link" data-scroll-target="#section-24">AI 协作说明</a></li>
+  <li><a href="#section-25" id="toc-section-25" class="nav-link" data-scroll-target="#section-25">来源与权利归属</a></li>
+  <li><a href="#section-26" id="toc-section-26" class="nav-link" data-scroll-target="#section-26">开放许可与转载要求</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">2020-2021 学年秋冬《线性代数（甲）》期中归档</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">历年卷</div>
+    <div class="quarto-category">期中</div>
+    <div class="quarto-category">真题</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    2020-2021 学年期中试卷：题目、详细解析与知识点总结。
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">作者</div>
+    <div class="quarto-title-meta-contents">
+             <p>easoncyy（整理） </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">发布于</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2026年10月27日</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>共 8 道题，保留试卷题号和分值。先独立作答，再对照解析与考点索引。</p>
+<p>来源：<a href="../../assets/pdf/exams/linear-algebra-midterm-questions.pdf">题目合集</a>、<a href="../../assets/pdf/exams/linear-algebra-midterm-solutions.pdf">解析合集</a>。合集整理者：macanine。</p>
+<div class="download-box">
+<p><a href="../../assets/pdf/exams/practice/linear-algebra-midterm-2020-2021-practice.pdf" target="_blank">在线阅读练习卷 PDF ↗</a> · <a href="../../assets/pdf/exams/practice/linear-algebra-midterm-2020-2021-practice.pdf" download="linear-algebra-midterm-2020-2021-practice.pdf">下载练习卷 PDF ↓</a></p>
+<p>根据归档题目整理的练习版，非原卷扫描件；仅含题目，并留有作答空间。</p>
+</div>
+<section id="questions" class="level2">
+<h2 class="anchored" data-anchor-id="questions">第一部分：题目</h2>
+<section id="section-2" class="level3">
+<h3 class="anchored" data-anchor-id="section-2">1.（10 分）</h3>
+<p>设</p>
+<p><span class="math display">\[D_n = \begin{vmatrix}
+4 &amp; -3 &amp; 0 &amp; \cdots &amp; 0 &amp; 0 \\
+-1 &amp; 4 &amp; -3 &amp; 0 &amp; \cdots &amp; 0 \\
+0 &amp; -1 &amp; 4 &amp; -3 &amp; 0 &amp; \cdots \\
+\vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots \\
+0 &amp; \cdots &amp; 0 &amp; -1 &amp; 4 &amp; 3 \\
+0 &amp; 0 &amp; \cdots &amp; 0 &amp; -1 &amp; 4
+\end{vmatrix},\]</span></p>
+<p>试证明：<span class="math inline">\(D_n = \frac{3^{n+1} - 1}{2}\)</span>。</p>
+</section>
+<section id="section-3" class="level3">
+<h3 class="anchored" data-anchor-id="section-3">2.（10 分）</h3>
+<p>设 <span class="math inline">\(B = \begin{pmatrix} 1 &amp; -5 &amp; 1 \\ 0 &amp; -1 &amp; 0 \\ 2 &amp; -2 &amp; 3 \end{pmatrix}\)</span>，<span class="math inline">\(C = \begin{pmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 2 &amp; 0 \\ 0 &amp; 0 &amp; -1 \end{pmatrix}\)</span>，三阶方阵满足方程 <span class="math inline">\(2BA + CB = O\)</span>，其中 <span class="math inline">\(O\)</span> 为三阶零方阵，试求 <span class="math inline">\(|A + 3E|\)</span>。</p>
+</section>
+<section id="section-4" class="level3">
+<h3 class="anchored" data-anchor-id="section-4">3.（15 分）</h3>
+<p>设有实方阵 <span class="math inline">\(A = \begin{pmatrix} 1 &amp; 2 &amp; 3 \\ 2 &amp; 4 &amp; t \\ 3 &amp; t &amp; 9 \end{pmatrix}\)</span>，其中 <span class="math inline">\(t\)</span> 为实常数，已知 <span class="math inline">\(B\)</span> 为三阶非零方阵且满足 <span class="math inline">\(BA = O\)</span>，其中 <span class="math inline">\(O\)</span> 为三阶零方阵，试求 <span class="math inline">\(t\)</span> 的值以及 <span class="math inline">\(B\)</span> 的秩的可能取值。</p>
+</section>
+<section id="section-5" class="level3">
+<h3 class="anchored" data-anchor-id="section-5">4.（15 分）</h3>
+<p>设 <span class="math inline">\(a, b, c\)</span> 为实常数，且满足 <span class="math inline">\(b^2 \ne ac\)</span>，<span class="math inline">\(a + b + c = 0\)</span>，试证明线性方程组</p>
+<p><span class="math display">\[\begin{cases}
+ax_1 + bx_2 + c = 0, \\
+bx_1 + cx_2 + a = 0, \\
+cx_1 + bx_2 + b = 0
+\end{cases}\]</span></p>
+<p>有唯一解并求出这个唯一解。</p>
+</section>
+<section id="section-6" class="level3">
+<h3 class="anchored" data-anchor-id="section-6">5.（15 分）</h3>
+<p>设方阵 <span class="math inline">\(A\)</span> 的伴随矩阵为 <span class="math inline">\(A^{*} = \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 &amp; 0 \\ 1 &amp; 0 &amp; 1 &amp; 0 \\ 0 &amp; -3 &amp; 0 &amp; 8 \end{pmatrix}\)</span>，已知矩阵 <span class="math inline">\(B\)</span> 满足 <span class="math inline">\(AB = B + 3A\)</span>，试求矩阵 <span class="math inline">\(B\)</span>。</p>
+</section>
+<section id="section-7" class="level3">
+<h3 class="anchored" data-anchor-id="section-7">6.（20 分）</h3>
+<p>设 <span class="math inline">\(A = \begin{pmatrix} 1 &amp; \cdots &amp; 1 \\ \vdots &amp; \ddots &amp; \vdots \\ 1 &amp; \cdots &amp; 1 \end{pmatrix}_{n \times n}\)</span>。求</p>
+<p>（1）一个二次实系数多项式 <span class="math inline">\(f(x) = x^2 + ax\)</span> 使得 <span class="math inline">\(f(A)\)</span> 为二阶零方阵；</p>
+<p>（2）<span class="math inline">\(A^{100}\)</span>；</p>
+<p>（3）<span class="math inline">\((A + E)^3\)</span>；</p>
+<p>（4）<span class="math inline">\((A + E)^{-1}\)</span>。</p>
+</section>
+<section id="section-8" class="level3">
+<h3 class="anchored" data-anchor-id="section-8">7.（8 分）</h3>
+<p>设 <span class="math inline">\(A, B\)</span> 是两个 <span class="math inline">\(n\)</span> 阶实方阵，试证明：<span class="math inline">\(r(A) = r(AB)\)</span> 当且仅当存在 <span class="math inline">\(n\)</span> 阶实方阵 <span class="math inline">\(C\)</span> 使得 <span class="math inline">\(A = ABC\)</span>。</p>
+</section>
+<section id="section-9" class="level3">
+<h3 class="anchored" data-anchor-id="section-9">8.（7 分）</h3>
+<p>设 <span class="math inline">\(A\)</span> 为 <span class="math inline">\(n\)</span> 阶方阵，试证明：存在对称矩阵 <span class="math inline">\(S\)</span> 和可逆矩阵 <span class="math inline">\(P\)</span> 使得 <span class="math inline">\(A = SP\)</span>。</p>
+</section>
+</section>
+<section id="solutions" class="level2">
+<h2 class="anchored" data-anchor-id="solutions">第二部分：详细解析</h2>
+<section id="section-11" class="level3">
+<h3 class="anchored" data-anchor-id="section-11">1.（10 分）</h3>
+<p><strong>答案</strong> 按题面末个上对角元为 <span class="math inline">\(3\)</span> 计算，<span class="math inline">\(D_1=4\)</span>，且 <span class="math inline">\(n\ge2\)</span> 时</p>
+<p><span class="math display">\[D_n=\frac{5\cdot3^n-7}{2}.\]</span></p>
+<p>因此题面要求证明的等式不成立。例如 <span class="math inline">\(n=3\)</span> 时 <span class="math inline">\(D_3=64\)</span>，而 <span class="math inline">\((3^4-1)/2=40\)</span>。</p>
+<p>令 <span class="math inline">\(T_k\)</span> 为主对角元全为 <span class="math inline">\(4\)</span>、下对角元全为 <span class="math inline">\(-1\)</span>、上对角元全为 <span class="math inline">\(-3\)</span> 的三对角行列式。取 <span class="math inline">\(T_0=1\)</span>、<span class="math inline">\(T_1=4\)</span>，按首行展开得</p>
+<p><span class="math display">\[T_k=4T_{k-1}-3T_{k-2},\qquad T_k=\frac{3^{k+1}-1}{2}.\]</span></p>
+<p>题面所给 <span class="math inline">\(D_n\)</span> 按末行展开，有</p>
+<p><span class="math display">\[D_n=4T_{n-1}+3T_{n-2}=\frac{5\cdot3^n-7}{2}\quad(n\ge2).\]</span></p>
+<p>若将末个上对角元也取为 <span class="math inline">\(-3\)</span>，则整个行列式等于 <span class="math inline">\(T_n\)</span>，此时才有 <span class="math inline">\(D_n=(3^{n+1}-1)/2\)</span>。</p>
+<p><strong>考点</strong> 行列式。</p>
+<p><strong>易错点</strong> 交换两行变号；倍乘一行才提取一个因子；余子式须带 <span class="math inline">\((-1)^{i+j}\)</span>。</p>
+<p><span id="answer-1"></span></p>
+</section>
+<section id="section-12" class="level3">
+<h3 class="anchored" data-anchor-id="section-12">2.（10 分）</h3>
+<p>先说明 <span class="math inline">\(B\)</span> 可逆。按第二行展开</p>
+<p><span class="math display">\[|B| = (-1)\cdot\begin{vmatrix} 1 &amp; 1 \\ 2 &amp; 3 \end{vmatrix} = -1 \ne 0.\]</span></p>
+<p>由 <span class="math inline">\(2BA + CB = O\)</span> 得 <span class="math inline">\(2BA = -CB\)</span>，两边左乘 <span class="math inline">\(B^{-1}\)</span>，得 <span class="math inline">\(2A = -B^{-1}CB\)</span>，即</p>
+<p><span class="math display">\[A = -\frac{1}{2}B^{-1}CB.\]</span></p>
+<p>于是</p>
+<p><span class="math display">\[A + 3E = B^{-1}\left(3E - \frac{1}{2}C\right)B,\]</span></p>
+<p>两端取行列式，由相似矩阵行列式相等得</p>
+<p><span class="math display">\[|A + 3E| = \left|3E - \frac{1}{2}C\right|.\]</span></p>
+<p><span class="math inline">\(C = \mathrm{diag}(1, 2, -1)\)</span>，故 <span class="math inline">\(3E - \frac{1}{2}C = \mathrm{diag}\left(\frac{5}{2}, 2, \frac{7}{2}\right)\)</span>，从而</p>
+<p><span class="math display">\[|A + 3E| = \frac{5}{2} \times 2 \times \frac{7}{2} = \frac{35}{2}.\]</span></p>
+<p><strong>答案</strong> <span class="math inline">\(|A + 3E| = \frac{35}{2}\)</span>。</p>
+<p><strong>考点</strong> 行列式。</p>
+<p><strong>易错点</strong> 交换两行变号；倍乘一行才提取一个因子；余子式须带 <span class="math inline">\((-1)^{i+j}\)</span>。</p>
+<p><span id="answer-2"></span></p>
+</section>
+<section id="section-13" class="level3">
+<h3 class="anchored" data-anchor-id="section-13">3.（15 分）</h3>
+<p><span class="math inline">\(BA = O\)</span> 表示 <span class="math inline">\(B\)</span> 的每一行 <span class="math inline">\(y^{\mathrm{T}}\)</span> 都满足 <span class="math inline">\(y^{\mathrm{T}}A = 0\)</span>，即 <span class="math inline">\(B\)</span> 的各行（看作列向量）都属于 <span class="math inline">\(N(A^{\mathrm{T}})\)</span>。</p>
+<p>先由“存在非零 <span class="math inline">\(B\)</span>”定 <span class="math inline">\(t\)</span>。若 <span class="math inline">\(|A| \ne 0\)</span>，则 <span class="math inline">\(A\)</span> 可逆，由 <span class="math inline">\(BA = O\)</span> 两边右乘 <span class="math inline">\(A^{-1}\)</span> 得 <span class="math inline">\(B = O\)</span>，与 <span class="math inline">\(B\)</span> 非零矛盾。故必须 <span class="math inline">\(|A| = 0\)</span>。按第一行展开</p>
+<p><span class="math display">\[|A| = 1\cdot(36 - t^2) - 2\cdot(18 - 3t) + 3\cdot(2t - 12) = -t^2 + 12t - 36 = -(t - 6)^2,\]</span></p>
+<p>故 <span class="math inline">\(|A| = 0\)</span> 给出 <span class="math inline">\(t = 6\)</span>。</p>
+<p>再定 <span class="math inline">\(r(B)\)</span>。<span class="math inline">\(t = 6\)</span> 时 <span class="math inline">\(A\)</span> 的三行都成比例（均为 <span class="math inline">\((1, 2, 3)\)</span> 的倍数），故 <span class="math inline">\(r(A) = 1\)</span>。由秩－零化度定理</p>
+<p><span class="math display">\[\dim N(A^{\mathrm{T}}) = 3 - r(A) = 2.\]</span></p>
+<p><span class="math inline">\(B\)</span> 的各行都在 <span class="math inline">\(N(A^{\mathrm{T}})\)</span> 中，故 <span class="math inline">\(r(B) \le 2\)</span>；又 <span class="math inline">\(B \ne O\)</span>，故 <span class="math inline">\(r(B) \ge 1\)</span>。这里 <span class="math inline">\(N(A^{\mathrm{T}})\)</span> 恰是方程 <span class="math inline">\(y_1 + 2y_2 + 3y_3 = 0\)</span> 的解空间，取一行非零解（如 <span class="math inline">\((-2, 1, 0)^{\mathrm{T}}\)</span>）作 <span class="math inline">\(B\)</span> 的唯一非零行，得 <span class="math inline">\(r(B) = 1\)</span>；取两个线性无关解 <span class="math inline">\((-2, 1, 0)^{\mathrm{T}}\)</span>、<span class="math inline">\((-3, 0, 1)^{\mathrm{T}}\)</span> 作 <span class="math inline">\(B\)</span> 的前两行、第三行取零，得 <span class="math inline">\(r(B) = 2\)</span>。两种秩都确实能取到。</p>
+<p><strong>答案</strong> <span class="math inline">\(t = 6\)</span>；<span class="math inline">\(r(B)\)</span> 的可能取值为 <span class="math inline">\(1\)</span> 或 <span class="math inline">\(2\)</span>。</p>
+<p><strong>考点</strong> 秩与空间维数。</p>
+<p><strong>易错点</strong> 秩是最大非零子式的阶数；区分零空间、列空间与行空间。</p>
+<p><span id="answer-3"></span></p>
+</section>
+<section id="section-14" class="level3">
+<h3 class="anchored" data-anchor-id="section-14">4.（15 分）</h3>
+<p><strong>答案</strong> 对题面所列三式，<span class="math inline">\(a=b\)</span> 时有唯一解 <span class="math inline">\((x_1,x_2)=(1,1)\)</span>；<span class="math inline">\(a\ne b\)</span> 时无解。</p>
+<p>前两个方程的系数行列式为</p>
+<p><span class="math display">\[\begin{vmatrix}a&amp;b\\b&amp;c\end{vmatrix}=ac-b^2\ne0.\]</span></p>
+<p>又 <span class="math inline">\(a+b+c=0\)</span>，故 <span class="math inline">\((1,1)\)</span> 满足前两式，因此它是前两式的唯一解。将它代入第三式，左端为</p>
+<p><span class="math display">\[c+2b=b-a.\]</span></p>
+<p>所以三式联立有解当且仅当 <span class="math inline">\(a=b\)</span>，有解时必为上述唯一解。<span class="math inline">\(a=b\)</span> 时还有 <span class="math inline">\(c=-2a\)</span>，且题设保证 <span class="math inline">\(a\ne0\)</span>。</p>
+<p>若第三式采用循环形式 <span class="math inline">\(cx_1+ax_2+b=0\)</span>，则 <span class="math inline">\((1,1)\)</span> 自动满足第三式，方程组对所有满足题设的参数均有唯一解。</p>
+<p><strong>考点</strong> 线性方程组。</p>
+<p><strong>易错点</strong> 含参消元在除以参数前先分情形；通解写成特解加齐次通解。</p>
+<p><span id="answer-4"></span></p>
+</section>
+<section id="section-15" class="level3">
+<h3 class="anchored" data-anchor-id="section-15">5.（15 分）</h3>
+<p>先由 <span class="math inline">\(A^{*}\)</span> 读出 <span class="math inline">\(|A|\)</span>。<span class="math inline">\(A^{*}\)</span> 是下三角矩阵，故 <span class="math inline">\(|A^{*}| = 1\cdot 1\cdot 1\cdot 8 = 8\)</span>。此处 <span class="math inline">\(n = 4\)</span>，伴随矩阵的行列式满足 <span class="math inline">\(|A^{*}| = |A|^{n-1} = |A|^3\)</span>，故 <span class="math inline">\(|A|^3 = 8\)</span>，<span class="math inline">\(|A| = 2 \ne 0\)</span>，即 <span class="math inline">\(A\)</span> 可逆，且由 <span class="math inline">\(AA^{*} = |A|E\)</span> 得</p>
+<p><span class="math display">\[A^{-1} = \frac{1}{|A|}A^{*} = \frac{1}{2}A^{*} = \begin{pmatrix} \frac{1}{2} &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; \frac{1}{2} &amp; 0 &amp; 0 \\ \frac{1}{2} &amp; 0 &amp; \frac{1}{2} &amp; 0 \\ 0 &amp; -\frac{3}{2} &amp; 0 &amp; 4 \end{pmatrix}.\]</span></p>
+<p>由 <span class="math inline">\(AB = B + 3A\)</span> 得 <span class="math inline">\((A - E)B = 3A\)</span>。两边左乘 <span class="math inline">\(A^{-1}\)</span>，注意 <span class="math inline">\(A\)</span> 与 <span class="math inline">\(B\)</span> 不可交换、只能整体左乘：</p>
+<p><span class="math display">\[(E - A^{-1})B = 3E.\]</span></p>
+<p>又 <span class="math inline">\(E - A^{-1} = \frac{1}{2}(2E - A^{*})\)</span>，而</p>
+<p><span class="math display">\[2E - A^{*} = \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 &amp; 0 \\ -1 &amp; 0 &amp; 1 &amp; 0 \\ 0 &amp; 3 &amp; 0 &amp; -6 \end{pmatrix}\]</span></p>
+<p>仍是下三角矩阵，<span class="math inline">\(|2E - A^{*}| = -6 \ne 0\)</span>，故 <span class="math inline">\(E - A^{-1}\)</span> 可逆。解 <span class="math inline">\((2E - A^{*})X = E\)</span> 得</p>
+<p><span class="math display">\[(2E - A^{*})^{-1} = \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 &amp; 0 \\ 1 &amp; 0 &amp; 1 &amp; 0 \\ 0 &amp; \frac{1}{2} &amp; 0 &amp; -\frac{1}{6} \end{pmatrix},\]</span></p>
+<p>于是</p>
+<p><span class="math display">\[B = 3(E - A^{-1})^{-1} = 6(2E - A^{*})^{-1} = \begin{pmatrix} 6 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 6 &amp; 0 &amp; 0 \\ 6 &amp; 0 &amp; 6 &amp; 0 \\ 0 &amp; 3 &amp; 0 &amp; -1 \end{pmatrix}.\]</span></p>
+<p>验算：把上式代回，<span class="math inline">\((A - E)B = 3A\)</span>，即 <span class="math inline">\(AB = B + 3A\)</span>，说明结论正确。</p>
+<p><strong>答案</strong> <span class="math inline">\(B = \begin{pmatrix} 6 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 6 &amp; 0 &amp; 0 \\ 6 &amp; 0 &amp; 6 &amp; 0 \\ 0 &amp; 3 &amp; 0 &amp; -1 \end{pmatrix}\)</span>。</p>
+<p><strong>考点</strong> 伴随矩阵、矩阵方程。</p>
+<p><strong>易错点</strong> 先判断阶数与可逆性，不能把伴随矩阵当作转置。</p>
+<p><span id="answer-5"></span></p>
+</section>
+<section id="section-16" class="level3">
+<h3 class="anchored" data-anchor-id="section-16">6.（20 分）</h3>
+<p>（1）<span class="math inline">\(A\)</span> 的每一列都等于 <span class="math inline">\(e = (1, 1, \cdots, 1)^{\mathrm{T}}\)</span>，即 <span class="math inline">\(A = ee^{\mathrm{T}}\)</span>，而 <span class="math inline">\(e^{\mathrm{T}}e = n\)</span>，故</p>
+<p><span class="math display">\[A^2 = (ee^{\mathrm{T}})(ee^{\mathrm{T}}) = e(e^{\mathrm{T}}e)e^{\mathrm{T}} = nee^{\mathrm{T}} = nA.\]</span></p>
+<p>于是对 <span class="math inline">\(f(x) = x^2 + ax\)</span> 有 <span class="math inline">\(f(A) = A^2 + aA = (n + a)A\)</span>。因 <span class="math inline">\(A \ne O\)</span>，故 <span class="math inline">\(f(A) = O\)</span> 当且仅当 <span class="math inline">\(a = -n\)</span>，即 <span class="math inline">\(f(x) = x^2 - nx\)</span>。（<span class="math inline">\(f(A)\)</span> 与 <span class="math inline">\(A\)</span> 同为 <span class="math inline">\(n\)</span> 阶方阵，题面“二阶零方阵”应作“<span class="math inline">\(n\)</span> 阶零方阵”理解，即 <span class="math inline">\(O\)</span>；若按 <span class="math inline">\(2 \times 2\)</span> 字面理解，则 <span class="math inline">\(n \ne 2\)</span> 时不可能。）</p>
+<p>（2）由 <span class="math inline">\(A^2 = nA\)</span> 归纳证明 <span class="math inline">\(A^k = n^{k-1}A\)</span>：<span class="math inline">\(k = 1\)</span> 时显然；设对 <span class="math inline">\(k\)</span> 成立，则</p>
+<p><span class="math display">\[A^{k+1} = A^k A = n^{k-1}A^2 = n^{k-1}\cdot nA = n^k A.\]</span></p>
+<p>取 <span class="math inline">\(k = 100\)</span> 得 <span class="math inline">\(A^{100} = n^{99}A\)</span>。</p>
+<p>（3）<span class="math inline">\(A^3 = A^2A = nA\cdot A = nA^2 = n^2A\)</span>；又 <span class="math inline">\(E\)</span> 与 <span class="math inline">\(A\)</span> 可交换，直接展开：</p>
+<p><span class="math display">\[(A + E)^3 = A^3 + 3A^2 + 3A + E = n^2A + 3nA + 3A + E = E + (n^2 + 3n + 3)A.\]</span></p>
+<p>（4）由 <span class="math inline">\(A^2 = nA\)</span> 直接验算</p>
+<p><span class="math display">\[(A + E)\left(E - \frac{1}{n+1}A\right) = E + A - \frac{1}{n+1}A - \frac{1}{n+1}A^2 = E + A - \frac{1}{n+1}A - \frac{n}{n+1}A = E,\]</span></p>
+<p>故 <span class="math inline">\(A + E\)</span> 可逆，且</p>
+<p><span class="math display">\[(A + E)^{-1} = E - \frac{1}{n+1}A.\]</span></p>
+<p><strong>答案</strong> （1）<span class="math inline">\(f(x) = x^2 - nx\)</span>（<span class="math inline">\(a = -n\)</span>）；（2）<span class="math inline">\(A^{100} = n^{99}A\)</span>；（3）<span class="math inline">\((A + E)^3 = E + (n^2 + 3n + 3)A\)</span>；（4）<span class="math inline">\((A + E)^{-1} = E - \frac{1}{n+1}A\)</span>。</p>
+<p><strong>考点</strong> 矩阵幂与多项式。</p>
+<p><strong>易错点</strong> 二项式展开须保证参与的矩阵可交换；幂零与零矩阵不是同一概念。</p>
+<p><span id="answer-6"></span></p>
+</section>
+<section id="section-17" class="level3">
+<h3 class="anchored" data-anchor-id="section-17">7.（8 分）</h3>
+<p>充分性。设存在 <span class="math inline">\(C\)</span> 使 <span class="math inline">\(A = ABC\)</span>。乘一个矩阵不会增大秩，故</p>
+<p><span class="math display">\[r(A) = r(ABC) \le r(AB) \le r(A),\]</span></p>
+<p>两端夹逼得 <span class="math inline">\(r(A) = r(AB)\)</span>。</p>
+<p>必要性。设 <span class="math inline">\(r(A) = r(AB)\)</span>。<span class="math inline">\(AB\)</span> 的每一列都是 <span class="math inline">\(A\)</span> 的列的线性组合（<span class="math inline">\(AB\)</span> 的第 <span class="math inline">\(j\)</span> 列等于 <span class="math inline">\(A\)</span> 乘以 <span class="math inline">\(B\)</span> 的第 <span class="math inline">\(j\)</span> 列），故</p>
+<p><span class="math display">\[\mathrm{Col}(AB) \subseteq \mathrm{Col}(A);\]</span></p>
+<p>而 <span class="math inline">\(\dim \mathrm{Col}(AB) = r(AB) = r(A) = \dim \mathrm{Col}(A)\)</span>，于是 <span class="math inline">\(\mathrm{Col}(AB) = \mathrm{Col}(A)\)</span>。</p>
+<p>因此 <span class="math inline">\(A\)</span> 的每一列 <span class="math inline">\(a_j\)</span> 都是 <span class="math inline">\(AB\)</span> 的列的线性组合，即存在列向量 <span class="math inline">\(c_j\)</span> 使 <span class="math inline">\(a_j = ABc_j\)</span>（<span class="math inline">\(j = 1, 2, \cdots, n\)</span>）。令 <span class="math inline">\(C = (c_1, c_2, \cdots, c_n)\)</span>，则 <span class="math inline">\(C\)</span> 为 <span class="math inline">\(n\)</span> 阶实方阵，且</p>
+<p><span class="math display">\[A = (a_1, \cdots, a_n) = (ABc_1, \cdots, ABc_n) = ABC. \qquad \square\]</span></p>
+<p><strong>考点</strong> 秩与空间维数。</p>
+<p><strong>易错点</strong> 秩是最大非零子式的阶数；区分零空间、列空间与行空间。</p>
+<p><span id="answer-7"></span></p>
+</section>
+<section id="section-18" class="level3">
+<h3 class="anchored" data-anchor-id="section-18">8.（7 分）</h3>
+<p>取矩阵的等价标准形：存在可逆矩阵 <span class="math inline">\(U, V\)</span> 与对角矩阵</p>
+<p><span class="math display">\[D = \mathrm{diag}(d_1, \cdots, d_r, 0, \cdots, 0) \qquad (d_1d_2\cdots d_r \ne 0,\ r = r(A))\]</span></p>
+<p>使得 <span class="math inline">\(UAV = D\)</span>，即 <span class="math inline">\(A = U^{-1}DV^{-1}\)</span>。在中插入 <span class="math inline">\(U^{-\mathrm{T}}U^{\mathrm{T}} = E\)</span>：</p>
+<p><span class="math display">\[A = U^{-1}DU^{-\mathrm{T}}\cdot U^{\mathrm{T}}V^{-1}.\]</span></p>
+<p>令 <span class="math inline">\(S = U^{-1}DU^{-\mathrm{T}}\)</span>，<span class="math inline">\(P = U^{\mathrm{T}}V^{-1}\)</span>。由 <span class="math inline">\(U, V\)</span> 可逆知 <span class="math inline">\(P\)</span> 可逆；又 <span class="math inline">\(D\)</span> 是对角矩阵，</p>
+<p><span class="math display">\[S^{\mathrm{T}} = (U^{-1}DU^{-\mathrm{T}})^{\mathrm{T}} = U^{-1}D^{\mathrm{T}}U^{-\mathrm{T}} = U^{-1}DU^{-\mathrm{T}} = S,\]</span></p>
+<p>即 <span class="math inline">\(S\)</span> 对称。于是 <span class="math inline">\(A = SP\)</span>，其中 <span class="math inline">\(S\)</span> 对称、<span class="math inline">\(P\)</span> 可逆（<span class="math inline">\(r = 0\)</span> 时 <span class="math inline">\(D = O\)</span>，<span class="math inline">\(S = O\)</span> 同样对称）。<span class="math inline">\(\square\)</span></p>
+<p><strong>考点</strong> 正交与对称。</p>
+<p><strong>易错点</strong> 内积的正定性须对所有非零向量成立；矩阵乘积转置时要倒序。</p>
+<p><span id="answer-8"></span></p>
+</section>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">第三部分：知识点总结</h2>
+<section id="section-20" class="level3">
+<h3 class="anchored" data-anchor-id="section-20">答案与考点</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>题号</th>
+<th>答案要点</th>
+<th>主要考点</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="#answer-1">1</a></td>
+<td>题面末个上对角元取 <span class="math inline">\(3\)</span> 时，<span class="math inline">\(D_n=(5\cdot3^n-7)/2\)</span>（<span class="math inline">\(n\ge2\)</span>）；全部取 <span class="math inline">\(-3\)</span> 时为 <span class="math inline">\((3^{n+1}-1)/2\)</span>。</td>
+<td>行列式</td>
+</tr>
+<tr class="even">
+<td><a href="#answer-2">2</a></td>
+<td>（10）伴随与相似的行列式：<span class="math inline">\(\|A+3E\|=\frac{35}{2}\)</span>。</td>
+<td>行列式</td>
+</tr>
+<tr class="odd">
+<td><a href="#answer-3">3</a></td>
+<td>（15）秩与解空间 <span class="math inline">\(N(A^{\mathrm{T}})\)</span>：<span class="math inline">\(t=6\)</span>；<span class="math inline">\(r(B)\)</span> 可取 1 或 2。</td>
+<td>秩与空间维数</td>
+</tr>
+<tr class="even">
+<td><a href="#answer-4">4</a></td>
+<td>按题面三式，<span class="math inline">\(a=b\)</span> 时唯一解为 <span class="math inline">\((1,1)\)</span>，<span class="math inline">\(a\ne b\)</span> 时无解。</td>
+<td>线性方程组</td>
+</tr>
+<tr class="odd">
+<td><a href="#answer-5">5</a></td>
+<td>（15）<span class="math inline">\(\|A^{*}\|=\|A\|^{n-1}\)</span> 与矩阵方程：<span class="math inline">\(B=\begin{pmatrix}6&amp;0&amp;0&amp;0\\0&amp;6&amp;0&amp;0\\6&amp;0&amp;6&amp;0\\0&amp;3&amp;0&amp;-1\end{pmatrix}\)</span>。</td>
+<td>伴随矩阵、矩阵方程</td>
+</tr>
+<tr class="even">
+<td><a href="#answer-6">6</a></td>
+<td>（20）秩 1 矩阵的幂与多项式：<span class="math inline">\(f(x)=x^{2}-nx\)</span>；<span class="math inline">\(A^{100}=n^{99}A\)</span>；<span class="math inline">\((A+E)^{3}=E+(n^{2}+3n+3)A\)</span>；<span class="math inline">\((A+E)^{-1}=E-\frac{A}{n+1}\)</span>。</td>
+<td>矩阵幂与多项式</td>
+</tr>
+<tr class="odd">
+<td><a href="#answer-7">7</a></td>
+<td>（8）秩的等价刻画：<span class="math inline">\(r(A)=r(AB)\iff\)</span> 存在 <span class="math inline">\(C\)</span> 使 <span class="math inline">\(A=ABC\)</span>。</td>
+<td>秩与空间维数</td>
+</tr>
+<tr class="even">
+<td><a href="#answer-8">8</a></td>
+<td>（7）等价标准形与对称分解：<span class="math inline">\(A=SP\)</span>，其中 <span class="math inline">\(S=U^{-1}DU^{-\mathrm{T}}\)</span> 对称、<span class="math inline">\(P=U^{\mathrm{T}}V^{-1}\)</span> 可逆。</td>
+<td>正交与对称</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="section-21" class="level3">
+<h3 class="anchored" data-anchor-id="section-21">复习要点</h3>
+<ul>
+<li><strong>行列式：</strong>优先用行、列倍加制造零元；三对角型按首行展开建立递推，并核对初值。</li>
+<li><strong>秩与空间维数：</strong><span class="math inline">\(r(XY)\le\min\{r(X),r(Y)\}\)</span>，<span class="math inline">\(r(X+Y)\le r(X)+r(Y)\)</span>；可逆初等变换不改变秩。</li>
+<li><strong>线性方程组：</strong><span class="math inline">\(r(A)&lt;r(A\mid b)\)</span> 时无解；两秩相等时有解，自由参数个数为 <span class="math inline">\(n-r(A)\)</span>。</li>
+<li><strong>伴随矩阵：</strong><span class="math inline">\(AA^*=A^*A=|A|E\)</span>；<span class="math inline">\(|A^*|=|A|^{n-1}\)</span>；可逆时 <span class="math inline">\(A^*=|A|A^{-1}\)</span>。</li>
+<li><strong>矩阵方程：</strong><span class="math inline">\(AX=B\)</span> 左乘 <span class="math inline">\(A^{-1}\)</span>，<span class="math inline">\(XA=B\)</span> 右乘 <span class="math inline">\(A^{-1}\)</span>；先移项因式分解，再判断可逆性。</li>
+<li><strong>矩阵幂与多项式：</strong>由已知的矩阵多项式关系降低幂次；秩一矩阵 <span class="math inline">\(uv^{\mathsf T}\)</span> 满足 <span class="math inline">\((uv^{\mathsf T})^m=(v^{\mathsf T}u)^{m-1}uv^{\mathsf T}\)</span>。</li>
+<li><strong>正交与对称：</strong>正交矩阵满足 <span class="math inline">\(Q^{\mathsf T}Q=E\)</span>；实内积须满足对称性、双线性和正定性。</li>
+</ul>
+</section>
+<section id="section-22" class="level3">
+<h3 class="anchored" data-anchor-id="section-22">易错点清单</h3>
+<ul>
+<li>交换两行变号；倍乘一行才提取一个因子；余子式须带 <span class="math inline">\((-1)^{i+j}\)</span>。</li>
+<li>秩是最大非零子式的阶数；区分零空间、列空间与行空间。</li>
+<li>含参消元在除以参数前先分情形；通解写成特解加齐次通解。</li>
+<li>先判断阶数与可逆性，不能把伴随矩阵当作转置。</li>
+<li>逆矩阵不能随意跨过其他因子；只可在同侧作相应运算。</li>
+<li>二项式展开须保证参与的矩阵可交换；幂零与零矩阵不是同一概念。</li>
+<li>内积的正定性须对所有非零向量成立；矩阵乘积转置时要倒序。</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="section-23" class="level2">
+<h2 class="anchored" data-anchor-id="section-23">⚖️AI 协作与版权声明</h2>
+<section id="section-24" class="level3">
+<h3 class="anchored" data-anchor-id="section-24">AI 协作说明</h3>
+<p>本文件由整理者提供资料并确定整理要求，使用 OpenAI Codex 辅助完成题目转写、LaTeX 公式录入、解题推导、知识点分析和 Markdown 排版。AI 辅助生成的解析属于学习参考内容，不代表命题教师、原资料作者或学校的官方解答；本声明不表示内容已经过人工逐题审核。使用时请结合教材与课程要求核验，发现问题可提出更正。</p>
+</section>
+<section id="section-25" class="level3">
+<h3 class="anchored" data-anchor-id="section-25">来源与权利归属</h3>
+<p>原始试卷及参考解析来自本库保存的浙江大学《线性代数（甲）》历年期中题目卷与解析卷 PDF 合集。合集署名整理者为 macanine，项目地址为 <a href="https://github.com/macanine/zju-linear-algebra-papers">zju-linear-algebra-papers</a>。原题、参考解析及其他第三方材料的权利归各自权利人所有，本文件的整理行为不改变其权利归属。来源标注用于说明出处，不表示已取得原资料的开放许可，也不表示原作者对本文件作出认可。</p>
+</section>
+<section id="section-26" class="level3">
+<h3 class="anchored" data-anchor-id="section-26">开放许可与转载要求</h3>
+<p>在整理贡献者依法有权许可的范围内，本文件新增的转写编排、补充解析和知识点整理采用 <strong>MIT License</strong>，许可正文如下。该许可不涵盖原题、原始参考解析、截图或其他第三方材料；使用这些材料须遵守其原有许可，或另行取得必要授权。</p>
+<p>转载或修改适用 MIT 许可的内容时，应保留以下版权与许可声明。转载包含原题或引用资料的版本时，也请保留资料来源及本节 AI 协作说明；修改者应注明修改内容，避免将补充或修改的结论归于原资料作者。</p>
+<pre class="text"><code>MIT License
+
+Copyright (c) 2026 easoncyy
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</code></pre>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<section id="comments" class="comments-section" aria-labelledby="comments-heading">
+  <h2 id="comments-heading">评论</h2>
+  <p id="comments-status">评论暂未开放。</p>
+  <div class="giscus"></div>
+</section>
+<script src="../../assets/comments-config.js?v=0740342d2f79"></script>
+<script src="../../assets/comments.js?v=efc269bc7855"></script>
+
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "已复制");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "已复制");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/easoncyy\.github\.io");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p><a href="../../posts/20261027-linear-algebra-midterm-2020-2021/index.html">~/notes</a> · 记录与探索</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p><a class="footer-repository" href="https://github.com/easoncyy/easoncyy.github.io" target="_blank" rel="noopener noreferrer" aria-label="查看本站 GitHub 仓库"><i class="bi bi-github" aria-hidden="true"></i><span>source/</span></a><span class="footer-builder">Built with Quarto</span></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

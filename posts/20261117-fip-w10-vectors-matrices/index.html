@@ -1,0 +1,1570 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="个人笔记">
+<meta name="description" content="NumPy 数组、向量与矩阵运算、布尔索引、聚合与广播，以及批量相似度计算。">
+
+<title>FIP W10 · 向量与矩阵 – 个人笔记</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/favicon.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-a7952132dd87ce33f437addd0578540c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-dc090d8f6625c822698d9a6ee9cd1ac5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "没有结果",
+    "search-matching-documents-text": "匹配的文档",
+    "search-copy-link-title": "复制搜索链接",
+    "search-hide-matches-text": "隐藏其它匹配结果",
+    "search-more-match-text": "更多匹配结果",
+    "search-more-matches-text": "更多匹配结果",
+    "search-clear-button-title": "清除",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "取消",
+    "search-submit-button-title": "提交",
+    "search-label": "搜索"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script defer="" src="../../assets/directory.js?v=05751f758f0b"></script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="../../assets/vendor/mathjax/tex-svg-full.js?v=a4354ff94fd8" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css?v=83131ce44c97">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/logo.svg" alt="Ce · easoncyy" class="navbar-logo light-content">
+    <img src="../../assets/logo.svg" alt="Ce · easoncyy" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">~/notes</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="搜索"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="展开或折叠导航栏" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html"> 
+<span class="menu-text"><span class="nav-path">blog/</span><span class="nav-caption">博客</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../problems.html"> 
+<span class="menu-text"><span class="nav-path">problems/</span><span class="nav-caption">每日好题</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../projects.html"> 
+<span class="menu-text"><span class="nav-path">projects/</span><span class="nav-caption">项目</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../log.html"> 
+<span class="menu-text"><span class="nav-path">log/</span><span class="nav-caption">日志</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../links.html"> 
+<span class="menu-text"><span class="nav-path">links/</span><span class="nav-caption">友链</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../library.html"> 
+<span class="menu-text"><span class="nav-path">library/</span><span class="nav-caption">图书馆</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text"><span class="nav-path">about/</span><span class="nav-caption">关于</span></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">本页目录</h2>
+   
+  <ul>
+  <li><a href="#理论课内容" id="toc-理论课内容" class="nav-link active" data-scroll-target="#理论课内容">理论课内容</a>
+  <ul class="collapse">
+  <li><a href="#quick-recap" id="toc-quick-recap" class="nav-link" data-scroll-target="#quick-recap">Quick Recap</a></li>
+  <li><a href="#numpy" id="toc-numpy" class="nav-link" data-scroll-target="#numpy">NumPy</a></li>
+  <li><a href="#向量用一组数表示对象" id="toc-向量用一组数表示对象" class="nav-link" data-scroll-target="#向量用一组数表示对象">向量：用一组数表示对象</a></li>
+  <li><a href="#矩阵数据表与线性变换" id="toc-矩阵数据表与线性变换" class="nav-link" data-scroll-target="#矩阵数据表与线性变换">矩阵：数据表与线性变换</a></li>
+  <li><a href="#成绩分析索引与聚合" id="toc-成绩分析索引与聚合" class="nav-link" data-scroll-target="#成绩分析索引与聚合">成绩分析：索引与聚合</a></li>
+  <li><a href="#神经网络批量矩阵运算" id="toc-神经网络批量矩阵运算" class="nav-link" data-scroll-target="#神经网络批量矩阵运算">神经网络：批量矩阵运算</a></li>
+  <li><a href="#广播与数据标准化" id="toc-广播与数据标准化" class="nav-link" data-scroll-target="#广播与数据标准化">广播与数据标准化</a></li>
+  </ul></li>
+  <li><a href="#阅读材料补充" id="toc-阅读材料补充" class="nav-link" data-scroll-target="#阅读材料补充">阅读材料补充</a>
+  <ul class="collapse">
+  <li><a href="#创建与形状操作速查" id="toc-创建与形状操作速查" class="nav-link" data-scroll-target="#创建与形状操作速查">创建与形状操作速查</a></li>
+  <li><a href="#keepdims-与按行归一化" id="toc-keepdims-与按行归一化" class="nav-link" data-scroll-target="#keepdims-与按行归一化"><code>keepdims</code> 与按行归一化</a></li>
+  <li><a href="#环境与绘图" id="toc-环境与绘图" class="nav-link" data-scroll-target="#环境与绘图">环境与绘图</a></li>
+  </ul></li>
+  <li><a href="#研讨课内容" id="toc-研讨课内容" class="nav-link" data-scroll-target="#研讨课内容">研讨课内容</a>
+  <ul class="collapse">
+  <li><a href="#用户相似度与最近邻推荐" id="toc-用户相似度与最近邻推荐" class="nav-link" data-scroll-target="#用户相似度与最近邻推荐">用户相似度与最近邻推荐</a></li>
+  <li><a href="#项目a批量几何变换" id="toc-项目a批量几何变换" class="nav-link" data-scroll-target="#项目a批量几何变换">项目A：批量几何变换</a></li>
+  <li><a href="#项目b批量相似度矩阵" id="toc-项目b批量相似度矩阵" class="nav-link" data-scroll-target="#项目b批量相似度矩阵">项目B：批量相似度矩阵</a></li>
+  <li><a href="#形状阅读与检查" id="toc-形状阅读与检查" class="nav-link" data-scroll-target="#形状阅读与检查">形状阅读与检查</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">FIP W10 · 向量与矩阵</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">学习笔记</div>
+    <div class="quarto-category">NumPy</div>
+    <div class="quarto-category">向量与矩阵</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    NumPy 数组、向量与矩阵运算、布尔索引、聚合与广播，以及批量相似度计算。
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">作者</div>
+    <div class="quarto-title-meta-contents">
+             <p>个人笔记 </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">发布于</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2026年11月17日</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="理论课内容" class="level2">
+<h2 class="anchored" data-anchor-id="理论课内容">理论课内容</h2>
+<section id="quick-recap" class="level3">
+<h3 class="anchored" data-anchor-id="quick-recap">Quick Recap</h3>
+<p>前两周使用了两套术语体系，分别对应数据结构和Python实现。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Data Structure</th>
+<th>Python</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>array</td>
+<td>list/tuple</td>
+</tr>
+<tr class="even">
+<td>linked list</td>
+<td>class define</td>
+</tr>
+<tr class="odd">
+<td>circular queue</td>
+<td>list simulate</td>
+</tr>
+<tr class="even">
+<td>queue/deque/stack</td>
+<td>deque</td>
+</tr>
+<tr class="odd">
+<td>priority queue</td>
+<td>heapq</td>
+</tr>
+</tbody>
+</table>
+<p>本周的“向量与矩阵”主题是传统数据结构和程序设计课程中不包含的，本周课程与线性代数课程高度相关，某种意义下本周的课程学习的核心对象是<code>NumPy</code>。</p>
+</section>
+<section id="numpy" class="level3">
+<h3 class="anchored" data-anchor-id="numpy">NumPy</h3>
+<section id="python列表的局限" class="level4">
+<h4 class="anchored" data-anchor-id="python列表的局限">Python列表的局限</h4>
+<p>Python列表无法做矩阵运算，且遍历访问速度很慢。</p>
+</section>
+<section id="numpy-array" class="level4">
+<h4 class="anchored" data-anchor-id="numpy-array">NumPy Array</h4>
+<p>可以使用<code>np.array()</code>创建<code>NumPy</code>数组，这里的数组基本就是数据结构意义上的严格数组，满足：</p>
+<ul>
+<li>大小固定</li>
+<li>类型相同</li>
+<li>连续存储</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>scores <span class="op">=</span> np.array([</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">85</span>, <span class="dv">90</span>, <span class="dv">78</span>],</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">92</span>, <span class="dv">88</span>, <span class="dv">84</span>],</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">78</span>, <span class="dv">85</span>, <span class="dv">90</span>]</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>])</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>numpy array</code>具有一些属性： - <code>shape</code>：数组的形状，以元组形式呈现（单个元素时逗号不可省略） - <code>dtype</code>：元素的数据类型 - <code>ndim</code>：数组的轴数 - <code>size</code>：数组中的元素个数 - <code>itemsize</code>：每个元素占用的字节数；数值数组的数据大小为 <code>size * itemsize</code></p>
+<section id="区分维度和ndim" class="level5">
+<h5 class="anchored" data-anchor-id="区分维度和ndim">区分维度和<code>ndim</code></h5>
+<p>数学上的维度和<code>NumPy ndim</code>是不同的概念</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>数学</th>
+<th>NumPy: <code>ndim</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>向量有几个分量</td>
+<td>数组有<strong>几条轴</strong>（嵌套了几层）</td>
+</tr>
+<tr class="even">
+<td><code>[5, 1, 2, 4]</code>是4维向量</td>
+<td><code>ndim == 1</code>是一维数组</td>
+</tr>
+</tbody>
+</table>
+<p><code>(4,)</code> 是一维数组，<code>(1,4)</code> 是二维行数组，<code>(4,1)</code> 是二维列数组。三者都有4个元素。一维数组 <code>.T</code> 转置不改变形状。</p>
+</section>
+</section>
+<section id="列表与数组的运算区别" class="level4">
+<h4 class="anchored" data-anchor-id="列表与数组的运算区别">列表与数组的运算区别</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 31%">
+<col style="width: 58%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>操作</th>
+<th>Python <code>list</code></th>
+<th>NumPy <code>ndarray</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>+</code></td>
+<td>拼接</td>
+<td>逐元素相加</td>
+</tr>
+<tr class="even">
+<td><code>*</code></td>
+<td>重复</td>
+<td>逐元素相乘</td>
+</tr>
+<tr class="odd">
+<td>矩阵乘法</td>
+<td>需另行实现</td>
+<td><code>@</code> 或 <code>np.matmul</code></td>
+</tr>
+<tr class="even">
+<td>元素类型</td>
+<td>可混合</td>
+<td>同一 <code>dtype</code>，混合输入可能转换类型或报错</td>
+</tr>
+</tbody>
+</table>
+<p>数组的形状通常固定，改变元素个数往往需要重新分配。新建数值数组通常连续存储，但切片、转置得到的视图不一定连续。</p>
+</section>
+</section>
+<section id="向量用一组数表示对象" class="level3">
+<h3 class="anchored" data-anchor-id="向量用一组数表示对象">向量：用一组数表示对象</h3>
+<p>用户偏好、文档词频、图像像素（3个RGB通道）等都可以表示为向量。需要注意的是各分量的含义和顺序必须一致才能比较，否则没有实际意义。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 这里数据预保存为浮点数，后续可以原地归一化，否则会因为数据类型由整型变为浮点型报错</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>alice <span class="op">=</span> np.array([<span class="fl">5.</span>, <span class="fl">1.</span>, <span class="fl">2.</span>, <span class="fl">4.</span>])</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>bob <span class="op">=</span> np.array([<span class="fl">4.</span>, <span class="fl">2.</span>, <span class="fl">1.</span>, <span class="fl">5.</span>])</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 55%">
+<col style="width: 37%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>运算</th>
+<th>数学含义</th>
+<th>NumPy</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>L2范数</td>
+<td><span class="math inline">\(\|v\|_2=\sqrt{\sum_i v_i^2}\)</span>，向量长度</td>
+<td><code>np.linalg.norm(v)</code></td>
+</tr>
+<tr class="even">
+<td>内积</td>
+<td><span class="math inline">\(u\cdot v=\sum_i u_iv_i\)</span></td>
+<td><code>np.dot(u, v)</code> 或一维的 <code>u @ v</code></td>
+</tr>
+<tr class="odd">
+<td>余弦相似度</td>
+<td><span class="math inline">\(\cos\theta=\frac{u\cdot v}{\|u\|\|v\|}\)</span></td>
+<td>内积除以两范数之积</td>
+</tr>
+<tr class="even">
+<td>欧氏距离</td>
+<td><span class="math inline">\(d(u,v)=\|u-v\|_2\)</span></td>
+<td><code>np.linalg.norm(u - v)</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote class="blockquote">
+<p>除了L2范数（欧几里得距离）之外，还有L1范数（曼哈顿距离）等比较常用的范数。</p>
+</blockquote>
+<p>内积也满足 <span class="math inline">\(u\cdot v=\|u\|\|v\|\cos\theta\)</span>。</p>
+<p><img src="images/W10-cosine.png" class="img-fluid"></p>
+<p>余弦相似度取值为 <span class="math inline">\([-1,1]\)</span>：<code>1</code> 同向，<code>0</code> 正交，<code>-1</code> 反向。非零向量整体乘正数不改变余弦；欧氏距离则保留绝对差距。比较偏好方向常用余弦，比较同尺度下的远近常用欧氏距离。</p>
+<p><code>cosine_similarity</code> 和 <code>euclidean_distance</code> 是下面自行定义的函数，不是 NumPy 内置函数。NumPy 提供 <code>np.dot</code> 和 <code>np.linalg.norm</code>，我们用它们实现相似度与距离计算。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> cosine_similarity(u, v):</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    denominator <span class="op">=</span> np.linalg.norm(u) <span class="op">*</span> np.linalg.norm(v)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> denominator <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"零向量的余弦相似度无定义"</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.dot(u, v) <span class="op">/</span> denominator</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> euclidean_distance(u, v):</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.linalg.norm(u <span class="op">-</span> v)</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Alice与Bob：内积为 <code>44</code>，两者范数均为 <span class="math inline">\(\sqrt{46}\)</span>，余弦为 <span class="math inline">\(44/46\approx0.957\)</span>，欧氏距离为 <code>2</code>。注意 <code>np.abs(u-v).sum()</code> 是L1距离，不是欧氏距离。</p>
+<section id="线性相关" class="level4">
+<h4 class="anchored" data-anchor-id="线性相关">线性相关</h4>
+<p>两个非零向量线性相关，等价于一个是另一个的数倍，也等价于 <span class="math inline">\(|\cos\theta|=1\)</span>。正倍数同向，负倍数反向；余弦为1不代表向量相等。若包含零向量，向量组仍线性相关，但不能使用余弦相似度判断。</p>
+</section>
+</section>
+<section id="矩阵数据表与线性变换" class="level3">
+<h3 class="anchored" data-anchor-id="矩阵数据表与线性变换">矩阵：数据表与线性变换</h3>
+<p><span class="math inline">\(m\times n\)</span> 矩阵有 <span class="math inline">\(m\)</span> 行、<span class="math inline">\(n\)</span> 列，既可看成 <span class="math inline">\(m\)</span> 个行向量，也可看成 <span class="math inline">\(n\)</span> 个列向量。矩阵可以保存表格数据，也可以作为线性变换<strong>算子</strong>。</p>
+<section id="矩阵乘法" class="level4">
+<h4 class="anchored" data-anchor-id="矩阵乘法">矩阵乘法</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>运算</th>
+<th>形状规则</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>矩阵乘向量</td>
+<td><code>(m,n) @ (n,)</code></td>
+<td><code>(m,)</code></td>
+</tr>
+<tr class="even">
+<td>矩阵乘矩阵</td>
+<td><code>(m,n) @ (n,p)</code></td>
+<td><code>(m,p)</code></td>
+</tr>
+<tr class="odd">
+<td>逐元素乘法</td>
+<td><code>A * B</code></td>
+<td>按广播规则决定</td>
+</tr>
+</tbody>
+</table>
+<p>矩阵乘法的内侧维数必须相等。结果中的每个元素是左矩阵一行与右矩阵一列的内积：<span class="math inline">\(C_{ij}=\sum_k A_{ik}B_{kj}\)</span>。</p>
+<p>矩阵乘向量有两种理解：按行看，结果每个分量是该行与向量的内积；按列看，结果是矩阵各列以向量分量为系数的线性组合。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">3</span>, <span class="dv">4</span>]])</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> np.array([[<span class="dv">5</span>, <span class="dv">6</span>], [<span class="dv">7</span>, <span class="dv">8</span>]])</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>A <span class="op">*</span> B   <span class="co"># [[5, 12], [21, 32]]</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>A <span class="op">@</span> B   <span class="co"># [[19, 22], [43, 50]]</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="单位缩放与旋转" class="level4">
+<h4 class="anchored" data-anchor-id="单位缩放与旋转">单位、缩放与旋转</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> np.array([<span class="dv">3</span>, <span class="dv">2</span>])</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>I <span class="op">=</span> np.eye(<span class="dv">2</span>) <span class="co"># 单位矩阵，只需要提供一阶数参数</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>S <span class="op">=</span> np.array([</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">2</span>, <span class="dv">0</span>],</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">3</span>]</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>R <span class="op">=</span> np.array([</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>],</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>, <span class="dv">0</span>]</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>I <span class="op">@</span> v   <span class="co"># [3, 2]</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>S <span class="op">@</span> v   <span class="co"># [6, 6]</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>R <span class="op">@</span> v   <span class="co"># [-2, 3]</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>单位矩阵不改变向量；对角矩阵分别缩放各轴；这里的 <code>R</code> 绕原点逆时针旋转90°，保持长度不变。</p>
+<p><img src="images/W10-rotation.png" class="img-fluid"></p>
+<p><strong>连续变换从右向左作用</strong>：<code>S @ R @ v</code> 先旋转再缩放，得到 <code>[-4,9]</code>；<code>R @ S @ v</code> 先缩放再旋转，得到 <code>[-6,6]</code>。矩阵乘法一般不满足交换律，但等比例缩放等特殊情况可以交换。</p>
+</section>
+</section>
+<section id="成绩分析索引与聚合" class="level3">
+<h3 class="anchored" data-anchor-id="成绩分析索引与聚合">成绩分析：索引与聚合</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>scores[<span class="dv">0</span>, <span class="dv">1</span>]       <span class="co"># 第0行、第1列：90</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>scores[<span class="dv">0</span>]         <span class="co"># 第0行，shape (3,)</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>scores[:, <span class="dv">1</span>]      <span class="co"># 第1列，shape (3,)</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>scores[<span class="dv">0</span>:<span class="dv">2</span>, :]    <span class="co"># 前两行，shape (2,3)</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>scores[scores[:, <span class="dv">1</span>] <span class="op">&gt;</span> <span class="dv">90</span>]       <span class="co"># 第1列（第二列）超过90分的学生</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>scores[(scores <span class="op">&gt;=</span> <span class="dv">60</span>).<span class="bu">all</span>(axis<span class="op">=</span><span class="dv">1</span>)]  <span class="co"># 每科都及格的学生</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>切片仍左闭右开；逗号分隔不同轴。<code>scores[:, 1]</code> 取一列但结果是一维的 <code>(3,)</code>；若要保留二维列形状，用 <code>scores[:, 1:2]</code>，结果为 <code>(3,1)</code>。</p>
+<section id="布尔索引先判断再筛选" class="level4">
+<h4 class="anchored" data-anchor-id="布尔索引先判断再筛选">布尔索引：先判断，再筛选</h4>
+<p>数组与数字比较，会逐元素生成 <code>dtype=bool</code> 的数组，称为布尔掩码（mask）。用掩码作下标，只保留 <code>True</code> 对应的数据，不改变原顺序。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> np.array([<span class="dv">55</span>, <span class="dv">80</span>, <span class="dv">92</span>, <span class="dv">60</span>])</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>mask <span class="op">=</span> a <span class="op">&gt;=</span> <span class="dv">60</span>          <span class="co"># [False, True, True, True]</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>a[mask]                <span class="co"># [80, 92, 60]</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 等价于 a[a &gt;= 60]</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>二维数组中，要区分 <strong>筛选整行</strong> 和 <strong>筛选单个元素</strong>：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>grades <span class="op">=</span> np.array([[<span class="dv">85</span>, <span class="dv">95</span>, <span class="dv">58</span>],</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                   [<span class="dv">92</span>, <span class="dv">88</span>, <span class="dv">84</span>],</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                   [<span class="dv">50</span>, <span class="dv">91</span>, <span class="dv">90</span>]])</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>mask <span class="op">=</span> grades[:, <span class="dv">1</span>] <span class="op">&gt;</span> <span class="dv">90</span>    <span class="co"># [True, False, True]，shape (3,)</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>grades[mask]               <span class="co"># [[85,95,58], [50,91,90]]，shape (2,3)</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>grades[mask, <span class="dv">0</span>]            <span class="co"># [85,50]，选中学生的第0科成绩</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>mask2 <span class="op">=</span> grades <span class="op">&gt;=</span> <span class="dv">90</span>       <span class="co"># shape (3,3)，每个成绩分别判断</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>grades[mask2]             <span class="co"># [95,92,91,90]，shape (4,)</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>掩码位置与形状</th>
+<th>筛选对象</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>A[row_mask]</code>，掩码长度等于行数</td>
+<td>整行</td>
+<td>保留二维，行数为 <code>True</code> 的个数</td>
+</tr>
+<tr class="even">
+<td><code>A[:, col_mask]</code>，掩码长度等于列数</td>
+<td>整列</td>
+<td>保留二维，列数为 <code>True</code> 的个数</td>
+</tr>
+<tr class="odd">
+<td><code>A[element_mask]</code>，掩码与 <code>A</code> 同形</td>
+<td>单个元素</td>
+<td>按行顺序取出，成为一维数组</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="多条件筛选与赋值" class="level4">
+<h4 class="anchored" data-anchor-id="多条件筛选与赋值">多条件筛选与赋值</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>运算符</th>
+<th>含义</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>&amp;</code></td>
+<td>对应位置都为真</td>
+<td><code>(a &gt;= 60) &amp; (a &lt; 90)</code></td>
+</tr>
+<tr class="even">
+<td><code>\|</code></td>
+<td>对应位置至少一个为真</td>
+<td><code>(a &lt; 60) \| (a &gt;= 90)</code></td>
+</tr>
+<tr class="odd">
+<td><code>~</code></td>
+<td>每个布尔值取反</td>
+<td><code>~(a &gt;= 60)</code></td>
+</tr>
+</tbody>
+</table>
+<p>组合数组条件时用 <code>&amp;</code>、<code>|</code>，不用 Python 的 <code>and</code>、<code>or</code>；每个比较条件分别加括号，避免运算优先级改变含义。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>grades[(grades[:, <span class="dv">0</span>] <span class="op">&gt;=</span> <span class="dv">60</span>) <span class="op">&amp;</span> (grades[:, <span class="dv">1</span>] <span class="op">&gt;</span> <span class="dv">90</span>)]</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [[85,95,58]]，同时满足两个条件的整行</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>grades[grades <span class="op">&lt;</span> <span class="dv">60</span>] <span class="op">=</span> <span class="dv">60</span>   <span class="co"># 原地把所有不及格成绩改成60</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>selected = grades[mask]</code> 通常得到副本，修改 <code>selected</code> 不影响原数组；<code>grades[mask] = value</code> 则直接修改原数组。要修改原数组，应直接写索引赋值，避免 <code>grades[mask][0] = ...</code> 这种链式写法。</p>
+</section>
+<section id="聚合与-axis沿指定轴合成结果" class="level4">
+<h4 class="anchored" data-anchor-id="聚合与-axis沿指定轴合成结果">聚合与 <code>axis</code>：沿指定轴合成结果</h4>
+<p>聚合把多个元素汇总成和、均值、最值等。二维数组的 <code>axis=0</code> 是行轴、<code>axis=1</code> 是列轴；指定哪条轴，就沿那条轴计算并消去它。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]])       <span class="co"># shape (2,3)</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>A.<span class="bu">sum</span>()                        <span class="co"># 21，全部元素求和</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>A.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">0</span>)                  <span class="co"># [5,7,9]，上下相加，每列一个和</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>A.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>)                  <span class="co"># [6,15]，左右相加，每行一个和</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>A.mean(axis<span class="op">=</span><span class="dv">0</span>)                 <span class="co"># [2.5,3.5,4.5]</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>A.<span class="bu">max</span>(axis<span class="op">=</span><span class="dv">1</span>)                  <span class="co"># [3,6]</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>axis=0</code> 表示沿第0条轴汇总所有行，按轴0压缩。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>写法</th>
+<th>含义</th>
+<th>对 <code>(m,n)</code> 的结果形状</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>scores.mean(axis=0)</code></td>
+<td>消去行轴，每科均分</td>
+<td><code>(n,)</code></td>
+</tr>
+<tr class="even">
+<td><code>scores.sum(axis=1)</code></td>
+<td>消去列轴，每人总分</td>
+<td><code>(m,)</code></td>
+</tr>
+<tr class="odd">
+<td><code>scores.argmax(axis=1)</code></td>
+<td>每人最高分科目的下标</td>
+<td><code>(m,)</code></td>
+</tr>
+<tr class="even">
+<td><code>scores.mean()</code></td>
+<td>全部元素的均值</td>
+<td>标量</td>
+</tr>
+<tr class="odd">
+<td><code>(scores &gt;= 60).all(axis=1)</code></td>
+<td>每人是否全部及格</td>
+<td><code>(m,)</code>，布尔数组</td>
+</tr>
+</tbody>
+</table>
+<p><code>axis=k</code> 表示沿第 <span class="math inline">\(k\)</span> 条轴归约；<code>argmax</code> 返回下标，<code>max</code> 返回最大值，最大值重复时 <code>argmax</code> 返回第一个位置。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>方法</th>
+<th>作用</th>
+<th>注意</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>sum</code> / <code>mean</code></td>
+<td>和 / 算术平均值</td>
+<td>未指定 <code>axis</code> 时汇总全部元素</td>
+</tr>
+<tr class="even">
+<td><code>std</code></td>
+<td>标准差</td>
+<td>默认除以元素数，即 <code>ddof=0</code></td>
+</tr>
+<tr class="odd">
+<td><code>max</code> / <code>min</code></td>
+<td>最大值 / 最小值</td>
+<td>返回数值</td>
+</tr>
+<tr class="even">
+<td><code>argmax</code> / <code>argmin</code></td>
+<td>最大值 / 最小值的位置</td>
+<td>指定轴时返回该轴内的位置</td>
+</tr>
+<tr class="odd">
+<td><code>all</code> / <code>any</code></td>
+<td>全部为真 / 至少一个为真</td>
+<td>数值中0为假，非0为真</td>
+</tr>
+</tbody>
+</table>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> np.array([[<span class="dv">8</span>, <span class="dv">2</span>, <span class="dv">8</span>], [<span class="dv">1</span>, <span class="dv">9</span>, <span class="dv">3</span>]])</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>B.<span class="bu">max</span>(axis<span class="op">=</span><span class="dv">1</span>)       <span class="co"># [8,9]</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>B.argmax(axis<span class="op">=</span><span class="dv">1</span>)    <span class="co"># [0,1]，每行最大值的列下标</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>B.argmax(axis<span class="op">=</span><span class="dv">0</span>)    <span class="co"># [0,1,0]，每列最大值的行下标</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>B.argmax()          <span class="co"># 4，不指定轴时返回按行展平后的位置</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="allany从成绩判断学生" class="level4">
+<h4 class="anchored" data-anchor-id="allany从成绩判断学生"><code>all</code>、<code>any</code>：从成绩判断学生</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>grades <span class="op">=</span> np.array([[<span class="dv">85</span>, <span class="dv">95</span>, <span class="dv">58</span>],</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>                   [<span class="dv">92</span>, <span class="dv">88</span>, <span class="dv">84</span>],</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                   [<span class="dv">50</span>, <span class="dv">91</span>, <span class="dv">90</span>]])</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>passed <span class="op">=</span> grades <span class="op">&gt;=</span> <span class="dv">60</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co"># [[True, True, False],</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co">#  [True, True, True],</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co">#  [False, True, True]]</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>passed.<span class="bu">all</span>(axis<span class="op">=</span><span class="dv">1</span>)       <span class="co"># [False,True,False]，每人是否科科及格</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>passed.<span class="bu">any</span>(axis<span class="op">=</span><span class="dv">1</span>)       <span class="co"># [True,True,True]，每人是否至少一科及格</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>(grades <span class="op">&lt;</span> <span class="dv">60</span>).<span class="bu">any</span>(axis<span class="op">=</span><span class="dv">1</span>)  <span class="co"># [True,False,True]，每人是否有不及格</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>grades[passed.<span class="bu">all</span>(axis<span class="op">=</span><span class="dv">1</span>)] <span class="co"># [[92,88,84]]，取出全部及格的学生</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>passed.<span class="bu">all</span>(axis<span class="op">=</span><span class="dv">0</span>)       <span class="co"># [False,True,False]，每科是否所有人及格</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>passed.all()</code> 是对整张表判断，只有每个成绩都及格才为真。空数组上 <code>all()</code> 为真、<code>any()</code> 为假。</p>
+</section>
+<section id="keepdimstrue保留轴便于广播" class="level4">
+<h4 class="anchored" data-anchor-id="keepdimstrue保留轴便于广播"><code>keepdims=True</code>：保留轴，便于广播</h4>
+<p>默认聚合会消去所选轴；<code>keepdims=True</code> 则保留这条轴，但长度变为1。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>对 <code>A.shape == (2,3)</code></th>
+<th>默认结果形状</th>
+<th>加 <code>keepdims=True</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>A.sum(axis=0)</code></td>
+<td><code>(3,)</code></td>
+<td><code>(1,3)</code></td>
+</tr>
+<tr class="even">
+<td><code>A.sum(axis=1)</code></td>
+<td><code>(2,)</code></td>
+<td><code>(2,1)</code></td>
+</tr>
+</tbody>
+</table>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>row_mean <span class="op">=</span> A.mean(axis<span class="op">=</span><span class="dv">1</span>, keepdims<span class="op">=</span><span class="va">True</span>)  <span class="co"># [[2.],[5.]]，shape (2,1)</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">-</span> row_mean                            <span class="co"># 每行减自己的均值</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># [[-1.,0.,1.], [-1.,0.,1.]]</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>若不保留轴，行均值为 <code>(2,)</code>，不能直接与 <code>(2,3)</code> 广播；列均值为 <code>(3,)</code>，则可以直接从每行减去。</p>
+</section>
+<section id="排名下标与成绩行分开" class="level4">
+<h4 class="anchored" data-anchor-id="排名下标与成绩行分开">排名：下标与成绩行分开</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>totals <span class="op">=</span> grades.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>)       <span class="co"># [238,264,231]</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>order <span class="op">=</span> np.argsort(totals)       <span class="co"># [2,0,1]，总分从低到高的学生下标</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>top3 <span class="op">=</span> order[::<span class="op">-</span><span class="dv">1</span>][:<span class="dv">3</span>]           <span class="co"># [1,0,2]，从高到低取前三</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>grades[top3]                    <span class="co"># 按排名取出成绩行</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>np.sort(totals)</code> 返回排序后的分数，<code>np.argsort(totals)</code> 返回对应下标。<code>argmax</code> 只找第一名，<code>argsort</code> 可生成完整排名；上面的写法未额外规定同分时的次序。</p>
+</section>
+</section>
+<section id="神经网络批量矩阵运算" class="level3">
+<h3 class="anchored" data-anchor-id="神经网络批量矩阵运算">神经网络：批量矩阵运算</h3>
+<p>单样本一层的计算为 <span class="math inline">\(h=Wx+b\)</span>。<code>W</code> 的每一行对应一个输出神经元，每一列对应一个输入分量。</p>
+<p><img src="images/W10-network.png" class="img-fluid"></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="fl">1.</span>, <span class="fl">2.</span>, <span class="fl">3.</span>])</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>W <span class="op">=</span> np.array([[<span class="fl">0.1</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>], [<span class="fl">0.4</span>, <span class="fl">0.5</span>, <span class="fl">0.6</span>]])</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> np.array([<span class="fl">0.1</span>, <span class="fl">0.2</span>])</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span> W <span class="op">@</span> x <span class="op">+</span> b    <span class="co"># [1.5, 3.4]，shape (2,)</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>对象</th>
+<th>形状</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>X</code></td>
+<td><code>(batch,in)</code></td>
+<td>每行一个样本</td>
+</tr>
+<tr class="even">
+<td><code>W</code></td>
+<td><code>(out,in)</code></td>
+<td>每行一组输出权重</td>
+</tr>
+<tr class="odd">
+<td><code>W.T</code></td>
+<td><code>(in,out)</code></td>
+<td>与批量输入右乘</td>
+</tr>
+<tr class="even">
+<td><code>b</code></td>
+<td><code>(out,)</code></td>
+<td>广播到每个样本</td>
+</tr>
+<tr class="odd">
+<td><code>X @ W.T + b</code></td>
+<td><code>(batch,out)</code></td>
+<td>批量输出</td>
+</tr>
+</tbody>
+</table>
+<p>矩阵乘法把所有输入按权重求和，逐元素乘法不能完成这一汇总。向量化仍需计算各个乘积与和，只是由底层优化实现，不能理解成时间复杂度变成 <span class="math inline">\(O(1)\)</span>。各输出元素可独立计算，适合并行。</p>
+</section>
+<section id="广播与数据标准化" class="level3">
+<h3 class="anchored" data-anchor-id="广播与数据标准化">广播与数据标准化</h3>
+<p>广播从末尾维度向前对齐：每一对维度必须相等，或其中一个为1；缺失的前导维度按1处理。广播是逻辑扩展，不必真的复制成相同大小。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>形状</th>
+<th>能否广播</th>
+<th>结果形状</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>(3,4) + (4,)</code></td>
+<td>能</td>
+<td><code>(3,4)</code></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>(3,4) + (3,)</code></td>
+<td>不能</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>(3,4) + (1,4)</code></td>
+<td>能</td>
+<td><code>(3,4)</code></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>(5,3) - (5,)</code></td>
+<td>不能</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>(5,3) - (5,1)</code></td>
+<td>能</td>
+<td><code>(5,3)</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<section id="z-score与min-max" class="level4">
+<h4 class="anchored" data-anchor-id="z-score与min-max">Z-score与Min-Max</h4>
+<p>不同特征单位和尺度不同，会影响距离等计算。对每列分别标准化：<span class="math inline">\(z=(x-\mu)/\sigma\)</span>。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>mean <span class="op">=</span> data.mean(axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>std <span class="op">=</span> data.std(axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>safe_std <span class="op">=</span> np.where(std <span class="op">==</span> <span class="dv">0</span>, <span class="dv">1</span>, std)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>normalized <span class="op">=</span> (data <span class="op">-</span> mean) <span class="op">/</span> safe_std</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>非常数列标准化后均值约0、标准差约1；常数列减均值后为0，不能直接除以0。<code>std()</code> 默认 <code>ddof=0</code>。</p>
+<p>Min-Max使用 <span class="math inline">\((x-x_{min})/(x_{max}-x_{min})\)</span>，把非恒定数据映射到 <code>[0,1]</code>；Z-score以均值和标准差为基准，不限制范围。两者都需处理分母为0。</p>
+</section>
+</section>
+</section>
+<section id="阅读材料补充" class="level2">
+<h2 class="anchored" data-anchor-id="阅读材料补充">阅读材料补充</h2>
+<p>课程材料：10 向量与矩阵阅读材料.pdf</p>
+<section id="创建与形状操作速查" class="level3">
+<h3 class="anchored" data-anchor-id="创建与形状操作速查">创建与形状操作速查</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>写法</th>
+<th>功能 / 注意</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>np.array(seq, dtype=float)</code></td>
+<td>创建浮点数组</td>
+</tr>
+<tr class="even">
+<td><code>np.asarray(a)</code></td>
+<td>转为数组；类型等条件允许时复用原数据</td>
+</tr>
+<tr class="odd">
+<td><code>np.zeros((2,3))</code></td>
+<td>2行3列全0，默认浮点</td>
+</tr>
+<tr class="even">
+<td><code>np.ones((2,3))</code></td>
+<td>全1</td>
+</tr>
+<tr class="odd">
+<td><code>np.full((2,3), 7)</code></td>
+<td>全部填7</td>
+</tr>
+<tr class="even">
+<td><code>np.eye(3)</code></td>
+<td>3阶单位矩阵</td>
+</tr>
+<tr class="odd">
+<td><code>np.arange(0,10,2)</code></td>
+<td><code>[0,2,4,6,8]</code>，不含终点</td>
+</tr>
+<tr class="even">
+<td><code>np.linspace(0,1,5)</code></td>
+<td><code>[0,0.25,0.5,0.75,1]</code>，默认含两端</td>
+</tr>
+<tr class="odd">
+<td><code>a.reshape(2,3)</code></td>
+<td>改为2行3列，总元素数不变</td>
+</tr>
+<tr class="even">
+<td><code>a.reshape(-1,1)</code></td>
+<td>自动推断行数，变成单列</td>
+</tr>
+<tr class="odd">
+<td><code>A.T</code> / <code>A.transpose()</code></td>
+<td>二维时交换行列</td>
+</tr>
+<tr class="even">
+<td><code>a.copy()</code></td>
+<td>独立复制数值数据</td>
+</tr>
+</tbody>
+</table>
+<p>NumPy基本切片通常是 <strong>视图</strong>，修改可能影响原数组，与列表切片不同。<code>reshape</code> 可能返回视图，也可能复制；需要独立数据时明确 <code>.copy()</code>。布尔索引通常返回副本。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> a[:<span class="dv">2</span>]</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>b[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">9</span>       <span class="co"># a 也变为 [9,2,3]</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> a[:<span class="dv">2</span>].copy()</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>c[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">0</span>       <span class="co"># 不影响 a</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="keepdims-与按行归一化" class="level3">
+<h3 class="anchored" data-anchor-id="keepdims-与按行归一化"><code>keepdims</code> 与按行归一化</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>norms <span class="op">=</span> np.linalg.norm(ratings, axis<span class="op">=</span><span class="dv">1</span>, keepdims<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ratings (n,d) → norms (n,1)</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>normalized <span class="op">=</span> ratings <span class="op">/</span> np.where(norms <span class="op">==</span> <span class="dv">0</span>, <span class="dv">1</span>, norms)</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>keepdims=True</code> 保留被归约的轴，长度设为1，便于广播。这里每行除以自己的范数。零行保留为零只是计算约定，它与其他向量的数学余弦仍无定义。</p>
+</section>
+<section id="环境与绘图" class="level3">
+<h3 class="anchored" data-anchor-id="环境与绘图">环境与绘图</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-c</span> <span class="st">"import sys; print(sys.executable)"</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> pip <span class="at">-V</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> venv .venv</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>系统</th>
+<th>激活虚拟环境</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>PowerShell</td>
+<td><code>.venv\Scripts\Activate.ps1</code></td>
+</tr>
+<tr class="even">
+<td>Windows cmd</td>
+<td><code>.venv\Scripts\activate.bat</code></td>
+</tr>
+<tr class="odd">
+<td>macOS / Linux</td>
+<td><code>source .venv/bin/activate</code></td>
+</tr>
+</tbody>
+</table>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> pip install numpy matplotlib</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-c</span> <span class="st">"import numpy as np; print(np.__version__)"</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>python -m pip</code> 使用当前解释器安装包；IDE也要选择同一解释器。退出用 <code>deactivate</code>，再次使用时重新激活即可，<code>.venv/</code> 加入 <code>.gitignore</code>。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>报错</th>
+<th>排查</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>ModuleNotFoundError</code></td>
+<td>当前解释器未安装包，或装到了另一套Python</td>
+</tr>
+<tr class="even">
+<td><code>Permission denied</code></td>
+<td>使用项目虚拟环境，避免向系统目录安装</td>
+</tr>
+<tr class="odd">
+<td><code>ImportError</code> 涉及DLL或 <code>numpy._core</code></td>
+<td>检查环境和二进制兼容性，必要时在当前环境重装</td>
+</tr>
+</tbody>
+</table>
+<p>先读traceback最后一行的异常类型，再回看出错位置，不要用 <code>except: pass</code> 吞掉导入错误。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>plt.plot([<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>], marker<span class="op">=</span><span class="st">"o"</span>)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>plt.plot([<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">5</span>], marker<span class="op">=</span><span class="st">"o"</span>)</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>只传一组数据时，横坐标默认从0开始；<code>plt.plot(x,y)</code> 可指定横纵坐标。无图形界面时用 <code>plt.savefig("plot.png")</code> 保存，保存通常放在 <code>show()</code> 前。</p>
+</section>
+</section>
+<section id="研讨课内容" class="level2">
+<h2 class="anchored" data-anchor-id="研讨课内容">研讨课内容</h2>
+<p>课程材料：10 向量与矩阵研讨课课件.pdf</p>
+<section id="用户相似度与最近邻推荐" class="level3">
+<h3 class="anchored" data-anchor-id="用户相似度与最近邻推荐">用户相似度与最近邻推荐</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>用户</th>
+<th>评分向量</th>
+<th>与Alice的余弦</th>
+<th>欧氏距离</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Alice</td>
+<td><code>[5,1,2,4]</code></td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>Bob</td>
+<td><code>[4,2,1,5]</code></td>
+<td>0.957</td>
+<td>2.000</td>
+</tr>
+<tr class="odd">
+<td>Carol</td>
+<td><code>[1,5,5,1]</code></td>
+<td>0.491</td>
+<td>7.071</td>
+</tr>
+<tr class="even">
+<td>Dave</td>
+<td><code>[5,1,2,4]</code></td>
+<td>1.000</td>
+<td>0.000</td>
+</tr>
+<tr class="odd">
+<td>Eve</td>
+<td><code>[3,3,3,3]</code></td>
+<td>0.885</td>
+<td>3.162</td>
+</tr>
+</tbody>
+</table>
+<p>两种度量均判断Dave最接近Alice。Carol与其他用户比较时，Eve的余弦最高，约0.832。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> nearest_user(users, target):</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    candidates <span class="op">=</span> (name <span class="cf">for</span> name <span class="kw">in</span> users <span class="cf">if</span> name <span class="op">!=</span> target)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">max</span>(candidates,</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>               key<span class="op">=</span><span class="kw">lambda</span> name: cosine_similarity(users[target], users[name]))</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>找到最近邻后，<code>np.argmax(users[best_name])</code> 返回其最高分类型的下标。Eve各类评分相同，因此返回第一个下标0；实际推荐还要排除目标用户已观看的内容。</p>
+<section id="文档词袋" class="level4">
+<h4 class="anchored" data-anchor-id="文档词袋">文档词袋</h4>
+<p>固定词表 <code>["Python","AI","数据","编程","算法"]</code>，每个分量记录词频：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>doc1 <span class="op">=</span> np.array([<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>])</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>doc2 <span class="op">=</span> np.array([<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>])</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>doc3 <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">0</span>])</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>doc1</code> 与 <code>doc2</code> 的余弦为 <span class="math inline">\(18/\sqrt{418}\approx0.880\)</span>；与 <code>doc3</code> 为 <span class="math inline">\(2/\sqrt{19}\approx0.459\)</span>，因此更接近 <code>doc2</code>。只有“Python”重复100次的文档，向量为 <code>[100,0,0,0,0]</code>，与 <code>doc1</code> 的余弦为 <span class="math inline">\(3/\sqrt{19}\approx0.688\)</span>；重复次数不会使方向自动接近 <code>doc1</code>。</p>
+</section>
+</section>
+<section id="项目a批量几何变换" class="level3">
+<h3 class="anchored" data-anchor-id="项目a批量几何变换">项目A：批量几何变换</h3>
+<p>每行一个点时，<code>points</code> 为 <code>(N,2)</code>；左乘变换矩阵前先转成 <code>(2,N)</code>，最后再转回。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>points <span class="op">=</span> np.array([[<span class="dv">0</span>, <span class="dv">0</span>], [<span class="dv">2</span>, <span class="dv">0</span>], [<span class="dv">2</span>, <span class="dv">1</span>], [<span class="dv">0</span>, <span class="dv">1</span>]])</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>S <span class="op">=</span> np.array([[<span class="dv">2</span>, <span class="dv">0</span>], [<span class="dv">0</span>, <span class="dv">3</span>]])</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>R <span class="op">=</span> np.array([[<span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>], [<span class="dv">1</span>, <span class="dv">0</span>]])</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>transformed <span class="op">=</span> ((S <span class="op">@</span> R) <span class="op">@</span> points.T).T</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="co"># [[0,0], [0,6], [-2,6], [-2,0]]</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>形状依次为 <code>(2,2) @ (2,4) → (2,4) → (4,2)</code>。先缩放再旋转改成 <code>((R @ S) @ points.T).T</code>。绕非原点旋转需先减去旋转中心、旋转后再加回；平移不属于原二维空间中的线性变换。</p>
+</section>
+<section id="项目b批量相似度矩阵" class="level3">
+<h3 class="anchored" data-anchor-id="项目b批量相似度矩阵">项目B：批量相似度矩阵</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">42</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>ratings <span class="op">=</span> np.random.randint(<span class="dv">1</span>, <span class="dv">6</span>, size<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">5</span>))</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>norms <span class="op">=</span> np.linalg.norm(ratings, axis<span class="op">=</span><span class="dv">1</span>, keepdims<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>normalized <span class="op">=</span> ratings <span class="op">/</span> norms</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>sim_matrix <span class="op">=</span> normalized <span class="op">@</span> normalized.T</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>sim_0 <span class="op">=</span> sim_matrix[<span class="dv">0</span>].copy()</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>sim_0[<span class="dv">0</span>] <span class="op">=</span> <span class="op">-</span>np.inf</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>best <span class="op">=</span> np.argmax(sim_0)</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>本例评分为1到5，不存在零行。<code>normalized</code> 为 <code>(10,5)</code>，相似度矩阵为 <code>(10,10)</code>；第 <code>(i,j)</code> 项是两用户的余弦。矩阵对称，对角线约为1；寻找其他用户时排除自身，复制后修改可避免改变原相似度矩阵。</p>
+<p>未归一化的 <code>ratings @ ratings.T</code> 是内积矩阵。若有 <span class="math inline">\(n\)</span> 个用户、每人 <span class="math inline">\(d\)</span> 个特征，普通批量计算与双重循环计算的运算量均为 <span class="math inline">\(O(n^2d)\)</span>，但矩阵运算可利用底层优化和并行。</p>
+</section>
+<section id="形状阅读与检查" class="level3">
+<h3 class="anchored" data-anchor-id="形状阅读与检查">形状阅读与检查</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>表达式</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>X(2,3) @ W(4,3).T + b(4,)</code></td>
+<td><code>(2,4)</code></td>
+</tr>
+<tr class="even">
+<td><code>(3,4) + (4,)</code></td>
+<td>可广播</td>
+</tr>
+<tr class="odd">
+<td><code>(3,4) + (3,)</code></td>
+<td>不可广播</td>
+</tr>
+<tr class="even">
+<td><code>(5,3) - (5,)</code></td>
+<td>不可广播</td>
+</tr>
+<tr class="odd">
+<td>输入100、隐层256、输出10</td>
+<td>权重 <code>(256,100)</code>、<code>(10,256)</code></td>
+</tr>
+</tbody>
+</table>
+<p>检查计算时先写 <code>shape</code>，再区分 <code>@</code> 与 <code>*</code>、确认 <code>axis</code> 和广播方向，最后核对范数、标准差是否为0，并手算一组结果。</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<section id="comments" class="comments-section" aria-labelledby="comments-heading">
+  <h2 id="comments-heading">评论</h2>
+  <p id="comments-status">评论暂未开放。</p>
+  <div class="giscus"></div>
+</section>
+<script src="../../assets/comments-config.js?v=0740342d2f79"></script>
+<script src="../../assets/comments.js?v=efc269bc7855"></script>
+
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "已复制");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "已复制");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/easoncyy\.github\.io");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p><a href="../../posts/20261117-fip-w10-vectors-matrices/index.html">~/notes</a> · 记录与探索</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p><a class="footer-repository" href="https://github.com/easoncyy/easoncyy.github.io" target="_blank" rel="noopener noreferrer" aria-label="查看本站 GitHub 仓库"><i class="bi bi-github" aria-hidden="true"></i><span>source/</span></a><span class="footer-builder">Built with Quarto</span></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

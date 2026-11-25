@@ -142,7 +142,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="styles.css?v=c980a0946e71">
+<link rel="stylesheet" href="styles.css?v=83131ce44c97">
 </head>
 
 <body class="nav-fixed directory-page problems-page fullcontent quarto-light">
@@ -243,8 +243,2857 @@ window.Quarto = {
   <button type="button" id="problem-filter-reset">清除筛选</button>
 </div>
 <p id="problem-status" aria-live="polite"></p>
-<section id="section" class="level2 problem-date-heading problem-day" data-date="2026-10-25">
-<h2 class="problem-date-heading anchored" data-anchor-id="section">2026-10-25</h2>
+<section id="section" class="level2 problem-date-heading problem-day" data-date="2026-11-25">
+<h2 class="problem-date-heading anchored" data-anchor-id="section">2026-11-25</h2>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;不定积分&quot;], &quot;tags&quot;: [&quot;三角恒等变形&quot;, &quot;降次公式&quot;, &quot;积化和差&quot;], &quot;title&quot;: &quot;三角函数幂乘积的降次积分&quot;}">
+
+<div class="problem-meta">MATH / CALCULUS / 不定积分</div>
+
+<h3 class="anchored">01. 三角函数幂乘积的降次积分</h3>
+
+<div class="entry-tags">#三角恒等变形 · #降次公式 · #积化和差</div>
+
+<p>求不定积分 <span class="math display">\[
+\int\sin^2 3x\,\sin^3 2x\,dx.
+\]</span></p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>由降次公式， <span class="math display">\[
+\sin^3 2x=\frac{3\sin2x-\sin6x}{4},\qquad
+\sin^2 3x=\frac{1-\cos6x}{2}.
+\]</span> 所以 <span class="math display">\[
+\begin{aligned}
+\sin^2 3x\sin^3 2x
+&amp;=\frac18\bigl[3\sin2x-\sin6x-3\sin2x\cos6x+\sin6x\cos6x\bigr]\\
+&amp;=\frac18\left[3\sin2x-\sin6x-\frac32\sin8x+\frac32\sin4x+\frac12\sin12x\right].
+\end{aligned}
+\]</span> 逐项积分，得 <span class="math display">\[
+\boxed{-\frac3{16}\cos2x+\frac1{48}\cos6x+\frac3{128}\cos8x-\frac3{64}\cos4x-\frac1{192}\cos12x+C}.
+\]</span></p>
+
+</div></details>
+
+<p class="problem-source">来源：吉米多维奇《数学分析习题集》第 1753 题</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;不定积分&quot;], &quot;tags&quot;: [&quot;拆项积分&quot;, &quot;三角函数&quot;, &quot;凑微分&quot;], &quot;title&quot;: &quot;正弦平方与余弦乘积的倒数积分&quot;}">
+
+<div class="problem-meta">MATH / CALCULUS / 不定积分</div>
+
+<h3 class="anchored">02. 正弦平方与余弦乘积的倒数积分</h3>
+
+<div class="entry-tags">#拆项积分 · #三角函数 · #凑微分</div>
+
+<p>求不定积分 <span class="math display">\[
+\int\frac{dx}{\sin^2x\cos x}.
+\]</span></p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>由 <span class="math inline">\(\sin^2x+\cos^2x=1\)</span>， <span class="math display">\[
+\frac1{\sin^2x\cos x}=\frac1{\cos x}+\frac{\cos x}{\sin^2x}.
+\]</span> 因此 <span class="math display">\[
+\begin{aligned}
+\int\frac{dx}{\sin^2x\cos x}
+&amp;=\int\sec x\,dx+\int\frac{d(\sin x)}{\sin^2x}\\
+&amp;=\boxed{\ln|\sec x+\tan x|-\frac1{\sin x}+C}.
+\end{aligned}
+\]</span> 结果在 <span class="math inline">\(\sin x\cos x\ne0\)</span> 的各区间上成立。</p>
+
+</div></details>
+
+<p class="problem-source">来源：吉米多维奇《数学分析习题集》第 1755 题</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;不定积分&quot;], &quot;tags&quot;: [&quot;换元积分&quot;, &quot;部分分式&quot;], &quot;title&quot;: &quot;四次多项式分母的有理积分&quot;}">
+
+<div class="problem-meta">MATH / CALCULUS / 不定积分</div>
+
+<h3 class="anchored">03. 四次多项式分母的有理积分</h3>
+
+<div class="entry-tags">#换元积分 · #部分分式</div>
+
+<p>求不定积分 <span class="math display">\[
+\int\frac{x\,dx}{x^4+3x^2+2}.
+\]</span></p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>由 <span class="math inline">\(x^4+3x^2+2=(x^2+1)(x^2+2)\)</span>，得 <span class="math display">\[
+\begin{aligned}
+\int\frac{x\,dx}{x^4+3x^2+2}
+&amp;=\frac12\int\frac{d(x^2)}{(x^2+1)(x^2+2)}\\
+&amp;=\frac12\int\left(\frac1{x^2+1}-\frac1{x^2+2}\right)d(x^2)\\
+&amp;=\frac12\ln(x^2+1)-\frac12\ln(x^2+2)+C\\
+&amp;=\boxed{\frac12\ln\frac{x^2+1}{x^2+2}+C}.
+\end{aligned}
+\]</span></p>
+
+</div></details>
+
+<p class="problem-source">来源：吉米多维奇《数学分析习题集》第 1738 题</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;不定积分&quot;], &quot;tags&quot;: [&quot;部分分式&quot;, &quot;参数积分&quot;], &quot;title&quot;: &quot;两个一次因子平方乘积的倒数积分&quot;}">
+
+<div class="problem-meta">MATH / CALCULUS / 不定积分</div>
+
+<h3 class="anchored">04. 两个一次因子平方乘积的倒数积分</h3>
+
+<div class="entry-tags">#部分分式 · #参数积分</div>
+
+<p>求不定积分 <span class="math display">\[
+\int\frac{dx}{(x+a)^2(x+b)^2}\qquad(a,b\in\mathbb R,\ a\ne b).
+\]</span></p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>利用 <span class="math display">\[
+\frac1{(x+a)(x+b)}=\frac1{b-a}\left(\frac1{x+a}-\frac1{x+b}\right),
+\]</span> 将两边平方，得 <span class="math display">\[
+\frac1{(x+a)^2(x+b)^2}
+=\frac1{(b-a)^2}\left[\frac1{(x+a)^2}+\frac1{(x+b)^2}-\frac2{(x+a)(x+b)}\right].
+\]</span> 再次拆分交叉项后逐项积分，得 <span class="math display">\[
+\begin{aligned}
+\int\frac{dx}{(x+a)^2(x+b)^2}
+&amp;=\frac1{(b-a)^2}\left[-\frac1{x+a}-\frac1{x+b}-\frac2{b-a}\bigl(\ln|x+a|-\ln|x+b|\bigr)\right]+C\\
+&amp;=\boxed{\frac1{(b-a)^2}\left[\frac2{b-a}\ln\left|\frac{x+b}{x+a}\right|-\frac1{x+a}-\frac1{x+b}\right]+C}.
+\end{aligned}
+\]</span> 结果在 <span class="math inline">\(x\ne-a,-b\)</span> 的各区间上成立。</p>
+
+</div></details>
+
+<p class="problem-source">来源：吉米多维奇《数学分析习题集》第 1739 题</p>
+
+</div>
+
+<details id="discussion-2026-11-25" class="log-comments problem-discussion" data-comment-term="/problems/2026-11-25/" data-comment-date="2026-11-25" data-comment-title="每日好题 · 2026-11-25">
+
+<summary>discussion/ <span>2026-11-25 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+</section>
+<section id="section-1" class="level2 problem-date-heading problem-day" data-date="2026-11-24">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-1">2026-11-24</h2>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;矩阵运算&quot;], &quot;tags&quot;: [&quot;逆矩阵&quot;, &quot;矩阵乘法&quot;], &quot;title&quot;: &quot;逆矩阵的各行元素和&quot;}">
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 矩阵运算</div>
+
+<h3 class="anchored">01. 逆矩阵的各行元素和</h3>
+
+<div class="entry-tags">#逆矩阵 · #矩阵乘法</div>
+
+<p>设 <span class="math inline">\(n\)</span> 阶非奇异矩阵 <span class="math inline">\(A\)</span> 的每一行元素之和均为 <span class="math inline">\(c\)</span>。证明：<span class="math inline">\(c\ne0\)</span>，且 <span class="math inline">\(A^{-1}\)</span> 的每一行元素之和均为 <span class="math inline">\(c^{-1}\)</span>。</p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>令 <span class="math inline">\(e=(1,1,\ldots,1)^{\mathrm T}\)</span>，则 <span class="math display">\[
+Ae=ce.
+\]</span> 若 <span class="math inline">\(c=0\)</span>，则 <span class="math inline">\(Ae=0\)</span> 有非零解 <span class="math inline">\(e\)</span>，与 <span class="math inline">\(A\)</span> 非奇异矛盾，故 <span class="math inline">\(c\ne0\)</span>。</p>
+<p>左乘 <span class="math inline">\(A^{-1}\)</span>，得 <span class="math inline">\(e=cA^{-1}e\)</span>，即 <span class="math display">\[
+A^{-1}e=c^{-1}e.
+\]</span> 左端各分量正是 <span class="math inline">\(A^{-1}\)</span> 各行元素之和，故结论成立。</p>
+
+</div></details>
+
+<p class="problem-source">来源：《高等代数习题解》（杨子胥编）第 530 题</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;伴随矩阵&quot;], &quot;tags&quot;: [&quot;伴随矩阵&quot;, &quot;矩阵乘法&quot;, &quot;多项式恒等式&quot;], &quot;title&quot;: &quot;乘积矩阵的伴随矩阵&quot;}">
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 伴随矩阵</div>
+
+<h3 class="anchored">02. 乘积矩阵的伴随矩阵</h3>
+
+<div class="entry-tags">#伴随矩阵 · #矩阵乘法 · #多项式恒等式</div>
+
+<p>设 <span class="math inline">\(A,B\)</span> 为数域 <span class="math inline">\(P\)</span> 上任意两个 <span class="math inline">\(n\)</span> 阶矩阵，<span class="math inline">\(A^*\)</span> 表示 <span class="math inline">\(A\)</span> 的伴随矩阵。证明： <span class="math display">\[
+(AB)^*=B^*A^*.
+\]</span></p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>由伴随矩阵的基本性质， <span class="math display">\[
+AA^*=A^*A=(\det A)E.
+\]</span> 于是 <span class="math display">\[
+\begin{aligned}
+(\det A)(\det B)B^*A^*
+&amp;=(AB)^*AB(B^*A^*)\\
+&amp;=(AB)^*A(BB^*)A^*\\
+&amp;=(\det B)(AB)^*AA^*\\
+&amp;=(\det A)(\det B)(AB)^*.
+\end{aligned}
+\]</span> 当 <span class="math inline">\(\det A\det B\ne0\)</span> 时，约去该非零标量，即得结论。</p>
+<p>对一般的 <span class="math inline">\(A,B\)</span>，令 <span class="math inline">\(A_t=A+tE\)</span>、<span class="math inline">\(B_t=B+tE\)</span>。<span class="math inline">\(\det(A+tE)\)</span>、<span class="math inline">\(\det(B+tE)\)</span> 都是关于 <span class="math inline">\(t\)</span> 的首一多项式，因此除有限多个 <span class="math inline">\(t\in P\)</span> 外，<span class="math inline">\(A_t,B_t\)</span> 均可逆。由已证情形， <span class="math display">\[
+(A_tB_t)^*=B_t^*A_t^*
+\]</span> 对无穷多个 <span class="math inline">\(t\)</span> 成立。两边每个元素都是关于 <span class="math inline">\(t\)</span> 的多项式，故恒等。令 <span class="math inline">\(t=0\)</span>，得 <span class="math inline">\((AB)^*=B^*A^*\)</span>。</p>
+
+</div></details>
+
+<p class="problem-source">来源：《高等代数习题解》（杨子胥编）第 538 题</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;线性方程组&quot;], &quot;tags&quot;: [&quot;基础解系&quot;, &quot;线性无关&quot;, &quot;矩阵构造&quot;], &quot;title&quot;: &quot;由线性无关向量构造齐次方程组&quot;}">
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 线性方程组</div>
+
+<h3 class="anchored">03. 由线性无关向量构造齐次方程组</h3>
+
+<div class="entry-tags">#基础解系 · #线性无关 · #矩阵构造</div>
+
+<p>设 <span class="math inline">\(\alpha_1,\ldots,\alpha_s\)</span> 为数域 <span class="math inline">\(P\)</span> 上 <span class="math inline">\(s\)</span> 个线性无关的 <span class="math inline">\(n\)</span> 维列向量，其中 <span class="math inline">\(1\le s\le n\)</span>。证明：存在一个含 <span class="math inline">\(n\)</span> 个未知量的齐次线性方程组，以 <span class="math inline">\(\alpha_1,\ldots,\alpha_s\)</span> 为基础解系。</p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>将这些向量转置后作为行，组成矩阵 <span class="math display">\[
+A=\begin{pmatrix}\alpha_1^{\mathrm T}\\\vdots\\\alpha_s^{\mathrm T}\end{pmatrix}.
+\]</span> 由线性无关性，<span class="math inline">\(r(A)=s\)</span>。</p>
+<p>先设 <span class="math inline">\(s&lt;n\)</span>。取齐次方程组 <span class="math inline">\(Ay=0\)</span> 的一组基础解系 <span class="math inline">\(\beta_1,\ldots,\beta_{n-s}\)</span>，并令 <span class="math display">\[
+B=\begin{pmatrix}\beta_1^{\mathrm T}\\\vdots\\\beta_{n-s}^{\mathrm T}\end{pmatrix}.
+\]</span> 这些行线性无关，所以 <span class="math inline">\(r(B)=n-s\)</span>，方程组 <span class="math inline">\(Bx=0\)</span> 的基础解系含 <span class="math inline">\(s\)</span> 个向量。</p>
+<p>又由 <span class="math inline">\(A\beta_j=0\)</span>，对所有 <span class="math inline">\(i,j\)</span> 均有 <span class="math display">\[
+\alpha_i^{\mathrm T}\beta_j=0.
+\]</span> 转置后得 <span class="math inline">\(\beta_j^{\mathrm T}\alpha_i=0\)</span>，所以 <span class="math inline">\(B\alpha_i=0\)</span>。因此 <span class="math inline">\(\alpha_1,\ldots,\alpha_s\)</span> 是 <span class="math inline">\(Bx=0\)</span> 的 <span class="math inline">\(s\)</span> 个线性无关解，恰构成其基础解系。</p>
+<p>若 <span class="math inline">\(s=n\)</span>，取零矩阵 <span class="math inline">\(B=0_{n\times n}\)</span>。此时任意 <span class="math inline">\(n\)</span> 个线性无关的 <span class="math inline">\(n\)</span> 维向量均构成 <span class="math inline">\(Bx=0\)</span> 的基础解系。</p>
+
+</div></details>
+
+<p class="problem-source">来源：《高等代数习题解》（杨子胥编）第 438 题</p>
+
+</div>
+
+<details id="discussion-2026-11-24" class="log-comments problem-discussion" data-comment-term="/problems/2026-11-24/" data-comment-date="2026-11-24" data-comment-title="每日好题 · 2026-11-24">
+
+<summary>discussion/ <span>2026-11-24 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+</section>
+<section id="section-2" class="level2 problem-date-heading problem-day" data-date="2026-11-23">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-2">2026-11-23</h2>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;不定积分&quot;], &quot;tags&quot;: [&quot;凑微分&quot;, &quot;三角函数&quot;], &quot;title&quot;: &quot;三角函数线性组合的积分&quot;}">
+
+<div class="problem-meta">MATH / CALCULUS / 不定积分</div>
+
+<h3 class="anchored">01. 三角函数线性组合的积分</h3>
+
+<div class="entry-tags">#凑微分 · #三角函数</div>
+
+<p>求不定积分 <span class="math display">\[
+\int\frac{\sin x}{a\cos x+b\sin x}\,dx\qquad(a,b\in\mathbb R,\ a^2+b^2\ne0).
+\]</span></p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>令 <span class="math inline">\(u=a\cos x+b\sin x\)</span>，则 <span class="math display">\[
+bu-au'=b(a\cos x+b\sin x)-a(-a\sin x+b\cos x)=(a^2+b^2)\sin x.
+\]</span> 所以在分母不为零的区间上， <span class="math display">\[
+\begin{aligned}
+\int\frac{\sin x}{a\cos x+b\sin x}\,dx
+&amp;=\frac1{a^2+b^2}\left(\int b\,dx-a\int\frac{du}{u}\right)\\
+&amp;=\boxed{\frac{bx-a\ln|a\cos x+b\sin x|}{a^2+b^2}+C}.
+\end{aligned}
+\]</span></p>
+
+</div></details>
+
+<p class="problem-source">来源：《微积分》（浙江大学卢兴江等主编）第五章 · 手稿第（4）题</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;不定积分&quot;], &quot;tags&quot;: [&quot;换元积分&quot;, &quot;半角公式&quot;], &quot;title&quot;: &quot;余割函数的不定积分&quot;}">
+
+<div class="problem-meta">MATH / CALCULUS / 不定积分</div>
+
+<h3 class="anchored">02. 余割函数的不定积分</h3>
+
+<div class="entry-tags">#换元积分 · #半角公式</div>
+
+<p>求不定积分 <span class="math display">\[
+\int\csc x\,dx.
+\]</span></p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>由半角公式， <span class="math display">\[
+\begin{aligned}
+\int\csc x\,dx
+&amp;=\int\frac{dx}{2\sin\frac x2\cos\frac x2}\\
+&amp;=\int\frac1{\tan\frac x2}\,d\left(\tan\frac x2\right)\\
+&amp;=\boxed{\ln\left|\tan\frac x2\right|+C}
+=\ln|\csc x-\cot x|+C.
+\end{aligned}
+\]</span> 结果在 <span class="math inline">\(\sin x\ne0\)</span> 的各区间上成立。</p>
+
+</div></details>
+
+<p class="problem-source">来源：《微积分》（浙江大学卢兴江等主编）第五章 · 手稿第（5）题（余割）</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;不定积分&quot;], &quot;tags&quot;: [&quot;换元积分&quot;, &quot;三角函数&quot;], &quot;title&quot;: &quot;正割函数的不定积分&quot;}">
+
+<div class="problem-meta">MATH / CALCULUS / 不定积分</div>
+
+<h3 class="anchored">03. 正割函数的不定积分</h3>
+
+<div class="entry-tags">#换元积分 · #三角函数</div>
+
+<p>求不定积分 <span class="math display">\[
+\int\sec x\,dx.
+\]</span></p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>利用 <span class="math inline">\(\sec x=\csc(x+\frac\pi2)\)</span>，得 <span class="math display">\[
+\begin{aligned}
+\int\sec x\,dx
+&amp;=\int\csc\left(x+\frac\pi2\right)\,d\left(x+\frac\pi2\right)\\
+&amp;=\ln\left|\tan\left(\frac x2+\frac\pi4\right)\right|+C\\
+&amp;=\boxed{\ln|\sec x+\tan x|+C}.
+\end{aligned}
+\]</span> 结果在 <span class="math inline">\(\cos x\ne0\)</span> 的各区间上成立。</p>
+
+</div></details>
+
+<p class="problem-source">来源：《微积分》（浙江大学卢兴江等主编）第五章 · 手稿第（6）题</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;不定积分&quot;], &quot;tags&quot;: [&quot;三角换元&quot;, &quot;定义区间&quot;], &quot;title&quot;: &quot;平方差根式的不定积分&quot;}">
+
+<div class="problem-meta">MATH / CALCULUS / 不定积分</div>
+
+<h3 class="anchored">04. 平方差根式的不定积分</h3>
+
+<div class="entry-tags">#三角换元 · #定义区间</div>
+
+<p>求不定积分 <span class="math display">\[
+\int\frac{dx}{\sqrt{x^2-a^2}}\qquad(a&gt;0,\ |x|&gt;a).
+\]</span></p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>当 <span class="math inline">\(x&gt;a\)</span> 时，设 <span class="math inline">\(x=a\sec t\)</span>，<span class="math inline">\(0&lt;t&lt;\frac\pi2\)</span>，则 <span class="math display">\[
+\begin{aligned}
+\int\frac{dx}{\sqrt{x^2-a^2}}
+&amp;=\int\frac{a\sec t\tan t}{a\tan t}\,dt
+=\int\sec t\,dt\\
+&amp;=\ln|\sec t+\tan t|+C_1\\
+&amp;=\ln\left|x+\sqrt{x^2-a^2}\right|+C_2.
+\end{aligned}
+\]</span> 当 <span class="math inline">\(x&lt;-a\)</span> 时，令 <span class="math inline">\(t=-x&gt;a\)</span>，得 <span class="math display">\[
+\begin{aligned}
+\int\frac{dx}{\sqrt{x^2-a^2}}
+&amp;=-\ln\left(t+\sqrt{t^2-a^2}\right)+C_3\\
+&amp;=\ln\left(t-\sqrt{t^2-a^2}\right)+C_4\\
+&amp;=\ln\left|x+\sqrt{x^2-a^2}\right|+C_4.
+\end{aligned}
+\]</span> 其中用了 <span class="math inline">\((t+\sqrt{t^2-a^2})(t-\sqrt{t^2-a^2})=a^2\)</span>。故在定义域的各区间上， <span class="math display">\[
+\boxed{\int\frac{dx}{\sqrt{x^2-a^2}}=\ln\left|x+\sqrt{x^2-a^2}\right|+C}.
+\]</span></p>
+
+</div></details>
+
+<p class="problem-source">来源：《微积分》（浙江大学卢兴江等主编）第五章 · 手稿第（5）题（平方差根式）</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;不定积分&quot;], &quot;tags&quot;: [&quot;三角恒等变形&quot;, &quot;定义区间&quot;], &quot;title&quot;: &quot;含一加正弦的积分&quot;}">
+
+<div class="problem-meta">MATH / CALCULUS / 不定积分</div>
+
+<h3 class="anchored">05. 含一加正弦的积分</h3>
+
+<div class="entry-tags">#三角恒等变形 · #定义区间</div>
+
+<p>求不定积分 <span class="math display">\[
+\int\frac{dx}{1+\sin x}.
+\]</span></p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>在 <span class="math inline">\(\cos x\ne0\)</span> 时， <span class="math display">\[
+\begin{aligned}
+\int\frac{dx}{1+\sin x}
+&amp;=\int\frac{1-\sin x}{\cos^2x}\,dx\\
+&amp;=\int(\sec^2x-\tan x\sec x)\,dx\\
+&amp;=\tan x-\sec x+C.
+\end{aligned}
+\]</span> 将结果写成 <span class="math display">\[
+\boxed{-\frac{\cos x}{1+\sin x}+C},
+\]</span> 即可覆盖原被积函数的完整定义区间 <span class="math inline">\(1+\sin x\ne0\)</span>。事实上， <span class="math display">\[
+\left(-\frac{\cos x}{1+\sin x}\right)'=\frac{\sin x(1+\sin x)+\cos^2x}{(1+\sin x)^2}=\frac1{1+\sin x}.
+\]</span></p>
+
+</div></details>
+
+<p class="problem-source">来源：吉米多维奇《数学分析习题集》第 1670 题</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;不定积分&quot;], &quot;tags&quot;: [&quot;三角换元&quot;], &quot;title&quot;: &quot;平方和的二分之三次根式积分&quot;}">
+
+<div class="problem-meta">MATH / CALCULUS / 不定积分</div>
+
+<h3 class="anchored">06. 平方和的二分之三次根式积分</h3>
+
+<div class="entry-tags">#三角换元</div>
+
+<p>求不定积分 <span class="math display">\[
+\int\frac{dx}{(x^2+1)^{3/2}}.
+\]</span></p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>令 <span class="math inline">\(x=\tan\theta\)</span>，<span class="math inline">\(-\frac\pi2&lt;\theta&lt;\frac\pi2\)</span>，则 <span class="math inline">\(\sec\theta&gt;0\)</span>，所以 <span class="math display">\[
+\begin{aligned}
+\int\frac{dx}{(x^2+1)^{3/2}}
+&amp;=\int\frac{\sec^2\theta}{\sec^3\theta}\,d\theta\\
+&amp;=\int\cos\theta\,d\theta
+=\sin\theta+C\\
+&amp;=\boxed{\frac{x}{\sqrt{x^2+1}}+C}.
+\end{aligned}
+\]</span></p>
+
+</div></details>
+
+<p class="problem-source">来源：吉米多维奇《数学分析习题集》第 1684 题</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;不定积分&quot;], &quot;tags&quot;: [&quot;凑微分&quot;, &quot;参数分类&quot;], &quot;title&quot;: &quot;三角平方和根式的积分&quot;}">
+
+<div class="problem-meta">MATH / CALCULUS / 不定积分</div>
+
+<h3 class="anchored">07. 三角平方和根式的积分</h3>
+
+<div class="entry-tags">#凑微分 · #参数分类</div>
+
+<p>求不定积分 <span class="math display">\[
+\int\frac{\sin x\cos x}{\sqrt{a^2\sin^2x+b^2\cos^2x}}\,dx\qquad(a,b\in\mathbb R,\ a^2+b^2&gt;0).
+\]</span></p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>若 <span class="math inline">\(a^2\ne b^2\)</span>，由 <span class="math display">\[
+d(a^2\sin^2x+b^2\cos^2x)=2(a^2-b^2)\sin x\cos x\,dx,
+\]</span> 得 <span class="math display">\[
+\begin{aligned}
+\int\frac{\sin x\cos x}{\sqrt{a^2\sin^2x+b^2\cos^2x}}\,dx
+&amp;=\frac1{2(a^2-b^2)}\int\frac{d(a^2\sin^2x+b^2\cos^2x)}{\sqrt{a^2\sin^2x+b^2\cos^2x}}\\
+&amp;=\boxed{\frac{\sqrt{a^2\sin^2x+b^2\cos^2x}}{a^2-b^2}+C}.
+\end{aligned}
+\]</span> 若 <span class="math inline">\(a^2=b^2\ne0\)</span>，则分母为 <span class="math inline">\(|a|\)</span>，所以 <span class="math display">\[
+\boxed{\int\frac{\sin x\cos x}{|a|}\,dx=\frac{\sin^2x}{2|a|}+C}.
+\]</span> 结果均在根式分母不为零的各区间上成立。</p>
+
+</div></details>
+
+<p class="problem-source">来源：吉米多维奇《数学分析习题集》第 1700（a）题</p>
+
+</div>
+
+<details id="discussion-2026-11-23" class="log-comments problem-discussion" data-comment-term="/problems/2026-11-23/" data-comment-date="2026-11-23" data-comment-title="每日好题 · 2026-11-23">
+
+<summary>discussion/ <span>2026-11-23 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+</section>
+<section id="section-3" class="level2 problem-date-heading problem-day" data-date="2026-11-22">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-3">2026-11-22</h2>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;极限&quot;], &quot;tags&quot;: [&quot;Taylor 公式&quot;, &quot;高阶导数&quot;, &quot;差分&quot;], &quot;title&quot;: &quot;对称差分提取四阶导数&quot;}">
+
+<div class="problem-meta">MATH / CALCULUS / 极限</div>
+
+<h3 class="anchored">01. 对称差分提取四阶导数</h3>
+
+<div class="entry-tags">#Taylor 公式 · #高阶导数 · #差分</div>
+
+<p>设 <span class="math inline">\(f\)</span> 在 <span class="math inline">\(a\)</span> 的某邻域内四阶连续可导，求 <span class="math display">\[
+\lim_{h\to0}\frac{f(a+2h)-4f(a+h)+6f(a)-4f(a-h)+f(a-2h)}{h^4}.
+\]</span></p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>由四阶 Taylor 展开， <span class="math display">\[
+f(a+t)+f(a-t)=2f(a)+t^2f''(a)+\frac{t^4}{12}f^{(4)}(a)+o(t^4).
+\]</span> 分别令 <span class="math inline">\(t=2h\)</span>、<span class="math inline">\(t=h\)</span>，得到 <span class="math display">\[
+\begin{aligned}
+f(a+2h)+f(a-2h)&amp;=2f(a)+4h^2f''(a)+\frac43h^4f^{(4)}(a)+o(h^4),\\
+4f(a+h)+4f(a-h)&amp;=8f(a)+4h^2f''(a)+\frac13h^4f^{(4)}(a)+o(h^4).
+\end{aligned}
+\]</span> 两式相减再加 <span class="math inline">\(6f(a)\)</span>，分子为 <span class="math inline">\(h^4f^{(4)}(a)+o(h^4)\)</span>。故极限为 <span class="math display">\[
+\boxed{f^{(4)}(a)}.
+\]</span></p>
+
+</div></details>
+
+<p class="problem-source">来源：自编（接续对称差分与二阶导数问题）</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;矩阵运算&quot;], &quot;tags&quot;: [&quot;幂等矩阵&quot;, &quot;正交矩阵&quot;, &quot;矩阵的秩&quot;], &quot;title&quot;: &quot;由对称幂等矩阵构造正交矩阵&quot;}">
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 矩阵运算</div>
+
+<h3 class="anchored">02. 由对称幂等矩阵构造正交矩阵</h3>
+
+<div class="entry-tags">#幂等矩阵 · #正交矩阵 · #矩阵的秩</div>
+
+<p>设 <span class="math inline">\(P\)</span> 为 <span class="math inline">\(n\)</span> 阶实矩阵，满足 <span class="math inline">\(P^2=P\)</span>、<span class="math inline">\(P^{\mathrm T}=P\)</span>。记 <span class="math inline">\(r(P)=r\)</span>，令 <span class="math inline">\(Q=E-2P\)</span>，其中 <span class="math inline">\(E\)</span> 为单位矩阵。</p>
+<p>（1）证明 <span class="math inline">\(Q\)</span> 为正交矩阵，且 <span class="math inline">\(Q^{-1}=Q\)</span>。</p>
+<p>（2）求 <span class="math inline">\(r(E-Q)\)</span> 与 <span class="math inline">\(r(E+Q)\)</span>。</p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>（1）由 <span class="math inline">\(P^{\mathrm T}=P\)</span>，有 <span class="math inline">\(Q^{\mathrm T}=Q\)</span>。又 <span class="math display">\[
+Q^2=(E-2P)^2=E-4P+4P^2=E.
+\]</span> 故 <span class="math inline">\(Q^{-1}=Q\)</span>，且 <span class="math inline">\(Q^{\mathrm T}Q=Q^2=E\)</span>，所以 <span class="math inline">\(Q\)</span> 为正交矩阵。</p>
+<p>（2）由 <span class="math inline">\(E-Q=2P\)</span>，得 <span class="math display">\[
+\boxed{r(E-Q)=r}.
+\]</span> 由 <span class="math inline">\(P(E-P)=0\)</span> 及乘积的秩不等式， <span class="math display">\[
+r(P)+r(E-P)\le n.
+\]</span> 又 <span class="math inline">\(E=P+(E-P)\)</span>，所以 <span class="math display">\[
+n\le r(P)+r(E-P).
+\]</span> 故 <span class="math inline">\(r(E-P)=n-r\)</span>。由 <span class="math inline">\(E+Q=2(E-P)\)</span>，得 <span class="math display">\[
+\boxed{r(E+Q)=n-r}.
+\]</span></p>
+
+</div></details>
+
+<p class="problem-source">来源：自编（结合近期幂等矩阵、中心化矩阵与正交矩阵问题）</p>
+
+</div>
+
+<details id="discussion-2026-11-22" class="log-comments problem-discussion" data-comment-term="/problems/2026-11-22/" data-comment-date="2026-11-22" data-comment-title="每日好题 · 2026-11-22">
+
+<summary>discussion/ <span>2026-11-22 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+</section>
+<section id="section-4" class="level2 problem-date-heading problem-day" data-date="2026-11-21">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-4">2026-11-21</h2>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;导数&quot;], &quot;tags&quot;: [&quot;Taylor 公式&quot;, &quot;罗尔定理&quot;, &quot;二阶导数&quot;], &quot;title&quot;: &quot;对称差分与二阶导数&quot;}">
+
+<div class="problem-meta">MATH / CALCULUS / 导数</div>
+
+<h3 class="anchored">01. 对称差分与二阶导数</h3>
+
+<div class="entry-tags">#Taylor 公式 · #罗尔定理 · #二阶导数</div>
+
+<p>设 <span class="math inline">\(f\)</span> 在 <span class="math inline">\(a\)</span> 的某邻域内二阶连续可导。</p>
+<p>（1）求 <span class="math display">\[
+\lim_{h\to0}\frac{f(a+h)-2f(a)+f(a-h)}{h^2}.
+\]</span> （2）证明：对每个充分小的 <span class="math inline">\(h&gt;0\)</span>，存在 <span class="math inline">\(\xi_h\in(a-h,a+h)\)</span>，使 <span class="math display">\[
+f(a+h)-2f(a)+f(a-h)=h^2f''(\xi_h).
+\]</span></p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>（1）在 <span class="math inline">\(a\)</span> 处作二阶 Taylor 展开： <span class="math display">\[
+f(a\pm h)=f(a)\pm hf'(a)+\frac{h^2}{2}f''(a)+o(h^2).
+\]</span> 相加并减去 <span class="math inline">\(2f(a)\)</span>，得 <span class="math display">\[
+f(a+h)-2f(a)+f(a-h)=h^2f''(a)+o(h^2).
+\]</span> 故极限为 <span class="math inline">\(\boxed{f''(a)}\)</span>。</p>
+<p>（2）记 <span class="math display">\[
+K=\frac{f(a+h)-2f(a)+f(a-h)}{h^2},\qquad
+L=\frac{f(a+h)-f(a-h)}{2h},
+\]</span> 令 <span class="math display">\[
+g(t)=f(t)-f(a)-L(t-a)-\frac K2(t-a)^2.
+\]</span> 直接代入可得 <span class="math inline">\(g(a-h)=g(a)=g(a+h)=0\)</span>。分别在 <span class="math inline">\([a-h,a]\)</span>、<span class="math inline">\([a,a+h]\)</span> 上应用罗尔定理，得 <span class="math inline">\(u\in(a-h,a)\)</span>、<span class="math inline">\(v\in(a,a+h)\)</span>，满足 <span class="math inline">\(g'(u)=g'(v)=0\)</span>。</p>
+<p>再对 <span class="math inline">\(g'\)</span> 在 <span class="math inline">\([u,v]\)</span> 上应用罗尔定理，存在 <span class="math inline">\(\xi_h\in(u,v)\)</span>，使 <span class="math display">\[
+0=g''(\xi_h)=f''(\xi_h)-K.
+\]</span> 代入 <span class="math inline">\(K\)</span> 的定义即得结论。</p>
+
+</div></details>
+
+<p class="problem-source">来源：自编（结合近期 Taylor 展开与中值定理问题）</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;矩阵运算&quot;], &quot;tags&quot;: [&quot;正交矩阵&quot;, &quot;反对称矩阵&quot;, &quot;逆矩阵&quot;], &quot;title&quot;: &quot;由正交矩阵构造反对称矩阵&quot;}">
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 矩阵运算</div>
+
+<h3 class="anchored">02. 由正交矩阵构造反对称矩阵</h3>
+
+<div class="entry-tags">#正交矩阵 · #反对称矩阵 · #逆矩阵</div>
+
+<p>设 <span class="math inline">\(Q\)</span> 为 <span class="math inline">\(n\)</span> 阶实正交矩阵，且 <span class="math inline">\(E+Q\)</span> 可逆，其中 <span class="math inline">\(E\)</span> 为单位矩阵。令 <span class="math display">\[
+A=(E-Q)(E+Q)^{-1}.
+\]</span> （1）证明 <span class="math inline">\(A^{\mathrm T}=-A\)</span>。</p>
+<p>（2）证明 <span class="math inline">\(E+A\)</span> 可逆，并用 <span class="math inline">\(A\)</span> 表示 <span class="math inline">\(Q\)</span>。</p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>（1）由 <span class="math inline">\(Q^{\mathrm T}=Q^{-1}\)</span>， <span class="math display">\[
+\begin{aligned}
+A^{\mathrm T}
+&amp;=(E+Q^{\mathrm T})^{-1}(E-Q^{\mathrm T})\\
+&amp;=(E+Q^{-1})^{-1}(E-Q^{-1})\\
+&amp;=(E+Q)^{-1}Q\,Q^{-1}(Q-E)\\
+&amp;=-(E+Q)^{-1}(E-Q).
+\end{aligned}
+\]</span> 又 <span class="math inline">\(E-Q\)</span> 与 <span class="math inline">\(E+Q\)</span> 可交换，因此也与 <span class="math inline">\((E+Q)^{-1}\)</span> 可交换，故 <span class="math inline">\(A^{\mathrm T}=-A\)</span>。</p>
+<p>（2）由定义， <span class="math display">\[
+E+A=\bigl[(E+Q)+(E-Q)\bigr](E+Q)^{-1}=2(E+Q)^{-1},
+\]</span> 所以 <span class="math inline">\(E+A\)</span> 可逆。同理， <span class="math display">\[
+E-A=2Q(E+Q)^{-1}.
+\]</span> 因此 <span class="math display">\[
+\boxed{Q=(E-A)(E+A)^{-1}}.
+\]</span></p>
+
+</div></details>
+
+<p class="problem-source">来源：自编（接续实反对称矩阵构造正交矩阵问题）</p>
+
+</div>
+
+<details id="discussion-2026-11-21" class="log-comments problem-discussion" data-comment-term="/problems/2026-11-21/" data-comment-date="2026-11-21" data-comment-title="每日好题 · 2026-11-21">
+
+<summary>discussion/ <span>2026-11-21 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+</section>
+<section id="section-5" class="level2 problem-date-heading problem-day" data-date="2026-11-20">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-5">2026-11-20</h2>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;极限&quot;], &quot;tags&quot;: [&quot;Taylor 公式&quot;, &quot;奇函数&quot;, &quot;高阶无穷小&quot;], &quot;title&quot;: &quot;指数差与正弦的三阶抵消&quot;}">
+
+<div class="problem-meta">MATH / CALCULUS / 极限</div>
+
+<h3 class="anchored">01. 指数差与正弦的三阶抵消</h3>
+
+<div class="entry-tags">#Taylor 公式 · #奇函数 · #高阶无穷小</div>
+
+<p>求极限 <span class="math display">\[
+\lim_{x\to0}\frac{e^x-e^{-x}-2\sin x}{x^3}.
+\]</span></p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>由 Taylor 公式， <span class="math display">\[
+\begin{aligned}
+e^x&amp;=1+x+\frac{x^2}{2}+\frac{x^3}{6}+o(x^3),\\
+e^{-x}&amp;=1-x+\frac{x^2}{2}-\frac{x^3}{6}+o(x^3),\\
+2\sin x&amp;=2x-\frac{x^3}{3}+o(x^3).
+\end{aligned}
+\]</span> 所以 <span class="math display">\[
+e^x-e^{-x}-2\sin x
+=\frac{2}{3}x^3+o(x^3).
+\]</span> 故所求极限为 <span class="math inline">\(\boxed{\frac23}\)</span>。</p>
+
+</div></details>
+
+<p class="problem-source">来源：自编（结合近期 Taylor 展开与高阶抵消问题）</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;矩阵运算&quot;], &quot;tags&quot;: [&quot;反对称矩阵&quot;, &quot;可逆矩阵&quot;, &quot;正交矩阵&quot;], &quot;title&quot;: &quot;实反对称矩阵构造正交矩阵&quot;}">
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 矩阵运算</div>
+
+<h3 class="anchored">02. 实反对称矩阵构造正交矩阵</h3>
+
+<div class="entry-tags">#反对称矩阵 · #可逆矩阵 · #正交矩阵</div>
+
+<p>设 <span class="math inline">\(A\)</span> 为 <span class="math inline">\(n\)</span> 阶实矩阵，满足 <span class="math inline">\(A^{\mathrm T}=-A\)</span>，<span class="math inline">\(E\)</span> 为单位矩阵。</p>
+<p>（1）证明 <span class="math inline">\(E+A\)</span> 与 <span class="math inline">\(E-A\)</span> 均可逆。</p>
+<p>（2）令 <span class="math inline">\(Q=(E-A)(E+A)^{-1}\)</span>，证明 <span class="math inline">\(Q\)</span> 为正交矩阵。</p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>（1）对任意实列向量 <span class="math inline">\(x\)</span>，标量 <span class="math inline">\(x^{\mathrm T}Ax\)</span> 满足 <span class="math display">\[
+x^{\mathrm T}Ax=(x^{\mathrm T}Ax)^{\mathrm T}
+=x^{\mathrm T}A^{\mathrm T}x=-x^{\mathrm T}Ax,
+\]</span> 故 <span class="math inline">\(x^{\mathrm T}Ax=0\)</span>。若 <span class="math inline">\((E+A)x=0\)</span>，左乘 <span class="math inline">\(x^{\mathrm T}\)</span>，得 <span class="math display">\[
+x^{\mathrm T}x+x^{\mathrm T}Ax=x^{\mathrm T}x=0.
+\]</span> 所以 <span class="math inline">\(x=0\)</span>，齐次方程组仅有零解，故 <span class="math inline">\(E+A\)</span> 可逆。对 <span class="math inline">\(E-A\)</span> 同理。</p>
+<p>（2）由转置与逆矩阵的性质， <span class="math display">\[
+Q^{\mathrm T}=(E-A)^{-1}(E+A).
+\]</span> 又 <span class="math inline">\((E+A)(E-A)=(E-A)(E+A)=E-A^2\)</span>，故 <span class="math display">\[
+\begin{aligned}
+Q^{\mathrm T}Q
+&amp;=(E-A)^{-1}(E+A)(E-A)(E+A)^{-1}\\
+&amp;=(E-A)^{-1}(E-A)(E+A)(E+A)^{-1}=E.
+\end{aligned}
+\]</span> 因此 <span class="math inline">\(Q\)</span> 为正交矩阵。</p>
+
+</div></details>
+
+<p class="problem-source">来源：自编（结合近期反对称矩阵、逆矩阵与正交矩阵问题）</p>
+
+</div>
+
+<details id="discussion-2026-11-20" class="log-comments problem-discussion" data-comment-term="/problems/2026-11-20/" data-comment-date="2026-11-20" data-comment-title="每日好题 · 2026-11-20">
+
+<summary>discussion/ <span>2026-11-20 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+</section>
+<section id="section-6" class="level2 problem-date-heading problem-day" data-date="2026-11-19">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-6">2026-11-19</h2>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;CS&quot;, &quot;PYTHON&quot;, &quot;NUMPY&quot;], &quot;tags&quot;: [&quot;矩阵运算&quot;, &quot;复习&quot;], &quot;title&quot;: &quot;布尔筛选与广播&quot;}">
+
+<div class="problem-meta">CS / PYTHON / NUMPY</div>
+
+<h3 class="anchored">01. 布尔筛选与广播</h3>
+
+<div class="entry-tags">#矩阵运算 · #复习</div>
+
+<p>给定数组：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">1</span>], [<span class="dv">6</span>, <span class="dv">3</span>, <span class="dv">9</span>], [<span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">8</span>]])</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>不使用循环，选出第二列大于 <span class="math inline">\(4\)</span> 的整行，再将选出各行减去各自的行均值。写出代码、结果及结果形状。该操作是否改变 <code>A</code>？</p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> A[A[:, <span class="dv">1</span>] <span class="op">&gt;</span> <span class="dv">4</span>]</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> B <span class="op">-</span> B.mean(axis<span class="op">=</span><span class="dv">1</span>, keepdims<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>B</code> 为 <code>[[2, 5, 1], [4, 7, 8]]</code>，形状为 <code>(2, 3)</code>。行均值的形状为 <code>(2, 1)</code>，可以广播到各行，故 <span class="math display">\[
+C=\begin{pmatrix}-2/3&amp;7/3&amp;-5/3\\-7/3&amp;2/3&amp;5/3\end{pmatrix}.
+\]</span> 结果形状为 <code>(2, 3)</code>。布尔索引产生副本，减法也产生新数组，因此 <code>A</code> 不变。</p>
+
+</div></details>
+
+<p class="problem-source">来源：自编 · FIP W10 向量与矩阵复习</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;矩阵&quot;], &quot;tags&quot;: [&quot;矩阵运算&quot;, &quot;复习&quot;], &quot;title&quot;: &quot;余弦相似度矩阵&quot;}">
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 矩阵</div>
+
+<h3 class="anchored">02. 余弦相似度矩阵</h3>
+
+<div class="entry-tags">#矩阵运算 · #复习</div>
+
+<p>设 <span class="math inline">\(U\)</span> 为 <span class="math inline">\(m\times d\)</span> 实矩阵，每行都是长度为 <span class="math inline">\(1\)</span> 的向量，令 <span class="math inline">\(S=UU^{\mathsf T}\)</span>。</p>
+<p>（1）证明 <span class="math inline">\(S\)</span> 对称、对角元均为 <span class="math inline">\(1\)</span>，且每个元素属于 <span class="math inline">\([-1,1]\)</span>。</p>
+<p>（2）证明对任意实列向量 <span class="math inline">\(z\)</span>，<span class="math inline">\(z^{\mathsf T}Sz\ge0\)</span>。当 <span class="math inline">\(m&gt;d\)</span> 时，<span class="math inline">\(S\)</span> 是否可能可逆？</p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>（1）<span class="math inline">\(S^{\mathsf T}=(UU^{\mathsf T})^{\mathsf T}=UU^{\mathsf T}=S\)</span>。记第 <span class="math inline">\(i\)</span> 行对应向量为 <span class="math inline">\(u_i\)</span>，则 <span class="math display">\[
+S_{ij}=u_i\cdot u_j,\qquad S_{ii}=\|u_i\|^2=1.
+\]</span> 由 Cauchy–Schwarz 不等式，<span class="math inline">\(|S_{ij}|\le\|u_i\|\|u_j\|=1\)</span>。</p>
+<p>（2） <span class="math display">\[
+z^{\mathsf T}Sz=(U^{\mathsf T}z)^{\mathsf T}(U^{\mathsf T}z)=\|U^{\mathsf T}z\|^2\ge0.
+\]</span> 又 <span class="math inline">\(r(S)\le r(U)\le d\)</span>，当 <span class="math inline">\(m&gt;d\)</span> 时，<span class="math inline">\(r(S)&lt;m\)</span>，因此 <span class="math inline">\(S\)</span> 不可逆。</p>
+
+</div></details>
+
+<p class="problem-source">来源：自编 · FIP W10 向量与矩阵复习</p>
+
+</div>
+
+<details id="discussion-2026-11-19" class="log-comments problem-discussion" data-comment-term="/problems/2026-11-19/" data-comment-date="2026-11-19" data-comment-title="每日好题 · 2026-11-19">
+
+<summary>discussion/ <span>2026-11-19 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+</section>
+<section id="section-7" class="level2 problem-date-heading problem-day" data-date="2026-11-18">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-7">2026-11-18</h2>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;极限&quot;], &quot;tags&quot;: [&quot;Taylor 公式&quot;, &quot;复合函数&quot;, &quot;二阶无穷小&quot;], &quot;title&quot;: &quot;指数函数商的对数极限&quot;}">
+
+<div class="problem-meta">MATH / CALCULUS / 极限</div>
+
+<h3 class="anchored">01. 指数函数商的对数极限</h3>
+
+<div class="entry-tags">#Taylor 公式 · #复合函数 · #二阶无穷小</div>
+
+<p>求极限 <span class="math display">\[
+\lim_{x\to0}\frac{\displaystyle\ln\frac{e^x-1}{x}-\frac x2}{x^2}.
+\]</span></p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>当 <span class="math inline">\(x\ne0\)</span> 时，<span class="math inline">\((e^x-1)/x&gt;0\)</span>，对数有定义。由 Taylor 公式， <span class="math display">\[
+\frac{e^x-1}{x}=1+\frac x2+\frac{x^2}{6}+o(x^2).
+\]</span> 令 <span class="math inline">\(u=\frac x2+\frac{x^2}{6}+o(x^2)\)</span>，则 <span class="math inline">\(u^2=\frac{x^2}{4}+o(x^2)\)</span>。因此 <span class="math display">\[
+\begin{aligned}
+\ln\frac{e^x-1}{x}
+&amp;=u-\frac{u^2}{2}+o(u^2)\\
+&amp;=\frac x2+\left(\frac16-\frac18\right)x^2+o(x^2)\\
+&amp;=\frac x2+\frac{x^2}{24}+o(x^2).
+\end{aligned}
+\]</span> 故所求极限为 <span class="math inline">\(\boxed{\frac1{24}}\)</span>。</p>
+
+</div></details>
+
+<p class="problem-source">来源：自编（结合近期 Taylor 展开题）</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;矩阵的秩&quot;], &quot;tags&quot;: [&quot;矩阵乘法&quot;, &quot;幂等矩阵&quot;, &quot;数据中心化&quot;], &quot;title&quot;: &quot;按行中心化的矩阵表示&quot;}">
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 矩阵的秩</div>
+
+<h3 class="anchored">02. 按行中心化的矩阵表示</h3>
+
+<div class="entry-tags">#矩阵乘法 · #幂等矩阵 · #数据中心化</div>
+
+<p>设 <span class="math inline">\(n\ge2\)</span>，<span class="math inline">\(E\)</span> 为 <span class="math inline">\(n\)</span> 阶单位矩阵，<span class="math inline">\(J\)</span> 为 <span class="math inline">\(n\)</span> 阶全 <span class="math inline">\(1\)</span> 矩阵，令 <span class="math display">\[
+H=E-\frac1nJ.
+\]</span> （1）证明 <span class="math inline">\(H^2=H\)</span>，并求 <span class="math inline">\(r(H)\)</span>。</p>
+<p>（2）设 <span class="math inline">\(X=(x_{ij})\)</span> 为 <span class="math inline">\(m\times n\)</span> 实矩阵，证明 <span class="math inline">\(XH\)</span> 的每个元素等于原元素减去所在行的均值，并求 <span class="math inline">\(XH=X\)</span> 的充要条件。</p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>（1）由 <span class="math inline">\(J^2=nJ\)</span>，得 <span class="math display">\[
+H^2=E-\frac2nJ+\frac1{n^2}J^2=E-\frac1nJ=H.
+\]</span> <span class="math inline">\(H\)</span> 每行的元素之和为零，所以各列之和为零，<span class="math inline">\(r(H)\le n-1\)</span>。又由 <span class="math inline">\(E=H+J/n\)</span> 及 <span class="math inline">\(r(J)=1\)</span>， <span class="math display">\[
+n=r(E)\le r(H)+r(J/n)=r(H)+1.
+\]</span> 所以 <span class="math inline">\(\boxed{r(H)=n-1}\)</span>。</p>
+<p>（2）<span class="math inline">\(XJ\)</span> 的第 <span class="math inline">\((i,j)\)</span> 个元素为 <span class="math inline">\(\sum_{k=1}^n x_{ik}\)</span>，故 <span class="math display">\[
+(XH)_{ij}=x_{ij}-\frac1n\sum_{k=1}^n x_{ik}.
+\]</span> 这正是每行减去自己的均值。因此 <span class="math inline">\(XH=X\)</span> 当且仅当 <span class="math inline">\(X\)</span> 每行的元素之和均为零。</p>
+
+</div></details>
+
+<p class="problem-source">来源：自编（结合近期矩阵运算与 NumPy 按行中心化问题）</p>
+
+</div>
+
+<details id="discussion-2026-11-18" class="log-comments problem-discussion" data-comment-term="/problems/2026-11-18/" data-comment-date="2026-11-18" data-comment-title="每日好题 · 2026-11-18">
+
+<summary>discussion/ <span>2026-11-18 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+</section>
+<section id="section-8" class="level2 problem-date-heading problem-day" data-date="2026-11-17">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-8">2026-11-17</h2>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;CS&quot;, &quot;PYTHON&quot;, &quot;NUMPY&quot;, &quot;数组索引&quot;], &quot;tags&quot;: [&quot;NumPy&quot;, &quot;视图与副本&quot;], &quot;title&quot;: &quot;基本切片与布尔索引&quot;}">
+
+<div class="problem-meta">CS / PYTHON / NUMPY / 数组索引</div>
+
+<h3 class="anchored">01. 基本切片与布尔索引</h3>
+
+<div class="entry-tags">#NumPy · #视图与副本</div>
+
+<p>写出下面程序运行后 <code>a</code>、<code>b</code>、<code>c</code> 的值，并说明原因。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>])</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> a[<span class="dv">1</span>:<span class="dv">3</span>]</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> a[a <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>]</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>b[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">20</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>c[<span class="dv">0</span>] <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>结果为：</p>
+<pre class="text"><code>a: [ 1 20  3  4]
+b: [20  3]
+c: [-1  4]</code></pre>
+<p>基本切片 <code>a[1:3]</code> 返回视图，<code>b[0]</code> 与 <code>a[1]</code> 共用数据，所以修改 <code>b[0]</code> 会改变 <code>a</code>。</p>
+<p>布尔索引返回副本。创建 <code>c</code> 时得到 <code>[2, 4]</code>，此后修改 <code>a</code> 或 <code>c</code> 都不会影响另一方。</p>
+
+</div></details>
+
+<p class="problem-source">来源：《程序设计与算法基础》W10 向量与矩阵课程笔记（2026-11-17），据笔记改编</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;CS&quot;, &quot;PYTHON&quot;, &quot;NUMPY&quot;, &quot;数组运算&quot;], &quot;tags&quot;: [&quot;NumPy&quot;, &quot;广播&quot;, &quot;axis&quot;], &quot;title&quot;: &quot;按行中心化与广播&quot;}">
+
+<div class="problem-meta">CS / PYTHON / NUMPY / 数组运算</div>
+
+<h3 class="anchored">02. 按行中心化与广播</h3>
+
+<div class="entry-tags">#NumPy · #广播 · #axis</div>
+
+<p>给定：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="fl">1.</span>, <span class="fl">2.</span>, <span class="fl">3.</span>], [<span class="fl">4.</span>, <span class="fl">5.</span>, <span class="fl">9.</span>]])</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>（1）执行 <code>A - A.mean(axis=1)</code> 会发生什么？</p>
+<p>（2）不使用循环，令每行减去该行的均值，写出代码与结果。</p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>（1）<code>A.mean(axis=1)</code> 为 <code>[2., 6.]</code>，形状是 <code>(2,)</code>。与 <code>A</code> 的 <code>(2, 3)</code> 从末尾维度对齐时，<code>2</code> 与 <code>3</code> 不兼容，因此抛出 <code>ValueError</code>。</p>
+<p>（2）保留被聚合的轴：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>centered <span class="op">=</span> A <span class="op">-</span> A.mean(axis<span class="op">=</span><span class="dv">1</span>, keepdims<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>均值形状为 <code>(2, 1)</code>，沿列广播，结果为：</p>
+<pre class="text"><code>[[-1.  0.  1.]
+ [-2. -1.  3.]]</code></pre>
+
+</div></details>
+
+<p class="problem-source">来源：《程序设计与算法基础》W10 向量与矩阵课程笔记（2026-11-17），据笔记改编</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;CS&quot;, &quot;PYTHON&quot;, &quot;NUMPY&quot;, &quot;矩阵运算&quot;], &quot;tags&quot;: [&quot;NumPy&quot;, &quot;矩阵乘法&quot;, &quot;广播&quot;], &quot;title&quot;: &quot;批量仿射变换的矩阵写法&quot;}">
+
+<div class="problem-meta">CS / PYTHON / NUMPY / 矩阵运算</div>
+
+<h3 class="anchored">03. 批量仿射变换的矩阵写法</h3>
+
+<div class="entry-tags">#NumPy · #矩阵乘法 · #广播</div>
+
+<p>给定：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>]])</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>W <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>], [<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>]])</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="op">-</span><span class="dv">2</span>])</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>X</code> 每行是一个样本，单个样本的列向量形式满足 <span class="math inline">\(y=Wx+b\)</span>。不使用循环，求全部样本的输出矩阵 <code>Y</code>，并写出其形状和值。能否用 <code>X * W + b</code> 代替？</p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>每个样本按行存放，应右乘 <code>W.T</code>：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> X <span class="op">@</span> W.T <span class="op">+</span> b</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>X</code>、<code>W.T</code> 的形状分别为 <code>(2, 3)</code>、<code>(3, 2)</code>，乘积形状为 <code>(2, 2)</code>。<code>b</code> 的形状为 <code>(2,)</code>，向每一行广播，得到：</p>
+<pre class="text"><code>[[-1  2]
+ [ 1 -1]]</code></pre>
+<p><code>X * W</code> 是逐元素乘法，未对输入分量求和，而且本例所得 <code>(2, 3)</code> 数组与 <code>(2,)</code> 的 <code>b</code> 无法广播。因此 <code>X * W + b</code> 不能代替上述计算。</p>
+
+</div></details>
+
+<p class="problem-source">来源：《程序设计与算法基础》W10 向量与矩阵课程笔记（2026-11-17），据笔记改编</p>
+
+</div>
+
+<details id="discussion-2026-11-17" class="log-comments problem-discussion" data-comment-term="/problems/2026-11-17/" data-comment-date="2026-11-17" data-comment-title="每日好题 · 2026-11-17">
+
+<summary>discussion/ <span>2026-11-17 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+</section>
+<section id="section-9" class="level2 problem-date-heading problem-day" data-date="2026-11-16">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-9">2026-11-16</h2>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;Taylor 公式&quot;], &quot;tags&quot;: [&quot;Taylor 公式&quot;, &quot;待定系数法&quot;], &quot;title&quot;: &quot;指数函数商的 Taylor 展开&quot;}">
+
+<div class="problem-meta">MATH / CALCULUS / Taylor 公式</div>
+
+<h3 class="anchored">01. 指数函数商的 Taylor 展开</h3>
+
+<div class="entry-tags">#Taylor 公式 · #待定系数法</div>
+
+<p>将 <span class="math display">\[
+F(x)=\frac{x}{e^x-1}
+\]</span> 按 <span class="math inline">\(x\)</span> 的非负整数次幂展开，写到 <span class="math inline">\(x^4\)</span>，余项用 <span class="math inline">\(o(x^4)\)</span> 表示。在 <span class="math inline">\(x=0\)</span> 处补定义 <span class="math inline">\(F(0)=1\)</span>。</p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>令 <span class="math display">\[
+G(x)=\begin{cases}(e^x-1)/x,&amp;x\ne0,\\1,&amp;x=0.\end{cases}
+\]</span> 它在零点附近光滑且非零，因此 <span class="math inline">\(F=1/G\)</span> 也光滑，可以作有限阶 Taylor 展开。设 <span class="math display">\[
+F(x)=c_0+c_1x+c_2x^2+c_3x^3+c_4x^4+o(x^4).
+\]</span> 由 <span class="math inline">\((e^x-1)F(x)=x\)</span>，为了比较到决定 <span class="math inline">\(c_4\)</span> 的 <span class="math inline">\(x^5\)</span> 项，写出 <span class="math display">\[
+e^x-1=x+\frac{x^2}{2}+\frac{x^3}{6}+\frac{x^4}{24}+\frac{x^5}{120}+o(x^5).
+\]</span> 因为 <span class="math inline">\(e^x-1=O(x)\)</span>，乘积中的余项为 <span class="math inline">\(o(x^5)\)</span>。逐次比较系数，得 <span class="math display">\[
+\begin{aligned}
+c_0&amp;=1,\\
+c_1+c_0/2&amp;=0,\\
+c_2+c_1/2+c_0/6&amp;=0,\\
+c_3+c_2/2+c_1/6+c_0/24&amp;=0,\\
+c_4+c_3/2+c_2/6+c_1/24+c_0/120&amp;=0.
+\end{aligned}
+\]</span> 所以 <span class="math inline">\(c_1=-1/2\)</span>、<span class="math inline">\(c_2=1/12\)</span>、<span class="math inline">\(c_3=0\)</span>、<span class="math inline">\(c_4=-1/720\)</span>，即 <span class="math display">\[
+\boxed{\frac{x}{e^x-1}=1-\frac x2+\frac{x^2}{12}-\frac{x^4}{720}+o(x^4).}
+\]</span></p>
+
+</div></details>
+
+<p class="problem-source">来源：吉米多维奇《数学分析习题集》第 1382 题（据用户笔记整理）</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;Taylor 公式&quot;], &quot;tags&quot;: [&quot;Taylor 公式&quot;, &quot;Peano 余项&quot;, &quot;拉格朗日余项&quot;], &quot;title&quot;: &quot;Taylor 余项中值点的极限&quot;}">
+
+<div class="problem-meta">MATH / CALCULUS / Taylor 公式</div>
+
+<h3 class="anchored">02. Taylor 余项中值点的极限</h3>
+
+<div class="entry-tags">#Taylor 公式 · #Peano 余项 · #拉格朗日余项</div>
+
+<p>设 <span class="math inline">\(n\ge1\)</span>，<span class="math inline">\(f\)</span> 在固定点 <span class="math inline">\(x\)</span> 的邻域内属于 <span class="math inline">\(C^{n+1}\)</span>，且 <span class="math inline">\(f^{(n+1)}(x)\ne0\)</span>。对每个充分小的非零 <span class="math inline">\(h\)</span>，取某个 <span class="math inline">\(\theta(h)\in(0,1)\)</span>，使 <span class="math display">\[
+f(x+h)=\sum_{k=0}^{n-1}\frac{f^{(k)}(x)}{k!}h^k+\frac{h^n}{n!}f^{(n)}(x+\theta(h)h).
+\]</span> 证明： <span class="math display">\[
+\lim_{h\to0}\theta(h)=\frac1{n+1}.
+\]</span></p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>在固定点 <span class="math inline">\(x\)</span>，由 Peano 公式， <span class="math display">\[
+f(x+h)=\sum_{k=0}^{n}\frac{f^{(k)}(x)}{k!}h^k+\frac{f^{(n+1)}(x)}{(n+1)!}h^{n+1}+o(h^{n+1}).
+\]</span> 与题给等式比较，消去低阶多项式，并除以 <span class="math inline">\(h^n/n!\)</span>，得 <span class="math display">\[
+f^{(n)}(x+\theta h)-f^{(n)}(x)=\frac{h}{n+1}f^{(n+1)}(x)+o(h).\tag{1}
+\]</span> 令 <span class="math inline">\(u=\theta(h)h\)</span>。因为 <span class="math inline">\(0&lt;\theta&lt;1\)</span>，有 <span class="math inline">\(u\to0\)</span>，所以 <span class="math display">\[
+f^{(n)}(x+u)-f^{(n)}(x)=f^{(n+1)}(x)u+o(u).
+\]</span> 若 <span class="math inline">\(o(u)=u\varepsilon(u)\)</span>，其中 <span class="math inline">\(\varepsilon(u)\to0\)</span>，则 <span class="math inline">\(o(u)/h=\theta\varepsilon(u)\to0\)</span>，故 <span class="math display">\[
+f^{(n)}(x+\theta h)-f^{(n)}(x)=\theta h f^{(n+1)}(x)+o(h).\tag{2}
+\]</span> 比较（1）、（2），除以非零的 <span class="math inline">\(hf^{(n+1)}(x)\)</span>，得 <span class="math display">\[
+\theta(h)=\frac1{n+1}+o(1).
+\]</span> 因此 <span class="math display">\[
+\boxed{\lim_{h\to0}\theta(h)=\frac1{n+1}.}
+\]</span></p>
+
+</div></details>
+
+<p class="problem-source">来源：吉米多维奇《数学分析习题集》第 1393 题（据用户笔记整理）</p>
+
+</div>
+
+<details id="discussion-2026-11-16" class="log-comments problem-discussion" data-comment-term="/problems/2026-11-16/" data-comment-date="2026-11-16" data-comment-title="每日好题 · 2026-11-16">
+
+<summary>discussion/ <span>2026-11-16 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+</section>
+<section id="section-10" class="level2 problem-date-heading problem-day" data-date="2026-11-15">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-10">2026-11-15</h2>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;矩阵&quot;], &quot;tags&quot;: [&quot;证明&quot;, &quot;初等变换&quot;], &quot;title&quot;: &quot;置换矩阵的正交性&quot;}">
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 矩阵</div>
+
+<h3 class="anchored">01. 置换矩阵的正交性</h3>
+
+<div class="entry-tags">#证明 · #初等变换</div>
+
+<p>矩阵 <span class="math inline">\(A\)</span> 由 <span class="math inline">\(n\)</span> 阶单位矩阵 <span class="math inline">\(E\)</span> 经过若干次行、列互换得到。求 <span class="math inline">\(A^{\mathsf T}A\)</span>，并证明结论。</p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>答案为 <span class="math inline">\(E\)</span>。行、列互换保持每行、每列恰有一个 <span class="math inline">\(1\)</span>、其余元素全为 <span class="math inline">\(0\)</span> 的性质。设 <span class="math inline">\(A=(a_{ij})\)</span>，则 <span class="math display">\[
+(A^{\mathsf T}A)_{ij}=\sum_{k=1}^n a_{ki}a_{kj}.
+\]</span> 当 <span class="math inline">\(i=j\)</span> 时，该和为 <span class="math inline">\(1\)</span>；当 <span class="math inline">\(i\ne j\)</span> 时，每行的两个元素不能同时为 <span class="math inline">\(1\)</span>，该和为 <span class="math inline">\(0\)</span>。故 <span class="math inline">\(A^{\mathsf T}A=E\)</span>。</p>
+
+</div></details>
+
+<p class="problem-source">来源：2025–2026 学年秋冬《线性代数（甲）》期中考试 · 第 7 题</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;矩阵&quot;], &quot;tags&quot;: [&quot;证明&quot;, &quot;初等变换&quot;], &quot;title&quot;: &quot;非零矩阵解的存在性&quot;}">
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 矩阵</div>
+
+<h3 class="anchored">02. 非零矩阵解的存在性</h3>
+
+<div class="entry-tags">#证明 · #初等变换</div>
+
+<p>设 <span class="math inline">\(A,B,C\)</span> 为 <span class="math inline">\(n\)</span> 阶方阵，满足 <span class="math inline">\(r(A)&lt;r(C)\le n\)</span>，且 <span class="math inline">\(BC=O\)</span>。证明存在非零矩阵 <span class="math inline">\(X\)</span>，使得 <span class="math inline">\(AX=BX\)</span>。</p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>由秩不等式， <span class="math display">\[
+0=r(BC)\ge r(B)+r(C)-n,
+\]</span> 所以 <span class="math inline">\(r(B)\le n-r(C)\)</span>。因此 <span class="math display">\[
+r(A-B)\le r(A)+r(B)\le r(A)+n-r(C)&lt;n.
+\]</span> 齐次方程组 <span class="math inline">\((A-B)z=0\)</span> 有非零列向量解 <span class="math inline">\(z\)</span>。令 <span class="math display">\[
+X=(z,0,\ldots,0),
+\]</span> 则 <span class="math inline">\(X\ne O\)</span> 且 <span class="math inline">\((A-B)X=O\)</span>，即 <span class="math inline">\(AX=BX\)</span>。</p>
+
+</div></details>
+
+<p class="problem-source">来源：2025–2026 学年秋冬《线性代数（甲）》期中考试 · 第 9 题</p>
+
+</div>
+
+<details id="discussion-2026-11-15" class="log-comments problem-discussion" data-comment-term="/problems/2026-11-15/" data-comment-date="2026-11-15" data-comment-title="每日好题 · 2026-11-15">
+
+<summary>discussion/ <span>2026-11-15 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+</section>
+<section id="section-11" class="level2 problem-date-heading problem-day" data-date="2026-11-14">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-11">2026-11-14</h2>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;逆矩阵&quot;], &quot;tags&quot;: [&quot;矩阵运算&quot;, &quot;秩一更新&quot;], &quot;title&quot;: &quot;秩一更新的逆矩阵&quot;}">
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 逆矩阵</div>
+
+<h3 class="anchored">01. 秩一更新的逆矩阵</h3>
+
+<div class="entry-tags">#矩阵运算 · #秩一更新</div>
+
+<p>设 <span class="math inline">\(A\)</span> 为可逆实矩阵，<span class="math inline">\(u,v\)</span> 为相应维数的列向量。证明 <span class="math inline">\(A+uv^{\mathsf T}\)</span> 可逆当且仅当 <span class="math inline">\(1+v^{\mathsf T}A^{-1}u\ne0\)</span>，并求其逆矩阵。</p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>记 <span class="math inline">\(s=v^{\mathsf T}A^{-1}u\)</span>。若 <span class="math inline">\(1+s\ne0\)</span>，令 <span class="math display">\[
+X=A^{-1}-\frac{A^{-1}uv^{\mathsf T}A^{-1}}{1+s}.
+\]</span> 直接相乘： <span class="math display">\[
+(A+uv^{\mathsf T})X
+=E+\left(1-\frac1{1+s}-\frac{s}{1+s}\right)uv^{\mathsf T}A^{-1}=E.
+\]</span> 因此 <span class="math display">\[
+(A+uv^{\mathsf T})^{-1}=A^{-1}-\frac{A^{-1}uv^{\mathsf T}A^{-1}}{1+v^{\mathsf T}A^{-1}u}.
+\]</span> 若 <span class="math inline">\(1+s=0\)</span>，则 <span class="math inline">\(u\ne0\)</span>，从而 <span class="math inline">\(A^{-1}u\ne0\)</span>，而 <span class="math display">\[
+(A+uv^{\mathsf T})A^{-1}u=(1+s)u=0.
+\]</span> 故矩阵不可逆。</p>
+
+</div></details>
+
+<p class="problem-source">来源：线性代数复习 · 特殊矩阵求逆与 Sherman–Morrison 公式</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;逆矩阵&quot;], &quot;tags&quot;: [&quot;矩阵运算&quot;, &quot;秩一更新&quot;], &quot;title&quot;: &quot;对角矩阵加全一矩阵&quot;}">
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 逆矩阵</div>
+
+<h3 class="anchored">02. 对角矩阵加全一矩阵</h3>
+
+<div class="entry-tags">#矩阵运算 · #秩一更新</div>
+
+<p>求矩阵的逆： <span class="math display">\[
+M=\begin{pmatrix}2&amp;1&amp;1\\1&amp;3&amp;1\\1&amp;1&amp;4\end{pmatrix}.
+\]</span></p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>写成 <span class="math inline">\(M=D+ee^{\mathsf T}\)</span>，其中 <span class="math display">\[
+D=\operatorname{diag}(1,2,3),\qquad e=(1,1,1)^{\mathsf T}.
+\]</span> 有 <span class="math display">\[
+D^{-1}=\operatorname{diag}(1,\tfrac12,\tfrac13),\qquad
+1+e^{\mathsf T}D^{-1}e=\frac{17}{6}.
+\]</span> 由秩一更新公式， <span class="math display">\[
+M^{-1}=D^{-1}-\frac6{17}(D^{-1}e)(D^{-1}e)^{\mathsf T}
+=\frac1{17}\begin{pmatrix}11&amp;-3&amp;-2\\-3&amp;7&amp;-1\\-2&amp;-1&amp;5\end{pmatrix}.
+\]</span></p>
+
+</div></details>
+
+<p class="problem-source">来源：线性代数复习 · 特殊矩阵求逆与 Sherman–Morrison 公式</p>
+
+</div>
+
+<details id="discussion-2026-11-14" class="log-comments problem-discussion" data-comment-term="/problems/2026-11-14/" data-comment-date="2026-11-14" data-comment-title="每日好题 · 2026-11-14">
+
+<summary>discussion/ <span>2026-11-14 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+</section>
+<section id="section-12" class="level2 problem-date-heading problem-day" data-date="2026-11-13">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-12">2026-11-13</h2>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;行列式&quot;], &quot;tags&quot;: [&quot;证明&quot;, &quot;矩阵运算&quot;], &quot;title&quot;: &quot;矩阵方程与行列式&quot;}">
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 行列式</div>
+
+<h3 class="anchored">01. 矩阵方程与行列式</h3>
+
+<div class="entry-tags">#证明 · #矩阵运算</div>
+
+<p>设 <span class="math inline">\(A,B,C\)</span> 为三阶实矩阵，<span class="math inline">\(B\)</span> 可逆，<span class="math inline">\(C=\operatorname{diag}(1,2,-1)\)</span>，且 <span class="math inline">\(2BA+CB=O\)</span>。求 <span class="math inline">\(|A+3E|\)</span>。</p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>由题设， <span class="math display">\[
+B(2A+6E)=(6E-C)B.
+\]</span> 取行列式并约去 <span class="math inline">\(|B|\ne0\)</span>，得 <span class="math display">\[
+8|A+3E|=|6E-C|=5\cdot4\cdot7=140.
+\]</span> 故 <span class="math inline">\(|A+3E|=\dfrac{35}{2}\)</span>。</p>
+
+</div></details>
+
+<p class="problem-source">来源：2020–2021 学年秋冬《线性代数（甲）》期中第 2 题（等价整理）</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;行列式&quot;], &quot;tags&quot;: [&quot;证明&quot;, &quot;矩阵运算&quot;], &quot;title&quot;: &quot;秩一更新的行列式&quot;}">
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 行列式</div>
+
+<h3 class="anchored">02. 秩一更新的行列式</h3>
+
+<div class="entry-tags">#证明 · #矩阵运算</div>
+
+<p>设 <span class="math inline">\(A\)</span> 为 <span class="math inline">\(n\)</span> 阶可逆矩阵，<span class="math inline">\(\alpha,\beta\)</span> 为两个 <span class="math inline">\(n\)</span> 维列向量，证明： <span class="math display">\[
+|A+\alpha\beta^{\mathsf T}|=|A|+\beta^{\mathsf T}A^*\alpha.
+\]</span></p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>令 <span class="math display">\[
+M=\begin{pmatrix}A&amp;\alpha\\-\beta^{\mathsf T}&amp;1\end{pmatrix}.
+\]</span> 分别作分块消元，得 <span class="math display">\[
+M\begin{pmatrix}E&amp;O\\\beta^{\mathsf T}&amp;1\end{pmatrix}
+=\begin{pmatrix}A+\alpha\beta^{\mathsf T}&amp;\alpha\\O&amp;1\end{pmatrix},
+\]</span> 以及 <span class="math display">\[
+\begin{pmatrix}E&amp;O\\\beta^{\mathsf T}A^{-1}&amp;1\end{pmatrix}M
+=\begin{pmatrix}A&amp;\alpha\\O&amp;1+\beta^{\mathsf T}A^{-1}\alpha\end{pmatrix}.
+\]</span> 两个消元矩阵的行列式均为 <span class="math inline">\(1\)</span>，故 <span class="math display">\[
+|A+\alpha\beta^{\mathsf T}|=|M|
+=|A|(1+\beta^{\mathsf T}A^{-1}\alpha)
+=|A|+\beta^{\mathsf T}A^*\alpha.
+\]</span></p>
+
+</div></details>
+
+<p class="problem-source">来源：2019–2020 学年秋冬《线性代数（甲）》期中第 8 题</p>
+
+</div>
+
+<details id="discussion-2026-11-13" class="log-comments problem-discussion" data-comment-term="/problems/2026-11-13/" data-comment-date="2026-11-13" data-comment-title="每日好题 · 2026-11-13">
+
+<summary>discussion/ <span>2026-11-13 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+</section>
+<section id="section-13" class="level2 problem-date-heading problem-day" data-date="2026-11-12">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-13">2026-11-12</h2>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;矩阵的秩&quot;], &quot;tags&quot;: [&quot;证明&quot;, &quot;列空间&quot;], &quot;title&quot;: &quot;矩阵秩与右因子分解&quot;}">
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 矩阵的秩</div>
+
+<h3 class="anchored">01. 矩阵秩与右因子分解</h3>
+
+<div class="entry-tags">#证明 · #列空间</div>
+
+<p>设 <span class="math inline">\(A,B\)</span> 是两个 <span class="math inline">\(n\)</span> 阶实方阵，证明：<span class="math inline">\(r(A)=r(AB)\)</span> 当且仅当存在 <span class="math inline">\(n\)</span> 阶实方阵 <span class="math inline">\(C\)</span> 使得 <span class="math inline">\(A=ABC\)</span>。</p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>若 <span class="math inline">\(A=ABC\)</span>，则 <span class="math display">\[
+r(A)=r(ABC)\le r(AB)\le r(A),
+\]</span> 故 <span class="math inline">\(r(A)=r(AB)\)</span>。</p>
+<p>反之，<span class="math inline">\(AB\)</span> 的每一列都是 <span class="math inline">\(A\)</span> 的列向量的线性组合，故 <span class="math display">\[
+\operatorname{Col}(AB)\subseteq\operatorname{Col}(A).
+\]</span> 由两者维数相同，得列空间相等。记 <span class="math inline">\(A=(a_1,\ldots,a_n)\)</span>，对每个 <span class="math inline">\(j\)</span>，存在列向量 <span class="math inline">\(c_j\)</span> 使得 <span class="math inline">\(a_j=ABc_j\)</span>。取 <span class="math inline">\(C=(c_1,\ldots,c_n)\)</span>，即得 <span class="math inline">\(A=ABC\)</span>。</p>
+
+</div></details>
+
+<p class="problem-source">来源：2020–2021 学年秋冬《线性代数（甲）》期中考试 · 第 7 题</p>
+
+</div>
+
+<details id="discussion-2026-11-12" class="log-comments problem-discussion" data-comment-term="/problems/2026-11-12/" data-comment-date="2026-11-12" data-comment-title="每日好题 · 2026-11-12">
+
+<summary>discussion/ <span>2026-11-12 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+</section>
+<section id="section-14" class="level2 problem-date-heading problem-day" data-date="2026-11-11">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-14">2026-11-11</h2>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;行列式&quot;], &quot;tags&quot;: [&quot;正交矩阵&quot;, &quot;转置&quot;, &quot;行列式乘法&quot;], &quot;title&quot;: &quot;正交矩阵之和的行列式&quot;}">
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 行列式</div>
+
+<h3 class="anchored">01. 正交矩阵之和的行列式</h3>
+
+<div class="entry-tags">#正交矩阵 · #转置 · #行列式乘法</div>
+
+<p>设 <span class="math inline">\(A,B\)</span> 为 <span class="math inline">\(n\)</span> 阶实矩阵，满足 <span class="math inline">\(AA^{\mathrm T}=E\)</span>、<span class="math inline">\(BB^{\mathrm T}=E\)</span>，且 <span class="math inline">\(\det A+\det B=0\)</span>。求 <span class="math inline">\(\det(A+B)\)</span>。</p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>由 <span class="math inline">\(AA^{\mathrm T}=E\)</span>、<span class="math inline">\(BB^{\mathrm T}=E\)</span>，知 <span class="math inline">\(A,B\)</span> 可逆，且 <span class="math inline">\(A^{\mathrm T}A=B^{\mathrm T}B=E\)</span>。于是 <span class="math display">\[
+A+B=AB^{\mathrm T}B+AA^{\mathrm T}B
+=A(B^{\mathrm T}+A^{\mathrm T})B=A(A+B)^{\mathrm T}B.
+\]</span> 两边取行列式，得 <span class="math display">\[
+\det(A+B)=\det A\cdot\det(A+B)\cdot\det B.
+\]</span> 又 <span class="math inline">\((\det A)^2=(\det B)^2=1\)</span>，且 <span class="math inline">\(\det B=-\det A\)</span>，所以 <span class="math inline">\(\det A\det B=-1\)</span>。故 <span class="math display">\[
+2\det(A+B)=0,\qquad\boxed{\det(A+B)=0}.
+\]</span></p>
+
+</div></details>
+
+<p class="problem-source">来源：《线性代数习题精选精解》第 1.22 题</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;矩阵的秩&quot;], &quot;tags&quot;: [&quot;分块矩阵&quot;, &quot;初等变换&quot;], &quot;title&quot;: &quot;对称分块矩阵的秩&quot;}">
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 矩阵的秩</div>
+
+<h3 class="anchored">02. 对称分块矩阵的秩</h3>
+
+<div class="entry-tags">#分块矩阵 · #初等变换</div>
+
+<p>设 <span class="math inline">\(A,B\)</span> 为数域 <span class="math inline">\(P\)</span> 上的 <span class="math inline">\(n\)</span> 阶矩阵， <span class="math display">\[
+M=\begin{pmatrix}A&amp;B\\B&amp;A\end{pmatrix}.
+\]</span> 证明： <span class="math display">\[
+r(M)\ge r(A+B)+r(A-B).
+\]</span></p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>先将第一块行加上第二块行，再将第二块列减去第一块列，最后将第二块行加上第一块行的 <span class="math inline">\(-\frac12\)</span> 倍，得 <span class="math display">\[
+\begin{aligned}
+\begin{pmatrix}A&amp;B\\B&amp;A\end{pmatrix}
+&amp;\longrightarrow\begin{pmatrix}A+B&amp;A+B\\B&amp;A\end{pmatrix}\\
+&amp;\longrightarrow\begin{pmatrix}A+B&amp;0\\B&amp;A-B\end{pmatrix}\\
+&amp;\longrightarrow\begin{pmatrix}A+B&amp;0\\-\frac12(A-B)&amp;A-B\end{pmatrix}.
+\end{aligned}
+\]</span> 再将第一块列加上第二块列的 <span class="math inline">\(\frac12\)</span> 倍，得 <span class="math display">\[
+\begin{pmatrix}A+B&amp;0\\0&amp;A-B\end{pmatrix}.
+\]</span> 上述操作均为初等行、列变换，不改变秩。因此 <span class="math display">\[
+r(M)=r\begin{pmatrix}A+B&amp;0\\0&amp;A-B\end{pmatrix}
+=r(A+B)+r(A-B),
+\]</span> 从而原不等式成立。</p>
+
+</div></details>
+
+<p class="problem-source">来源：2018–2019 学年秋冬《线性代数（甲）》期中考试 · 第 7 题</p>
+
+</div>
+
+<details id="discussion-2026-11-11" class="log-comments problem-discussion" data-comment-term="/problems/2026-11-11/" data-comment-date="2026-11-11" data-comment-title="每日好题 · 2026-11-11">
+
+<summary>discussion/ <span>2026-11-11 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+</section>
+<section id="section-15" class="level2 problem-date-heading problem-day" data-date="2026-11-10">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-15">2026-11-10</h2>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;矩阵的秩&quot;], &quot;tags&quot;: [&quot;等价标准形&quot;, &quot;矩阵构造&quot;], &quot;title&quot;: &quot;构造指定秩的零乘积矩阵&quot;}">
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 矩阵的秩</div>
+
+<h3 class="anchored">01. 构造指定秩的零乘积矩阵</h3>
+
+<div class="entry-tags">#等价标准形 · #矩阵构造</div>
+
+<p>设 <span class="math inline">\(A\)</span> 为 <span class="math inline">\(m\times n\)</span> 矩阵，<span class="math inline">\(r(A)=r\)</span>。证明：存在 <span class="math inline">\(n\times n\)</span> 矩阵 <span class="math inline">\(B\)</span>，满足 <span class="math inline">\(r(B)=n-r\)</span>，且 <span class="math inline">\(AB=0\)</span>。</p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>由矩阵的等价标准形，存在可逆矩阵 <span class="math inline">\(P,Q\)</span>，使 <span class="math display">\[
+PAQ=J=\begin{pmatrix}E_r&amp;0\\0&amp;0\end{pmatrix}_{m\times n}.
+\]</span> 令 <span class="math display">\[
+D=\operatorname{diag}(\underbrace{0,\ldots,0}_{r},\underbrace{1,\ldots,1}_{n-r}),\qquad B=QD.
+\]</span> 因为 <span class="math inline">\(JD=0\)</span>，所以 <span class="math display">\[
+AB=AQD=P^{-1}JD=0.
+\]</span> 又 <span class="math inline">\(Q\)</span> 可逆，故 <span class="math inline">\(r(B)=r(QD)=r(D)=n-r\)</span>。此构造也适用于 <span class="math inline">\(r=0\)</span> 或 <span class="math inline">\(r=n\)</span>。</p>
+
+</div></details>
+
+<p class="problem-source">来源：2017–2018 学年秋冬《线性代数（甲）》期中考试 · 第 4 题（历年卷合集整理：macanine）</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;行列式&quot;], &quot;tags&quot;: [&quot;分块行列式&quot;, &quot;可交换矩阵&quot;, &quot;多项式恒等式&quot;], &quot;title&quot;: &quot;可交换条件下的分块行列式&quot;}">
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 行列式</div>
+
+<h3 class="anchored">02. 可交换条件下的分块行列式</h3>
+
+<div class="entry-tags">#分块行列式 · #可交换矩阵 · #多项式恒等式</div>
+
+<p>设 <span class="math inline">\(A,B,C,D\)</span> 均为 <span class="math inline">\(n\)</span> 阶实矩阵，且 <span class="math inline">\(AC=CA\)</span>。证明： <span class="math display">\[
+\begin{vmatrix}A&amp;D\\C&amp;B\end{vmatrix}=\det(AB-CD).
+\]</span></p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>先设 <span class="math inline">\(A\)</span> 可逆。由 <span class="math inline">\(AC=CA\)</span>， <span class="math display">\[
+\begin{pmatrix}E&amp;0\\-C&amp;A\end{pmatrix}
+\begin{pmatrix}A&amp;D\\C&amp;B\end{pmatrix}
+=\begin{pmatrix}A&amp;D\\0&amp;AB-CD\end{pmatrix}.
+\]</span> 两边取行列式，得 <span class="math display">\[
+\det A\cdot\begin{vmatrix}A&amp;D\\C&amp;B\end{vmatrix}
+=\det A\cdot\det(AB-CD).
+\]</span> 约去非零的 <span class="math inline">\(\det A\)</span>，即得结论。</p>
+<p>对一般的 <span class="math inline">\(A\)</span>，令 <span class="math inline">\(A_t=A+tE\)</span>，仍有 <span class="math inline">\(A_tC=CA_t\)</span>。因为 <span class="math inline">\(\det(A+tE)\)</span> 是关于 <span class="math inline">\(t\)</span> 的 <span class="math inline">\(n\)</span> 次首一多项式，除有限多个实数 <span class="math inline">\(t\)</span> 外，<span class="math inline">\(A_t\)</span> 都可逆。由已证情形， <span class="math display">\[
+\begin{vmatrix}A+tE&amp;D\\C&amp;B\end{vmatrix}
+=\det\bigl((A+tE)B-CD\bigr)
+\]</span> 对无穷多个实数 <span class="math inline">\(t\)</span> 成立。两边都是关于 <span class="math inline">\(t\)</span> 的多项式，故恒等。令 <span class="math inline">\(t=0\)</span>，即得所证。</p>
+
+</div></details>
+
+<p class="problem-source">来源：2017–2018 学年秋冬《线性代数（甲）》期中考试 · 第 7 题（历年卷合集整理：macanine）</p>
+
+</div>
+
+<details id="discussion-2026-11-10" class="log-comments problem-discussion" data-comment-term="/problems/2026-11-10/" data-comment-date="2026-11-10" data-comment-title="每日好题 · 2026-11-10">
+
+<summary>discussion/ <span>2026-11-10 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+</section>
+<section id="section-16" class="level2 problem-date-heading problem-day" data-date="2026-11-09">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-16">2026-11-09</h2>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;矩阵运算&quot;], &quot;tags&quot;: [&quot;矩阵乘法&quot;, &quot;逆矩阵&quot;], &quot;title&quot;: &quot;互为逆矩阵条件下的平方和&quot;}">
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 矩阵运算</div>
+
+<h3 class="anchored">01. 互为逆矩阵条件下的平方和</h3>
+
+<div class="entry-tags">#矩阵乘法 · #逆矩阵</div>
+
+<p>设 <span class="math inline">\(A,B,C\)</span> 均为 <span class="math inline">\(n\)</span> 阶方阵，且 <span class="math inline">\(AB=BC=CA=E\)</span>，其中 <span class="math inline">\(E\)</span> 为单位矩阵，则 <span class="math inline">\(A^2+B^2+C^2=\)</span>（　）。</p>
+<p>（A）<span class="math inline">\(3E\)</span>　（B）<span class="math inline">\(2E\)</span>　（C）<span class="math inline">\(E\)</span>　（D）<span class="math inline">\(0\)</span></p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>由矩阵乘法的结合律， <span class="math display">\[
+\begin{aligned}
+A^2&amp;=A(BC)A=(AB)(CA)=E,\\
+B^2&amp;=B(CA)B=(BC)(AB)=E,\\
+C^2&amp;=C(AB)C=(CA)(BC)=E.
+\end{aligned}
+\]</span> 所以 <span class="math inline">\(A^2+B^2+C^2=3E\)</span>，选（A）。</p>
+
+</div></details>
+
+<p class="problem-source">来源：《线性代数习题精选精解》第 1.4 题</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;矩阵运算&quot;], &quot;tags&quot;: [&quot;矩阵乘法&quot;, &quot;转置&quot;, &quot;行列式&quot;], &quot;title&quot;: &quot;矩阵运算恒等式的辨析&quot;}">
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 矩阵运算</div>
+
+<h3 class="anchored">02. 矩阵运算恒等式的辨析</h3>
+
+<div class="entry-tags">#矩阵乘法 · #转置 · #行列式</div>
+
+<p>已知 <span class="math inline">\(A,B\)</span> 均为 <span class="math inline">\(n\)</span> 阶方阵，<span class="math inline">\(E\)</span> 为单位矩阵，则下列结论中必然成立的是（　）。</p>
+<p>（A）<span class="math inline">\((A+B)^2=A^2+2AB+B^2\)</span>。</p>
+<p>（B）<span class="math inline">\((AB)^{\mathrm T}=A^{\mathrm T}B^{\mathrm T}\)</span>。</p>
+<p>（C）<span class="math inline">\(AB=0\)</span> 时，<span class="math inline">\(A=0\)</span> 或 <span class="math inline">\(B=0\)</span>。</p>
+<p>（D）<span class="math inline">\(\det(A+AB)=0\iff\det A=0\)</span> 或 <span class="math inline">\(\det(E+B)=0\)</span>。</p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>选（D）。因为 <span class="math display">\[
+\det(A+AB)=\det\bigl(A(E+B)\bigr)=\det A\cdot\det(E+B),
+\]</span> 乘积为零当且仅当至少一个因子为零。</p>
+<p>（A）的正确展开式为 <span class="math inline">\((A+B)^2=A^2+AB+BA+B^2\)</span>；（B）的正确公式为 <span class="math inline">\((AB)^{\mathrm T}=B^{\mathrm T}A^{\mathrm T}\)</span>。例如取 <span class="math display">\[
+A=\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix},\qquad
+B=\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix},
+\]</span> 则 <span class="math inline">\(AB=B\)</span>、<span class="math inline">\(BA=0\)</span>，可同时否定（A）、（B）。</p>
+<p>对（C），取 <span class="math display">\[
+A=\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix},\qquad
+B=\begin{pmatrix}0&amp;0\\0&amp;1\end{pmatrix},
+\]</span> 则 <span class="math inline">\(A,B\)</span> 均非零，但 <span class="math inline">\(AB=0\)</span>。</p>
+
+</div></details>
+
+<p class="problem-source">来源：《线性代数习题精选精解》第 1.5 题</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;矩阵的幂&quot;], &quot;tags&quot;: [&quot;相似矩阵&quot;, &quot;分块矩阵&quot;, &quot;周期性&quot;], &quot;title&quot;: &quot;相似矩阵的高次幂&quot;}">
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 矩阵的幂</div>
+
+<h3 class="anchored">03. 相似矩阵的高次幂</h3>
+
+<div class="entry-tags">#相似矩阵 · #分块矩阵 · #周期性</div>
+
+<p>设 <span class="math display">\[
+A=\begin{pmatrix}0&amp;-1&amp;0\\1&amp;0&amp;0\\0&amp;0&amp;-1\end{pmatrix},\qquad B=P^{-1}AP,
+\]</span> 其中 <span class="math inline">\(P\)</span> 为三阶可逆矩阵，求 <span class="math inline">\(B^{2004}-2A^2\)</span>。</p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>直接计算得 <span class="math display">\[
+A^2=\begin{pmatrix}-1&amp;0&amp;0\\0&amp;-1&amp;0\\0&amp;0&amp;1\end{pmatrix},\qquad A^4=E.
+\]</span> 所以 <span class="math inline">\(A^{2004}=(A^4)^{501}=E\)</span>。由相似关系， <span class="math display">\[
+B^{2004}=P^{-1}A^{2004}P=E.
+\]</span> 因此 <span class="math display">\[
+\boxed{B^{2004}-2A^2=\begin{pmatrix}3&amp;0&amp;0\\0&amp;3&amp;0\\0&amp;0&amp;-1\end{pmatrix}.}
+\]</span></p>
+
+</div></details>
+
+<p class="problem-source">来源：《线性代数习题精选精解》第 1.13 题</p>
+
+</div>
+
+<details id="discussion-2026-11-09" class="log-comments problem-discussion" data-comment-term="/problems/2026-11-09/" data-comment-date="2026-11-09" data-comment-title="每日好题 · 2026-11-09">
+
+<summary>discussion/ <span>2026-11-09 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+</section>
+<section id="section-17" class="level2 problem-date-heading problem-day" data-date="2026-11-08">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-17">2026-11-08</h2>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;矩阵的秩&quot;], &quot;tags&quot;: [&quot;矩阵等价&quot;, &quot;等价标准形&quot;], &quot;title&quot;: &quot;矩阵等价与秩&quot;}">
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 矩阵的秩</div>
+
+<h3 class="anchored">01. 矩阵等价与秩</h3>
+
+<div class="entry-tags">#矩阵等价 · #等价标准形</div>
+
+<p>设 <span class="math inline">\(A,B\)</span> 为 <span class="math inline">\(m\times n\)</span> 矩阵，证明：<span class="math inline">\(A,B\)</span> 等价的充要条件是 <span class="math inline">\(r(A)=r(B)\)</span>。</p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>必要性：若 <span class="math inline">\(A,B\)</span> 等价，则存在可逆矩阵 <span class="math inline">\(P,Q\)</span>，使 <span class="math inline">\(PAQ=B\)</span>。所以 <span class="math display">\[
+r(A)=r(PAQ)=r(B).
+\]</span> 充分性：设 <span class="math inline">\(r(A)=r(B)=r\)</span>。由矩阵的等价标准形，存在可逆矩阵 <span class="math inline">\(P_1,Q_1,P_2,Q_2\)</span>，使 <span class="math display">\[
+P_1AQ_1=P_2BQ_2=
+\begin{pmatrix}
+E_r&amp;0\\
+0&amp;0
+\end{pmatrix}_{m\times n}.
+\]</span> 从而 <span class="math display">\[
+B=(P_2^{-1}P_1)A(Q_1Q_2^{-1}).
+\]</span> 左右两侧的乘子均可逆，故 <span class="math inline">\(A,B\)</span> 等价。</p>
+
+</div></details>
+
+<p class="problem-source">来源：《线性代数习题精选精解》第 4.19 题</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;矩阵的秩&quot;], &quot;tags&quot;: [&quot;幂等矩阵&quot;, &quot;矩阵的秩&quot;, &quot;可逆矩阵&quot;], &quot;title&quot;: &quot;两个幂等矩阵的秩相等&quot;}">
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 矩阵的秩</div>
+
+<h3 class="anchored">02. 两个幂等矩阵的秩相等</h3>
+
+<div class="entry-tags">#幂等矩阵 · #矩阵的秩 · #可逆矩阵</div>
+
+<p>设 <span class="math inline">\(n\)</span> 阶方阵 <span class="math inline">\(A,B\)</span> 满足 <span class="math inline">\(A^2=A\)</span>、<span class="math inline">\(B^2=B\)</span>，且 <span class="math inline">\(E-A-B\)</span> 可逆，其中 <span class="math inline">\(E\)</span> 为 <span class="math inline">\(n\)</span> 阶单位矩阵。证明： <span class="math display">\[
+r(A)=r(B).
+\]</span></p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>证法一：由 <span class="math inline">\(E-A-B\)</span> 可逆， <span class="math display">\[
+n=r(E-A-B)\le r(E-A)+r(B),
+\]</span> 所以 <span class="math inline">\(r(B)\ge n-r(E-A)\)</span>。又由 <span class="math inline">\(A^2=A\)</span>，得 <span class="math inline">\(A(E-A)=0\)</span>，于是 <span class="math display">\[
+r(A)+r(E-A)\le n.
+\]</span> 从而 <span class="math display">\[
+r(B)\ge n-r(E-A)\ge r(A).
+\]</span> 交换 <span class="math inline">\(A,B\)</span>，同理得 <span class="math inline">\(r(A)\ge r(B)\)</span>，故 <span class="math inline">\(r(A)=r(B)\)</span>。</p>
+<p>证法二：由 <span class="math display">\[
+A(E-A-B)=A-A^2-AB=-AB,
+\]</span> 且 <span class="math inline">\(E-A-B\)</span> 可逆，得 <span class="math inline">\(r(A)=r(AB)\)</span>。又 <span class="math display">\[
+(E-A-B)B=B-AB-B^2=-AB,
+\]</span> 故 <span class="math inline">\(r(B)=r(AB)\)</span>。因此 <span class="math inline">\(r(A)=r(B)\)</span>。</p>
+
+</div></details>
+
+<p class="problem-source">来源：《线性代数习题精选精解》第 4.20 题</p>
+
+</div>
+
+<details id="discussion-2026-11-08" class="log-comments problem-discussion" data-comment-term="/problems/2026-11-08/" data-comment-date="2026-11-08" data-comment-title="每日好题 · 2026-11-08">
+
+<summary>discussion/ <span>2026-11-08 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+</section>
+<section id="section-18" class="level2 problem-date-heading problem-day" data-date="2026-11-07">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-18">2026-11-07</h2>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;证明题&quot;], &quot;tags&quot;: [&quot;数列极限&quot;, &quot;介值定理&quot;, &quot;单调有界&quot;], &quot;title&quot;: &quot;加权幂和方程的根与极限&quot;}">
+
+<div class="problem-meta">MATH / CALCULUS / 证明题</div>
+
+<h3 class="anchored">01. 加权幂和方程的根与极限</h3>
+
+<div class="entry-tags">#数列极限 · #介值定理 · #单调有界</div>
+
+<p>设 <span class="math inline">\(n\)</span> 为正整数， <span class="math display">\[
+r_n(x)=x+2x^2+\cdots+nx^n.
+\]</span> （1）证明：存在唯一的 <span class="math inline">\(x_n\in(0,1)\)</span>，使得 <span class="math inline">\(r_n(x_n)=\frac12\)</span>。</p>
+<p>（2）求 <span class="math inline">\(\displaystyle\lim_{n\to\infty}x_n\)</span>。</p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>（1）<span class="math inline">\(r_n\)</span> 在 <span class="math inline">\([0,1]\)</span> 上连续，且 <span class="math display">\[
+r_n(0)=0&lt;\frac12&lt;r_n(1)=\frac{n(n+1)}2.
+\]</span> 由介值定理，根 <span class="math inline">\(x_n\in(0,1)\)</span> 存在。又 <span class="math display">\[
+r_n'(x)=1+2^2x+\cdots+n^2x^{n-1}&gt;0\qquad(0&lt;x&lt;1),
+\]</span> 故根唯一。</p>
+<p>（2）由 <span class="math inline">\(r_{n+1}(x_n)=\frac12+(n+1)x_n^{n+1}&gt;\frac12\)</span>，得 <span class="math inline">\(x_{n+1}&lt;x_n\)</span>。又 <span class="math inline">\(x_1=\frac12\)</span>，所以 <span class="math inline">\(0&lt;x_n\le\frac12\)</span>，数列收敛，记极限为 <span class="math inline">\(L\in[0,\frac12]\)</span>。</p>
+<p>将有限等比和求导，得 <span class="math display">\[
+r_n(x)=\frac{x-(n+1)x^{n+1}+nx^{n+2}}{(1-x)^2}.
+\]</span> 代入 <span class="math inline">\(x=x_n\)</span>。因 <span class="math inline">\(0&lt;x_n\le\frac12\)</span>，含 <span class="math inline">\(nx_n^{n+1}\)</span> 的项趋于零，令 <span class="math inline">\(n\to\infty\)</span>，得 <span class="math display">\[
+\frac{L}{(1-L)^2}=\frac12,\qquad L^2-4L+1=0.
+\]</span> 由 <span class="math inline">\(L\in[0,\frac12]\)</span>，得 <span class="math inline">\(\boxed{L=2-\sqrt3}\)</span>。</p>
+
+</div></details>
+
+<p class="problem-source">来源：2026–2027 学年微积分（甲）Ⅰ期中考试（2026-11-07，用户提供题目手记）</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;证明题&quot;], &quot;tags&quot;: [&quot;达布定理&quot;, &quot;导数介值性&quot;, &quot;辅助函数&quot;], &quot;title&quot;: &quot;达布定理：导数的介值性&quot;}">
+
+<div class="problem-meta">MATH / CALCULUS / 证明题</div>
+
+<h3 class="anchored">02. 达布定理：导数的介值性</h3>
+
+<div class="entry-tags">#达布定理 · #导数介值性 · #辅助函数</div>
+
+<p>证明达布定理：设 <span class="math inline">\(f\)</span> 在区间 <span class="math inline">\(I\)</span> 上可导，<span class="math inline">\(a,b\in I\)</span>，<span class="math inline">\(a&lt;b\)</span>。若 <span class="math inline">\(\lambda\)</span> 严格介于 <span class="math inline">\(f'(a)\)</span> 与 <span class="math inline">\(f'(b)\)</span> 之间，则存在 <span class="math inline">\(\xi\in(a,b)\)</span>，使得 <span class="math display">\[
+f'(\xi)=\lambda.
+\]</span></p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>先设 <span class="math inline">\(f'(a)&lt;\lambda&lt;f'(b)\)</span>，令 <span class="math inline">\(g(x)=f(x)-\lambda x\)</span>。则 <span class="math inline">\(g\)</span> 在 <span class="math inline">\([a,b]\)</span> 上连续，且 <span class="math display">\[
+g'(a)&lt;0,\qquad g'(b)&gt;0.
+\]</span> 由导数定义，对充分小的 <span class="math inline">\(h&gt;0\)</span>，有 <span class="math display">\[
+g(a+h)&lt;g(a),\qquad g(b-h)&lt;g(b).
+\]</span> 所以 <span class="math inline">\(a,b\)</span> 均不是 <span class="math inline">\(g\)</span> 在 <span class="math inline">\([a,b]\)</span> 上的最小值点。由最值定理，<span class="math inline">\(g\)</span> 在某个 <span class="math inline">\(\xi\in(a,b)\)</span> 处取得最小值。由费马定理， <span class="math display">\[
+g'(\xi)=0,\qquad f'(\xi)=\lambda.
+\]</span> 若 <span class="math inline">\(f'(a)&gt;\lambda&gt;f'(b)\)</span>，对 <span class="math inline">\(-f\)</span> 与 <span class="math inline">\(-\lambda\)</span> 应用上述结论即可。</p>
+
+</div></details>
+
+<p class="problem-source">来源：达布定理（用户指定）</p>
+
+</div>
+
+<details id="discussion-2026-11-07" class="log-comments problem-discussion" data-comment-term="/problems/2026-11-07/" data-comment-date="2026-11-07" data-comment-title="每日好题 · 2026-11-07">
+
+<summary>discussion/ <span>2026-11-07 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+</section>
+<section id="section-19" class="level2 problem-date-heading problem-day" data-date="2026-11-06">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-19">2026-11-06</h2>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;极限&quot;], &quot;tags&quot;: [&quot;有理化&quot;, &quot;二阶无穷小&quot;], &quot;title&quot;: &quot;根式差的二阶极限&quot;}">
+
+<div class="problem-meta">MATH / CALCULUS / 极限</div>
+
+<h3 class="anchored">01. 根式差的二阶极限</h3>
+
+<div class="entry-tags">#有理化 · #二阶无穷小</div>
+
+<p>求极限 <span class="math display">\[
+\lim_{x\to0}\frac{\sqrt{1+2x+3x^2}-1-x}{x^2}.
+\]</span></p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>分子有理化，得 <span class="math display">\[
+\frac{\sqrt{1+2x+3x^2}-1-x}{x^2}
+=\frac{2}{\sqrt{1+2x+3x^2}+1+x}\longrightarrow\boxed{1}.
+\]</span></p>
+
+</div></details>
+
+<p class="problem-source">来源：错题自编</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;不等式&quot;], &quot;tags&quot;: [&quot;二项式定理&quot;, &quot;严格不等式&quot;], &quot;title&quot;: &quot;二项式幂的严格估计&quot;}">
+
+<div class="problem-meta">MATH / CALCULUS / 不等式</div>
+
+<h3 class="anchored">02. 二项式幂的严格估计</h3>
+
+<div class="entry-tags">#二项式定理 · #严格不等式</div>
+
+<p>证明： <span class="math display">\[
+2&lt;\left(1+\frac1{100}\right)^{100}&lt;3.
+\]</span></p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>由二项式定理， <span class="math display">\[
+\left(1+\frac1{100}\right)^{100}
+=2+\sum_{k=2}^{100}\binom{100}{k}\frac1{100^k}&gt;2.
+\]</span> 对 <span class="math inline">\(2\le k\le100\)</span>，有 <span class="math display">\[
+\binom{100}{k}\frac1{100^k}
+=\frac1{k!}\prod_{j=0}^{k-1}\left(1-\frac j{100}\right)&lt;\frac1{k!}\le\frac1{2^{k-1}}.
+\]</span> 故 <span class="math display">\[
+\left(1+\frac1{100}\right)^{100}
+&lt;2+\sum_{k=2}^{100}\frac1{2^{k-1}}&lt;3.
+\]</span></p>
+
+</div></details>
+
+<p class="problem-source">来源：错题自编</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;导数&quot;], &quot;tags&quot;: [&quot;参数方程&quot;, &quot;二阶导数&quot;], &quot;title&quot;: &quot;参数方程中对 y 的二阶导数&quot;}">
+
+<div class="problem-meta">MATH / CALCULUS / 导数</div>
+
+<h3 class="anchored">03. 参数方程中对 y 的二阶导数</h3>
+
+<div class="entry-tags">#参数方程 · #二阶导数</div>
+
+<p>设 <span class="math inline">\(x=t^2+t\)</span>，<span class="math inline">\(y=t^3+t\)</span>，求 <span class="math display">\[
+\left.\frac{d^2x}{dy^2}\right|_{t=0}.
+\]</span></p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>因 <span class="math inline">\(dy/dt=3t^2+1&gt;0\)</span>， <span class="math display">\[
+\frac{dx}{dy}=\frac{2t+1}{3t^2+1},\qquad
+\frac{d^2x}{dy^2}=\frac1{3t^2+1}\frac d{dt}\left(\frac{2t+1}{3t^2+1}\right)
+=\frac{2(3t^2+1)-6t(2t+1)}{(3t^2+1)^3}.
+\]</span> 代入 <span class="math inline">\(t=0\)</span>，得 <span class="math inline">\(\boxed{2}\)</span>。</p>
+
+</div></details>
+
+<p class="problem-source">来源：错题自编</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;高阶导数&quot;], &quot;tags&quot;: [&quot;莱布尼兹公式&quot;, &quot;调和数&quot;], &quot;title&quot;: &quot;幂函数与对数乘积的 n 阶导数&quot;}">
+
+<div class="problem-meta">MATH / CALCULUS / 高阶导数</div>
+
+<h3 class="anchored">04. 幂函数与对数乘积的 n 阶导数</h3>
+
+<div class="entry-tags">#莱布尼兹公式 · #调和数</div>
+
+<p>设 <span class="math inline">\(n\)</span> 为正整数，<span class="math inline">\(x&gt;0\)</span>，求 <span class="math display">\[
+\frac{d^n}{dx^n}(x^n\ln x).
+\]</span></p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>记 <span class="math inline">\(H_n=\sum_{k=1}^n1/k\)</span>。由莱布尼兹公式及 <span class="math display">\[
+(\ln x)^{(k)}=(-1)^{k-1}(k-1)!x^{-k}\qquad(k\ge1),
+\]</span> 得 <span class="math display">\[
+\frac{d^n}{dx^n}(x^n\ln x)
+=n!\left[\ln x+\sum_{k=1}^n(-1)^{k-1}\binom nk\frac1k\right].
+\]</span> 其中 <span class="math display">\[
+\sum_{k=1}^n(-1)^{k-1}\binom nk\frac1k
+=\int_0^1\frac{1-(1-t)^n}{t}\,dt
+=\int_0^1\sum_{j=0}^{n-1}(1-t)^j\,dt=H_n.
+\]</span> 因此结果为 <span class="math inline">\(\boxed{n!(\ln x+H_n)}\)</span>。</p>
+
+</div></details>
+
+<p class="problem-source">来源：错题自编</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列&quot;], &quot;tags&quot;: [&quot;单调有界&quot;, &quot;递推数列&quot;], &quot;title&quot;: &quot;对数递推数列的收敛性&quot;}">
+
+<div class="problem-meta">MATH / CALCULUS / 数列</div>
+
+<h3 class="anchored">05. 对数递推数列的收敛性</h3>
+
+<div class="entry-tags">#单调有界 · #递推数列</div>
+
+<p>设 <span class="math inline">\(a_1=1\)</span>，<span class="math inline">\(a_{n+1}=\ln(1+a_n)\)</span>。证明数列 <span class="math inline">\(\{a_n\}\)</span> 收敛，并求其极限。</p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>对任意 <span class="math inline">\(u&gt;0\)</span>，有 <span class="math inline">\(0&lt;\ln(1+u)&lt;u\)</span>。由归纳法， <span class="math display">\[
+0&lt;a_{n+1}&lt;a_n\le1.
+\]</span> 故数列单调递减且有下界，存在极限 <span class="math inline">\(L\ge0\)</span>。由连续性，<span class="math inline">\(L=\ln(1+L)\)</span>。若 <span class="math inline">\(L&gt;0\)</span>，则 <span class="math inline">\(\ln(1+L)&lt;L\)</span>，矛盾。因此 <span class="math inline">\(\boxed{L=0}\)</span>。</p>
+
+</div></details>
+
+<p class="problem-source">来源：错题自编</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列&quot;], &quot;tags&quot;: [&quot;Cesàro 平均&quot;, &quot;数列极限&quot;], &quot;title&quot;: &quot;收敛数列的算术平均&quot;}">
+
+<div class="problem-meta">MATH / CALCULUS / 数列</div>
+
+<h3 class="anchored">06. 收敛数列的算术平均</h3>
+
+<div class="entry-tags">#Cesàro 平均 · #数列极限</div>
+
+<p>设 <span class="math inline">\(a_n\to A\)</span>，证明 <span class="math display">\[
+\frac1n\sum_{k=1}^n a_k\longrightarrow A.
+\]</span></p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>任给 <span class="math inline">\(\varepsilon&gt;0\)</span>，取 <span class="math inline">\(N\)</span>，使 <span class="math inline">\(k&gt;N\)</span> 时 <span class="math inline">\(|a_k-A|&lt;\varepsilon/2\)</span>。令 <span class="math display">\[
+C=\sum_{k=1}^N|a_k-A|.
+\]</span> 当 <span class="math inline">\(n&gt;N\)</span> 且 <span class="math inline">\(n&gt;2C/\varepsilon\)</span> 时， <span class="math display">\[
+\left|\frac1n\sum_{k=1}^n a_k-A\right|
+\le\frac Cn+\frac1n\sum_{k=N+1}^n|a_k-A|
+&lt;\frac\varepsilon2+\frac\varepsilon2=\varepsilon.
+\]</span> 故结论成立。</p>
+
+</div></details>
+
+<p class="problem-source">来源：错题自编</p>
+
+</div>
+
+<details id="discussion-2026-11-06" class="log-comments problem-discussion" data-comment-term="/problems/2026-11-06/" data-comment-date="2026-11-06" data-comment-title="每日好题 · 2026-11-06">
+
+<summary>discussion/ <span>2026-11-06 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+</section>
+<section id="section-20" class="level2 problem-date-heading problem-day" data-date="2026-11-05">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-20">2026-11-05</h2>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;AI&quot;, &quot;FIP&quot;, &quot;函数&quot;], &quot;tags&quot;: [&quot;Python&quot;, &quot;返回值&quot;], &quot;title&quot;: &quot;函数的返回值&quot;}">
+
+<div class="problem-meta">AI / FIP / 函数</div>
+
+<h3 class="anchored">01. 函数的返回值</h3>
+
+<div class="entry-tags">#Python · #返回值</div>
+
+<p>下面的 <code>print</code> 会看到什么？</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(n):</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> n <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(f(<span class="dv">2</span>))</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>A. 3</li>
+<li>B. 2</li>
+<li>C. <code>None</code></li>
+<li>D. 语法错误</li>
+</ul>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p><strong>答案：C。</strong></p>
+<p>函数没有执行 <code>return</code> 语句时，返回值为 <code>None</code>。<code>n = n + 1</code> 只修改函数内的局部变量，因此 <code>print(f(2))</code> 输出：</p>
+<pre class="text"><code>None</code></pre>
+
+</div></details>
+
+<p class="problem-source">来源：FIP 期中考试 · 第 7 题</p>
+
+</div>
+
+<details id="discussion-2026-11-05" class="log-comments problem-discussion" data-comment-term="/problems/2026-11-05/" data-comment-date="2026-11-05" data-comment-title="每日好题 · 2026-11-05">
+
+<summary>discussion/ <span>2026-11-05 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+</section>
+<section id="section-21" class="level2 problem-date-heading problem-day" data-date="2026-11-04">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-21">2026-11-04</h2>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;导数&quot;], &quot;tags&quot;: [&quot;三角多项式&quot;, &quot;系数估计&quot;], &quot;title&quot;: &quot;三角多项式的系数和估计&quot;}">
+
+<div class="problem-meta">MATH / CALCULUS / 导数</div>
+
+<h3 class="anchored">01. 三角多项式的系数和估计</h3>
+
+<div class="entry-tags">#三角多项式 · #系数估计</div>
+
+<p>设 <span class="math inline">\(a_1,a_2,\ldots,a_n\)</span> 为常数，记</p>
+<p><span class="math display">\[
+f(x)=\sum_{k=1}^n a_k\sin kx,\qquad
+g(x)=\sum_{j=1}^n a_{n-j+1}\sin jx.
+\]</span></p>
+<p>已知 <span class="math inline">\(|f(x)|\le|\sin x|\)</span>，<span class="math inline">\(|g(x)|\le|\sin x|\)</span>，求证</p>
+<p><span class="math display">\[
+\left|\sum_{k=1}^n a_k\right|\le\frac{2}{n+1}.
+\]</span></p>
+<p>提示：考虑 <span class="math inline">\(f'(0),g'(0)\)</span>。</p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>由 <span class="math inline">\(f(0)=g(0)=0\)</span> 及题设不等式，得 <span class="math inline">\(|f'(0)|\le1\)</span>，<span class="math inline">\(|g'(0)|\le1\)</span>。又</p>
+<p><span class="math display">\[
+f'(0)=\sum_{k=1}^n ka_k,\qquad
+g'(0)=\sum_{k=1}^n(n-k+1)a_k.
+\]</span></p>
+<p>故</p>
+<p><span class="math display">\[
+\left|\sum_{k=1}^n a_k\right|
+=\frac{|f'(0)+g'(0)|}{n+1}
+\le\frac{2}{n+1}.
+\]</span></p>
+
+</div></details>
+
+<p class="problem-source">来源：2026–2027 学年微积分（甲）Ⅰ期中模拟卷 · 第 10 题 B</p>
+
+</div>
+
+<details id="discussion-2026-11-04" class="log-comments problem-discussion" data-comment-term="/problems/2026-11-04/" data-comment-date="2026-11-04" data-comment-title="每日好题 · 2026-11-04">
+
+<summary>discussion/ <span>2026-11-04 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+</section>
+<section id="section-22" class="level2 problem-date-heading problem-day" data-date="2026-11-03">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-22">2026-11-03</h2>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;AI&quot;, &quot;FIP&quot;, &quot;期中复习&quot;], &quot;tags&quot;: [&quot;列表&quot;, &quot;别名&quot;], &quot;title&quot;: &quot;别名、浅拷贝与返回值&quot;}">
+
+<div class="problem-meta">AI / FIP / 期中复习</div>
+
+<h3 class="anchored">01. 别名、浅拷贝与返回值</h3>
+
+<div class="entry-tags">#列表 · #别名</div>
+
+<p>写出程序的完整输出：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [[<span class="dv">1</span>], [<span class="dv">2</span>]]</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> a[:]</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>b[<span class="dv">0</span>].append(<span class="dv">3</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>b[<span class="dv">1</span>] <span class="op">=</span> [<span class="dv">9</span>]</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(b)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a.reverse())</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a)</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<pre class="text"><code>[[1, 3], [2]]
+[[1, 3], [9]]
+None
+[[2], [1, 3]]</code></pre>
+<p>切片创建外层新列表，内层列表仍共享。<code>reverse()</code>原地修改并返回<code>None</code>。</p>
+
+</div></details>
+
+<p class="problem-source">来源：FIP W1–W8 期中复习笔记 · 程序输出</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;AI&quot;, &quot;FIP&quot;, &quot;期中复习&quot;], &quot;tags&quot;: [&quot;字典&quot;, &quot;程序输出&quot;], &quot;title&quot;: &quot;字典方法与插入顺序&quot;}">
+
+<div class="problem-meta">AI / FIP / 期中复习</div>
+
+<h3 class="anchored">02. 字典方法与插入顺序</h3>
+
+<div class="entry-tags">#字典 · #程序输出</div>
+
+<p>写出程序的完整输出：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> {}</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x <span class="kw">in</span> [<span class="st">'b'</span>,<span class="st">'a'</span>,<span class="st">'b'</span>]:</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    d[x] <span class="op">=</span> d.get(x,<span class="dv">0</span>) <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(d.get(<span class="st">'c'</span>,<span class="dv">0</span>), <span class="st">'c'</span> <span class="kw">in</span> d)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(d.setdefault(<span class="st">'c'</span>,<span class="dv">4</span>))</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">list</span>(d.items()))</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<pre class="text"><code>0 False
+4
+[('b', 2), ('a', 1), ('c', 4)]</code></pre>
+<p><code>get</code>不插入键；<code>setdefault</code>在缺键时插入。字典保留键首次插入的顺序。</p>
+
+</div></details>
+
+<p class="problem-source">来源：FIP W1–W8 期中复习笔记 · 程序输出</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;AI&quot;, &quot;FIP&quot;, &quot;期中复习&quot;], &quot;tags&quot;: [&quot;递归&quot;, &quot;程序输出&quot;], &quot;title&quot;: &quot;递归的递进与回归&quot;}">
+
+<div class="problem-meta">AI / FIP / 期中复习</div>
+
+<h3 class="anchored">03. 递归的递进与回归</h3>
+
+<div class="entry-tags">#递归 · #程序输出</div>
+
+<p>写出程序的完整输出，注意空格：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> walk(n):</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(n, end<span class="op">=</span><span class="st">' '</span>)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    walk(n<span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(n, end<span class="op">=</span><span class="st">' '</span>)</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>walk(<span class="dv">3</span>)</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>()</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<pre class="text"><code>3 2 1 1 2 3 </code></pre>
+<p>递归前依次输出<code>3 2 1</code>，返回时依次输出<code>1 2 3</code>。最后一个<code>3</code>后仍有一个空格，然后换行。</p>
+
+</div></details>
+
+<p class="problem-source">来源：FIP W1–W8 期中复习笔记 · 程序输出</p>
+
+</div>
+
+<details id="discussion-2026-11-03" class="log-comments problem-discussion" data-comment-term="/problems/2026-11-03/" data-comment-date="2026-11-03" data-comment-title="每日好题 · 2026-11-03">
+
+<summary>discussion/ <span>2026-11-03 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+</section>
+<section id="section-23" class="level2 problem-date-heading problem-day" data-date="2026-11-02">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-23">2026-11-02</h2>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;高阶导数&quot;], &quot;tags&quot;: [&quot;莱布尼兹公式&quot;, &quot;递推关系&quot;], &quot;title&quot;: &quot;反正弦函数在原点的高阶导数&quot;}">
+
+<div class="problem-meta">MATH / CALCULUS / 高阶导数</div>
+
+<h3 class="anchored">01. 反正弦函数在原点的高阶导数</h3>
+
+<div class="entry-tags">#莱布尼兹公式 · #递推关系</div>
+
+<p>利用莱布尼兹公式，求函数 <span class="math inline">\(y=\arcsin x\)</span> 的 <span class="math inline">\(y^{(n)}(0)\)</span>，其中 <span class="math inline">\(n\ge1\)</span>。</p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>由 <span class="math inline">\((1-x^2)y''-xy'=0\)</span>，求 <span class="math inline">\(r\)</span> 阶导数并令 <span class="math inline">\(x=0\)</span>，由莱布尼兹公式得 <span class="math display">\[
+y^{(r+2)}(0)=r^2y^{(r)}(0)\qquad(r\ge0).
+\]</span> 结合 <span class="math inline">\(y(0)=0,y'(0)=1\)</span>，得 <span class="math display">\[
+\boxed{y^{(2m)}(0)=0\ (m\ge1),\qquad y^{(2m+1)}(0)=[(2m-1)!!]^2\ (m\ge0).}
+\]</span> 约定 <span class="math inline">\((-1)!!=1\)</span>。</p>
+
+</div></details>
+
+<p class="problem-source">来源：微积分习题课</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;高阶导数&quot;], &quot;tags&quot;: [&quot;莱布尼兹公式&quot;, &quot;递推关系&quot;], &quot;title&quot;: &quot;反正切函数在原点的高阶导数&quot;}">
+
+<div class="problem-meta">MATH / CALCULUS / 高阶导数</div>
+
+<h3 class="anchored">02. 反正切函数在原点的高阶导数</h3>
+
+<div class="entry-tags">#莱布尼兹公式 · #递推关系</div>
+
+<p>利用莱布尼兹公式，求函数 <span class="math inline">\(y=\arctan x\)</span> 的 <span class="math inline">\(y^{(n)}(0)\)</span>，其中 <span class="math inline">\(n\ge1\)</span>。</p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>由 <span class="math inline">\((1+x^2)y'=1\)</span>，求 <span class="math inline">\(r\)</span> 阶导数并令 <span class="math inline">\(x=0\)</span>，得 <span class="math display">\[
+y^{(r+1)}(0)=-r(r-1)y^{(r-1)}(0)\qquad(r\ge2).
+\]</span> 又 <span class="math inline">\(y'(0)=1,y''(0)=0\)</span>，故 <span class="math display">\[
+\boxed{y^{(2m)}(0)=0\ (m\ge1),\qquad y^{(2m+1)}(0)=(-1)^m(2m)!\ (m\ge0).}
+\]</span></p>
+
+</div></details>
+
+<p class="problem-source">来源：微积分习题课</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;高阶导数&quot;], &quot;tags&quot;: [&quot;莱布尼兹公式&quot;, &quot;递推关系&quot;], &quot;title&quot;: &quot;根式函数在原点的高阶导数&quot;}">
+
+<div class="problem-meta">MATH / CALCULUS / 高阶导数</div>
+
+<h3 class="anchored">03. 根式函数在原点的高阶导数</h3>
+
+<div class="entry-tags">#莱布尼兹公式 · #递推关系</div>
+
+<p>利用莱布尼兹公式，求函数 <span class="math inline">\(y=\sqrt{1-x^2}\)</span> 的 <span class="math inline">\(y^{(n)}(0)\)</span>，其中 <span class="math inline">\(n\ge1\)</span>。</p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>由 <span class="math inline">\((1-x^2)y'+xy=0\)</span>，求 <span class="math inline">\(r\)</span> 阶导数并令 <span class="math inline">\(x=0\)</span>，得 <span class="math display">\[
+y^{(r+1)}(0)=r(r-2)y^{(r-1)}(0)\qquad(r\ge1).
+\]</span> 又 <span class="math inline">\(y(0)=1,y'(0)=0\)</span>，故 <span class="math display">\[
+\boxed{y^{(2m+1)}(0)=0\ (m\ge0),\qquad y^{(2m)}(0)=-(2m-1)!!(2m-3)!!\ (m\ge1).}
+\]</span> 约定 <span class="math inline">\((-1)!!=1\)</span>。</p>
+
+</div></details>
+
+<p class="problem-source">来源：微积分习题课</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;高阶导数&quot;], &quot;tags&quot;: [&quot;莱布尼兹公式&quot;, &quot;递推关系&quot;], &quot;title&quot;: &quot;对数函数在原点的高阶导数&quot;}">
+
+<div class="problem-meta">MATH / CALCULUS / 高阶导数</div>
+
+<h3 class="anchored">04. 对数函数在原点的高阶导数</h3>
+
+<div class="entry-tags">#莱布尼兹公式 · #递推关系</div>
+
+<p>利用莱布尼兹公式，求函数 <span class="math inline">\(y=\ln(1+x^2)\)</span> 的 <span class="math inline">\(y^{(n)}(0)\)</span>，其中 <span class="math inline">\(n\ge1\)</span>。</p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>由 <span class="math inline">\((1+x^2)y'=2x\)</span>，求 <span class="math inline">\(r\)</span> 阶导数并令 <span class="math inline">\(x=0\)</span>，当 <span class="math inline">\(r\ge2\)</span> 时有 <span class="math display">\[
+y^{(r+1)}(0)=-r(r-1)y^{(r-1)}(0).
+\]</span> 又 <span class="math inline">\(y'(0)=0,y''(0)=2\)</span>，故 <span class="math display">\[
+\boxed{y^{(2m+1)}(0)=0\ (m\ge0),\qquad y^{(2m)}(0)=2(-1)^{m-1}(2m-1)!\ (m\ge1).}
+\]</span></p>
+
+</div></details>
+
+<p class="problem-source">来源：微积分习题课</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;高阶导数&quot;], &quot;tags&quot;: [&quot;分段函数&quot;, &quot;导数定义&quot;, &quot;振荡函数&quot;], &quot;title&quot;: &quot;振荡函数的高阶可导性&quot;}">
+
+<div class="problem-meta">MATH / CALCULUS / 高阶导数</div>
+
+<h3 class="anchored">05. 振荡函数的高阶可导性</h3>
+
+<div class="entry-tags">#分段函数 · #导数定义 · #振荡函数</div>
+
+<p>设 <span class="math inline">\(n\)</span> 为正整数，证明函数 <span class="math display">\[
+f(x)=\begin{cases}x^{2n}\sin\frac1x,&amp;x\ne0,\\0,&amp;x=0\end{cases}
+\]</span> 在 <span class="math inline">\(x=0\)</span> 处有一直到 <span class="math inline">\(n\)</span> 阶的导数，但不存在 <span class="math inline">\(n+1\)</span> 阶导数。</p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>对 <span class="math inline">\(x\ne0\)</span> 反复求导，<span class="math inline">\(f^{(k)}(x)\)</span> 是若干项 <span class="math inline">\(x^p\sin(1/x)\)</span> 或 <span class="math inline">\(x^p\cos(1/x)\)</span> 的线性组合，其中最低幂次为 <span class="math inline">\(2n-2k\)</span>。因而对 <span class="math inline">\(0\le k\le n-1\)</span>， <span class="math display">\[
+f^{(k)}(x)=O(x^{2n-2k}).
+\]</span> 从 <span class="math inline">\(f(0)=0\)</span> 出发，逐次用导数定义，因 <span class="math inline">\(2n-2k-1\ge1\)</span>，得 <span class="math inline">\(f^{(k+1)}(0)=0\)</span>，所以 <span class="math inline">\(f^{(n)}(0)=0\)</span>。</p>
+<p>第 <span class="math inline">\(n\)</span> 次求导的最低次项来自每次都对三角因子求导，故 <span class="math display">\[
+f^{(n)}(x)=(-1)^n\sin\left(\frac1x+\frac{n\pi}{2}\right)+O(x).
+\]</span> 它在零点不连续，而 <span class="math inline">\(f^{(n)}(0)=0\)</span>；因此 <span class="math inline">\(f^{(n)}\)</span> 在零点不可导，即 <span class="math inline">\(f^{(n+1)}(0)\)</span> 不存在。</p>
+
+</div></details>
+
+<p class="problem-source">来源：吉米多维奇《数学分析习题集》第 1224 题（用户提供照片，第 87 页）</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;高阶导数&quot;], &quot;tags&quot;: [&quot;莱布尼兹公式&quot;, &quot;勒让德多项式&quot;, &quot;微分方程&quot;], &quot;title&quot;: &quot;勒让德多项式的微分方程&quot;}">
+
+<div class="problem-meta">MATH / CALCULUS / 高阶导数</div>
+
+<h3 class="anchored">06. 勒让德多项式的微分方程</h3>
+
+<div class="entry-tags">#莱布尼兹公式 · #勒让德多项式 · #微分方程</div>
+
+<p>证明：勒让德多项式 <span class="math display">\[
+P_m(x)=\frac{1}{2^m m!}\frac{d^m}{dx^m}(x^2-1)^m\qquad(m=0,1,2,\ldots)
+\]</span> 满足方程 <span class="math display">\[
+(1-x^2)P_m''(x)-2xP_m'(x)+m(m+1)P_m(x)=0.
+\]</span></p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>令 <span class="math inline">\(u=(x^2-1)^m\)</span>，则 <span class="math display">\[
+(x^2-1)u'=2mxu.
+\]</span> 两边求 <span class="math inline">\(m+1\)</span> 阶导数，利用莱布尼兹公式得 <span class="math display">\[
+(x^2-1)u^{(m+2)}+2(m+1)xu^{(m+1)}+m(m+1)u^{(m)}
+=2m\bigl[xu^{(m+1)}+(m+1)u^{(m)}\bigr].
+\]</span> 移项，得 <span class="math display">\[
+(x^2-1)u^{(m+2)}+2xu^{(m+1)}-m(m+1)u^{(m)}=0.
+\]</span> 代入 <span class="math inline">\(u^{(m)}=2^m m!P_m\)</span>，即得所证。</p>
+
+</div></details>
+
+<p class="problem-source">来源：吉米多维奇《数学分析习题集》第 1227 题（用户提供照片，第 87 页）</p>
+
+</div>
+
+<details id="discussion-2026-11-02" class="log-comments problem-discussion" data-comment-term="/problems/2026-11-02/" data-comment-date="2026-11-02" data-comment-title="每日好题 · 2026-11-02">
+
+<summary>discussion/ <span>2026-11-02 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+</section>
+<section id="section-24" class="level2 problem-date-heading problem-day" data-date="2026-11-01">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-24">2026-11-01</h2>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;证明题&quot;], &quot;tags&quot;: [&quot;压缩映射&quot;, &quot;不动点&quot;, &quot;数列收敛&quot;], &quot;title&quot;: &quot;压缩映射与不动点&quot;}">
+
+<div class="problem-meta">MATH / CALCULUS / 证明题</div>
+
+<h3 class="anchored">01. 压缩映射与不动点</h3>
+
+<div class="entry-tags">#压缩映射 · #不动点 · #数列收敛</div>
+
+<p>设函数 <span class="math inline">\(f(x)\)</span> 满足对于任意 <span class="math inline">\(x\in[a,b]\)</span>，都有 <span class="math inline">\(f(x)\in[a,b]\)</span>。且存在常数 <span class="math inline">\(k\in(0,1)\)</span>，对于任意 <span class="math inline">\(x_1,x_2\in[a,b]\)</span>，都有 <span class="math inline">\(|f(x_2)-f(x_1)|\le k|x_2-x_1|\)</span>。证明：</p>
+<p>（1）存在唯一 <span class="math inline">\(\xi\in[a,b]\)</span> 使得 <span class="math inline">\(f(\xi)=\xi\)</span>。</p>
+<p>（2）对于任意 <span class="math inline">\(x_0\in[a,b]\)</span>，定义 <span class="math inline">\(x_{n+1}=f(x_n)\ (n\in\mathbb N)\)</span>。证明 <span class="math inline">\(\{x_n\}\)</span> 收敛且 <span class="math inline">\(\displaystyle\lim_{n\to\infty}x_n=\xi\)</span>。</p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>（1）由 Lipschitz 条件可知 <span class="math inline">\(f\)</span> 连续。令 <span class="math inline">\(F(x)=f(x)-x\)</span>，则 <span class="math inline">\(F(a)\ge0,F(b)\le0\)</span>。由介值定理（含端点为零的情形），存在 <span class="math inline">\(\xi\in[a,b]\)</span> 使得 <span class="math inline">\(f(\xi)=\xi\)</span>。</p>
+<p>若另有 <span class="math inline">\(f(\eta)=\eta\)</span>，则 <span class="math display">\[
+|\xi-\eta|=|f(\xi)-f(\eta)|\le k|\xi-\eta|.
+\]</span> 由 <span class="math inline">\(k&lt;1\)</span>，得 <span class="math inline">\(\xi=\eta\)</span>，故不动点唯一。</p>
+<p>（2）由 <span class="math inline">\(f([a,b])\subset[a,b]\)</span>，迭代始终有定义，且 <span class="math display">\[
+|x_n-\xi|\le k|x_{n-1}-\xi|\le\cdots\le k^n|x_0-\xi|\longrightarrow0.
+\]</span> 故 <span class="math inline">\(x_n\to\xi\)</span>。</p>
+
+</div></details>
+
+<p class="problem-source">来源：2026–2027 学年微积分（甲）Ⅰ期中模拟卷 · 杨立命题 · 第 12 题</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;证明题&quot;], &quot;tags&quot;: [&quot;奇函数&quot;, &quot;罗尔定理&quot;, &quot;辅助函数&quot;], &quot;title&quot;: &quot;奇函数与中值定理&quot;}">
+
+<div class="problem-meta">MATH / CALCULUS / 证明题</div>
+
+<h3 class="anchored">02. 奇函数与中值定理</h3>
+
+<div class="entry-tags">#奇函数 · #罗尔定理 · #辅助函数</div>
+
+<p>设奇函数 <span class="math inline">\(f(x)\)</span> 在 <span class="math inline">\([-1,1]\)</span> 上二阶可导，证明：存在 <span class="math inline">\(\xi\in(-1,1)\)</span> 使得 <span class="math inline">\(f''(\xi)-f'(\xi)+f(1)=0\)</span>。</p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>由奇性，<span class="math inline">\(f(0)=0,f(-1)=-f(1)\)</span>。分别在 <span class="math inline">\([0,1]\)</span> 与 <span class="math inline">\([-1,0]\)</span> 上用拉格朗日中值定理，得 <span class="math inline">\(\theta_1\in(0,1)\)</span>、<span class="math inline">\(\theta_2\in(-1,0)\)</span>，满足 <span class="math display">\[
+f'(\theta_1)=f'(\theta_2)=f(1).
+\]</span> 令 <span class="math inline">\(F(x)=e^{-x}[f'(x)-f(1)]\)</span>，则 <span class="math inline">\(F(\theta_1)=F(\theta_2)=0\)</span>。由罗尔定理，存在 <span class="math inline">\(\xi\in(\theta_2,\theta_1)\)</span>，使得 <span class="math display">\[
+0=F'(\xi)=e^{-\xi}[f''(\xi)-f'(\xi)+f(1)].
+\]</span> 因此结论成立。</p>
+
+</div></details>
+
+<p class="problem-source">来源：2026–2027 学年微积分（甲）Ⅰ期中模拟卷 · 杨立命题 · 附加题</p>
+
+</div>
+
+<details id="discussion-2026-11-01" class="log-comments problem-discussion" data-comment-term="/problems/2026-11-01/" data-comment-date="2026-11-01" data-comment-title="每日好题 · 2026-11-01">
+
+<summary>discussion/ <span>2026-11-01 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+</section>
+<section id="section-25" class="level2 problem-date-heading problem-day" data-date="2026-10-31">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-25">2026-10-31</h2>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;行列式&quot;], &quot;tags&quot;: [&quot;范德蒙德行列式&quot;, &quot;三角函数&quot;], &quot;title&quot;: &quot;余弦行列式&quot;}">
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 行列式</div>
+
+<h3 class="anchored">01. 余弦行列式</h3>
+
+<div class="entry-tags">#范德蒙德行列式 · #三角函数</div>
+
+<p>计算 <span class="math inline">\(n\)</span> 阶行列式 <span class="math display">\[
+D_n=\begin{vmatrix}
+1&amp;1&amp;\cdots&amp;1\\
+\cos\theta_1&amp;\cos\theta_2&amp;\cdots&amp;\cos\theta_n\\
+\cos2\theta_1&amp;\cos2\theta_2&amp;\cdots&amp;\cos2\theta_n\\
+\vdots&amp;\vdots&amp;&amp;\vdots\\
+\cos((n-1)\theta_1)&amp;\cos((n-1)\theta_2)&amp;\cdots&amp;\cos((n-1)\theta_n)
+\end{vmatrix},\qquad \theta_1,\ldots,\theta_n\in\mathbb R.
+\]</span></p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>令 <span class="math inline">\(x_j=\cos\theta_j\)</span>。由 <span class="math display">\[
+\cos((k+1)\theta)=2\cos\theta\cos(k\theta)-\cos((k-1)\theta)
+\]</span> 可知 <span class="math inline">\(\cos(k\theta)=T_k(\cos\theta)\)</span>，其中 <span class="math inline">\(T_0(x)=1\)</span>，<span class="math inline">\(T_1(x)=x\)</span>；对 <span class="math inline">\(k\ge1\)</span>，<span class="math inline">\(T_k\)</span> 是首项系数为 <span class="math inline">\(2^{k-1}\)</span> 的 <span class="math inline">\(k\)</span> 次多项式。</p>
+<p>从最后一行起，依次用前面各行消去各行多项式的低次项，再提出首项系数，得 <span class="math display">\[
+D_n=\left(\prod_{k=1}^{n-1}2^{k-1}\right)
+\begin{vmatrix}
+1&amp;\cdots&amp;1\\
+x_1&amp;\cdots&amp;x_n\\
+\vdots&amp;&amp;\vdots\\
+x_1^{n-1}&amp;\cdots&amp;x_n^{n-1}
+\end{vmatrix}
+=\boxed{2^{(n-1)(n-2)/2}\prod_{1\le i&lt;j\le n}(\cos\theta_j-\cos\theta_i)}.
+\]</span> 当 <span class="math inline">\(n=1\)</span> 时，空积取 <span class="math inline">\(1\)</span>，结论仍成立。</p>
+
+</div></details>
+
+<p class="problem-source">来源：云峰线性代数专题课</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;微分中值定理&quot;], &quot;tags&quot;: [&quot;罗尔定理&quot;, &quot;介值定理&quot;, &quot;辅助函数&quot;], &quot;title&quot;: &quot;导数零点与辅助函数&quot;}">
+
+<div class="problem-meta">MATH / CALCULUS / 微分中值定理</div>
+
+<h3 class="anchored">02. 导数零点与辅助函数</h3>
+
+<div class="entry-tags">#罗尔定理 · #介值定理 · #辅助函数</div>
+
+<p>设 <span class="math inline">\(f(x)\)</span> 在 <span class="math inline">\([0,2]\)</span> 上连续，在 <span class="math inline">\((0,2)\)</span> 内可导，且 <span class="math inline">\(f(0)=0\)</span>，<span class="math inline">\(f(1)=3\)</span>，<span class="math inline">\(f(2)=-1\)</span>。证明：</p>
+<ol type="1">
+<li>存在 <span class="math inline">\(\xi\in(0,2)\)</span>，使得 <span class="math inline">\(f'(\xi)=0\)</span>；</li>
+<li>存在 <span class="math inline">\(\eta\in(0,2)\)</span>，使得 <span class="math inline">\(f(\eta)+f'(\eta)=0\)</span>。</li>
+</ol>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>由 <span class="math inline">\(f(1)=3&gt;0\)</span>、<span class="math inline">\(f(2)=-1&lt;0\)</span> 及介值定理，存在 <span class="math inline">\(c\in(1,2)\)</span>，使得 <span class="math inline">\(f(c)=0\)</span>。</p>
+<p>（1）在 <span class="math inline">\([0,c]\)</span> 上，<span class="math inline">\(f\)</span> 连续、在内部可导，且 <span class="math inline">\(f(0)=f(c)=0\)</span>。由罗尔定理，存在 <span class="math inline">\(\xi\in(0,c)\subset(0,2)\)</span>，使得 <span class="math inline">\(f'(\xi)=0\)</span>。</p>
+<p>（2）令 <span class="math inline">\(g(x)=e^xf(x)\)</span>，则 <span class="math inline">\(g\)</span> 在 <span class="math inline">\([0,c]\)</span> 上连续、在内部可导，且 <span class="math inline">\(g(0)=g(c)=0\)</span>。由罗尔定理，存在 <span class="math inline">\(\eta\in(0,c)\subset(0,2)\)</span>，使得 <span class="math display">\[
+0=g'(\eta)=e^\eta\bigl(f(\eta)+f'(\eta)\bigr).
+\]</span> 由于 <span class="math inline">\(e^\eta&gt;0\)</span>，故 <span class="math inline">\(f(\eta)+f'(\eta)=0\)</span>。</p>
+
+</div></details>
+
+<p class="problem-source">来源：2022–2023 学年《微积分（甲）Ⅰ》期中 · 第 15 题</p>
+
+</div>
+
+<details id="discussion-2026-10-31" class="log-comments problem-discussion" data-comment-term="/problems/2026-10-31/" data-comment-date="2026-10-31" data-comment-title="每日好题 · 2026-10-31">
+
+<summary>discussion/ <span>2026-10-31 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+</section>
+<section id="section-26" class="level2 problem-date-heading problem-day" data-date="2026-10-30">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-26">2026-10-30</h2>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;矩阵&quot;], &quot;tags&quot;: [&quot;矩阵分解&quot;, &quot;等价标准形&quot;], &quot;title&quot;: &quot;矩阵的对称分解&quot;}">
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 矩阵</div>
+
+<h3 class="anchored">01. 矩阵的对称分解</h3>
+
+<div class="entry-tags">#矩阵分解 · #等价标准形</div>
+
+<p>设 <span class="math inline">\(A\)</span> 为 <span class="math inline">\(n\)</span> 阶方阵，证明：存在对称矩阵 <span class="math inline">\(S\)</span> 和可逆矩阵 <span class="math inline">\(P\)</span>，使得 <span class="math inline">\(A=SP\)</span>。</p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>设 <span class="math inline">\(r(A)=r\)</span>。由矩阵的等价标准形，存在可逆矩阵 <span class="math inline">\(U,V\)</span>，使得 <span class="math display">\[
+UAV=D=\operatorname{diag}(I_r,0).
+\]</span> 于是 <span class="math display">\[
+A=U^{-1}DV^{-1}
+=\underbrace{U^{-1}DU^{-\mathrm T}}_{S}
+\underbrace{U^{\mathrm T}V^{-1}}_{P}.
+\]</span> 由 <span class="math inline">\(D^{\mathrm T}=D\)</span> 得 <span class="math display">\[
+S^{\mathrm T}=U^{-1}D^{\mathrm T}U^{-\mathrm T}=S,
+\]</span> 而 <span class="math inline">\(P\)</span> 是两个可逆矩阵的乘积，因而可逆。</p>
+
+</div></details>
+
+<p class="problem-source">来源：2020–2021 秋冬《线性代数（甲）》期中 · 第 8 题</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;矩阵&quot;], &quot;tags&quot;: [&quot;反对称矩阵&quot;, &quot;可逆性&quot;, &quot;二次型&quot;], &quot;title&quot;: &quot;反对称矩阵与可逆性&quot;}">
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 矩阵</div>
+
+<h3 class="anchored">02. 反对称矩阵与可逆性</h3>
+
+<div class="entry-tags">#反对称矩阵 · #可逆性 · #二次型</div>
+
+<p>设 <span class="math inline">\(A\)</span> 为 <span class="math inline">\(4\)</span> 阶实反对称矩阵， <span class="math display">\[
+B=\begin{pmatrix}
+0&amp;0&amp;0&amp;0\\
+0&amp;0&amp;0&amp;0\\
+0&amp;0&amp;1&amp;0\\
+0&amp;0&amp;0&amp;2
+\end{pmatrix}.
+\]</span> 证明：<span class="math inline">\(E+AB\)</span> 可逆，其中 <span class="math inline">\(E\)</span> 为 <span class="math inline">\(4\)</span> 阶单位矩阵。</p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>设 <span class="math inline">\((E+AB)x=0\)</span>，令 <span class="math inline">\(y=Bx\)</span>，则 <span class="math inline">\(x=-Ay\)</span>。由于 <span class="math inline">\(A^{\mathrm T}=-A\)</span>，有 <span class="math display">\[
+y^{\mathrm T}Ay=(y^{\mathrm T}Ay)^{\mathrm T}
+=y^{\mathrm T}A^{\mathrm T}y=-y^{\mathrm T}Ay,
+\]</span> 故 <span class="math inline">\(y^{\mathrm T}Ay=0\)</span>，从而 <span class="math display">\[
+0=-y^{\mathrm T}Ay=y^{\mathrm T}x
+=x^{\mathrm T}Bx=x_3^2+2x_4^2.
+\]</span> 由 <span class="math inline">\(x_3,x_4\in\mathbb R\)</span>，得 <span class="math inline">\(x_3=x_4=0\)</span>，即 <span class="math inline">\(Bx=0\)</span>。再由 <span class="math inline">\(x=-ABx\)</span> 得 <span class="math inline">\(x=0\)</span>。</p>
+<p>因此 <span class="math inline">\((E+AB)x=0\)</span> 只有零解，<span class="math inline">\(E+AB\)</span> 可逆。</p>
+
+</div></details>
+
+<p class="problem-source">来源：2018–2019 秋冬《线性代数（甲）》期中 · 第 5 题</p>
+
+</div>
+
+<details id="discussion-2026-10-30" class="log-comments problem-discussion" data-comment-term="/problems/2026-10-30/" data-comment-date="2026-10-30" data-comment-title="每日好题 · 2026-10-30">
+
+<summary>discussion/ <span>2026-10-30 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+</section>
+<section id="section-27" class="level2 problem-date-heading problem-day" data-date="2026-10-29">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-27">2026-10-29</h2>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;差分矩阵&quot;], &quot;tags&quot;: [&quot;中心差分&quot;, &quot;分部求和&quot;, &quot;转置&quot;], &quot;title&quot;: &quot;中心差分的分部求和&quot;}">
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 差分矩阵</div>
+
+<h3 class="anchored">01. 中心差分的分部求和</h3>
+
+<div class="entry-tags">#中心差分 · #分部求和 · #转置</div>
+
+<p>验证中心差分的分部求和公式：</p>
+<p><span class="math display">\[\sum_{i=-\infty}^{\infty}f_i(g_{i+1}-g_{i-1})
+=-\sum_{i=-\infty}^{\infty}(f_{i+1}-f_{i-1})g_i.\]</span></p>
+<p>可先假设序列 <span class="math inline">\(f,g\)</span> 只有有限个非零项。说明该等式与中心差分矩阵的反对称性 <span class="math inline">\(\Delta_0^{\mathsf T}=-\Delta_0\)</span> 的关系。</p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>换求和下标，有</p>
+<p><span class="math display">\[\sum_i f_i g_{i+1}=\sum_i f_{i-1}g_i,\qquad
+\sum_i f_i g_{i-1}=\sum_i f_{i+1}g_i.\]</span></p>
+<p>两式相减即得</p>
+<p><span class="math display">\[\sum_i f_i(g_{i+1}-g_{i-1})
+=\sum_i(f_{i-1}-f_{i+1})g_i
+=-\sum_i(f_{i+1}-f_{i-1})g_i.\]</span></p>
+<p>若 <span class="math inline">\((\Delta_0g)_i=g_{i+1}-g_{i-1}\)</span>，则上述等式为</p>
+<p><span class="math display">\[f^{\mathsf T}\Delta_0g=-(\Delta_0f)^{\mathsf T}g
+=f^{\mathsf T}(-\Delta_0^{\mathsf T})g,\]</span></p>
+<p>故 <span class="math inline">\(\boxed{\Delta_0^{\mathsf T}=-\Delta_0}\)</span>。它对应连续情形的分部积分公式</p>
+<p><span class="math display">\[\int_{-\infty}^{\infty}f(x)g'(x)\,dx
+=-\int_{-\infty}^{\infty}f'(x)g(x)\,dx,\]</span></p>
+<p>其中边界项须为零。对于非有限支撑序列，也须保证级数收敛及相应边界项消失。</p>
+
+</div></details>
+
+<p class="problem-source">来源：Introduction to Linear Algebra · §2.5 · Problem 12</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;差分矩阵&quot;], &quot;tags&quot;: [&quot;边值问题&quot;, &quot;有限差分&quot;, &quot;线性方程组&quot;], &quot;title&quot;: &quot;固定边界下的微分方程与差分解&quot;}">
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 差分矩阵</div>
+
+<h3 class="anchored">02. 固定边界下的微分方程与差分解</h3>
+
+<div class="entry-tags">#边值问题 · #有限差分 · #线性方程组</div>
+
+<p>求解边值问题</p>
+<p><span class="math display">\[-u''(x)=\cos4\pi x,\qquad u(0)=u(1)=0.\]</span></p>
+<p>分别使用 <span class="math inline">\(K_4\)</span> 和 <span class="math inline">\(K_8\)</span> 计算内部网格点的近似解，并与连续解 <span class="math inline">\(u(x)\)</span> 画在同一张图中。其中 <span class="math inline">\(h=1/(n+1)\)</span>，</p>
+<p><span class="math display">\[K_n=\begin{pmatrix}2&amp;-1&amp;&amp;0\\-1&amp;2&amp;\ddots&amp;\\&amp;\ddots&amp;\ddots&amp;-1\\0&amp;&amp;-1&amp;2\end{pmatrix}.\]</span></p>
+<p>题图中所列差分式的符号与 <span class="math inline">\(-u''=\cos4\pi x\)</span> 不一致；本题按该微分方程取 <span class="math inline">\(-u_{i-1}+2u_i-u_{i+1}=h^2\cos4\pi ih\)</span>。</p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p><strong>连续解</strong></p>
+<p>由 <span class="math inline">\(u''=-\cos4\pi x\)</span>，两次积分得</p>
+<p><span class="math display">\[u(x)=\frac{\cos4\pi x}{16\pi^2}+C_1x+C_2.\]</span></p>
+<p>代入 <span class="math inline">\(u(0)=u(1)=0\)</span>，得到</p>
+<p><span class="math display">\[\boxed{u(x)=\frac{\cos4\pi x-1}{16\pi^2}.}\]</span></p>
+<p><strong>差分解</strong></p>
+<p>令 <span class="math inline">\(h=1/(n+1)\)</span>，<span class="math inline">\(x_i=ih\)</span>，则与 <span class="math inline">\(-u''=\cos4\pi x\)</span> 一致的差分方程为</p>
+<p><span class="math display">\[-u_{i-1}+2u_i-u_{i+1}=h^2\cos4\pi ih,\qquad u_0=u_{n+1}=0.\]</span></p>
+<p>即</p>
+<p><span class="math display">\[K_nU=h^2\begin{pmatrix}\cos4\pi h\\\cos8\pi h\\\vdots\\\cos4\pi nh\end{pmatrix},\qquad
+K_n=\begin{pmatrix}2&amp;-1&amp;&amp;0\\-1&amp;2&amp;\ddots&amp;\\&amp;\ddots&amp;\ddots&amp;-1\\0&amp;&amp;-1&amp;2\end{pmatrix}.\]</span></p>
+<p>利用</p>
+<p><span class="math display">\[2\cos4\pi ih-\cos4\pi(i-1)h-\cos4\pi(i+1)h
+=4\sin^2(2\pi h)\cos4\pi ih,\]</span></p>
+<p>可直接验证（<span class="math inline">\(n=4,8\)</span>）</p>
+<p><span class="math display">\[\boxed{u_i=\frac{h^2}{4\sin^2(2\pi h)}\bigl(\cos4\pi ih-1\bigr).}\]</span></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(n\)</span></th>
+<th><span class="math inline">\(U=(u_1,\ldots,u_n)^{\mathsf T}\)</span>（按顺序列出，保留六位小数）</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>4</td>
+<td>-0.020000, -0.007639, -0.007639, -0.020000</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>-0.006173, -0.014489, -0.011205, -0.001748, -0.001748, -0.011205, -0.014489, -0.006173</td>
+</tr>
+</tbody>
+</table>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./assets/problems/strang-2-5/fixed-boundary.svg" class="img-fluid figure-img"></p>
+<figcaption>连续解与四点、八点差分解的比较</figcaption>
+</figure>
+</div>
+<p>当 <span class="math inline">\(h\to0\)</span> 时，<span class="math inline">\(h^2/[4\sin^2(2\pi h)]\to1/(16\pi^2)\)</span>，差分解趋近连续解。</p>
+
+</div></details>
+
+<p class="problem-source">来源：Introduction to Linear Algebra · §2.5 · Problem 17</p>
+
+</div>
+
+<details id="discussion-2026-10-29" class="log-comments problem-discussion" data-comment-term="/problems/2026-10-29/" data-comment-date="2026-10-29" data-comment-title="每日好题 · 2026-10-29">
+
+<summary>discussion/ <span>2026-10-29 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+</section>
+<section id="section-28" class="level2 problem-date-heading problem-day" data-date="2026-10-28">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-28">2026-10-28</h2>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;极限&quot;], &quot;tags&quot;: [&quot;因式分解&quot;, &quot;有限求和&quot;], &quot;title&quot;: &quot;幂和的差商极限&quot;}">
+
+<div class="problem-meta">MATH / CALCULUS / 极限</div>
+
+<h3 class="anchored">01. 幂和的差商极限</h3>
+
+<div class="entry-tags">#因式分解 · #有限求和</div>
+
+<p>设 <span class="math inline">\(n\)</span> 为正整数，计算</p>
+<p><span class="math display">\[\lim_{x\to1}\frac{x+x^2+\cdots+x^n-n}{x-1}.\]</span></p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>由 <span class="math inline">\(x\ne1\)</span> 时</p>
+<p><span class="math display">\[\frac{x^k-1}{x-1}=1+x+\cdots+x^{k-1},\]</span></p>
+<p>可得</p>
+<p><span class="math display">\[\begin{aligned}
+\lim_{x\to1}\frac{x+x^2+\cdots+x^n-n}{x-1}
+&amp;=\sum_{k=1}^n\lim_{x\to1}\frac{x^k-1}{x-1}\\
+&amp;=\sum_{k=1}^n k
+=\boxed{\frac{n(n+1)}2}.
+\end{aligned}\]</span></p>
+
+</div></details>
+
+<p class="problem-source">来源：《吉米多维奇数学分析习题集》· 第424题(a)</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;极限&quot;], &quot;tags&quot;: [&quot;因式分解&quot;, &quot;等比数列&quot;], &quot;title&quot;: &quot;两个幂差之比的极限&quot;}">
+
+<div class="problem-meta">MATH / CALCULUS / 极限</div>
+
+<h3 class="anchored">02. 两个幂差之比的极限</h3>
+
+<div class="entry-tags">#因式分解 · #等比数列</div>
+
+<p>设 <span class="math inline">\(m,n\)</span> 为正整数，计算</p>
+<p><span class="math display">\[\lim_{x\to1}\frac{x^m-1}{x^n-1}.\]</span></p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>分解并约去公因子 <span class="math inline">\(x-1\)</span>，得</p>
+<p><span class="math display">\[\frac{x^m-1}{x^n-1}
+=\frac{1+x+\cdots+x^{m-1}}{1+x+\cdots+x^{n-1}}.\]</span></p>
+<p>分子、分母分别趋于 <span class="math inline">\(m,n\)</span>，且 <span class="math inline">\(n\ne0\)</span>，故</p>
+<p><span class="math display">\[\boxed{\lim_{x\to1}\frac{x^m-1}{x^n-1}=\frac mn.}\]</span></p>
+
+</div></details>
+
+<p class="problem-source">来源：《吉米多维奇数学分析习题集》· 第425题</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;矩阵&quot;], &quot;tags&quot;: [&quot;秩一矩阵&quot;, &quot;矩阵的幂&quot;, &quot;逆矩阵&quot;, &quot;行列式&quot;], &quot;title&quot;: &quot;秩一矩阵的幂、逆与行列式&quot;}">
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 矩阵</div>
+
+<h3 class="anchored">03. 秩一矩阵的幂、逆与行列式</h3>
+
+<div class="entry-tags">#秩一矩阵 · #矩阵的幂 · #逆矩阵 · #行列式</div>
+
+<p>设 <span class="math inline">\(\alpha,\beta\)</span> 均为 <span class="math inline">\(n\)</span> 维列向量，且 <span class="math inline">\(\beta^{\mathsf T}\alpha=2\)</span>。令 <span class="math inline">\(M=\alpha\beta^{\mathsf T}\)</span>，<span class="math inline">\(E\)</span> 为 <span class="math inline">\(n\)</span> 阶单位矩阵。对任意正整数 <span class="math inline">\(m\)</span>，求</p>
+<p><span class="math display">\[M^m,\qquad(E+M)^{-1},\qquad\det(E+M).\]</span></p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p><strong>矩阵的幂</strong></p>
+<p><span class="math display">\[M^2=\alpha\beta^{\mathsf T}\alpha\beta^{\mathsf T}
+=\alpha(\beta^{\mathsf T}\alpha)\beta^{\mathsf T}=2M.\]</span></p>
+<p>递推得到</p>
+<p><span class="math display">\[\boxed{M^m=2^{m-1}M=2^{m-1}\alpha\beta^{\mathsf T}.}\]</span></p>
+<p><strong>逆矩阵</strong></p>
+<p>由 <span class="math inline">\(M^2=2M\)</span>，</p>
+<p><span class="math display">\[(E+M)\left(E-\frac13M\right)
+=E+\frac23M-\frac13M^2=E,\]</span></p>
+<p>所以</p>
+<p><span class="math display">\[\boxed{(E+M)^{-1}=E-\frac13M.}\]</span></p>
+<p><strong>行列式</strong></p>
+<p>考虑加边矩阵</p>
+<p><span class="math display">\[B=\begin{pmatrix}1&amp;-\beta^{\mathsf T}\\\alpha&amp;E\end{pmatrix}.\]</span></p>
+<p>将第一行的 <span class="math inline">\(-\alpha_i\)</span> 倍加到第 <span class="math inline">\(i+1\)</span> 行，得到</p>
+<p><span class="math display">\[\det B=\det\begin{pmatrix}1&amp;-\beta^{\mathsf T}\\0&amp;E+\alpha\beta^{\mathsf T}\end{pmatrix}
+=\det(E+M).\]</span></p>
+<p>也可将后 <span class="math inline">\(n\)</span> 行分别乘以 <span class="math inline">\(\beta_i\)</span> 后加到第一行，得到</p>
+<p><span class="math display">\[\det B=\det\begin{pmatrix}1+\beta^{\mathsf T}\alpha&amp;0\\\alpha&amp;E\end{pmatrix}
+=1+\beta^{\mathsf T}\alpha=3.\]</span></p>
+<p>故 <span class="math inline">\(\boxed{\det(E+M)=3}\)</span>。</p>
+
+</div></details>
+
+<p class="problem-source">来源：云峰学园模拟考 · 线性代数卷</p>
+
+</div>
+
+<details id="discussion-2026-10-28" class="log-comments problem-discussion" data-comment-term="/problems/2026-10-28/" data-comment-date="2026-10-28" data-comment-title="每日好题 · 2026-10-28">
+
+<summary>discussion/ <span>2026-10-28 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+</section>
+<section id="section-29" class="level2 problem-date-heading problem-day" data-date="2026-10-27">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-29">2026-10-27</h2>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;CS&quot;, &quot;ALGORITHMS&quot;, &quot;数论&quot;], &quot;tags&quot;: [&quot;C语言&quot;, &quot;同余&quot;, &quot;斐波那契数列&quot;], &quot;title&quot;: &quot;斐波那契数的后四位&quot;}">
+
+<div class="problem-meta">CS / ALGORITHMS / 数论</div>
+
+<h3 class="anchored">01. 斐波那契数的后四位</h3>
+
+<div class="entry-tags">#C语言 · #同余 · #斐波那契数列</div>
+
+<p>斐波那契数列定义为</p>
+<p><span class="math display">\[F(0)=0,\qquad F(1)=1,\qquad F(n)=F(n-1)+F(n-2)\quad(n\ge2).\]</span></p>
+<p>给定 <span class="math inline">\(n\)</span>，求 <span class="math inline">\(F(n)\bmod10000\)</span>。</p>
+<p><strong>输入</strong></p>
+<p>输入包含多组数据，每行一个整数 <span class="math inline">\(n\)</span>，<span class="math inline">\(0\le n\le1000000000\)</span>。最后一行为 <span class="math inline">\(-1\)</span>，表示输入结束，不需处理。</p>
+<p><strong>输出</strong></p>
+<p>对每组数据输出一行 <span class="math inline">\(F(n)\)</span> 对 <span class="math inline">\(10000\)</span> 取模的结果，不补前导零。</p>
+<p><strong>样例输入</strong></p>
+<pre class="text"><code>0
+9
+999999999
+1000000000
+-1</code></pre>
+<p><strong>样例输出</strong></p>
+<pre class="text"><code>0
+34
+626
+6875</code></pre>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p><strong>中国剩余定理</strong></p>
+<p>因为 <span class="math inline">\(10000=16\cdot625\)</span>，且 <span class="math inline">\(\gcd(16,625)=1\)</span>，先分别求</p>
+<p><span class="math display">\[a=F(n)\bmod16,\qquad b=F(n)\bmod625.\]</span></p>
+<p>令 <span class="math inline">\(x=b+625t\)</span>。由 <span class="math inline">\(625\equiv1\pmod{16}\)</span>，</p>
+<p><span class="math display">\[t\equiv a-b\pmod{16}.\]</span></p>
+<p>取 <span class="math inline">\(t\)</span> 为 <span class="math inline">\(a-b\)</span> 除以 <span class="math inline">\(16\)</span> 的最小非负余数，则 <span class="math inline">\(0\le b+625t&lt;10000\)</span>，所以</p>
+<p><span class="math display">\[\boxed{F(n)\bmod10000=b+625\bigl((a-b)\bmod16\bigr).}\]</span></p>
+<p><strong>快速倍增</strong></p>
+<p>计算模 <span class="math inline">\(m\)</span> 的斐波那契数时，同时返回 <span class="math inline">\((F(k),F(k+1))\)</span>。利用</p>
+<p><span class="math display">\[\begin{aligned}
+F(2k)&amp;=F(k)\bigl(2F(k+1)-F(k)\bigr),\\
+F(2k+1)&amp;=F(k)^2+F(k+1)^2,
+\end{aligned}\]</span></p>
+<p>每次将下标减半即可。所有运算都在模 <span class="math inline">\(m\)</span> 下进行。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co">/* Return F(n) mod m and F(n + 1) mod m. */</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="dt">static</span> <span class="dt">void</span> fib_pair<span class="op">(</span><span class="dt">long</span> <span class="dt">long</span> n<span class="op">,</span> <span class="dt">int</span> m<span class="op">,</span> <span class="dt">int</span> <span class="op">*</span>fn<span class="op">,</span> <span class="dt">int</span> <span class="op">*</span>next<span class="op">)</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>n <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>        <span class="op">*</span>fn <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>        <span class="op">*</span>next <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span><span class="op">;</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> u<span class="op">,</span> v<span class="op">;</span></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>    fib_pair<span class="op">(</span>n <span class="op">/</span> <span class="dv">2</span><span class="op">,</span> m<span class="op">,</span> <span class="op">&amp;</span>u<span class="op">,</span> <span class="op">&amp;</span>v<span class="op">);</span></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> factor <span class="op">=</span> <span class="op">(</span><span class="dv">2</span> <span class="op">*</span> v <span class="op">-</span> u<span class="op">)</span> <span class="op">%</span> m<span class="op">;</span></span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>factor <span class="op">&lt;</span> <span class="dv">0</span><span class="op">)</span> factor <span class="op">+=</span> m<span class="op">;</span></span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> even <span class="op">=</span> <span class="op">(</span><span class="dt">int</span><span class="op">)((</span><span class="dt">long</span> <span class="dt">long</span><span class="op">)</span>u <span class="op">*</span> factor <span class="op">%</span> m<span class="op">);</span></span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> odd <span class="op">=</span> <span class="op">(</span><span class="dt">int</span><span class="op">)(((</span><span class="dt">long</span> <span class="dt">long</span><span class="op">)</span>u <span class="op">*</span> u <span class="op">+</span> <span class="op">(</span><span class="dt">long</span> <span class="dt">long</span><span class="op">)</span>v <span class="op">*</span> v<span class="op">)</span> <span class="op">%</span> m<span class="op">);</span></span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>n <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>        <span class="op">*</span>fn <span class="op">=</span> even<span class="op">;</span></span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>        <span class="op">*</span>next <span class="op">=</span> odd<span class="op">;</span></span>
+<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a>        <span class="op">*</span>fn <span class="op">=</span> odd<span class="op">;</span></span>
+<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>        <span class="op">*</span>next <span class="op">=</span> <span class="op">(</span>even <span class="op">+</span> odd<span class="op">)</span> <span class="op">%</span> m<span class="op">;</span></span>
+<span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb21-28"><a href="#cb21-28" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-30"><a href="#cb21-30" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">void</span><span class="op">)</span></span>
+<span id="cb21-31"><a href="#cb21-31" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb21-32"><a href="#cb21-32" aria-hidden="true" tabindex="-1"></a>    <span class="dt">long</span> <span class="dt">long</span> n<span class="op">;</span></span>
+<span id="cb21-33"><a href="#cb21-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> <span class="op">(</span>scanf<span class="op">(</span><span class="st">"</span><span class="sc">%lld</span><span class="st">"</span><span class="op">,</span> <span class="op">&amp;</span>n<span class="op">)</span> <span class="op">==</span> <span class="dv">1</span> <span class="op">&amp;&amp;</span> n <span class="op">!=</span> <span class="op">-</span><span class="dv">1</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb21-34"><a href="#cb21-34" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> a<span class="op">,</span> b<span class="op">,</span> unused<span class="op">;</span></span>
+<span id="cb21-35"><a href="#cb21-35" aria-hidden="true" tabindex="-1"></a>        fib_pair<span class="op">(</span>n<span class="op">,</span> <span class="dv">16</span><span class="op">,</span> <span class="op">&amp;</span>a<span class="op">,</span> <span class="op">&amp;</span>unused<span class="op">);</span></span>
+<span id="cb21-36"><a href="#cb21-36" aria-hidden="true" tabindex="-1"></a>        fib_pair<span class="op">(</span>n<span class="op">,</span> <span class="dv">625</span><span class="op">,</span> <span class="op">&amp;</span>b<span class="op">,</span> <span class="op">&amp;</span>unused<span class="op">);</span></span>
+<span id="cb21-37"><a href="#cb21-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-38"><a href="#cb21-38" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> t <span class="op">=</span> <span class="op">(</span>a <span class="op">-</span> b<span class="op">)</span> <span class="op">%</span> <span class="dv">16</span><span class="op">;</span></span>
+<span id="cb21-39"><a href="#cb21-39" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>t <span class="op">&lt;</span> <span class="dv">0</span><span class="op">)</span> t <span class="op">+=</span> <span class="dv">16</span><span class="op">;</span></span>
+<span id="cb21-40"><a href="#cb21-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-41"><a href="#cb21-41" aria-hidden="true" tabindex="-1"></a>        printf<span class="op">(</span><span class="st">"</span><span class="sc">%d\n</span><span class="st">"</span><span class="op">,</span> b <span class="op">+</span> <span class="dv">625</span> <span class="op">*</span> t<span class="op">);</span></span>
+<span id="cb21-42"><a href="#cb21-42" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb21-43"><a href="#cb21-43" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb21-44"><a href="#cb21-44" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>每组数据时间复杂度为 <span class="math inline">\(O(\log(n+1))\)</span>，递归栈空间复杂度为 <span class="math inline">\(O(\log(n+1))\)</span>。C 语言的余数可能为负，代码中对负余数作了归一化。</p>
+
+</div></details>
+
+<p class="problem-source">来源：用户提供题图 · 斐波那契数的后四位</p>
+
+</div>
+
+<details id="discussion-2026-10-27" class="log-comments problem-discussion" data-comment-term="/problems/2026-10-27/" data-comment-date="2026-10-27" data-comment-title="每日好题 · 2026-10-27">
+
+<summary>discussion/ <span>2026-10-27 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+</section>
+<section id="section-30" class="level2 problem-date-heading problem-day" data-date="2026-10-26">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-30">2026-10-26</h2>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;函数&quot;], &quot;tags&quot;: [&quot;周期函数&quot;, &quot;函数方程&quot;], &quot;title&quot;: &quot;指数因子与周期函数&quot;}">
+
+<div class="problem-meta">MATH / CALCULUS / 函数</div>
+
+<h3 class="anchored">01. 指数因子与周期函数</h3>
+
+<div class="entry-tags">#周期函数 · #函数方程</div>
+
+<p>设函数 <span class="math inline">\(f:\mathbb R\to\mathbb R\)</span> 满足</p>
+<p><span class="math display">\[f(x+T)=kf(x),\]</span></p>
+<p>其中 <span class="math inline">\(k,T\)</span> 为正常数。证明：存在正常数 <span class="math inline">\(a\)</span> 及以 <span class="math inline">\(T\)</span> 为周期的函数 <span class="math inline">\(\varphi\)</span>，使</p>
+<p><span class="math display">\[f(x)=a^x\varphi(x).\]</span></p>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p>取 <span class="math inline">\(a=k^{1/T}&gt;0\)</span>，令</p>
+<p><span class="math display">\[\varphi(x)=a^{-x}f(x).\]</span></p>
+<p>由于 <span class="math inline">\(a^T=k\)</span>，有</p>
+<p><span class="math display">\[\varphi(x+T)=a^{-x-T}f(x+T)
+=a^{-x-T}kf(x)=a^{-x}f(x)=\varphi(x).\]</span></p>
+<p>故 <span class="math inline">\(\varphi\)</span> 以 <span class="math inline">\(T\)</span> 为周期，且 <span class="math inline">\(f(x)=a^x\varphi(x)\)</span>。</p>
+
+</div></details>
+
+<p class="problem-source">来源：《吉米多维奇数学分析习题集》第三章 · 第236题</p>
+
+</div>
+<div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;CS&quot;, &quot;ALGORITHMS&quot;, &quot;哈希表&quot;], &quot;tags&quot;: [&quot;哈希函数&quot;, &quot;冲突&quot;], &quot;title&quot;: &quot;哈希函数的分布&quot;}">
+
+<div class="problem-meta">CS / ALGORITHMS / 哈希表</div>
+
+<h3 class="anchored">02. 哈希函数的分布</h3>
+
+<div class="entry-tags">#哈希函数 · #冲突</div>
+
+<p>哈希表长度为 <span class="math inline">\(10\)</span>，考虑以下四种字符串哈希函数：</p>
+<ol type="1">
+<li>无论输入什么，都返回 <span class="math inline">\(1\)</span>。</li>
+<li>返回字符串长度除以 <span class="math inline">\(10\)</span> 的余数。</li>
+<li>按首字符分配位置，首字符相同的字符串映射到同一位置。</li>
+<li>按字母顺序将字符映射到素数：<span class="math inline">\(a\mapsto2,b\mapsto3,c\mapsto5,\ldots\)</span>；将字符对应的素数相加，再对 <span class="math inline">\(10\)</span> 取余。例如 <code>bag</code> 映射为 <span class="math inline">\((3+2+17)\bmod10=2\)</span>。</li>
+</ol>
+<p>忽略字母大小写。对于下面两组键，分别判断哪些函数能够使它们分散存储，并说明发生冲突的情况。</p>
+<ul>
+<li><strong>5.5</strong> 电话簿中的姓名：<code>Esther</code>、<code>Ben</code>、<code>Bob</code>、<code>Dan</code>。</li>
+<li><strong>5.6</strong> 电池尺寸：<code>A</code>、<code>AA</code>、<code>AAA</code>、<code>AAAA</code>。</li>
+</ul>
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+<p><strong>5.5：函数 4。</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>键</th>
+<th>函数 1</th>
+<th>函数 2</th>
+<th>函数 3：首字符</th>
+<th>函数 4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Esther</td>
+<td>1</td>
+<td>6</td>
+<td>e</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>Ben</td>
+<td>1</td>
+<td>3</td>
+<td>b</td>
+<td>7</td>
+</tr>
+<tr class="odd">
+<td>Bob</td>
+<td>1</td>
+<td>3</td>
+<td>b</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td>Dan</td>
+<td>1</td>
+<td>3</td>
+<td>d</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p>函数 1 将所有键放在同一位置；函数 2 使 <code>Ben</code>、<code>Bob</code>、<code>Dan</code> 冲突；函数 3 使 <code>Ben</code>、<code>Bob</code> 冲突。函数 4 的计算为</p>
+<p><span class="math display">\[\begin{aligned}
+h(\text{Esther})&amp;=(11+67+71+19+11+61)\bmod10=0,\\
+h(\text{Ben})&amp;=(3+11+43)\bmod10=7,\\
+h(\text{Bob})&amp;=(3+47+3)\bmod10=3,\\
+h(\text{Dan})&amp;=(7+2+43)\bmod10=2.
+\end{aligned}\]</span></p>
+<p>四个键落在不同位置。</p>
+<p><strong>5.6：函数 2 和函数 4。</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>键</th>
+<th>函数 1</th>
+<th>函数 2</th>
+<th>函数 3：首字符</th>
+<th>函数 4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A</td>
+<td>1</td>
+<td>1</td>
+<td>a</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>AA</td>
+<td>1</td>
+<td>2</td>
+<td>a</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td>AAA</td>
+<td>1</td>
+<td>3</td>
+<td>a</td>
+<td>6</td>
+</tr>
+<tr class="even">
+<td>AAAA</td>
+<td>1</td>
+<td>4</td>
+<td>a</td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+<p>函数 1 和函数 3 都将四个键放在同一位置；函数 2 和函数 4 在这组键上均无冲突。</p>
+<p>这里比较的是给定键集的分布；在这两组输入上无冲突，并不保证对其他输入也无冲突。例如函数 4 不区分字符顺序，<code>bag</code> 与 <code>gab</code> 必然冲突。</p>
+
+</div></details>
+
+<p class="problem-source">来源：《算法图解》第5章 · 练习5.5–5.6</p>
+
+</div>
+
+<details id="discussion-2026-10-26" class="log-comments problem-discussion" data-comment-term="/problems/2026-10-26/" data-comment-date="2026-10-26" data-comment-title="每日好题 · 2026-10-26">
+
+<summary>discussion/ <span>2026-10-26 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+</section>
+<section id="section-31" class="level2 problem-date-heading problem-day" data-date="2026-10-25">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-31">2026-10-25</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;矩阵&quot;], &quot;tags&quot;: [&quot;置换矩阵&quot;, &quot;矩阵的幂&quot;], &quot;title&quot;: &quot;置换矩阵的幂&quot;}">
 
 <div class="problem-meta">MATH / LINEAR-ALGEBRA / 矩阵</div>
@@ -341,8 +3190,8 @@ A=\begin{pmatrix}0&amp;1&amp;2\\-1&amp;0&amp;2\\-2&amp;-2&amp;0\end{pmatrix},\]<
 </details>
 
 </section>
-<section id="section-1" class="level2 problem-date-heading problem-day" data-date="2026-10-24">
-<h2 class="problem-date-heading anchored" data-anchor-id="section-1">2026-10-24</h2>
+<section id="section-32" class="level2 problem-date-heading problem-day" data-date="2026-10-24">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-32">2026-10-24</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;ALGEBRA&quot;, &quot;方程与置换&quot;], &quot;tags&quot;: [&quot;拉格朗日预解式&quot;, &quot;单位根&quot;, &quot;置换&quot;], &quot;title&quot;: &quot;从 120 个排列到 24 次预解方程&quot;}">
 
 <div class="problem-meta">MATH / ALGEBRA / 方程与置换</div>
@@ -389,8 +3238,8 @@ A=\begin{pmatrix}0&amp;1&amp;2\\-1&amp;0&amp;2\\-2&amp;-2&amp;0\end{pmatrix},\]<
 
 <p>给定非负整数列表 <code>height</code>，其中 <code>height[i]</code> 表示第 <span class="math inline">\(i\)</span> 根柱子的高度，每根柱子的宽度为 <span class="math inline">\(1\)</span>。这些柱子按顺序紧密排列。下雨后，求柱子之间最多能储存多少单位的雨水。</p>
 <p>用 Python 实现：</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> trap(height: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    ...</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> trap(height: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    ...</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>示例 1</strong></p>
 <pre class="text"><code>输入：height = [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]
 输出：6</code></pre>
@@ -404,24 +3253,24 @@ A=\begin{pmatrix}0&amp;1&amp;2\\-1&amp;0&amp;2\\-2&amp;-2&amp;0\end{pmatrix},\]<
 <p>维护一个存储下标的栈，使栈中柱高从栈底到栈顶单调不增。</p>
 <p>遇到比栈顶更高的柱子时，弹出栈顶作为凹槽底部。若栈仍非空，新栈顶为左边界，当前柱子为右边界。这一层新增的水量为</p>
 <p><span class="math display">\[(\text{right}-\text{left}-1)\bigl(\min(h_{\text{left}},h_{\text{right}})-h_{\text{bottom}}\bigr).\]</span></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> trap(height: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    stack <span class="op">=</span> []</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    water <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> right, h <span class="kw">in</span> <span class="bu">enumerate</span>(height):</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> stack <span class="kw">and</span> h <span class="op">&gt;</span> height[stack[<span class="op">-</span><span class="dv">1</span>]]:</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>            bottom <span class="op">=</span> stack.pop()</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="kw">not</span> stack:</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>                <span class="cf">break</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>            left <span class="op">=</span> stack[<span class="op">-</span><span class="dv">1</span>]</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>            width <span class="op">=</span> right <span class="op">-</span> left <span class="op">-</span> <span class="dv">1</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>            depth <span class="op">=</span> <span class="bu">min</span>(height[left], h) <span class="op">-</span> height[bottom]</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>            water <span class="op">+=</span> width <span class="op">*</span> depth</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        stack.append(right)</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> water</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> trap(height: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    stack <span class="op">=</span> []</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    water <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> right, h <span class="kw">in</span> <span class="bu">enumerate</span>(height):</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> stack <span class="kw">and</span> h <span class="op">&gt;</span> height[stack[<span class="op">-</span><span class="dv">1</span>]]:</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>            bottom <span class="op">=</span> stack.pop()</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="kw">not</span> stack:</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>                <span class="cf">break</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>            left <span class="op">=</span> stack[<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>            width <span class="op">=</span> right <span class="op">-</span> left <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>            depth <span class="op">=</span> <span class="bu">min</span>(height[left], h) <span class="op">-</span> height[bottom]</span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>            water <span class="op">+=</span> width <span class="op">*</span> depth</span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>        stack.append(right)</span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> water</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
 <p>每个下标最多入栈、出栈各一次，时间复杂度为 <span class="math inline">\(O(n)\)</span>，空间复杂度为 <span class="math inline">\(O(n)\)</span>。</p>
 
 </div></details>
@@ -439,8 +3288,8 @@ A=\begin{pmatrix}0&amp;1&amp;2\\-1&amp;0&amp;2\\-2&amp;-2&amp;0\end{pmatrix},\]<
 </details>
 
 </section>
-<section id="section-2" class="level2 problem-date-heading problem-day" data-date="2026-10-23">
-<h2 class="problem-date-heading anchored" data-anchor-id="section-2">2026-10-23</h2>
+<section id="section-33" class="level2 problem-date-heading problem-day" data-date="2026-10-23">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-33">2026-10-23</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;导数&quot;], &quot;tags&quot;: [&quot;导数定义&quot;, &quot;绝对值&quot;], &quot;title&quot;: &quot;绝对值与零点可导性&quot;}">
 
 <div class="problem-meta">MATH / CALCULUS / 导数</div>
@@ -512,8 +3361,8 @@ A=\begin{pmatrix}0&amp;1&amp;2\\-1&amp;0&amp;2\\-2&amp;-2&amp;0\end{pmatrix},\]<
 </details>
 
 </section>
-<section id="section-3" class="level2 problem-date-heading problem-day" data-date="2026-10-22">
-<h2 class="problem-date-heading anchored" data-anchor-id="section-3">2026-10-22</h2>
+<section id="section-34" class="level2 problem-date-heading problem-day" data-date="2026-10-22">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-34">2026-10-22</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;线性方程组&quot;], &quot;tags&quot;: [&quot;参数讨论&quot;, &quot;通解&quot;], &quot;title&quot;: &quot;第九节（一）：含参方程组的解&quot;}">
 
 <div class="problem-meta">MATH / LINEAR-ALGEBRA / 线性方程组</div>
@@ -688,8 +3537,8 @@ a_n&amp;0&amp;0&amp;\cdots&amp;1
 </details>
 
 </section>
-<section id="section-4" class="level2 problem-date-heading problem-day" data-date="2026-10-21">
-<h2 class="problem-date-heading anchored" data-anchor-id="section-4">2026-10-21</h2>
+<section id="section-35" class="level2 problem-date-heading problem-day" data-date="2026-10-21">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-35">2026-10-21</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;连续性&quot;], &quot;tags&quot;: [&quot;反例&quot;, &quot;反函数&quot;, &quot;数列&quot;], &quot;title&quot;: &quot;反函数、连续性与数列最小项&quot;}">
 
 <div class="problem-meta">MATH / CALCULUS / 连续性</div>
@@ -809,8 +3658,8 @@ D_n=\begin{vmatrix}
 </details>
 
 </section>
-<section id="section-5" class="level2 problem-date-heading problem-day" data-date="2026-10-20">
-<h2 class="problem-date-heading anchored" data-anchor-id="section-5">2026-10-20</h2>
+<section id="section-36" class="level2 problem-date-heading problem-day" data-date="2026-10-20">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-36">2026-10-20</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;介值定理&quot;, &quot;单调性&quot;, &quot;隐式数列&quot;], &quot;title&quot;: &quot;隐式定义的根与指数极限&quot;}">
 
 <div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
@@ -854,31 +3703,31 @@ D_n=\begin{vmatrix}
 
 <details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
 
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> count(xs):</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> isempty(xs):</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">0</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">1</span> <span class="op">+</span> count(butfirst(xs))</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> reverse(xs):</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> isempty(xs):</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> []</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> reverse(butfirst(xs)) <span class="op">+</span> [first(xs)]</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find(xs, element):</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> isempty(xs):</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">False</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> first(xs) <span class="op">==</span> element <span class="kw">or</span> find(butfirst(xs), element)</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> iterate(xs, f):</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> isempty(xs):</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    f(first(xs))</span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    iterate(butfirst(xs), f)</span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> accumarate(xs, f, value):</span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> isempty(xs):</span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> value</span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> accumarate(butfirst(xs), f, f(first(xs), value))</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> count(xs):</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> isempty(xs):</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">0</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">1</span> <span class="op">+</span> count(butfirst(xs))</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> reverse(xs):</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> isempty(xs):</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> []</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> reverse(butfirst(xs)) <span class="op">+</span> [first(xs)]</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find(xs, element):</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> isempty(xs):</span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> first(xs) <span class="op">==</span> element <span class="kw">or</span> find(butfirst(xs), element)</span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> iterate(xs, f):</span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> isempty(xs):</span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span></span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a>    f(first(xs))</span>
+<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a>    iterate(butfirst(xs), f)</span>
+<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-22"><a href="#cb26-22" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> accumarate(xs, f, value):</span>
+<span id="cb26-23"><a href="#cb26-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> isempty(xs):</span>
+<span id="cb26-24"><a href="#cb26-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> value</span>
+<span id="cb26-25"><a href="#cb26-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> accumarate(butfirst(xs), f, f(first(xs), value))</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
 <p>五题的<strong>Base Case</strong>都是空列表：数量为<code>0</code>、逆序为空列表、查找为<code>False</code>、遍历直接结束、累计则返回当前<code>value</code>；<strong>Progress</strong>都是递归处理<code>butfirst(xs)</code>。<code>reverse</code>必须把当前首元素放在剩余列表逆序结果的末尾；<code>find</code>借助<code>or</code>短路，找到后不再继续查；<code>iterate</code>先调用<code>f</code>再递归，保持原有顺序；<code>accumarate</code>先算<code>f(first(xs), value)</code>，再把新值交给下一层，所以<code>f</code>的两个参数顺序不能颠倒。</p>
 
 </div></details>
@@ -896,8 +3745,8 @@ D_n=\begin{vmatrix}
 </details>
 
 </section>
-<section id="section-6" class="level2 problem-date-heading problem-day" data-date="2026-10-19">
-<h2 class="problem-date-heading anchored" data-anchor-id="section-6">2026-10-19</h2>
+<section id="section-37" class="level2 problem-date-heading problem-day" data-date="2026-10-19">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-37">2026-10-19</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;分段估计&quot;, &quot;夹逼定理&quot;], &quot;title&quot;: &quot;不同次根组成的变项数列和&quot;}">
 
 <div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
@@ -1034,8 +3883,8 @@ R_n=\sum_{k=1}^{n}\frac{\sin k}{n^2+k}.
 </details>
 
 </section>
-<section id="section-7" class="level2 problem-date-heading problem-day" data-date="2026-10-18">
-<h2 class="problem-date-heading anchored" data-anchor-id="section-7">2026-10-18</h2>
+<section id="section-38" class="level2 problem-date-heading problem-day" data-date="2026-10-18">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-38">2026-10-18</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;夹逼定理&quot;, &quot;变项数列和&quot;], &quot;title&quot;: &quot;含根式分母的平方和极限&quot;}">
 
 <div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
@@ -1234,8 +4083,8 @@ n^2\theta_n
 </details>
 
 </section>
-<section id="section-8" class="level2 problem-date-heading problem-day" data-date="2026-10-17">
-<h2 class="problem-date-heading anchored" data-anchor-id="section-8">2026-10-17</h2>
+<section id="section-39" class="level2 problem-date-heading problem-day" data-date="2026-10-17">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-39">2026-10-17</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;次可加性&quot;, &quot;下确界&quot;, &quot;极限&quot;], &quot;title&quot;: &quot;次可加数列与 Fekete 引理&quot;}">
 
 <div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
@@ -1414,8 +4263,8 @@ a_i-a_j=21,
 </details>
 
 </section>
-<section id="section-9" class="level2 problem-date-heading problem-day" data-date="2026-10-16">
-<h2 class="problem-date-heading anchored" data-anchor-id="section-9">2026-10-16</h2>
+<section id="section-40" class="level2 problem-date-heading problem-day" data-date="2026-10-16">
+<h2 class="problem-date-heading anchored" data-anchor-id="section-40">2026-10-16</h2>
 <div class="problem-entry" data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;数列与极限&quot;], &quot;tags&quot;: [&quot;反证法&quot;, &quot;阶乘级数&quot;], &quot;title&quot;: &quot;证明 e 是无理数&quot;}">
 
 <div class="problem-meta">MATH / CALCULUS / 数列与极限</div>
@@ -1563,7 +4412,7 @@ d&amp;1&amp;1/d^2&amp;1/d
 
 </section>
 
-<script id="problem-index" type="application/json">{"builtDate": "2026-10-25", "dates": {"2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
+<script id="problem-index" type="application/json">{"builtDate": "2026-11-25", "dates": {"2026-11-25": 4, "2026-11-24": 3, "2026-11-23": 7, "2026-11-22": 2, "2026-11-21": 2, "2026-11-20": 2, "2026-11-19": 2, "2026-11-18": 2, "2026-11-17": 3, "2026-11-16": 2, "2026-11-15": 2, "2026-11-14": 2, "2026-11-13": 2, "2026-11-12": 1, "2026-11-11": 2, "2026-11-10": 2, "2026-11-09": 3, "2026-11-08": 2, "2026-11-07": 2, "2026-11-06": 6, "2026-11-05": 1, "2026-11-04": 1, "2026-11-03": 3, "2026-11-02": 6, "2026-11-01": 2, "2026-10-31": 2, "2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
 
 <p id="problem-empty" hidden="">这一天暂无符合条件的题目。</p>
 <section class="problem-calendar" aria-label="按日期查看题目">

@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="easoncyy（整理）">
+<meta name="description" content="微积分期中模拟卷：题目、详细解析与知识点总结。">
+
+<title>2026–2027 学年微积分（甲）Ⅰ期中模拟卷 – 个人笔记</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/favicon.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-a7952132dd87ce33f437addd0578540c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-dc090d8f6625c822698d9a6ee9cd1ac5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "没有结果",
+    "search-matching-documents-text": "匹配的文档",
+    "search-copy-link-title": "复制搜索链接",
+    "search-hide-matches-text": "隐藏其它匹配结果",
+    "search-more-match-text": "更多匹配结果",
+    "search-more-matches-text": "更多匹配结果",
+    "search-clear-button-title": "清除",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "取消",
+    "search-submit-button-title": "提交",
+    "search-label": "搜索"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script defer="" src="../../assets/directory.js?v=05751f758f0b"></script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="../../assets/vendor/mathjax/tex-svg-full.js?v=a4354ff94fd8" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css?v=83131ce44c97">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/logo.svg" alt="Ce · easoncyy" class="navbar-logo light-content">
+    <img src="../../assets/logo.svg" alt="Ce · easoncyy" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">~/notes</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="搜索"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="展开或折叠导航栏" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html"> 
+<span class="menu-text"><span class="nav-path">blog/</span><span class="nav-caption">博客</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../problems.html"> 
+<span class="menu-text"><span class="nav-path">problems/</span><span class="nav-caption">每日好题</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../projects.html"> 
+<span class="menu-text"><span class="nav-path">projects/</span><span class="nav-caption">项目</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../log.html"> 
+<span class="menu-text"><span class="nav-path">log/</span><span class="nav-caption">日志</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../links.html"> 
+<span class="menu-text"><span class="nav-path">links/</span><span class="nav-caption">友链</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../library.html"> 
+<span class="menu-text"><span class="nav-path">library/</span><span class="nav-caption">图书馆</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text"><span class="nav-path">about/</span><span class="nav-caption">关于</span></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">本页目录</h2>
+   
+  <ul>
+  <li><a href="#questions" id="toc-questions" class="nav-link active" data-scroll-target="#questions">第一部分：题目</a>
+  <ul class="collapse">
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">1 .</a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">2 .</a></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">3 .</a></li>
+  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3">4 .</a></li>
+  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4">5 .</a></li>
+  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5">6 .</a></li>
+  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6">7 .</a></li>
+  <li><a href="#section-7" id="toc-section-7" class="nav-link" data-scroll-target="#section-7">8 .</a></li>
+  <li><a href="#section-8" id="toc-section-8" class="nav-link" data-scroll-target="#section-8">9 .</a></li>
+  <li><a href="#section-9" id="toc-section-9" class="nav-link" data-scroll-target="#section-9">10 .</a></li>
+  <li><a href="#section-10" id="toc-section-10" class="nav-link" data-scroll-target="#section-10">11 .</a></li>
+  <li><a href="#section-11" id="toc-section-11" class="nav-link" data-scroll-target="#section-11">12 .</a></li>
+  <li><a href="#附加题-." id="toc-附加题-." class="nav-link" data-scroll-target="#附加题-.">附加题 .</a></li>
+  </ul></li>
+  <li><a href="#solutions" id="toc-solutions" class="nav-link" data-scroll-target="#solutions">第二部分：详细解析</a>
+  <ul class="collapse">
+  <li><a href="#answer-1" id="toc-answer-1" class="nav-link" data-scroll-target="#answer-1">1. 极限计算</a></li>
+  <li><a href="#answer-2" id="toc-answer-2" class="nav-link" data-scroll-target="#answer-2">2. 数列极限</a></li>
+  <li><a href="#answer-3" id="toc-answer-3" class="nav-link" data-scroll-target="#answer-3">3. 参数与有限极限</a></li>
+  <li><a href="#answer-4" id="toc-answer-4" class="nav-link" data-scroll-target="#answer-4">4. 间断点分类</a></li>
+  <li><a href="#answer-5" id="toc-answer-5" class="nav-link" data-scroll-target="#answer-5">5. 极限定义函数的连续性与可导性</a></li>
+  <li><a href="#answer-6" id="toc-answer-6" class="nav-link" data-scroll-target="#answer-6">6. 参数二阶导数</a></li>
+  <li><a href="#answer-7" id="toc-answer-7" class="nav-link" data-scroll-target="#answer-7">7. 高阶导数</a></li>
+  <li><a href="#answer-8" id="toc-answer-8" class="nav-link" data-scroll-target="#answer-8">8. 心形线的切线</a></li>
+  <li><a href="#answer-9" id="toc-answer-9" class="nav-link" data-scroll-target="#answer-9">9. 有界性与夹逼定理</a></li>
+  <li><a href="#answer-10" id="toc-answer-10" class="nav-link" data-scroll-target="#answer-10">10. 函数方程与三角多项式</a></li>
+  <li><a href="#answer-11" id="toc-answer-11" class="nav-link" data-scroll-target="#answer-11">11. 隐式递推数列</a></li>
+  <li><a href="#answer-12" id="toc-answer-12" class="nav-link" data-scroll-target="#answer-12">12. 压缩映射与不动点</a></li>
+  <li><a href="#answer-extra" id="toc-answer-extra" class="nav-link" data-scroll-target="#answer-extra">附加题. 中值定理与辅助函数</a></li>
+  </ul></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">第三部分：知识点总结</a>
+  <ul class="collapse">
+  <li><a href="#答案与考点" id="toc-答案与考点" class="nav-link" data-scroll-target="#答案与考点">答案与考点</a></li>
+  <li><a href="#复习要点" id="toc-复习要点" class="nav-link" data-scroll-target="#复习要点">复习要点</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">2026–2027 学年微积分（甲）Ⅰ期中模拟卷</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">模拟卷</div>
+    <div class="quarto-category">期中</div>
+    <div class="quarto-category">练习卷</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    微积分期中模拟卷：题目、详细解析与知识点总结。
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">作者</div>
+    <div class="quarto-title-meta-contents">
+             <p>easoncyy（整理） </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">发布于</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2026年11月1日</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>来源：2026–2027 学年云峰学园第一党支部微积分（甲）Ⅰ期中模拟试题，杨立命题。考试时间 120 分钟，正题满分 100 分，附加题 5 分。</p>
+<div class="download-box">
+<p><a href="../../assets/pdf/exams/original/calculus-midterm-mock-2026-2027-original.pdf" download="calculus-midterm-mock-2026-2027-original.pdf">下载原始试卷 PDF ↓</a></p>
+</div>
+<section id="questions" class="level2">
+<h2 class="anchored" data-anchor-id="questions">第一部分：题目</h2>
+<section id="section" class="level3">
+<h3 class="anchored" data-anchor-id="section">1 .</h3>
+<p>求极限：（12 分）</p>
+<p><span class="math display">\[\text{（1）}\ \lim_{x\to0}\frac{1}{x^3}\left[\left(\frac{2+\cos x}{3}\right)^x-1\right];
+\qquad
+\text{（2）}\ \lim_{x\to-\infty}\frac{x+1}{\sqrt{x^2-\sin x+1}+\sqrt{x^2+\sin x+1}}.\]</span></p>
+</section>
+<section id="section-1" class="level3">
+<h3 class="anchored" data-anchor-id="section-1">2 .</h3>
+<p>求极限：（12 分）</p>
+<p><span class="math display">\[\text{（1）}\ \lim_{n\to\infty}n\tan\!\left(\pi\sqrt{n^2+2026}\right);
+\qquad
+\text{（2）}\ \lim_{n\to\infty}\sum_{k=1}^n(n^k+1)^{-1/k}.\]</span></p>
+</section>
+<section id="section-2" class="level3">
+<h3 class="anchored" data-anchor-id="section-2">3 .</h3>
+<p>若极限 <span class="math inline">\(\displaystyle\lim_{x\to+\infty}\frac{\sqrt{4x^3+ax^2+x}+bx^{3/2}}{\sqrt{cx+1}}\)</span> 存在，求 <span class="math inline">\(a,b,c\)</span> 满足的条件并求该极限值。（10 分）</p>
+</section>
+<section id="section-3" class="level3">
+<h3 class="anchored" data-anchor-id="section-3">4 .</h3>
+<p>讨论 <span class="math inline">\(\displaystyle f(x)=\frac{e+e^{1/x}}{e-e^{1/x}}\cdot\frac{x^2-1}{\sin(x+1)}\)</span> 的所有间断点，并指出它们是第几类间断点。（10 分）</p>
+</section>
+<section id="section-4" class="level3">
+<h3 class="anchored" data-anchor-id="section-4">5 .</h3>
+<p>化简 <span class="math inline">\(\displaystyle f(x)=\lim_{n\to\infty}\frac{x^2+x[x]e^{nx}}{1+e^{nx}}\ (x\in\mathbb R)\)</span>，分析 <span class="math inline">\(f(x)\)</span> 的连续性和可导性，其中 <span class="math inline">\([x]\)</span> 表示对 <span class="math inline">\(x\)</span> 向下取整。（10 分）</p>
+</section>
+<section id="section-5" class="level3">
+<h3 class="anchored" data-anchor-id="section-5">6 .</h3>
+<p>设 <span class="math inline">\(\begin{cases}x=t^2+t,\\e^{t+y}+ty-1=0\end{cases}\)</span> 确定函数 <span class="math inline">\(y=y(x)\)</span>，求 <span class="math inline">\(\displaystyle\left.\frac{d^2x}{dy^2}\right|_{t=0}\)</span>。（10 分）</p>
+</section>
+<section id="section-6" class="level3">
+<h3 class="anchored" data-anchor-id="section-6">7 .</h3>
+<p>设 <span class="math inline">\(f_n(x)=(x-\pi)^ne^{2x}\cos x\)</span>，求 <span class="math inline">\(f_n^{(n)}(\pi)\ (n\in\mathbb N_+)\)</span>。（8 分）</p>
+</section>
+<section id="section-7" class="level3">
+<h3 class="anchored" data-anchor-id="section-7">8 .</h3>
+<p>已知心形线 <span class="math inline">\(r=2(1+\cos\theta)\ (0\le\theta&lt;2\pi)\)</span>，是否存在曲线上的一点，该点处的切线和极半径垂直。若存在，求出该点坐标和该点处切线的方程（均在直角坐标系下给出）；若不存在，请说明理由。（8 分）</p>
+</section>
+<section id="section-8" class="level3">
+<h3 class="anchored" data-anchor-id="section-8">9 .</h3>
+<p>设 <span class="math inline">\(f(x)\)</span> 在 <span class="math inline">\([a,b]\)</span> 上连续，<span class="math inline">\(x_1,x_2,\ldots,x_n\)</span> 是 <span class="math inline">\([a,b]\)</span> 上的一个点列，求 <span class="math inline">\(\displaystyle\lim_{n\to\infty}\sqrt[n]{\frac1n\sum_{k=1}^ne^{f(x_k)}}\)</span>。（5 分）</p>
+</section>
+<section id="section-9" class="level3">
+<h3 class="anchored" data-anchor-id="section-9">10 .</h3>
+<p>从以下 A/B 两个问题中选择一个作答，如都作答则取高分计入总分。（5 分） <strong>A.</strong>&nbsp;设 <span class="math inline">\(f(x)\)</span> 连续，<span class="math inline">\(f'(0)\)</span> 存在。对于任意 <span class="math inline">\(x,y\in\mathbb R\)</span>，</p>
+<p><span class="math display">\[f(x+y)=\frac{f(x)+f(y)}{1-4f(x)f(y)}.\]</span> 证明 <span class="math inline">\(f(x)\)</span> 在 <span class="math inline">\(\mathbb R\)</span> 上可导。</p>
+<p><strong>B.</strong>&nbsp;设 <span class="math inline">\(a_1,a_2,\ldots,a_n\)</span> 为常数，记</p>
+<p><span class="math display">\[f(x)=\sum_{k=1}^na_k\sin kx,\qquad g(x)=\sum_{j=1}^na_{n-j+1}\sin jx.\]</span> 已知 <span class="math inline">\(|f(x)|\le|\sin x|\)</span>，<span class="math inline">\(|g(x)|\le|\sin x|\)</span>，求证</p>
+<p><span class="math display">\[\left|\sum_{k=1}^na_k\right|\le\frac{2}{n+1}.\]</span> 【提示：考虑 <span class="math inline">\(f'(0),g'(0)\)</span>。】</p>
+</section>
+<section id="section-10" class="level3">
+<h3 class="anchored" data-anchor-id="section-10">11 .</h3>
+<p>已知数列 <span class="math inline">\(\{x_n\}\)</span> 满足 <span class="math inline">\(x_n\in(0,\frac\pi2)\)</span>，<span class="math inline">\(x_1=\frac\pi4\)</span>，<span class="math inline">\(\sin x_n=x_n\cos x_{n+1}\)</span>。（5 分） （1）证明 <span class="math inline">\(\displaystyle\lim_{n\to\infty}x_n\)</span> 存在并求其值。</p>
+<p>（2）求 <span class="math inline">\(\displaystyle\lim_{n\to\infty}(\cos x_{n+1})^{1/x_n^2}\)</span>。</p>
+</section>
+<section id="section-11" class="level3">
+<h3 class="anchored" data-anchor-id="section-11">12 .</h3>
+<p>设函数 <span class="math inline">\(f(x)\)</span> 满足对于任意 <span class="math inline">\(x\in[a,b]\)</span>，都有 <span class="math inline">\(f(x)\in[a,b]\)</span>。且存在常数 <span class="math inline">\(k\in(0,1)\)</span>，对于任意 <span class="math inline">\(x_1,x_2\in[a,b]\)</span>，都有 <span class="math inline">\(|f(x_2)-f(x_1)|\le k|x_2-x_1|\)</span>。证明：（5 分） （1）存在唯一 <span class="math inline">\(\xi\in[a,b]\)</span> 使得 <span class="math inline">\(f(\xi)=\xi\)</span>。</p>
+<p>（2）对于任意 <span class="math inline">\(x_0\in[a,b]\)</span>，定义 <span class="math inline">\(x_{n+1}=f(x_n)\ (n\in\mathbb N)\)</span>。证明 <span class="math inline">\(\{x_n\}\)</span> 收敛且 <span class="math inline">\(\displaystyle\lim_{n\to\infty}x_n=\xi\)</span>。</p>
+</section>
+<section id="附加题-." class="level3">
+<h3 class="anchored" data-anchor-id="附加题-.">附加题 .</h3>
+<p>&nbsp;设奇函数 <span class="math inline">\(f(x)\)</span> 在 <span class="math inline">\([-1,1]\)</span> 上二阶可导，证明：存在 <span class="math inline">\(\xi\in(-1,1)\)</span> 使得 <span class="math inline">\(f''(\xi)-f'(\xi)+f(1)=0\)</span>。（5 分）</p>
+</section>
+</section>
+<section id="solutions" class="level2">
+<h2 class="anchored" data-anchor-id="solutions">第二部分：详细解析</h2>
+<section id="answer-1" class="level3">
+<h3 class="anchored" data-anchor-id="answer-1">1. 极限计算</h3>
+<p>（1）记 <span class="math inline">\(u=x\ln\frac{2+\cos x}{3}\)</span>，则 <span class="math inline">\(u\sim-x^3/6\)</span>。因此 <span class="math display">\[
+\lim_{x\to0}\frac{e^u-1}{x^3}
+=\lim_{x\to0}\frac{e^u-1}{u}\frac{u}{x^3}=-\frac16.
+\]</span> （2）分子、分母同除以 <span class="math inline">\(-x&gt;0\)</span>，得 <span class="math display">\[
+\lim_{x\to-\infty}\frac{-1-1/x}{\sqrt{1-\sin x/x^2+1/x^2}+\sqrt{1+\sin x/x^2+1/x^2}}=-\frac12.
+\]</span></p>
+</section>
+<section id="answer-2" class="level3">
+<h3 class="anchored" data-anchor-id="answer-2">2. 数列极限</h3>
+<p>（1）利用正切函数的周期性和有理化， <span class="math display">\[
+n\tan\!\left(\pi\sqrt{n^2+2026}\right)
+=n\tan\frac{2026\pi}{\sqrt{n^2+2026}+n}\longrightarrow1013\pi.
+\]</span> （2）由 <span class="math inline">\(n^k&lt;n^k+1\le(n+1)^k\)</span>，有 <span class="math display">\[
+\frac1{n+1}\le(n^k+1)^{-1/k}&lt;\frac1n.
+\]</span> 求和得 <span class="math inline">\(\frac n{n+1}\le\sum_{k=1}^n(n^k+1)^{-1/k}&lt;1\)</span>，由夹逼定理，极限为 <span class="math inline">\(1\)</span>。</p>
+</section>
+<section id="answer-3" class="level3">
+<h3 class="anchored" data-anchor-id="answer-3">3. 参数与有限极限</h3>
+<p>为使根式在充分大的 <span class="math inline">\(x\)</span> 处有意义，须有 <span class="math inline">\(c\ge0\)</span>。又 <span class="math display">\[
+\sqrt{4x^3+ax^2+x}=2x^{3/2}+\frac a4x^{1/2}+O(x^{-1/2}).
+\]</span> 若 <span class="math inline">\(c&gt;0\)</span>，分母为 <span class="math inline">\(\sqrt c\,x^{1/2}(1+o(1))\)</span>，故有限极限存在当且仅当 <span class="math inline">\(b=-2\)</span>，此时极限为 <span class="math inline">\(a/(4\sqrt c)\)</span>，<span class="math inline">\(a\)</span> 任意。</p>
+<p>若 <span class="math inline">\(c=0\)</span>，分母为 <span class="math inline">\(1\)</span>，须先有 <span class="math inline">\(b=-2\)</span>，再有 <span class="math inline">\(a=0\)</span>。此时 <span class="math display">\[
+\sqrt{4x^3+x}-2x^{3/2}
+=\frac{x}{\sqrt{4x^3+x}+2x^{3/2}}\longrightarrow0.
+\]</span> 因此条件为 <span class="math inline">\(b=-2,c&gt;0,a\in\mathbb R\)</span>，或 <span class="math inline">\(a=c=0,b=-2\)</span>；对应极限分别为 <span class="math inline">\(a/(4\sqrt c)\)</span> 和 <span class="math inline">\(0\)</span>。</p>
+</section>
+<section id="answer-4" class="level3">
+<h3 class="anchored" data-anchor-id="answer-4">4. 间断点分类</h3>
+<p>可能的间断点为 <span class="math inline">\(0,1,k\pi-1\ (k\in\mathbb Z)\)</span>。</p>
+<ul>
+<li>在 <span class="math inline">\(x=0\)</span>，右极限为 <span class="math inline">\(1/\sin1\)</span>，左极限为 <span class="math inline">\(-1/\sin1\)</span>，是第一类跳跃间断点。</li>
+<li>在 <span class="math inline">\(x=1\)</span>，由 <span class="math inline">\(1-e^{1/x-1}\sim x-1\)</span>，得 <span class="math inline">\(\lim_{x\to1}f(x)=4/\sin2\)</span>，是第一类可去间断点。</li>
+<li>在 <span class="math inline">\(x=-1\)</span>，由 <span class="math inline">\((x+1)/\sin(x+1)\to1\)</span>，得极限 <span class="math inline">\(-2(e+e^{-1})/(e-e^{-1})\)</span>，是第一类可去间断点。</li>
+<li>在 <span class="math inline">\(x=k\pi-1\ (k\ne0)\)</span>，其余因子均有限且非零，而 <span class="math inline">\(\sin(x+1)\to0\)</span>，故 <span class="math inline">\(|f(x)|\to+\infty\)</span>，是第二类无穷间断点。</li>
+</ul>
+</section>
+<section id="answer-5" class="level3">
+<h3 class="anchored" data-anchor-id="answer-5">5. 极限定义函数的连续性与可导性</h3>
+<p>分别考虑 <span class="math inline">\(x&lt;0,x=0,x&gt;0\)</span>，得 <span class="math display">\[
+f(x)=\begin{cases}x^2,&amp;x\le0,\\x\lfloor x\rfloor,&amp;x&gt;0.\end{cases}
+\]</span> 在 <span class="math inline">\(x=0\)</span>，左右极限均为 <span class="math inline">\(0\)</span>，左右导数也均为 <span class="math inline">\(0\)</span>。在 <span class="math inline">\(0&lt;x&lt;1\)</span> 上 <span class="math inline">\(f(x)=0\)</span>；在 <span class="math inline">\((k,k+1)\)</span> 上 <span class="math inline">\(f(x)=kx\)</span>，其中 <span class="math inline">\(k\in\mathbb N_+\)</span>。</p>
+<p>对正整数 <span class="math inline">\(k\)</span>，左极限为 <span class="math inline">\(k(k-1)\)</span>，右极限及函数值为 <span class="math inline">\(k^2\)</span>，故是跳跃间断点，不可导。其余各点连续且可导，并且 <span class="math display">\[
+f'(x)=\begin{cases}2x,&amp;x&lt;0,\\0,&amp;0\le x&lt;1,\\k,&amp;k&lt;x&lt;k+1,\ k\in\mathbb N_+.\end{cases}
+\]</span></p>
+</section>
+<section id="answer-6" class="level3">
+<h3 class="anchored" data-anchor-id="answer-6">6. 参数二阶导数</h3>
+<p>由 <span class="math inline">\(t=0\)</span> 得 <span class="math inline">\(x=0,y=0\)</span>，且 <span class="math inline">\(x'=2t+1,x''=2\)</span>。对 <span class="math inline">\(e^{t+y}+ty-1=0\)</span> 关于 <span class="math inline">\(t\)</span> 求导， <span class="math display">\[
+e^{t+y}(1+y')+y+ty'=0,
+\]</span> 故 <span class="math inline">\(y'(0)=-1\)</span>。再次求导， <span class="math display">\[
+e^{t+y}(1+y')^2+e^{t+y}y''+2y'+ty''=0,
+\]</span> 得 <span class="math inline">\(y''(0)=2\)</span>。于是 <span class="math display">\[
+\left.\frac{d^2x}{dy^2}\right|_{t=0}
+=\left.\frac{x''y'-x'y''}{(y')^3}\right|_{t=0}=4.
+\]</span></p>
+</section>
+<section id="answer-7" class="level3">
+<h3 class="anchored" data-anchor-id="answer-7">7. 高阶导数</h3>
+<p>由莱布尼茨公式，<span class="math inline">\(n\)</span> 阶求导后在 <span class="math inline">\(x=\pi\)</span> 处，只有 <span class="math inline">\((x-\pi)^n\)</span> 被求导 <span class="math inline">\(n\)</span> 次的一项不为零。因此 <span class="math display">\[
+f_n^{(n)}(\pi)=n!e^{2\pi}\cos\pi=-n!e^{2\pi}.
+\]</span></p>
+</section>
+<section id="answer-8" class="level3">
+<h3 class="anchored" data-anchor-id="answer-8">8. 心形线的切线</h3>
+<p>令 <span class="math inline">\(\boldsymbol r(\theta)=r(\theta)(\cos\theta,\sin\theta)\)</span>，则 <span class="math display">\[
+\boldsymbol r\cdot\boldsymbol r'=rr'.
+\]</span> 在非原点处，切线与极半径垂直等价于 <span class="math inline">\(r'=0\)</span>。由 <span class="math inline">\(r'=-2\sin\theta\)</span>，得 <span class="math inline">\(\theta=0\)</span> 或 <span class="math inline">\(\pi\)</span>。当 <span class="math inline">\(\theta=\pi\)</span> 时 <span class="math inline">\(r=0\)</span>，极半径无方向，舍去。</p>
+<p>当 <span class="math inline">\(\theta=0\)</span> 时，对应点 <span class="math inline">\((4,0)\)</span>，且 <span class="math display">\[
+x'(0)=0,\qquad y'(0)=4\ne0.
+\]</span> 故存在满足条件的点 <span class="math inline">\((4,0)\)</span>，其切线为 <span class="math inline">\(x=4\)</span>。</p>
+</section>
+<section id="answer-9" class="level3">
+<h3 class="anchored" data-anchor-id="answer-9">9. 有界性与夹逼定理</h3>
+<p>由闭区间连续函数的有界性，存在 <span class="math inline">\(m,M\)</span>，使得 <span class="math inline">\(m\le f(x)\le M\)</span>。于是 <span class="math display">\[
+e^m\le\frac1n\sum_{k=1}^ne^{f(x_k)}\le e^M,
+\qquad
+e^{m/n}\le\sqrt[n]{\frac1n\sum_{k=1}^ne^{f(x_k)}}\le e^{M/n}.
+\]</span> 两端均趋于 <span class="math inline">\(1\)</span>，故所求极限为 <span class="math inline">\(1\)</span>。</p>
+</section>
+<section id="answer-10" class="level3">
+<h3 class="anchored" data-anchor-id="answer-10">10. 函数方程与三角多项式</h3>
+<p><strong>A.</strong> 令 <span class="math inline">\(x=y=0\)</span>，得 <span class="math inline">\(f(0)[1+4f^2(0)]=0\)</span>，故 <span class="math inline">\(f(0)=0\)</span>。任取 <span class="math inline">\(x\in\mathbb R\)</span>，由函数方程得 <span class="math display">\[
+\frac{f(x+h)-f(x)}h
+=\frac{f(h)}h\cdot\frac{1+4f^2(x)}{1-4f(x)f(h)}.
+\]</span> 当 <span class="math inline">\(h\to0\)</span> 时，<span class="math inline">\(f(h)\to0\)</span>，<span class="math inline">\(f(h)/h\to f'(0)\)</span>，所以 <span class="math display">\[
+f'(x)=f'(0)[1+4f^2(x)].
+\]</span> 因此 <span class="math inline">\(f\)</span> 在 <span class="math inline">\(\mathbb R\)</span> 上可导。</p>
+<p><strong>B.</strong> 由 <span class="math inline">\(f(0)=g(0)=0\)</span> 及题设不等式，得 <span class="math inline">\(|f'(0)|\le1,|g'(0)|\le1\)</span>。又 <span class="math display">\[
+f'(0)=\sum_{k=1}^nka_k,\qquad
+g'(0)=\sum_{k=1}^n(n-k+1)a_k,
+\]</span> 故 <span class="math display">\[
+\left|\sum_{k=1}^na_k\right|
+=\frac{|f'(0)+g'(0)|}{n+1}\le\frac2{n+1}.
+\]</span></p>
+</section>
+<section id="answer-11" class="level3">
+<h3 class="anchored" data-anchor-id="answer-11">11. 隐式递推数列</h3>
+<p>（1）对 <span class="math inline">\(0&lt;x&lt;\pi/2\)</span>，有 <span class="math inline">\(\tan x&gt;x\)</span>，所以 <span class="math display">\[
+\cos x_{n+1}=\frac{\sin x_n}{x_n}&gt;\cos x_n.
+\]</span> 余弦函数在该区间严格递减，故 <span class="math inline">\(x_{n+1}&lt;x_n\)</span>。数列有下界 <span class="math inline">\(0\)</span>，因而收敛。设极限为 <span class="math inline">\(A\in[0,\pi/4]\)</span>，取极限得 <span class="math inline">\(\sin A=A\cos A\)</span>。若 <span class="math inline">\(A&gt;0\)</span>，则与 <span class="math inline">\(\tan A&gt;A\)</span> 矛盾，故 <span class="math inline">\(A=0\)</span>。</p>
+<p>（2）由 <span class="math inline">\(x_n\to0\)</span>， <span class="math display">\[
+\ln\left[(\cos x_{n+1})^{1/x_n^2}\right]
+=\frac{\ln(\sin x_n/x_n)}{x_n^2}\longrightarrow-\frac16,
+\]</span> 故所求极限为 <span class="math inline">\(e^{-1/6}\)</span>。</p>
+</section>
+<section id="answer-12" class="level3">
+<h3 class="anchored" data-anchor-id="answer-12">12. 压缩映射与不动点</h3>
+<p>（1）由 Lipschitz 条件可知 <span class="math inline">\(f\)</span> 连续。令 <span class="math inline">\(F(x)=f(x)-x\)</span>，则 <span class="math inline">\(F(a)\ge0,F(b)\le0\)</span>。由介值定理（含端点为零的情形），存在 <span class="math inline">\(\xi\in[a,b]\)</span> 使得 <span class="math inline">\(f(\xi)=\xi\)</span>。</p>
+<p>若另有 <span class="math inline">\(f(\eta)=\eta\)</span>，则 <span class="math display">\[
+|\xi-\eta|=|f(\xi)-f(\eta)|\le k|\xi-\eta|.
+\]</span> 由 <span class="math inline">\(k&lt;1\)</span>，得 <span class="math inline">\(\xi=\eta\)</span>，故不动点唯一。</p>
+<p>（2）由 <span class="math inline">\(f([a,b])\subset[a,b]\)</span>，迭代始终有定义，且 <span class="math display">\[
+|x_n-\xi|\le k|x_{n-1}-\xi|\le\cdots\le k^n|x_0-\xi|\longrightarrow0.
+\]</span> 故 <span class="math inline">\(x_n\to\xi\)</span>。</p>
+</section>
+<section id="answer-extra" class="level3">
+<h3 class="anchored" data-anchor-id="answer-extra">附加题. 中值定理与辅助函数</h3>
+<p>由奇性，<span class="math inline">\(f(0)=0,f(-1)=-f(1)\)</span>。分别在 <span class="math inline">\([0,1]\)</span> 与 <span class="math inline">\([-1,0]\)</span> 上用拉格朗日中值定理，得 <span class="math inline">\(\theta_1\in(0,1)\)</span>、<span class="math inline">\(\theta_2\in(-1,0)\)</span>，满足 <span class="math display">\[
+f'(\theta_1)=f'(\theta_2)=f(1).
+\]</span> 令 <span class="math inline">\(F(x)=e^{-x}[f'(x)-f(1)]\)</span>，则 <span class="math inline">\(F(\theta_1)=F(\theta_2)=0\)</span>。由罗尔定理，存在 <span class="math inline">\(\xi\in(\theta_2,\theta_1)\)</span>，使得 <span class="math display">\[
+0=F'(\xi)=e^{-\xi}[f''(\xi)-f'(\xi)+f(1)].
+\]</span> 因此结论成立。</p>
+</section>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">第三部分：知识点总结</h2>
+<section id="答案与考点" class="level3">
+<h3 class="anchored" data-anchor-id="答案与考点">答案与考点</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>题号</th>
+<th>答案或结论</th>
+<th>考点</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="#answer-1">1</a></td>
+<td><span class="math inline">\(-1/6\)</span>；<span class="math inline">\(-1/2\)</span></td>
+<td>等价无穷小、无穷远极限</td>
+</tr>
+<tr class="even">
+<td><a href="#answer-2">2</a></td>
+<td><span class="math inline">\(1013\pi\)</span>；<span class="math inline">\(1\)</span></td>
+<td>周期性、有理化、夹逼</td>
+</tr>
+<tr class="odd">
+<td><a href="#answer-3">3</a></td>
+<td><span class="math inline">\(b=-2,c&gt;0\)</span> 时为 <span class="math inline">\(a/(4\sqrt c)\)</span>；<span class="math inline">\(a=c=0,b=-2\)</span> 时为 <span class="math inline">\(0\)</span></td>
+<td>参数消项、有限极限</td>
+</tr>
+<tr class="even">
+<td><a href="#answer-4">4</a></td>
+<td><span class="math inline">\(0\)</span> 跳跃；<span class="math inline">\(\pm1\)</span> 可去；<span class="math inline">\(k\pi-1\ (k\ne0)\)</span> 无穷</td>
+<td>间断点分类</td>
+</tr>
+<tr class="odd">
+<td><a href="#answer-5">5</a></td>
+<td>正整数处不连续、不可导，其余点连续可导</td>
+<td>取整函数、左右导数</td>
+</tr>
+<tr class="even">
+<td><a href="#answer-6">6</a></td>
+<td><span class="math inline">\(4\)</span></td>
+<td>参数与隐函数二阶求导</td>
+</tr>
+<tr class="odd">
+<td><a href="#answer-7">7</a></td>
+<td><span class="math inline">\(-n!e^{2\pi}\)</span></td>
+<td>莱布尼茨公式</td>
+</tr>
+<tr class="even">
+<td><a href="#answer-8">8</a></td>
+<td><span class="math inline">\((4,0)\)</span>；<span class="math inline">\(x=4\)</span></td>
+<td>极坐标切线</td>
+</tr>
+<tr class="odd">
+<td><a href="#answer-9">9</a></td>
+<td><span class="math inline">\(1\)</span></td>
+<td>连续函数有界性、夹逼</td>
+</tr>
+<tr class="even">
+<td><a href="#answer-10">10</a></td>
+<td>A：<span class="math inline">\(f'(x)=f'(0)(1+4f^2(x))\)</span>；B：<span class="math inline">\(2/(n+1)\)</span></td>
+<td>导数定义、系数求和</td>
+</tr>
+<tr class="odd">
+<td><a href="#answer-11">11</a></td>
+<td><span class="math inline">\(0\)</span>；<span class="math inline">\(e^{-1/6}\)</span></td>
+<td>单调有界、幂指极限</td>
+</tr>
+<tr class="even">
+<td><a href="#answer-12">12</a></td>
+<td>唯一不动点，迭代收敛于该点</td>
+<td>压缩映射</td>
+</tr>
+<tr class="odd">
+<td><a href="#answer-extra">附加题</a></td>
+<td>存在 <span class="math inline">\(\xi\in(-1,1)\)</span> 满足题设等式</td>
+<td>中值定理、辅助函数</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="复习要点" class="level3">
+<h3 class="anchored" data-anchor-id="复习要点">复习要点</h3>
+<ul>
+<li>幂指极限先取对数；出现相减消项时，保留足够阶数。</li>
+<li>间断点检查原表达式的全部无定义点，分别计算左右极限。</li>
+<li>参数二阶求导须区分 <span class="math inline">\(d^2x/dy^2\)</span> 与 <span class="math inline">\(d^2y/dx^2\)</span>。</li>
+<li>极坐标切线同时检查竖直切线与原点处的退化情形。</li>
+<li>数列先证收敛，再对递推式取极限。</li>
+<li>出现 <span class="math inline">\(f''-f'\)</span> 时，可考虑 <span class="math inline">\(e^{-x}(f'-C)\)</span>。</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<section id="comments" class="comments-section" aria-labelledby="comments-heading">
+  <h2 id="comments-heading">评论</h2>
+  <p id="comments-status">评论暂未开放。</p>
+  <div class="giscus"></div>
+</section>
+<script src="../../assets/comments-config.js?v=0740342d2f79"></script>
+<script src="../../assets/comments.js?v=efc269bc7855"></script>
+
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "已复制");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "已复制");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/easoncyy\.github\.io");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p><a href="../../posts/20261101-calculus-midterm-yangli-mock/index.html">~/notes</a> · 记录与探索</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p><a class="footer-repository" href="https://github.com/easoncyy/easoncyy.github.io" target="_blank" rel="noopener noreferrer" aria-label="查看本站 GitHub 仓库"><i class="bi bi-github" aria-hidden="true"></i><span>source/</span></a><span class="footer-builder">Built with Quarto</span></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

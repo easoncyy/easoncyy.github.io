@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="个人笔记">
+<meta name="description" content="树的表示、递归与显式栈遍历、层序遍历，以及二叉搜索树的查找、插入与删除。">
+
+<title>FIP W11 · 树及其遍历 – 个人笔记</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/favicon.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-a7952132dd87ce33f437addd0578540c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-dc090d8f6625c822698d9a6ee9cd1ac5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "没有结果",
+    "search-matching-documents-text": "匹配的文档",
+    "search-copy-link-title": "复制搜索链接",
+    "search-hide-matches-text": "隐藏其它匹配结果",
+    "search-more-match-text": "更多匹配结果",
+    "search-more-matches-text": "更多匹配结果",
+    "search-clear-button-title": "清除",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "取消",
+    "search-submit-button-title": "提交",
+    "search-label": "搜索"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script defer="" src="../../assets/directory.js?v=05751f758f0b"></script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="../../assets/vendor/mathjax/tex-svg-full.js?v=a4354ff94fd8" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css?v=83131ce44c97">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/logo.svg" alt="Ce · easoncyy" class="navbar-logo light-content">
+    <img src="../../assets/logo.svg" alt="Ce · easoncyy" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">~/notes</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="搜索"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="展开或折叠导航栏" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html"> 
+<span class="menu-text"><span class="nav-path">blog/</span><span class="nav-caption">博客</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../problems.html"> 
+<span class="menu-text"><span class="nav-path">problems/</span><span class="nav-caption">每日好题</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../projects.html"> 
+<span class="menu-text"><span class="nav-path">projects/</span><span class="nav-caption">项目</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../log.html"> 
+<span class="menu-text"><span class="nav-path">log/</span><span class="nav-caption">日志</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../links.html"> 
+<span class="menu-text"><span class="nav-path">links/</span><span class="nav-caption">友链</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../library.html"> 
+<span class="menu-text"><span class="nav-path">library/</span><span class="nav-caption">图书馆</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text"><span class="nav-path">about/</span><span class="nav-caption">关于</span></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">本页目录</h2>
+   
+  <ul>
+  <li><a href="#理论课内容" id="toc-理论课内容" class="nav-link active" data-scroll-target="#理论课内容">理论课内容</a>
+  <ul class="collapse">
+  <li><a href="#recap" id="toc-recap" class="nav-link" data-scroll-target="#recap">Recap</a></li>
+  <li><a href="#树" id="toc-树" class="nav-link" data-scroll-target="#树">树</a></li>
+  <li><a href="#树的遍历" id="toc-树的遍历" class="nav-link" data-scroll-target="#树的遍历">树的遍历</a></li>
+  <li><a href="#树递归的调用栈" id="toc-树递归的调用栈" class="nav-link" data-scroll-target="#树递归的调用栈">树递归的调用栈</a></li>
+  <li><a href="#二叉搜索树bst" id="toc-二叉搜索树bst" class="nav-link" data-scroll-target="#二叉搜索树bst">二叉搜索树（BST）</a></li>
+  </ul></li>
+  <li><a href="#阅读材料补充" id="toc-阅读材料补充" class="nav-link" data-scroll-target="#阅读材料补充">阅读材料补充</a>
+  <ul class="collapse">
+  <li><a href="#一般树与二叉树" id="toc-一般树与二叉树" class="nav-link" data-scroll-target="#一般树与二叉树">一般树与二叉树</a></li>
+  <li><a href="#结点数叶子数与高度" id="toc-结点数叶子数与高度" class="nav-link" data-scroll-target="#结点数叶子数与高度">结点数、叶子数与高度</a></li>
+  </ul></li>
+  <li><a href="#研讨课内容" id="toc-研讨课内容" class="nav-link" data-scroll-target="#研讨课内容">研讨课内容</a>
+  <ul class="collapse">
+  <li><a href="#组织架构建模" id="toc-组织架构建模" class="nav-link" data-scroll-target="#组织架构建模">组织架构建模</a></li>
+  <li><a href="#遍历手推" id="toc-遍历手推" class="nav-link" data-scroll-target="#遍历手推">遍历手推</a></li>
+  <li><a href="#bst项目构建查找与删除" id="toc-bst项目构建查找与删除" class="nav-link" data-scroll-target="#bst项目构建查找与删除">BST项目：构建、查找与删除</a></li>
+  <li><a href="#查找策略与检查" id="toc-查找策略与检查" class="nav-link" data-scroll-target="#查找策略与检查">查找策略与检查</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">FIP W11 · 树及其遍历</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">学习笔记</div>
+    <div class="quarto-category">数据结构</div>
+    <div class="quarto-category">树</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    树的表示、递归与显式栈遍历、层序遍历，以及二叉搜索树的查找、插入与删除。
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">作者</div>
+    <div class="quarto-title-meta-contents">
+             <p>个人笔记 </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">发布于</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2026年11月24日</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="理论课内容" class="level2">
+<h2 class="anchored" data-anchor-id="理论课内容">理论课内容</h2>
+<p>课程材料：26FIP11 树及其遍历.pdf</p>
+<section id="recap" class="level3">
+<h3 class="anchored" data-anchor-id="recap">Recap</h3>
+<p>容器(Container)和数据结构(Data Structure)：描述的东西差不多，只是从不同的维度出发。 当前我们学过的数据结构：</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 35%">
+<col style="width: 35%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>DS</th>
+<th>array</th>
+<th>linked list</th>
+<th>hash</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Python type</td>
+<td>list(tuple)</td>
+<td>deque</td>
+<td>set/dict</td>
+</tr>
+<tr class="even">
+<td>拓展实现</td>
+<td>stack/queue/deque/cq/pq</td>
+<td>stack/queue/deque/cq/pq</td>
+<td>/</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="树" class="level3">
+<h3 class="anchored" data-anchor-id="树">树</h3>
+<section id="树的概念" class="level4">
+<h4 class="anchored" data-anchor-id="树的概念">树的概念</h4>
+<p>描述层次关系的数据结构。树中有一些关键的术语：</p>
+<ul>
+<li>根：最顶端结点，无父结点</li>
+<li>叶子：没有后代的结点</li>
+<li>深度：某个结点到根的距离</li>
+<li>高度：某结点到其最远叶子的路径边数；整棵树的高度是根结点的高度</li>
+<li>子结点：直接下层</li>
+<li>父结点：直接上层</li>
+<li>子树：以某个结点为根的整颗树 <img src="images/tree-diagram.png" class="img-fluid"></li>
+</ul>
+<p>深度和高度都按 <strong>边数</strong> 计算：根的深度为0，叶子的高度为0；只有根的树高度为0。同一父结点的子结点称为兄弟。非空树有 <span class="math inline">\(n\)</span> 个结点时，有 <span class="math inline">\(n-1\)</span> 条边。</p>
+</section>
+<section id="python中树的表示" class="level4">
+<h4 class="anchored" data-anchor-id="python中树的表示">Python中树的表示</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TreeNode:</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, val):</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.val <span class="op">=</span> val</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.children <span class="op">=</span> []</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> height(<span class="va">self</span>):</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> <span class="va">self</span>.children:</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="dv">0</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">1</span> <span class="op">+</span> <span class="bu">max</span>(child.height() <span class="cf">for</span> child <span class="kw">in</span> <span class="va">self</span>.children)</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p>数据结构的实现是基于它要实现什么功能而设计的，对于树，我们可以让结点记录父结点，也可以不需要，取决于用途。</p>
+</blockquote>
+<p>一般树的叶子仍是一个结点，只是 <code>children == []</code>，因此高度函数判断 <code>not self.children</code>；<code>None</code> 表示没有结点，是另一种情况。遍历一般树时依次递归 <code>children</code> 中的每个孩子。</p>
+</section>
+<section id="二叉树binary-tree" class="level4">
+<h4 class="anchored" data-anchor-id="二叉树binary-tree">二叉树(Binary Tree)</h4>
+<p>二叉树每个结点最多有两个子结点，称为左子结点和右子结点。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TreeNode:</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, val):</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.val <span class="op">=</span> val</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.left <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.right <span class="op">=</span> <span class="va">None</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>left</code>和<code>right</code>是对子结点的引用，在没有对应子结点的时候值为<code>None</code>。</p>
+</section>
+</section>
+<section id="树的遍历" class="level3">
+<h3 class="anchored" data-anchor-id="树的遍历">树的遍历</h3>
+<section id="前序遍历根-左-右" class="level4">
+<h4 class="anchored" data-anchor-id="前序遍历根-左-右">前序遍历（根-&gt;左-&gt;右）</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> preorder(node):</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> node: <span class="cf">return</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(node.val, end<span class="op">=</span><span class="st">' '</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    preorder(node.left)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    preorder(node.right)</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>前序遍历的例子可以考虑复制文件夹的过程，在备份文件夹的时候我们总是先创建父结点，再在其中复制入子结点。这就要求先创建根。</p>
+</section>
+<section id="中序遍历左-根-右" class="level4">
+<h4 class="anchored" data-anchor-id="中序遍历左-根-右">中序遍历（左-&gt;根-&gt;右）</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> inorder(node): </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> node: <span class="cf">return</span> </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    inorder(node.left)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(node.val, end<span class="op">=</span><span class="st">' '</span>) </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    inorder(node.right) </span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>中序遍历可以用于<strong>BST(二叉搜索树)</strong>，定义左子树值&lt;根&lt;右子树值，在从小到大遍历所有值的时候就需要使用中序遍历。</p>
+</section>
+<section id="后序遍历左-右-根" class="level4">
+<h4 class="anchored" data-anchor-id="后序遍历左-右-根">后序遍历（左-&gt;右-&gt;根）</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> postorder(node): </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> node: <span class="cf">return</span> </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    postorder(node.left) </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    postorder(node.right) </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(node.val, end<span class="op">=</span><span class="st">' '</span>)</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>后序遍历可以实现汇总与拆除。在右键文件夹看总大小的时候，需要遍历完所有子结点才可以返回总的文件夹大小。删除文件夹也是同理，使用后序遍历清空完所有子文件夹后才能删除根文件夹。</p>
+</section>
+</section>
+<section id="树递归的调用栈" class="level3">
+<h3 class="anchored" data-anchor-id="树递归的调用栈">树递归的调用栈</h3>
+<p>树状递归不能简单地改造为循环，我们要考虑递归调用栈的本质。三种DFS遍历的递归，本质上都是在使用<strong>栈</strong>，只是Python自动维护了<strong>调用栈</strong>：</p>
+<ul>
+<li>进入<code>preorder(left)</code>-&gt;压栈</li>
+<li>函数返回-&gt;弹栈 把<strong>隐式调用栈</strong>改为<strong>显式调用栈</strong>就可以写出非递归的循环版本，可以避免遍历深度很大的树时导致递归栈溢出。</li>
+</ul>
+<section id="前序显式栈" class="level4">
+<h4 class="anchored" data-anchor-id="前序显式栈">前序·显式栈</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> preorder_stack(root):</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> root:</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    stack <span class="op">=</span> [root]</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> stack:</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        node <span class="op">=</span> stack.pop()</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(node.val, end<span class="op">=</span><span class="st">' '</span>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> node.right: stack.append(node.right)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> node.left: stack.append(node.left)</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>先压右子树，再压左子树，<strong>LIFO</strong>保证出栈顺序根左右。</p>
+</section>
+<section id="中序显式栈" class="level4">
+<h4 class="anchored" data-anchor-id="中序显式栈">中序·显式栈</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> inorder_stack(root):</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    stack, node <span class="op">=</span> [], root</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> stack <span class="kw">or</span> node:</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> node:<span class="co"># 走到最左端叶子结点，同时把路过的根节点入栈</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>            stack.append(node)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>            node <span class="op">=</span> node.left</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        node <span class="op">=</span> stack.pop()</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(node.val, end<span class="op">=</span><span class="st">' '</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        node <span class="op">=</span> node.right</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>        </span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="后序显式栈" class="level4">
+<h4 class="anchored" data-anchor-id="后序显式栈">后序·显式栈</h4>
+<p>后序要求左右子树都访问完，最后才访问根。<strong>双栈法</strong> 先生成“根→右→左”的顺序，再整体反转，得到“左→右→根”。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>阶段</th>
+<th>操作</th>
+<th>顺序</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>栈1压入孩子</td>
+<td>先压左，再压右</td>
+<td>右孩子在栈顶，先弹出</td>
+</tr>
+<tr class="even">
+<td>栈1弹出，暂存到栈2</td>
+<td>根先暂存，再处理右子树、左子树</td>
+<td>根→右→左</td>
+</tr>
+<tr class="odd">
+<td>栈2弹出并打印</td>
+<td>把暂存顺序反转</td>
+<td>左→右→根</td>
+</tr>
+</tbody>
+</table>
+<p>这里的“左、右”指整棵子树。<code>s2.append(node)</code> 只是暂存，并没有访问输出；最后的 <code>print</code> 才是访问结点。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> postorder_stack(root):</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> root:</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    s1, s2 <span class="op">=</span> [root], []</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> s1:</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>        node <span class="op">=</span> s1.pop()</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>        s2.append(node)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> node.left: s1.append(node.left)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> node.right: s1.append(node.right)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> s2:</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(s2.pop().val, end<span class="op">=</span><span class="st">' '</span>)</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    </span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="逐句理解第一轮循环" class="level5">
+<h5 class="anchored" data-anchor-id="逐句理解第一轮循环">逐句理解第一轮循环</h5>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> s1:                       <span class="co"># 还有待处理结点</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    node <span class="op">=</span> s1.pop()              <span class="co"># 从栈1取一个结点</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    s2.append(node)              <span class="co"># 暂存到栈2，暂不打印</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> node.left:</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        s1.append(node.left)    <span class="co"># 先放左孩子</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> node.right:</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>        s1.append(node.right)   <span class="co"># 后放右孩子，下一轮先取右</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>append</code> 放到列表末尾，<code>pop()</code> 从末尾取出，因此栈顶写在最右边。以这棵树为例：</p>
+<pre class="text"><code>    A
+   / \
+  B   C</code></pre>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>每轮结束</th>
+<th><code>s1</code>（底→顶）</th>
+<th><code>s2</code>（底→顶）</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>初始</td>
+<td><code>[A]</code></td>
+<td><code>[]</code></td>
+</tr>
+<tr class="even">
+<td>弹出A，暂存A，先压B再压C</td>
+<td><code>[B,C]</code></td>
+<td><code>[A]</code></td>
+</tr>
+<tr class="odd">
+<td>弹出C，暂存C；C无孩子</td>
+<td><code>[B]</code></td>
+<td><code>[A,C]</code></td>
+</tr>
+<tr class="even">
+<td>弹出B，暂存B；B无孩子</td>
+<td><code>[]</code></td>
+<td><code>[A,C,B]</code></td>
+</tr>
+</tbody>
+</table>
+<p>栈1为空后，第二个 <code>while</code> 从栈2依次弹出 <code>B、C、A</code>，才真正打印后序结果。</p>
+<p>再看课件的5结点树：<code>1</code> 的左右孩子为 <code>2、3</code>，<code>2</code> 的左右孩子为 <code>4、5</code>。放入栈2的顺序是 <code>1,3,2,5,4</code>，反向弹出为 <code>4,5,2,3,1</code>。第二个栈反转的是 <strong>整个序列</strong>，子树内部顺序也随之反转。</p>
+</section>
+</section>
+<section id="层序遍历按层bfs" class="level4">
+<h4 class="anchored" data-anchor-id="层序遍历按层bfs">层序遍历：按层BFS</h4>
+<p>除了上述的遍历方法，还有按照层从左到右的访问方法，即层序遍历：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> deque</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> level_order(root):</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> root:</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    q <span class="op">=</span> deque([root])</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> q:</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>        node <span class="op">=</span> q.popleft()</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(node.val, end<span class="op">=</span><span class="st">' '</span>)</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> node.left:</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>            q.append(node.left)</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> node.right:</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>            q.append(node.right)</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>先到的结点先展开，孩子排在队尾，因此同层结点从左到右访问。用 <code>pop()</code> 会变成栈；<code>list.pop(0)</code> 每次需移动后续元素，不适合实现高效队列。</p>
+</section>
+<section id="四种遍历对照" class="level4">
+<h4 class="anchored" data-anchor-id="四种遍历对照">四种遍历对照</h4>
+<pre class="text"><code>    1
+   / \
+  2   3
+ / \
+4   5</code></pre>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>遍历</th>
+<th>顺序</th>
+<th>本例输出</th>
+<th>工具</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>前序</td>
+<td>根→左→右</td>
+<td><code>1 2 4 5 3</code></td>
+<td>调用栈 / 显式栈</td>
+</tr>
+<tr class="even">
+<td>中序</td>
+<td>左→根→右</td>
+<td><code>4 2 5 1 3</code></td>
+<td>调用栈 / 显式栈</td>
+</tr>
+<tr class="odd">
+<td>后序</td>
+<td>左→右→根</td>
+<td><code>4 5 2 3 1</code></td>
+<td>调用栈 / 双栈</td>
+</tr>
+<tr class="even">
+<td>层序</td>
+<td>按层从左到右</td>
+<td><code>1 2 3 4 5</code></td>
+<td>队列</td>
+</tr>
+</tbody>
+</table>
+<p>所有遍历都访问每个结点一次，时间为 <span class="math inline">\(O(n)\)</span>。递归DFS和中序显式栈辅助空间为 <span class="math inline">\(O(h+1)\)</span>；前序显式栈最坏也可达 <span class="math inline">\(O(h+1)\)</span>。后序双栈保存全部结点，空间为 <span class="math inline">\(O(n)\)</span>；层序队列空间为 <span class="math inline">\(O(w)\)</span>，其中 <span class="math inline">\(w\)</span> 是最大层宽。</p>
+<p>中序显式栈中，<code>while stack or node</code> 表示“还有未回访的祖先，或还有子树待走”；内层循环沿左链压栈，弹出后访问当前结点，再转向其右子树，并非只寻找整棵树最左侧的叶子。</p>
+</section>
+<section id="表达式树" class="level4">
+<h4 class="anchored" data-anchor-id="表达式树">表达式树</h4>
+<p>运算符作内部结点，操作数作叶子。例如 <code>(3+4)*2</code> 的根为 <code>*</code>，左子树为 <code>+</code>（孩子3、4），右孩子为2。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>遍历</th>
+<th>表达式形式</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>前序</td>
+<td>前缀</td>
+<td><code>* + 3 4 2</code></td>
+</tr>
+<tr class="even">
+<td>中序</td>
+<td>中缀</td>
+<td>需恢复括号：<code>((3+4)*2)</code></td>
+</tr>
+<tr class="odd">
+<td>后序</td>
+<td>后缀</td>
+<td><code>3 4 + 2 *</code></td>
+</tr>
+</tbody>
+</table>
+<p>只打印中序的符号会得到 <code>3+4*2</code>，改变原式含义，因此表达式树的中序需要适当加括号。后序可先计算左右子表达式，再在根执行运算。</p>
+</section>
+</section>
+<section id="二叉搜索树bst" class="level3">
+<h3 class="anchored" data-anchor-id="二叉搜索树bst">二叉搜索树（BST）</h3>
+<p>对 <strong>每个结点</strong>，左子树所有值小于根，右子树所有值大于根；约束不限于直接孩子。因此中序遍历得到升序序列。以下实现约定不存重复值。</p>
+<section id="查找与插入" class="level4">
+<h4 class="anchored" data-anchor-id="查找与插入">查找与插入</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> search(root, val):</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> root:</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> val <span class="op">==</span> root.val:</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> val <span class="op">&lt;</span> root.val:</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> search(root.left, val)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> search(root.right, val)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> insert(root, val):</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> root:</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> TreeNode(val)</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> val <span class="op">&lt;</span> root.val:</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>        root.left <span class="op">=</span> insert(root.left, val)</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> val <span class="op">&gt;</span> root.val:</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>        root.right <span class="op">=</span> insert(root.right, val)</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> root</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>插入是沿查找路径找到空位置，再挂上新结点。函数返回更新后的子树根，因此既要 <code>return root</code>，调用时也要接回引用：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>root <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> val <span class="kw">in</span> [<span class="dv">50</span>, <span class="dv">30</span>, <span class="dv">70</span>, <span class="dv">20</span>, <span class="dv">40</span>, <span class="dv">60</span>, <span class="dv">80</span>]:</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    root <span class="op">=</span> insert(root, val)</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<pre class="text"><code>      50
+     /  \
+   30    70
+  / \   / \
+20  40 60  80</code></pre>
+<p>查找60：<code>50→70→60</code>；查找40：<code>50→30→40</code>；查找65：<code>50→70→60→None</code>，未找到。</p>
+</section>
+<section id="删除返回新的子树根" class="level4">
+<h4 class="anchored" data-anchor-id="删除返回新的子树根">删除：返回新的子树根</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>情况</th>
+<th>处理</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>叶子</td>
+<td>返回 <code>None</code>，父结点断开引用</td>
+</tr>
+<tr class="even">
+<td>只有一个孩子</td>
+<td>返回这个孩子，让它接替原位置</td>
+</tr>
+<tr class="odd">
+<td>两个孩子</td>
+<td>用右子树最小值替换当前值，再从右子树删除该值</td>
+</tr>
+</tbody>
+</table>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> delete(root, val):</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> root:</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> val <span class="op">&lt;</span> root.val:</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>        root.left <span class="op">=</span> delete(root.left, val)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> val <span class="op">&gt;</span> root.val:</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>        root.right <span class="op">=</span> delete(root.right, val)</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> root.left:</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> root.right</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> root.right:</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> root.left</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>        succ <span class="op">=</span> root.right</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> succ.left:</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>            succ <span class="op">=</span> succ.left</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>        root.val <span class="op">=</span> succ.val</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>        root.right <span class="op">=</span> delete(root.right, succ.val)</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> root</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>两个孩子时，中序后继是 <strong>右子树最左侧结点</strong>。它大于左子树全部值，小于右子树其他值，用它替换后仍保持BST性质；还必须删除原来的后继，避免重复。也可对称使用左子树最大值，即中序前驱。</p>
+<p>后继没有左孩子，但可能有右孩子；递归删除时由“单孩子”情况接回。直接 <code>return root.left</code> 会丢掉整棵右子树，即使剩余部分仍满足大小关系，也不是正确删除。</p>
+<p>调用写 <code>root = delete(root, val)</code>，因为删除根后，整棵树的根可能改变。</p>
+</section>
+<section id="退化与复杂度" class="level4">
+<h4 class="anchored" data-anchor-id="退化与复杂度">退化与复杂度</h4>
+<p>BST每次排除一侧子树，<strong>不保证排除一半结点</strong>。查找、插入、删除都沿树高进行，时间为 <span class="math inline">\(O(h+1)\)</span>。在随机插入等常见平均模型下为 <span class="math inline">\(O(\log n)\)</span>，退化时为 <span class="math inline">\(O(n)\)</span>。</p>
+<p>依次插入 <code>1,2,3,4,5</code>，形成右链，高度4，查找5需检查5个结点。中序遍历只改变访问顺序，不能把链恢复平衡；平衡BST通过结构调整控制高度。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>场景</th>
+<th>结构选择</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>数据少变，主要查找</td>
+<td>排序数组+二分</td>
+<td>查找 <span class="math inline">\(O(\log n)\)</span>，结构简单</td>
+</tr>
+<tr class="even">
+<td>经常有序插删、范围查询</td>
+<td>平衡BST</td>
+<td>查找、插删可保证 <span class="math inline">\(O(\log n)\)</span></td>
+</tr>
+<tr class="odd">
+<td>普通BST有序输入</td>
+<td>警惕退化</td>
+<td>最坏三种操作均为 <span class="math inline">\(O(n)\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>排序数组插入、删除通常需移动元素，为 <span class="math inline">\(O(n)\)</span>；BST优势是动态维护有序关系。若只需按键判断存在、不需顺序，也可考虑哈希结构。</p>
+</section>
+</section>
+</section>
+<section id="阅读材料补充" class="level2">
+<h2 class="anchored" data-anchor-id="阅读材料补充">阅读材料补充</h2>
+<p>课程材料：11 树及其遍历.pdf</p>
+<section id="一般树与二叉树" class="level3">
+<h3 class="anchored" data-anchor-id="一般树与二叉树">一般树与二叉树</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>项目</th>
+<th>一般树</th>
+<th>二叉树</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>字段</td>
+<td><code>children</code> 列表</td>
+<td><code>left</code>、<code>right</code></td>
+</tr>
+<tr class="even">
+<td>孩子数量</td>
+<td>任意</td>
+<td>最多两个，左右有区别</td>
+</tr>
+<tr class="odd">
+<td>空树</td>
+<td>根引用为 <code>None</code></td>
+<td>根引用为 <code>None</code></td>
+</tr>
+<tr class="even">
+<td>叶子</td>
+<td><code>not node.children</code></td>
+<td>左右均为 <code>None</code></td>
+</tr>
+<tr class="odd">
+<td>递归</td>
+<td>循环处理每个孩子</td>
+<td>分别递归左右子树</td>
+</tr>
+</tbody>
+</table>
+<p>两种结点定义是不同造型，不要在一般树代码里使用 <code>.left</code>，也不要在二叉树代码里判断 <code>.children</code>。</p>
+</section>
+<section id="结点数叶子数与高度" class="level3">
+<h3 class="anchored" data-anchor-id="结点数叶子数与高度">结点数、叶子数与高度</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> count_nodes(node):</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> node:</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">0</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">1</span> <span class="op">+</span> count_nodes(node.left) <span class="op">+</span> count_nodes(node.right)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> count_leaves(node):</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> node:</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">0</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> node.left <span class="kw">is</span> <span class="va">None</span> <span class="kw">and</span> node.right <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">1</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> count_leaves(node.left) <span class="op">+</span> count_leaves(node.right)</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> binary_height(node):</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> node:</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="op">-</span><span class="dv">1</span></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">1</span> <span class="op">+</span> <span class="bu">max</span>(binary_height(node.left), binary_height(node.right))</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>空树高度在这里约定为 <span class="math inline">\(-1\)</span>，使叶子高度为0；其他材料可能按结点数定义高度，必须先确认约定。空树结点数和叶子数均为0，单结点树两者均为1。三个函数时间均为 <span class="math inline">\(O(n)\)</span>，递归辅助空间为 <span class="math inline">\(O(h+1)\)</span>。</p>
+</section>
+</section>
+<section id="研讨课内容" class="level2">
+<h2 class="anchored" data-anchor-id="研讨课内容">研讨课内容</h2>
+<p>课程材料：11 树及其遍历-研讨课.pdf</p>
+<section id="组织架构建模" class="level3">
+<h3 class="anchored" data-anchor-id="组织架构建模">组织架构建模</h3>
+<p>CEO下设CTO、CFO；CTO下设前端组、后端组、AI组；前端组下设页面1组、页面2组；后端组下设API组、数据库组；CFO下设会计组、审计组。</p>
+<p>采用一般树的 <code>children</code> 表示，因为CTO有三个直接孩子。根为CEO，叶子是页面1组、页面2组、API组、数据库组、AI组、会计组、审计组，共7个；总结点12个，树高3。</p>
+</section>
+<section id="遍历手推" class="level3">
+<h3 class="anchored" data-anchor-id="遍历手推">遍历手推</h3>
+<pre class="text"><code>       10
+      /  \
+     5    15
+    / \   / \
+   3   7 12 20</code></pre>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>遍历</th>
+<th>输出</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>前序</td>
+<td><code>10 5 3 7 15 12 20</code></td>
+</tr>
+<tr class="even">
+<td>中序</td>
+<td><code>3 5 7 10 12 15 20</code></td>
+</tr>
+<tr class="odd">
+<td>后序</td>
+<td><code>3 7 5 12 20 15 10</code></td>
+</tr>
+<tr class="even">
+<td>层序</td>
+<td><code>10 5 15 3 7 12 20</code></td>
+</tr>
+</tbody>
+</table>
+<p>审查遍历先看空结点判断，再看 <code>print</code> 的位置。漏判空的 <code>count_leaves</code> 在单结点树上可能返回1，但对空树或只有一个孩子的结点会访问 <code>None.left</code>。</p>
+</section>
+<section id="bst项目构建查找与删除" class="level3">
+<h3 class="anchored" data-anchor-id="bst项目构建查找与删除">BST项目：构建、查找与删除</h3>
+<p>插入 <code>[50,30,70,20,40,60,80]</code>，前3步依次是根50、左挂30、右挂70，最终结构见理论课。中序结果为 <code>20 30 40 50 60 70 80</code>。</p>
+<p>在同一棵树上依次删除：</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>删除</th>
+<th>类型与变化</th>
+<th>删除后的中序</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>20</td>
+<td>叶子，30的左引用置空</td>
+<td><code>30 40 50 60 70 80</code></td>
+</tr>
+<tr class="even">
+<td>30</td>
+<td>此时只有右孩子40，由40接替</td>
+<td><code>40 50 60 70 80</code></td>
+</tr>
+<tr class="odd">
+<td>50</td>
+<td>两个孩子，用后继60替换，再删原60</td>
+<td><code>40 60 70 80</code></td>
+</tr>
+</tbody>
+</table>
+<p>后继查找只需从右孩子开始不断向左，前提是当前结点确有右子树。注意这里依次删除，删除30时的结构已经不同于最初。</p>
+</section>
+<section id="查找策略与检查" class="level3">
+<h3 class="anchored" data-anchor-id="查找策略与检查">查找策略与检查</h3>
+<p>十万单词、五年更新一次，倾向排序数组加二分；每周新增用户或实时插入股票数据，若需动态有序查询，倾向平衡BST。最终仍取决于查询种类和更新频率，不能只看数据量。</p>
+<p>提交前核对：空树与单结点、左右子树是否都访问、插删是否接回新根、双孩子删除是否保留两侧数据、普通BST是否可能因输入有序而退化。用小树手推遍历和查找路径，再运行对照。</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<section id="comments" class="comments-section" aria-labelledby="comments-heading">
+  <h2 id="comments-heading">评论</h2>
+  <p id="comments-status">评论暂未开放。</p>
+  <div class="giscus"></div>
+</section>
+<script src="../../assets/comments-config.js?v=0740342d2f79"></script>
+<script src="../../assets/comments.js?v=efc269bc7855"></script>
+
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "已复制");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "已复制");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/easoncyy\.github\.io");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p><a href="../../posts/20261124-fip-w11-trees-traversal/index.html">~/notes</a> · 记录与探索</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p><a class="footer-repository" href="https://github.com/easoncyy/easoncyy.github.io" target="_blank" rel="noopener noreferrer" aria-label="查看本站 GitHub 仓库"><i class="bi bi-github" aria-hidden="true"></i><span>source/</span></a><span class="footer-builder">Built with Quarto</span></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

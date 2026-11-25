@@ -1,5 +1,1323 @@
 ::: {.log-stream}
 
+::: {#20261125-234757-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-11-25T23:47:57+08:00">2026-11-25 23:47:57 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title"></p>
+
+```
+
+![](/assets/log/20261125-234757-entry/photo-01.jpg)
+
+```{=html}
+
+<details id="comments-20261125-234757-entry" class="log-comments" data-comment-term="/logs/20261125-234757-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
+::: {#20261124-234819-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-11-24T23:48:19+08:00">2026-11-24 23:48:19 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title"></p>
+
+```
+
+![](/assets/log/20261124-234819-entry/photo-01.jpg)
+
+```{=html}
+
+<details id="comments-20261124-234819-entry" class="log-comments" data-comment-term="/logs/20261124-234819-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
+::: {#20261123-231709-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-11-23T23:17:09+08:00">2026-11-23 23:17:09 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title">Nothing to say</p>
+
+```
+
+![紫云胖猫](/assets/log/20261123-231709-entry/photo-01.jpg)
+
+```{=html}
+
+<details id="comments-20261123-231709-entry" class="log-comments" data-comment-term="/logs/20261123-231709-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
+::: {#20261122-231556-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-11-22T23:15:56+08:00">2026-11-22 23:15:56 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title">Bad Good Terrible Good</p>
+
+```
+
+::: {.log-photo-grid}
+
+![](/assets/log/20261122-231556-entry/photo-01.jpg)
+
+![](/assets/log/20261122-231556-entry/photo-02.jpg)
+
+![](/assets/log/20261122-231556-entry/photo-03.jpg)
+
+![](/assets/log/20261122-231556-entry/photo-04.jpg)
+
+![](/assets/log/20261122-231556-entry/photo-05.jpg)
+
+![](/assets/log/20261122-231556-entry/photo-06.jpg)
+
+![](/assets/log/20261122-231556-entry/photo-07.jpg)
+
+:::
+
+```{=html}
+
+<details id="comments-20261122-231556-entry" class="log-comments" data-comment-term="/logs/20261122-231556-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
+::: {#20261121-225723-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-11-21T22:57:23+08:00">2026-11-21 22:57:23 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title">Busy Busy Busy</p>
+
+```
+
+最喜欢的还是今天的天气和晚上的聚餐，感觉和大佬们吃饭收获良多，也意识到了提问的能力有多重要。
+
+::: {.log-photo-grid}
+
+![Red Boat](/assets/log/20261121-225723-entry/photo-01.jpg)
+
+![课本上的红船](/assets/log/20261121-225723-entry/photo-02.jpg)
+
+![开动脑筋](/assets/log/20261121-225723-entry/photo-03.jpg)
+
+![喜欢天气](/assets/log/20261121-225723-entry/photo-04.jpg)
+
+![巴黎公社墙](/assets/log/20261121-225723-entry/photo-05.jpg)
+
+![！](/assets/log/20261121-225723-entry/photo-06.jpg)
+
+![庄严](/assets/log/20261121-225723-entry/photo-07.jpg)
+
+![共产党宣言](/assets/log/20261121-225723-entry/photo-08.jpg)
+
+:::
+
+```{=html}
+
+<details id="comments-20261121-225723-entry" class="log-comments" data-comment-term="/logs/20261121-225723-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
+::: {#20261120-222212-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-11-20T22:22:12+08:00">2026-11-20 22:22:12 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title"></p>
+
+```
+
+::: {.log-photo-grid}
+
+![](/assets/log/20261120-222212-entry/photo-01.jpg)
+
+![](/assets/log/20261120-222212-entry/photo-02.jpg)
+
+![](/assets/log/20261120-222212-entry/photo-03.jpg)
+
+![](/assets/log/20261120-222212-entry/photo-04.jpg)
+
+![](/assets/log/20261120-222212-entry/photo-05.jpg)
+
+:::
+
+```{=html}
+
+<details id="comments-20261120-222212-entry" class="log-comments" data-comment-term="/logs/20261120-222212-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
+::: {#20261119-231121-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-11-19T23:11:21+08:00">2026-11-19 23:11:21 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title"></p>
+
+```
+
+::: {.log-photo-grid}
+
+![](/assets/log/20261119-231121-entry/photo-01.jpg)
+
+![](/assets/log/20261119-231121-entry/photo-02.jpg)
+
+![](/assets/log/20261119-231121-entry/photo-03.jpg)
+
+![](/assets/log/20261119-231121-entry/photo-04.jpg)
+
+![](/assets/log/20261119-231121-entry/photo-05.jpg)
+
+![](/assets/log/20261119-231121-entry/photo-06.jpg)
+
+![](/assets/log/20261119-231121-entry/photo-07.jpg)
+
+:::
+
+```{=html}
+
+<details id="comments-20261119-231121-entry" class="log-comments" data-comment-term="/logs/20261119-231121-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
+::: {#20261118-233028-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-11-18T23:30:28+08:00">2026-11-18 23:30:28 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title">玉泉</p>
+
+```
+
+很久没有坐89路公交车了，上次有印象时还是初中做89路回家。乘坐公交车的体验总是很有趣，在你等到最不耐烦的时候，车就终于到了。在夜幕降临时分，公交车的颠簸和双层玻璃的折射光晕总会让我轻松入睡，真是温暖的感觉。
+
+::: {.log-photo-grid}
+
+![玉泉的建筑很有趣](/assets/log/20261118-233028-entry/photo-01.jpg)
+
+![MySweet](/assets/log/20261118-233028-entry/photo-02.jpg)
+
+![哪里都有工地](/assets/log/20261118-233028-entry/photo-03.jpg)
+
+![路过](/assets/log/20261118-233028-entry/photo-04.jpg)
+
+![Mao](/assets/log/20261118-233028-entry/photo-05.jpg)
+
+![最喜欢的氛围](/assets/log/20261118-233028-entry/photo-06.jpg)
+
+![清晨](/assets/log/20261118-233028-entry/photo-07.jpg)
+
+![喜欢玉泉旁边的建筑](/assets/log/20261118-233028-entry/photo-08.jpg)
+
+![还有多久](/assets/log/20261118-233028-entry/photo-09.jpg)
+
+![喜欢这样的天气](/assets/log/20261118-233028-entry/photo-10.jpg)
+
+:::
+
+```{=html}
+
+<details id="comments-20261118-233028-entry" class="log-comments" data-comment-term="/logs/20261118-233028-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
+::: {#20261117-233757-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-11-17T23:37:57+08:00">2026-11-17 23:37:57 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title">Ordinary day</p>
+
+```
+
+今天过的其实挺开心的呀！
+
+::: {.log-photo-grid}
+
+![喜欢北教的自修空间](/assets/log/20261117-233757-entry/photo-01.jpg)
+
+![一天上了六节线性代数lol](/assets/log/20261117-233757-entry/photo-02.jpg)
+
+![无尽东教](/assets/log/20261117-233757-entry/photo-03.jpg)
+
+:::
+
+```{=html}
+
+<details id="comments-20261117-233757-entry" class="log-comments" data-comment-term="/logs/20261117-233757-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
+::: {#20261116-232822-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-11-16T23:28:22+08:00">2026-11-16 23:28:22 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title"></p>
+
+```
+
+::: {.log-photo-grid}
+
+![](/assets/log/20261116-232822-entry/photo-01.jpg)
+
+![](/assets/log/20261116-232822-entry/photo-02.jpg)
+
+:::
+
+```{=html}
+
+<details id="comments-20261116-232822-entry" class="log-comments" data-comment-term="/logs/20261116-232822-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
+::: {#20261115-231701-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-11-15T23:17:01+08:00">2026-11-15 23:17:01 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title"></p>
+
+```
+
+::: {.log-photo-grid}
+
+![](/assets/log/20261115-231701-entry/photo-01.jpg)
+
+![](/assets/log/20261115-231701-entry/photo-02.jpg)
+
+![](/assets/log/20261115-231701-entry/photo-03.jpg)
+
+:::
+
+```{=html}
+
+<details id="comments-20261115-231701-entry" class="log-comments" data-comment-term="/logs/20261115-231701-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
+::: {#20261114-232752-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-11-14T23:27:52+08:00">2026-11-14 23:27:52 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title">线性代数坏</p>
+
+```
+
+::: {.log-photo-grid}
+
+![Night](/assets/log/20261114-232752-entry/photo-01.jpg)
+
+![早安](/assets/log/20261114-232752-entry/photo-02.jpg)
+
+![Foggy](/assets/log/20261114-232752-entry/photo-03.jpg)
+
+![蜜桃四季春](/assets/log/20261114-232752-entry/photo-04.jpg)
+
+![Rusty](/assets/log/20261114-232752-entry/photo-05.jpg)
+
+:::
+
+```{=html}
+
+<details id="comments-20261114-232752-entry" class="log-comments" data-comment-term="/logs/20261114-232752-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
+::: {#20261113-231121-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-11-13T23:11:21+08:00">2026-11-13 23:11:21 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title"></p>
+
+```
+
+::: {.log-photo-grid}
+
+![](/assets/log/20261113-231121-entry/photo-01.jpg)
+
+![](/assets/log/20261113-231121-entry/photo-02.jpg)
+
+![](/assets/log/20261113-231121-entry/photo-03.jpg)
+
+![](/assets/log/20261113-231121-entry/photo-04.jpg)
+
+![](/assets/log/20261113-231121-entry/photo-05.jpg)
+
+![](/assets/log/20261113-231121-entry/photo-06.jpg)
+
+:::
+
+```{=html}
+
+<details id="comments-20261113-231121-entry" class="log-comments" data-comment-term="/logs/20261113-231121-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
+::: {#20261112-235900-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-11-12T23:59:00+08:00">2026-11-12 23:59:00 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title"></p>
+
+```
+
+![](/assets/log/20261112-235900-entry/photo-01.jpg)
+
+```{=html}
+
+<details id="comments-20261112-235900-entry" class="log-comments" data-comment-term="/logs/20261112-235900-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
+::: {#20261111-231323-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-11-11T23:13:23+08:00">2026-11-11 23:13:23 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title">Day</p>
+
+```
+
+![](/assets/log/20261111-231323-entry/photo-01.jpg)
+
+```{=html}
+
+<details id="comments-20261111-231323-entry" class="log-comments" data-comment-term="/logs/20261111-231323-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
+::: {#20261110-233612-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-11-10T23:36:12+08:00">2026-11-10 23:36:12 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title">Winter</p>
+
+```
+
+::: {.log-photo-grid}
+
+![](/assets/log/20261110-233612-entry/photo-01.jpg)
+
+![](/assets/log/20261110-233612-entry/photo-02.jpg)
+
+![](/assets/log/20261110-233612-entry/photo-03.jpg)
+
+![](/assets/log/20261110-233612-entry/photo-04.jpg)
+
+:::
+
+```{=html}
+
+<details id="comments-20261110-233612-entry" class="log-comments" data-comment-term="/logs/20261110-233612-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
+::: {#20261109-230939-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-11-09T23:09:39+08:00">2026-11-09 23:09:39 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title">冬天是最好的安眠药</p>
+
+```
+
+::: {.log-photo-grid}
+
+![](/assets/log/20261109-230939-entry/photo-01.jpg)
+
+![](/assets/log/20261109-230939-entry/photo-02.jpg)
+
+:::
+
+```{=html}
+
+<details id="comments-20261109-230939-entry" class="log-comments" data-comment-term="/logs/20261109-230939-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
+::: {#20261108-232906-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-11-08T23:29:06+08:00">2026-11-08 23:29:06 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title">Dizzy</p>
+
+```
+
+Damn. Hate this world.
+
+```{=html}
+
+<details id="comments-20261108-232906-entry" class="log-comments" data-comment-term="/logs/20261108-232906-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
+::: {#20261107-225529-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-11-07T22:55:29+08:00">2026-11-07 22:55:29 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title">Damn day</p>
+
+```
+
+calculus :(
+
+::: {.log-photo-grid}
+
+![PIZZA DAY](/assets/log/20261107-225529-entry/photo-01.jpg)
+
+![考完微积分世界都是阴郁的](/assets/log/20261107-225529-entry/photo-02.jpg)
+
+:::
+
+```{=html}
+
+<details id="comments-20261107-225529-entry" class="log-comments" data-comment-term="/logs/20261107-225529-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
+::: {#20261106-225651-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-11-06T22:56:51+08:00">2026-11-06 22:56:51 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title">怎么获得内心的宁静...</p>
+
+```
+
+::: {.log-photo-grid}
+
+![东教的斜坡](/assets/log/20261106-225651-entry/photo-01.jpg)
+
+![害怕手机会掉下去](/assets/log/20261106-225651-entry/photo-02.jpg)
+
+![怎么获得内心的宁静？](/assets/log/20261106-225651-entry/photo-03.jpg)
+
+![恐高panic](/assets/log/20261106-225651-entry/photo-04.jpg)
+
+![走廊](/assets/log/20261106-225651-entry/photo-05.jpg)
+
+![高楼](/assets/log/20261106-225651-entry/photo-06.jpg)
+
+:::
+
+```{=html}
+
+<details id="comments-20261106-225651-entry" class="log-comments" data-comment-term="/logs/20261106-225651-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
+::: {#20261105-235423-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-11-05T23:54:23+08:00">2026-11-05 23:54:23 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title"></p>
+
+```
+
+::: {.log-photo-grid}
+
+![](/assets/log/20261105-235423-entry/photo-01.jpg)
+
+![](/assets/log/20261105-235423-entry/photo-02.jpg)
+
+:::
+
+```{=html}
+
+<details id="comments-20261105-235423-entry" class="log-comments" data-comment-term="/logs/20261105-235423-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
+::: {#20261104-230731-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-11-04T23:07:31+08:00">2026-11-04 23:07:31 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title">我能体谅你有雨天</p>
+
+```
+
+深入骨髓的冷吧。昨天晚上苹果天气预报出了点问题，显示下周五的温度为零下32摄氏度，今天早上就被一场不知道是秋雨还是冬雨的雨淋得无比清醒。明明今天没有什么课，明天开始就有一堆考试，但是还是效率很低下地自习。idk, 有人能体谅我有雨天吗。
+
+::: {.log-photo-grid}
+
+![一个下雨的早晨](/assets/log/20261104-230731-entry/photo-01.jpg)
+
+![Rusty](/assets/log/20261104-230731-entry/photo-02.jpg)
+
+![我有时也不知怎么走下去，抱歉让没有人担了心](/assets/log/20261104-230731-entry/photo-03.png)
+
+:::
+
+```{=html}
+
+<details id="comments-20261104-230731-entry" class="log-comments" data-comment-term="/logs/20261104-230731-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
+::: {#20261103-234304-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-11-03T23:43:04+08:00">2026-11-03 23:43:04 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title"></p>
+
+```
+
+::: {.log-photo-grid}
+
+![](/assets/log/20261103-234304-entry/photo-01.jpg)
+
+![](/assets/log/20261103-234304-entry/photo-02.jpg)
+
+:::
+
+```{=html}
+
+<details id="comments-20261103-234304-entry" class="log-comments" data-comment-term="/logs/20261103-234304-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
+::: {#20261103-001131-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-11-03T00:11:31+08:00">2026-11-03 00:11:31 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title"></p>
+
+```
+
+::: {.log-photo-grid}
+
+![](/assets/log/20261103-001131-entry/photo-01.jpg)
+
+![](/assets/log/20261103-001131-entry/photo-02.jpg)
+
+:::
+
+```{=html}
+
+<details id="comments-20261103-001131-entry" class="log-comments" data-comment-term="/logs/20261103-001131-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
+::: {#20261101-234813-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-11-01T23:48:13+08:00">2026-11-01 23:48:13 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title"></p>
+
+```
+
+::: {.log-photo-grid}
+
+![](/assets/log/20261101-234813-entry/photo-01.jpg)
+
+![](/assets/log/20261101-234813-entry/photo-02.jpg)
+
+![](/assets/log/20261101-234813-entry/photo-03.jpg)
+
+:::
+
+```{=html}
+
+<details id="comments-20261101-234813-entry" class="log-comments" data-comment-term="/logs/20261101-234813-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
+::: {#20261031-225930-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-10-31T22:59:30+08:00">2026-10-31 22:59:30 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title">Happy Halloween</p>
+
+```
+
+说起来每天都一应该在这里说两句的，没想到几天就退化成了只发图片。今天是被阳光晨跑的闹钟吵醒的一天，体能真的好弱TT。不过下午的吉他课和晚上的超算队例会&自修还是很开心的！
+
+::: {.log-photo-grid}
+
+![某种东方红](/assets/log/20261031-225930-entry/photo-01.jpg)
+
+![这里有1mol的跑步人](/assets/log/20261031-225930-entry/photo-04.jpg)
+
+![铁锈东四](/assets/log/20261031-225930-entry/photo-03.jpg)
+
+![我迟早在这里吃成🐖](/assets/log/20261031-225930-entry/photo-02.jpg)
+
+:::
+
+```{=html}
+
+<details id="comments-20261031-225930-entry" class="log-comments" data-comment-term="/logs/20261031-225930-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
+::: {#20261030-234858-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-10-30T23:48:58+08:00">2026-10-30 23:48:58 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title"></p>
+
+```
+
+::: {.log-photo-grid}
+
+![](/assets/log/20261030-234858-entry/photo-01.jpg)
+
+![](/assets/log/20261030-234858-entry/photo-02.jpg)
+
+![](/assets/log/20261030-234858-entry/photo-03.jpg)
+
+![](/assets/log/20261030-234858-entry/photo-04.jpg)
+
+:::
+
+```{=html}
+
+<details id="comments-20261030-234858-entry" class="log-comments" data-comment-term="/logs/20261030-234858-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
+::: {#20261029-230050-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-10-29T23:00:50+08:00">2026-10-29 23:00:50 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title"></p>
+
+```
+
+::: {.log-photo-grid}
+
+![](/assets/log/20261029-230050-entry/photo-01.jpg)
+
+![](/assets/log/20261029-230050-entry/photo-02.jpg)
+
+![](/assets/log/20261029-230050-entry/photo-03.jpg)
+
+:::
+
+```{=html}
+
+<details id="comments-20261029-230050-entry" class="log-comments" data-comment-term="/logs/20261029-230050-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
+::: {#20261028-232429-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-10-28T23:24:29+08:00">2026-10-28 23:24:29 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title">不想期中考</p>
+
+```
+
+::: {.log-photo-grid}
+
+![好吃](/assets/log/20261028-232429-entry/photo-01.jpg)
+
+![基图真的好宏伟](/assets/log/20261028-232429-entry/photo-02.jpg)
+
+![秋天](/assets/log/20261028-232429-entry/photo-03.jpg)
+
+:::
+
+```{=html}
+
+<details id="comments-20261028-232429-entry" class="log-comments" data-comment-term="/logs/20261028-232429-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
+::: {#20261027-235143-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-10-27T23:51:43+08:00">2026-10-27 23:51:43 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title">。</p>
+
+```
+
+::: {.log-photo-grid}
+
+![1](/assets/log/20261027-235143-entry/photo-01.jpg)
+
+![2](/assets/log/20261027-235143-entry/photo-02.jpg)
+
+:::
+
+```{=html}
+
+<details id="comments-20261027-235143-entry" class="log-comments" data-comment-term="/logs/20261027-235143-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
+::: {#20261026-232008-entry .log-entry}
+
+```{=html}
+
+<div class="log-stamp"><time datetime="2026-10-26T23:20:08+08:00">2026-10-26 23:20:08 +0800</time></div>
+
+```
+
+::: {.log-payload}
+
+```{=html}
+
+<p class="log-entry-title">不想说话了？</p>
+
+```
+
+::: {.log-photo-grid}
+
+![Dos farm](/assets/log/20261026-232008-entry/photo-01.jpg)
+
+![走廊玻璃让我想起每天走向杭二的教学楼](/assets/log/20261026-232008-entry/photo-02.jpg)
+
+![网球课好晒](/assets/log/20261026-232008-entry/photo-03.jpg)
+
+:::
+
+```{=html}
+
+<details id="comments-20261026-232008-entry" class="log-comments" data-comment-term="/logs/20261026-232008-entry/">
+
+<summary>comments/ <span>评论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载评论，使用 GitHub 账号参与讨论。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
+:::
+
 ::: {#20261025-234204-entry .log-entry}
 
 ```{=html}
@@ -15,8 +1333,6 @@
 <p class="log-entry-title">摸鱼</p>
 
 ```
-
-在这里写下你的记录。
 
 ::: {.log-photo-grid}
 

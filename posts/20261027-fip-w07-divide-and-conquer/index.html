@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="个人笔记">
+<meta name="description" content="减治与分治、二分查找、归并排序、最大子段和、逆序对，以及快速排序与三路分区。">
+
+<title>FIP W07 · 分治 – 个人笔记</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/favicon.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-a7952132dd87ce33f437addd0578540c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-dc090d8f6625c822698d9a6ee9cd1ac5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "没有结果",
+    "search-matching-documents-text": "匹配的文档",
+    "search-copy-link-title": "复制搜索链接",
+    "search-hide-matches-text": "隐藏其它匹配结果",
+    "search-more-match-text": "更多匹配结果",
+    "search-more-matches-text": "更多匹配结果",
+    "search-clear-button-title": "清除",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "取消",
+    "search-submit-button-title": "提交",
+    "search-label": "搜索"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script defer="" src="../../assets/directory.js?v=05751f758f0b"></script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="../../assets/vendor/mathjax/tex-svg-full.js?v=a4354ff94fd8" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css?v=83131ce44c97">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/logo.svg" alt="Ce · easoncyy" class="navbar-logo light-content">
+    <img src="../../assets/logo.svg" alt="Ce · easoncyy" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">~/notes</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="搜索"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="展开或折叠导航栏" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html"> 
+<span class="menu-text"><span class="nav-path">blog/</span><span class="nav-caption">博客</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../problems.html"> 
+<span class="menu-text"><span class="nav-path">problems/</span><span class="nav-caption">每日好题</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../projects.html"> 
+<span class="menu-text"><span class="nav-path">projects/</span><span class="nav-caption">项目</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../log.html"> 
+<span class="menu-text"><span class="nav-path">log/</span><span class="nav-caption">日志</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../links.html"> 
+<span class="menu-text"><span class="nav-path">links/</span><span class="nav-caption">友链</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../library.html"> 
+<span class="menu-text"><span class="nav-path">library/</span><span class="nav-caption">图书馆</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text"><span class="nav-path">about/</span><span class="nav-caption">关于</span></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">本页目录</h2>
+   
+  <ul>
+  <li><a href="#理论课内容" id="toc-理论课内容" class="nav-link active" data-scroll-target="#理论课内容">理论课内容</a>
+  <ul class="collapse">
+  <li><a href="#减治与分治" id="toc-减治与分治" class="nav-link" data-scroll-target="#减治与分治">减治与分治</a></li>
+  <li><a href="#递归二分查找" id="toc-递归二分查找" class="nav-link" data-scroll-target="#递归二分查找">递归二分查找</a></li>
+  <li><a href="#归并排序先分再合" id="toc-归并排序先分再合" class="nav-link" data-scroll-target="#归并排序先分再合">归并排序：先分，再合</a></li>
+  <li><a href="#最大子串和" id="toc-最大子串和" class="nav-link" data-scroll-target="#最大子串和">最大子串和</a></li>
+  <li><a href="#逆序对合并同时计数" id="toc-逆序对合并同时计数" class="nav-link" data-scroll-target="#逆序对合并同时计数">逆序对：合并同时计数</a></li>
+  <li><a href="#keylambda与高阶函数" id="toc-keylambda与高阶函数" class="nav-link" data-scroll-target="#keylambda与高阶函数"><code>key</code>、<code>lambda</code>与高阶函数</a></li>
+  <li><a href="#杨辉三角两个递归调用也未必是分治" id="toc-杨辉三角两个递归调用也未必是分治" class="nav-link" data-scroll-target="#杨辉三角两个递归调用也未必是分治">杨辉三角：两个递归调用也未必是分治</a></li>
+  <li><a href="#递归总结" id="toc-递归总结" class="nav-link" data-scroll-target="#递归总结">递归总结</a></li>
+  </ul></li>
+  <li><a href="#阅读材料补充" id="toc-阅读材料补充" class="nav-link" data-scroll-target="#阅读材料补充">阅读材料补充</a>
+  <ul class="collapse">
+  <li><a href="#递归二分的边界" id="toc-递归二分的边界" class="nav-link" data-scroll-target="#递归二分的边界">递归二分的边界</a></li>
+  <li><a href="#切片别名与合并" id="toc-切片别名与合并" class="nav-link" data-scroll-target="#切片别名与合并">切片、别名与合并</a></li>
+  <li><a href="#多返回值与拆包" id="toc-多返回值与拆包" class="nav-link" data-scroll-target="#多返回值与拆包">多返回值与拆包</a></li>
+  <li><a href="#把函数作为参数" id="toc-把函数作为参数" class="nav-link" data-scroll-target="#把函数作为参数">把函数作为参数</a></li>
+  <li><a href="#分区与递归规模的检查" id="toc-分区与递归规模的检查" class="nav-link" data-scroll-target="#分区与递归规模的检查">分区与递归规模的检查</a></li>
+  </ul></li>
+  <li><a href="#研讨课内容" id="toc-研讨课内容" class="nav-link" data-scroll-target="#研讨课内容">研讨课内容</a>
+  <ul class="collapse">
+  <li><a href="#归并与快排工作在不同阶段" id="toc-归并与快排工作在不同阶段" class="nav-link" data-scroll-target="#归并与快排工作在不同阶段">归并与快排：工作在不同阶段</a></li>
+  <li><a href="#简洁快速排序" id="toc-简洁快速排序" class="nav-link" data-scroll-target="#简洁快速排序">简洁快速排序</a></li>
+  <li><a href="#首元素基准的退化与三路分区" id="toc-首元素基准的退化与三路分区" class="nav-link" data-scroll-target="#首元素基准的退化与三路分区">首元素基准的退化与三路分区</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">FIP W07 · 分治</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">学习笔记</div>
+    <div class="quarto-category">分治</div>
+    <div class="quarto-category">排序</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    减治与分治、二分查找、归并排序、最大子段和、逆序对，以及快速排序与三路分区。
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">作者</div>
+    <div class="quarto-title-meta-contents">
+             <p>个人笔记 </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">发布于</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2026年10月27日</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="理论课内容" class="level2">
+<h2 class="anchored" data-anchor-id="理论课内容">理论课内容</h2>
+<p>课程材料：26FIP7 分治算法.pdf</p>
+<section id="减治与分治" class="level3">
+<h3 class="anchored" data-anchor-id="减治与分治">减治与分治</h3>
+<p>递归是思考和实现子问题的方式；<strong>减治</strong>与<strong>分治</strong>描述的是子问题怎样产生、怎样得到原问题的答案。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>方法</th>
+<th>子问题</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>减治</td>
+<td>只做缩小后的一个问题</td>
+<td>二分查找比较中点后舍弃另一半</td>
+</tr>
+<tr class="even">
+<td>分治</td>
+<td>多个子问题都要做，再处理它们之间的关系</td>
+<td>归并排序分别排好两半，再合并</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="递归二分查找" class="level3">
+<h3 class="anchored" data-anchor-id="递归二分查找">递归二分查找</h3>
+<p>二分查找前提是<strong>列表已排序</strong>。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> binary_search_rec(lst, target, left<span class="op">=</span><span class="dv">0</span>, right<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> right <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        right <span class="op">=</span> <span class="bu">len</span>(lst) <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> left <span class="op">&gt;</span> right:</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="op">-</span><span class="dv">1</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    mid <span class="op">=</span> left <span class="op">+</span> (right <span class="op">-</span> left) <span class="op">//</span> <span class="dv">2</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> lst[mid] <span class="op">==</span> target:</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> mid</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> lst[mid] <span class="op">&lt;</span> target:</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> binary_search_rec(lst, target, mid <span class="op">+</span> <span class="dv">1</span>, right)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> binary_search_rec(lst, target, left, mid <span class="op">-</span> <span class="dv">1</span>)</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>e.g.&nbsp;在<code>[1,3,5,7,9]</code>中找<code>7</code>：先看下标<code>2</code>的<code>5</code>，缩到右半区间<code>[3,4]</code>；再看下标<code>3</code>，返回<code>3</code>。每次减半，时间为<span class="math inline">\(O(\log n)\)</span>。递归调用后的结果直接返回，所以这是<strong>尾递归</strong>；递归栈为<span class="math inline">\(O(\log n)\)</span>。</p>
+<p><strong>不要为了“切一半”反复写列表切片</strong>：<code>lst[:mid]</code>会创建并复制新列表，还要重新换算原列表下标；保留原列表、只改边界更直接。若每层切片，全部复制成本可达<span class="math inline">\(O(n)\)</span>。</p>
+</section>
+<section id="归并排序先分再合" class="level3">
+<h3 class="anchored" data-anchor-id="归并排序先分再合">归并排序：先分，再合</h3>
+<p>只排好左半，整表还不一定有序。归并排序先把列表拆到长度至多为<code>1</code>，回归时相信左右两半都已排好，再用两个指针合并：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> merge(left, right):</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> []</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    i <span class="op">=</span> j <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> i <span class="op">&lt;</span> <span class="bu">len</span>(left) <span class="kw">and</span> j <span class="op">&lt;</span> <span class="bu">len</span>(right):</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> left[i] <span class="op">&lt;=</span> right[j]:</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>            result.append(left[i])</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>            i <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>            result.append(right[j])</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>            j <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    result.extend(left[i:])</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    result.extend(right[j:])</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> merge_sort(arr):</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">len</span>(arr) <span class="op">&lt;=</span> <span class="dv">1</span>:</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> arr</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    mid <span class="op">=</span> <span class="bu">len</span>(arr) <span class="op">//</span> <span class="dv">2</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    left <span class="op">=</span> merge_sort(arr[:mid])</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    right <span class="op">=</span> merge_sort(arr[mid:])</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> merge(left, right)</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>merge([1,3,5],[2,4,6])</code>依次取<code>1,2,3,4,5</code>，左边耗尽后还须追加右边剩余的<code>[6]</code>。<strong>漏掉<code>extend</code>会丢元素</strong>。相等时用<code>&lt;=</code>先取左边，这样相等元素的原有顺序不变，归并是稳定排序。</p>
+<p>递归树深度约为<span class="math inline">\(\log_2 n\)</span>；每层总共合并<span class="math inline">\(n\)</span>个元素，所以时间<span class="math inline">\(O(n\log n)\)</span>。结果缓冲需要<span class="math inline">\(O(n)\)</span>额外空间；这里的<code>arr[:mid]</code>、<code>arr[mid:]</code>也会复制。下标区间版可省去分割切片，但合并仍需要缓冲。</p>
+<section id="自底向上的纯循环版" class="level4">
+<h4 class="anchored" data-anchor-id="自底向上的纯循环版">自底向上的纯循环版</h4>
+<p>对于归并这种非线性递归，其转化为循环的方式有一点不一样。 可以从长度为<span class="math inline">\(1\)</span>的有序段开始，两两合并成长度约为<span class="math inline">\(2,4,8,\ldots\)</span>的有序段。每轮用上面的<code>merge</code>，没有递归调用：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> merge_sort_iter(arr):</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> arr[:]</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    width <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> width <span class="op">&lt;</span> <span class="bu">len</span>(result):</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        merged <span class="op">=</span> []</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> start <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, <span class="bu">len</span>(result), <span class="dv">2</span> <span class="op">*</span> width):</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>            left <span class="op">=</span> result[start:start <span class="op">+</span> width]</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>            right <span class="op">=</span> result[start <span class="op">+</span> width:start <span class="op">+</span> <span class="dv">2</span> <span class="op">*</span> width]</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>            merged.extend(merge(left, right))</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        result <span class="op">=</span> merged</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        width <span class="op">*=</span> <span class="dv">2</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>两版时间都是<span class="math inline">\(O(n\log n)\)</span>；这个循环版仍通过切片和<code>merged</code>构造新列表，额外空间为<span class="math inline">\(O(n)\)</span>，只是省掉了递归调用栈。</p>
+</section>
+</section>
+<section id="最大子串和" class="level3">
+<h3 class="anchored" data-anchor-id="最大子串和">最大子串和</h3>
+<p>连续子串的最大和可能<strong>完全在左边、完全在右边，或跨过中点</strong>。前两类由递归给出；第三类必须在当前层计算：从<code>mid-1</code>向左找最大后缀，从<code>mid</code>向右找最大前缀，两者相加。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> max_crossing(arr, lo, mid, hi):</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    total <span class="op">=</span> best_left <span class="op">=</span> arr[mid <span class="op">-</span> <span class="dv">1</span>]</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(mid <span class="op">-</span> <span class="dv">2</span>, lo <span class="op">-</span> <span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        total <span class="op">+=</span> arr[i]</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        best_left <span class="op">=</span> <span class="bu">max</span>(best_left, total)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    total <span class="op">=</span> best_right <span class="op">=</span> arr[mid]</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(mid <span class="op">+</span> <span class="dv">1</span>, hi):</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        total <span class="op">+=</span> arr[j]</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        best_right <span class="op">=</span> <span class="bu">max</span>(best_right, total)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> best_left <span class="op">+</span> best_right</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> max_subarray(arr, lo<span class="op">=</span><span class="dv">0</span>, hi<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> hi <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        hi <span class="op">=</span> <span class="bu">len</span>(arr)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> hi <span class="op">&lt;=</span> lo:</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"需要非空区间"</span>)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> hi <span class="op">-</span> lo <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> arr[lo]</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    mid <span class="op">=</span> (lo <span class="op">+</span> hi) <span class="op">//</span> <span class="dv">2</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">max</span>(</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>        max_subarray(arr, lo, mid),</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>        max_subarray(arr, mid, hi),</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>        max_crossing(arr, lo, mid, hi),</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    )</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>例如<code>[-2,3,-1,4]</code>切成<code>[-2,3] | [-1,4]</code>，左、右各自最优是<span class="math inline">\(3\)</span>和<span class="math inline">\(4\)</span>；跨中点为左后缀<span class="math inline">\(3\)</span>加右前缀<span class="math inline">\(-1+4=3\)</span>，得到<span class="math inline">\(6\)</span>。这一写法求<strong>非空</strong>子串，单元素就是Base Case；空列表要另行约定。每层扫描合计<span class="math inline">\(O(n)\)</span>，时间<span class="math inline">\(O(n\log n)\)</span>。</p>
+<section id="kadane算法" class="level4">
+<h4 class="anchored" data-anchor-id="kadane算法">Kadane算法</h4>
+<p>如果不必用分治，也可以从左到右扫描。到元素<span class="math inline">\(a_i\)</span>时，以它结尾的最大子段和要么<strong>从<span class="math inline">\(a_i\)</span>重新开始</strong>，要么<strong>接在前一个最优后缀后面</strong>：</p>
+<p><span class="math display">\[
+E_i=\max(a_i,E_{i-1}+a_i),\qquad M_i=\max(M_{i-1},E_i)
+\]</span></p>
+<p>其中<span class="math inline">\(E_i\)</span>是以<span class="math inline">\(i\)</span>结尾的最大子串和，<span class="math inline">\(M_i\)</span>是前<span class="math inline">\(i\)</span>个位置中出现过的最大值。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> max_subarray_linear(arr):</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    current <span class="op">=</span> best <span class="op">=</span> arr[<span class="dv">0</span>]</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(arr)):</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        current <span class="op">=</span> <span class="bu">max</span>(arr[i], current <span class="op">+</span> arr[i])</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        best <span class="op">=</span> <span class="bu">max</span>(best, current)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> best</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>对<code>[-2,3,-1,4]</code>，<code>current</code>依次为<span class="math inline">\(-2,3,2,6\)</span>，最终返回<span class="math inline">\(6\)</span>。用首元素初始化，而非初始化为<span class="math inline">\(0\)</span>，才能正确处理全负数列表。只扫描一次，时间<span class="math inline">\(O(n)\)</span>，额外空间<span class="math inline">\(O(1)\)</span>。</p>
+</section>
+<section id="前缀和思路" class="level4">
+<h4 class="anchored" data-anchor-id="前缀和思路">前缀和思路</h4>
+<p>设<span class="math inline">\(P_0=0\)</span>，<span class="math inline">\(P_j\)</span>是前<span class="math inline">\(j\)</span>个元素的和。以第<span class="math inline">\(j\)</span>个元素结尾的子串和为<span class="math inline">\(P_j-P_i\)</span>（<span class="math inline">\(i&lt;j\)</span>）；要让它最大，就减去<strong>此前最小</strong>的<span class="math inline">\(P_i\)</span>。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> max_sum(lst):</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    min_prefix <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    prefix <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    best <span class="op">=</span> lst[<span class="dv">0</span>]</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> x <span class="kw">in</span> lst:</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        prefix <span class="op">+=</span> x</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        best <span class="op">=</span> <span class="bu">max</span>(best, prefix <span class="op">-</span> min_prefix)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        min_prefix <span class="op">=</span> <span class="bu">min</span>(min_prefix, prefix)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> best</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>min_prefix</code>初值为<span class="math inline">\(P_0=0\)</span>，所以子串可以从第一个元素开始。<strong>先用旧的<code>min_prefix</code>更新答案，再纳入当前前缀</strong>，才能保证<span class="math inline">\(i&lt;j\)</span>、子段非空；如果反过来，当前前缀可以减去自己，得到空子段的和<span class="math inline">\(0\)</span>，全负数时就会出错。这与Kadane是同一个<span class="math inline">\(O(n)\)</span>问题的两种视角，额外空间都是<span class="math inline">\(O(1)\)</span>。</p>
+</section>
+</section>
+<section id="逆序对合并同时计数" class="level3">
+<h3 class="anchored" data-anchor-id="逆序对合并同时计数">逆序对：合并同时计数</h3>
+<p>若下标<span class="math inline">\(i&lt;j\)</span>且<span class="math inline">\(a_i&gt;a_j\)</span>，就有一对逆序。递归分别统计左右内部的<code>c1,c2</code>；合并时若当前右元素小于左元素，左边<strong>尚未取走的元素</strong>都与它构成逆序，一次增加<code>len(left)-i</code>。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> merge_count(left, right):</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> []</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    i <span class="op">=</span> j <span class="op">=</span> count <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> i <span class="op">&lt;</span> <span class="bu">len</span>(left) <span class="kw">and</span> j <span class="op">&lt;</span> <span class="bu">len</span>(right):</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> left[i] <span class="op">&lt;=</span> right[j]:</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>            result.append(left[i])</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>            i <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>            result.append(right[j])</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>            count <span class="op">+=</span> <span class="bu">len</span>(left) <span class="op">-</span> i</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>            j <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    result.extend(left[i:])</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    result.extend(right[j:])</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result, count</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> inversions(arr):</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">len</span>(arr) <span class="op">&lt;=</span> <span class="dv">1</span>:</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> arr, <span class="dv">0</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    mid <span class="op">=</span> <span class="bu">len</span>(arr) <span class="op">//</span> <span class="dv">2</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>    left, c1 <span class="op">=</span> inversions(arr[:mid])</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>    right, c2 <span class="op">=</span> inversions(arr[mid:])</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>    merged, c3 <span class="op">=</span> merge_count(left, right)</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> merged, c1 <span class="op">+</span> c2 <span class="op">+</span> c3</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>[3,1,4,2]</code>有<span class="math inline">\((3,1)\)</span>、<span class="math inline">\((4,2)\)</span>和<span class="math inline">\((3,2)\)</span>，共<span class="math inline">\(3\)</span>对。相等时取左边，不计逆序；只返回跨半的<span class="math inline">\(c_3\)</span>则会漏掉左右内部的<span class="math inline">\(c_1+c_2\)</span>。时间仍是<span class="math inline">\(O(n\log n)\)</span>。<code>return result, count</code>实际返回元组，调用处可拆成两个变量。</p>
+</section>
+<section id="keylambda与高阶函数" class="level3">
+<h3 class="anchored" data-anchor-id="keylambda与高阶函数"><code>key</code>、<code>lambda</code>与高阶函数</h3>
+<p><code>key</code>接收一个函数，先把每个元素映射成比较用的值；它不改变结果里保存的原元素。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">max</span>([<span class="op">-</span><span class="dv">7</span>, <span class="dv">4</span>, <span class="dv">2</span>], key<span class="op">=</span><span class="bu">abs</span>)            <span class="co"># -7，按绝对值比较</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">sorted</span>(nodes, key<span class="op">=</span><span class="kw">lambda</span> x: x.freq) <span class="co"># 按 freq 排序</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>已有函数可直接传函数名；只用一次的短规则可用<code>lambda</code>；规则复杂就先用<code>def</code>定义。把函数作为参数传入，属于高阶函数的用法。</p>
+</section>
+<section id="杨辉三角两个递归调用也未必是分治" class="level3">
+<h3 class="anchored" data-anchor-id="杨辉三角两个递归调用也未必是分治">杨辉三角：两个递归调用也未必是分治</h3>
+<p>W6的<code>pascal(n)</code>返回整行；这里的<code>pascal(n,k)</code>只求第<span class="math inline">\(n\)</span>行第<span class="math inline">\(k\)</span>个数。两侧为<code>1</code>，中间等于上一行相邻两项之和：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> pascal(n, k, memo<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> <span class="dv">0</span> <span class="op">&lt;=</span> k <span class="op">&lt;=</span> n:</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"需要 0 &lt;= k &lt;= n"</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> memo <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        memo <span class="op">=</span> {}</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> k <span class="op">==</span> <span class="dv">0</span> <span class="kw">or</span> k <span class="op">==</span> n:</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">1</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    key <span class="op">=</span> (n, k)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> key <span class="kw">not</span> <span class="kw">in</span> memo:</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>        memo[key] <span class="op">=</span> pascal(n <span class="op">-</span> <span class="dv">1</span>, k <span class="op">-</span> <span class="dv">1</span>, memo) <span class="op">+</span> pascal(n <span class="op">-</span> <span class="dv">1</span>, k, memo)</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> memo[key]</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p><span class="math inline">\(\operatorname{pascal}(4,2)=6\)</span>。左右分支会重复遇到同一状态，如<code>pascal(2,1)</code>，所以用元组<code>(n,k)</code>作缓存键。这里不是折半处理两段，而是规模每次减<span class="math inline">\(1\)</span>的<strong>重叠子问题</strong>；不能因为有两次递归调用就把它当成归并式分治。</p>
+</section>
+<section id="递归总结" class="level3">
+<h3 class="anchored" data-anchor-id="递归总结">递归总结</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>问题</th>
+<th>缩小方式</th>
+<th>当前层还要做什么</th>
+<th>时间</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>二分查找</td>
+<td>只走一半</td>
+<td>比较中点</td>
+<td><span class="math inline">\(O(\log n)\)</span></td>
+</tr>
+<tr class="even">
+<td>归并排序</td>
+<td>两半都做</td>
+<td>合并有序列表</td>
+<td><span class="math inline">\(O(n\log n)\)</span></td>
+</tr>
+<tr class="odd">
+<td>最大子段和</td>
+<td>两半都做</td>
+<td>扫描跨中点情况</td>
+<td><span class="math inline">\(O(n\log n)\)</span></td>
+</tr>
+<tr class="even">
+<td>逆序对</td>
+<td>两半都做</td>
+<td>合并时计跨半逆序</td>
+<td><span class="math inline">\(O(n\log n)\)</span></td>
+</tr>
+<tr class="odd">
+<td>格子版杨辉三角</td>
+<td>两个重叠状态，各减<code>1</code></td>
+<td>两值相加、记忆化</td>
+<td>不是折半分治</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="阅读材料补充" class="level2">
+<h2 class="anchored" data-anchor-id="阅读材料补充">阅读材料补充</h2>
+<p>课程材料：7 分治算法阅读材料.pdf</p>
+<section id="递归二分的边界" class="level3">
+<h3 class="anchored" data-anchor-id="递归二分的边界">递归二分的边界</h3>
+<p>W4循环版与这里的递归版查的是同一个区间：循环用<code>while left &lt;= right</code>继续，递归用<code>left &gt; right</code>退出。即使只剩一个元素（<code>left == right</code>），也必须再比较一次，不能直接判定“没找到”。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 56%">
+<col style="width: 43%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>写法</th>
+<th>问题</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>if left == right: return -1</code></td>
+<td>漏查最后一个元素；空区间才表示失败</td>
+</tr>
+<tr class="even">
+<td><code>return 1 + binary_search_rec(...)</code></td>
+<td>回归时还要加<span class="math inline">\(1\)</span>，不再是尾递归，也会把原列表下标算错</td>
+</tr>
+<tr class="odd">
+<td>无序列表上做二分</td>
+<td>无法根据中点比较结果排除一半，递归和循环版都会错</td>
+</tr>
+</tbody>
+</table>
+<p>这里用默认参数处理首次调用；如果另写包装函数，也要从<code>left=0, right=len(lst)-1</code>开始。</p>
+</section>
+<section id="切片别名与合并" class="level3">
+<h3 class="anchored" data-anchor-id="切片别名与合并">切片、别名与合并</h3>
+<p><code>b = a</code>只是让两个名字指向同一列表；<code>b = a[:mid]</code>会创建新列表，改<code>b</code>的顶层元素不会改<code>a</code>。切片是<strong>浅拷贝</strong>，内层若还有可变对象，仍可能共享。归并教学版用切片分左右两半，代码清楚，但每层都会增加复制开销；下标区间版可以省去分割时的拷贝，合并结果仍需要缓冲。</p>
+<p><code>merge</code>的两个输入已经各自有序。循环条件是“两边都还有元素”，因此循环结束后通常<strong>还剩一边没取完</strong>；<code>result.extend(left[i:])</code>与<code>result.extend(right[j:])</code>两句都要写，空切片追加后没有影响。用<code>merge([1], [2,3])</code>就能查出漏收尾的错误。</p>
+</section>
+<section id="多返回值与拆包" class="level3">
+<h3 class="anchored" data-anchor-id="多返回值与拆包">多返回值与拆包</h3>
+<p>逆序对版本的<code>merge_count</code>既要给回有序列表，也要给回跨段计数。<code>return result, count</code>实际上返回一个元组，调用方可以拆开：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>ordered, total <span class="op">=</span> inversions([<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">2</span>])  <span class="co"># [1, 2, 3, 4], 3</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>_, count <span class="op">=</span> inversions([<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>])           <span class="co"># 只关心计数，count == 2</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>总数一定是<strong>左半内部＋右半内部＋跨半</strong>，即<span class="math inline">\(c_1+c_2+c_3\)</span>。取右元素时才加<code>len(left)-i</code>，因为只剩这些左元素尚未取走且比当前右元素大；取左或两元素相等时不加。</p>
+</section>
+<section id="把函数作为参数" class="level3">
+<h3 class="anchored" data-anchor-id="把函数作为参数">把函数作为参数</h3>
+<p>高阶函数的关键不是<code>lambda</code>这个写法，而是<strong>函数本身也能作为值传递</strong>：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> apply_twice(f, x):</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> f(f(x))</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> square(x):</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x <span class="op">*</span> x</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>apply_twice(square, <span class="dv">3</span>)        <span class="co"># 81</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="bu">max</span>([<span class="op">-</span><span class="dv">2</span>, <span class="dv">5</span>, <span class="op">-</span><span class="dv">7</span>], key<span class="op">=</span><span class="bu">abs</span>)   <span class="co"># -7，按绝对值比较</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>square</code>与<code>abs</code>后面都没有括号：这里传的是函数，不是先调用函数得到的值。W3求根函数如果接受可调用的<code>f</code>，就可以传<code>lambda x: x**2 - 2</code>表示方程左边，而不必把公式写死；传字符串<code>"x**2 - 2"</code>则不是可调用对象。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>用法</th>
+<th>适合什么时候</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>key=abs</code></td>
+<td>已有合适的函数，直接传名字</td>
+</tr>
+<tr class="even">
+<td><code>key=lambda x: x.freq</code></td>
+<td>只用一次、规则能写成一个短表达式</td>
+</tr>
+<tr class="odd">
+<td>先<code>def</code>再传函数名</td>
+<td>规则较长，需要多句处理</td>
+</tr>
+</tbody>
+</table>
+<p><code>lambda 参数: 表达式</code>只能写<strong>一个表达式</strong>，但表达式中可以用条件形式，例如<code>lambda x: 1 if x &gt;= 0 else -1</code>。<code>sorted(xs, key=abs)</code>中的<code>key=</code>不能省掉；<code>sorted(xs, abs)</code>会把<code>abs</code>放到错误的参数位置。</p>
+</section>
+<section id="分区与递归规模的检查" class="level3">
+<h3 class="anchored" data-anchor-id="分区与递归规模的检查">分区与递归规模的检查</h3>
+<p>简洁版快排必须先取出基准，再用<code>arr[1:]</code>分区；若把基准也放回某个子列表，规模可能根本没有缩小。右边用<code>&gt;= pivot</code>保留相等元素。首元素作基准遇到已排序列表时，每轮只减少一个元素，最坏时间<span class="math inline">\(O(n^2)\)</span>、递归深度<span class="math inline">\(O(n)\)</span>；随机选基准能减少固定输入造成的退化风险，但不保证每次都平衡。重复元素很多时，用<code>&lt;</code>、<code>==</code>、<code>&gt;</code>三路分区，让相等项不再参与递归。</p>
+<p>检查本周几种代码，可以分别拿最小反例手推：二分查单元素列表，归并合<code>[1]</code>与<code>[2,3]</code>，逆序对算<code>[3,1,2]</code>，快排试已排序列表和重复元素。比只看正常样例，更容易发现边界和漏算。</p>
+</section>
+</section>
+<section id="研讨课内容" class="level2">
+<h2 class="anchored" data-anchor-id="研讨课内容">研讨课内容</h2>
+<p>课程材料：7 分治算法-研讨课.pdf</p>
+<section id="归并与快排工作在不同阶段" class="level3">
+<h3 class="anchored" data-anchor-id="归并与快排工作在不同阶段">归并与快排：工作在不同阶段</h3>
+<p>手推<code>merge([1,3],[2,4])</code>：依次取<code>1,2,3</code>后，左边已空；必须追加剩余的<code>4</code>。归并是<strong>先排好两半，再合并</strong>；快排则是<strong>先按基准分区，再递归排两侧</strong>。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>归并排序</th>
+<th>快速排序</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>当前层重点</td>
+<td>合并两个已排序的列表</td>
+<td>选<code>pivot</code>，把小于它的放左边，其余放右边</td>
+</tr>
+<tr class="even">
+<td>递归后</td>
+<td>做<code>merge</code></td>
+<td>直接拼接两侧和基准</td>
+</tr>
+<tr class="odd">
+<td>容易出错</td>
+<td>忘记追加剩余段</td>
+<td>基准又进入子问题，或漏掉相等元素</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="简洁快速排序" class="level3">
+<h3 class="anchored" data-anchor-id="简洁快速排序">简洁快速排序</h3>
+<p>以首元素为<code>pivot</code>。<code>arr[1:]</code>排除基准；左边取<code>&lt; pivot</code>，右边取<code>&gt;= pivot</code>，相等元素才不会丢：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> quick_sort(arr):</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">len</span>(arr) <span class="op">&lt;=</span> <span class="dv">1</span>:</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> arr</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    pivot <span class="op">=</span> arr[<span class="dv">0</span>]</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    left <span class="op">=</span> [x <span class="cf">for</span> x <span class="kw">in</span> arr[<span class="dv">1</span>:] <span class="cf">if</span> x <span class="op">&lt;</span> pivot]</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    right <span class="op">=</span> [x <span class="cf">for</span> x <span class="kw">in</span> arr[<span class="dv">1</span>:] <span class="cf">if</span> x <span class="op">&gt;=</span> pivot]</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> quick_sort(left) <span class="op">+</span> [pivot] <span class="op">+</span> quick_sort(right)</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>[3,1,4,1,5,9,2,6]</code>以<code>3</code>为基准时，左边是<code>[1,1,2]</code>，右边是<code>[4,5,9,6]</code>；右边仍需递归排序。验证结果时除了看是否有序，还要确认元素和出现次数都没有变化。</p>
+</section>
+<section id="首元素基准的退化与三路分区" class="level3">
+<h3 class="anchored" data-anchor-id="首元素基准的退化与三路分区">首元素基准的退化与三路分区</h3>
+<p>对已排序的<span class="math inline">\([1,2,\ldots,n]\)</span>，首元素每次都是最小值：左边为空，右边只少一个元素。于是递归深度从平均的<span class="math inline">\(O(\log n)\)</span>变成<span class="math inline">\(O(n)\)</span>，时间最坏<span class="math inline">\(O(n^2)\)</span>，Python中还可能触及递归深度限制。随机选基准能降低固定坏输入的影响，但不能保证次次平衡。</p>
+<p>重复值很多时，把<code>== pivot</code>单独放在中间，<strong>相等项无需再递归</strong>：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> quick_sort_3way(arr):</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">len</span>(arr) <span class="op">&lt;=</span> <span class="dv">1</span>:</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> arr</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    pivot <span class="op">=</span> arr[<span class="dv">0</span>]</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    less <span class="op">=</span> [x <span class="cf">for</span> x <span class="kw">in</span> arr <span class="cf">if</span> x <span class="op">&lt;</span> pivot]</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    equal <span class="op">=</span> [x <span class="cf">for</span> x <span class="kw">in</span> arr <span class="cf">if</span> x <span class="op">==</span> pivot]</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    greater <span class="op">=</span> [x <span class="cf">for</span> x <span class="kw">in</span> arr <span class="cf">if</span> x <span class="op">&gt;</span> pivot]</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> quick_sort_3way(less) <span class="op">+</span> equal <span class="op">+</span> quick_sort_3way(greater)</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>例如<code>[8,3,5,1,7,2,9,4]</code>以<code>5</code>为基准，分为<code>[3,1,2,4] | 5 | [8,7,9]</code>。简洁版快排的列表推导式和拼接会创建新列表；它只是为了把分区思路写清楚，不等同于常见的原地快排。归并时间稳定在<span class="math inline">\(O(n\log n)\)</span>；快排平均<span class="math inline">\(O(n\log n)\)</span>、最坏<span class="math inline">\(O(n^2)\)</span>。</p>
+<blockquote class="blockquote">
+<p>检查分治代码，重点看三处：Base Case能否结束；子问题是否真的缩小；当前层有没有漏掉必须处理的部分——归并的剩余段、最大子段和的跨中点情况、快排的相等元素与基准排除。</p>
+</blockquote>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<section id="comments" class="comments-section" aria-labelledby="comments-heading">
+  <h2 id="comments-heading">评论</h2>
+  <p id="comments-status">评论暂未开放。</p>
+  <div class="giscus"></div>
+</section>
+<script src="../../assets/comments-config.js?v=0740342d2f79"></script>
+<script src="../../assets/comments.js?v=efc269bc7855"></script>
+
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "已复制");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "已复制");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/easoncyy\.github\.io");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p><a href="../../posts/20261027-fip-w07-divide-and-conquer/index.html">~/notes</a> · 记录与探索</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p><a class="footer-repository" href="https://github.com/easoncyy/easoncyy.github.io" target="_blank" rel="noopener noreferrer" aria-label="查看本站 GitHub 仓库"><i class="bi bi-github" aria-hidden="true"></i><span>source/</span></a><span class="footer-builder">Built with Quarto</span></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

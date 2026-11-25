@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="easoncyy">
+<meta name="description" content="从渐进记号、操作计数和递归树出发，分析最大子段和、排序、快速幂与筛法的时间复杂度。">
+
+<title>如何计算简单的时间复杂度：以分治为例 – 个人笔记</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/favicon.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-a7952132dd87ce33f437addd0578540c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-dc090d8f6625c822698d9a6ee9cd1ac5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "没有结果",
+    "search-matching-documents-text": "匹配的文档",
+    "search-copy-link-title": "复制搜索链接",
+    "search-hide-matches-text": "隐藏其它匹配结果",
+    "search-more-match-text": "更多匹配结果",
+    "search-more-matches-text": "更多匹配结果",
+    "search-clear-button-title": "清除",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "取消",
+    "search-submit-button-title": "提交",
+    "search-label": "搜索"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script defer="" src="../../assets/directory.js?v=05751f758f0b"></script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="../../assets/vendor/mathjax/tex-svg-full.js?v=a4354ff94fd8" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css?v=83131ce44c97">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/logo.svg" alt="Ce · easoncyy" class="navbar-logo light-content">
+    <img src="../../assets/logo.svg" alt="Ce · easoncyy" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">~/notes</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="搜索"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="展开或折叠导航栏" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html"> 
+<span class="menu-text"><span class="nav-path">blog/</span><span class="nav-caption">博客</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../problems.html"> 
+<span class="menu-text"><span class="nav-path">problems/</span><span class="nav-caption">每日好题</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../projects.html"> 
+<span class="menu-text"><span class="nav-path">projects/</span><span class="nav-caption">项目</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../log.html"> 
+<span class="menu-text"><span class="nav-path">log/</span><span class="nav-caption">日志</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../links.html"> 
+<span class="menu-text"><span class="nav-path">links/</span><span class="nav-caption">友链</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../library.html"> 
+<span class="menu-text"><span class="nav-path">library/</span><span class="nav-caption">图书馆</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text"><span class="nav-path">about/</span><span class="nav-caption">关于</span></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">本页目录</h2>
+   
+  <ul>
+  <li><a href="#什么是时间复杂度分析" id="toc-什么是时间复杂度分析" class="nav-link active" data-scroll-target="#什么是时间复杂度分析">什么是时间复杂度分析</a></li>
+  <li><a href="#数学基础渐进记号" id="toc-数学基础渐进记号" class="nav-link" data-scroll-target="#数学基础渐进记号">数学基础：渐进记号</a>
+  <ul class="collapse">
+  <li><a href="#计算时常用的几条规则" id="toc-计算时常用的几条规则" class="nav-link" data-scroll-target="#计算时常用的几条规则">计算时常用的几条规则</a></li>
+  </ul></li>
+  <li><a href="#数操作次数" id="toc-数操作次数" class="nav-link" data-scroll-target="#数操作次数">数操作次数</a></li>
+  <li><a href="#最大子串和" id="toc-最大子串和" class="nav-link" data-scroll-target="#最大子串和">最大子串和</a>
+  <ul class="collapse">
+  <li><a href="#穷举法" id="toc-穷举法" class="nav-link" data-scroll-target="#穷举法">穷举法</a></li>
+  <li><a href="#分治" id="toc-分治" class="nav-link" data-scroll-target="#分治">分治</a></li>
+  <li><a href="#前缀和" id="toc-前缀和" class="nav-link" data-scroll-target="#前缀和">前缀和</a></li>
+  <li><a href="#kadane" id="toc-kadane" class="nav-link" data-scroll-target="#kadane">Kadane</a></li>
+  </ul></li>
+  <li><a href="#再看几个经典算法" id="toc-再看几个经典算法" class="nav-link" data-scroll-target="#再看几个经典算法">再看几个经典算法</a>
+  <ul class="collapse">
+  <li><a href="#冒泡排序与插入排序" id="toc-冒泡排序与插入排序" class="nav-link" data-scroll-target="#冒泡排序与插入排序">冒泡排序与插入排序</a></li>
+  <li><a href="#归并排序与快速排序" id="toc-归并排序与快速排序" class="nav-link" data-scroll-target="#归并排序与快速排序">归并排序与快速排序</a></li>
+  <li><a href="#快速幂" id="toc-快速幂" class="nav-link" data-scroll-target="#快速幂">快速幂</a></li>
+  <li><a href="#eratosthenes素数筛" id="toc-eratosthenes素数筛" class="nav-link" data-scroll-target="#eratosthenes素数筛">Eratosthenes素数筛</a></li>
+  </ul></li>
+  <li><a href="#思考题" id="toc-思考题" class="nav-link" data-scroll-target="#思考题">思考题</a></li>
+  <li><a href="#最后想提醒的一点" id="toc-最后想提醒的一点" class="nav-link" data-scroll-target="#最后想提醒的一点">最后想提醒的一点</a></li>
+  <li><a href="#参考资料" id="toc-参考资料" class="nav-link" data-scroll-target="#参考资料">参考资料</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">如何计算简单的时间复杂度：以分治为例</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">技术博客</div>
+    <div class="quarto-category">时间复杂度</div>
+    <div class="quarto-category">分治</div>
+    <div class="quarto-category">FIP</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    从渐进记号、操作计数和递归树出发，分析最大子段和、排序、快速幂与筛法的时间复杂度。
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">作者</div>
+    <div class="quarto-title-meta-contents">
+             <p>easoncyy </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">发布于</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2026年10月28日</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<blockquote class="blockquote">
+<p>在本周的课程中，我们学习了用<strong>分治</strong>处理排序、最大子段和等问题。课后有同学问我，为什么最大子段和的分治算法是 <span class="math inline">\(O(N\log N)\)</span>，平时也发现有些同学对“时间复杂度”还不太熟悉。所以写了这篇材料作为拓展分享。</p>
+</blockquote>
+<section id="什么是时间复杂度分析" class="level2">
+<h2 class="anchored" data-anchor-id="什么是时间复杂度分析">什么是时间复杂度分析</h2>
+<p>时间复杂度分析的不是某台电脑实际跑了多少秒，而是<strong>输入规模增长时，基本操作次数如何增长</strong>。同样长度的输入也可能让算法走不同的路径，因此常区分最坏情况 <span class="math inline">\(T_{\mathrm{worst}}(N)\)</span> 和平均情况 <span class="math inline">\(T_{\mathrm{avg}}(N)\)</span>；谈平均情况时，还要说明输入按什么分布出现。下文以及平时没有特别说明时，分析的都是最坏情况。</p>
+</section>
+<section id="数学基础渐进记号" class="level2">
+<h2 class="anchored" data-anchor-id="数学基础渐进记号">数学基础：渐进记号</h2>
+<p>设 <span class="math inline">\(T(N)\ge 0\)</span>，比较用的函数 <span class="math inline">\(f(N)&gt;0\)</span>（至少在足够大的 <span class="math inline">\(N\)</span> 上成立）。这些记号描述的是<strong>充分大的 <span class="math inline">\(N\)</span></strong>，差不多可以近似理解成趋向无穷。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>记号</th>
+<th>严格定义</th>
+<th>直观含义</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(T(N)=O(f(N))\)</span></td>
+<td>存在 <span class="math inline">\(c&gt;0,N_0\)</span>，使 <span class="math inline">\(N\ge N_0\)</span> 时 <span class="math inline">\(T(N)\le cf(N)\)</span></td>
+<td>渐进上界</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(T(N)=\Omega(f(N))\)</span></td>
+<td>存在 <span class="math inline">\(c&gt;0,N_0\)</span>，使 <span class="math inline">\(N\ge N_0\)</span> 时 <span class="math inline">\(T(N)\ge cf(N)\)</span></td>
+<td>渐进下界</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(T(N)=\Theta(f(N))\)</span></td>
+<td>同时满足 <span class="math inline">\(O(f(N))\)</span> 和 <span class="math inline">\(\Omega(f(N))\)</span></td>
+<td>同阶，即上下界都紧</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(T(N)=o(f(N))\)</span></td>
+<td>对<strong>任意</strong> <span class="math inline">\(\varepsilon&gt;0\)</span>，充分大的 <span class="math inline">\(N\)</span> 都有 <span class="math inline">\(T(N)\le\varepsilon f(N)\)</span></td>
+<td>严格低阶</td>
+</tr>
+</tbody>
+</table>
+<p>我们习惯写等号，但 <span class="math inline">\(T(N)=O(f(N))\)</span> 实际表示 <span class="math inline">\(T\)</span> <strong>属于</strong>由 <span class="math inline">\(f\)</span> 给出的上界类别，不是两个函数相等。</p>
+<p>我个人更喜欢用比值理解：如果 <span class="math inline">\(\lim_{N\to\infty}T(N)/f(N)=0\)</span>，那么 <span class="math inline">\(T=o(f)\)</span>；如果极限是一个有限的正常数，那么 <span class="math inline">\(T=\Theta(f)\)</span>。例如 <span class="math inline">\(N^2=O(N^3)\)</span> 当然正确，但 <span class="math inline">\(N^2=\Theta(N^2)\)</span> 给出的界更紧。<span class="math inline">\(T=O(f)\)</span> 的意思是 <strong><span class="math inline">\(f\)</span> 给 <span class="math inline">\(T\)</span> 提供上界</strong>，不是说 <span class="math inline">\(f\)</span> 是下界。</p>
+<section id="计算时常用的几条规则" class="level3">
+<h3 class="anchored" data-anchor-id="计算时常用的几条规则">计算时常用的几条规则</h3>
+<p>设各段耗时都非负。如果 <span class="math inline">\(T_1=O(f)\)</span>、<span class="math inline">\(T_2=O(g)\)</span>，顺序执行的总耗时满足</p>
+<p><span class="math display">\[
+T_1+T_2=O(f+g)=O(\max\{f,g\}).
+\]</span></p>
+<p>若已知 <span class="math inline">\(T_1=\Theta(f)\)</span>、<span class="math inline">\(T_2=\Theta(g)\)</span>，才能进一步写成 <span class="math inline">\(\Theta(\max\{f,g\})\)</span>。</p>
+<p>若 <span class="math inline">\(T(N)\)</span> 是最高次项系数为正的 <span class="math inline">\(k\)</span> 次多项式，则 <span class="math inline">\(T(N)=\Theta(N^k)\)</span>。因此 <span class="math inline">\(O(N^2+N)\)</span> <strong>没有错</strong>，只是通常写成更简洁的 <span class="math inline">\(O(N^2)\)</span>；<span class="math inline">\(O(3N^2)\)</span> 也同理。对数的底数只差常数倍，在渐进记号中通常省略。</p>
+</section>
+</section>
+<section id="数操作次数" class="level2">
+<h2 class="anchored" data-anchor-id="数操作次数">数操作次数</h2>
+<p>对于几种基本情况，规则如下</p>
+<ul>
+<li><strong>顺序语句</strong>：把各段时间相加；非负函数的渐进上界由增长最快的一项决定。</li>
+<li><strong>分支</strong>：最坏情况取可能执行的分支中较慢的一个，再加上判断条件本身的开销。</li>
+<li><strong>循环</strong>：循环体成本乘迭代次数，前提是每轮成本大致相同；若不同，就逐轮求和。</li>
+<li><strong>嵌套循环</strong>：内层次数若依赖外层变量，不能机械地把两个上限相乘。</li>
+</ul>
+<p>例如内层每轮分别执行 <span class="math inline">\(1,2,\ldots,N\)</span> 次，总次数为</p>
+<p><span class="math display">\[
+\sum_{i=1}^{N}i=\frac{N(N+1)}2=\Theta(N^2).
+\]</span></p>
+</section>
+<section id="最大子串和" class="level2">
+<h2 class="anchored" data-anchor-id="最大子串和">最大子串和</h2>
+<p>给定整数序列 <span class="math inline">\(A_1,\ldots,A_N\)</span>，其中可以有负数；求<strong>非空连续子段</strong>的最大和</p>
+<p><span class="math display">\[
+M=\max_{1\le i\le j\le N}\sum_{k=i}^{j}A_k.
+\]</span></p>
+<p>全负数时答案是最大的那个负数，以下都假定 <span class="math inline">\(N\ge1\)</span>。</p>
+<section id="穷举法" class="level3">
+<h3 class="anchored" data-anchor-id="穷举法">穷举法</h3>
+<p>共有 <span class="math inline">\(N(N+1)/2=O(N^2)\)</span> 个端点对 <span class="math inline">\((i,j)\)</span>。如果对每个端点对都从头算一次 <span class="math inline">\(\sum_{k=i}^{j}A_k\)</span>，最坏会做</p>
+<p><span class="math display">\[
+\sum_{i=1}^{N}\sum_{j=i}^{N}(j-i+1)
+=\sum_{\ell=1}^{N}\ell(N-\ell+1)
+=\frac{N(N+1)(N+2)}6
+=O(N^3)
+\]</span></p>
+<p>次加法。</p>
+<p>但固定左端点 <span class="math inline">\(i\)</span> 后，右端点向右移动时只需把新元素加进已有的和，没必要重算前面的元素：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> max_sum_quadratic(arr):</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    best <span class="op">=</span> arr[<span class="dv">0</span>]</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(arr)):</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        total <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(i, <span class="bu">len</span>(arr)):</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>            total <span class="op">+=</span> arr[j]</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>            best <span class="op">=</span> <span class="bu">max</span>(best, total)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> best</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>现在每个端点只做常数次工作，故时间为 <span class="math inline">\(O(N^2)\)</span>，额外空间为 <span class="math inline">\(O(1)\)</span>。</p>
+</section>
+<section id="分治" class="level3">
+<h3 class="anchored" data-anchor-id="分治">分治</h3>
+<p>把区间从中间切开，最大子段只有三种位置：完全在左、完全在右、横跨中点。前两种交给递归；跨中点的答案等于“左边以中点左侧结束的最大后缀”加“右边从中点右侧开始的最大前缀”。两边各扫一遍，当层成本是 <span class="math inline">\(O(N)\)</span>。单元素直接返回自身，于是</p>
+<p><span class="math display">\[
+T(N)=T(\lfloor N/2\rfloor)+T(\lceil N/2\rceil)+O(N),
+\qquad T(1)=O(1).
+\]</span></p>
+<p>递归树有 <span class="math inline">\(O(\log N)\)</span> 层，每层的区间互不重叠、总长度为 <span class="math inline">\(N\)</span>，因此每层工作量为 <span class="math inline">\(O(N)\)</span>，总时间</p>
+<p><span class="math display">\[
+T(N)=O(N\log N).
+\]</span></p>
+</section>
+<section id="前缀和" class="level3">
+<h3 class="anchored" data-anchor-id="前缀和">前缀和</h3>
+<p>令 <span class="math inline">\(P_0=0\)</span>，<span class="math inline">\(P_j=\sum_{k=1}^{j}A_k\)</span>，则</p>
+<p><span class="math display">\[
+\sum_{k=i}^{j}A_k=P_j-P_{i-1}.
+\]</span></p>
+<p>固定右端点 <span class="math inline">\(j\)</span> 时，要让它最大，只需找到<strong>此前最小的前缀和</strong>：</p>
+<p><span class="math display">\[
+\max_{1\le i\le j}\sum_{k=i}^{j}A_k
+=P_j-\min_{0\le t&lt;j}P_t.
+\]</span></p>
+<p>从左到右维护 <span class="math inline">\(P_j\)</span> 和此前最小的 <span class="math inline">\(P_t\)</span>，每个元素只处理一次：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> max_sum_prefix(arr):</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> arr:</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"需要非空列表"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    prefix <span class="op">=</span> min_prefix <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    best <span class="op">=</span> arr[<span class="dv">0</span>]</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> x <span class="kw">in</span> arr:</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        prefix <span class="op">+=</span> x</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        best <span class="op">=</span> <span class="bu">max</span>(best, prefix <span class="op">-</span> min_prefix)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        min_prefix <span class="op">=</span> <span class="bu">min</span>(min_prefix, prefix)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> best</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>先用旧的最小前缀更新答案，再把当前前缀纳入最小值</strong>，才保证 <span class="math inline">\(t&lt;j\)</span>、子段非空。若顺序反过来，当前前缀可减去自己得到 <span class="math inline">\(0\)</span>，全负数时就可能答错。时间 <span class="math inline">\(O(N)\)</span>，额外空间 <span class="math inline">\(O(1)\)</span>。</p>
+</section>
+<section id="kadane" class="level3">
+<h3 class="anchored" data-anchor-id="kadane">Kadane</h3>
+<p>另一种想法是先不考虑任意终点，只考虑<strong>必须以当前位置结尾</strong>的最大和 <span class="math inline">\(E_i\)</span>。这样的子段要么从 <span class="math inline">\(A_i\)</span> 重新开始，要么接在前一个最优后缀后面：</p>
+<p><span class="math display">\[
+E_1=A_1,\qquad E_i=\max(A_i,E_{i-1}+A_i),\qquad M=\max_{1\le i\le N}E_i.
+\]</span></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> max_sum_kadane(arr):</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> arr:</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"需要非空列表"</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    current <span class="op">=</span> best <span class="op">=</span> arr[<span class="dv">0</span>]</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(arr)):</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        current <span class="op">=</span> <span class="bu">max</span>(arr[i], current <span class="op">+</span> arr[i])</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        best <span class="op">=</span> <span class="bu">max</span>(best, current)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> best</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>它与前缀和其实是在描述同一个量：<span class="math inline">\(E_j=P_j-\min_{0\le t&lt;j}P_t\)</span>。两者都只扫描一次，时间 <span class="math inline">\(O(N)\)</span>，额外空间 <span class="math inline">\(O(1)\)</span>。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>方法</th>
+<th>时间</th>
+<th>关键原因</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>每个区间重新求和</td>
+<td><span class="math inline">\(O(N^3)\)</span></td>
+<td>同一段和反复计算</td>
+</tr>
+<tr class="even">
+<td>固定左端点，累加右端点</td>
+<td><span class="math inline">\(O(N^2)\)</span></td>
+<td>端点对共有二次方个</td>
+</tr>
+<tr class="odd">
+<td>分治</td>
+<td><span class="math inline">\(O(N\log N)\)</span></td>
+<td>对数层，每层线性扫描</td>
+</tr>
+<tr class="even">
+<td>前缀和 / Kadane</td>
+<td><span class="math inline">\(O(N)\)</span></td>
+<td>每个元素只处理常数次</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="再看几个经典算法" class="level2">
+<h2 class="anchored" data-anchor-id="再看几个经典算法">再看几个经典算法</h2>
+<section id="冒泡排序与插入排序" class="level3">
+<h3 class="anchored" data-anchor-id="冒泡排序与插入排序">冒泡排序与插入排序</h3>
+<p>标准冒泡排序的比较次数为 <span class="math inline">\((N-1)+(N-2)+\cdots+1=N(N-1)/2\)</span>，最坏时间 <span class="math inline">\(O(N^2)\)</span>。若设置“本趟没有交换就提前结束”，已排序输入只需一趟，最好时间 <span class="math inline">\(O(N)\)</span>；没有这个判断时，最好情况也仍会做二次方次比较。</p>
+<p>插入排序把新元素向左插进已排序的前缀。第 <span class="math inline">\(i\)</span> 次最多移动 <span class="math inline">\(i\)</span> 个元素，最坏总移动次数 <span class="math inline">\(\sum_{i=1}^{N-1}i=O(N^2)\)</span>；已排序时每次只比较少数几次，最好 <span class="math inline">\(O(N)\)</span>。若输入是<strong>均匀随机排列</strong>，平均逆序对数为 <span class="math inline">\(N(N-1)/4\)</span>，每个逆序对都对应一次向右移动，所以平均时间也是 <span class="math inline">\(O(N^2)\)</span>。</p>
+</section>
+<section id="归并排序与快速排序" class="level3">
+<h3 class="anchored" data-anchor-id="归并排序与快速排序">归并排序与快速排序</h3>
+<p>归并排序把两半都排好，再用线性时间合并：</p>
+<p><span class="math display">\[
+T(N)=2T(N/2)+O(N)=O(N\log N).
+\]</span></p>
+<p>奇数长度时两半差一个元素，不改变结论；合并需要 <span class="math inline">\(O(N)\)</span> 额外空间。</p>
+<p>快速排序先分区。每层分区花 <span class="math inline">\(O(N)\)</span>；若每次分得接近一半，与归并有同样的 <span class="math inline">\(O(N\log N)\)</span>。若总选到最小或最大值，如“首元素作基准”遇到已排序输入，就有</p>
+<p><span class="math display">\[
+T(N)=T(N-1)+O(N)=O(N^2).
+\]</span></p>
+<p>因此“快排是 <span class="math inline">\(O(N\log N)\)</span>”若未说明条件，只能理解为平均或期望表现，<strong>不是最坏保证</strong>。随机选基准、元素互异时，还能从比较概率看出期望复杂度：排序后排名相隔 <span class="math inline">\(d\)</span> 的一对元素被比较的概率是 <span class="math inline">\(2/(d+1)\)</span>，全部元素对的期望比较次数为</p>
+<p><span class="math display">\[
+\sum_{d=1}^{N-1}(N-d)\frac{2}{d+1}=O(N\log N).
+\]</span></p>
+</section>
+<section id="快速幂" class="level3">
+<h3 class="anchored" data-anchor-id="快速幂">快速幂</h3>
+<p>计算 <span class="math inline">\(a^m\)</span> 时，若每次只乘一个 <span class="math inline">\(a\)</span>，需要 <span class="math inline">\(O(m)\)</span> 次乘法。利用 <span class="math inline">\(a^{2q}=(a^q)^2\)</span>，指数每轮折半：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fast_power(a, m):</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> m <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"这里约定指数非负"</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> m <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> m <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>            result <span class="op">*=</span> a</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        a <span class="op">*=</span> a</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        m <span class="op">//=</span> <span class="dv">2</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<p>循环次数是 <span class="math inline">\(\lfloor\log_2 m\rfloor+1\)</span>（<span class="math inline">\(m\ge1\)</span>），每轮做常数次乘法，所以<strong>按乘法次数计</strong>为 <span class="math inline">\(O(\log m)\)</span>。若整数非常大，单次大整数乘法并非固定时间；这时还要单独考虑整数位数带来的成本。</p>
+</section>
+<section id="eratosthenes素数筛" class="level3">
+<h3 class="anchored" data-anchor-id="eratosthenes素数筛">Eratosthenes素数筛</h3>
+<p>筛法先假设 <span class="math inline">\(0\)</span> 到 <span class="math inline">\(N\)</span> 中的数是素数，再对每个尚未被划掉的 <span class="math inline">\(p\le\sqrt N\)</span>，从 <span class="math inline">\(p^2\)</span> 开始划掉 <span class="math inline">\(p\)</span> 的倍数。更小的倍数已被更小的质因子处理过。</p>
+<p>初始化花 <span class="math inline">\(O(N)\)</span>；划去倍数的次数可写成</p>
+<p><span class="math display">\[
+\sum_{\substack{p\le\sqrt N\\p\text{ 为素数}}}
+\left(\left\lfloor\frac Np\right\rfloor-p+1\right).
+\]</span></p>
+<p>用“素数倒数和”<span class="math inline">\(\sum_{p\le x}1/p=\log\log x+O(1)\)</span> 这个很巧妙的结论，再注意 <span class="math inline">\(\sum_{p\le\sqrt N}p\le N\)</span>，划去倍数的总次数就是 <span class="math inline">\(N\log\log N+O(N)\)</span>。因此标准筛法的时间是 <span class="math inline">\(O(N\log\log N)\)</span>，布尔表占 <span class="math inline">\(O(N)\)</span> 空间。这里的 <span class="math inline">\(\log\log N\)</span> 不是因为写了两层循环，而是来自<strong>只对素数 <span class="math inline">\(p\)</span> 枚举倍数</strong>。</p>
+</section>
+</section>
+<section id="思考题" class="level2">
+<h2 class="anchored" data-anchor-id="思考题">思考题</h2>
+<p>先不要看到两层循环就直接把循环次数相乘。读下面的程序，假设输入满足 <span class="math inline">\(1\le n\le 10^7\)</span>：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;bits/stdc++.h&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> a<span class="op">[</span><span class="dv">10000005</span><span class="op">];</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> n<span class="op">;</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    cin <span class="op">&gt;&gt;</span> n<span class="op">;</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> cnt <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">2</span><span class="op">;</span> i <span class="op">&lt;=</span> sqrt<span class="op">(</span>n<span class="op">);</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> cc <span class="op">=</span> i <span class="op">*</span> i<span class="op">;</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>a<span class="op">[</span>cc<span class="op">]</span> <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>            a<span class="op">[</span>cc<span class="op">]++;</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> cc<span class="op">;</span> i <span class="op">&lt;=</span> n<span class="op">;</span> i <span class="op">+=</span> cc<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>                a<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">4</span><span class="op">;</span> i <span class="op">&lt;=</span> n<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>        cnt <span class="op">+=</span> a<span class="op">[</span>i<span class="op">];</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    cout <span class="op">&lt;&lt;</span> n <span class="op">-</span> cnt<span class="op">;</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<ol type="1">
+<li>手推 <span class="math inline">\(n=10\)</span>：程序输出什么？它实际上在统计哪类整数？</li>
+<li>什么样的 <span class="math inline">\(i\)</span> 会让 <code>if (a[cc] == 0)</code> 成立？为什么内层循环不能简单按“外层次数 <span class="math inline">\(\times\)</span> 内层最多次数”估计？</li>
+<li>把内层循环的总执行次数写成求和式，给出程序的<strong>时间复杂度上界</strong>。</li>
+</ol>
+</section>
+<section id="最后想提醒的一点" class="level2">
+<h2 class="anchored" data-anchor-id="最后想提醒的一点">最后想提醒的一点</h2>
+<p>分析复杂度时，我觉得最有用的顺序是：<strong>先说清输入规模和所数的操作，再把循环次数写成和式，或把递归写成递推式，最后才化简成渐进记号。</strong> 只看到“两层循环”就写 <span class="math inline">\(O(N^2)\)</span>，或看到“折半”就写 <span class="math inline">\(O(\log N)\)</span>，都可能漏掉循环边界、递归分支，以及每一层实际做的工作。</p>
+</section>
+<section id="参考资料" class="level2">
+<h2 class="anchored" data-anchor-id="参考资料">参考资料</h2>
+<ul>
+<li>Mark Allen Weiss，《数据结构与算法分析》。</li>
+<li>FIP W07 课程材料：《26FIP7 分治算法.pdf》</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<section id="comments" class="comments-section" aria-labelledby="comments-heading">
+  <h2 id="comments-heading">评论</h2>
+  <p id="comments-status">评论暂未开放。</p>
+  <div class="giscus"></div>
+</section>
+<script src="../../assets/comments-config.js?v=0740342d2f79"></script>
+<script src="../../assets/comments.js?v=efc269bc7855"></script>
+
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "已复制");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "已复制");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/easoncyy\.github\.io");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p><a href="../../posts/20261028-time-complexity-divide-and-conquer/index.html">~/notes</a> · 记录与探索</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p><a class="footer-repository" href="https://github.com/easoncyy/easoncyy.github.io" target="_blank" rel="noopener noreferrer" aria-label="查看本站 GitHub 仓库"><i class="bi bi-github" aria-hidden="true"></i><span>source/</span></a><span class="footer-builder">Built with Quarto</span></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
