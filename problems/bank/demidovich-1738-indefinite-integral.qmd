@@ -1,0 +1,25 @@
+---
+title: "四次多项式分母的有理积分"
+category-path: ["MATH", "CALCULUS", "不定积分"]
+tags: ["换元积分", "部分分式"]
+source: "吉米多维奇《数学分析习题集》第 1738 题"
+draft: false
+---
+
+求不定积分
+$$
+\int\frac{x\,dx}{x^4+3x^2+2}.
+$$
+
+<!-- answer -->
+
+由 $x^4+3x^2+2=(x^2+1)(x^2+2)$，得
+$$
+\begin{aligned}
+\int\frac{x\,dx}{x^4+3x^2+2}
+&=\frac12\int\frac{d(x^2)}{(x^2+1)(x^2+2)}\\
+&=\frac12\int\left(\frac1{x^2+1}-\frac1{x^2+2}\right)d(x^2)\\
+&=\frac12\ln(x^2+1)-\frac12\ln(x^2+2)+C\\
+&=\boxed{\frac12\ln\frac{x^2+1}{x^2+2}+C}.
+\end{aligned}
+$$

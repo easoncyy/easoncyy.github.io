@@ -1,0 +1,28 @@
+---
+title: "正弦平方与余弦乘积的倒数积分"
+category-path: ["MATH", "CALCULUS", "不定积分"]
+tags: ["拆项积分", "三角函数", "凑微分"]
+source: "吉米多维奇《数学分析习题集》第 1755 题"
+draft: false
+---
+
+求不定积分
+$$
+\int\frac{dx}{\sin^2x\cos x}.
+$$
+
+<!-- answer -->
+
+由 $\sin^2x+\cos^2x=1$，
+$$
+\frac1{\sin^2x\cos x}=\frac1{\cos x}+\frac{\cos x}{\sin^2x}.
+$$
+因此
+$$
+\begin{aligned}
+\int\frac{dx}{\sin^2x\cos x}
+&=\int\sec x\,dx+\int\frac{d(\sin x)}{\sin^2x}\\
+&=\boxed{\ln|\sec x+\tan x|-\frac1{\sin x}+C}.
+\end{aligned}
+$$
+结果在 $\sin x\cos x\ne0$ 的各区间上成立。

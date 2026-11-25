@@ -1,0 +1,32 @@
+---
+title: "三角函数幂乘积的降次积分"
+category-path: ["MATH", "CALCULUS", "不定积分"]
+tags: ["三角恒等变形", "降次公式", "积化和差"]
+source: "吉米多维奇《数学分析习题集》第 1753 题"
+draft: false
+---
+
+求不定积分
+$$
+\int\sin^2 3x\,\sin^3 2x\,dx.
+$$
+
+<!-- answer -->
+
+由降次公式，
+$$
+\sin^3 2x=\frac{3\sin2x-\sin6x}{4},\qquad
+\sin^2 3x=\frac{1-\cos6x}{2}.
+$$
+所以
+$$
+\begin{aligned}
+\sin^2 3x\sin^3 2x
+&=\frac18\bigl[3\sin2x-\sin6x-3\sin2x\cos6x+\sin6x\cos6x\bigr]\\
+&=\frac18\left[3\sin2x-\sin6x-\frac32\sin8x+\frac32\sin4x+\frac12\sin12x\right].
+\end{aligned}
+$$
+逐项积分，得
+$$
+\boxed{-\frac3{16}\cos2x+\frac1{48}\cos6x+\frac3{128}\cos8x-\frac3{64}\cos4x-\frac1{192}\cos12x+C}.
+$$

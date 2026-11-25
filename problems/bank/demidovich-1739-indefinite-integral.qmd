@@ -1,0 +1,33 @@
+---
+title: "两个一次因子平方乘积的倒数积分"
+category-path: ["MATH", "CALCULUS", "不定积分"]
+tags: ["部分分式", "参数积分"]
+source: "吉米多维奇《数学分析习题集》第 1739 题"
+draft: false
+---
+
+求不定积分
+$$
+\int\frac{dx}{(x+a)^2(x+b)^2}\qquad(a,b\in\mathbb R,\ a\ne b).
+$$
+
+<!-- answer -->
+
+利用
+$$
+\frac1{(x+a)(x+b)}=\frac1{b-a}\left(\frac1{x+a}-\frac1{x+b}\right),
+$$
+将两边平方，得
+$$
+\frac1{(x+a)^2(x+b)^2}
+=\frac1{(b-a)^2}\left[\frac1{(x+a)^2}+\frac1{(x+b)^2}-\frac2{(x+a)(x+b)}\right].
+$$
+再次拆分交叉项后逐项积分，得
+$$
+\begin{aligned}
+\int\frac{dx}{(x+a)^2(x+b)^2}
+&=\frac1{(b-a)^2}\left[-\frac1{x+a}-\frac1{x+b}-\frac2{b-a}\bigl(\ln|x+a|-\ln|x+b|\bigr)\right]+C\\
+&=\boxed{\frac1{(b-a)^2}\left[\frac2{b-a}\ln\left|\frac{x+b}{x+a}\right|-\frac1{x+a}-\frac1{x+b}\right]+C}.
+\end{aligned}
+$$
+结果在 $x\ne-a,-b$ 的各区间上成立。

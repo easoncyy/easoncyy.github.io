@@ -1,3 +1,215 @@
+::: {.problem-day data-date="2026-11-25"}
+
+## 2026-11-25 {.problem-date-heading}
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;不定积分&quot;], &quot;tags&quot;: [&quot;三角恒等变形&quot;, &quot;降次公式&quot;, &quot;积化和差&quot;], &quot;title&quot;: &quot;三角函数幂乘积的降次积分&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / CALCULUS / 不定积分</div>
+
+<h3>01. 三角函数幂乘积的降次积分</h3>
+
+<div class="entry-tags">#三角恒等变形 · #降次公式 · #积化和差</div>
+
+```
+
+求不定积分
+$$
+\int\sin^2 3x\,\sin^3 2x\,dx.
+$$
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+由降次公式，
+$$
+\sin^3 2x=\frac{3\sin2x-\sin6x}{4},\qquad
+\sin^2 3x=\frac{1-\cos6x}{2}.
+$$
+所以
+$$
+\begin{aligned}
+\sin^2 3x\sin^3 2x
+&=\frac18\bigl[3\sin2x-\sin6x-3\sin2x\cos6x+\sin6x\cos6x\bigr]\\
+&=\frac18\left[3\sin2x-\sin6x-\frac32\sin8x+\frac32\sin4x+\frac12\sin12x\right].
+\end{aligned}
+$$
+逐项积分，得
+$$
+\boxed{-\frac3{16}\cos2x+\frac1{48}\cos6x+\frac3{128}\cos8x-\frac3{64}\cos4x-\frac1{192}\cos12x+C}.
+$$
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：吉米多维奇《数学分析习题集》第 1753 题</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;不定积分&quot;], &quot;tags&quot;: [&quot;拆项积分&quot;, &quot;三角函数&quot;, &quot;凑微分&quot;], &quot;title&quot;: &quot;正弦平方与余弦乘积的倒数积分&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / CALCULUS / 不定积分</div>
+
+<h3>02. 正弦平方与余弦乘积的倒数积分</h3>
+
+<div class="entry-tags">#拆项积分 · #三角函数 · #凑微分</div>
+
+```
+
+求不定积分
+$$
+\int\frac{dx}{\sin^2x\cos x}.
+$$
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+由 $\sin^2x+\cos^2x=1$，
+$$
+\frac1{\sin^2x\cos x}=\frac1{\cos x}+\frac{\cos x}{\sin^2x}.
+$$
+因此
+$$
+\begin{aligned}
+\int\frac{dx}{\sin^2x\cos x}
+&=\int\sec x\,dx+\int\frac{d(\sin x)}{\sin^2x}\\
+&=\boxed{\ln|\sec x+\tan x|-\frac1{\sin x}+C}.
+\end{aligned}
+$$
+结果在 $\sin x\cos x\ne0$ 的各区间上成立。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：吉米多维奇《数学分析习题集》第 1755 题</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;不定积分&quot;], &quot;tags&quot;: [&quot;换元积分&quot;, &quot;部分分式&quot;], &quot;title&quot;: &quot;四次多项式分母的有理积分&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / CALCULUS / 不定积分</div>
+
+<h3>03. 四次多项式分母的有理积分</h3>
+
+<div class="entry-tags">#换元积分 · #部分分式</div>
+
+```
+
+求不定积分
+$$
+\int\frac{x\,dx}{x^4+3x^2+2}.
+$$
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+由 $x^4+3x^2+2=(x^2+1)(x^2+2)$，得
+$$
+\begin{aligned}
+\int\frac{x\,dx}{x^4+3x^2+2}
+&=\frac12\int\frac{d(x^2)}{(x^2+1)(x^2+2)}\\
+&=\frac12\int\left(\frac1{x^2+1}-\frac1{x^2+2}\right)d(x^2)\\
+&=\frac12\ln(x^2+1)-\frac12\ln(x^2+2)+C\\
+&=\boxed{\frac12\ln\frac{x^2+1}{x^2+2}+C}.
+\end{aligned}
+$$
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：吉米多维奇《数学分析习题集》第 1738 题</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;CALCULUS&quot;, &quot;不定积分&quot;], &quot;tags&quot;: [&quot;部分分式&quot;, &quot;参数积分&quot;], &quot;title&quot;: &quot;两个一次因子平方乘积的倒数积分&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / CALCULUS / 不定积分</div>
+
+<h3>04. 两个一次因子平方乘积的倒数积分</h3>
+
+<div class="entry-tags">#部分分式 · #参数积分</div>
+
+```
+
+求不定积分
+$$
+\int\frac{dx}{(x+a)^2(x+b)^2}\qquad(a,b\in\mathbb R,\ a\ne b).
+$$
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+利用
+$$
+\frac1{(x+a)(x+b)}=\frac1{b-a}\left(\frac1{x+a}-\frac1{x+b}\right),
+$$
+将两边平方，得
+$$
+\frac1{(x+a)^2(x+b)^2}
+=\frac1{(b-a)^2}\left[\frac1{(x+a)^2}+\frac1{(x+b)^2}-\frac2{(x+a)(x+b)}\right].
+$$
+再次拆分交叉项后逐项积分，得
+$$
+\begin{aligned}
+\int\frac{dx}{(x+a)^2(x+b)^2}
+&=\frac1{(b-a)^2}\left[-\frac1{x+a}-\frac1{x+b}-\frac2{b-a}\bigl(\ln|x+a|-\ln|x+b|\bigr)\right]+C\\
+&=\boxed{\frac1{(b-a)^2}\left[\frac2{b-a}\ln\left|\frac{x+b}{x+a}\right|-\frac1{x+a}-\frac1{x+b}\right]+C}.
+\end{aligned}
+$$
+结果在 $x\ne-a,-b$ 的各区间上成立。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：吉米多维奇《数学分析习题集》第 1739 题</p>
+
+```
+
+:::
+
+```{=html}
+
+<details id="discussion-2026-11-25" class="log-comments problem-discussion" data-comment-term="/problems/2026-11-25/" data-comment-date="2026-11-25" data-comment-title="每日好题 · 2026-11-25">
+
+<summary>discussion/ <span>2026-11-25 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
 ::: {.problem-day data-date="2026-11-24"}
 
 ## 2026-11-24 {.problem-date-heading}
@@ -6322,6 +6534,6 @@ $$
 
 ```{=html}
 
-<script id="problem-index" type="application/json">{"builtDate": "2026-11-24", "dates": {"2026-11-24": 3, "2026-11-23": 7, "2026-11-22": 2, "2026-11-21": 2, "2026-11-20": 2, "2026-11-19": 2, "2026-11-18": 2, "2026-11-17": 3, "2026-11-16": 2, "2026-11-15": 2, "2026-11-14": 2, "2026-11-13": 2, "2026-11-12": 1, "2026-11-11": 2, "2026-11-10": 2, "2026-11-09": 3, "2026-11-08": 2, "2026-11-07": 2, "2026-11-06": 6, "2026-11-05": 1, "2026-11-04": 1, "2026-11-03": 3, "2026-11-02": 6, "2026-11-01": 2, "2026-10-31": 2, "2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
+<script id="problem-index" type="application/json">{"builtDate": "2026-11-25", "dates": {"2026-11-25": 4, "2026-11-24": 3, "2026-11-23": 7, "2026-11-22": 2, "2026-11-21": 2, "2026-11-20": 2, "2026-11-19": 2, "2026-11-18": 2, "2026-11-17": 3, "2026-11-16": 2, "2026-11-15": 2, "2026-11-14": 2, "2026-11-13": 2, "2026-11-12": 1, "2026-11-11": 2, "2026-11-10": 2, "2026-11-09": 3, "2026-11-08": 2, "2026-11-07": 2, "2026-11-06": 6, "2026-11-05": 1, "2026-11-04": 1, "2026-11-03": 3, "2026-11-02": 6, "2026-11-01": 2, "2026-10-31": 2, "2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
 
 ```
