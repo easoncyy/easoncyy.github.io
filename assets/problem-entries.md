@@ -1,3 +1,125 @@
+::: {.problem-day data-date="2026-11-26"}
+
+## 2026-11-26 {.problem-date-heading}
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;线性方程组&quot;], &quot;tags&quot;: [&quot;基础解系&quot;, &quot;非齐次方程组&quot;, &quot;解的结构&quot;], &quot;title&quot;: &quot;非齐次方程组通解的系数和表示&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 线性方程组</div>
+
+<h3>01. 非齐次方程组通解的系数和表示</h3>
+
+<div class="entry-tags">#基础解系 · #非齐次方程组 · #解的结构</div>
+
+```
+
+设 $\alpha$ 是非齐次线性方程组 $Ax=b$（$b\ne0$）的一个解，$\eta_1,\ldots,\eta_t$ 是导出齐次方程组 $Ax=0$ 的一组基础解系。令
+$$
+\gamma_1=\alpha,\qquad\gamma_2=\eta_1+\alpha,\quad\ldots,\quad\gamma_{t+1}=\eta_t+\alpha.
+$$
+证明：原方程组的任一解 $\gamma$ 可写成
+$$
+\gamma=u_1\gamma_1+u_2\gamma_2+\cdots+u_{t+1}\gamma_{t+1},\qquad
+u_1+u_2+\cdots+u_{t+1}=1.
+$$
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+由非齐次方程组解的结构，任一解可写成
+$$
+\gamma=\alpha+u_2\eta_1+\cdots+u_{t+1}\eta_t.
+$$
+令 $u_1=1-u_2-\cdots-u_{t+1}$，则
+$$
+\begin{aligned}
+\gamma
+&=(u_1+u_2+\cdots+u_{t+1})\alpha+u_2\eta_1+\cdots+u_{t+1}\eta_t\\
+&=u_1\alpha+u_2(\eta_1+\alpha)+\cdots+u_{t+1}(\eta_t+\alpha)\\
+&=u_1\gamma_1+u_2\gamma_2+\cdots+u_{t+1}\gamma_{t+1}.
+\end{aligned}
+$$
+且 $u_1+u_2+\cdots+u_{t+1}=1$，即得所证。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：《高等代数习题解》（杨子胥编）第 460 题</p>
+
+```
+
+:::
+
+::: {.problem-entry data-problem="{&quot;path&quot;: [&quot;MATH&quot;, &quot;LINEAR-ALGEBRA&quot;, &quot;线性方程组&quot;], &quot;tags&quot;: [&quot;非齐次方程组&quot;, &quot;线性组合&quot;], &quot;title&quot;: &quot;非齐次方程组解的线性组合&quot;}"}
+
+```{=html}
+
+<div class="problem-meta">MATH / LINEAR-ALGEBRA / 线性方程组</div>
+
+<h3>02. 非齐次方程组解的线性组合</h3>
+
+<div class="entry-tags">#非齐次方程组 · #线性组合</div>
+
+```
+
+设 $\eta_1,\ldots,\eta_t$ 都是非齐次线性方程组 $Ax=b$（$b\ne0$）的解。证明：
+$$
+u_1\eta_1+\cdots+u_t\eta_t
+$$
+仍是原方程组的解，当且仅当
+$$
+u_1+\cdots+u_t=1.
+$$
+
+```{=html}
+
+<details class="problem-answer"><summary>answer/ 展开答案</summary><div class="problem-solution">
+
+```
+
+由 $A\eta_i=b$，得
+$$
+A(u_1\eta_1+\cdots+u_t\eta_t)
+=u_1A\eta_1+\cdots+u_tA\eta_t
+=(u_1+\cdots+u_t)b.
+$$
+若 $u_1+\cdots+u_t=1$，则上式等于 $b$，所以该线性组合仍是原方程组的解。
+
+反之，若该线性组合是原方程组的解，则
+$$
+(u_1+\cdots+u_t)b=b,
+$$
+即 $(u_1+\cdots+u_t-1)b=0$。因 $b\ne0$，得 $u_1+\cdots+u_t=1$。
+
+```{=html}
+
+</div></details>
+
+<p class="problem-source">来源：《高等代数习题解》（杨子胥编）第 459 题</p>
+
+```
+
+:::
+
+```{=html}
+
+<details id="discussion-2026-11-26" class="log-comments problem-discussion" data-comment-term="/problems/2026-11-26/" data-comment-date="2026-11-26" data-comment-title="每日好题 · 2026-11-26">
+
+<summary>discussion/ <span>2026-11-26 · 当日讨论</span></summary>
+
+<div class="log-comments-body"><p class="log-comments-status" aria-live="polite">展开后加载讨论，使用 GitHub 账号分享思路、提问或勘误。</p><div class="log-comments-widget"></div></div>
+
+</details>
+
+```
+
+:::
+
 ::: {.problem-day data-date="2026-11-25"}
 
 ## 2026-11-25 {.problem-date-heading}
@@ -6534,6 +6656,6 @@ $$
 
 ```{=html}
 
-<script id="problem-index" type="application/json">{"builtDate": "2026-11-25", "dates": {"2026-11-25": 4, "2026-11-24": 3, "2026-11-23": 7, "2026-11-22": 2, "2026-11-21": 2, "2026-11-20": 2, "2026-11-19": 2, "2026-11-18": 2, "2026-11-17": 3, "2026-11-16": 2, "2026-11-15": 2, "2026-11-14": 2, "2026-11-13": 2, "2026-11-12": 1, "2026-11-11": 2, "2026-11-10": 2, "2026-11-09": 3, "2026-11-08": 2, "2026-11-07": 2, "2026-11-06": 6, "2026-11-05": 1, "2026-11-04": 1, "2026-11-03": 3, "2026-11-02": 6, "2026-11-01": 2, "2026-10-31": 2, "2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
+<script id="problem-index" type="application/json">{"builtDate": "2026-11-26", "dates": {"2026-11-26": 2, "2026-11-25": 4, "2026-11-24": 3, "2026-11-23": 7, "2026-11-22": 2, "2026-11-21": 2, "2026-11-20": 2, "2026-11-19": 2, "2026-11-18": 2, "2026-11-17": 3, "2026-11-16": 2, "2026-11-15": 2, "2026-11-14": 2, "2026-11-13": 2, "2026-11-12": 1, "2026-11-11": 2, "2026-11-10": 2, "2026-11-09": 3, "2026-11-08": 2, "2026-11-07": 2, "2026-11-06": 6, "2026-11-05": 1, "2026-11-04": 1, "2026-11-03": 3, "2026-11-02": 6, "2026-11-01": 2, "2026-10-31": 2, "2026-10-30": 2, "2026-10-29": 2, "2026-10-28": 3, "2026-10-27": 1, "2026-10-26": 2, "2026-10-25": 3, "2026-10-24": 2, "2026-10-23": 2, "2026-10-22": 4, "2026-10-21": 3, "2026-10-20": 2, "2026-10-19": 2, "2026-10-18": 4, "2026-10-17": 3, "2026-10-16": 3}}</script>
 
 ```

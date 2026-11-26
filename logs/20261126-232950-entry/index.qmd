@@ -1,0 +1,17 @@
+---
+title: ""
+date: "2026-11-26T23:29:50+08:00"
+entry-signature: "01ea983702d95b5beea4fef2cbe9260245951883b6518c15c340d04d6fbf0462"
+---
+
+::: {.log-photo-grid}
+
+![](/assets/log/20261126-232950-entry/photo-01.jpg)
+
+![](/assets/log/20261126-232950-entry/photo-02.jpg)
+
+![](/assets/log/20261126-232950-entry/photo-03.jpg)
+
+![](/assets/log/20261126-232950-entry/photo-04.jpg)
+
+:::

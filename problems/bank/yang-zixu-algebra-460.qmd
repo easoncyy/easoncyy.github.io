@@ -1,0 +1,34 @@
+---
+title: "非齐次方程组通解的系数和表示"
+category-path: ["MATH", "LINEAR-ALGEBRA", "线性方程组"]
+tags: ["基础解系", "非齐次方程组", "解的结构"]
+source: "《高等代数习题解》（杨子胥编）第 460 题"
+draft: false
+---
+
+设 $\alpha$ 是非齐次线性方程组 $Ax=b$（$b\ne0$）的一个解，$\eta_1,\ldots,\eta_t$ 是导出齐次方程组 $Ax=0$ 的一组基础解系。令
+$$
+\gamma_1=\alpha,\qquad\gamma_2=\eta_1+\alpha,\quad\ldots,\quad\gamma_{t+1}=\eta_t+\alpha.
+$$
+证明：原方程组的任一解 $\gamma$ 可写成
+$$
+\gamma=u_1\gamma_1+u_2\gamma_2+\cdots+u_{t+1}\gamma_{t+1},\qquad
+u_1+u_2+\cdots+u_{t+1}=1.
+$$
+
+<!-- answer -->
+
+由非齐次方程组解的结构，任一解可写成
+$$
+\gamma=\alpha+u_2\eta_1+\cdots+u_{t+1}\eta_t.
+$$
+令 $u_1=1-u_2-\cdots-u_{t+1}$，则
+$$
+\begin{aligned}
+\gamma
+&=(u_1+u_2+\cdots+u_{t+1})\alpha+u_2\eta_1+\cdots+u_{t+1}\eta_t\\
+&=u_1\alpha+u_2(\eta_1+\alpha)+\cdots+u_{t+1}(\eta_t+\alpha)\\
+&=u_1\gamma_1+u_2\gamma_2+\cdots+u_{t+1}\gamma_{t+1}.
+\end{aligned}
+$$
+且 $u_1+u_2+\cdots+u_{t+1}=1$，即得所证。
